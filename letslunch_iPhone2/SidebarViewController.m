@@ -64,7 +64,10 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"ViewController%d", indexPath.row];
+    if(indexPath.row == 0)
+        cell.textLabel.text = @"Activity";
+    else
+        cell.textLabel.text = [NSString stringWithFormat:@"ViewController%d", indexPath.row];
     
     return cell;
 }

@@ -12,6 +12,7 @@
 #import "SidebarViewController.h"
 #import "NewViewController.h"
 #import "JTRevealSidebarV2Delegate.h"
+#import "ActivityViewController.h"
 
 @interface CenterViewController (Private) <UITableViewDataSource, UITableViewDelegate, SidebarViewControllerDelegate>
 @end
@@ -35,10 +36,9 @@
     [super viewDidLoad];
 
     self.view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
-    
     self.centerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    self.centerView.backgroundColor = [UIColor redColor];
     [self.view addSubview:self.centerView];
+    [self firstConfiguration];
     
     self.label = [[UILabel alloc] initWithFrame:CGRectMake(30, 50, 260, 60)];
     //[self.view addSubview:self.label];
@@ -69,6 +69,13 @@
     */
 
     self.navigationItem.revealSidebarDelegate = self;
+}
+
+- (void)firstConfiguration
+{
+    self.centerView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
+    [self.centerView addSubview:[[ActivityViewController alloc] init].view];
+    self.navigationItem.title = @"Activity";
 }
 
 - (void)viewDidUnload
@@ -231,8 +238,23 @@
 - (void)sidebarViewController:(SidebarViewController *)sidebarViewController didSelectObject:(float)object atIndexPath:(NSIndexPath *)indexPath {
 
     [self.navigationController setRevealedState:JTRevealedStateNo];
-    CGFloat color = object;
-    self.centerView.backgroundColor = [UIColor colorWithRed:1-(color/10) green:(color/10) blue:1/color alpha:1];
+    
+    if([self.centerView.subviews count] > 0) {
+        for (UIView* v in self.centerView.subviews) {
+            [v removeFromSuperview];
+            [v release];
+        }
+    }
+    
+    self.centerView.backgroundColor = [UIColor redColor];
+    
+    self.navigationItem.title = @"Test";
+    
+    if(object == 0) {
+        [self firstConfiguration];
+    }
+    
+    //self.centerView.backgroundColor = [UIColor colorWithRed:1-(color/10) green:(color/10) blue:1/color alpha:1];
     
     /*
     CenterViewController *controller = [[CenterViewController alloc] init];
