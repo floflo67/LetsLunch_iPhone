@@ -12,4 +12,12 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (strong, nonatomic) NSMutableArray *listActivities;
+@property (strong, nonatomic) NSMutableArray *listFriendsSuggestion;
+@property (strong, nonatomic) NSMutableArray *listMessages;
+
+-(NSMutableArray*)getListActivities;
+-(NSMutableArray*)getListFriendsSuggestion;
+-(NSMutableArray*)getListMessages;
+
 @end

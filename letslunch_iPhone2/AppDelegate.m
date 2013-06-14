@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "CenterViewController.h"
+#import "GetStaticLists.h"
 
 @implementation AppDelegate
 
@@ -35,6 +36,40 @@
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+#pragma lists
+
+- (NSMutableArray*)getListActivities
+{
+    if(!self.listActivities) {
+        self.listActivities = [[[NSMutableArray alloc] init] autorelease];
+        self.listActivities = [GetStaticLists getListActivities];
+    }
+    
+    return self.listActivities;
+}
+
+- (NSMutableArray*) getListFriendsSuggestion
+{
+    if(!self.listFriendsSuggestion) {
+        self.listFriendsSuggestion = [[[NSMutableArray alloc] init] autorelease];
+        self.listFriendsSuggestion = [GetStaticLists getListFriendsSuggestion];
+    }
+    
+    return self.listFriendsSuggestion;
+}
+
+- (NSMutableArray*) getListMessages
+{
+    if(!self.listMessages) {
+        self.listMessages = [[[NSMutableArray alloc] init] autorelease];
+        self.listMessages = [GetStaticLists getListMessages];
+    }
+    
+    return self.listMessages;
+}
+
+#pragma application lifecycle
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -73,6 +108,15 @@
      Save data if appropriate.
      See also applicationDidEnterBackground:.
      */
+}
+
+- (void)dealloc
+{
+    [self.listActivities release];
+    [self.listFriendsSuggestion release];
+    [self.listMessages release];
+    [_window release];
+    [super dealloc];
 }
 
 @end

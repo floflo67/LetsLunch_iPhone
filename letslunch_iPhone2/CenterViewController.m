@@ -134,6 +134,7 @@
     [self.navigationController toggleRevealState:JTRevealedStateRight];
 }
 
+/*
 - (void)pushNewViewController:(id)sender {
     NewViewController *controller = [[NewViewController alloc] init];
     controller.view.backgroundColor = [UIColor whiteColor];
@@ -141,6 +142,7 @@
     controller.label.text = @"Pushed NewViewController";
     [self.navigationController pushViewController:controller animated:YES];
 }
+*/
 
 #pragma mark JTRevealSidebarDelegate
 
