@@ -10,6 +10,7 @@
 
 @implementation SidebarViewController
 @synthesize sidebarDelegate;
+@synthesize menuItem;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -25,6 +26,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if(!self.menuItem) {
+        self.menuItem = [[NSArray alloc] initWithObjects:@"Activity", @"Message", nil];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -43,6 +47,12 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void)dealloc {
+    [self.menuItem release];
+    [self.sidebarDelegate release];
+    [super dealloc];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -52,7 +62,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return [menuItem count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -64,13 +74,15 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
+    cell.textLabel.text = self.menuItem[indexPath.row];
+    /*
     if(indexPath.row == 0)
         cell.textLabel.text = @"Activity";
     else if (indexPath.row == 1)
         cell.textLabel.text = @"Message";
     else
         cell.textLabel.text = [NSString stringWithFormat:@"ViewController%d", indexPath.row];
-    
+    */
     return cell;
 }
 
