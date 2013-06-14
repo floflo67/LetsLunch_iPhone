@@ -8,7 +8,6 @@
 
 #import "SidebarViewController.h"
 
-
 @implementation SidebarViewController
 @synthesize sidebarDelegate;
 
@@ -78,8 +77,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.sidebarDelegate) {
-        NSObject *object = [NSString stringWithFormat:@"ViewController%d", indexPath.row];
-        [self.sidebarDelegate sidebarViewController:self didSelectObject:object atIndexPath:indexPath];
+        //NSObject *object = [NSString stringWithFormat:@"ViewController%d", indexPath.row];
+        [self.sidebarDelegate sidebarViewController:self didSelectObject:(float)indexPath.row atIndexPath:indexPath];
     }
 }
 

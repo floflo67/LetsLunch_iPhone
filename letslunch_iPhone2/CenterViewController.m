@@ -13,10 +13,6 @@
 #import "NewViewController.h"
 #import "JTRevealSidebarV2Delegate.h"
 
-#if EXPERIEMENTAL_ORIENTATION_SUPPORT
-#import <QuartzCore/QuartzCore.h>
-#endif
-
 @interface CenterViewController (Private) <UITableViewDataSource, UITableViewDelegate, SidebarViewControllerDelegate>
 @end
 
@@ -156,7 +152,7 @@
         self.leftSidebarViewController = [[SidebarViewController alloc] init];
         self.leftSidebarViewController.sidebarDelegate = self;
         controller = self.leftSidebarViewController;
-        controller.title = @"LeftSidebarViewController";
+        controller.title = @"Menu";
     }
     controller.view.frame = CGRectMake(0, viewFrame.origin.y, 270, viewFrame.size.height);
     controller.view.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
@@ -232,10 +228,13 @@
 
 #pragma mark SidebarViewControllerDelegate
 
-- (void)sidebarViewController:(SidebarViewController *)sidebarViewController didSelectObject:(NSObject *)object atIndexPath:(NSIndexPath *)indexPath {
+- (void)sidebarViewController:(SidebarViewController *)sidebarViewController didSelectObject:(float)object atIndexPath:(NSIndexPath *)indexPath {
 
     [self.navigationController setRevealedState:JTRevealedStateNo];
-
+    CGFloat color = object;
+    self.centerView.backgroundColor = [UIColor colorWithRed:1-(color/10) green:(color/10) blue:1/color alpha:1];
+    
+    /*
     CenterViewController *controller = [[CenterViewController alloc] init];
     controller.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];
     controller.title = (NSString *)object;
@@ -244,7 +243,7 @@
     controller.label.text = [NSString stringWithFormat:@"Selected %@ from LeftSidebarViewController", (NSString *)object];
     sidebarViewController.sidebarDelegate = controller;
     [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
-
+    */
 }
 
 - (NSIndexPath *)lastSelectedIndexPathForSidebarViewController:(SidebarViewController *)sidebarViewController {
