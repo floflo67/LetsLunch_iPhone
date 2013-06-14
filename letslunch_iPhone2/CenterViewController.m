@@ -24,6 +24,7 @@
 
 @synthesize leftSidebarViewController;
 @synthesize rightSidebarView;
+@synthesize centerView;
 @synthesize leftSelectedIndexPath;
 @synthesize label;
 
@@ -39,13 +40,19 @@
 
     self.view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
     
-
+    self.centerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    self.centerView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:self.centerView];
+    
     self.label = [[UILabel alloc] initWithFrame:CGRectMake(30, 50, 260, 60)];
+    //[self.view addSubview:self.label];
+    
+    /*
     self.label.backgroundColor  = [UIColor clearColor];
     self.label.textColor        = [UIColor whiteColor];
     self.label.textAlignment    = UITextAlignmentCenter;
-    self.label.numberOfLines    = 2;
-    [self.view addSubview:self.label];
+     self.label.numberOfLines    = 2;
+     */
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ButtonMenu.png"]
                                                                              style:UIBarButtonItemStyleBordered
@@ -76,8 +83,8 @@
     self.rightSidebarView = nil;
 }
 
+/*
 #if EXPERIEMENTAL_ORIENTATION_SUPPORT
-
 // Doesn't support rotating to other orientation at this moment
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -100,7 +107,7 @@
     NSLog(@"%@", self);
 }
 
-/*
+
 - (NSString *)description {
     NSString *logMessage = [NSString stringWithFormat:@"ViewController {"];
     logMessage = [logMessage stringByAppendingFormat:@"\n\t%@", self.view];
@@ -114,9 +121,8 @@
     logMessage = [logMessage stringByAppendingFormat:@"\n}"];
     return logMessage;
 }
- */
-
 #endif
+*/
 
 #pragma mark Action
 

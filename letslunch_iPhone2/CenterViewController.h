@@ -26,6 +26,7 @@
 
 @property (nonatomic, strong) SidebarViewController *leftSidebarViewController;
 @property (nonatomic, strong) UITableView *rightSidebarView;
+@property (nonatomic, strong) UIView *centerView;
 @property (nonatomic, strong) NSIndexPath *leftSelectedIndexPath;
 @property (nonatomic, strong) UILabel     *label;
 
