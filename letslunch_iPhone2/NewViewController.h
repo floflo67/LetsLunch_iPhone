@@ -1,9 +1,9 @@
 //
 //  NewViewController.h
-//  JTRevealSidebarDemo
+//  letslunch_iPhone2
 //
-//  Created by James Apple Tang on 12/12/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Created by Florian Reiss on 14/06/13.
+//  Copyright (c) 2013 Florian Reiss. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
