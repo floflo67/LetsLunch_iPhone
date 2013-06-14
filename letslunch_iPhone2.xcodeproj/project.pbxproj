@@ -1,0 +1,285 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		548D36AF176B819300154C36 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36AE176B819300154C36 /* UIKit.framework */; };
+		548D36B1176B819300154C36 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36B0176B819300154C36 /* Foundation.framework */; };
+		548D36B3176B819300154C36 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36B2176B819300154C36 /* CoreGraphics.framework */; };
+		548D36B9176B819300154C36 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 548D36B7176B819300154C36 /* InfoPlist.strings */; };
+		548D36BB176B819300154C36 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36BA176B819300154C36 /* main.m */; };
+		548D36BF176B819300154C36 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36BE176B819300154C36 /* AppDelegate.m */; };
+		548D36C1176B819300154C36 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 548D36C0176B819300154C36 /* Default.png */; };
+		548D36C3176B819300154C36 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 548D36C2176B819300154C36 /* Default@2x.png */; };
+		548D36C5176B819300154C36 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 548D36C4176B819300154C36 /* Default-568h@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		548D36AB176B819300154C36 /* letslunch_iPhone2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = letslunch_iPhone2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		548D36AE176B819300154C36 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		548D36B0176B819300154C36 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		548D36B2176B819300154C36 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		548D36B6176B819300154C36 /* letslunch_iPhone2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "letslunch_iPhone2-Info.plist"; sourceTree = "<group>"; };
+		548D36B8176B819300154C36 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		548D36BA176B819300154C36 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		548D36BC176B819300154C36 /* letslunch_iPhone2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "letslunch_iPhone2-Prefix.pch"; sourceTree = "<group>"; };
+		548D36BD176B819300154C36 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		548D36BE176B819300154C36 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		548D36C0176B819300154C36 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		548D36C2176B819300154C36 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		548D36C4176B819300154C36 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		548D36A8176B819300154C36 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				548D36AF176B819300154C36 /* UIKit.framework in Frameworks */,
+				548D36B1176B819300154C36 /* Foundation.framework in Frameworks */,
+				548D36B3176B819300154C36 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		548D36A2176B819300154C36 = {
+			isa = PBXGroup;
+			children = (
+				548D36B4176B819300154C36 /* letslunch_iPhone2 */,
+				548D36AD176B819300154C36 /* Frameworks */,
+				548D36AC176B819300154C36 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		548D36AC176B819300154C36 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				548D36AB176B819300154C36 /* letslunch_iPhone2.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		548D36AD176B819300154C36 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				548D36AE176B819300154C36 /* UIKit.framework */,
+				548D36B0176B819300154C36 /* Foundation.framework */,
+				548D36B2176B819300154C36 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		548D36B4176B819300154C36 /* letslunch_iPhone2 */ = {
+			isa = PBXGroup;
+			children = (
+				548D36BD176B819300154C36 /* AppDelegate.h */,
+				548D36BE176B819300154C36 /* AppDelegate.m */,
+				548D36B5176B819300154C36 /* Supporting Files */,
+			);
+			path = letslunch_iPhone2;
+			sourceTree = "<group>";
+		};
+		548D36B5176B819300154C36 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				548D36B6176B819300154C36 /* letslunch_iPhone2-Info.plist */,
+				548D36B7176B819300154C36 /* InfoPlist.strings */,
+				548D36BA176B819300154C36 /* main.m */,
+				548D36BC176B819300154C36 /* letslunch_iPhone2-Prefix.pch */,
+				548D36C0176B819300154C36 /* Default.png */,
+				548D36C2176B819300154C36 /* Default@2x.png */,
+				548D36C4176B819300154C36 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		548D36AA176B819300154C36 /* letslunch_iPhone2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 548D36C8176B819300154C36 /* Build configuration list for PBXNativeTarget "letslunch_iPhone2" */;
+			buildPhases = (
+				548D36A7176B819300154C36 /* Sources */,
+				548D36A8176B819300154C36 /* Frameworks */,
+				548D36A9176B819300154C36 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = letslunch_iPhone2;
+			productName = letslunch_iPhone2;
+			productReference = 548D36AB176B819300154C36 /* letslunch_iPhone2.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		548D36A3176B819300154C36 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Florian Reiss";
+			};
+			buildConfigurationList = 548D36A6176B819300154C36 /* Build configuration list for PBXProject "letslunch_iPhone2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 548D36A2176B819300154C36;
+			productRefGroup = 548D36AC176B819300154C36 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				548D36AA176B819300154C36 /* letslunch_iPhone2 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		548D36A9176B819300154C36 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				548D36B9176B819300154C36 /* InfoPlist.strings in Resources */,
+				548D36C1176B819300154C36 /* Default.png in Resources */,
+				548D36C3176B819300154C36 /* Default@2x.png in Resources */,
+				548D36C5176B819300154C36 /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		548D36A7176B819300154C36 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				548D36BB176B819300154C36 /* main.m in Sources */,
+				548D36BF176B819300154C36 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		548D36B7176B819300154C36 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				548D36B8176B819300154C36 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		548D36C6176B819300154C36 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		548D36C7176B819300154C36 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		548D36C9176B819300154C36 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "letslunch_iPhone2/letslunch_iPhone2-Prefix.pch";
+				INFOPLIST_FILE = "letslunch_iPhone2/letslunch_iPhone2-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		548D36CA176B819300154C36 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "letslunch_iPhone2/letslunch_iPhone2-Prefix.pch";
+				INFOPLIST_FILE = "letslunch_iPhone2/letslunch_iPhone2-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		548D36A6176B819300154C36 /* Build configuration list for PBXProject "letslunch_iPhone2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				548D36C6176B819300154C36 /* Debug */,
+				548D36C7176B819300154C36 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		548D36C8176B819300154C36 /* Build configuration list for PBXNativeTarget "letslunch_iPhone2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				548D36C9176B819300154C36 /* Debug */,
+				548D36CA176B819300154C36 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 548D36A3176B819300154C36 /* Project object */;
+}
