@@ -40,17 +40,24 @@ static ActivityViewController *sharedSingleton = nil;
     self = [super init];
     if(!_objects) {
         AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        NSMutableArray* listActivities = [[NSMutableArray alloc] initWithArray:[app getListActivities] copyItems:YES];
+        _objects = [[NSMutableArray alloc] init];
         
-        
+        NSDictionary* dict;
         if([app getOwnerActivity]) {
-           [listActivities insertObject:[app getOwnerActivity] atIndex:0];
+            dict = [NSDictionary dictionaryWithObject:[NSArray arrayWithObject:[app getOwnerActivity]] forKey:@"Activities"];
             self.hasActivity = YES;
         }
-        else
+        else {
+            dict = [NSDictionary dictionaryWithObject:[NSArray arrayWithObject:@"NIL"] forKey:@"Activities"];
             self.hasActivity = NO;
+         }
         
-        _objects = [[NSMutableArray alloc] initWithArray:listActivities];
+        [_objects addObject:dict];
+        
+        NSMutableArray* listActivities = [[NSMutableArray alloc] initWithArray:[app getListActivities] copyItems:YES];
+        NSDictionary *listActivitiesDict = [NSDictionary dictionaryWithObject:listActivities forKey:@"Activities"];
+        
+        [_objects addObject:listActivitiesDict];
     }
     return self;
 }
@@ -85,29 +92,57 @@ static ActivityViewController *sharedSingleton = nil;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    if(!self.hasActivity)
-        return [_objects count] + 1;
-    else
-        return [_objects count];
+    
+    NSDictionary *dictionary = [_objects objectAtIndex:section];
+    NSArray *array = [dictionary objectForKey:@"Activities"];
+    return [array count];
+}
+
+- (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *sectionName;
+    switch (section)
+    {
+        case 0:
+            if(self.hasActivity) {
+                sectionName = @"Your activity";
+            }
+            else {
+                sectionName = @"Create activity";
+            }
+            break;
+        case 1:
+            sectionName = @"Activities around you";
+            break;
+        default:
+            sectionName = @"";
+            break;
+    }
+    return sectionName;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
+    NSDictionary *dictionary = [_objects objectAtIndex:indexPath.section];
+    NSArray *array = [dictionary objectForKey:@"Activities"];
+    
+    /*
     if(!self.hasActivity) {
         if(indexPath.row == 0) {
+            
             UIButton *pushButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
             [pushButton setTitle:@"Create Activity" forState:UIControlStateNormal];
             [pushButton sizeToFit];
@@ -118,6 +153,7 @@ static ActivityViewController *sharedSingleton = nil;
             pushButton.frame = (CGRect){0, 0, cell.frame.size.width, cell.frame.size.height};
             [cell addSubview:pushButton];
             
+            
         }
         else {
             cell.textLabel.text = [_objects[indexPath.row - 1] description];
@@ -125,9 +161,21 @@ static ActivityViewController *sharedSingleton = nil;
     }
     else {
         cell.textLabel.text = [_objects[indexPath.row] description];        
+    }*/
+    
+    if([[array[indexPath.row] description] isEqualToString:@"NIL"]) {
+        UIButton *pushButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [pushButton setTitle:@"Create Activity" forState:UIControlStateNormal];
+        [pushButton sizeToFit];
+        [pushButton addTarget:((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController
+                       action:@selector(pushCreateActivityViewController:)
+             forControlEvents:UIControlEventTouchUpInside];
+        
+        pushButton.frame = (CGRect){0, 0, cell.frame.size.width, cell.frame.size.height};
+        [cell addSubview:pushButton];
     }
-    
-    
+    else
+        cell.textLabel.text = [array[indexPath.row] description];
     return cell;
 }
 

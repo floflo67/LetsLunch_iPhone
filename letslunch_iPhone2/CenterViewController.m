@@ -44,14 +44,6 @@
     [self ActivityConfiguration];
     
     self.label = [[UILabel alloc] initWithFrame:CGRectMake(30, 50, 260, 60)];
-    //[self.view addSubview:self.label];
-    
-    /*
-    self.label.backgroundColor  = [UIColor clearColor];
-    self.label.textColor        = [UIColor whiteColor];
-    self.label.textAlignment    = UITextAlignmentCenter;
-     self.label.numberOfLines    = 2;
-     */
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ButtonMenu.png"]
                                                                              style:UIBarButtonItemStyleBordered
@@ -61,15 +53,6 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize
                                                                                            target:self
                                                                                            action:@selector(revealRightSidebar:)];
-
-    /*
-    UIButton *pushButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [pushButton setTitle:@"Push NewViewController" forState:UIControlStateNormal];
-    [pushButton sizeToFit];
-    [pushButton addTarget:self action:@selector(pushNewViewController:) forControlEvents:UIControlEventTouchUpInside];
-    pushButton.frame = (CGRect){10, 150, self.view.frame.size.width - 20, pushButton.frame.size.height};
-    [self.view addSubview:pushButton];
-    */
 
     self.navigationItem.revealSidebarDelegate = self;
 }
@@ -103,47 +86,6 @@
     self.rightSidebarView = nil;
 }
 
-/*
-#if EXPERIEMENTAL_ORIENTATION_SUPPORT
-// Doesn't support rotating to other orientation at this moment
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return YES;
-}
-
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    _containerOrigin = self.navigationController.view.frame.origin;
-}
-
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    self.navigationController.view.layer.bounds       = (CGRect){-_containerOrigin.x, _containerOrigin.y, self.navigationController.view.frame.size};
-}
-
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    self.navigationController.view.layer.bounds       = (CGRect){CGPointZero, self.navigationController.view.frame.size};
-    self.navigationController.view.frame              = (CGRect){_containerOrigin, self.navigationController.view.frame.size};
-   
-    NSLog(@"%@", self);
-}
-
-
-- (NSString *)description {
-    NSString *logMessage = [NSString stringWithFormat:@"ViewController {"];
-    logMessage = [logMessage stringByAppendingFormat:@"\n\t%@", self.view];
-    logMessage = [logMessage stringByAppendingFormat:@"\n\t%@", self.navigationController.view];
-    logMessage = [logMessage stringByAppendingFormat:@"\n\t%@", self.leftSidebarViewController.view];
-    logMessage = [logMessage stringByAppendingFormat:@"\n\t%@", self.rightSidebarView];
-    logMessage = [logMessage stringByAppendingFormat:@"\n\t%@", self.navigationController.navigationBar];
-    logMessage = [logMessage stringByAppendingFormat:@"\n\t <statusBarFrame> %@", NSStringFromCGRect([[UIApplication sharedApplication] statusBarFrame])];
-    logMessage = [logMessage stringByAppendingFormat:@"\n\t <applicationFrame> %@", NSStringFromCGRect([[UIScreen mainScreen] applicationFrame])];
-    logMessage = [logMessage stringByAppendingFormat:@"\n\t <preferredViewFrame> %@", NSStringFromCGRect(self.navigationController.applicationViewFrame)];
-    logMessage = [logMessage stringByAppendingFormat:@"\n}"];
-    return logMessage;
-}
-#endif
-*/
-
 #pragma mark Action
 
 - (void)revealLeftSidebar:(id)sender {
@@ -161,7 +103,6 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-
 #pragma mark JTRevealSidebarDelegate
 
 // This is an examle to configure your sidebar view through a custom UIViewController
@@ -171,7 +112,7 @@
     CGRect viewFrame = self.navigationController.applicationViewFrame;
     UITableViewController *controller = self.leftSidebarViewController;
     if ( ! controller) {
-        self.leftSidebarViewController = [[SidebarViewController alloc] init];
+        self.leftSidebarViewController = [[SidebarViewController alloc] initWithStyle:UITableViewStyleGrouped];
         self.leftSidebarViewController.sidebarDelegate = self;
         controller = self.leftSidebarViewController;
         controller.title = @"Menu";
