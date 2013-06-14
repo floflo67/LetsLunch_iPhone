@@ -112,7 +112,7 @@ static ActivityViewController *sharedSingleton = nil;
             [pushButton setTitle:@"Create Activity" forState:UIControlStateNormal];
             [pushButton sizeToFit];
             [pushButton addTarget:((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController
-                           action:@selector(pushNewViewController:)
+                           action:@selector(pushCreateActivityViewController:)
                  forControlEvents:UIControlEventTouchUpInside];
             
             pushButton.frame = (CGRect){0, 0, cell.frame.size.width, cell.frame.size.height};

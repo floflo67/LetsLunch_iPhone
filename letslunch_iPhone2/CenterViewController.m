@@ -15,6 +15,7 @@
 #import "ActivityViewController.h"
 #import "MessageViewController.h"
 #import "FriendsViewController.h"
+#import "CreateActivityViewController.h"
 
 @interface CenterViewController (Private) <UITableViewDataSource, UITableViewDelegate, SidebarViewControllerDelegate>
 @end
@@ -153,12 +154,10 @@
     [self.navigationController toggleRevealState:JTRevealedStateRight];
 }
 
-
-- (void)pushNewViewController:(id)sender {
-    NewViewController *controller = [[NewViewController alloc] init];
+- (void)pushCreateActivityViewController:(id)sender {
+    CreateActivityViewController *controller = [[[CreateActivityViewController alloc] init] autorelease];
     controller.view.backgroundColor = [UIColor whiteColor];
-    controller.title = @"NewViewController";
-    controller.label.text = @"Pushed NewViewController";
+    controller.title = @"Create Activity";
     [self.navigationController pushViewController:controller animated:YES];
 }
 

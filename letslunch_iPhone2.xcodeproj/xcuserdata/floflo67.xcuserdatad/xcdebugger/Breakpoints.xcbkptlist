@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "letslunch_iPhone2/CenterViewController.m"
-         timestampString = "392929846.125936"
+         timestampString = "392940440.816568"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "256"
-         endingLineNumber = "256"
+         startingLineNumber = "255"
+         endingLineNumber = "255"
          landmarkName = "-sidebarViewController:didSelectObject:atIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
