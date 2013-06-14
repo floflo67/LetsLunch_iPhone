@@ -15,6 +15,25 @@
 
 @implementation MessageViewController
 
+static MessageViewController *sharedSingleton = nil;
++ (MessageViewController*)getSingleton
+{
+    if (sharedSingleton !=nil)
+    {
+        NSLog(@"MessageViewController has already been created.....");
+        return sharedSingleton;
+    }
+    @synchronized(self)
+    {
+        if (sharedSingleton == nil)
+        {
+            sharedSingleton = [[self alloc]init];
+            NSLog(@"Created a new MessageViewController");
+        }
+    }
+    return sharedSingleton;
+}
+
 -(id)init
 {
     self = [super init];

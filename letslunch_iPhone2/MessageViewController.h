@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) NSMutableArray* objects;
 
++(MessageViewController*)getSingleton;
+
 @end

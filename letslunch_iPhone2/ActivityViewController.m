@@ -15,11 +15,42 @@
 
 @implementation ActivityViewController
 
+static ActivityViewController *sharedSingleton = nil;
++ (ActivityViewController*)getSingleton
+{
+    if (sharedSingleton !=nil)
+    {
+        NSLog(@"ActivityViewController has already been created.....");
+        return sharedSingleton;
+    }
+    @synchronized(self)
+    {
+        if (sharedSingleton == nil)
+        {
+            sharedSingleton = [[self alloc]init];
+            NSLog(@"Created a new ActivityViewController");
+        }
+    }
+    return sharedSingleton;
+}
+
+
 -(id)init
 {
     self = [super init];
     if(!_objects) {
-        _objects = [[NSMutableArray alloc] initWithArray:[(AppDelegate*)[[UIApplication sharedApplication] delegate] getListActivities]];
+        AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        NSMutableArray* listActivities = [[NSMutableArray alloc] initWithArray:[app getListActivities] copyItems:YES];
+        
+        
+        if([app getOwnerActivity]) {
+           [listActivities insertObject:[app getOwnerActivity] atIndex:0];
+            self.hasActivity = YES;
+        }
+        else
+            self.hasActivity = NO;
+        
+        _objects = [[NSMutableArray alloc] initWithArray:listActivities];
     }
     return self;
 }
@@ -61,7 +92,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [_objects count];
+    if(!self.hasActivity)
+        return [_objects count] + 1;
+    else
+        return [_objects count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -72,7 +106,27 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    cell.textLabel.text = [_objects[indexPath.row] description];
+    if(!self.hasActivity) {
+        if(indexPath.row == 0) {
+            UIButton *pushButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            [pushButton setTitle:@"Create Activity" forState:UIControlStateNormal];
+            [pushButton sizeToFit];
+            [pushButton addTarget:((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController
+                           action:@selector(pushNewViewController:)
+                 forControlEvents:UIControlEventTouchUpInside];
+            
+            pushButton.frame = (CGRect){0, 0, cell.frame.size.width, cell.frame.size.height};
+            [cell addSubview:pushButton];
+            
+        }
+        else {
+            cell.textLabel.text = [_objects[indexPath.row - 1] description];
+        }
+    }
+    else {
+        cell.textLabel.text = [_objects[indexPath.row] description];        
+    }
+    
     
     return cell;
 }

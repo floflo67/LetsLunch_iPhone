@@ -76,21 +76,21 @@
 - (void)ActivityConfiguration
 {
     self.centerView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
-    [self.centerView addSubview:[[ActivityViewController alloc] init].view];
+    [self.centerView addSubview:[ActivityViewController getSingleton].view];
     self.navigationItem.title = @"Activity";
 }
 
 - (void)MessageConfiguration
 {
     self.centerView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
-    [self.centerView addSubview:[[MessageViewController alloc] init].view];
+    [self.centerView addSubview:[MessageViewController getSingleton].view];
     self.navigationItem.title = @"Message";
 }
 
 - (void)FriendConfiguration
 {
     self.centerView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
-    [self.centerView addSubview:[[FriendsViewController alloc] init].view];
+    [self.centerView addSubview:[FriendsViewController getSingleton].view];
     self.navigationItem.title = @"Friend";    
 }
 
@@ -153,7 +153,7 @@
     [self.navigationController toggleRevealState:JTRevealedStateRight];
 }
 
-/*
+
 - (void)pushNewViewController:(id)sender {
     NewViewController *controller = [[NewViewController alloc] init];
     controller.view.backgroundColor = [UIColor whiteColor];
@@ -161,7 +161,7 @@
     controller.label.text = @"Pushed NewViewController";
     [self.navigationController pushViewController:controller animated:YES];
 }
-*/
+
 
 #pragma mark JTRevealSidebarDelegate
 
@@ -258,7 +258,7 @@
     if([self.centerView.subviews count] > 0) {
         for (UIView* v in self.centerView.subviews) {
             [v removeFromSuperview];
-            [v release];
+            //[v release];
         }
     }
     

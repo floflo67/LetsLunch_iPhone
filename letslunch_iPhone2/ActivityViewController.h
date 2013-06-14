@@ -11,5 +11,8 @@
 @interface ActivityViewController : UITableViewController
 
 @property (nonatomic, strong) NSMutableArray* objects;
+@property (nonatomic) BOOL hasActivity;
+
++(ActivityViewController*)getSingleton;
 
 @end
