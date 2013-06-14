@@ -66,6 +66,8 @@
     
     if(indexPath.row == 0)
         cell.textLabel.text = @"Activity";
+    else if (indexPath.row == 1)
+        cell.textLabel.text = @"Message";
     else
         cell.textLabel.text = [NSString stringWithFormat:@"ViewController%d", indexPath.row];
     
