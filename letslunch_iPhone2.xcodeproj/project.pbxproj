@@ -16,6 +16,14 @@
 		548D36C1176B819300154C36 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 548D36C0176B819300154C36 /* Default.png */; };
 		548D36C3176B819300154C36 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 548D36C2176B819300154C36 /* Default@2x.png */; };
 		548D36C5176B819300154C36 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 548D36C4176B819300154C36 /* Default-568h@2x.png */; };
+		548D36D0176B81B700154C36 /* UINavigationItem+JTRevealSidebarV2.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36CD176B81B700154C36 /* UINavigationItem+JTRevealSidebarV2.m */; };
+		548D36D1176B81B700154C36 /* UIViewController+JTRevealSidebarV2.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36CF176B81B700154C36 /* UIViewController+JTRevealSidebarV2.m */; };
+		548D36D4176B81E900154C36 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36D3176B81E900154C36 /* QuartzCore.framework */; };
+		548D36D8176B821B00154C36 /* ButtonMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 548D36D6176B821B00154C36 /* ButtonMenu.png */; };
+		548D36D9176B821B00154C36 /* ButtonMenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 548D36D7176B821B00154C36 /* ButtonMenu@2x.png */; };
+		548D36E0176B823700154C36 /* CenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36DB176B823700154C36 /* CenterViewController.m */; };
+		548D36E1176B823700154C36 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36DD176B823700154C36 /* SidebarViewController.m */; };
+		548D36E2176B823700154C36 /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36DF176B823700154C36 /* NewViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,9 +37,23 @@
 		548D36BC176B819300154C36 /* letslunch_iPhone2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "letslunch_iPhone2-Prefix.pch"; sourceTree = "<group>"; };
 		548D36BD176B819300154C36 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		548D36BE176B819300154C36 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		548D36C0176B819300154C36 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		548D36C2176B819300154C36 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		548D36C4176B819300154C36 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		548D36C0176B819300154C36 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = letslunch_iPhone2/Default.png; sourceTree = "<group>"; };
+		548D36C2176B819300154C36 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "letslunch_iPhone2/Default@2x.png"; sourceTree = "<group>"; };
+		548D36C4176B819300154C36 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "letslunch_iPhone2/Default-568h@2x.png"; sourceTree = "<group>"; };
+		548D36CB176B81B700154C36 /* JTRevealSidebarV2Delegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTRevealSidebarV2Delegate.h; sourceTree = "<group>"; };
+		548D36CC176B81B700154C36 /* UINavigationItem+JTRevealSidebarV2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+JTRevealSidebarV2.h"; sourceTree = "<group>"; };
+		548D36CD176B81B700154C36 /* UINavigationItem+JTRevealSidebarV2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+JTRevealSidebarV2.m"; sourceTree = "<group>"; };
+		548D36CE176B81B700154C36 /* UIViewController+JTRevealSidebarV2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JTRevealSidebarV2.h"; sourceTree = "<group>"; };
+		548D36CF176B81B700154C36 /* UIViewController+JTRevealSidebarV2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JTRevealSidebarV2.m"; sourceTree = "<group>"; };
+		548D36D3176B81E900154C36 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		548D36D6176B821B00154C36 /* ButtonMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonMenu.png; sourceTree = "<group>"; };
+		548D36D7176B821B00154C36 /* ButtonMenu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ButtonMenu@2x.png"; sourceTree = "<group>"; };
+		548D36DA176B823700154C36 /* CenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenterViewController.h; sourceTree = "<group>"; };
+		548D36DB176B823700154C36 /* CenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenterViewController.m; sourceTree = "<group>"; };
+		548D36DC176B823700154C36 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewController.h; sourceTree = "<group>"; };
+		548D36DD176B823700154C36 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
+		548D36DE176B823700154C36 /* NewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewViewController.h; sourceTree = "<group>"; };
+		548D36DF176B823700154C36 /* NewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				548D36D4176B81E900154C36 /* QuartzCore.framework in Frameworks */,
 				548D36AF176B819300154C36 /* UIKit.framework in Frameworks */,
 				548D36B1176B819300154C36 /* Foundation.framework in Frameworks */,
 				548D36B3176B819300154C36 /* CoreGraphics.framework in Frameworks */,
@@ -51,6 +74,8 @@
 		548D36A2176B819300154C36 = {
 			isa = PBXGroup;
 			children = (
+				548D36D5176B820700154C36 /* Resources */,
+				548D36D2176B81C600154C36 /* JTRevealSidebarV2 */,
 				548D36B4176B819300154C36 /* letslunch_iPhone2 */,
 				548D36AD176B819300154C36 /* Frameworks */,
 				548D36AC176B819300154C36 /* Products */,
@@ -68,6 +93,7 @@
 		548D36AD176B819300154C36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				548D36D3176B81E900154C36 /* QuartzCore.framework */,
 				548D36AE176B819300154C36 /* UIKit.framework */,
 				548D36B0176B819300154C36 /* Foundation.framework */,
 				548D36B2176B819300154C36 /* CoreGraphics.framework */,
@@ -80,6 +106,12 @@
 			children = (
 				548D36BD176B819300154C36 /* AppDelegate.h */,
 				548D36BE176B819300154C36 /* AppDelegate.m */,
+				548D36DA176B823700154C36 /* CenterViewController.h */,
+				548D36DB176B823700154C36 /* CenterViewController.m */,
+				548D36DC176B823700154C36 /* SidebarViewController.h */,
+				548D36DD176B823700154C36 /* SidebarViewController.m */,
+				548D36DE176B823700154C36 /* NewViewController.h */,
+				548D36DF176B823700154C36 /* NewViewController.m */,
 				548D36B5176B819300154C36 /* Supporting Files */,
 			);
 			path = letslunch_iPhone2;
@@ -92,11 +124,32 @@
 				548D36B7176B819300154C36 /* InfoPlist.strings */,
 				548D36BA176B819300154C36 /* main.m */,
 				548D36BC176B819300154C36 /* letslunch_iPhone2-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		548D36D2176B81C600154C36 /* JTRevealSidebarV2 */ = {
+			isa = PBXGroup;
+			children = (
+				548D36CB176B81B700154C36 /* JTRevealSidebarV2Delegate.h */,
+				548D36CC176B81B700154C36 /* UINavigationItem+JTRevealSidebarV2.h */,
+				548D36CD176B81B700154C36 /* UINavigationItem+JTRevealSidebarV2.m */,
+				548D36CE176B81B700154C36 /* UIViewController+JTRevealSidebarV2.h */,
+				548D36CF176B81B700154C36 /* UIViewController+JTRevealSidebarV2.m */,
+			);
+			name = JTRevealSidebarV2;
+			sourceTree = "<group>";
+		};
+		548D36D5176B820700154C36 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				548D36D6176B821B00154C36 /* ButtonMenu.png */,
+				548D36D7176B821B00154C36 /* ButtonMenu@2x.png */,
 				548D36C0176B819300154C36 /* Default.png */,
 				548D36C2176B819300154C36 /* Default@2x.png */,
 				548D36C4176B819300154C36 /* Default-568h@2x.png */,
 			);
-			name = "Supporting Files";
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +207,8 @@
 				548D36C1176B819300154C36 /* Default.png in Resources */,
 				548D36C3176B819300154C36 /* Default@2x.png in Resources */,
 				548D36C5176B819300154C36 /* Default-568h@2x.png in Resources */,
+				548D36D8176B821B00154C36 /* ButtonMenu.png in Resources */,
+				548D36D9176B821B00154C36 /* ButtonMenu@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +221,11 @@
 			files = (
 				548D36BB176B819300154C36 /* main.m in Sources */,
 				548D36BF176B819300154C36 /* AppDelegate.m in Sources */,
+				548D36D0176B81B700154C36 /* UINavigationItem+JTRevealSidebarV2.m in Sources */,
+				548D36D1176B81B700154C36 /* UIViewController+JTRevealSidebarV2.m in Sources */,
+				548D36E0176B823700154C36 /* CenterViewController.m in Sources */,
+				548D36E1176B823700154C36 /* SidebarViewController.m in Sources */,
+				548D36E2176B823700154C36 /* NewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +338,7 @@
 				548D36CA176B819300154C36 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
