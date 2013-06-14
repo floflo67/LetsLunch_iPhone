@@ -13,6 +13,7 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
+@synthesize viewController = _viewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -34,6 +35,7 @@
 #endif
     
     [self.window makeKeyAndVisible];
+    _viewController = controller;
     return YES;
 }
 
@@ -67,6 +69,15 @@
     }
     
     return self.listMessages;
+}
+
+- (NSString*) getOwnerActivity
+{
+    if(!self.ownerActivity) {
+        self.ownerActivity = [GetStaticLists getOwnerActivity];
+    }
+    return NULL;
+    //return self.ownerActivity;
 }
 
 #pragma application lifecycle
@@ -116,6 +127,7 @@
     [self.listFriendsSuggestion release];
     [self.listMessages release];
     [_window release];
+    [_viewController release];
     [super dealloc];
 }
 

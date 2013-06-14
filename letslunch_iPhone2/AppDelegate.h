@@ -7,17 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CenterViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) CenterViewController *viewController;
 
 @property (strong, nonatomic) NSMutableArray *listActivities;
 @property (strong, nonatomic) NSMutableArray *listFriendsSuggestion;
 @property (strong, nonatomic) NSMutableArray *listMessages;
+@property (strong, nonatomic) NSString *ownerActivity;
 
 -(NSMutableArray*)getListActivities;
 -(NSMutableArray*)getListFriendsSuggestion;
 -(NSMutableArray*)getListMessages;
+-(NSString*)getOwnerActivity;
 
 @end

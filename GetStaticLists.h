@@ -13,5 +13,6 @@
 +(NSMutableArray*)getListActivities;
 +(NSMutableArray*)getListFriendsSuggestion;
 +(NSMutableArray*)getListMessages;
++(NSString*)getOwnerActivity;
 
 @end

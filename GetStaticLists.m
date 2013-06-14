@@ -22,6 +22,11 @@
     return listActivities;
 }
 
++ (NSString*) getOwnerActivity
+{
+    return @"ActivityOwner";
+}
+
 
 + (NSMutableArray*) getListFriendsSuggestion
 {
