@@ -51,20 +51,26 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 5;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
+    NSArray* arr = [[NSArray alloc] initWithObjects:@"Row1",@"Row2",@"Row3",@"Row4",nil];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-    cell.textLabel.text = @"Test";
-    cell.detailTextLabel.text = @"Detail";
-    // Configure the cell...
+    
+    UILabel* label = [[[UILabel alloc] initWithFrame:CGRectMake(10, 1, cell.frame.size.width / 2 - 2, cell.frame.size.height - 2)] autorelease];
+    [cell addSubview:label];
+    label.backgroundColor = [UIColor clearColor];
+    UITextField* text = [[[UITextField alloc] initWithFrame:CGRectMake(cell.frame.size.width / 2, 0, cell.frame.size.width / 2, cell.frame.size.height)] autorelease];
+    [cell addSubview:text];
+    
+    label.text = [arr objectAtIndex:indexPath.row];
     
     return cell;
 }
