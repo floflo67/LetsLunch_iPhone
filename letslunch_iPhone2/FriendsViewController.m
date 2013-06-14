@@ -1,25 +1,25 @@
 //
-//  MessageViewController.m
+//  FriendsViewController.m
 //  letslunch_iPhone2
 //
 //  Created by Florian Reiss on 14/06/13.
 //  Copyright (c) 2013 Florian Reiss. All rights reserved.
 //
 
-#import "MessageViewController.h"
+#import "FriendsViewController.h"
 #import "AppDelegate.h"
 
-@interface MessageViewController ()
+@interface FriendsViewController ()
 
 @end
 
-@implementation MessageViewController
+@implementation FriendsViewController
 
 -(id)init
 {
     self = [super init];
     if(!_objects) {
-        _objects = [[NSMutableArray alloc] initWithArray:[(AppDelegate*)[[UIApplication sharedApplication] delegate] getListMessages]];
+        _objects = [[NSMutableArray alloc] initWithArray:[(AppDelegate*)[[UIApplication sharedApplication] delegate] getListFriendsSuggestion]];
     }
     return self;
 }

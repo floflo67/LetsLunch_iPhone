@@ -29,6 +29,8 @@
 		54E714CE176B95E200F39D73 /* ActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E714CC176B95E200F39D73 /* ActivityViewController.xib */; };
 		54E714D3176B9EDA00F39D73 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E714D1176B9EDA00F39D73 /* MessageViewController.m */; };
 		54E714D4176B9EDA00F39D73 /* MessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E714D2176B9EDA00F39D73 /* MessageViewController.xib */; };
+		54E714D8176BA18800F39D73 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E714D6176BA18800F39D73 /* FriendsViewController.m */; };
+		54E714D9176BA18800F39D73 /* FriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E714D7176BA18800F39D73 /* FriendsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +69,9 @@
 		54E714D0176B9EDA00F39D73 /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
 		54E714D1176B9EDA00F39D73 /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		54E714D2176B9EDA00F39D73 /* MessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageViewController.xib; sourceTree = "<group>"; };
+		54E714D5176BA18800F39D73 /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
+		54E714D6176BA18800F39D73 /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
+		54E714D7176BA18800F39D73 /* FriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +192,9 @@
 				54E714D0176B9EDA00F39D73 /* MessageViewController.h */,
 				54E714D1176B9EDA00F39D73 /* MessageViewController.m */,
 				54E714D2176B9EDA00F39D73 /* MessageViewController.xib */,
+				54E714D5176BA18800F39D73 /* FriendsViewController.h */,
+				54E714D6176BA18800F39D73 /* FriendsViewController.m */,
+				54E714D7176BA18800F39D73 /* FriendsViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -250,6 +258,7 @@
 				548D36D9176B821B00154C36 /* ButtonMenu@2x.png in Resources */,
 				54E714CE176B95E200F39D73 /* ActivityViewController.xib in Resources */,
 				54E714D4176B9EDA00F39D73 /* MessageViewController.xib in Resources */,
+				54E714D9176BA18800F39D73 /* FriendsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +279,7 @@
 				54403824176B8E5D00AA3588 /* GetStaticLists.m in Sources */,
 				54E714CD176B95E200F39D73 /* ActivityViewController.m in Sources */,
 				54E714D3176B9EDA00F39D73 /* MessageViewController.m in Sources */,
+				54E714D8176BA18800F39D73 /* FriendsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

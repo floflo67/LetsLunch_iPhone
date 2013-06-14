@@ -27,7 +27,7 @@
 {
     [super viewDidLoad];
     if(!self.menuItem) {
-        self.menuItem = [[NSArray alloc] initWithObjects:@"Activity", @"Message", nil];
+        self.menuItem = [[NSArray alloc] initWithObjects:@"Activity", @"Message", @"Friends", nil];
     }
 }
 

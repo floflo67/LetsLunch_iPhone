@@ -14,6 +14,7 @@
 #import "JTRevealSidebarV2Delegate.h"
 #import "ActivityViewController.h"
 #import "MessageViewController.h"
+#import "FriendsViewController.h"
 
 @interface CenterViewController (Private) <UITableViewDataSource, UITableViewDelegate, SidebarViewControllerDelegate>
 @end
@@ -84,6 +85,13 @@
     self.centerView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
     [self.centerView addSubview:[[MessageViewController alloc] init].view];
     self.navigationItem.title = @"Message";
+}
+
+- (void)FriendConfiguration
+{
+    self.centerView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
+    [self.centerView addSubview:[[FriendsViewController alloc] init].view];
+    self.navigationItem.title = @"Friend";    
 }
 
 - (void)viewDidUnload
@@ -261,6 +269,9 @@
     }
     if(object == 1) {
         [self MessageConfiguration];
+    }
+    if(object == 2) {
+        [self FriendConfiguration];
     }
     
     //self.centerView.backgroundColor = [UIColor colorWithRed:1-(color/10) green:(color/10) blue:1/color alpha:1];
