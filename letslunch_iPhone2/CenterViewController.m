@@ -107,11 +107,13 @@
     QMapElement *map = [[QMapElement alloc] initWithTitle:@"Place" coordinate:locationManager.location.coordinate];
     [locationManager stopUpdatingLocation];
     QDateTimeElement *date = [[QDateTimeElement alloc] initWithTitle:@"Date" date:[NSDate date]];
+    QRadioElement *radio = [[QRadioElement alloc] initWithItems:[NSArray arrayWithObjects:@"coffee", @"lunch", nil] selected:0 title:@"Type"];
     
     [root addSection:section];
     [section addElement:entry];
     [section addElement:map];
     [section addElement:date];
+    [section addElement:radio];
     
     UIViewController *navigation = [QuickDialogController controllerForRoot:root];
     [self.navigationController pushViewController:navigation animated:YES];
