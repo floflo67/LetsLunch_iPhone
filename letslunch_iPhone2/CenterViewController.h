@@ -18,16 +18,14 @@
 
 @class SidebarViewController;
 
-@interface CenterViewController : UIViewController <JTRevealSidebarV2Delegate, UITableViewDelegate> {
-#if EXPERIEMENTAL_ORIENTATION_SUPPORT
+@interface CenterViewController : UIViewController <JTRevealSidebarV2Delegate, UITableViewDelegate, CLLocationManagerDelegate> {
+    CLLocationManager *locationManager;
     CGPoint _containerOrigin;
-#endif
 }
 
 @property (nonatomic, strong) SidebarViewController *leftSidebarViewController;
 @property (nonatomic, strong) UITableView *rightSidebarView;
 @property (nonatomic, strong) UIView *centerView;
 @property (nonatomic, strong) NSIndexPath *leftSelectedIndexPath;
-@property (nonatomic, strong) UILabel     *label;
 
 @end

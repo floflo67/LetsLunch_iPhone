@@ -26,10 +26,16 @@
 @synthesize rightSidebarView;
 @synthesize centerView;
 @synthesize leftSelectedIndexPath;
-@synthesize label;
 
 - (id)init {
     self = [super init];
+    
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager startUpdatingLocation];
+    
     return self;
 }
 
@@ -42,8 +48,6 @@
     self.centerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:self.centerView];
     [self ActivityConfiguration];
-    
-    self.label = [[UILabel alloc] initWithFrame:CGRectMake(30, 50, 260, 60)];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ButtonMenu.png"]
                                                                              style:UIBarButtonItemStyleBordered
@@ -81,8 +85,6 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-
-    self.label = nil;
     self.rightSidebarView = nil;
 }
 
@@ -96,11 +98,28 @@
     [self.navigationController toggleRevealState:JTRevealedStateRight];
 }
 
-- (void)pushCreateActivityViewController:(id)sender {
-    CreateActivityViewController *controller = [[[CreateActivityViewController alloc] init] autorelease];
-    controller.view.backgroundColor = [UIColor whiteColor];
-    controller.title = @"Create Activity";
-    [self.navigationController pushViewController:controller animated:YES];
+- (void)pushCreateActivityViewController:(id)sender {    
+    QRootElement *root = [[QRootElement alloc] init];
+    root.title = @"Create Activity";
+    root.grouped = YES;
+    QSection *section = [[QSection alloc] init];
+    QEntryElement *entry = [[QEntryElement alloc] initWithTitle:@"Description" Value:@"" Placeholder:@"Enter description"];
+    QMapElement *map = [[QMapElement alloc] initWithTitle:@"Place" coordinate:locationManager.location.coordinate];
+    [locationManager stopUpdatingLocation];
+    QDateTimeElement *date = [[QDateTimeElement alloc] initWithTitle:@"Date" date:[NSDate date]];
+    
+    [root addSection:section];
+    [section addElement:entry];
+    [section addElement:map];
+    [section addElement:date];
+    
+    UIViewController *navigation = [QuickDialogController controllerForRoot:root];
+    [self.navigationController pushViewController:navigation animated:YES];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    CLLocation *location = [locations lastObject];
+    NSLog(@"lat%f - lon%f", location.coordinate.latitude, location.coordinate.longitude);
 }
 
 #pragma mark JTRevealSidebarDelegate
@@ -185,7 +204,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.navigationController setRevealedState:JTRevealedStateNo];
     if (tableView == self.rightSidebarView) {
-        self.label.text = [NSString stringWithFormat:@"Selected %d at RightSidebarView", indexPath.row];
+        NSLog([NSString stringWithFormat:@"Selected %d at RightSidebarView", indexPath.row]);
     }
 }
 
