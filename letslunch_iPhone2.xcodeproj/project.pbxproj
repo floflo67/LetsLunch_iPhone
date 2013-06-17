@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		541CA6B4176FB22600BC7FC7 /* CustomQMapElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 541CA6B3176FB22600BC7FC7 /* CustomQMapElement.m */; };
 		54403824176B8E5D00AA3588 /* GetStaticLists.m in Sources */ = {isa = PBXBuildFile; fileRef = 54403823176B8E5D00AA3588 /* GetStaticLists.m */; };
 		548D36AF176B819300154C36 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36AE176B819300154C36 /* UIKit.framework */; };
 		548D36B1176B819300154C36 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36B0176B819300154C36 /* Foundation.framework */; };
@@ -63,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		541CA6B2176FB22600BC7FC7 /* CustomQMapElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomQMapElement.h; sourceTree = "<group>"; };
+		541CA6B3176FB22600BC7FC7 /* CustomQMapElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomQMapElement.m; sourceTree = "<group>"; };
 		54403822176B8E5D00AA3588 /* GetStaticLists.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetStaticLists.h; sourceTree = "<group>"; };
 		54403823176B8E5D00AA3588 /* GetStaticLists.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetStaticLists.m; sourceTree = "<group>"; };
 		548D36AB176B819300154C36 /* letslunch_iPhone2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = letslunch_iPhone2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -248,6 +251,8 @@
 				549ADAAE176BCAF2001F1D3F /* CreateActivityViewController.h */,
 				549ADAAA176BCAD5001F1D3F /* CreateActivityViewController.m */,
 				549ADAAB176BCAD5001F1D3F /* CreateActivityViewController.xib */,
+				541CA6B2176FB22600BC7FC7 /* CustomQMapElement.h */,
+				541CA6B3176FB22600BC7FC7 /* CustomQMapElement.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -359,6 +364,7 @@
 				54E714D3176B9EDA00F39D73 /* MessageViewController.m in Sources */,
 				54E714D8176BA18800F39D73 /* FriendsViewController.m in Sources */,
 				549ADAAC176BCAD5001F1D3F /* CreateActivityViewController.m in Sources */,
+				541CA6B4176FB22600BC7FC7 /* CustomQMapElement.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
