@@ -24,4 +24,6 @@
 -(NSMutableArray*)getListMessages;
 -(NSString*)getOwnerActivity;
 
++(UIColor*)colorWithHexString:(NSString*)hex;
+
 @end
