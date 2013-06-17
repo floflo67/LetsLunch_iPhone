@@ -16,6 +16,8 @@
 #import "MessageViewController.h"	
 #import "FriendsViewController.h"
 #import "CreateActivityViewController.h"
+#import "CustomQMapElement.h"
+#import "AppDelegate.h"
 
 @interface CenterViewController (Private) <UITableViewDataSource, UITableViewDelegate, SidebarViewControllerDelegate>
 @end
@@ -34,7 +36,7 @@
         locationManager.delegate = self;
         locationManager.distanceFilter = kCLDistanceFilterNone;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        [locationManager startUpdatingLocation];
+        //[locationManager startUpdatingLocation];
     }
     return self;
 }
@@ -104,7 +106,7 @@
     root.grouped = YES;
     QSection *section = [[QSection alloc] init];
     _description = [[QEntryElement alloc] initWithTitle:@"Description" Value:@"" Placeholder:@"Enter description"];
-    QMapElement *map = [[QMapElement alloc] initWithTitle:@"Place" coordinate:locationManager.location.coordinate];
+    CustomQMapElement *map = [[CustomQMapElement alloc] initWithTitle:@"Place" coordinate:locationManager.location.coordinate];
     [locationManager stopUpdatingLocation];
     _date = [[QDateTimeInlineElement alloc] initWithTitle:@"Date" date:[NSDate new] andMode:UIDatePickerModeDateAndTime];
     _radio = [[QRadioSection alloc] initWithItems:[NSArray arrayWithObjects:@"Coffee", @"Lunch", nil] selected:0 title:@"Type"];
@@ -147,15 +149,15 @@
 
 // This is an examle to configure your sidebar view through a custom UIViewController
 - (UIView *)viewForLeftSidebar {
-    // Use applicationViewFrame to get the correctly calculated view's frame
-    // for use as a reference to our sidebar's view 
     CGRect viewFrame = self.navigationController.applicationViewFrame;
     UITableViewController *controller = self.leftSidebarViewController;
-    if ( ! controller) {
-        self.leftSidebarViewController = [[SidebarViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    if (!controller) {
+        self.leftSidebarViewController = [[SidebarViewController alloc] initWithStyle:UITableViewStylePlain];
+        self.leftSidebarViewController.view.backgroundColor = [AppDelegate colorWithHexString:@"183060"];
         self.leftSidebarViewController.sidebarDelegate = self;
+        self.leftSidebarViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         controller = self.leftSidebarViewController;
-        controller.title = @"Menu";
+        //controller.title = @"Menu";
     }
     controller.view.frame = CGRectMake(0, viewFrame.origin.y, 270, viewFrame.size.height);
     controller.view.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
@@ -164,11 +166,9 @@
 
 // This is an examle to configure your sidebar view without a UIViewController
 - (UIView *)viewForRightSidebar {
-    // Use applicationViewFrame to get the correctly calculated view's frame
-    // for use as a reference to our sidebar's view 
     CGRect viewFrame = self.navigationController.applicationViewFrame;
     UITableView *view = self.rightSidebarView;
-    if ( ! view) {
+    if (!view) {
         view = self.rightSidebarView = [[UITableView alloc] initWithFrame:CGRectZero];
         view.dataSource = self;
         view.delegate   = self;
@@ -180,7 +180,6 @@
 
 // Optional delegate methods for additional configuration after reveal state changed
 - (void)didChangeRevealedStateForViewController:(UIViewController *)viewController {
-    // Example to disable userInteraction on content view while sidebar is revealing
     if (viewController.revealedState == JTRevealedStateNo) {
         self.view.userInteractionEnabled = YES;
     } else {
@@ -225,7 +224,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.navigationController setRevealedState:JTRevealedStateNo];
     if (tableView == self.rightSidebarView) {
-        NSLog([NSString stringWithFormat:@"Selected %d at RightSidebarView", indexPath.row]);
+        //NSLog([NSString stringWithFormat:@"Selected %d at RightSidebarView", indexPath.row]);
     }
 }
 
@@ -253,19 +252,6 @@
     if(object == 2) {
         [self FriendConfiguration];
     }
-    
-    //self.centerView.backgroundColor = [UIColor colorWithRed:1-(color/10) green:(color/10) blue:1/color alpha:1];
-    
-    /*
-    CenterViewController *controller = [[CenterViewController alloc] init];
-    controller.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];
-    controller.title = (NSString *)object;
-    controller.leftSidebarViewController  = sidebarViewController;
-    controller.leftSelectedIndexPath      = indexPath;
-    controller.label.text = [NSString stringWithFormat:@"Selected %@ from LeftSidebarViewController", (NSString *)object];
-    sidebarViewController.sidebarDelegate = controller;
-    [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
-    */
 }
 
 - (NSIndexPath *)lastSelectedIndexPathForSidebarViewController:(SidebarViewController *)sidebarViewController {
