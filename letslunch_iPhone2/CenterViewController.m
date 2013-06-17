@@ -124,7 +124,16 @@
 {
     [self.navigationController popToRootViewControllerAnimated:YES];
     NSLog(@"Description: %@", _description.textValue);
-    NSLog(@"Date: %@", _date.dateValue); // gets the date UTC/GMT - CA = -7h 
+    
+    /*
+     Convert _date.dateValue which is UTC/GMT to local time
+     */
+    NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
+    [dateFormatter setDateFormat:@"MM/dd/YYYY H:mm:ss Z"]; // format US: Month/Day/Year Hours:Minutes:Seconds (0 < Hour <= 12)
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:[[NSTimeZone localTimeZone] abbreviation]]];    
+    NSLog(@"%@", [dateFormatter stringFromDate:_date.dateValue]);
+    
     NSLog(@"Radio: %@", [_radio.selectedItems lastObject]);
     NSLog(@"Save");
 }
