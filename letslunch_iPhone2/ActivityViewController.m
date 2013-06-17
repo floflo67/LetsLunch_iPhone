@@ -139,30 +139,6 @@ static ActivityViewController *sharedSingleton = nil;
     NSDictionary *dictionary = [_objects objectAtIndex:indexPath.section];
     NSArray *array = [dictionary objectForKey:@"Activities"];
     
-    /*
-    if(!self.hasActivity) {
-        if(indexPath.row == 0) {
-            
-            UIButton *pushButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-            [pushButton setTitle:@"Create Activity" forState:UIControlStateNormal];
-            [pushButton sizeToFit];
-            [pushButton addTarget:((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController
-                           action:@selector(pushCreateActivityViewController:)
-                 forControlEvents:UIControlEventTouchUpInside];
-            
-            pushButton.frame = (CGRect){0, 0, cell.frame.size.width, cell.frame.size.height};
-            [cell addSubview:pushButton];
-            
-            
-        }
-        else {
-            cell.textLabel.text = [_objects[indexPath.row - 1] description];
-        }
-    }
-    else {
-        cell.textLabel.text = [_objects[indexPath.row] description];        
-    }*/
-    
     if([[array[indexPath.row] description] isEqualToString:@"NIL"]) {
         UIButton *pushButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [pushButton setTitle:@"Create Activity" forState:UIControlStateNormal];

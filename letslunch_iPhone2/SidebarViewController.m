@@ -72,17 +72,12 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.backgroundColor = [UIColor clearColor];
     }
     
     cell.textLabel.text = self.menuItem[indexPath.row];
-    /*
-    if(indexPath.row == 0)
-        cell.textLabel.text = @"Activity";
-    else if (indexPath.row == 1)
-        cell.textLabel.text = @"Message";
-    else
-        cell.textLabel.text = [NSString stringWithFormat:@"ViewController%d", indexPath.row];
-    */
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.font = [UIFont fontWithName:@"Academy Engraved LET Bold" size:14];
     return cell;
 }
 
