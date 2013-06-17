@@ -28,4 +28,8 @@
 @property (nonatomic, strong) UIView *centerView;
 @property (nonatomic, strong) NSIndexPath *leftSelectedIndexPath;
 
+@property (nonatomic, strong) QEntryElement *description;
+@property (nonatomic, strong) QDateTimeInlineElement *date;
+@property (nonatomic, strong) QRadioSection* radio;
+
 @end

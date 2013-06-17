@@ -13,7 +13,7 @@
 #import "NewViewController.h"
 #import "JTRevealSidebarV2Delegate.h"
 #import "ActivityViewController.h"
-#import "MessageViewController.h"
+#import "MessageViewController.h"	
 #import "FriendsViewController.h"
 #import "CreateActivityViewController.h"
 
@@ -29,13 +29,13 @@
 
 - (id)init {
     self = [super init];
-    
-    locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    locationManager.distanceFilter = kCLDistanceFilterNone;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [locationManager startUpdatingLocation];
-    
+    if(self) {
+        locationManager = [[CLLocationManager alloc] init];
+        locationManager.delegate = self;
+        locationManager.distanceFilter = kCLDistanceFilterNone;
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        [locationManager startUpdatingLocation];
+    }
     return self;
 }
 
@@ -103,20 +103,30 @@
     root.title = @"Create Activity";
     root.grouped = YES;
     QSection *section = [[QSection alloc] init];
-    QEntryElement *entry = [[QEntryElement alloc] initWithTitle:@"Description" Value:@"" Placeholder:@"Enter description"];
+    _description = [[QEntryElement alloc] initWithTitle:@"Description" Value:@"" Placeholder:@"Enter description"];
     QMapElement *map = [[QMapElement alloc] initWithTitle:@"Place" coordinate:locationManager.location.coordinate];
     [locationManager stopUpdatingLocation];
-    QDateTimeInlineElement *date = [[QDateTimeInlineElement alloc] initWithTitle:@"Date" date:[NSDate new] andMode:UIDatePickerModeDateAndTime];
-    QRadioSection* radio = [[QRadioSection alloc] initWithItems:[NSArray arrayWithObjects:@"Coffee", @"Lunch", nil] selected:0 title:@"Type"];
+    _date = [[QDateTimeInlineElement alloc] initWithTitle:@"Date" date:[NSDate new] andMode:UIDatePickerModeDateAndTime];
+    _radio = [[QRadioSection alloc] initWithItems:[NSArray arrayWithObjects:@"Coffee", @"Lunch", nil] selected:0 title:@"Type"];
     
     [root addSection:section];
-    [section addElement:entry];
+    [section addElement:_description];
     [section addElement:map];
-    [section addElement:date];
-    [root addSection:radio];
+    [section addElement:_date];
+    [root addSection:_radio];
     
     UIViewController *navigation = [QuickDialogController controllerForRoot:root];
     [self.navigationController pushViewController:navigation animated:YES];
+    navigation.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(saveActivity:)];
+}
+
+- (void)saveActivity:(id)sender
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    NSLog(@"Description: %@", _description.textValue);
+    NSLog(@"Date: %@", _date.dateValue); // gets the date UTC/GMT - CA = -7h 
+    NSLog(@"Radio: %@", [_radio.selectedItems lastObject]);
+    NSLog(@"Save");
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
