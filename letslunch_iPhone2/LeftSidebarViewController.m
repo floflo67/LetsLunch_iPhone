@@ -77,18 +77,21 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        //cell.backgroundColor = [UIColor clearColor];
     }
     
     UIImageView *background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BackgroundMenuItem.png"]];
     [cell addSubview:background];
-    [cell sendSubviewToBack:background];
-    cell.contentMode = UIViewContentModeScaleAspectFill;
+    //cell.contentMode = UIViewContentModeScaleAspectFill;
     
-    cell.textLabel.text = self.menuItem[indexPath.row];
-    cell.textLabel.backgroundColor = [UIColor clearColor];
-    cell.textLabel.textColor = [UIColor whiteColor];
-    cell.textLabel.font = [UIFont fontWithName:@"Academy Engraved LET Bold" size:14];
+    UILabel *title = [[[UILabel alloc] initWithFrame:CGRectMake(50, 0, cell.frame.size.width - 50, cell.frame.size.height)] autorelease];
+    
+    title.text = self.menuItem[indexPath.row];
+    title.backgroundColor = [UIColor clearColor];
+    title.textColor = [UIColor whiteColor];
+    title.font = [UIFont fontWithName:@"Academy Engraved LET Bold" size:14];
+    
+    [cell.contentView addSubview:title];
+    [cell sendSubviewToBack:background];
     return cell;
 }
 
