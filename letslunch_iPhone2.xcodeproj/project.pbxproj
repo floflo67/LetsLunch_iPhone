@@ -39,6 +39,12 @@
 		54E714D9176BA18800F39D73 /* FriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E714D7176BA18800F39D73 /* FriendsViewController.xib */; };
 		54F5984D1770BFF30074F43C /* BackgroundMenuItem.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5984C1770BFF30074F43C /* BackgroundMenuItem.png */; };
 		54F598511770C96D0074F43C /* RightSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F598501770C96D0074F43C /* RightSidebarViewController.m */; };
+		54F598561770EB360074F43C /* MessageMenuItem.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F598541770EB360074F43C /* MessageMenuItem.png */; };
+		54F598571770EB360074F43C /* MessageMenuItem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F598551770EB360074F43C /* MessageMenuItem@2x.png */; };
+		54F5985F1770EDE00074F43C /* ActivityMenuItem.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5985D1770EDE00074F43C /* ActivityMenuItem.png */; };
+		54F598601770EDE00074F43C /* ActivityMenuItem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5985E1770EDE00074F43C /* ActivityMenuItem@2x.png */; };
+		54F598631770EF210074F43C /* FriendsMenuItem.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F598611770EF210074F43C /* FriendsMenuItem.png */; };
+		54F598641770EF210074F43C /* FriendsMenuItem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F598621770EF210074F43C /* FriendsMenuItem@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +121,12 @@
 		54F5984C1770BFF30074F43C /* BackgroundMenuItem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundMenuItem.png; sourceTree = "<group>"; };
 		54F5984F1770C96D0074F43C /* RightSidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightSidebarViewController.h; sourceTree = "<group>"; };
 		54F598501770C96D0074F43C /* RightSidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightSidebarViewController.m; sourceTree = "<group>"; };
+		54F598541770EB360074F43C /* MessageMenuItem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MessageMenuItem.png; sourceTree = "<group>"; };
+		54F598551770EB360074F43C /* MessageMenuItem@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MessageMenuItem@2x.png"; sourceTree = "<group>"; };
+		54F5985D1770EDE00074F43C /* ActivityMenuItem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ActivityMenuItem.png; sourceTree = "<group>"; };
+		54F5985E1770EDE00074F43C /* ActivityMenuItem@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ActivityMenuItem@2x.png"; sourceTree = "<group>"; };
+		54F598611770EF210074F43C /* FriendsMenuItem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FriendsMenuItem.png; sourceTree = "<group>"; };
+		54F598621770EF210074F43C /* FriendsMenuItem@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FriendsMenuItem@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,7 +233,7 @@
 		548D36D5176B820700154C36 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				54F5984C1770BFF30074F43C /* BackgroundMenuItem.png */,
+				54F5985C1770ECEF0074F43C /* MenuItem */,
 				548D36D6176B821B00154C36 /* ButtonMenu.png */,
 				548D36D7176B821B00154C36 /* ButtonMenu@2x.png */,
 				548D36C0176B819300154C36 /* Default.png */,
@@ -271,6 +283,20 @@
 				54F598501770C96D0074F43C /* RightSidebarViewController.m */,
 			);
 			name = BarsViewController;
+			sourceTree = "<group>";
+		};
+		54F5985C1770ECEF0074F43C /* MenuItem */ = {
+			isa = PBXGroup;
+			children = (
+				54F598611770EF210074F43C /* FriendsMenuItem.png */,
+				54F598621770EF210074F43C /* FriendsMenuItem@2x.png */,
+				54F5985D1770EDE00074F43C /* ActivityMenuItem.png */,
+				54F5985E1770EDE00074F43C /* ActivityMenuItem@2x.png */,
+				54F598541770EB360074F43C /* MessageMenuItem.png */,
+				54F598551770EB360074F43C /* MessageMenuItem@2x.png */,
+				54F5984C1770BFF30074F43C /* BackgroundMenuItem.png */,
+			);
+			name = MenuItem;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -359,6 +385,12 @@
 				54E714D9176BA18800F39D73 /* FriendsViewController.xib in Resources */,
 				549ADAAD176BCAD5001F1D3F /* CreateActivityViewController.xib in Resources */,
 				54F5984D1770BFF30074F43C /* BackgroundMenuItem.png in Resources */,
+				54F598561770EB360074F43C /* MessageMenuItem.png in Resources */,
+				54F598571770EB360074F43C /* MessageMenuItem@2x.png in Resources */,
+				54F5985F1770EDE00074F43C /* ActivityMenuItem.png in Resources */,
+				54F598601770EDE00074F43C /* ActivityMenuItem@2x.png in Resources */,
+				54F598631770EF210074F43C /* FriendsMenuItem.png in Resources */,
+				54F598641770EF210074F43C /* FriendsMenuItem@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

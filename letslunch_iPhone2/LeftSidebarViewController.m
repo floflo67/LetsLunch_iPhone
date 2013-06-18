@@ -82,21 +82,21 @@
     UIImageView *background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BackgroundMenuItem.png"]];
     [cell addSubview:background];
     //cell.contentMode = UIViewContentModeScaleAspectFill;
+    NSString *imageName = [NSString stringWithFormat:@"%@MenuItem.png",[self.menuItem[indexPath.row] description]];
+    UIImageView *icon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
+    [icon setFrame:CGRectMake(5, 5, 40, 40)];
+    [cell addSubview:icon];
     
     UILabel *title = [[[UILabel alloc] initWithFrame:CGRectMake(50, 0, cell.frame.size.width - 50, cell.frame.size.height)] autorelease];
     
-    title.text = self.menuItem[indexPath.row];
+    title.text = [self.menuItem[indexPath.row] description];
     title.backgroundColor = [UIColor clearColor];
     title.textColor = [UIColor whiteColor];
     title.font = [UIFont fontWithName:@"Academy Engraved LET Bold" size:14];
-    
     [cell.contentView addSubview:title];
+    
     [cell sendSubviewToBack:background];
     return cell;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return self.title;
 }
 
 #pragma mark - Table view delegate
