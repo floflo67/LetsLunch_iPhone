@@ -9,7 +9,7 @@
 #import "CenterViewController.h"
 #import "UIViewController+JTRevealSidebarV2.h"
 #import "UINavigationItem+JTRevealSidebarV2.h"
-#import "SidebarViewController.h"
+#import "LeftSidebarViewController.h"
 #import "NewViewController.h"
 #import "JTRevealSidebarV2Delegate.h"
 #import "ActivityViewController.h"
@@ -19,7 +19,7 @@
 #import "CustomQMapElement.h"
 #import "AppDelegate.h"
 
-@interface CenterViewController (Private) <UITableViewDataSource, UITableViewDelegate, SidebarViewControllerDelegate>
+@interface CenterViewController (Private) <UITableViewDataSource, UITableViewDelegate, LeftSidebarViewControllerDelegate>
 @end
 
 @implementation CenterViewController
@@ -152,7 +152,7 @@
     CGRect viewFrame = self.navigationController.applicationViewFrame;
     UITableViewController *controller = self.leftSidebarViewController;
     if (!controller) {
-        self.leftSidebarViewController = [[SidebarViewController alloc] initWithStyle:UITableViewStylePlain];
+        self.leftSidebarViewController = [[LeftSidebarViewController alloc] initWithStyle:UITableViewStylePlain];
         self.leftSidebarViewController.view.backgroundColor = [AppDelegate colorWithHexString:@"183060"];
         self.leftSidebarViewController.sidebarDelegate = self;
         self.leftSidebarViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -229,7 +229,7 @@
 
 #pragma mark SidebarViewControllerDelegate
 
-- (void)sidebarViewController:(SidebarViewController *)sidebarViewController didSelectObject:(float)object atIndexPath:(NSIndexPath *)indexPath {
+- (void)sidebarViewController:(LeftSidebarViewController *)sidebarViewController didSelectObject:(float)object atIndexPath:(NSIndexPath *)indexPath {
 
     [self.navigationController setRevealedState:JTRevealedStateNo];
     
@@ -253,7 +253,7 @@
     }
 }
 
-- (NSIndexPath *)lastSelectedIndexPathForSidebarViewController:(SidebarViewController *)sidebarViewController {
+- (NSIndexPath *)lastSelectedIndexPathForSidebarViewController:(LeftSidebarViewController *)sidebarViewController {
     return self.leftSelectedIndexPath;
 }
 

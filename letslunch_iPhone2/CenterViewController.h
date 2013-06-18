@@ -16,14 +16,14 @@
 // You can change EXPERIEMENTAL_ORIENTATION_SUPPORT to 1 for testing purpose
 #define EXPERIEMENTAL_ORIENTATION_SUPPORT 1
 
-@class SidebarViewController;
+@class LeftSidebarViewController;
 
 @interface CenterViewController : UIViewController <JTRevealSidebarV2Delegate, UITableViewDelegate, CLLocationManagerDelegate> {
     CLLocationManager *locationManager;
     CGPoint _containerOrigin;
 }
 
-@property (nonatomic, strong) SidebarViewController *leftSidebarViewController;
+@property (nonatomic, strong) LeftSidebarViewController *leftSidebarViewController;
 @property (nonatomic, strong) UITableView *rightSidebarView;
 @property (nonatomic, strong) UIView *centerView;
 @property (nonatomic, strong) NSIndexPath *leftSelectedIndexPath;

@@ -24,7 +24,7 @@
 		548D36D8176B821B00154C36 /* ButtonMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 548D36D6176B821B00154C36 /* ButtonMenu.png */; };
 		548D36D9176B821B00154C36 /* ButtonMenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 548D36D7176B821B00154C36 /* ButtonMenu@2x.png */; };
 		548D36E0176B823700154C36 /* CenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36DB176B823700154C36 /* CenterViewController.m */; };
-		548D36E1176B823700154C36 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36DD176B823700154C36 /* SidebarViewController.m */; };
+		548D36E1176B823700154C36 /* LeftSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36DD176B823700154C36 /* LeftSidebarViewController.m */; };
 		548D36E2176B823700154C36 /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36DF176B823700154C36 /* NewViewController.m */; };
 		549ADAAC176BCAD5001F1D3F /* CreateActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 549ADAAA176BCAD5001F1D3F /* CreateActivityViewController.m */; };
 		549ADAAD176BCAD5001F1D3F /* CreateActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 549ADAAB176BCAD5001F1D3F /* CreateActivityViewController.xib */; };
@@ -92,8 +92,8 @@
 		548D36D7176B821B00154C36 /* ButtonMenu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ButtonMenu@2x.png"; sourceTree = "<group>"; };
 		548D36DA176B823700154C36 /* CenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenterViewController.h; sourceTree = "<group>"; };
 		548D36DB176B823700154C36 /* CenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenterViewController.m; sourceTree = "<group>"; };
-		548D36DC176B823700154C36 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewController.h; sourceTree = "<group>"; };
-		548D36DD176B823700154C36 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
+		548D36DC176B823700154C36 /* LeftSidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftSidebarViewController.h; sourceTree = "<group>"; };
+		548D36DD176B823700154C36 /* LeftSidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftSidebarViewController.m; sourceTree = "<group>"; };
 		548D36DE176B823700154C36 /* NewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewViewController.h; sourceTree = "<group>"; };
 		548D36DF176B823700154C36 /* NewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewViewController.m; sourceTree = "<group>"; };
 		549ADAAA176BCAD5001F1D3F /* CreateActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateActivityViewController.m; sourceTree = "<group>"; };
@@ -184,8 +184,8 @@
 				548D36BE176B819300154C36 /* AppDelegate.m */,
 				548D36DA176B823700154C36 /* CenterViewController.h */,
 				548D36DB176B823700154C36 /* CenterViewController.m */,
-				548D36DC176B823700154C36 /* SidebarViewController.h */,
-				548D36DD176B823700154C36 /* SidebarViewController.m */,
+				548D36DC176B823700154C36 /* LeftSidebarViewController.h */,
+				548D36DD176B823700154C36 /* LeftSidebarViewController.m */,
 				548D36DE176B823700154C36 /* NewViewController.h */,
 				548D36DF176B823700154C36 /* NewViewController.m */,
 				548D36B5176B819300154C36 /* Supporting Files */,
@@ -361,7 +361,7 @@
 				548D36D0176B81B700154C36 /* UINavigationItem+JTRevealSidebarV2.m in Sources */,
 				548D36D1176B81B700154C36 /* UIViewController+JTRevealSidebarV2.m in Sources */,
 				548D36E0176B823700154C36 /* CenterViewController.m in Sources */,
-				548D36E1176B823700154C36 /* SidebarViewController.m in Sources */,
+				548D36E1176B823700154C36 /* LeftSidebarViewController.m in Sources */,
 				548D36E2176B823700154C36 /* NewViewController.m in Sources */,
 				54403824176B8E5D00AA3588 /* GetStaticLists.m in Sources */,
 				54E714CD176B95E200F39D73 /* ActivityViewController.m in Sources */,

@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Florian Reiss. All rights reserved.
 //
 
-#import "SidebarViewController.h"
+#import "LeftSidebarViewController.h"
 
-@implementation SidebarViewController
+@implementation LeftSidebarViewController
 @synthesize sidebarDelegate;
 @synthesize menuItem;
 
