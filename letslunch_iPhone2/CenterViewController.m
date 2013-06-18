@@ -16,7 +16,6 @@
 #import "MessageViewController.h"	
 #import "FriendsViewController.h"
 #import "CreateActivityViewController.h"
-#import "CustomQMapElement.h"
 #import "AppDelegate.h"
 
 @interface CenterViewController (Private) <UITableViewDataSource, UITableViewDelegate, LeftSidebarViewControllerDelegate>
@@ -93,30 +92,32 @@
 
 #pragma reveal side bars
 
-- (void)revealLeftSidebar:(id)sender {
+- (void)revealLeftSidebar:(id)sender
+{
     [self.navigationController toggleRevealState:JTRevealedStateLeft];
 }
 
-- (void)revealRightSidebar:(id)sender {
+- (void)revealRightSidebar:(id)sender
+{
     [self.navigationController toggleRevealState:JTRevealedStateRight];
 }
 
 #pragma activity
 
-- (void)pushCreateActivityViewController:(id)sender {    
+- (void)pushCreateActivityViewController:(id)sender
+{
     QRootElement *root = [[QRootElement alloc] init];
     root.title = @"Create Activity";
     root.grouped = YES;
     QSection *section = [[QSection alloc] init];
     _description = [[QEntryElement alloc] initWithTitle:@"Description" Value:@"" Placeholder:@"Enter description"];
-    CustomQMapElement *map = [[CustomQMapElement alloc] initWithTitle:@"Place" coordinate:locationManager.location.coordinate];
     [locationManager stopUpdatingLocation];
-    _date = [[QDateTimeInlineElement alloc] initWithTitle:@"Date" date:[NSDate new] andMode:UIDatePickerModeDateAndTime];
+    _date = [[QDateTimeInlineElement alloc] initWithTitle:@"Time today" date:[NSDate new] andMode:UIDatePickerModeTime];
+    _date.minuteInterval = 15;
     _radio = [[QRadioSection alloc] initWithItems:[NSArray arrayWithObjects:@"Coffee", @"Lunch", nil] selected:0 title:@"Type"];
     
     [root addSection:section];
     [section addElement:_description];
-    [section addElement:map];
     [section addElement:_date];
     [root addSection:_radio];
     
