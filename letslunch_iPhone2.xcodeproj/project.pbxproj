@@ -195,7 +195,7 @@
 				54F5984E1770C9350074F43C /* BarsViewController */,
 				54E714C9176B95B500F39D73 /* ViewControllers */,
 				54403821176B8E4D00AA3588 /* API */,
-				548D36D5176B820700154C36 /* Resources */,
+				548D36D5176B820700154C36 /* Images */,
 				548D36BD176B819300154C36 /* AppDelegate.h */,
 				548D36BE176B819300154C36 /* AppDelegate.m */,
 				548D36DA176B823700154C36 /* CenterViewController.h */,
@@ -230,7 +230,7 @@
 			name = JTRevealSidebarV2;
 			sourceTree = "<group>";
 		};
-		548D36D5176B820700154C36 /* Resources */ = {
+		548D36D5176B820700154C36 /* Images */ = {
 			isa = PBXGroup;
 			children = (
 				54F5985C1770ECEF0074F43C /* MenuItem */,
@@ -240,7 +240,7 @@
 				548D36C2176B819300154C36 /* Default@2x.png */,
 				548D36C4176B819300154C36 /* Default-568h@2x.png */,
 			);
-			name = Resources;
+			name = Images;
 			path = ..;
 			sourceTree = "<group>";
 		};

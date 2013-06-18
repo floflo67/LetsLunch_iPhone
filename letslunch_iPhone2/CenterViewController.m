@@ -246,28 +246,23 @@
 
 #pragma mark SidebarViewControllerDelegate
 
-- (void)sidebarViewController:(LeftSidebarViewController *)sidebarViewController didSelectObject:(float)object atIndexPath:(NSIndexPath *)indexPath {
+- (void)sidebarViewController:(LeftSidebarViewController *)sidebarViewController didSelectObject:(NSObject*)object atIndexPath:(NSIndexPath *)indexPath
+{
 
     [self.navigationController setRevealedState:JTRevealedStateNo];
     
     if([self.centerView.subviews count] > 0) {
         for (UIView* v in self.centerView.subviews) {
             [v removeFromSuperview];
-            //[v release];
         }
     }
     
-    self.centerView.backgroundColor = [UIColor redColor];
-    
-    if(object == 0) {
+    if([[object description] isEqualToString:@"Activity"])
         [self ActivityConfiguration];
-    }
-    if(object == 1) {
+    if([[object description] isEqualToString:@"Message"])
         [self MessageConfiguration];
-    }
-    if(object == 2) {
+    if([[object description] isEqualToString:@"Friends"])
         [self FriendConfiguration];
-    }
 }
 
 - (NSIndexPath *)lastSelectedIndexPathForSidebarViewController:(LeftSidebarViewController *)sidebarViewController {
