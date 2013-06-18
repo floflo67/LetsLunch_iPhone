@@ -84,7 +84,7 @@
     //cell.contentMode = UIViewContentModeScaleAspectFill;
     NSString *imageName = [NSString stringWithFormat:@"%@MenuItem.png",[self.menuItem[indexPath.row] description]];
     UIImageView *icon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
-    [icon setFrame:CGRectMake(5, 5, 40, 40)];
+    [icon setFrame:CGRectMake(10, 7, 30, 30)];
     [cell addSubview:icon];
     
     UILabel *title = [[[UILabel alloc] initWithFrame:CGRectMake(50, 0, cell.frame.size.width - 50, cell.frame.size.height)] autorelease];
