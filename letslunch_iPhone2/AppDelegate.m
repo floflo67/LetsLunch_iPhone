@@ -24,6 +24,9 @@
     CenterViewController *controller = [[CenterViewController alloc] init];
     controller.title = @"ViewController";
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
+    [navController.navigationBar setTintColor:[UIColor orangeColor]];
+    
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
     
 #if EXPERIEMENTAL_ORIENTATION_SUPPORT
     UINavigationController *container = [[UINavigationController alloc] init];
