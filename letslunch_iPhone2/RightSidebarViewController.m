@@ -65,9 +65,27 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
+    if(indexPath.row == 0) {
+        UIButton *button = [[[UIButton alloc] initWithFrame:CGRectMake(40, 5, 150, 20)] autorelease];
+        //[button actionsForTarget:@selector(click:) forControlEvent:UIControlEventTouchDown];
+        button.titleLabel.text = @"Text";
+        [cell addSubview:button];
+    }
+    
+    int randNumRed = rand() % (255 - 0) + 0;
+    int randNumGreen = rand() % (255 - 0) + 0;
+    int randNumBlue = rand() % (255 - 0) + 0;
+    
+    cell.backgroundColor = [UIColor colorWithRed:randNumRed/255 green:randNumGreen/255 blue:randNumBlue/255 alpha:1];
+    
     cell.textLabel.text = self.menuItem[indexPath.row];
     cell.textLabel.font = [UIFont fontWithName:@"Academy Engraved LET Bold" size:14];
     return cell;
+}
+
+- (void)click:(id)sender
+{
+    
 }
 
 /*
