@@ -37,6 +37,7 @@
 		54E714D4176B9EDA00F39D73 /* MessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E714D2176B9EDA00F39D73 /* MessageViewController.xib */; };
 		54E714D8176BA18800F39D73 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E714D6176BA18800F39D73 /* FriendsViewController.m */; };
 		54E714D9176BA18800F39D73 /* FriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E714D7176BA18800F39D73 /* FriendsViewController.xib */; };
+		54F5984D1770BFF30074F43C /* BackgroundMenuItem.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5984C1770BFF30074F43C /* BackgroundMenuItem.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,7 @@
 		54E714D5176BA18800F39D73 /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
 		54E714D6176BA18800F39D73 /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
 		54E714D7176BA18800F39D73 /* FriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsViewController.xib; sourceTree = "<group>"; };
+		54F5984C1770BFF30074F43C /* BackgroundMenuItem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundMenuItem.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +219,7 @@
 		548D36D5176B820700154C36 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				54F5984C1770BFF30074F43C /* BackgroundMenuItem.png */,
 				548D36D6176B821B00154C36 /* ButtonMenu.png */,
 				548D36D7176B821B00154C36 /* ButtonMenu@2x.png */,
 				548D36C0176B819300154C36 /* Default.png */,
@@ -342,6 +345,7 @@
 				54E714D4176B9EDA00F39D73 /* MessageViewController.xib in Resources */,
 				54E714D9176BA18800F39D73 /* FriendsViewController.xib in Resources */,
 				549ADAAD176BCAD5001F1D3F /* CreateActivityViewController.xib in Resources */,
+				54F5984D1770BFF30074F43C /* BackgroundMenuItem.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -65,6 +65,11 @@
     return [menuItem count];
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 36.0f;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
@@ -72,10 +77,16 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell.backgroundColor = [UIColor clearColor];
+        //cell.backgroundColor = [UIColor clearColor];
     }
     
+    UIImageView *background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BackgroundMenuItem.png"]];
+    [cell addSubview:background];
+    [cell sendSubviewToBack:background];
+    cell.contentMode = UIViewContentModeScaleAspectFill;
+    
     cell.textLabel.text = self.menuItem[indexPath.row];
+    cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.font = [UIFont fontWithName:@"Academy Engraved LET Bold" size:14];
     return cell;

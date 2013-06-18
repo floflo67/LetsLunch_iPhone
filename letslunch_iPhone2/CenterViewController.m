@@ -157,7 +157,6 @@
         self.leftSidebarViewController.sidebarDelegate = self;
         self.leftSidebarViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         controller = self.leftSidebarViewController;
-        //controller.title = @"Menu";
     }
     controller.view.frame = CGRectMake(0, viewFrame.origin.y, 270, viewFrame.size.height);
     controller.view.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
