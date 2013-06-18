@@ -95,6 +95,7 @@
 - (void)revealLeftSidebar:(id)sender
 {
     [self.navigationController toggleRevealState:JTRevealedStateLeft];
+    
 }
 
 - (void)revealRightSidebar:(id)sender
@@ -162,14 +163,15 @@
 
 #pragma mark JTRevealSidebarDelegate
 
-// This is an examle to configure your sidebar view through a custom UIViewController
+// This is an examle to configure your sidebar view through a custom UITableViewController
 - (UIView *)viewForLeftSidebar {
     CGRect viewFrame = self.navigationController.applicationViewFrame;
     UITableViewController *controller = self.leftSidebarViewController;
     if (!controller) {
         self.leftSidebarViewController = [[LeftSidebarViewController alloc] initWithStyle:UITableViewStylePlain];
         self.leftSidebarViewController.tableView.scrollEnabled = NO;
-        self.leftSidebarViewController.view.backgroundColor = [AppDelegate colorWithHexString:@"183060"];
+        //self.leftSidebarViewController.view.backgroundColor = [AppDelegate colorWithHexString:@"183060"];
+        self.leftSidebarViewController.view.backgroundColor = [AppDelegate colorWithHexString:@"000"];
         self.leftSidebarViewController.sidebarDelegate = self;
         self.leftSidebarViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         controller = self.leftSidebarViewController;

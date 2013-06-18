@@ -11,6 +11,7 @@
 @implementation LeftSidebarViewController
 @synthesize sidebarDelegate;
 @synthesize menuItem;
+@synthesize index;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -27,7 +28,8 @@
 {
     [super viewDidLoad];
     if(!self.menuItem) {
-        self.menuItem = [[NSArray alloc] initWithObjects:@"Activity", @"Message", @"Friends", nil];
+        self.index = 0;
+        self.menuItem = [[NSArray alloc] initWithObjects:@"Activity", @"Message", @"Friends", @"Friends",@"Friends",@"Friends",@"Friends",@"Friends", nil];
     }
 }
 
@@ -58,11 +60,6 @@
     return [menuItem count];
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 36.0f; // Smaller than basic to go with background
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
@@ -75,7 +72,15 @@
     /*
      Use image as background
      */
+    /*
+    UIImageView *background;
+    if(self.index == indexPath.row)
+        background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BackgroundMenuItemSelected.png"]];
+    else
+        background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BackgroundMenuItem.png"]];
+     */
     UIImageView *background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BackgroundMenuItem.png"]];
+    background.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height + 8);
     [cell addSubview:background];
     
     /*
@@ -114,6 +119,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.sidebarDelegate) {
+        self.index = indexPath.row;
         NSObject *obj = menuItem[indexPath.row];
         [self.sidebarDelegate sidebarViewController:self didSelectObject:obj atIndexPath:indexPath];
     }

@@ -14,6 +14,7 @@
 
 @property (nonatomic, assign) id <LeftSidebarViewControllerDelegate> sidebarDelegate;
 @property (nonatomic, strong) NSArray* menuItem;
+@property (nonatomic) NSInteger index;
 
 @end
 
