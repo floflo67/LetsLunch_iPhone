@@ -91,7 +91,7 @@
     self.navigationItem.title = @"Friend";    
 }
 
-#pragma side bars
+#pragma reveal side bars
 
 - (void)revealLeftSidebar:(id)sender {
     [self.navigationController toggleRevealState:JTRevealedStateLeft];
@@ -167,12 +167,13 @@
     UITableViewController *controller = self.leftSidebarViewController;
     if (!controller) {
         self.leftSidebarViewController = [[LeftSidebarViewController alloc] initWithStyle:UITableViewStylePlain];
+        self.leftSidebarViewController.tableView.scrollEnabled = NO;
         self.leftSidebarViewController.view.backgroundColor = [AppDelegate colorWithHexString:@"183060"];
         self.leftSidebarViewController.sidebarDelegate = self;
         self.leftSidebarViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         controller = self.leftSidebarViewController;
     }
-    controller.view.frame = CGRectMake(0, viewFrame.origin.y, 270, viewFrame.size.height);
+    controller.view.frame = CGRectMake(0, viewFrame.origin.y - 5, 270, viewFrame.size.height + 5);
     controller.view.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
     return controller.view;
 }
@@ -184,7 +185,7 @@
     if (!controller) {
         self.rightSidebarViewController = [[RightSidebarViewController alloc] initWithStyle:UITableViewStylePlain];
         //self.rightSidebarViewController.view.backgroundColor = [AppDelegate colorWithHexString:@"183060"];
-        self.rightSidebarViewController.sidebarDelegate = self;
+        //self.rightSidebarViewController.sidebarDelegate = self;
         self.rightSidebarViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         controller = self.rightSidebarViewController;
     }
