@@ -38,6 +38,7 @@
 		54E714D8176BA18800F39D73 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E714D6176BA18800F39D73 /* FriendsViewController.m */; };
 		54E714D9176BA18800F39D73 /* FriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E714D7176BA18800F39D73 /* FriendsViewController.xib */; };
 		54F5984D1770BFF30074F43C /* BackgroundMenuItem.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5984C1770BFF30074F43C /* BackgroundMenuItem.png */; };
+		54F598511770C96D0074F43C /* RightSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F598501770C96D0074F43C /* RightSidebarViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,8 @@
 		54E714D6176BA18800F39D73 /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
 		54E714D7176BA18800F39D73 /* FriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsViewController.xib; sourceTree = "<group>"; };
 		54F5984C1770BFF30074F43C /* BackgroundMenuItem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundMenuItem.png; sourceTree = "<group>"; };
+		54F5984F1770C96D0074F43C /* RightSidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightSidebarViewController.h; sourceTree = "<group>"; };
+		54F598501770C96D0074F43C /* RightSidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightSidebarViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +180,7 @@
 		548D36B4176B819300154C36 /* letslunch_iPhone2 */ = {
 			isa = PBXGroup;
 			children = (
+				54F5984E1770C9350074F43C /* BarsViewController */,
 				54E714C9176B95B500F39D73 /* ViewControllers */,
 				54403821176B8E4D00AA3588 /* API */,
 				548D36D5176B820700154C36 /* Resources */,
@@ -184,8 +188,6 @@
 				548D36BE176B819300154C36 /* AppDelegate.m */,
 				548D36DA176B823700154C36 /* CenterViewController.h */,
 				548D36DB176B823700154C36 /* CenterViewController.m */,
-				548D36DC176B823700154C36 /* LeftSidebarViewController.h */,
-				548D36DD176B823700154C36 /* LeftSidebarViewController.m */,
 				548D36DE176B823700154C36 /* NewViewController.h */,
 				548D36DF176B823700154C36 /* NewViewController.m */,
 				548D36B5176B819300154C36 /* Supporting Files */,
@@ -258,6 +260,17 @@
 				541CA6B3176FB22600BC7FC7 /* CustomQMapElement.m */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		54F5984E1770C9350074F43C /* BarsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				548D36DC176B823700154C36 /* LeftSidebarViewController.h */,
+				548D36DD176B823700154C36 /* LeftSidebarViewController.m */,
+				54F5984F1770C96D0074F43C /* RightSidebarViewController.h */,
+				54F598501770C96D0074F43C /* RightSidebarViewController.m */,
+			);
+			name = BarsViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -369,6 +382,7 @@
 				54E714D8176BA18800F39D73 /* FriendsViewController.m in Sources */,
 				549ADAAC176BCAD5001F1D3F /* CreateActivityViewController.m in Sources */,
 				541CA6B4176FB22600BC7FC7 /* CustomQMapElement.m in Sources */,
+				54F598511770C96D0074F43C /* RightSidebarViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

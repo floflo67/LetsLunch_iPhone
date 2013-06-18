@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "JTRevealSidebarV2Delegate.h"
+#import "RightSidebarViewController.h"
 
 // Orientation changing is not an officially completed feature,
 // The main thing to fix is the rotation animation and the
@@ -24,7 +25,7 @@
 }
 
 @property (nonatomic, strong) LeftSidebarViewController *leftSidebarViewController;
-@property (nonatomic, strong) UITableView *rightSidebarView;
+@property (nonatomic, strong) RightSidebarViewController *rightSidebarViewController;
 @property (nonatomic, strong) UIView *centerView;
 @property (nonatomic, strong) NSIndexPath *leftSelectedIndexPath;
 

@@ -25,18 +25,17 @@
 @implementation CenterViewController
 
 @synthesize leftSidebarViewController;
-@synthesize rightSidebarView;
+@synthesize rightSidebarViewController;
 @synthesize centerView;
 @synthesize leftSelectedIndexPath;
+
+
+#pragma view lifecycle
 
 - (id)init {
     self = [super init];
     if(self) {
-        locationManager = [[CLLocationManager alloc] init];
-        locationManager.delegate = self;
-        locationManager.distanceFilter = kCLDistanceFilterNone;
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        //[locationManager startUpdatingLocation];
+        [self locationManagerInit];
     }
     return self;
 }
@@ -63,6 +62,14 @@
     self.navigationItem.revealSidebarDelegate = self;
 }
 
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    self.rightSidebarViewController = nil;
+}
+
+#pragma configuration
+
 - (void)ActivityConfiguration
 {
     self.centerView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
@@ -84,13 +91,7 @@
     self.navigationItem.title = @"Friend";    
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    self.rightSidebarView = nil;
-}
-
-#pragma mark Action
+#pragma side bars
 
 - (void)revealLeftSidebar:(id)sender {
     [self.navigationController toggleRevealState:JTRevealedStateLeft];
@@ -99,6 +100,8 @@
 - (void)revealRightSidebar:(id)sender {
     [self.navigationController toggleRevealState:JTRevealedStateRight];
 }
+
+#pragma activity
 
 - (void)pushCreateActivityViewController:(id)sender {    
     QRootElement *root = [[QRootElement alloc] init];
@@ -140,6 +143,17 @@
     NSLog(@"Save");
 }
 
+#pragma location
+
+- (void)locationManagerInit
+{
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    //[locationManager startUpdatingLocation];
+}
+
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     CLLocation *location = [locations lastObject];
     NSLog(@"lat%f - lon%f", location.coordinate.latitude, location.coordinate.longitude);
@@ -166,15 +180,18 @@
 // This is an examle to configure your sidebar view without a UIViewController
 - (UIView *)viewForRightSidebar {
     CGRect viewFrame = self.navigationController.applicationViewFrame;
-    UITableView *view = self.rightSidebarView;
-    if (!view) {
-        view = self.rightSidebarView = [[UITableView alloc] initWithFrame:CGRectZero];
-        view.dataSource = self;
-        view.delegate   = self;
+    UITableViewController *controller = self.rightSidebarViewController;
+    if (!controller) {
+        self.rightSidebarViewController = [[RightSidebarViewController alloc] initWithStyle:UITableViewStylePlain];
+        //self.rightSidebarViewController.view.backgroundColor = [AppDelegate colorWithHexString:@"183060"];
+        self.rightSidebarViewController.sidebarDelegate = self;
+        self.rightSidebarViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        controller = self.rightSidebarViewController;
     }
-    view.frame = CGRectMake(self.navigationController.view.frame.size.width - 270, viewFrame.origin.y, 270, viewFrame.size.height);
-    view.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
-    return view;
+    
+    controller.view.frame = CGRectMake(self.navigationController.view.frame.size.width - 270, viewFrame.origin.y, 270, viewFrame.size.height);
+    controller.view.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
+    return controller.view;
 }
 
 // Optional delegate methods for additional configuration after reveal state changed
@@ -212,7 +229,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (tableView == self.rightSidebarView) {
+    if (tableView == self.rightSidebarViewController.view) {
         return @"RightSidebar";
     }
     return nil;
@@ -222,7 +239,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.navigationController setRevealedState:JTRevealedStateNo];
-    if (tableView == self.rightSidebarView) {
+    if (tableView == self.rightSidebarViewController.view) {
         //NSLog([NSString stringWithFormat:@"Selected %d at RightSidebarView", indexPath.row]);
     }
 }
