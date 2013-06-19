@@ -145,6 +145,20 @@
     NSLog(@"Save");
 }
 
+# pragma friends
+
+- (void)findFriendsButtonClick:(id)sender
+{
+    NSLog(@"Find");
+    [self.navigationController toggleRevealState:JTRevealedStateNo];
+}
+
+- (void)inviteFriendsButtonClick:(id)sender
+{
+    NSLog(@"Invite");
+    [self.navigationController toggleRevealState:JTRevealedStateNo];
+}
+
 #pragma location
 
 - (void)locationManagerInit
@@ -170,15 +184,18 @@
     if (!controller) {
         self.leftSidebarViewController = [[LeftSidebarViewController alloc] initWithStyle:UITableViewStylePlain];
         self.leftSidebarViewController.tableView.scrollEnabled = NO;
+        
         UIColor *color = [UIColor colorWithPatternImage:[AppDelegate imageWithImage:[UIImage imageNamed:@"BackgroundMenu.png"]
                                                                       scaledToSize:CGSizeMake(277, 900)]];
-        self.leftSidebarViewController.tableView.backgroundColor = color;
+        self.leftSidebarViewController.view.backgroundColor = color;
+        
+        
         self.leftSidebarViewController.sidebarDelegate = self;
         self.leftSidebarViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         controller = self.leftSidebarViewController;
     }
     controller.view.frame = CGRectMake(0, viewFrame.origin.y - 5, 270, viewFrame.size.height + 5);
-    controller.view.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
+    //controller.view.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
     return controller.view;
 }
 
@@ -188,14 +205,20 @@
     UITableViewController *controller = self.rightSidebarViewController;
     if (!controller) {
         self.rightSidebarViewController = [[RightSidebarViewController alloc] initWithStyle:UITableViewStylePlain];
-        //self.rightSidebarViewController.view.backgroundColor = [AppDelegate colorWithHexString:@"183060"];
+        self.rightSidebarViewController.tableView.scrollEnabled = NO;
+
+        /*
+         Used http://imagecolorpicker.com/ and https://kuler.adobe.com/create/color-wheel/ to get color for background
+         */
+        self.rightSidebarViewController.tableView.backgroundColor = [AppDelegate colorWithHexString:@"3C332A"];
+
         //self.rightSidebarViewController.sidebarDelegate = self;
         self.rightSidebarViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         controller = self.rightSidebarViewController;
     }
     
-    controller.view.frame = CGRectMake(self.navigationController.view.frame.size.width - 270, viewFrame.origin.y, 270, viewFrame.size.height);
-    controller.view.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
+    controller.view.frame = CGRectMake(0, viewFrame.origin.y - 5, 270, viewFrame.size.height + 5);
+    //controller.view.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
     return controller.view;
 }
 
@@ -264,7 +287,7 @@
     
     if([[object description] isEqualToString:@"Activity"])
         [self ActivityConfiguration];
-    if([[object description] isEqualToString:@"Message"])
+    if([[object description] isEqualToString:@"Messages"])
         [self MessageConfiguration];
     if([[object description] isEqualToString:@"Friends"])
         [self FriendConfiguration];

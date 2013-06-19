@@ -33,4 +33,7 @@
 @property (nonatomic, strong) QDateTimeInlineElement *date;
 @property (nonatomic, strong) QRadioSection* radio;
 
+-(void)findFriendsButtonClick:(id)sender;
+-(void)inviteFriendsButtonClick:(id)sender;
+
 @end
