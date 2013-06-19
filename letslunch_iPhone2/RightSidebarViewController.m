@@ -7,6 +7,7 @@
 //
 
 #import "RightSidebarViewController.h"
+#import "AppDelegate.h"
 
 @implementation RightSidebarViewController
 @synthesize sidebarDelegate;
@@ -18,7 +19,7 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
@@ -56,6 +57,15 @@
     return [menuItem count];
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0) {
+        return 58;
+    }
+    else
+        return 44;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
@@ -64,22 +74,70 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    cell.backgroundColor = [UIColor clearColor];
+    
+    /*
+     Use image as background
+     */
+    UIImageView *background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BackgroundSharing.png"]];
+    if(indexPath.row == 0)
+        background.frame = CGRectMake(cell.frame.origin.x - 10, cell.frame.origin.y, 280, cell.frame.size.height + 20);
+    else
+        background.frame = CGRectMake(cell.frame.origin.x - 10, cell.frame.origin.y, 280, cell.frame.size.height + 5);
+    [cell addSubview:background];
     
     if(indexPath.row == 0) {
-        UIButton *button = [[[UIButton alloc] initWithFrame:CGRectMake(40, 5, 150, 20)] autorelease];
-        //[button actionsForTarget:@selector(click:) forControlEvent:UIControlEventTouchDown];
-        button.titleLabel.text = @"Text";
-        [cell addSubview:button];
+        int x = 10;
+        int y = 25;
+        /*
+         Add the button to find friends
+         Uses image in Image folder
+         Call findFriendsButtonClick function in CenterViewController
+         */
+        UIButton *findFriendButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [findFriendButton setImage:[UIImage imageNamed:@"FindFriendsButton.png"] forState:UIControlStateNormal];
+        [findFriendButton sizeToFit];
+        [findFriendButton addTarget:((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController
+                       action:@selector(findFriendsButtonClick:)
+             forControlEvents:UIControlEventTouchUpInside];
+        
+        findFriendButton.frame = (CGRect){x, y, 120, 32};
+        [cell addSubview:findFriendButton];
+        
+        /*
+         Add the button to find friends
+         Uses image in Image folder
+         Call findFriendsButtonClick function in CenterViewController
+         */
+        UIButton *inviteFriendButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [inviteFriendButton setImage:[UIImage imageNamed:@"InviteFriendsButton.png"] forState:UIControlStateNormal];
+        [inviteFriendButton sizeToFit];
+        [inviteFriendButton addTarget:((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController
+                             action:@selector(inviteFriendsButtonClick:)
+                   forControlEvents:UIControlEventTouchUpInside];
+        
+        inviteFriendButton.frame = (CGRect){x + 130, y, 120, 32};
+        [cell addSubview:inviteFriendButton];
+    }
+    else {
+        /*
+         Part to take care of the title
+         We use a UILabel because cell.textLabel can't be moved
+         */
+        int x = 60;
+        int y = 5;
+        UILabel *title = [[[UILabel alloc] initWithFrame:CGRectMake(x, y, cell.frame.size.width - x, cell.frame.size.height - y)] autorelease];
+        title.text = [self.menuItem[indexPath.row] description];
+        title.backgroundColor = [UIColor clearColor];
+        title.textColor = [UIColor grayColor];
+        title.font = [UIFont fontWithName:@"Academy Engraved LET Bold" size:14];
+        [cell.contentView addSubview:title];
     }
     
-    int randNumRed = rand() % (255 - 0) + 0;
-    int randNumGreen = rand() % (255 - 0) + 0;
-    int randNumBlue = rand() % (255 - 0) + 0;
+    [cell sendSubviewToBack:background]; // otherwise don't see anything
     
-    cell.backgroundColor = [UIColor colorWithRed:randNumRed/255 green:randNumGreen/255 blue:randNumBlue/255 alpha:1];
+    [background release];
     
-    cell.textLabel.text = self.menuItem[indexPath.row];
-    cell.textLabel.font = [UIFont fontWithName:@"Academy Engraved LET Bold" size:14];
     return cell;
 }
 
