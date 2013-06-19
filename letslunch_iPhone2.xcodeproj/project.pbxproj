@@ -37,8 +37,8 @@
 		54E714D8176BA18800F39D73 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E714D6176BA18800F39D73 /* FriendsViewController.m */; };
 		54E714D9176BA18800F39D73 /* FriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E714D7176BA18800F39D73 /* FriendsViewController.xib */; };
 		54F598511770C96D0074F43C /* RightSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F598501770C96D0074F43C /* RightSidebarViewController.m */; };
-		54F598561770EB360074F43C /* MessageMenuItem.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F598541770EB360074F43C /* MessageMenuItem.png */; };
-		54F598571770EB360074F43C /* MessageMenuItem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F598551770EB360074F43C /* MessageMenuItem@2x.png */; };
+		54F598561770EB360074F43C /* MessagesMenuItem.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F598541770EB360074F43C /* MessagesMenuItem.png */; };
+		54F598571770EB360074F43C /* MessagesMenuItem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F598551770EB360074F43C /* MessagesMenuItem@2x.png */; };
 		54F5985F1770EDE00074F43C /* ActivityMenuItem.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5985D1770EDE00074F43C /* ActivityMenuItem.png */; };
 		54F598601770EDE00074F43C /* ActivityMenuItem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5985E1770EDE00074F43C /* ActivityMenuItem@2x.png */; };
 		54F598631770EF210074F43C /* FriendsMenuItem.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F598611770EF210074F43C /* FriendsMenuItem.png */; };
@@ -122,8 +122,8 @@
 		54E714D7176BA18800F39D73 /* FriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsViewController.xib; sourceTree = "<group>"; };
 		54F5984F1770C96D0074F43C /* RightSidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightSidebarViewController.h; sourceTree = "<group>"; };
 		54F598501770C96D0074F43C /* RightSidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightSidebarViewController.m; sourceTree = "<group>"; };
-		54F598541770EB360074F43C /* MessageMenuItem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MessageMenuItem.png; sourceTree = "<group>"; };
-		54F598551770EB360074F43C /* MessageMenuItem@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MessageMenuItem@2x.png"; sourceTree = "<group>"; };
+		54F598541770EB360074F43C /* MessagesMenuItem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MessagesMenuItem.png; sourceTree = "<group>"; };
+		54F598551770EB360074F43C /* MessagesMenuItem@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MessagesMenuItem@2x.png"; sourceTree = "<group>"; };
 		54F5985D1770EDE00074F43C /* ActivityMenuItem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ActivityMenuItem.png; sourceTree = "<group>"; };
 		54F5985E1770EDE00074F43C /* ActivityMenuItem@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ActivityMenuItem@2x.png"; sourceTree = "<group>"; };
 		54F598611770EF210074F43C /* FriendsMenuItem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FriendsMenuItem.png; sourceTree = "<group>"; };
@@ -301,8 +301,8 @@
 				54F598621770EF210074F43C /* FriendsMenuItem@2x.png */,
 				54F5985D1770EDE00074F43C /* ActivityMenuItem.png */,
 				54F5985E1770EDE00074F43C /* ActivityMenuItem@2x.png */,
-				54F598541770EB360074F43C /* MessageMenuItem.png */,
-				54F598551770EB360074F43C /* MessageMenuItem@2x.png */,
+				54F598541770EB360074F43C /* MessagesMenuItem.png */,
+				54F598551770EB360074F43C /* MessagesMenuItem@2x.png */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -402,8 +402,8 @@
 				54E714D4176B9EDA00F39D73 /* MessageViewController.xib in Resources */,
 				54E714D9176BA18800F39D73 /* FriendsViewController.xib in Resources */,
 				549ADAAD176BCAD5001F1D3F /* CreateActivityViewController.xib in Resources */,
-				54F598561770EB360074F43C /* MessageMenuItem.png in Resources */,
-				54F598571770EB360074F43C /* MessageMenuItem@2x.png in Resources */,
+				54F598561770EB360074F43C /* MessagesMenuItem.png in Resources */,
+				54F598571770EB360074F43C /* MessagesMenuItem@2x.png in Resources */,
 				54F5985F1770EDE00074F43C /* ActivityMenuItem.png in Resources */,
 				54F598601770EDE00074F43C /* ActivityMenuItem@2x.png in Resources */,
 				54F598631770EF210074F43C /* FriendsMenuItem.png in Resources */,
@@ -486,7 +486,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -509,7 +509,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
