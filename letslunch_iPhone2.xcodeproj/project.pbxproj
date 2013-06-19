@@ -45,6 +45,7 @@
 		54F598641770EF210074F43C /* FriendsMenuItem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F598621770EF210074F43C /* FriendsMenuItem@2x.png */; };
 		54F59866177121F60074F43C /* BackgroundMenuItem.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F59865177121F60074F43C /* BackgroundMenuItem.png */; };
 		54F59868177124930074F43C /* BackgroundMenuItemSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F59867177124930074F43C /* BackgroundMenuItemSelected.png */; };
+		54F5986A17712EEA0074F43C /* BackgroundMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5986917712EEA0074F43C /* BackgroundMenu.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +127,7 @@
 		54F598621770EF210074F43C /* FriendsMenuItem@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FriendsMenuItem@2x.png"; sourceTree = "<group>"; };
 		54F59865177121F60074F43C /* BackgroundMenuItem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundMenuItem.png; sourceTree = "<group>"; };
 		54F59867177124930074F43C /* BackgroundMenuItemSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundMenuItemSelected.png; sourceTree = "<group>"; };
+		54F5986917712EEA0074F43C /* BackgroundMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundMenu.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,6 +287,7 @@
 		54F5985C1770ECEF0074F43C /* MenuItem */ = {
 			isa = PBXGroup;
 			children = (
+				54F5986917712EEA0074F43C /* BackgroundMenu.png */,
 				54F59867177124930074F43C /* BackgroundMenuItemSelected.png */,
 				54F59865177121F60074F43C /* BackgroundMenuItem.png */,
 				54F598611770EF210074F43C /* FriendsMenuItem.png */,
@@ -390,6 +393,7 @@
 				54F598641770EF210074F43C /* FriendsMenuItem@2x.png in Resources */,
 				54F59866177121F60074F43C /* BackgroundMenuItem.png in Resources */,
 				54F59868177124930074F43C /* BackgroundMenuItemSelected.png in Resources */,
+				54F5986A17712EEA0074F43C /* BackgroundMenu.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

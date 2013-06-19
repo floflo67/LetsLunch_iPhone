@@ -170,8 +170,9 @@
     if (!controller) {
         self.leftSidebarViewController = [[LeftSidebarViewController alloc] initWithStyle:UITableViewStylePlain];
         self.leftSidebarViewController.tableView.scrollEnabled = NO;
-        //self.leftSidebarViewController.view.backgroundColor = [AppDelegate colorWithHexString:@"183060"];
-        self.leftSidebarViewController.view.backgroundColor = [AppDelegate colorWithHexString:@"000"];
+        UIColor *color = [UIColor colorWithPatternImage:[AppDelegate imageWithImage:[UIImage imageNamed:@"BackgroundMenu.png"]
+                                                                      scaledToSize:CGSizeMake(277, 900)]];
+        self.leftSidebarViewController.tableView.backgroundColor = color;
         self.leftSidebarViewController.sidebarDelegate = self;
         self.leftSidebarViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         controller = self.leftSidebarViewController;

@@ -29,7 +29,7 @@
     [super viewDidLoad];
     if(!self.menuItem) {
         self.index = 0;
-        self.menuItem = [[NSArray alloc] initWithObjects:@"Activity", @"Message", @"Friends", @"Friends",@"Friends",@"Friends",@"Friends",@"Friends", nil];
+        self.menuItem = [[NSArray alloc] initWithObjects:@"Activity", @"Messages", @"Settings", @"Notifications", @"Profile", nil];
     }
 }
 
@@ -68,6 +68,7 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
+    cell.backgroundColor = [UIColor clearColor];
     
     /*
      Use image as background
@@ -80,7 +81,7 @@
         background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BackgroundMenuItem.png"]];
      */
     UIImageView *background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BackgroundMenuItem.png"]];
-    background.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height + 8);
+    background.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, 275, cell.frame.size.height + 8);
     [cell addSubview:background];
     
     /*
@@ -95,11 +96,12 @@
      Part to take care of the title
      We use a UILabel because cell.textLabel can't be moved
      */
-    
-    UILabel *title = [[[UILabel alloc] initWithFrame:CGRectMake(50, 0, cell.frame.size.width - 50, cell.frame.size.height)] autorelease];
+    int x = 60;
+    int y = 5;
+    UILabel *title = [[[UILabel alloc] initWithFrame:CGRectMake(x, y, cell.frame.size.width - x, cell.frame.size.height - y)] autorelease];
     title.text = [self.menuItem[indexPath.row] description];
     title.backgroundColor = [UIColor clearColor];
-    title.textColor = [UIColor whiteColor];
+    title.textColor = [UIColor grayColor];
     title.font = [UIFont fontWithName:@"Academy Engraved LET Bold" size:14];
     [cell.contentView addSubview:title];
     

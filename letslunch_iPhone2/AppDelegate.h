@@ -25,5 +25,6 @@
 -(NSString*)getOwnerActivity;
 
 +(UIColor*)colorWithHexString:(NSString*)hex;
++(UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize;
 
 @end
