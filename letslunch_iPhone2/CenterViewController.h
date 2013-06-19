@@ -35,5 +35,6 @@
 
 -(void)findFriendsButtonClick:(id)sender;
 -(void)inviteFriendsButtonClick:(id)sender;
+-(void)shareButtonClick:(id)sender;
 
 @end

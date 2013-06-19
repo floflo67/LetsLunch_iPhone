@@ -159,6 +159,12 @@
     [self.navigationController toggleRevealState:JTRevealedStateNo];
 }
 
+- (void)shareButtonClick:(id)sender
+{
+    NSLog(@"Share");
+    [self.navigationController toggleRevealState:JTRevealedStateNo];    
+}
+
 #pragma location
 
 - (void)locationManagerInit
