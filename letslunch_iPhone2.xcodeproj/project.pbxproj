@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5409986C177239F2003DFD70 /* ShareButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5409986B177239F2003DFD70 /* ShareButton.png */; };
 		54403824176B8E5D00AA3588 /* GetStaticLists.m in Sources */ = {isa = PBXBuildFile; fileRef = 54403823176B8E5D00AA3588 /* GetStaticLists.m */; };
 		548D36AF176B819300154C36 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36AE176B819300154C36 /* UIKit.framework */; };
 		548D36B1176B819300154C36 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36B0176B819300154C36 /* Foundation.framework */; };
@@ -76,6 +77,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5409986B177239F2003DFD70 /* ShareButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShareButton.png; sourceTree = "<group>"; };
 		54403822176B8E5D00AA3588 /* GetStaticLists.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetStaticLists.h; sourceTree = "<group>"; };
 		54403823176B8E5D00AA3588 /* GetStaticLists.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetStaticLists.m; sourceTree = "<group>"; };
 		548D36AB176B819300154C36 /* letslunch_iPhone2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = letslunch_iPhone2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -313,6 +315,7 @@
 				54F5986C17713A4A0074F43C /* BackgroundSharing.png */,
 				54F5986D17713A4A0074F43C /* FindFriendsButton.png */,
 				54F5986E17713A4A0074F43C /* InviteFriendsButton.png */,
+				5409986B177239F2003DFD70 /* ShareButton.png */,
 			);
 			name = Sharing;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				54F5986F17713A4A0074F43C /* BackgroundSharing.png in Resources */,
 				54F5987017713A4A0074F43C /* FindFriendsButton.png in Resources */,
 				54F5987117713A4A0074F43C /* InviteFriendsButton.png in Resources */,
+				5409986C177239F2003DFD70 /* ShareButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
