@@ -46,6 +46,9 @@
 		54F59866177121F60074F43C /* BackgroundMenuItem.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F59865177121F60074F43C /* BackgroundMenuItem.png */; };
 		54F59868177124930074F43C /* BackgroundMenuItemSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F59867177124930074F43C /* BackgroundMenuItemSelected.png */; };
 		54F5986A17712EEA0074F43C /* BackgroundMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5986917712EEA0074F43C /* BackgroundMenu.png */; };
+		54F5986F17713A4A0074F43C /* BackgroundSharing.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5986C17713A4A0074F43C /* BackgroundSharing.png */; };
+		54F5987017713A4A0074F43C /* FindFriendsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5986D17713A4A0074F43C /* FindFriendsButton.png */; };
+		54F5987117713A4A0074F43C /* InviteFriendsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5986E17713A4A0074F43C /* InviteFriendsButton.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +131,9 @@
 		54F59865177121F60074F43C /* BackgroundMenuItem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundMenuItem.png; sourceTree = "<group>"; };
 		54F59867177124930074F43C /* BackgroundMenuItemSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundMenuItemSelected.png; sourceTree = "<group>"; };
 		54F5986917712EEA0074F43C /* BackgroundMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundMenu.png; sourceTree = "<group>"; };
+		54F5986C17713A4A0074F43C /* BackgroundSharing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundSharing.png; sourceTree = "<group>"; };
+		54F5986D17713A4A0074F43C /* FindFriendsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindFriendsButton.png; sourceTree = "<group>"; };
+		54F5986E17713A4A0074F43C /* InviteFriendsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InviteFriendsButton.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,7 +240,8 @@
 		548D36D5176B820700154C36 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				54F5985C1770ECEF0074F43C /* MenuItem */,
+				54F5986B17713A210074F43C /* Sharing */,
+				54F5985C1770ECEF0074F43C /* Menu */,
 				548D36D6176B821B00154C36 /* ButtonMenu.png */,
 				548D36D7176B821B00154C36 /* ButtonMenu@2x.png */,
 				548D36C0176B819300154C36 /* Default.png */,
@@ -284,7 +291,7 @@
 			name = BarsViewController;
 			sourceTree = "<group>";
 		};
-		54F5985C1770ECEF0074F43C /* MenuItem */ = {
+		54F5985C1770ECEF0074F43C /* Menu */ = {
 			isa = PBXGroup;
 			children = (
 				54F5986917712EEA0074F43C /* BackgroundMenu.png */,
@@ -297,7 +304,17 @@
 				54F598541770EB360074F43C /* MessageMenuItem.png */,
 				54F598551770EB360074F43C /* MessageMenuItem@2x.png */,
 			);
-			name = MenuItem;
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		54F5986B17713A210074F43C /* Sharing */ = {
+			isa = PBXGroup;
+			children = (
+				54F5986C17713A4A0074F43C /* BackgroundSharing.png */,
+				54F5986D17713A4A0074F43C /* FindFriendsButton.png */,
+				54F5986E17713A4A0074F43C /* InviteFriendsButton.png */,
+			);
+			name = Sharing;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -394,6 +411,9 @@
 				54F59866177121F60074F43C /* BackgroundMenuItem.png in Resources */,
 				54F59868177124930074F43C /* BackgroundMenuItemSelected.png in Resources */,
 				54F5986A17712EEA0074F43C /* BackgroundMenu.png in Resources */,
+				54F5986F17713A4A0074F43C /* BackgroundSharing.png in Resources */,
+				54F5987017713A4A0074F43C /* FindFriendsButton.png in Resources */,
+				54F5987117713A4A0074F43C /* InviteFriendsButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
