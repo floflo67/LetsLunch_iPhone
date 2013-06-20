@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		5409986C177239F2003DFD70 /* ShareButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5409986B177239F2003DFD70 /* ShareButton.png */; };
 		54403824176B8E5D00AA3588 /* GetStaticLists.m in Sources */ = {isa = PBXBuildFile; fileRef = 54403823176B8E5D00AA3588 /* GetStaticLists.m */; };
+		547D54D51773B21F0069D837 /* Foursquare2.m in Sources */ = {isa = PBXBuildFile; fileRef = 547D54D01773B21F0069D837 /* Foursquare2.m */; };
+		547D54D61773B21F0069D837 /* FSRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 547D54D21773B21F0069D837 /* FSRequester.m */; };
+		547D54D71773B21F0069D837 /* FSTargetCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 547D54D41773B21F0069D837 /* FSTargetCallback.m */; };
+		547D54DE1773B2300069D837 /* FSVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 547D54DB1773B2300069D837 /* FSVenue.m */; };
+		547D54DF1773B2300069D837 /* FSConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 547D54DD1773B2300069D837 /* FSConverter.m */; };
 		548D36AF176B819300154C36 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36AE176B819300154C36 /* UIKit.framework */; };
 		548D36B1176B819300154C36 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36B0176B819300154C36 /* Foundation.framework */; };
 		548D36B3176B819300154C36 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36B2176B819300154C36 /* CoreGraphics.framework */; };
@@ -81,6 +86,16 @@
 		5409986B177239F2003DFD70 /* ShareButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShareButton.png; sourceTree = "<group>"; };
 		54403822176B8E5D00AA3588 /* GetStaticLists.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetStaticLists.h; sourceTree = "<group>"; };
 		54403823176B8E5D00AA3588 /* GetStaticLists.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetStaticLists.m; sourceTree = "<group>"; };
+		547D54CF1773B21F0069D837 /* Foursquare2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Foursquare2.h; sourceTree = "<group>"; };
+		547D54D01773B21F0069D837 /* Foursquare2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Foursquare2.m; sourceTree = "<group>"; };
+		547D54D11773B21F0069D837 /* FSRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRequester.h; sourceTree = "<group>"; };
+		547D54D21773B21F0069D837 /* FSRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRequester.m; sourceTree = "<group>"; };
+		547D54D31773B21F0069D837 /* FSTargetCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTargetCallback.h; sourceTree = "<group>"; };
+		547D54D41773B21F0069D837 /* FSTargetCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTargetCallback.m; sourceTree = "<group>"; };
+		547D54DA1773B2300069D837 /* FSVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVenue.h; sourceTree = "<group>"; };
+		547D54DB1773B2300069D837 /* FSVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVenue.m; sourceTree = "<group>"; };
+		547D54DC1773B2300069D837 /* FSConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSConverter.h; sourceTree = "<group>"; };
+		547D54DD1773B2300069D837 /* FSConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSConverter.m; sourceTree = "<group>"; };
 		548D36AB176B819300154C36 /* letslunch_iPhone2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = letslunch_iPhone2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		548D36AE176B819300154C36 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		548D36B0176B819300154C36 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -168,6 +183,31 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		547D54CC17739D060069D837 /* FourSquare */ = {
+			isa = PBXGroup;
+			children = (
+				547D54D91773B2240069D837 /* Objects */,
+				547D54CF1773B21F0069D837 /* Foursquare2.h */,
+				547D54D01773B21F0069D837 /* Foursquare2.m */,
+				547D54D11773B21F0069D837 /* FSRequester.h */,
+				547D54D21773B21F0069D837 /* FSRequester.m */,
+				547D54D31773B21F0069D837 /* FSTargetCallback.h */,
+				547D54D41773B21F0069D837 /* FSTargetCallback.m */,
+			);
+			name = FourSquare;
+			sourceTree = "<group>";
+		};
+		547D54D91773B2240069D837 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				547D54DA1773B2300069D837 /* FSVenue.h */,
+				547D54DB1773B2300069D837 /* FSVenue.m */,
+				547D54DC1773B2300069D837 /* FSConverter.h */,
+				547D54DD1773B2300069D837 /* FSConverter.m */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
 		548D36A2176B819300154C36 = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +243,7 @@
 		548D36B4176B819300154C36 /* letslunch_iPhone2 */ = {
 			isa = PBXGroup;
 			children = (
+				547D54CC17739D060069D837 /* FourSquare */,
 				54F5984E1770C9350074F43C /* BarsViewController */,
 				54E714C9176B95B500F39D73 /* ViewControllers */,
 				54403821176B8E4D00AA3588 /* API */,
@@ -445,6 +486,11 @@
 				54E714D8176BA18800F39D73 /* FriendsViewController.m in Sources */,
 				549ADAAC176BCAD5001F1D3F /* CreateActivityViewController.m in Sources */,
 				54F598511770C96D0074F43C /* RightSidebarViewController.m in Sources */,
+				547D54D51773B21F0069D837 /* Foursquare2.m in Sources */,
+				547D54D61773B21F0069D837 /* FSRequester.m in Sources */,
+				547D54D71773B21F0069D837 /* FSTargetCallback.m in Sources */,
+				547D54DE1773B2300069D837 /* FSVenue.m in Sources */,
+				547D54DF1773B2300069D837 /* FSConverter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
