@@ -10,4 +10,6 @@
 
 @property (nonatomic, strong) NSMutableArray* objects;
 
++(CreateActivityViewController*)getSingleton;
+
 @end

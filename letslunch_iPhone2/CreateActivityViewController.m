@@ -7,6 +7,7 @@
 //
 
 #import "CreateActivityViewController.h"
+#import "AppDelegate.h"
 
 @interface CreateActivityViewController ()
 
@@ -14,11 +15,30 @@
 
 @implementation CreateActivityViewController
 
+static CreateActivityViewController *sharedSingleton = nil;
++ (CreateActivityViewController*)getSingleton
+{
+    if (sharedSingleton !=nil)
+    {
+        NSLog(@"CreateActivityViewController has already been created.....");
+        return sharedSingleton;
+    }
+    @synchronized(self)
+    {
+        if (sharedSingleton == nil)
+        {
+            sharedSingleton = [[self alloc] init];
+            NSLog(@"Created a new CreateActivityViewController");
+        }
+    }
+    return sharedSingleton;
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
@@ -26,50 +46,49 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.title = @"Create Activity";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+                                              initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                              target:((AppDelegate*)[UIApplication sharedApplication].delegate).viewController
+                                              action:@selector(saveActivity:)];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
     return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    NSArray* arr = [[NSArray alloc] initWithObjects:@"Row1",@"Row2",@"Row3",@"Row4",nil];
+    NSArray* arr = [[NSArray alloc] initWithObjects:@"Row1", @"Row2", @"Row3", @"Row4",nil];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    UILabel* label = [[[UILabel alloc] initWithFrame:CGRectMake(10, 1, cell.frame.size.width / 2 - 2, cell.frame.size.height - 2)] autorelease];
-    [cell addSubview:label];
-    label.backgroundColor = [UIColor clearColor];
-    UITextField* text = [[[UITextField alloc] initWithFrame:CGRectMake(cell.frame.size.width / 2, 0, cell.frame.size.width / 2, cell.frame.size.height)] autorelease];
-    [cell addSubview:text];
+    //UILabel* label = [[[UILabel alloc] initWithFrame:CGRectMake(10, 1, cell.frame.size.width / 2 - 2, cell.frame.size.height - 2)] autorelease];
+    //[cell addSubview:label];
+    //label.backgroundColor = [UIColor clearColor];
+    //UITextField* text = [[[UITextField alloc] initWithFrame:CGRectMake(cell.frame.size.width / 2, 0, cell.frame.size.width / 2, cell.frame.size.height)] autorelease];
+    //[cell addSubview:text];
     
-    label.text = [arr objectAtIndex:indexPath.row];
+    //label.text = [arr objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = [arr objectAtIndex:indexPath.row];
     
     return cell;
 }

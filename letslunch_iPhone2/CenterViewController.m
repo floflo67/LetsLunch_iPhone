@@ -108,6 +108,8 @@
 
 - (void)pushCreateActivityViewController:(id)sender
 {
+    [self.navigationController pushViewController:[CreateActivityViewController getSingleton] animated:YES];
+    /*
     QRootElement *root = [[QRootElement alloc] init];
     root.title = @"Create Activity";
     root.grouped = YES;
@@ -125,7 +127,7 @@
     
     UIViewController *navigation = [QuickDialogController controllerForRoot:root];
     [self.navigationController pushViewController:navigation animated:YES];
-    navigation.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(saveActivity:)];
+    navigation.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(saveActivity:)];*/
 }
 
 - (void)saveActivity:(id)sender
