@@ -20,6 +20,7 @@
 @property (strong, nonatomic) FSVenue *selected;
 @property (strong, nonatomic) NSMutableArray *nearbyVenues;
 
+@property (strong, nonatomic) NSString *section;
 @property (strong, nonatomic) NSString *query;
 @property (strong, nonatomic) NSNumber *radius;
 @property (nonatomic) BOOL isSearching;

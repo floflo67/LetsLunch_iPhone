@@ -73,9 +73,9 @@
 						<int key="IBNumberOfSegments">3</int>
 						<int key="IBSelectedSegmentIndex">0</int>
 						<array key="IBSegmentTitles">
-							<string>Nearest</string>
-							<string>Coffee</string>
 							<string>Lunch</string>
+							<string>Coffee</string>
+							<string>Office</string>
 						</array>
 						<array class="NSMutableArray" key="IBSegmentWidths">
 							<real value="0.0"/>

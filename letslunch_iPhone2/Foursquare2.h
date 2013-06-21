@@ -13,7 +13,7 @@
 
 //1
 #ifndef FS2_OAUTH_KEY
-#define FS2_OAUTH_KEY    (@"5P1OVCFK0CCVCQ5GBBCWRFGUVNX5R4WGKHL2DGJGZ32FDFKT")
+#define FS2_OAUTH_KEY (@"5P1OVCFK0CCVCQ5GBBCWRFGUVNX5R4WGKHL2DGJGZ32FDFKT")
 #endif
 
 #ifndef FS2_OAUTH_SECRET
@@ -48,7 +48,7 @@ typedef enum
 }
 
 +(void)setBaseURL:(NSString *)uri;
-+(void)searchVenuesNearByLatitude:(NSNumber*)lat longitude:(NSNumber*)lon query:(NSString*)query intent:(FoursquareIntentType)intent radius:(NSNumber*)radius callback:(Foursquare2Callback)callback;
-+(void)searchVenuesNearByLatitude:(NSNumber*)lat longitude:(NSNumber*)lon accuracyLL:(NSNumber*)accuracyLL altitude:(NSNumber*)altitude accuracyAlt:(NSNumber*)accuracyAlt query:(NSString*)query limit:(NSNumber*)limit intent:(FoursquareIntentType)intent radius:(NSNumber*)radius categoryId:(NSString*)categoryId callback:(Foursquare2Callback)callback;
++(void)searchVenuesNearByLatitude:(NSNumber*)lat longitude:(NSNumber*)lon section:(NSString*)section query:(NSString*)query intent:(FoursquareIntentType)intent radius:(NSNumber*)radius callback:(Foursquare2Callback)callback;
++(void)searchVenuesNearByLatitude:(NSNumber*)lat longitude:(NSNumber*)lon accuracyLL:(NSNumber*)accuracyLL altitude:(NSNumber*)altitude accuracyAlt:(NSNumber*)accuracyAlt section:(NSString*)section query:(NSString*)query limit:(NSNumber*)limit intent:(FoursquareIntentType)intent radius:(NSNumber*)radius categoryId:(NSString*)categoryId callback:(Foursquare2Callback)callback;
 
 @end

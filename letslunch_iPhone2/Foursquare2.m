@@ -74,21 +74,27 @@ static NSMutableDictionary *attributes;
 	[self get:@"venues/categories" withParams:nil callback:callback];
 }
 
-+(void)searchVenuesNearByLatitude:(NSNumber*)lat longitude:(NSNumber*)lon query:(NSString*)query intent:(FoursquareIntentType)intent radius:(NSNumber*)radius callback:(Foursquare2Callback)callback
++(void)searchVenuesNearByLatitude:(NSNumber*)lat longitude:(NSNumber*)lon section:(NSString*)section query:(NSString*)query intent:(FoursquareIntentType)intent radius:(NSNumber*)radius callback:(Foursquare2Callback)callback
 {
 	NSMutableDictionary *dic = [NSMutableDictionary dictionary];
 	if (lat && lon)
 		dic[@"ll"] = [NSString stringWithFormat:@"%@,%@",lat,lon];
+    if(section)
+        dic[@"section"] = section;
 	if (query)
 		dic[@"query"] = query;
 	if (intent)
 		dic[@"intent"] = [self inentTypeToString:intent];
     if (radius)
 		dic[@"radius"] = radius.stringValue;
-	[self get:@"venues/search" withParams:dic callback:callback];
+    
+    if(section)
+        [self get:@"venues/explore" withParams:dic callback:callback];
+    else
+        [self get:@"venues/search" withParams:dic callback:callback];
 }
 
-+(void)searchVenuesNearByLatitude:(NSNumber*)lat longitude:(NSNumber*)lon accuracyLL:(NSNumber*)accuracyLL altitude:(NSNumber*)altitude accuracyAlt:(NSNumber*)accuracyAlt query:(NSString*)query limit:(NSNumber*)limit intent:(FoursquareIntentType)intent radius:(NSNumber*)radius categoryId:(NSString*)categoryId callback:(Foursquare2Callback)callback
++(void)searchVenuesNearByLatitude:(NSNumber*)lat longitude:(NSNumber*)lon accuracyLL:(NSNumber*)accuracyLL altitude:(NSNumber*)altitude accuracyAlt:(NSNumber*)accuracyAlt section:(NSString*)section query:(NSString*)query limit:(NSNumber*)limit intent:(FoursquareIntentType)intent radius:(NSNumber*)radius categoryId:(NSString*)categoryId callback:(Foursquare2Callback)callback
 {
 	NSMutableDictionary *dic = [NSMutableDictionary dictionary];
 	if (lat && lon) {
@@ -103,6 +109,9 @@ static NSMutableDictionary *attributes;
 	if (accuracyAlt) {
 		dic[@"altAcc"] = accuracyAlt.stringValue;
 	}
+    if(section) {
+        dic[@"section"] = section;
+    }
 	if (query) {
 		dic[@"query"] = query;
 	}
@@ -118,7 +127,11 @@ static NSMutableDictionary *attributes;
     if (categoryId) {
         dic[@"categoryId"] = categoryId;
     }
-	[self get:@"venues/search" withParams:dic callback:callback];
+    
+    if(section)
+        [self get:@"venues/explore" withParams:dic callback:callback];
+    else
+        [self get:@"venues/search" withParams:dic callback:callback];
 }
 
 #pragma mark Private methods
@@ -142,7 +155,6 @@ static NSMutableDictionary *attributes;
 			return nil;
 			break;
 	}
-	
 }
 
 + (void) get:(NSString *)methodName withParams:(NSDictionary *)params callback:(Foursquare2Callback)callback
@@ -219,7 +231,7 @@ static Foursquare2 *instance;
     //	callback = [callback copy];
     NSString *path = [Foursquare2 constructRequestUrlForMethod:methodName
                                                         params:params];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:[NSURL URLWithString:path ]];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:[NSURL URLWithString:path]];
     request.HTTPMethod = httpMethod;
 	
     FSTargetCallback *target = [[FSTargetCallback alloc] initWithCallback:callback
@@ -227,8 +239,7 @@ static Foursquare2 *instance;
                                                            requestUrl: path
                                                              numTries: 2];
 	
-	[self makeAsyncRequestWithRequest:request 
-                               target:target];
+	[self makeAsyncRequestWithRequest:request target:target];
 }
 
 @end

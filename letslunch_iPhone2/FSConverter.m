@@ -13,6 +13,8 @@
 
 - (NSMutableArray*)convertToObjects:(NSArray*)venues{
     NSMutableArray *objects = [NSMutableArray arrayWithCapacity:[venues count]];
+    if([venues count] < 2)
+        venues = venues[0];
     for (NSDictionary *v  in venues) {
         FSVenue *ann = [[FSVenue alloc]init];
         

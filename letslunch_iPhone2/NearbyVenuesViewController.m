@@ -22,7 +22,8 @@
     [super viewDidLoad];
     
     self.isSearching = NO;
-    self.query = @"food"; // default
+    self.section = @"food"; // default
+    self.query = nil;
     self.radius = @(500); // 500m
     self.navigationItem.title = @"Choose place";
     
@@ -30,7 +31,7 @@
      To get current location
      */
     _locationManager = [[CLLocationManager alloc]init];
-    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
     _locationManager.delegate = self;
     [_locationManager startUpdatingLocation];
     
@@ -66,7 +67,7 @@
         self.tableView.frame = CGRectMake(0, self.tableView.frame.origin.y + y, self.tableView.frame.size.width, self.tableView.frame.size.height);
         self.textFieldSearch = [[UITextField alloc] initWithFrame:CGRectMake(5, 5, self.view.frame.size.width - 10, y - 10)];
         self.textFieldSearch.delegate = self;
-        self.textFieldSearch.placeholder = @"Tape search";
+        self.textFieldSearch.placeholder = @"Search for a place or an office...";
         [self.textFieldSearch setBorderStyle:UITextBorderStyleRoundedRect];
         self.textFieldSearch.returnKeyType = UIReturnKeySearch;
         [self.view addSubview:self.textFieldSearch];
@@ -82,6 +83,7 @@
  */
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    self.section = nil;
     self.query = textField.text;
     self.radius = @(10000);
     [self search:nil];
@@ -103,13 +105,19 @@
     
     [Foursquare2 searchVenuesNearByLatitude:@(location.coordinate.latitude)
 								  longitude:@(location.coordinate.longitude)
+                                    section:self.section
 									  query:self.query
 									 intent:intentBrowse
                                      radius:self.radius
 								   callback:^(BOOL success, id result) {
 									   if (success) {
 										   NSDictionary *dic = result;
-										   NSArray* venues = [dic valueForKeyPath:@"response.venues"];
+                                           NSArray* venues;
+                                           if(self.section)
+                                               venues = [dic valueForKeyPath:@"response.groups.items.venue"];
+                                           else
+                                                venues = [dic valueForKeyPath:@"response.venues"];
+                                               
                                            FSConverter *converter = [[FSConverter alloc] init];
                                            self.nearbyVenues = [converter convertToObjects:venues];
                                            /*
@@ -142,18 +150,20 @@
     self.radius = @(500);
     switch (seg.selectedSegmentIndex) {
         case 0:
-            self.query = @"food";
+            self.section = @"food";
             break;
         case 1:
-            self.query = @"coffee";
+            self.section = @"coffee";
             break;
         case 2:
-            self.query = @"restaurant";
+            self.section = @"shops";
             break;
         default:
-            self.query = @"food";
+            self.section = @"food";
             break;
     }
+    if(self.isSearching)
+        [self search:nil];
     [self getVenuesForLocation:_locationManager.location];
 }
 
@@ -236,6 +246,7 @@
     [self.textFieldSearch release];
     [self.nearbyVenues release];
     [self.selected release];
+    [self.section release];
     [self.query release];
     [self.segment release];
     [super dealloc];
