@@ -19,18 +19,12 @@
 static CreateActivityViewController *sharedSingleton = nil;
 + (CreateActivityViewController*)getSingleton
 {
-    if (sharedSingleton !=nil)
-    {
-        NSLog(@"CreateActivityViewController has already been created.....");
+    if (sharedSingleton != nil)
         return sharedSingleton;
-    }
     @synchronized(self)
     {
         if (sharedSingleton == nil)
-        {
             sharedSingleton = [[self alloc] init];
-            NSLog(@"Created a new CreateActivityViewController");
-        }
     }
     return sharedSingleton;
 }
@@ -44,7 +38,6 @@ static CreateActivityViewController *sharedSingleton = nil;
                                               target:((AppDelegate*)[UIApplication sharedApplication].delegate).viewController
                                               action:@selector(saveActivity:)];
     [self.buttonPushPlace addTarget:self action:@selector(pushSelectPlace:) forControlEvents:UIControlEventTouchDown];
-    
     UIFont *font = [UIFont boldSystemFontOfSize:16.0f];
     NSDictionary *attributes = [NSDictionary dictionaryWithObject:font forKey:UITextAttributeFont];
     [self.segment setTitleTextAttributes:attributes forState:UIControlStateNormal];
@@ -68,6 +61,16 @@ static CreateActivityViewController *sharedSingleton = nil;
         self.labelBroadcast.text = @"This broadcast will expire in 180 minutes.";
     else
         self.labelBroadcast.text = @"This broadcast will expire at 11 p.m.";        
+}
+
+- (IBAction)textFieldReturn:(id)sender
+{
+    [self textFieldShouldReturn:sender];
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    return YES;
 }
 
 - (void)dealloc {

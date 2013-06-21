@@ -18,18 +18,12 @@
 static FriendsViewController *sharedSingleton = nil;
 + (FriendsViewController*)getSingleton
 {
-    if (sharedSingleton !=nil)
-    {
-        NSLog(@"FriendsViewController has already been created.....");
+    if (sharedSingleton != nil)
         return sharedSingleton;
-    }
     @synchronized(self)
     {
         if (sharedSingleton == nil)
-        {
-            sharedSingleton = [[self alloc]init];
-            NSLog(@"Created a new FriendsViewController");
-        }
+            sharedSingleton = [[self alloc] init];
     }
     return sharedSingleton;
 }

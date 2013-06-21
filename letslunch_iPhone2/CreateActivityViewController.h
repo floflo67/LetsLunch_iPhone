@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Florian Reiss. All rights reserved.
 //
 
-@interface CreateActivityViewController : UIViewController
+@interface CreateActivityViewController : UIViewController <UITextFieldDelegate>
 
 @property (retain, nonatomic) IBOutlet UITextField *textFieldDescription;
 @property (retain, nonatomic) IBOutlet UISegmentedControl *segment;
@@ -16,5 +16,6 @@
 +(CreateActivityViewController*)getSingleton;
 -(void)pushSelectPlace:(id)sender;
 -(IBAction)segmentValueChanged:(id)sender;
+- (IBAction)textFieldReturn:(id)sender;
 
 @end

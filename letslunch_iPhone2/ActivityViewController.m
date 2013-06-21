@@ -18,18 +18,12 @@
 static ActivityViewController *sharedSingleton = nil;
 + (ActivityViewController*)getSingleton
 {
-    if (sharedSingleton !=nil)
-    {
-        NSLog(@"ActivityViewController has already been created.....");
+    if (sharedSingleton != nil)
         return sharedSingleton;
-    }
     @synchronized(self)
     {
         if (sharedSingleton == nil)
-        {
-            sharedSingleton = [[self alloc]init];
-            NSLog(@"Created a new ActivityViewController");
-        }
+            sharedSingleton = [[self alloc] init];
     }
     return sharedSingleton;
 }
