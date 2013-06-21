@@ -8,6 +8,7 @@
 
 #import "CreateActivityViewController.h"
 #import "AppDelegate.h"
+#import "NearbyVenuesViewController.h"
 
 @interface CreateActivityViewController ()
 
@@ -110,6 +111,16 @@ static CreateActivityViewController *sharedSingleton = nil;
         [cell.contentView addSubview:date];
          */
     }
+    else if ([section isEqualToString:@"Place"]) {
+        cell.textLabel.text = @"Optional";
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        [but addTarget:self action:@selector(pushSelectPlace:) forControlEvents:UIControlEventTouchUpInside];
+        
+        but.frame = (CGRect){270, 0, 50, 50};
+        [cell addSubview:but];        
+    }
     else if([section isEqualToString:@"Type"]) {
         UISegmentedControl *segment = [[UISegmentedControl alloc] initWithItems:@[@"Coffee", @"Lunch"]];
         segment.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.x, cell.frame.size.width - 20, cell.frame.size.height);
@@ -117,10 +128,13 @@ static CreateActivityViewController *sharedSingleton = nil;
         segment.tintColor = [UIColor orangeColor];
         [cell.contentView addSubview:segment];
     }
-    else
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
+}
+
+-(void)pushSelectPlace:(id)sender
+{
+    [self.navigationController pushViewController:[[NearbyVenuesViewController alloc] init] animated:YES];
 }
 
 /*
