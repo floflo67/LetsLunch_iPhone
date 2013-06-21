@@ -35,15 +35,6 @@ static CreateActivityViewController *sharedSingleton = nil;
     return sharedSingleton;
 }
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -52,8 +43,11 @@ static CreateActivityViewController *sharedSingleton = nil;
                                               initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                               target:((AppDelegate*)[UIApplication sharedApplication].delegate).viewController
                                               action:@selector(saveActivity:)];
+    [self.buttonPushPlace addTarget:self action:@selector(pushSelectPlace:) forControlEvents:UIControlEventTouchDown];
     
-    _objects = [[NSMutableArray alloc] initWithObjects:@"Description", @"Place", @"Time", @"Type", nil];
+    UIFont *font = [UIFont boldSystemFontOfSize:16.0f];
+    NSDictionary *attributes = [NSDictionary dictionaryWithObject:font forKey:UITextAttributeFont];
+    [self.segment setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,133 +55,26 @@ static CreateActivityViewController *sharedSingleton = nil;
     [super didReceiveMemoryWarning];
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 4;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 1;
-}
-
-- (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    NSString *sectionName;
-    sectionName = [_objects objectAtIndex:section];
-    return sectionName;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
-    //UILabel* label = [[[UILabel alloc] initWithFrame:CGRectMake(10, 1, cell.frame.size.width / 2 - 2, cell.frame.size.height - 2)] autorelease];
-    //[cell addSubview:label];
-    //label.backgroundColor = [UIColor clearColor];
-    //UITextField* text = [[[UITextField alloc] initWithFrame:CGRectMake(cell.frame.size.width / 2, 0, cell.frame.size.width / 2, cell.frame.size.height)] autorelease];
-    //[cell addSubview:text];
-    
-    //label.text = [arr objectAtIndex:indexPath.row];
-    
-    NSString *section = [_objects objectAtIndex:indexPath.section];
-    if([section isEqualToString:@"Description"]) {
-        
-    }
-    else if([section isEqualToString:@"Time"]) {
-        /*
-        UIDatePicker *date = [[UIDatePicker alloc] init];
-        date.frame = CGRectMake(cell.contentView.frame.origin.x, cell.contentView.frame.origin.x, cell.contentView.frame.size.width, cell.contentView.frame.size.height);
-        date.minuteInterval = 15;
-        date.date = [NSDate new];
-        date.datePickerMode = UIDatePickerModeTime;
-        [cell.contentView addSubview:date];
-         */
-    }
-    else if ([section isEqualToString:@"Place"]) {
-        cell.textLabel.text = @"Optional";
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
-        
-        [but addTarget:self action:@selector(pushSelectPlace:) forControlEvents:UIControlEventTouchUpInside];
-        
-        but.frame = (CGRect){0, 0, 320, 50};
-        [cell addSubview:but];        
-    }
-    else if([section isEqualToString:@"Type"]) {
-        UISegmentedControl *segment = [[UISegmentedControl alloc] initWithItems:@[@"Coffee", @"Lunch"]];
-        segment.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.x, cell.frame.size.width - 20, cell.frame.size.height);
-        segment.segmentedControlStyle = UISegmentedControlStyleBar;
-        segment.tintColor = [UIColor orangeColor];
-        [cell.contentView addSubview:segment];
-    }
-    
-    return cell;
-}
-
 -(void)pushSelectPlace:(id)sender
 {
     [self.navigationController pushViewController:[[NearbyVenuesViewController alloc] init] animated:YES];
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (IBAction)segmentValueChanged:(id)sender
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    UISegmentedControl *seg = (UISegmentedControl*)sender;
+    
+    if(seg.selectedSegmentIndex == 0)
+        self.labelBroadcast.text = @"This broadcast will expire in 180 minutes.";
+    else
+        self.labelBroadcast.text = @"This broadcast will expire at 11 p.m.";        
 }
 
+- (void)dealloc {
+    [_textFieldDescription release];
+    [_segment release];
+    [_buttonPushPlace release];
+    [_labelBroadcast release];
+    [super dealloc];
+}
 @end
