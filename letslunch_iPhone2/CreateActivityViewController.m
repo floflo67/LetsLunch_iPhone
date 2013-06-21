@@ -47,7 +47,7 @@ static CreateActivityViewController *sharedSingleton = nil;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = @"Create Activity";
+    self.navigationItem.title = @"Create";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
                                               initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                               target:((AppDelegate*)[UIApplication sharedApplication].delegate).viewController
@@ -118,7 +118,7 @@ static CreateActivityViewController *sharedSingleton = nil;
         
         [but addTarget:self action:@selector(pushSelectPlace:) forControlEvents:UIControlEventTouchUpInside];
         
-        but.frame = (CGRect){270, 0, 50, 50};
+        but.frame = (CGRect){0, 0, 320, 50};
         [cell addSubview:but];        
     }
     else if([section isEqualToString:@"Type"]) {

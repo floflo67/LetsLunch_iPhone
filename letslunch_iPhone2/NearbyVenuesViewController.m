@@ -25,7 +25,7 @@
     self.section = @"food"; // default
     self.query = nil;
     self.radius = @(500); // 500m
-    self.navigationItem.title = @"Choose place";
+    self.navigationItem.title = @"Place";
     
     /*
      To get current location
