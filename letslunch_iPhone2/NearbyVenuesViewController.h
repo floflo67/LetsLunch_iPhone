@@ -19,7 +19,9 @@
 
 @property (strong, nonatomic) FSVenue *selected;
 @property (strong, nonatomic) NSMutableArray *nearbyVenues;
+
 @property (strong, nonatomic) NSString *query;
+@property (strong, nonatomic) NSNumber *radius;
 @property (nonatomic) BOOL isSearching;
 
 @property (strong, nonatomic) UITextField *textFieldSearch;

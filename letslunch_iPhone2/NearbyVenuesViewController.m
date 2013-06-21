@@ -23,6 +23,7 @@
     
     self.isSearching = NO;
     self.query = @"food";
+    self.radius = @(500);
     self.navigationItem.title = @"Choose place";
     _locationManager = [[CLLocationManager alloc]init];
     _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
@@ -61,6 +62,7 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     self.query = textField.text;
+    self.radius = @(10000);
     [self search:nil];
     [self getVenuesForLocation:_locationManager.location];
     self.segment.selectedSegmentIndex = UISegmentedControlNoSegment;
@@ -81,15 +83,22 @@
     [Foursquare2 searchVenuesNearByLatitude:@(location.coordinate.latitude)
 								  longitude:@(location.coordinate.longitude)
 									  query:self.query
-									 intent:intentCheckin
-                                     radius:@(500)
+									 intent:intentBrowse
+                                     radius:self.radius
 								   callback:^(BOOL success, id result) {
 									   if (success) {
 										   NSDictionary *dic = result;
 										   NSArray* venues = [dic valueForKeyPath:@"response.venues"];
                                            FSConverter *converter = [[FSConverter alloc] init];
                                            self.nearbyVenues = [converter convertToObjects:venues];
-                                           [self.tableView insertSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+                                           if([self.nearbyVenues count] > 0)
+                                               [self.tableView insertSections:[NSIndexSet indexSetWithIndex:0]
+                                                             withRowAnimation:UITableViewRowAnimationNone];
+                                           else {
+                                               UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No place found" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                               [view show];
+                                               [view release];
+                                           }
 									   }
 								   }];
     [self.tableView reloadData];
@@ -97,6 +106,7 @@
 - (IBAction)valueChanged:(id)sender
 {
     UISegmentedControl *seg = (UISegmentedControl*)sender;
+    self.radius = @(500);
     switch (seg.selectedSegmentIndex) {
         case 0:
             self.query = @"food";
@@ -163,8 +173,6 @@
     }
     return cell;
 }
-
-
 
 #pragma mark - Table view delegate
 
