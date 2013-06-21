@@ -176,31 +176,18 @@
 
 #pragma mark - Table view delegate
 
-/*
+
 -(void)userDidSelectVenue{
-    if ([Foursquare2 isAuthorized]) {
-        [self checkin];
-	}else{
-        [Foursquare2 authorizeWithCallback:^(BOOL success, id result) {
-            if (success) {
-				[Foursquare2  getDetailForUser:@"self"
-									  callback:^(BOOL success, id result){
-										  if (success) {
-                                              [self addRightButton];
-											  [self checkin];
-										  }
-									  }];
-			}
-        }];
-    }
+    NSLog(@"%@", [self.selected name]);
+    [self.navigationController popViewControllerAnimated:YES];
 }
- */
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     self.selected = self.nearbyVenues[indexPath.row];
-    //[self userDidSelectVenue];
+    [self userDidSelectVenue];
 }
 
 - (void)viewDidUnload
