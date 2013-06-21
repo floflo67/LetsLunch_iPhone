@@ -22,14 +22,21 @@
     [super viewDidLoad];
     
     self.isSearching = NO;
-    self.query = @"food";
-    self.radius = @(500);
+    self.query = @"food"; // default
+    self.radius = @(500); // 500m
     self.navigationItem.title = @"Choose place";
+    
+    /*
+     To get current location
+     */
     _locationManager = [[CLLocationManager alloc]init];
     _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     _locationManager.delegate = self;
     [_locationManager startUpdatingLocation];
     
+    /*
+     Add rightButton on navigationBar to search
+     */
     UIBarButtonItem *search = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(search:)];
     search.style = UIBarButtonItemStylePlain;
     self.navigationItem.rightBarButtonItem = search;
@@ -39,12 +46,20 @@
 - (void)search:(id)sender
 {
     int y = 40;
+    /*
+     Removes textField
+     Moves segmentControl and TableView back up
+     */
     if(self.isSearching) {
         self.isSearching = NO;
         self.segment.frame = CGRectMake(0, self.segment.frame.origin.y - y, self.segment.frame.size.width, self.segment.frame.size.height);
         self.tableView.frame = CGRectMake(0, self.tableView.frame.origin.y - y, self.tableView.frame.size.width, self.tableView.frame.size.height);
         [self.textFieldSearch removeFromSuperview];
     }
+    /*
+     Adds textField
+     Moves segmentControl and TableView down
+     */
     else {
         self.isSearching = YES;
         self.segment.frame = CGRectMake(0, self.segment.frame.origin.y + y, self.segment.frame.size.width, self.segment.frame.size.height);
@@ -59,6 +74,12 @@
     }
 }
 
+/*
+ When user presses return key (search)
+ Updates view with search
+ Calls search to remove textField and move segmentControl and TableView up
+ Radius bigger to show more results (10km)
+ */
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     self.query = textField.text;
@@ -72,7 +93,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    
+    [super viewWillAppear:animated];
 }
 
 -(void)getVenuesForLocation:(CLLocation*)location
@@ -91,11 +112,18 @@
 										   NSArray* venues = [dic valueForKeyPath:@"response.venues"];
                                            FSConverter *converter = [[FSConverter alloc] init];
                                            self.nearbyVenues = [converter convertToObjects:venues];
+                                           /*
+                                            self.nearby count == 0 ==> no result
+                                            */
                                            if([self.nearbyVenues count] > 0)
                                                [self.tableView insertSections:[NSIndexSet indexSetWithIndex:0]
                                                              withRowAnimation:UITableViewRowAnimationNone];
                                            else {
-                                               UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No place found" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                               UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                                              message:@"No place found"
+                                                                                             delegate:nil
+                                                                                    cancelButtonTitle:@"OK"
+                                                                                    otherButtonTitles:nil];
                                                [view show];
                                                [view release];
                                            }
@@ -103,6 +131,11 @@
 								   }];
     [self.tableView reloadData];
 }
+
+/*
+ Depending on segment
+ Radius reset to 500m
+ */
 - (IBAction)valueChanged:(id)sender
 {
     UISegmentedControl *seg = (UISegmentedControl*)sender;
@@ -176,7 +209,9 @@
 
 #pragma mark - Table view delegate
 
-
+/*
+ Goes back to createActivity
+ */
 -(void)userDidSelectVenue{
     NSLog(@"%@", [self.selected name]);
     [self.navigationController popViewControllerAnimated:YES];
@@ -192,11 +227,12 @@
 
 - (void)viewDidUnload
 {
-    [self.segment release];
     [super viewDidUnload];
 }
 
 - (void)dealloc {
+    [self.radius release];
+    [self.tableView release];
     [self.textFieldSearch release];
     [self.nearbyVenues release];
     [self.selected release];
