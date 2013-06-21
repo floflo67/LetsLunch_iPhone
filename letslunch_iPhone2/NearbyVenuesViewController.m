@@ -20,16 +20,46 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.isSearching = NO;
     self.query = @"food";
     self.navigationItem.title = @"Choose place";
     _locationManager = [[CLLocationManager alloc]init];
     _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     _locationManager.delegate = self;
     [_locationManager startUpdatingLocation];
+    
+    UIBarButtonItem *search = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(search:)];
+    search.style = UIBarButtonItemStylePlain;
+    self.navigationItem.rightBarButtonItem = search;
+    [search release];
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    self.navigationItem.rightBarButtonItem = nil;
+- (void)search:(id)sender
+{
+    int y = 40;
+    if(self.isSearching) {
+        self.isSearching = NO;
+        self.segment.frame = CGRectMake(0, self.segment.frame.origin.y - y, self.segment.frame.size.width, self.segment.frame.size.height);
+        self.tableView.frame = CGRectMake(0, self.tableView.frame.origin.y - y, self.tableView.frame.size.width, self.tableView.frame.size.height);
+        [self.textFieldSearch removeFromSuperview];
+    }
+    else {
+        self.isSearching = YES;
+        self.segment.frame = CGRectMake(0, self.segment.frame.origin.y + y, self.segment.frame.size.width, self.segment.frame.size.height);
+        self.tableView.frame = CGRectMake(0, self.tableView.frame.origin.y + y, self.tableView.frame.size.width, self.tableView.frame.size.height);
+        self.textFieldSearch = [[UITextField alloc] initWithFrame:CGRectMake(5, 5, self.view.frame.size.width - 10, y - 10)];
+        self.textFieldSearch.placeholder = @"Tape search";
+        [self.textFieldSearch setBorderStyle:UITextBorderStyleRoundedRect];
+        self.textFieldSearch.returnKeyType = UIReturnKeySearch;
+        [self.view addSubview:self.textFieldSearch];
+        [self.textFieldSearch release];
+    }
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    
 }
 
 -(void)getVenuesForLocation:(CLLocation*)location
@@ -65,9 +95,6 @@
             break;
         case 2:
             self.query = @"restaurant";
-            break;
-        case 3:
-            self.query = @"offices";
             break;
         default:
             self.query = @"food";
@@ -164,7 +191,11 @@
 }
 
 - (void)dealloc {
-    [_segment release];
+    [self.textFieldSearch release];
+    [self.nearbyVenues release];
+    [self.selected release];
+    [self.query release];
+    [self.segment release];
     [super dealloc];
 }
 @end

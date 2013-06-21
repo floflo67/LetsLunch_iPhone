@@ -20,7 +20,9 @@
 @property (strong, nonatomic) FSVenue *selected;
 @property (strong, nonatomic) NSMutableArray *nearbyVenues;
 @property (strong, nonatomic) NSString *query;
+@property (nonatomic) BOOL isSearching;
 
+@property (strong, nonatomic) UITextField *textFieldSearch;
 @property (retain, nonatomic) IBOutlet UISegmentedControl *segment;
 
 -(IBAction)valueChanged:(id)sender;
