@@ -49,12 +49,23 @@
         self.segment.frame = CGRectMake(0, self.segment.frame.origin.y + y, self.segment.frame.size.width, self.segment.frame.size.height);
         self.tableView.frame = CGRectMake(0, self.tableView.frame.origin.y + y, self.tableView.frame.size.width, self.tableView.frame.size.height);
         self.textFieldSearch = [[UITextField alloc] initWithFrame:CGRectMake(5, 5, self.view.frame.size.width - 10, y - 10)];
+        self.textFieldSearch.delegate = self;
         self.textFieldSearch.placeholder = @"Tape search";
         [self.textFieldSearch setBorderStyle:UITextBorderStyleRoundedRect];
         self.textFieldSearch.returnKeyType = UIReturnKeySearch;
         [self.view addSubview:self.textFieldSearch];
         [self.textFieldSearch release];
     }
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    self.query = textField.text;
+    [self search:nil];
+    [self getVenuesForLocation:_locationManager.location];
+    self.segment.selectedSegmentIndex = UISegmentedControlNoSegment;
+    
+    return YES;
 }
 
 -(void)viewWillAppear:(BOOL)animated

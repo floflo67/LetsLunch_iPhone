@@ -11,7 +11,7 @@
 #import <MapKit/MapKit.h>
 
 @class FSVenue;
-@interface NearbyVenuesViewController :UIViewController<CLLocationManagerDelegate>{
+@interface NearbyVenuesViewController :UIViewController<CLLocationManagerDelegate, UITextFieldDelegate>{
     CLLocationManager *_locationManager;
 }
 
@@ -26,5 +26,5 @@
 @property (retain, nonatomic) IBOutlet UISegmentedControl *segment;
 
 -(IBAction)valueChanged:(id)sender;
-
+-(void)search:(id)sender;
 @end
