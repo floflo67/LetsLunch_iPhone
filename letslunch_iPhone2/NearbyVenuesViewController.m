@@ -156,7 +156,7 @@
             self.section = @"coffee";
             break;
         case 2:
-            self.section = @"shops";
+            self.section = @"specials";
             break;
         default:
             self.section = @"food";
