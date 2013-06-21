@@ -51,6 +51,8 @@ static CreateActivityViewController *sharedSingleton = nil;
                                               initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                               target:((AppDelegate*)[UIApplication sharedApplication].delegate).viewController
                                               action:@selector(saveActivity:)];
+    
+    _objects = [[NSMutableArray alloc] initWithObjects:@"Description", @"Place", @"Time", @"Type", nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,18 +64,24 @@ static CreateActivityViewController *sharedSingleton = nil;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 1;
+}
+
+- (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *sectionName;
+    sectionName = [_objects objectAtIndex:section];
+    return sectionName;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    NSArray* arr = [[NSArray alloc] initWithObjects:@"Row1", @"Row2", @"Row3", @"Row4",nil];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
@@ -88,7 +96,29 @@ static CreateActivityViewController *sharedSingleton = nil;
     
     //label.text = [arr objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = [arr objectAtIndex:indexPath.row];
+    NSString *section = [_objects objectAtIndex:indexPath.section];
+    if([section isEqualToString:@"Description"]) {
+        
+    }
+    else if([section isEqualToString:@"Time"]) {
+        /*
+        UIDatePicker *date = [[UIDatePicker alloc] init];
+        date.frame = CGRectMake(cell.contentView.frame.origin.x, cell.contentView.frame.origin.x, cell.contentView.frame.size.width, cell.contentView.frame.size.height);
+        date.minuteInterval = 15;
+        date.date = [NSDate new];
+        date.datePickerMode = UIDatePickerModeTime;
+        [cell.contentView addSubview:date];
+         */
+    }
+    else if([section isEqualToString:@"Type"]) {
+        UISegmentedControl *segment = [[UISegmentedControl alloc] initWithItems:@[@"Coffee", @"Lunch"]];
+        segment.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.x, cell.frame.size.width - 20, cell.frame.size.height);
+        segment.segmentedControlStyle = UISegmentedControlStyleBar;
+        segment.tintColor = [UIColor orangeColor];
+        [cell.contentView addSubview:segment];
+    }
+    else
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }
