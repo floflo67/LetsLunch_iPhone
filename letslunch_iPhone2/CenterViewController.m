@@ -109,43 +109,6 @@
 - (void)pushCreateActivityViewController:(id)sender
 {
     [self.navigationController pushViewController:[CreateActivityViewController getSingleton] animated:YES];
-    /*
-    QRootElement *root = [[QRootElement alloc] init];
-    root.title = @"Create Activity";
-    root.grouped = YES;
-    QSection *section = [[QSection alloc] init];
-    _description = [[QEntryElement alloc] initWithTitle:@"Description" Value:@"" Placeholder:@"Enter description"];
-    [locationManager stopUpdatingLocation];
-    _date = [[QDateTimeInlineElement alloc] initWithTitle:@"Time today" date:[NSDate new] andMode:UIDatePickerModeTime];
-    _date.minuteInterval = 15;
-    _radio = [[QRadioSection alloc] initWithItems:[NSArray arrayWithObjects:@"Coffee", @"Lunch", nil] selected:0 title:@"Type"];
-    
-    [root addSection:section];
-    [section addElement:_description];
-    [section addElement:_date];
-    [root addSection:_radio];
-    
-    UIViewController *navigation = [QuickDialogController controllerForRoot:root];
-    [self.navigationController pushViewController:navigation animated:YES];
-    navigation.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(saveActivity:)];*/
-}
-
-- (void)saveActivity:(id)sender
-{
-    [self.navigationController popToRootViewControllerAnimated:YES];
-    NSLog(@"Description: %@", _description.textValue);
-    
-    /*
-     Convert _date.dateValue which is UTC/GMT to local time
-     */
-    NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
-    [dateFormatter setDateFormat:@"MM/dd/YYYY H:mm:ss Z"]; // format US: Month/Day/Year Hours:Minutes:Seconds (0 < Hour <= 12)
-    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:[[NSTimeZone localTimeZone] abbreviation]]];    
-    NSLog(@"%@", [dateFormatter stringFromDate:_date.dateValue]);
-    
-    NSLog(@"Radio: %@", [_radio.selectedItems lastObject]);
-    NSLog(@"Save");
 }
 
 # pragma friends

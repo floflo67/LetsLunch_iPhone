@@ -35,7 +35,7 @@ static CreateActivityViewController *sharedSingleton = nil;
     self.navigationItem.title = @"Create";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
                                               initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                              target:((AppDelegate*)[UIApplication sharedApplication].delegate).viewController
+                                              target:self
                                               action:@selector(saveActivity:)];
     
     /*
@@ -63,7 +63,25 @@ static CreateActivityViewController *sharedSingleton = nil;
     if(seg.selectedSegmentIndex == 0)
         self.labelBroadcast.text = @"This broadcast will expire in 180 minutes.";
     else
-        self.labelBroadcast.text = @"This broadcast will expire at 11 p.m.";        
+        self.labelBroadcast.text = @"This broadcast will expire at 11:00 P.M.";        
+}
+
+- (void)saveActivity:(id)sender
+{
+    NSLog(@"Description: %@", self.textFieldDescription.text);
+    
+    NSString *type;
+    if(self.segment.selectedSegmentIndex == 0)
+        type = @"Coffee";
+    else if (self.segment.selectedSegmentIndex == 1)
+        type = @"Lunch";
+    else
+        type = @"Coffee";
+    
+    NSLog(@"Type: %@", type);
+    NSLog(@"Place: %@", [self.venue name]);
+    NSLog(@"Save");
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (IBAction)textFieldReturn:(id)sender

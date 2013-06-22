@@ -10,6 +10,7 @@
 #import "Foursquare2.h"
 #import "FSVenue.h"
 #import "FSConverter.h"
+#import "CreateActivityViewController.h"
 
 @interface NearbyVenuesViewController ()
 
@@ -222,8 +223,9 @@
 /*
  Goes back to createActivity
  */
--(void)userDidSelectVenue{
-    NSLog(@"%@", [self.selected name]);
+-(void)userDidSelectVenue
+{
+    [CreateActivityViewController getSingleton].venue = self.selected;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -251,4 +253,5 @@
     [self.segment release];
     [super dealloc];
 }
+
 @end

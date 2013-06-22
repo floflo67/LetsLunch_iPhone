@@ -6,7 +6,11 @@
 //  Copyright (c) 2013 Florian Reiss. All rights reserved.
 //
 
+#import "FSVenue.h"
+
 @interface CreateActivityViewController : UIViewController <UITextFieldDelegate>
+
+@property (retain, nonatomic) FSVenue *venue;
 
 @property (retain, nonatomic) IBOutlet UITextField *textFieldDescription;
 @property (retain, nonatomic) IBOutlet UISegmentedControl *segment;
@@ -17,5 +21,6 @@
 -(IBAction)pushSelectPlace:(id)sender;
 -(IBAction)segmentValueChanged:(id)sender;
 -(IBAction)textFieldReturn:(id)sender;
+
 
 @end
