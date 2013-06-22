@@ -14,8 +14,8 @@
 @property (retain, nonatomic) IBOutlet UILabel *labelBroadcast;
 
 +(CreateActivityViewController*)getSingleton;
--(void)pushSelectPlace:(id)sender;
+-(IBAction)pushSelectPlace:(id)sender;
 -(IBAction)segmentValueChanged:(id)sender;
-- (IBAction)textFieldReturn:(id)sender;
+-(IBAction)textFieldReturn:(id)sender;
 
 @end

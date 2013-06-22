@@ -37,7 +37,10 @@ static CreateActivityViewController *sharedSingleton = nil;
                                               initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                               target:((AppDelegate*)[UIApplication sharedApplication].delegate).viewController
                                               action:@selector(saveActivity:)];
-    [self.buttonPushPlace addTarget:self action:@selector(pushSelectPlace:) forControlEvents:UIControlEventTouchDown];
+    
+    /*
+     Change font and size of segmentControl's titles
+     */
     UIFont *font = [UIFont boldSystemFontOfSize:16.0f];
     NSDictionary *attributes = [NSDictionary dictionaryWithObject:font forKey:UITextAttributeFont];
     [self.segment setTitleTextAttributes:attributes forState:UIControlStateNormal];
