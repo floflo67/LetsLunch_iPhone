@@ -44,7 +44,7 @@ static CreateActivityViewController *sharedSingleton = nil;
     [super viewDidLoad];
     self.navigationItem.title = @"Create";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
-                                              initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                              initWithBarButtonSystemItem:UIBarButtonSystemItemSave
                                               target:self
                                               action:@selector(saveActivity:)];
     
@@ -181,6 +181,32 @@ static CreateActivityViewController *sharedSingleton = nil;
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     return YES;
+}
+
+@end
+
+
+
+#pragma custom TextField
+
+@interface MYTextField : UITextField
+
+@end
+
+@implementation MYTextField
+
+- (CGRect)textRectForBounds:(CGRect)bounds
+{
+    int margin = 10;
+    CGRect inset = CGRectMake(bounds.origin.x + margin, bounds.origin.y + margin, bounds.size.width - margin, bounds.size.height - margin);
+    return inset;
+}
+
+- (CGRect)editingRectForBounds:(CGRect)bounds
+{
+    int margin = 10;
+    CGRect inset = CGRectMake(bounds.origin.x + margin, bounds.origin.y + margin, bounds.size.width - margin, bounds.size.height - margin);
+    return inset;
 }
 
 @end
