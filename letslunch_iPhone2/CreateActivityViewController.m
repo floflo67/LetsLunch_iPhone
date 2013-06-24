@@ -134,6 +134,22 @@ static CreateActivityViewController *sharedSingleton = nil;
     return region;
 }
 
+- (void)resetView
+{
+    int height = 150;
+    
+    if(self.map) {
+        [self.map removeAnnotations:[NSArray arrayWithObject:self.venue]];
+        [self.map removeFromSuperview];
+        self.map = nil;
+        
+        self.textFieldDescription.text = @"";
+        self.venue = nil;
+        self.viewContent.frame = CGRectMake(0, self.viewContent.frame.origin.y - height + 25, 320, self.viewContent.frame.size.height);
+        [self.tableView reloadData];
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -174,9 +190,10 @@ static CreateActivityViewController *sharedSingleton = nil;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-     NearbyVenuesViewController *detailViewController = [[NearbyVenuesViewController alloc] init];
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
+    NearbyVenuesViewController *detailViewController = [[NearbyVenuesViewController alloc] init];
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    [self resetView];
+    [detailViewController release];
 }
 
 #pragma segment action
@@ -188,7 +205,7 @@ static CreateActivityViewController *sharedSingleton = nil;
     if(seg.selectedSegmentIndex == 0)
         self.labelBroadcast.text = @"This broadcast will expire in 180 minutes.";
     else
-        self.labelBroadcast.text = @"This broadcast will expire at 11:00 P.M.";        
+        self.labelBroadcast.text = @"This broadcast will expire at 11:00 P.M.";
 }
 
 #pragma button click
