@@ -129,6 +129,7 @@ static ActivityViewController *sharedSingleton = nil;
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     NSDictionary *dictionary = [_objects objectAtIndex:indexPath.section];
     NSArray *array = [dictionary objectForKey:@"Activities"];
