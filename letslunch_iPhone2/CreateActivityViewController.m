@@ -16,6 +16,8 @@
 
 @implementation CreateActivityViewController
 
+#pragma managing singleton
+
 static CreateActivityViewController *sharedSingleton = nil;
 + (CreateActivityViewController*)getSingleton
 {
@@ -27,6 +29,12 @@ static CreateActivityViewController *sharedSingleton = nil;
             sharedSingleton = [[self alloc] init];
     }
     return sharedSingleton;
+}
+
++ (void)suppressSingleton
+{
+    if (sharedSingleton != nil)
+        sharedSingleton = nil;
 }
 
 #pragma view lifecycle
@@ -71,7 +79,6 @@ static CreateActivityViewController *sharedSingleton = nil;
      Sets the MKMapView
      No scroll, no zoom
      */
-    
     int y = 110;
     int height = 150;
     
@@ -81,9 +88,17 @@ static CreateActivityViewController *sharedSingleton = nil;
     self.map.region = [self setupMapForLocation:venue.location];
     [self.map addAnnotations:[NSArray arrayWithObject:venue]];
     
-    self.viewContent.frame = CGRectMake(0, self.viewContent.frame.origin.y + height - 10, 320, self.viewContent.frame.size.height - height + 10);
+    self.viewContent.frame = CGRectMake(0, self.viewContent.frame.origin.y + height - 25, 320, self.viewContent.frame.size.height);
     [self.view addSubview:self.map];
     [self.view sendSubviewToBack:self.map];
+    
+    /*
+     Adding comment in description if no text
+     Comment = "Meet me at [name]!"
+     */
+    if(self.textFieldDescription.text.length == 0) {
+        self.textFieldDescription.text = [NSString stringWithFormat:@"Meet me at %@!", [self.venue name]];
+    }
 }
 
 - (MKCoordinateRegion)setupMapForLocation:(FSLocation*)newLocation
@@ -146,6 +161,12 @@ static CreateActivityViewController *sharedSingleton = nil;
     NSLog(@"Place: %@", [self.venue name]);
     NSLog(@"Save");
     [self.navigationController popToRootViewControllerAnimated:YES];
+    [CreateActivityViewController suppressSingleton];
+}
+
+- (void)clearBroadcast
+{
+    
 }
 
 #pragma UITextFieldDelegate
