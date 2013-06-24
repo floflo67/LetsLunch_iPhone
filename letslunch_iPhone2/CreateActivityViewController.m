@@ -81,13 +81,15 @@ static CreateActivityViewController *sharedSingleton = nil;
      */
     int y = 110;
     int height = 150;
-    
     if(!self.map)
         self.map = [[MKMapView alloc] initWithFrame:CGRectMake(0, y, self.view.frame.size.width, height)];
     self.map.zoomEnabled = self.map.scrollEnabled = NO;
     self.map.region = [self setupMapForLocation:venue.location];
     [self.map addAnnotations:[NSArray arrayWithObject:venue]];
     
+    /*
+     Moves view content
+     */
     self.viewContent.frame = CGRectMake(0, self.viewContent.frame.origin.y + height - 25, 320, self.viewContent.frame.size.height);
     [self.view addSubview:self.map];
     [self.view sendSubviewToBack:self.map];
