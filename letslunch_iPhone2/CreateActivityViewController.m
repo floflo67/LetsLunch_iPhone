@@ -29,6 +29,8 @@ static CreateActivityViewController *sharedSingleton = nil;
     return sharedSingleton;
 }
 
+#pragma view lifecycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -45,6 +47,23 @@ static CreateActivityViewController *sharedSingleton = nil;
     NSDictionary *attributes = [NSDictionary dictionaryWithObject:font forKey:UITextAttributeFont];
     [self.segment setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
+- (void)dealloc {
+    [_map release];
+    [_textFieldDescription release];
+    [_segment release];
+    [_buttonPushPlace release];
+    [_labelBroadcast release];
+    [_viewContent release];
+    [super dealloc];
+}
+
+#pragma mapView
 
 - (void)addMap:(FSVenue*)venue
 {
@@ -90,15 +109,14 @@ static CreateActivityViewController *sharedSingleton = nil;
     return region;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
+#pragma push select place
 
 -(void)pushSelectPlace:(id)sender
 {
     [self.navigationController pushViewController:[[NearbyVenuesViewController alloc] init] animated:YES];
 }
+
+#pragma segment action
 
 - (IBAction)segmentValueChanged:(id)sender
 {
@@ -109,6 +127,8 @@ static CreateActivityViewController *sharedSingleton = nil;
     else
         self.labelBroadcast.text = @"This broadcast will expire at 11:00 P.M.";        
 }
+
+#pragma button click
 
 - (void)saveActivity:(id)sender
 {
@@ -128,6 +148,8 @@ static CreateActivityViewController *sharedSingleton = nil;
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
+#pragma UITextFieldDelegate
+
 - (IBAction)textFieldReturn:(id)sender
 {
     [self textFieldShouldReturn:sender];
@@ -138,13 +160,4 @@ static CreateActivityViewController *sharedSingleton = nil;
     return YES;
 }
 
-- (void)dealloc {
-    [_map release];
-    [_textFieldDescription release];
-    [_segment release];
-    [_buttonPushPlace release];
-    [_labelBroadcast release];
-    [_viewContent release];
-    [super dealloc];
-}
 @end
