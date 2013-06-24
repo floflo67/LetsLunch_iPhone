@@ -48,23 +48,43 @@ static CreateActivityViewController *sharedSingleton = nil;
 
 - (void)addMap:(FSVenue*)venue
 {
-    self.map = [[MKMapView alloc] initWithFrame:CGRectMake(0, 150, self.view.frame.size.width, 150)];
-    self.map.zoomEnabled = YES;
-    self.map.scrollEnabled = NO;
-    self.map.region = [self setupMapForLocatoion:venue.location];
+    /*
+     Sets the MKMapView
+     No scroll, no zoom
+     */
+    
+    int y = 110;
+    int height = 150;
+    
+    if(!self.map)
+        self.map = [[MKMapView alloc] initWithFrame:CGRectMake(0, y, self.view.frame.size.width, height)];
+    self.map.zoomEnabled = self.map.scrollEnabled = NO;
+    self.map.region = [self setupMapForLocation:venue.location];
     [self.map addAnnotations:[NSArray arrayWithObject:venue]];
     
+    self.viewContent.frame = CGRectMake(0, self.viewContent.frame.origin.y + height - 10, 320, self.viewContent.frame.size.height - height + 10);
     [self.view addSubview:self.map];
+    [self.view sendSubviewToBack:self.map];
 }
 
--(MKCoordinateRegion)setupMapForLocatoion:(FSLocation*)newLocation{
-    MKCoordinateRegion region;
+- (MKCoordinateRegion)setupMapForLocation:(FSLocation*)newLocation
+{
+    /*
+     Define size of zoom
+     */
     MKCoordinateSpan span;
     span.latitudeDelta = 0.002;
     span.longitudeDelta = 0.002;
+    
+    /*
+     Define origin
+     Center = location of venue
+     */
     CLLocationCoordinate2D location;
     location.latitude = newLocation.coordinate.latitude;
     location.longitude = newLocation.coordinate.longitude;
+    
+    MKCoordinateRegion region;
     region.span = span;
     region.center = location;
     return region;
@@ -119,11 +139,12 @@ static CreateActivityViewController *sharedSingleton = nil;
 }
 
 - (void)dealloc {
-    [self.map release];
+    [_map release];
     [_textFieldDescription release];
     [_segment release];
     [_buttonPushPlace release];
     [_labelBroadcast release];
+    [_viewContent release];
     [super dealloc];
 }
 @end

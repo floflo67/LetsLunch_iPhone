@@ -16,6 +16,7 @@
 @property (retain, nonatomic) IBOutlet UISegmentedControl *segment;
 @property (retain, nonatomic) IBOutlet UIButton *buttonPushPlace;
 @property (retain, nonatomic) IBOutlet UILabel *labelBroadcast;
+@property (retain, nonatomic) IBOutlet UIView *viewContent;
 
 @property (retain, nonatomic) MKMapView *map;
 
