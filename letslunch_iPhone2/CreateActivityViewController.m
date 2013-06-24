@@ -46,6 +46,30 @@ static CreateActivityViewController *sharedSingleton = nil;
     [self.segment setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
 
+- (void)addMap:(FSVenue*)venue
+{
+    self.map = [[MKMapView alloc] initWithFrame:CGRectMake(0, 150, self.view.frame.size.width, 150)];
+    self.map.zoomEnabled = YES;
+    self.map.scrollEnabled = NO;
+    self.map.region = [self setupMapForLocatoion:venue.location];
+    [self.map addAnnotations:[NSArray arrayWithObject:venue]];
+    
+    [self.view addSubview:self.map];
+}
+
+-(MKCoordinateRegion)setupMapForLocatoion:(FSLocation*)newLocation{
+    MKCoordinateRegion region;
+    MKCoordinateSpan span;
+    span.latitudeDelta = 0.002;
+    span.longitudeDelta = 0.002;
+    CLLocationCoordinate2D location;
+    location.latitude = newLocation.coordinate.latitude;
+    location.longitude = newLocation.coordinate.longitude;
+    region.span = span;
+    region.center = location;
+    return region;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -70,15 +94,15 @@ static CreateActivityViewController *sharedSingleton = nil;
 {
     NSLog(@"Description: %@", self.textFieldDescription.text);
     
-    NSString *type;
+    NSString *time;
     if(self.segment.selectedSegmentIndex == 0)
-        type = @"Coffee";
+        time = @" Now";
     else if (self.segment.selectedSegmentIndex == 1)
-        type = @"Lunch";
+        time = @"Evening";
     else
-        type = @"Coffee";
+        time = @"Now";
     
-    NSLog(@"Type: %@", type);
+    NSLog(@"Type: %@", time);
     NSLog(@"Place: %@", [self.venue name]);
     NSLog(@"Save");
     [self.navigationController popToRootViewControllerAnimated:YES];
@@ -95,6 +119,7 @@ static CreateActivityViewController *sharedSingleton = nil;
 }
 
 - (void)dealloc {
+    [self.map release];
     [_textFieldDescription release];
     [_segment release];
     [_buttonPushPlace release];

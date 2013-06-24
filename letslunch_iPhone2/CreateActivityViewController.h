@@ -17,10 +17,13 @@
 @property (retain, nonatomic) IBOutlet UIButton *buttonPushPlace;
 @property (retain, nonatomic) IBOutlet UILabel *labelBroadcast;
 
+@property (retain, nonatomic) MKMapView *map;
+
 +(CreateActivityViewController*)getSingleton;
 -(IBAction)pushSelectPlace:(id)sender;
 -(IBAction)segmentValueChanged:(id)sender;
 -(IBAction)textFieldReturn:(id)sender;
 
+-(void)addMap:(FSVenue*)venue;
 
 @end

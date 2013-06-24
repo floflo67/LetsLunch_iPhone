@@ -226,6 +226,7 @@
 -(void)userDidSelectVenue
 {
     [CreateActivityViewController getSingleton].venue = self.selected;
+    [[CreateActivityViewController getSingleton] addMap:self.selected];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
