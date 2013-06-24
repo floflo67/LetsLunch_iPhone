@@ -14,14 +14,13 @@
 
 @property (retain, nonatomic) IBOutlet UITextField *textFieldDescription;
 @property (retain, nonatomic) IBOutlet UISegmentedControl *segment;
-@property (retain, nonatomic) IBOutlet UIButton *buttonPushPlace;
 @property (retain, nonatomic) IBOutlet UILabel *labelBroadcast;
 @property (retain, nonatomic) IBOutlet UIView *viewContent;
+@property (retain, nonatomic) IBOutlet UITableView *tableView;
 
 @property (retain, nonatomic) MKMapView *map;
 
 +(CreateActivityViewController*)getSingleton;
--(IBAction)pushSelectPlace:(id)sender;
 -(IBAction)segmentValueChanged:(id)sender;
 -(IBAction)textFieldReturn:(id)sender;
 

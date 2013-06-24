@@ -54,6 +54,12 @@ static CreateActivityViewController *sharedSingleton = nil;
     UIFont *font = [UIFont boldSystemFontOfSize:16.0f];
     NSDictionary *attributes = [NSDictionary dictionaryWithObject:font forKey:UITextAttributeFont];
     [self.segment setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    
+    /*
+     Clears background of table view
+     */
+    self.tableView.backgroundView = nil;
+    self.tableView.backgroundColor = [UIColor clearColor];
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,9 +71,9 @@ static CreateActivityViewController *sharedSingleton = nil;
     [_map release];
     [_textFieldDescription release];
     [_segment release];
-    [_buttonPushPlace release];
     [_labelBroadcast release];
     [_viewContent release];
+    [_tableView release];
     [super dealloc];
 }
 
@@ -101,6 +107,8 @@ static CreateActivityViewController *sharedSingleton = nil;
     if(self.textFieldDescription.text.length == 0) {
         self.textFieldDescription.text = [NSString stringWithFormat:@"Meet me at %@!", [self.venue name]];
     }
+    
+    [self.tableView reloadData];
 }
 
 - (MKCoordinateRegion)setupMapForLocation:(FSLocation*)newLocation
@@ -126,11 +134,49 @@ static CreateActivityViewController *sharedSingleton = nil;
     return region;
 }
 
-#pragma push select place
+#pragma mark - Table view data source
 
--(void)pushSelectPlace:(id)sender
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    [self.navigationController pushViewController:[[NearbyVenuesViewController alloc] init] animated:YES];
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
+    }
+    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.backgroundColor = [UIColor clearColor];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    if(self.venue == nil) {
+        cell.textLabel.text = @"Suggest a place";
+        cell.detailTextLabel.text = @"optional";
+    }
+    else {
+        cell.textLabel.text = [self.venue name];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@",[[self.venue location] address]];
+    }
+    return cell;
+}
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+     NearbyVenuesViewController *detailViewController = [[NearbyVenuesViewController alloc] init];
+     [self.navigationController pushViewController:detailViewController animated:YES];
+     [detailViewController release];
 }
 
 #pragma segment action
