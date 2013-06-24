@@ -42,6 +42,8 @@
     return YES;
 }
 
+#pragma custom functions
+
 + (UIColor*)colorWithHexString:(NSString*)hex
 {
     NSString *cString = [[hex stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];

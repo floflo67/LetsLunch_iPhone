@@ -32,7 +32,6 @@
 		548D36D9176B821B00154C36 /* ButtonMenuLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 548D36D7176B821B00154C36 /* ButtonMenuLeft@2x.png */; };
 		548D36E0176B823700154C36 /* CenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36DB176B823700154C36 /* CenterViewController.m */; };
 		548D36E1176B823700154C36 /* LeftSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36DD176B823700154C36 /* LeftSidebarViewController.m */; };
-		548D36E2176B823700154C36 /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36DF176B823700154C36 /* NewViewController.m */; };
 		549ADAAC176BCAD5001F1D3F /* CreateActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 549ADAAA176BCAD5001F1D3F /* CreateActivityViewController.m */; };
 		549ADAAD176BCAD5001F1D3F /* CreateActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 549ADAAB176BCAD5001F1D3F /* CreateActivityViewController.xib */; };
 		549ADABC176BE148001F1D3F /* libQuickDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 549ADAB9176BE11D001F1D3F /* libQuickDialog.a */; };
@@ -128,8 +127,6 @@
 		548D36DB176B823700154C36 /* CenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenterViewController.m; sourceTree = "<group>"; };
 		548D36DC176B823700154C36 /* LeftSidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftSidebarViewController.h; sourceTree = "<group>"; };
 		548D36DD176B823700154C36 /* LeftSidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftSidebarViewController.m; sourceTree = "<group>"; };
-		548D36DE176B823700154C36 /* NewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewViewController.h; sourceTree = "<group>"; };
-		548D36DF176B823700154C36 /* NewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewViewController.m; sourceTree = "<group>"; };
 		549ADAAA176BCAD5001F1D3F /* CreateActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateActivityViewController.m; sourceTree = "<group>"; };
 		549ADAAB176BCAD5001F1D3F /* CreateActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateActivityViewController.xib; sourceTree = "<group>"; };
 		549ADAAE176BCAF2001F1D3F /* CreateActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateActivityViewController.h; sourceTree = "<group>"; };
@@ -190,6 +187,32 @@
 			);
 			name = API;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		5445A6891778D6A100F3EC97 /* Master */ = {
+			isa = PBXGroup;
+			children = (
+				54E714CA176B95E200F39D73 /* ActivityViewController.h */,
+				54E714CB176B95E200F39D73 /* ActivityViewController.m */,
+				54E714CC176B95E200F39D73 /* ActivityViewController.xib */,
+				54E714D0176B9EDA00F39D73 /* MessageViewController.h */,
+				54E714D1176B9EDA00F39D73 /* MessageViewController.m */,
+				54E714D2176B9EDA00F39D73 /* MessageViewController.xib */,
+				54E714D5176BA18800F39D73 /* FriendsViewController.h */,
+				54E714D6176BA18800F39D73 /* FriendsViewController.m */,
+				54E714D7176BA18800F39D73 /* FriendsViewController.xib */,
+			);
+			name = Master;
+			sourceTree = "<group>";
+		};
+		5445A68A1778D6A500F3EC97 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				549ADAAE176BCAF2001F1D3F /* CreateActivityViewController.h */,
+				549ADAAA176BCAD5001F1D3F /* CreateActivityViewController.m */,
+				549ADAAB176BCAD5001F1D3F /* CreateActivityViewController.xib */,
+			);
+			name = Detail;
 			sourceTree = "<group>";
 		};
 		547D54CC17739D060069D837 /* FourSquare */ = {
@@ -264,8 +287,6 @@
 				548D36BE176B819300154C36 /* AppDelegate.m */,
 				548D36DA176B823700154C36 /* CenterViewController.h */,
 				548D36DB176B823700154C36 /* CenterViewController.m */,
-				548D36DE176B823700154C36 /* NewViewController.h */,
-				548D36DF176B823700154C36 /* NewViewController.m */,
 				548D36B5176B819300154C36 /* Supporting Files */,
 			);
 			path = letslunch_iPhone2;
@@ -324,18 +345,8 @@
 		54E714C9176B95B500F39D73 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				54E714CA176B95E200F39D73 /* ActivityViewController.h */,
-				54E714CB176B95E200F39D73 /* ActivityViewController.m */,
-				54E714CC176B95E200F39D73 /* ActivityViewController.xib */,
-				54E714D0176B9EDA00F39D73 /* MessageViewController.h */,
-				54E714D1176B9EDA00F39D73 /* MessageViewController.m */,
-				54E714D2176B9EDA00F39D73 /* MessageViewController.xib */,
-				54E714D5176BA18800F39D73 /* FriendsViewController.h */,
-				54E714D6176BA18800F39D73 /* FriendsViewController.m */,
-				54E714D7176BA18800F39D73 /* FriendsViewController.xib */,
-				549ADAAE176BCAF2001F1D3F /* CreateActivityViewController.h */,
-				549ADAAA176BCAD5001F1D3F /* CreateActivityViewController.m */,
-				549ADAAB176BCAD5001F1D3F /* CreateActivityViewController.xib */,
+				5445A68A1778D6A500F3EC97 /* Detail */,
+				5445A6891778D6A100F3EC97 /* Master */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -496,7 +507,6 @@
 				548D36D1176B81B700154C36 /* UIViewController+JTRevealSidebarV2.m in Sources */,
 				548D36E0176B823700154C36 /* CenterViewController.m in Sources */,
 				548D36E1176B823700154C36 /* LeftSidebarViewController.m in Sources */,
-				548D36E2176B823700154C36 /* NewViewController.m in Sources */,
 				54403824176B8E5D00AA3588 /* GetStaticLists.m in Sources */,
 				54E714CD176B95E200F39D73 /* ActivityViewController.m in Sources */,
 				54E714D3176B9EDA00F39D73 /* MessageViewController.m in Sources */,
