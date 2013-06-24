@@ -164,9 +164,9 @@ static CreateActivityViewController *sharedSingleton = nil;
     [CreateActivityViewController suppressSingleton];
 }
 
-- (void)clearBroadcast
+- (void)clearBroadcast:(id)sender
 {
-    
+    NSLog(@"Clear");
 }
 
 #pragma UITextFieldDelegate
