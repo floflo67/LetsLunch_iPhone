@@ -48,6 +48,7 @@
 								<string key="NSFrame">{{20, 105}, {280, 21}}</string>
 								<reference key="NSSuperview" ref="1036791308"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -110,7 +111,7 @@
 									<bytes key="NSRGB">MSAwLjUgMAA</bytes>
 								</object>
 							</object>
-							<object class="IBUITableView" id="82993514">
+							<object class="IBUITableView" id="999859958">
 								<reference key="NSNextResponder" ref="1036791308"/>
 								<int key="NSvFlags">274</int>
 								<string key="NSFrameSize">{320, 60}</string>
@@ -140,7 +141,7 @@
 						<string key="NSFrame">{{0, 130}, {320, 438}}</string>
 						<reference key="NSSuperview" ref="885162766"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="82993514"/>
+						<reference key="NSNextKeyView" ref="999859958"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<reference key="IBUIBackgroundColor" ref="305481569"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -161,7 +162,7 @@
 						<int key="IBUIContentVerticalAlignment">3</int>
 						<string key="IBUIText"/>
 						<int key="IBUIBorderStyle">3</int>
-						<string key="IBUIPlaceholder">What's up?</string>
+						<string key="IBUIPlaceholder">Who are you looking to meet?</string>
 						<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
 						<float key="IBUIMinimumFontSize">14</float>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
@@ -253,7 +254,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">tableView</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="82993514"/>
+						<reference key="destination" ref="999859958"/>
 					</object>
 					<int key="connectionID">117</int>
 				</object>
@@ -286,7 +287,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">dataSource</string>
-						<reference key="source" ref="82993514"/>
+						<reference key="source" ref="999859958"/>
 						<reference key="destination" ref="372490531"/>
 					</object>
 					<int key="connectionID">118</int>
@@ -294,7 +295,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">delegate</string>
-						<reference key="source" ref="82993514"/>
+						<reference key="source" ref="999859958"/>
 						<reference key="destination" ref="372490531"/>
 					</object>
 					<int key="connectionID">119</int>
@@ -340,7 +341,7 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="205241133"/>
 							<reference ref="1054206049"/>
-							<reference ref="82993514"/>
+							<reference ref="999859958"/>
 						</array>
 						<reference key="parent" ref="885162766"/>
 						<string key="objectName">View - viewContent</string>
@@ -359,7 +360,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">116</int>
-						<reference key="object" ref="82993514"/>
+						<reference key="object" ref="999859958"/>
 						<reference key="parent" ref="1036791308"/>
 					</object>
 				</array>
