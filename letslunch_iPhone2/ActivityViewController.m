@@ -34,25 +34,17 @@ static ActivityViewController *sharedSingleton = nil;
     self = [super init];
     if(!_objects) {
         AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        _objects = [[NSMutableArray alloc] init];
+        _objects = [[NSMutableArray alloc] initWithArray:[app getListActivities] copyItems:YES];
         
-        NSDictionary* dict;
         if([app getOwnerActivity]) {
-            dict = [NSDictionary dictionaryWithObject:[NSArray arrayWithObject:[app getOwnerActivity]] forKey:@"Activities"];
+            [_objects insertObject:[app getOwnerActivity] atIndex:0];
             self.hasActivity = YES;
         }
         else {
-            dict = [NSDictionary dictionaryWithObject:[NSArray arrayWithObject:@"NIL"] forKey:@"Activities"];
+            [_objects insertObject:@"NIL" atIndex:0];
             self.hasActivity = NO;
          }
-        
-        [_objects addObject:dict];
-        
-        NSMutableArray* listActivities = [[NSMutableArray alloc] initWithArray:[app getListActivities] copyItems:YES];
-        NSDictionary *listActivitiesDict = [NSDictionary dictionaryWithObject:listActivities forKey:@"Activities"];
-        
-        [_objects addObject:listActivitiesDict];
-    }
+    }    
     return self;
 }
 
@@ -68,12 +60,6 @@ static ActivityViewController *sharedSingleton = nil;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -86,39 +72,12 @@ static ActivityViewController *sharedSingleton = nil;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    
-    NSDictionary *dictionary = [_objects objectAtIndex:section];
-    NSArray *array = [dictionary objectForKey:@"Activities"];
-    return [array count];
-}
-
-- (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    NSString *sectionName;
-    switch (section)
-    {
-        case 0:
-            if(self.hasActivity) {
-                sectionName = @"Your activity";
-            }
-            else {
-                sectionName = @"Create activity";
-            }
-            break;
-        case 1:
-            sectionName = @"Activities around you";
-            break;
-        default:
-            sectionName = @"";
-            break;
-    }
-    return sectionName;
+    return [_objects count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -129,24 +88,24 @@ static ActivityViewController *sharedSingleton = nil;
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
+    cell.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    NSDictionary *dictionary = [_objects objectAtIndex:indexPath.section];
-    NSArray *array = [dictionary objectForKey:@"Activities"];
-    
-    if([[array[indexPath.row] description] isEqualToString:@"NIL"]) {
-        UIButton *pushButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [pushButton setTitle:@"Create Activity" forState:UIControlStateNormal];
-        [pushButton sizeToFit];
+    if([[_objects[indexPath.row] description] isEqualToString:@"NIL"]) {
+        
+        UIButton *pushButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [pushButton addTarget:((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController
                        action:@selector(pushCreateActivityViewController:)
-             forControlEvents:UIControlEventTouchUpInside];
+             forControlEvents:UIControlEventTouchDown];
+        pushButton.frame = (CGRect){0, - 3, 320, 51};
         
-        pushButton.frame = (CGRect){0, 0, cell.frame.size.width, cell.frame.size.height};
+        [pushButton setBackgroundImage:[UIImage imageNamed:@"buttonBroadcastAvailability"] forState:UIControlStateNormal];
         [cell addSubview:pushButton];
+        
     }
     else
-        cell.textLabel.text = [array[indexPath.row] description];
+        cell.textLabel.text = [_objects[indexPath.row] description];
+    
     return cell;
 }
 
