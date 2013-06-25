@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Messages.h"
 
 @interface Contacts : NSObject
 
@@ -18,5 +19,6 @@
 @property (nonatomic, strong) UIImage *image;
 
 -(id)initWithDict:(NSDictionary*)dict;
+-(id)initWithID:(NSString*)ID withName:(NSString*)name withPictureURL:(NSString*)url andLastMessage:(Messages*)mess;
 
 @end

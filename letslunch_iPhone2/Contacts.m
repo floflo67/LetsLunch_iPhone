@@ -7,7 +7,6 @@
 //
 
 #import "Contacts.h"
-#import "Messages.h"
 
 @implementation Contacts
 
@@ -28,6 +27,20 @@
         self.name = [dict objectForKey:@"name"];
         self.pictureURL = [dict objectForKey:@"pictureURL"];
         self.lastMessage = [dict objectForKey:@"last"];
+        
+        self.image = [UIImage imageWithContentsOfFile:[NSString stringWithContentsOfURL:[NSURL URLWithString:self.pictureURL] encoding:NSUTF8StringEncoding error:nil]];
+    }
+    return self;
+}
+
+- (id)initWithID:(NSString*)ID withName:(NSString*)name withPictureURL:(NSString*)url andLastMessage:(Messages*)mess
+{
+    self = [self init];
+    if(self) {
+        self.ID = ID;
+        self.name = name;
+        self.pictureURL = url;
+        self.lastMessage = mess.description;
         
         self.image = [UIImage imageWithContentsOfFile:[NSString stringWithContentsOfURL:[NSURL URLWithString:self.pictureURL] encoding:NSUTF8StringEncoding error:nil]];
     }
