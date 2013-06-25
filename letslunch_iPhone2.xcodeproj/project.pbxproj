@@ -11,6 +11,8 @@
 		54403824176B8E5D00AA3588 /* GetStaticLists.m in Sources */ = {isa = PBXBuildFile; fileRef = 54403823176B8E5D00AA3588 /* GetStaticLists.m */; };
 		5445A68D17790C0C00F3EC97 /* buttonBroadcastAvailability.png in Resources */ = {isa = PBXBuildFile; fileRef = 5445A68B17790C0C00F3EC97 /* buttonBroadcastAvailability.png */; };
 		5445A68E17790C0C00F3EC97 /* buttonBroadcastAvailability@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5445A68C17790C0C00F3EC97 /* buttonBroadcastAvailability@2x.png */; };
+		5445A6921779195B00F3EC97 /* Contacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 5445A6911779195B00F3EC97 /* Contacts.m */; };
+		5445A69517791AF900F3EC97 /* Messages.m in Sources */ = {isa = PBXBuildFile; fileRef = 5445A69417791AF900F3EC97 /* Messages.m */; };
 		544DBE641773DC5A00055C8A /* NearbyVenuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 544DBE621773DC5A00055C8A /* NearbyVenuesViewController.m */; };
 		544DBE651773DC5A00055C8A /* NearbyVenuesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 544DBE631773DC5A00055C8A /* NearbyVenuesViewController.xib */; };
 		547D54D51773B21F0069D837 /* Foursquare2.m in Sources */ = {isa = PBXBuildFile; fileRef = 547D54D01773B21F0069D837 /* Foursquare2.m */; };
@@ -93,6 +95,10 @@
 		54403823176B8E5D00AA3588 /* GetStaticLists.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetStaticLists.m; sourceTree = "<group>"; };
 		5445A68B17790C0C00F3EC97 /* buttonBroadcastAvailability.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonBroadcastAvailability.png; sourceTree = "<group>"; };
 		5445A68C17790C0C00F3EC97 /* buttonBroadcastAvailability@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonBroadcastAvailability@2x.png"; sourceTree = "<group>"; };
+		5445A6901779195B00F3EC97 /* Contacts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contacts.h; sourceTree = "<group>"; };
+		5445A6911779195B00F3EC97 /* Contacts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contacts.m; sourceTree = "<group>"; };
+		5445A69317791AF900F3EC97 /* Messages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Messages.h; sourceTree = "<group>"; };
+		5445A69417791AF900F3EC97 /* Messages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Messages.m; sourceTree = "<group>"; };
 		544DBE611773DC5A00055C8A /* NearbyVenuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyVenuesViewController.h; sourceTree = "<group>"; };
 		544DBE621773DC5A00055C8A /* NearbyVenuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyVenuesViewController.m; sourceTree = "<group>"; };
 		544DBE631773DC5A00055C8A /* NearbyVenuesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearbyVenuesViewController.xib; sourceTree = "<group>"; };
@@ -219,6 +225,17 @@
 			name = Detail;
 			sourceTree = "<group>";
 		};
+		5445A68F1779194B00F3EC97 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				5445A6901779195B00F3EC97 /* Contacts.h */,
+				5445A6911779195B00F3EC97 /* Contacts.m */,
+				5445A69317791AF900F3EC97 /* Messages.h */,
+				5445A69417791AF900F3EC97 /* Messages.m */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
 		547D54CC17739D060069D837 /* FourSquare */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +299,7 @@
 		548D36B4176B819300154C36 /* letslunch_iPhone2 */ = {
 			isa = PBXGroup;
 			children = (
+				5445A68F1779194B00F3EC97 /* Objects */,
 				547D54CC17739D060069D837 /* FourSquare */,
 				54F5984E1770C9350074F43C /* BarsViewController */,
 				54E714C9176B95B500F39D73 /* ViewControllers */,
@@ -527,6 +545,8 @@
 				547D54DE1773B2300069D837 /* FSVenue.m in Sources */,
 				547D54DF1773B2300069D837 /* FSConverter.m in Sources */,
 				544DBE641773DC5A00055C8A /* NearbyVenuesViewController.m in Sources */,
+				5445A6921779195B00F3EC97 /* Contacts.m in Sources */,
+				5445A69517791AF900F3EC97 /* Messages.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
