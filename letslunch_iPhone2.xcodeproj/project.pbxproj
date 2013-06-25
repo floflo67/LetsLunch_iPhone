@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		5400D000177A0C98002CC092 /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5400CFFE177A0C98002CC092 /* ContactViewController.m */; };
 		5400D001177A0C98002CC092 /* ContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5400CFFF177A0C98002CC092 /* ContactViewController.xib */; };
+		5400D005177A598D002CC092 /* MessageFromSelf.png in Resources */ = {isa = PBXBuildFile; fileRef = 5400D003177A598D002CC092 /* MessageFromSelf.png */; };
+		5400D006177A598D002CC092 /* MessageToSelf.png in Resources */ = {isa = PBXBuildFile; fileRef = 5400D004177A598D002CC092 /* MessageToSelf.png */; };
+		5400D009177A59DB002CC092 /* ThreadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5400D008177A59DB002CC092 /* ThreadCell.m */; };
 		5409986C177239F2003DFD70 /* ShareButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5409986B177239F2003DFD70 /* ShareButton.png */; };
 		54403824176B8E5D00AA3588 /* GetStaticLists.m in Sources */ = {isa = PBXBuildFile; fileRef = 54403823176B8E5D00AA3588 /* GetStaticLists.m */; };
 		5445A68D17790C0C00F3EC97 /* buttonBroadcastAvailability.png in Resources */ = {isa = PBXBuildFile; fileRef = 5445A68B17790C0C00F3EC97 /* buttonBroadcastAvailability.png */; };
@@ -96,6 +99,10 @@
 		5400CFFD177A0C98002CC092 /* ContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactViewController.h; sourceTree = "<group>"; };
 		5400CFFE177A0C98002CC092 /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactViewController.m; sourceTree = "<group>"; };
 		5400CFFF177A0C98002CC092 /* ContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactViewController.xib; sourceTree = "<group>"; };
+		5400D003177A598D002CC092 /* MessageFromSelf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MessageFromSelf.png; sourceTree = "<group>"; };
+		5400D004177A598D002CC092 /* MessageToSelf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MessageToSelf.png; sourceTree = "<group>"; };
+		5400D007177A59DB002CC092 /* ThreadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreadCell.h; sourceTree = "<group>"; };
+		5400D008177A59DB002CC092 /* ThreadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreadCell.m; sourceTree = "<group>"; };
 		5409986B177239F2003DFD70 /* ShareButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShareButton.png; sourceTree = "<group>"; };
 		54403822176B8E5D00AA3588 /* GetStaticLists.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetStaticLists.h; sourceTree = "<group>"; };
 		54403823176B8E5D00AA3588 /* GetStaticLists.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetStaticLists.m; sourceTree = "<group>"; };
@@ -197,6 +204,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5400D002177A597B002CC092 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				5400D003177A598D002CC092 /* MessageFromSelf.png */,
+				5400D004177A598D002CC092 /* MessageToSelf.png */,
+			);
+			name = Message;
+			sourceTree = "<group>";
+		};
 		54403821176B8E4D00AA3588 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +248,8 @@
 				54E714D0176B9EDA00F39D73 /* MessageViewController.h */,
 				54E714D1176B9EDA00F39D73 /* MessageViewController.m */,
 				54E714D2176B9EDA00F39D73 /* MessageViewController.xib */,
+				5400D007177A59DB002CC092 /* ThreadCell.h */,
+				5400D008177A59DB002CC092 /* ThreadCell.m */,
 			);
 			name = Detail;
 			sourceTree = "<group>";
@@ -353,6 +371,7 @@
 		548D36D5176B820700154C36 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5400D002177A597B002CC092 /* Message */,
 				54F5986B17713A210074F43C /* Sharing */,
 				54F5985C1770ECEF0074F43C /* Menu */,
 				548D36D6176B821B00154C36 /* ButtonMenuLeft.png */,
@@ -531,6 +550,8 @@
 				5445A68D17790C0C00F3EC97 /* buttonBroadcastAvailability.png in Resources */,
 				5445A68E17790C0C00F3EC97 /* buttonBroadcastAvailability@2x.png in Resources */,
 				5400D001177A0C98002CC092 /* ContactViewController.xib in Resources */,
+				5400D005177A598D002CC092 /* MessageFromSelf.png in Resources */,
+				5400D006177A598D002CC092 /* MessageToSelf.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,6 +584,7 @@
 				5445A69517791AF900F3EC97 /* Messages.m in Sources */,
 				5445A6981779210600F3EC97 /* Activity.m in Sources */,
 				5400D000177A0C98002CC092 /* ContactViewController.m in Sources */,
+				5400D009177A59DB002CC092 /* ThreadCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
