@@ -10,8 +10,14 @@
 
 @interface Contacts : NSObject
 
-@property (nonatomic, strong) NSString* name;
-@property (nonatomic, strong) NSString* pictureURL;
+@property (nonatomic, strong) NSString *ID;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *pictureURL;
+@property (nonatomic, strong) NSString *lastMessage;
 @property (nonatomic, strong) NSMutableArray *listMessages;
+@property (nonatomic, strong) UIImage *image;
 
+
+
+-(id)initWithDict:(NSDictionary*)dict;
 @end

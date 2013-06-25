@@ -15,4 +15,6 @@
 @property (nonatomic, strong) NSString *contactIDTo;
 @property (nonatomic, strong) NSDate *date;
 
+-(id)initWithDict:(NSDictionary*)dict;
+
 @end
