@@ -31,4 +31,16 @@
     return self;
 }
 
+- (id)initWithContact:(Contacts*)contact venue:(FSVenue*)venue description:(NSString*)description andIsCoffee:(BOOL)isCoffee
+{
+    self = [self init];
+    if(self) {
+        self.contact = contact;
+        self.venue = venue;
+        self.isCoffee = isCoffee;
+        self.description = description;
+    }
+    return self;
+}
+
 @end

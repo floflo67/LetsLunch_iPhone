@@ -18,5 +18,6 @@
 @property (nonatomic) BOOL isCoffee;
 
 -(id)initWithDict:(NSDictionary*)dict;
+-(id)initWithContact:(Contacts*)contact venue:(FSVenue*)venue description:(NSString*)description andIsCoffee:(BOOL)isCoffee;
 
 @end
