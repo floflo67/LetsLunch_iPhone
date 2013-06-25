@@ -16,6 +16,7 @@
 #import "FriendsViewController.h"
 #import "CreateActivityViewController.h"
 #import "AppDelegate.h"
+#import "ContactViewController.h"
 
 @interface CenterViewController (Private) <UITableViewDataSource, UITableViewDelegate, LeftSidebarViewControllerDelegate>
 @end
@@ -79,8 +80,8 @@
 - (void)MessageConfiguration
 {
     self.centerView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
-    [self.centerView addSubview:[MessageViewController getSingleton].view];
-    self.navigationItem.title = @"Message";
+    [self.centerView addSubview:[ContactViewController getSingleton].view];
+    self.navigationItem.title = @"Contact";
 }
 
 - (void)FriendConfiguration
