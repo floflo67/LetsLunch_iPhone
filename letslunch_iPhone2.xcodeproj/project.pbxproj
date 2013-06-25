@@ -47,8 +47,6 @@
 		549ADABC176BE148001F1D3F /* libQuickDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 549ADAB9176BE11D001F1D3F /* libQuickDialog.a */; };
 		549ADABE176BE14F001F1D3F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549ADABD176BE14F001F1D3F /* MapKit.framework */; };
 		549ADAC0176BE15A001F1D3F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549ADABF176BE159001F1D3F /* CoreLocation.framework */; };
-		54E30C421774BEDA00242DF8 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54E30C411774BEDA00242DF8 /* search@2x.png */; };
-		54E30C441774BEE500242DF8 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 54E30C431774BEE500242DF8 /* search.png */; };
 		54E714CD176B95E200F39D73 /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E714CB176B95E200F39D73 /* ActivityViewController.m */; };
 		54E714CE176B95E200F39D73 /* ActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E714CC176B95E200F39D73 /* ActivityViewController.xib */; };
 		54E714D3176B9EDA00F39D73 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E714D1176B9EDA00F39D73 /* MessageViewController.m */; };
@@ -158,8 +156,6 @@
 		549ADAB1176BE11D001F1D3F /* QuickDialog.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QuickDialog.xcodeproj; path = QuickDialog/QuickDialog.xcodeproj; sourceTree = "<group>"; };
 		549ADABD176BE14F001F1D3F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		549ADABF176BE159001F1D3F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		54E30C411774BEDA00242DF8 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
-		54E30C431774BEE500242DF8 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
 		54E714CA176B95E200F39D73 /* ActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewController.h; sourceTree = "<group>"; };
 		54E714CB176B95E200F39D73 /* ActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewController.m; sourceTree = "<group>"; };
 		54E714CC176B95E200F39D73 /* ActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityViewController.xib; sourceTree = "<group>"; };
@@ -211,6 +207,35 @@
 				5400D004177A598D002CC092 /* MessageToSelf.png */,
 			);
 			name = Message;
+			sourceTree = "<group>";
+		};
+		5400D00A177A625F002CC092 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				5445A68B17790C0C00F3EC97 /* buttonBroadcastAvailability.png */,
+				5445A68C17790C0C00F3EC97 /* buttonBroadcastAvailability@2x.png */,
+			);
+			name = Activity;
+			sourceTree = "<group>";
+		};
+		5400D00B177A6288002CC092 /* CenterBar */ = {
+			isa = PBXGroup;
+			children = (
+				548D36D6176B821B00154C36 /* ButtonMenuLeft.png */,
+				54FE68FB17736B1000AD7987 /* ButtonMenuRight.png */,
+				548D36D7176B821B00154C36 /* ButtonMenuLeft@2x.png */,
+			);
+			name = CenterBar;
+			sourceTree = "<group>";
+		};
+		5400D00C177A62A6002CC092 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				548D36C0176B819300154C36 /* Default.png */,
+				548D36C2176B819300154C36 /* Default@2x.png */,
+				548D36C4176B819300154C36 /* Default-568h@2x.png */,
+			);
+			name = Other;
 			sourceTree = "<group>";
 		};
 		54403821176B8E4D00AA3588 /* API */ = {
@@ -371,19 +396,12 @@
 		548D36D5176B820700154C36 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5400D00C177A62A6002CC092 /* Other */,
+				5400D00B177A6288002CC092 /* CenterBar */,
+				5400D00A177A625F002CC092 /* Activity */,
 				5400D002177A597B002CC092 /* Message */,
 				54F5986B17713A210074F43C /* Sharing */,
-				54F5985C1770ECEF0074F43C /* Menu */,
-				548D36D6176B821B00154C36 /* ButtonMenuLeft.png */,
-				54FE68FB17736B1000AD7987 /* ButtonMenuRight.png */,
-				548D36D7176B821B00154C36 /* ButtonMenuLeft@2x.png */,
-				5445A68B17790C0C00F3EC97 /* buttonBroadcastAvailability.png */,
-				5445A68C17790C0C00F3EC97 /* buttonBroadcastAvailability@2x.png */,
-				548D36C0176B819300154C36 /* Default.png */,
-				548D36C2176B819300154C36 /* Default@2x.png */,
-				548D36C4176B819300154C36 /* Default-568h@2x.png */,
-				54E30C431774BEE500242DF8 /* search.png */,
-				54E30C411774BEDA00242DF8 /* search@2x.png */,
+				54F5985C1770ECEF0074F43C /* LeftBarMenu */,
 			);
 			name = Images;
 			path = ..;
@@ -418,7 +436,7 @@
 			name = BarsViewController;
 			sourceTree = "<group>";
 		};
-		54F5985C1770ECEF0074F43C /* Menu */ = {
+		54F5985C1770ECEF0074F43C /* LeftBarMenu */ = {
 			isa = PBXGroup;
 			children = (
 				54F5986917712EEA0074F43C /* BackgroundMenu.png */,
@@ -431,7 +449,7 @@
 				54F598541770EB360074F43C /* MessagesMenuItem.png */,
 				54F598551770EB360074F43C /* MessagesMenuItem@2x.png */,
 			);
-			name = Menu;
+			name = LeftBarMenu;
 			sourceTree = "<group>";
 		};
 		54F5986B17713A210074F43C /* Sharing */ = {
@@ -545,8 +563,6 @@
 				5409986C177239F2003DFD70 /* ShareButton.png in Resources */,
 				54FE68FC17736B1000AD7987 /* ButtonMenuRight.png in Resources */,
 				544DBE651773DC5A00055C8A /* NearbyVenuesViewController.xib in Resources */,
-				54E30C421774BEDA00242DF8 /* search@2x.png in Resources */,
-				54E30C441774BEE500242DF8 /* search.png in Resources */,
 				5445A68D17790C0C00F3EC97 /* buttonBroadcastAvailability.png in Resources */,
 				5445A68E17790C0C00F3EC97 /* buttonBroadcastAvailability@2x.png in Resources */,
 				5400D001177A0C98002CC092 /* ContactViewController.xib in Resources */,
