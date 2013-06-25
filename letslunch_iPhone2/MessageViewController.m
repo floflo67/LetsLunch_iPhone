@@ -8,6 +8,8 @@
 
 #import "MessageViewController.h"
 #import "AppDelegate.h"
+#import "Messages.h"
+#import "ThreadCell.h"
 
 @interface MessageViewController ()
 
@@ -32,6 +34,7 @@
     self = [super init];
     if(self) {
         if(!_objects) {
+            self.contactID = contactID;
             _objects = [[NSMutableArray alloc] initWithArray:[(AppDelegate*)[[UIApplication sharedApplication] delegate]
                                                               getListMessagesForContactID:contactID]];
         }
@@ -66,26 +69,63 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return [_objects count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_objects count];
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    ThreadCell *cell = (ThreadCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[ThreadCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    cell.textLabel.text = [_objects[indexPath.row] description];
+    Messages *mess = _objects[indexPath.section];
+    
+    /*
+     Message sent by user
+     */
+    if([mess.contactIDFrom isEqualToString:self.contactID]) {
+        cell.imgName = @"MessageFromSelf.png";
+        cell.tipRightward = NO;
+    }
+    else {
+        cell.imgName = @"MessageToSelf.png";
+        cell.tipRightward = YES;
+    }
+    
+    cell.msgText = [mess description];
+    mess = nil;
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+	NSString *aMsg = [[_objects objectAtIndex:indexPath.section] description];
+    CGFloat widthForText ;
+    
+    UIInterfaceOrientation orient = [self interfaceOrientation];
+    
+    if (UIInterfaceOrientationIsPortrait(orient)) {
+        widthForText = 260.f;
+    } else {
+        widthForText = 400.f;
+    }
+    
+	CGSize size = [ThreadCell calcTextHeight:aMsg withinWidth:widthForText];
+    
+	size.height += 5;
+	
+	CGFloat height = (size.height < 36) ? 36 : size.height;
+	
+	return height;
 }
 
 /*

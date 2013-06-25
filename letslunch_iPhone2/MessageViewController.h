@@ -11,6 +11,7 @@
 @interface MessageViewController : UITableViewController
 
 @property (nonatomic, strong) NSMutableArray* objects;
+@property (nonatomic, strong) NSString *contactID;
 
 -(id)initWithContactID:(NSString*)contactID;
 
