@@ -23,10 +23,22 @@
 {
     self = [self init];
     if(self) {
-        self.content = [dict objectForKey:@"content"];
+        self.description = [dict objectForKey:@"description"];
         self.contactIDFrom = [dict objectForKey:@"from"];
         self.contactIDTo = [dict objectForKey:@"to"];
         self.date = [dict objectForKey:@"date"];
+    }
+    return self;
+}
+
+- (id)initWithDescription:(NSString*)description From:(NSString*)from To:(NSString*)to date:(NSDate*)date
+{
+    self = [self init];
+    if(self) {
+        self.description = description;
+        self.contactIDFrom = from;
+        self.contactIDTo = to;
+        self.date = date;
     }
     return self;
 }
