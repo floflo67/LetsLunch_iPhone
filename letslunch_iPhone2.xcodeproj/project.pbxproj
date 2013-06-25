@@ -13,6 +13,7 @@
 		5445A68E17790C0C00F3EC97 /* buttonBroadcastAvailability@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5445A68C17790C0C00F3EC97 /* buttonBroadcastAvailability@2x.png */; };
 		5445A6921779195B00F3EC97 /* Contacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 5445A6911779195B00F3EC97 /* Contacts.m */; };
 		5445A69517791AF900F3EC97 /* Messages.m in Sources */ = {isa = PBXBuildFile; fileRef = 5445A69417791AF900F3EC97 /* Messages.m */; };
+		5445A6981779210600F3EC97 /* Activity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5445A6971779210600F3EC97 /* Activity.m */; };
 		544DBE641773DC5A00055C8A /* NearbyVenuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 544DBE621773DC5A00055C8A /* NearbyVenuesViewController.m */; };
 		544DBE651773DC5A00055C8A /* NearbyVenuesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 544DBE631773DC5A00055C8A /* NearbyVenuesViewController.xib */; };
 		547D54D51773B21F0069D837 /* Foursquare2.m in Sources */ = {isa = PBXBuildFile; fileRef = 547D54D01773B21F0069D837 /* Foursquare2.m */; };
@@ -99,6 +100,8 @@
 		5445A6911779195B00F3EC97 /* Contacts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contacts.m; sourceTree = "<group>"; };
 		5445A69317791AF900F3EC97 /* Messages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Messages.h; sourceTree = "<group>"; };
 		5445A69417791AF900F3EC97 /* Messages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Messages.m; sourceTree = "<group>"; };
+		5445A6961779210600F3EC97 /* Activity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Activity.h; sourceTree = "<group>"; };
+		5445A6971779210600F3EC97 /* Activity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Activity.m; sourceTree = "<group>"; };
 		544DBE611773DC5A00055C8A /* NearbyVenuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyVenuesViewController.h; sourceTree = "<group>"; };
 		544DBE621773DC5A00055C8A /* NearbyVenuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyVenuesViewController.m; sourceTree = "<group>"; };
 		544DBE631773DC5A00055C8A /* NearbyVenuesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearbyVenuesViewController.xib; sourceTree = "<group>"; };
@@ -232,6 +235,8 @@
 				5445A6911779195B00F3EC97 /* Contacts.m */,
 				5445A69317791AF900F3EC97 /* Messages.h */,
 				5445A69417791AF900F3EC97 /* Messages.m */,
+				5445A6961779210600F3EC97 /* Activity.h */,
+				5445A6971779210600F3EC97 /* Activity.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -547,6 +552,7 @@
 				544DBE641773DC5A00055C8A /* NearbyVenuesViewController.m in Sources */,
 				5445A6921779195B00F3EC97 /* Contacts.m in Sources */,
 				5445A69517791AF900F3EC97 /* Messages.m in Sources */,
+				5445A6981779210600F3EC97 /* Activity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

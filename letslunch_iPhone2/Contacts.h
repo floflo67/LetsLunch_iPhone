@@ -17,7 +17,6 @@
 @property (nonatomic, strong) NSMutableArray *listMessages;
 @property (nonatomic, strong) UIImage *image;
 
-
-
 -(id)initWithDict:(NSDictionary*)dict;
+
 @end
