@@ -112,14 +112,23 @@
     return self.listFriendsSuggestion;
 }
 
-- (NSMutableArray*) getListMessages
+- (NSMutableArray*) getListMessagesForContactID:(NSString*)contactID
 {
     if(!self.listMessages) {
         self.listMessages = [[[NSMutableArray alloc] init] autorelease];
-        self.listMessages = [GetStaticLists getListMessages];
+        self.listMessages = [GetStaticLists getListMessagesForContactID:contactID];
     }
     
     return self.listMessages;
+}
+
+- (NSMutableArray*)getListContacts
+{
+    if(!self.listContacts) {
+        self.listContacts = [[[NSMutableArray alloc] init] autorelease];
+        self.listContacts = [GetStaticLists getListContacts];
+    }
+    return self.listContacts;
 }
 
 - (NSString*) getOwnerActivity

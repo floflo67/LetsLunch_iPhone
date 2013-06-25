@@ -17,11 +17,13 @@
 @property (strong, nonatomic) NSMutableArray *listActivities;
 @property (strong, nonatomic) NSMutableArray *listFriendsSuggestion;
 @property (strong, nonatomic) NSMutableArray *listMessages;
+@property (strong, nonatomic) NSMutableArray *listContacts;
 @property (strong, nonatomic) NSString *ownerActivity;
 
 -(NSMutableArray*)getListActivities;
 -(NSMutableArray*)getListFriendsSuggestion;
--(NSMutableArray*)getListMessages;
+-(NSMutableArray*)getListMessagesForContactID:(NSString*)contactID;
+-(NSMutableArray*)getListContacts;
 -(NSString*)getOwnerActivity;
 
 +(UIColor*)colorWithHexString:(NSString*)hex;
