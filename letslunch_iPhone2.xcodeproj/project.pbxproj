@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5400D000177A0C98002CC092 /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5400CFFE177A0C98002CC092 /* ContactViewController.m */; };
+		5400D001177A0C98002CC092 /* ContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5400CFFF177A0C98002CC092 /* ContactViewController.xib */; };
 		5409986C177239F2003DFD70 /* ShareButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5409986B177239F2003DFD70 /* ShareButton.png */; };
 		54403824176B8E5D00AA3588 /* GetStaticLists.m in Sources */ = {isa = PBXBuildFile; fileRef = 54403823176B8E5D00AA3588 /* GetStaticLists.m */; };
 		5445A68D17790C0C00F3EC97 /* buttonBroadcastAvailability.png in Resources */ = {isa = PBXBuildFile; fileRef = 5445A68B17790C0C00F3EC97 /* buttonBroadcastAvailability.png */; };
@@ -91,6 +93,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5400CFFD177A0C98002CC092 /* ContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactViewController.h; sourceTree = "<group>"; };
+		5400CFFE177A0C98002CC092 /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactViewController.m; sourceTree = "<group>"; };
+		5400CFFF177A0C98002CC092 /* ContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactViewController.xib; sourceTree = "<group>"; };
 		5409986B177239F2003DFD70 /* ShareButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShareButton.png; sourceTree = "<group>"; };
 		54403822176B8E5D00AA3588 /* GetStaticLists.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetStaticLists.h; sourceTree = "<group>"; };
 		54403823176B8E5D00AA3588 /* GetStaticLists.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetStaticLists.m; sourceTree = "<group>"; };
@@ -208,9 +213,9 @@
 				54E714CA176B95E200F39D73 /* ActivityViewController.h */,
 				54E714CB176B95E200F39D73 /* ActivityViewController.m */,
 				54E714CC176B95E200F39D73 /* ActivityViewController.xib */,
-				54E714D0176B9EDA00F39D73 /* MessageViewController.h */,
-				54E714D1176B9EDA00F39D73 /* MessageViewController.m */,
-				54E714D2176B9EDA00F39D73 /* MessageViewController.xib */,
+				5400CFFD177A0C98002CC092 /* ContactViewController.h */,
+				5400CFFE177A0C98002CC092 /* ContactViewController.m */,
+				5400CFFF177A0C98002CC092 /* ContactViewController.xib */,
 				54E714D5176BA18800F39D73 /* FriendsViewController.h */,
 				54E714D6176BA18800F39D73 /* FriendsViewController.m */,
 				54E714D7176BA18800F39D73 /* FriendsViewController.xib */,
@@ -224,6 +229,9 @@
 				549ADAAE176BCAF2001F1D3F /* CreateActivityViewController.h */,
 				549ADAAA176BCAD5001F1D3F /* CreateActivityViewController.m */,
 				549ADAAB176BCAD5001F1D3F /* CreateActivityViewController.xib */,
+				54E714D0176B9EDA00F39D73 /* MessageViewController.h */,
+				54E714D1176B9EDA00F39D73 /* MessageViewController.m */,
+				54E714D2176B9EDA00F39D73 /* MessageViewController.xib */,
 			);
 			name = Detail;
 			sourceTree = "<group>";
@@ -522,6 +530,7 @@
 				54E30C441774BEE500242DF8 /* search.png in Resources */,
 				5445A68D17790C0C00F3EC97 /* buttonBroadcastAvailability.png in Resources */,
 				5445A68E17790C0C00F3EC97 /* buttonBroadcastAvailability@2x.png in Resources */,
+				5400D001177A0C98002CC092 /* ContactViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,6 +562,7 @@
 				5445A6921779195B00F3EC97 /* Contacts.m in Sources */,
 				5445A69517791AF900F3EC97 /* Messages.m in Sources */,
 				5445A6981779210600F3EC97 /* Activity.m in Sources */,
+				5400D000177A0C98002CC092 /* ContactViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
