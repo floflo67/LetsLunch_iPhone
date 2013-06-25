@@ -7,12 +7,21 @@
 //
 
 #import "GetStaticLists.h"
+#import "Activity.h"
+#import "Contacts.h"
+#import "FSVenue.h"
+#import "Messages.h"
 
 @implementation GetStaticLists
 
-+ (NSArray*) getListActivities
++ (NSArray*)getListActivities
 {
     NSMutableArray* listActivities = [[[NSMutableArray alloc] init] autorelease];
+    //Messages *m = [[Messages alloc] initWithContent:@"mess" From:@"1" To:@"2" date:[NSDate new]];
+    //Contacts *c = [[Contacts alloc] initWithID:@"1" withName:@"name" withPictureURL:nil andLastMessage:nil];
+    //FSVenue *v = [[FSVenue alloc] init];
+    //BOOL b = YES;
+    //Activity *act1 = [[Activity alloc] initWithContact:nil venue:nil description:@"description" andIsCoffee:b];
     
     [listActivities addObject:@"Activity1"];
     [listActivities addObject:@"Activity2"];
@@ -22,13 +31,13 @@
     return listActivities;
 }
 
-+ (NSString*) getOwnerActivity
++ (NSString*)getOwnerActivity
 {
     return @"ActivityOwner";
 }
 
 
-+ (NSMutableArray*) getListFriendsSuggestion
++ (NSMutableArray*)getListFriendsSuggestion
 {
     NSMutableArray* listFriendsSuggestion = [[[NSMutableArray alloc] init] autorelease];
     
@@ -40,16 +49,36 @@
     return listFriendsSuggestion;
 }
 
-+ (NSMutableArray*) getListMessages
++ (NSMutableArray*)getListMessagesForContactID:(NSString*)contactID
 {
     NSMutableArray* listMessages = [[[NSMutableArray alloc] init] autorelease];
     
-    [listMessages addObject:@"Message1"];
-    [listMessages addObject:@"Message2"];
-    [listMessages addObject:@"Message3"];
+    Messages *mess1 = [[Messages alloc] initWithDescription:@"content1" From:contactID To:@"1" date:[NSDate new]];
+    Messages *mess2 = [[Messages alloc] initWithDescription:@"content2" From:contactID To:@"1" date:[NSDate new]];
+    Messages *mess3 = [[Messages alloc] initWithDescription:@"content3" From:contactID To:@"1" date:[NSDate new]];
+    
+    [listMessages addObject:mess1];
+    [listMessages addObject:mess2];
+    [listMessages addObject:mess3];
     
     
     return listMessages;    
+}
+
++ (NSMutableArray*)getListContacts
+{
+    NSMutableArray* lastContacts = [[[NSMutableArray alloc] init] autorelease];
+    
+    Contacts *cont1 = [[Contacts alloc] initWithID:@"1" withName:@"name1" withPictureURL:nil andLastMessage:nil];
+    Contacts *cont2 = [[Contacts alloc] initWithID:@"2" withName:@"name2" withPictureURL:nil andLastMessage:nil];
+    Contacts *cont3 = [[Contacts alloc] initWithID:@"3" withName:@"name3" withPictureURL:nil andLastMessage:nil];
+    
+    [lastContacts addObject:cont1];
+    [lastContacts addObject:cont2];
+    [lastContacts addObject:cont3];
+    
+    
+    return lastContacts;
 }
 
 @end
