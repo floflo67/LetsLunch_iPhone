@@ -12,6 +12,6 @@
 
 @property (nonatomic, strong) NSMutableArray* objects;
 
-+(MessageViewController*)getSingleton;
+-(id)initWithContactID:(NSString*)contactID;
 
 @end
