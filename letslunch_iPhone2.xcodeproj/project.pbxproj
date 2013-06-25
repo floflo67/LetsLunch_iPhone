@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5409986C177239F2003DFD70 /* ShareButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5409986B177239F2003DFD70 /* ShareButton.png */; };
 		54403824176B8E5D00AA3588 /* GetStaticLists.m in Sources */ = {isa = PBXBuildFile; fileRef = 54403823176B8E5D00AA3588 /* GetStaticLists.m */; };
+		5445A68D17790C0C00F3EC97 /* buttonBroadcastAvailability.png in Resources */ = {isa = PBXBuildFile; fileRef = 5445A68B17790C0C00F3EC97 /* buttonBroadcastAvailability.png */; };
+		5445A68E17790C0C00F3EC97 /* buttonBroadcastAvailability@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5445A68C17790C0C00F3EC97 /* buttonBroadcastAvailability@2x.png */; };
 		544DBE641773DC5A00055C8A /* NearbyVenuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 544DBE621773DC5A00055C8A /* NearbyVenuesViewController.m */; };
 		544DBE651773DC5A00055C8A /* NearbyVenuesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 544DBE631773DC5A00055C8A /* NearbyVenuesViewController.xib */; };
 		547D54D51773B21F0069D837 /* Foursquare2.m in Sources */ = {isa = PBXBuildFile; fileRef = 547D54D01773B21F0069D837 /* Foursquare2.m */; };
@@ -89,6 +91,8 @@
 		5409986B177239F2003DFD70 /* ShareButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShareButton.png; sourceTree = "<group>"; };
 		54403822176B8E5D00AA3588 /* GetStaticLists.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetStaticLists.h; sourceTree = "<group>"; };
 		54403823176B8E5D00AA3588 /* GetStaticLists.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetStaticLists.m; sourceTree = "<group>"; };
+		5445A68B17790C0C00F3EC97 /* buttonBroadcastAvailability.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonBroadcastAvailability.png; sourceTree = "<group>"; };
+		5445A68C17790C0C00F3EC97 /* buttonBroadcastAvailability@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonBroadcastAvailability@2x.png"; sourceTree = "<group>"; };
 		544DBE611773DC5A00055C8A /* NearbyVenuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyVenuesViewController.h; sourceTree = "<group>"; };
 		544DBE621773DC5A00055C8A /* NearbyVenuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyVenuesViewController.m; sourceTree = "<group>"; };
 		544DBE631773DC5A00055C8A /* NearbyVenuesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearbyVenuesViewController.xib; sourceTree = "<group>"; };
@@ -323,6 +327,8 @@
 				548D36D6176B821B00154C36 /* ButtonMenuLeft.png */,
 				54FE68FB17736B1000AD7987 /* ButtonMenuRight.png */,
 				548D36D7176B821B00154C36 /* ButtonMenuLeft@2x.png */,
+				5445A68B17790C0C00F3EC97 /* buttonBroadcastAvailability.png */,
+				5445A68C17790C0C00F3EC97 /* buttonBroadcastAvailability@2x.png */,
 				548D36C0176B819300154C36 /* Default.png */,
 				548D36C2176B819300154C36 /* Default@2x.png */,
 				548D36C4176B819300154C36 /* Default-568h@2x.png */,
@@ -491,6 +497,8 @@
 				544DBE651773DC5A00055C8A /* NearbyVenuesViewController.xib in Resources */,
 				54E30C421774BEDA00242DF8 /* search@2x.png in Resources */,
 				54E30C441774BEE500242DF8 /* search.png in Resources */,
+				5445A68D17790C0C00F3EC97 /* buttonBroadcastAvailability.png in Resources */,
+				5445A68E17790C0C00F3EC97 /* buttonBroadcastAvailability@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
