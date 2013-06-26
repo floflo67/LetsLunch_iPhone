@@ -101,10 +101,10 @@
     /*
      Release allocated resources
      */
-    [dateLabel release];
-    [txtLabel release];
-    [newImage release];
-    [newView release];
+    dateLabel = nil;
+    txtLabel = nil;
+    newImage = nil;
+    newView = nil;
 }
 
 + (CGSize)calcTextHeight:(NSString *)str
@@ -125,8 +125,8 @@
 
 - (void)dealloc
 {
-    [msgText release];
-    [imgName release];
+    msgText = nil;
+    imgName = nil;
     [super dealloc];
 }
 

@@ -68,12 +68,12 @@ static CreateActivityViewController *sharedSingleton = nil;
 }
 
 - (void)dealloc {
-    [_map release];
-    [_textFieldDescription release];
-    [_segment release];
-    [_labelBroadcast release];
-    [_viewContent release];
-    [_tableView release];
+    _map = nil;
+    _textFieldDescription = nil;
+    _segment = nil;
+    _labelBroadcast = nil;
+    _viewContent = nil;
+    _tableView = nil;
     [super dealloc];
 }
 
@@ -193,7 +193,7 @@ static CreateActivityViewController *sharedSingleton = nil;
     NearbyVenuesViewController *detailViewController = [[NearbyVenuesViewController alloc] init];
     [self.navigationController pushViewController:detailViewController animated:YES];
     [self resetView];
-    [detailViewController release];
+    detailViewController = nil;
 }
 
 #pragma segment action

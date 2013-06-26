@@ -43,8 +43,8 @@
 }
 
 - (void)dealloc {
-    [self.menuItem release];
-    [self.sidebarDelegate release];
+    self.menuItem = nil;
+    self.sidebarDelegate = nil;
     [super dealloc];
 }
 
@@ -111,9 +111,9 @@
     /*
      Release elements in cell
      */
-    [background release];
-    [icon release];
-    [title release];
+    background = nil;
+    icon = nil;
+    title = nil;
     
     return cell;
 }

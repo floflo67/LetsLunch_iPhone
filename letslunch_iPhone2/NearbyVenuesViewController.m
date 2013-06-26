@@ -42,7 +42,7 @@
     UIBarButtonItem *search = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(search:)];
     search.style = UIBarButtonItemStylePlain;
     self.navigationItem.rightBarButtonItem = search;
-    [search release];
+    search = nil;
 }
 
 - (void)search:(id)sender
@@ -72,7 +72,7 @@
         [self.textFieldSearch setBorderStyle:UITextBorderStyleRoundedRect];
         self.textFieldSearch.returnKeyType = UIReturnKeySearch;
         [self.view addSubview:self.textFieldSearch];
-        [self.textFieldSearch release];
+        self.textFieldSearch = nil;
     }
 }
 
@@ -134,7 +134,7 @@
                                                                                     cancelButtonTitle:@"OK"
                                                                                     otherButtonTitles:nil];
                                                [view show];
-                                               [view release];
+                                               view = nil;
                                            }
 									   }
 								   }];
@@ -244,14 +244,14 @@
 }
 
 - (void)dealloc {
-    [self.radius release];
-    [self.tableView release];
-    [self.textFieldSearch release];
-    [self.nearbyVenues release];
-    [self.selected release];
-    [self.section release];
-    [self.query release];
-    [self.segment release];
+    self.radius = nil;
+    self.tableView = nil;
+    self.textFieldSearch = nil;
+    self.nearbyVenues = nil;
+    self.selected = nil;
+    self.section = nil;
+    self.query = nil;
+    self.segment = nil;
     [super dealloc];
 }
 

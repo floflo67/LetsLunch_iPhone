@@ -141,7 +141,7 @@ static ContactViewController *sharedSingleton = nil;
 {
     MessageViewController *cont = [[MessageViewController alloc] initWithContactID:[NSString stringWithFormat:@"%d", indexPath.row]];
     [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController.navigationController pushViewController:cont animated:YES];
-    [cont release];
+    cont = nil;
 }
 
 @end

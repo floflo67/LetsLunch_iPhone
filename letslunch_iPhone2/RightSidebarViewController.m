@@ -40,8 +40,8 @@
 }
 
 - (void)dealloc {
-    [self.menuItem release];
-    [self.sidebarDelegate release];
+    self.menuItem = nil;
+    self.sidebarDelegate = nil;
     [super dealloc];
 }
 
@@ -153,7 +153,7 @@
     
     [cell sendSubviewToBack:background]; // otherwise don't see anything
     
-    [background release];
+    background = nil;
     
     return cell;
 }
