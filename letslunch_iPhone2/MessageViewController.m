@@ -101,6 +101,10 @@
     }
     
     cell.msgText = [mess description];
+    
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"hh:mm"];
+    cell.dateText = [format stringFromDate:mess.date];
     mess = nil;
     
     return cell;
@@ -118,12 +122,12 @@
     NSString *title;
     Messages *mess1 = (Messages*)_objects[section];
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"MMM dd, yyyy HH:mm"];
+    [format setDateFormat:@"MM/dd/yyyy"];
     
     if(section > 0) {
         Messages *mess2 = (Messages*)_objects[section - 1];
         
-        if(![mess1.contactIDFrom isEqualToString:mess2.contactIDFrom]) {
+        if(![self isSameDayWithDate1:mess1.date date2:mess2.date]) {
             title = [format stringFromDate:mess1.date];
         }
         else {
@@ -135,6 +139,17 @@
     }
     
     return title;
+}
+
+- (BOOL)isSameDayWithDate1:(NSDate*)date1 date2:(NSDate*)date2
+{
+    NSCalendar* calendar = [NSCalendar currentCalendar];
+    
+    unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit;
+    NSDateComponents* comp1 = [calendar components:unitFlags fromDate:date1];
+    NSDateComponents* comp2 = [calendar components:unitFlags fromDate:date2];
+    
+    return [comp1 day] == [comp2 day] && [comp1 month] == [comp2 month] && [comp1 year] == [comp2 year];
 }
 
 /*

@@ -12,6 +12,7 @@
 @implementation ThreadCell
 @synthesize msgText;
 @synthesize imgName;
+@synthesize dateText;
 @synthesize tipRightward = _tipRightward;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -46,18 +47,22 @@
         balloon = [balloon stretchableImageWithLeftCapWidth:24 topCapHeight:15];
     }
     
-    CGFloat xx;
+    /*
+     Resize image and view to fit
+     */
+    CGFloat x;
     if (self.tipRightward)
-        xx = 0.0f;
+        x = 0.0f;
     else
-        xx = self.frame.size.width - size.width - 24 - 10 ;
-    UIImageView *newImage = [[UIImageView alloc] initWithFrame:CGRectMake(xx, 0.0, size.width + 35, size.height + 10)];
+        x = self.frame.size.width - size.width - 24 - 10 ;
+    UIImageView *newImage = [[UIImageView alloc] initWithFrame:CGRectMake(x, 0.0, size.width + 35, size.height + 10)];
     UIView *newView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.frame.size.width, self.frame.size.height)];
     
     /*
      Sets label to contain text
+     Contains message text
      */
-    UILabel *txtLabel = [[UILabel alloc] initWithFrame:CGRectMake(xx + 7, 2, size.width - 3, size.height - 2)];
+    UILabel *txtLabel = [[UILabel alloc] initWithFrame:CGRectMake(x + 7, 2, size.width - 3, size.height - 2)];
     txtLabel.lineBreakMode = NSLineBreakByWordWrapping;
     txtLabel.numberOfLines = 0;
     txtLabel.text = msgText;
@@ -65,16 +70,38 @@
     txtLabel.font = [UIFont systemFontOfSize:16.0];
     txtLabel.tag = 42;
     
+    /*
+     Sets label to contain date
+     */
+    
+    UILabel *dateLabel = [[UILabel alloc] init];
+    if(self.tipRightward)
+        dateLabel.frame = CGRectMake(size.width + 30, 5, 40, size.height);
+    else
+        dateLabel.frame = CGRectMake(x - 45, 5, 40, size.height);
+    dateLabel.numberOfLines = 1;
+    dateLabel.text = dateText;
+    dateLabel.backgroundColor = [UIColor clearColor];
+    dateLabel.textColor = [UIColor lightGrayColor];
+    dateLabel.font = [UIFont systemFontOfSize:12.0];
+    dateLabel.tag = 41;
+    
+    /*
+     Add every view to content
+     */
     [txtLabel sizeToFit];
     [newImage setImage:balloon];
     [newView addSubview:newImage];
     [self setBackgroundView:newView];
     [[self.contentView viewWithTag:42] removeFromSuperview];
     [self.contentView addSubview:txtLabel];
+    [[self.contentView viewWithTag:41] removeFromSuperview];
+    [self.contentView addSubview:dateLabel];
     
     /*
      Release allocated resources
      */
+    [dateLabel release];
     [txtLabel release];
     [newImage release];
     [newView release];
@@ -90,7 +117,7 @@
  */
 + (CGSize)calcTextHeight:(NSString *)str withinWidth:(CGFloat)width
 {
-    CGSize textSize = {width - 10, 20000.0};
+    CGSize textSize = {width - 30, 20000.0};
     CGSize size = [str sizeWithFont:[UIFont systemFontOfSize:16.0] constrainedToSize:textSize];
     size.width += 10;
     return size;
