@@ -107,25 +107,34 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
 	NSString *aMsg = [[_objects objectAtIndex:indexPath.section] description];
-    CGFloat widthForText ;
+    CGFloat widthForText = 260.f;    
+	CGSize size = [ThreadCell calcTextHeight:aMsg withinWidth:widthForText];	
+	return size.height - 5;
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *title;
+    Messages *mess1 = (Messages*)_objects[section];
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"MMM dd, yyyy HH:mm"];
     
-    UIInterfaceOrientation orient = [self interfaceOrientation];
-    
-    if (UIInterfaceOrientationIsPortrait(orient)) {
-        widthForText = 260.f;
-    } else {
-        widthForText = 400.f;
+    if(section > 0) {
+        Messages *mess2 = (Messages*)_objects[section - 1];
+        
+        if(![mess1.contactIDFrom isEqualToString:mess2.contactIDFrom]) {
+            title = [format stringFromDate:mess1.date];
+        }
+        else {
+            title = nil;
+        }
+    }
+    else {
+        title = [format stringFromDate:mess1.date];
     }
     
-	CGSize size = [ThreadCell calcTextHeight:aMsg withinWidth:widthForText];
-    
-	size.height += 5;
-	
-	CGFloat height = (size.height < 36) ? 36 : size.height;
-	
-	return height;
+    return title;
 }
 
 /*

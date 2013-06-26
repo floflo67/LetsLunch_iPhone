@@ -82,7 +82,7 @@
 
 + (CGSize)calcTextHeight:(NSString *)str
 {
-    return [self calcTextHeight:str withinWidth:260.0];
+    return [self calcTextHeight:str withinWidth:300.0];
 }
 
 /*
