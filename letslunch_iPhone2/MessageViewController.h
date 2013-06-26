@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MessageViewController : UITableViewController
+@interface MessageViewController : UIViewController
 
 @property (nonatomic, strong) NSMutableArray* objects;
 @property (nonatomic, strong) NSString *contactID;
+
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (retain, nonatomic) IBOutlet UITextField *textFieldMessage;
 
 -(id)initWithContactID:(NSString*)contactID;
 

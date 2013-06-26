@@ -42,30 +42,20 @@
     return self;
 }
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.navigationItem.title = @"Messages";
     self.tableView.backgroundView = nil;
     self.tableView.backgroundColor = [UIColor clearColor];
-    CGRect frame = self.tableView.frame;
-    frame.size.height -= 100;
-    self.tableView.frame = frame;
+//    CGRect frame = self.tableView.frame;
+//    frame.size.height -= 100;
+//    self.tableView.frame = frame;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -200,4 +190,11 @@
     
 }
 
+- (void)dealloc {
+    _objects = nil;
+    _tableView = nil;
+    _contactID = nil;
+    _textFieldMessage = nil;
+    [super dealloc];
+}
 @end
