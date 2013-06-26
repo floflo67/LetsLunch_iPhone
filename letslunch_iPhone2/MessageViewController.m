@@ -57,6 +57,9 @@
     self.navigationItem.title = @"Messages";
     self.tableView.backgroundView = nil;
     self.tableView.backgroundColor = [UIColor clearColor];
+    CGRect frame = self.tableView.frame;
+    frame.size.height -= 100;
+    self.tableView.frame = frame;
 }
 
 - (void)didReceiveMemoryWarning
@@ -106,7 +109,6 @@
     [format setDateFormat:@"hh:mm"];
     cell.dateText = [format stringFromDate:mess.date];
     mess = nil;
-    
     return cell;
 }
 
@@ -195,14 +197,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    
 }
 
 @end
