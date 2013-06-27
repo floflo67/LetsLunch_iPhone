@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MessageViewController : UIViewController
+@interface MessageViewController : UIViewController <UITextFieldDelegate>
 
 @property (nonatomic, strong) NSMutableArray* objects;
 @property (nonatomic, strong) NSString *contactID;

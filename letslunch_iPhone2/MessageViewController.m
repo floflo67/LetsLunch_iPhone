@@ -48,9 +48,15 @@
     self.navigationItem.title = @"Messages";
     self.tableView.backgroundView = nil;
     self.tableView.backgroundColor = [UIColor clearColor];
-//    CGRect frame = self.tableView.frame;
-//    frame.size.height -= 100;
-//    self.tableView.frame = frame;
+    CGRect frame = self.textFieldMessage.frame;
+    frame.origin.y = 380;
+    self.textFieldMessage.frame = frame;
+    
+    frame = self.tableView.frame;
+    frame.size.height = 380;
+    self.tableView.frame = frame;
+    
+    self.textFieldMessage.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -182,6 +188,19 @@
     return YES;
 }
 */
+
+#pragma mark - Text field delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    return YES;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    NSLog(@"test");
+    return YES;
+}
 
 #pragma mark - Table view delegate
 
