@@ -28,7 +28,6 @@ static ActivityViewController *sharedSingleton = nil;
     return sharedSingleton;
 }
 
-
 -(id)init
 {
     self = [super init];

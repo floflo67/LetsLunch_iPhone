@@ -12,11 +12,12 @@
 #import "LeftSidebarViewController.h"
 #import "JTRevealSidebarV2Delegate.h"
 #import "ActivityViewController.h"
-#import "MessageViewController.h"	
+#import "MessageViewController.h"
 #import "FriendsViewController.h"
 #import "CreateActivityViewController.h"
 #import "AppDelegate.h"
 #import "ContactViewController.h"
+#import "ShareViewController.h"
 
 @interface CenterViewController (Private) <UITableViewDataSource, UITableViewDelegate, LeftSidebarViewControllerDelegate>
 @end
@@ -43,7 +44,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     self.view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
     self.centerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:self.centerView];
@@ -58,7 +59,7 @@
                                                                               style:UIBarButtonItemStyleBordered
                                                                              target:self
                                                                              action:@selector(revealRightSidebar:)];
-
+    
     self.navigationItem.revealSidebarDelegate = self;
 }
 
@@ -88,7 +89,7 @@
 {
     self.centerView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
     [self.centerView addSubview:[FriendsViewController getSingleton].view];
-    self.navigationItem.title = @"Friend";    
+    self.navigationItem.title = @"Friend";
 }
 
 #pragma reveal side bars
@@ -127,8 +128,16 @@
 
 - (void)shareButtonClick:(id)sender
 {
-    NSLog(@"Share");
-    [self.navigationController toggleRevealState:JTRevealedStateNo];    
+    ShareViewController *shareVC = [ShareViewController getSingleton];
+    [shareVC.view setFrame:[[UIScreen mainScreen] bounds]];
+    [self.navigationController.view addSubview:shareVC.view];
+    [self.navigationController toggleRevealState:JTRevealedStateNo];
+}
+
+- (void)closeView:(id)sender
+{
+    [[ShareViewController getSingleton].view removeFromSuperview];
+    [ShareViewController suppressSingleton];
 }
 
 #pragma location
@@ -158,7 +167,7 @@
         self.leftSidebarViewController.tableView.scrollEnabled = NO;
         
         UIColor *color = [UIColor colorWithPatternImage:[AppDelegate imageWithImage:[UIImage imageNamed:@"BackgroundMenu.png"]
-                                                                      scaledToSize:CGSizeMake(277, 900)]];
+                                                                       scaledToSize:CGSizeMake(277, 900)]];
         self.leftSidebarViewController.view.backgroundColor = color;
         
         
@@ -178,12 +187,12 @@
     if (!controller) {
         self.rightSidebarViewController = [[RightSidebarViewController alloc] initWithStyle:UITableViewStylePlain];
         self.rightSidebarViewController.tableView.scrollEnabled = NO;
-
+        
         /*
          Used http://imagecolorpicker.com/ and https://kuler.adobe.com/create/color-wheel/ to get color for background
          */
         self.rightSidebarViewController.tableView.backgroundColor = [AppDelegate colorWithHexString:@"3C332A"];
-
+        
         //self.rightSidebarViewController.sidebarDelegate = self;
         self.rightSidebarViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         controller = self.rightSidebarViewController;
@@ -248,7 +257,7 @@
 
 - (void)sidebarViewController:(LeftSidebarViewController *)sidebarViewController didSelectObject:(NSObject*)object atIndexPath:(NSIndexPath *)indexPath
 {
-
+    
     [self.navigationController setRevealedState:JTRevealedStateNo];
     
     if([self.centerView.subviews count] > 0) {
