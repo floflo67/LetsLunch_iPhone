@@ -66,6 +66,8 @@
 		54F5986F17713A4A0074F43C /* BackgroundSharing.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5986C17713A4A0074F43C /* BackgroundSharing.png */; };
 		54F5987017713A4A0074F43C /* FindFriendsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5986D17713A4A0074F43C /* FindFriendsButton.png */; };
 		54F5987117713A4A0074F43C /* InviteFriendsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5986E17713A4A0074F43C /* InviteFriendsButton.png */; };
+		54F971F9177CE12B006F6FE5 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F971F7177CE12B006F6FE5 /* ShareViewController.m */; };
+		54F971FA177CE12B006F6FE5 /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54F971F8177CE12B006F6FE5 /* ShareViewController.xib */; };
 		54FE68FC17736B1000AD7987 /* ButtonMenuRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 54FE68FB17736B1000AD7987 /* ButtonMenuRight.png */; };
 /* End PBXBuildFile section */
 
@@ -179,6 +181,9 @@
 		54F5986C17713A4A0074F43C /* BackgroundSharing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundSharing.png; sourceTree = "<group>"; };
 		54F5986D17713A4A0074F43C /* FindFriendsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindFriendsButton.png; sourceTree = "<group>"; };
 		54F5986E17713A4A0074F43C /* InviteFriendsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InviteFriendsButton.png; sourceTree = "<group>"; };
+		54F971F6177CE12B006F6FE5 /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
+		54F971F7177CE12B006F6FE5 /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
+		54F971F8177CE12B006F6FE5 /* ShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareViewController.xib; sourceTree = "<group>"; };
 		54FE68FB17736B1000AD7987 /* ButtonMenuRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonMenuRight.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -355,6 +360,7 @@
 		548D36B4176B819300154C36 /* letslunch_iPhone2 */ = {
 			isa = PBXGroup;
 			children = (
+				54F971FB177CE13E006F6FE5 /* Share */,
 				5445A68F1779194B00F3EC97 /* Objects */,
 				547D54CC17739D060069D837 /* FourSquare */,
 				54F5984E1770C9350074F43C /* BarsViewController */,
@@ -463,6 +469,16 @@
 			name = Sharing;
 			sourceTree = "<group>";
 		};
+		54F971FB177CE13E006F6FE5 /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				54F971F6177CE12B006F6FE5 /* ShareViewController.h */,
+				54F971F7177CE12B006F6FE5 /* ShareViewController.m */,
+				54F971F8177CE12B006F6FE5 /* ShareViewController.xib */,
+			);
+			name = Share;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -568,6 +584,7 @@
 				5400D001177A0C98002CC092 /* ContactViewController.xib in Resources */,
 				5400D005177A598D002CC092 /* MessageFromSelf.png in Resources */,
 				5400D006177A598D002CC092 /* MessageToSelf.png in Resources */,
+				54F971FA177CE12B006F6FE5 /* ShareViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,6 +618,7 @@
 				5445A6981779210600F3EC97 /* Activity.m in Sources */,
 				5400D000177A0C98002CC092 /* ContactViewController.m in Sources */,
 				5400D009177A59DB002CC092 /* ThreadCell.m in Sources */,
+				54F971F9177CE12B006F6FE5 /* ShareViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
