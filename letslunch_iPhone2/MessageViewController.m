@@ -17,6 +17,8 @@
 
 @implementation MessageViewController
 
+#pragma view lifecycle
+
 -(id)init
 {
     self = [super init];
@@ -48,20 +50,25 @@
     self.navigationItem.title = @"Messages";
     self.tableView.backgroundView = nil;
     self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.frame = CGRectMake(0, 0, 320, 385);
+    
     CGRect frame = self.textFieldMessage.frame;
-    frame.origin.y = 380;
+    frame.origin.y = 385;
     self.textFieldMessage.frame = frame;
-    
-    frame = self.tableView.frame;
-    frame.size.height = 380;
-    self.tableView.frame = frame;
-    
     self.textFieldMessage.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (void)dealloc {
+    _objects = nil;
+    _tableView = nil;
+    _contactID = nil;
+    _textFieldMessage = nil;
+    [super dealloc];
 }
 
 #pragma mark - Table view data source
@@ -193,13 +200,27 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    [self changeTextFieldFrame:NO];
+    NSLog(@"%@", self.textFieldMessage.text);
+    self.textFieldMessage.text = @"";
     return YES;
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    NSLog(@"test");
+    [self changeTextFieldFrame:YES];
     return YES;
+}
+
+- (void)changeTextFieldFrame:(bool)isBeginning
+{
+    int y = 105;
+    CGRect frame = self.textFieldMessage.frame;
+    if(isBeginning)
+        frame.origin.y -= y;
+    else
+        frame.origin.y += y;
+    self.textFieldMessage.frame = frame;
 }
 
 #pragma mark - Table view delegate
@@ -209,11 +230,4 @@
     
 }
 
-- (void)dealloc {
-    _objects = nil;
-    _tableView = nil;
-    _contactID = nil;
-    _textFieldMessage = nil;
-    [super dealloc];
-}
 @end

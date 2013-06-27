@@ -17,5 +17,7 @@
 @property (retain, nonatomic) IBOutlet UITextField *textFieldMessage;
 
 -(id)initWithContactID:(NSString*)contactID;
+-(BOOL)textFieldShouldReturn:(UITextField *)textField;
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField;
 
 @end
