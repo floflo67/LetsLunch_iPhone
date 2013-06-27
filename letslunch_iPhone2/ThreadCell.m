@@ -33,6 +33,9 @@
 
 - (void)layoutSubviews
 {
+    /*
+     cell.tipRightWard = YES => message to user
+     */
     [super layoutSubviews];
     CGFloat widthForText = self.bounds.size.width - 50;
     CGSize size = [ThreadCell calcTextHeight:self.msgText withinWidth:widthForText];

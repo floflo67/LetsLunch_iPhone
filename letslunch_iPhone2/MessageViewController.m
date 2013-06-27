@@ -23,6 +23,10 @@
 {
     self = [super init];
     if(self) {
+        
+        /*
+         Default that should be changed later
+         */
         if(!_objects) {
             _objects = [[NSMutableArray alloc] initWithArray:[(AppDelegate*)[[UIApplication sharedApplication] delegate]
                                                               getListMessagesForContactID:@"1"]];
@@ -48,10 +52,20 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"Messages";
+    
+    /*
+     Changes frame of tableView
+     */
     self.tableView.backgroundView = nil;
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.frame = CGRectMake(0, 0, 320, 385);
     
+    /*
+     Changes frame of textField
+     Appears bottom of view
+     Should add an ImageView as a background later?
+     Sets delegate as self
+     */
     CGRect frame = self.textFieldMessage.frame;
     frame.origin.y = 385;
     self.textFieldMessage.frame = frame;
@@ -101,6 +115,9 @@
         cell.imgName = @"MessageFromSelf.png";
         cell.tipRightward = NO;
     }
+    /*
+     Message sent to user
+     */
     else {
         cell.imgName = @"MessageToSelf.png";
         cell.tipRightward = YES;
@@ -108,14 +125,19 @@
     
     cell.msgText = [mess description];
     
-    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    /*
+     Changes format of date to hour:minute for message
+     */
+    NSDateFormatter *format = [[[NSDateFormatter alloc] init] autorelease];
     [format setDateFormat:@"hh:mm"];
     cell.dateText = [format stringFromDate:mess.date];
     mess = nil;
+    format = nil;
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
 	NSString *aMsg = [[_objects objectAtIndex:indexPath.section] description];
     CGFloat widthForText = 260.f;    
 	CGSize size = [ThreadCell calcTextHeight:aMsg withinWidth:widthForText];	
@@ -124,6 +146,10 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
+    /*
+     Header appears only if change of date between two messages
+     Header is date of message (Month/Day/Year)
+     */
     NSString *title;
     Messages *mess1 = (Messages*)_objects[section];
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
@@ -146,6 +172,10 @@
     return title;
 }
 
+/*
+ Checks if two dates are the same day
+ if day, month and year are the same
+ */
 - (BOOL)isSameDayWithDate1:(NSDate*)date1 date2:(NSDate*)date2
 {
     NSCalendar* calendar = [NSCalendar currentCalendar];
@@ -157,52 +187,13 @@
     return [comp1 day] == [comp2 day] && [comp1 month] == [comp2 month] && [comp1 year] == [comp2 year];
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 #pragma mark - Text field delegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [self changeTextFieldFrame:NO];
-    NSLog(@"%@", self.textFieldMessage.text);
-    self.textFieldMessage.text = @"";
+    NSLog(@"%@", self.textFieldMessage.text); // will push to API once exists
+    self.textFieldMessage.text = @""; // clears message
     return YES;
 }
 
@@ -212,6 +203,10 @@
     return YES;
 }
 
+/*
+ Moves the origin of the textField
+ isBeginning = YES -> Keyboard appears
+ */
 - (void)changeTextFieldFrame:(bool)isBeginning
 {
     int y = 105;
@@ -221,13 +216,6 @@
     else
         frame.origin.y += y;
     self.textFieldMessage.frame = frame;
-}
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
 }
 
 @end
