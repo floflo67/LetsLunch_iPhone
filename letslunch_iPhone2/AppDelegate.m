@@ -22,7 +22,7 @@
     /*
      Suppress FB session
      */
-    //[FBSession.activeSession closeAndClearTokenInformation];
+    [FBSession.activeSession closeAndClearTokenInformation];
      
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
@@ -37,12 +37,10 @@
     _viewController = controller;
     _navController = navController;
     
-    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
+    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded)
         [self openSession];
-    }
-    else {
+    else
         [self showLoginView];
-    }
     
     return YES;
 }
