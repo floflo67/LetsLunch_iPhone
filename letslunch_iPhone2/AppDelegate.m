@@ -19,6 +19,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    /*
+     Suppress FB session
+     */
+    [FBSession.activeSession closeAndClearTokenInformation];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
@@ -34,7 +39,8 @@
     
     if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
         [self openSession];
-    } else {
+    }
+    else {
         [self showLoginView];
     }
     
@@ -45,7 +51,8 @@
 {
     LoginViewController *login = [[LoginViewController alloc] init];
     [login.view setFrame:[[UIScreen mainScreen] bounds]];
-    [self.viewController.navigationController.view addSubview:login.view];
+    [login presentedViewController];
+    //[self.viewController.navigationController.view addSubview:login.view];
 }
 
 #pragma facebook events
@@ -54,9 +61,7 @@
 {
     [FBSession openActiveSessionWithReadPermissions:nil
                                        allowLoginUI:YES
-                                  completionHandler:
-     ^(FBSession *session,
-       FBSessionState state, NSError *error) {
+                                  completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
          [self sessionStateChanged:session state:state error:error];
      }];
 }
@@ -67,7 +72,7 @@
         case FBSessionStateOpen: {
             UIViewController *topViewController = [self.navController topViewController];
             if ([[topViewController modalViewController] isKindOfClass:[LoginViewController class]]) {
-                [topViewController dismissModalViewControllerAnimated:YES];
+                [topViewController dismissViewControllerAnimated:YES completion:nil];
             }
         }
             break;
