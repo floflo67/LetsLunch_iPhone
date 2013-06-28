@@ -15,9 +15,11 @@
 @property (retain, nonatomic) IBOutlet UIButton *buttonLogIn;
 @property (retain, nonatomic) IBOutlet UIButton *buttonTwitter;
 @property (retain, nonatomic) IBOutlet UIButton *buttonFacebook;
+@property (retain, nonatomic) IBOutlet UIButton *buttonLinkedIn;
 
 -(BOOL)logInWithFacebook;
 -(BOOL)logInWithTwitter;
+-(BOOL)logInWithLinkedIn;
 -(BOOL)buttonLogInClick;
 -(BOOL)logInWithUsername:(NSString*)username andPassword:(NSString*)password;
 

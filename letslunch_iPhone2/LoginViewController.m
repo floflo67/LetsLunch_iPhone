@@ -54,6 +54,7 @@
     [_buttonLogIn release];
     [_buttonTwitter release];
     [_buttonFacebook release];
+    [_buttonLinkedIn release];
     [super dealloc];
 }
 
@@ -71,14 +72,21 @@
 - (BOOL)logInWithFacebook
 {
     bool success = YES;
-    NSLog(@"%d", success);
+    NSLog(@"Facebook: %d", success);
     return success;
 }
 
 - (BOOL)logInWithTwitter
 {
     bool success = YES;
-    NSLog(@"%d", success);
+    NSLog(@"Twitter: %d", success);
+    return success;
+}
+
+- (BOOL)logInWithLinkedIn
+{
+    bool success = YES;
+    NSLog(@"LinkedIn: %d", success);
     return success;
 }
 
