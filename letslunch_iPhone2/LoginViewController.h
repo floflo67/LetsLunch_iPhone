@@ -8,10 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : UIViewController <UITextFieldDelegate>
 
-@property (nonatomic, strong) NSArray *objects;
-@property (retain, nonatomic) IBOutlet UITableView *tableView;
+@property (retain, nonatomic) IBOutlet UITextField *textFieldUsername;
+@property (retain, nonatomic) IBOutlet UITextField *textFieldPassword;
+@property (retain, nonatomic) IBOutlet UIButton *buttonLogIn;
+@property (retain, nonatomic) IBOutlet UIButton *buttonTwitter;
+@property (retain, nonatomic) IBOutlet UIButton *buttonFacebook;
 
+-(BOOL)logInWithFacebook;
+-(BOOL)logInWithTwitter;
+-(BOOL)buttonLogInClick;
+-(BOOL)logInWithUsername:(NSString*)username andPassword:(NSString*)password;
 
 @end

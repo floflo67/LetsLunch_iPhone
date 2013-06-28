@@ -14,6 +14,8 @@
 
 @implementation LoginViewController
 
+#pragma view life cycle
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -26,10 +28,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if(!_objects) {
-        _objects = [[NSArray alloc] initWithObjects:@"Login", @"Password", nil];
-    }
-    NSLog(@"test");
+    
+    /*
+     Sets delegate of UITextField
+     */
+    self.textFieldPassword.delegate = self;
+    self.textFieldUsername.delegate = self;
+    
+    /*
+     Sets action on button click
+     */
+    [self.buttonFacebook addTarget:self action:@selector(logInWithFacebook) forControlEvents:UIControlEventTouchDown];
+    [self.buttonTwitter addTarget:self action:@selector(logInWithTwitter) forControlEvents:UIControlEventTouchDown];
+    [self.buttonLogIn addTarget:self action:@selector(buttonLogInClick) forControlEvents:UIControlEventTouchDown];
 }
 
 - (void)didReceiveMemoryWarning
@@ -38,42 +49,54 @@
 }
 
 - (void)dealloc {
-    [_tableView release];
+    [_textFieldUsername release];
+    [_textFieldPassword release];
+    [_buttonLogIn release];
+    [_buttonTwitter release];
+    [_buttonFacebook release];
     [super dealloc];
 }
 
-#pragma mark - Table view data source
+#pragma text field delegate
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    return 1;
+    NSLog(@"%@", textField.text);
+    [textField resignFirstResponder];
+    return YES;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+#pragma button action
+
+- (BOOL)logInWithFacebook
 {
-    return [_objects count];
+    bool success = YES;
+    NSLog(@"%d", success);
+    return success;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (BOOL)logInWithTwitter
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
-    }
-    cell.backgroundColor = [UIColor clearColor];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.textLabel.text = [_objects[indexPath.row] description];
-    
-    return cell;
+    bool success = YES;
+    NSLog(@"%d", success);
+    return success;
 }
 
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (BOOL)buttonLogInClick
 {
+    return [self logInWithUsername:self.textFieldUsername.text andPassword:self.textFieldPassword.text];
+}
+
+- (BOOL)logInWithUsername:(NSString*)username andPassword:(NSString*)password
+{
+    bool success = NO;
     
+    if([username isEqualToString:@"Florian"])
+        if([password isEqualToString:@"Password"])
+            success = YES;
+    
+    NSLog(@"%d", success);
+    return success;
 }
 
 @end

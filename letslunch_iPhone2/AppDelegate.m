@@ -21,30 +21,19 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    CenterViewController *controller = [[CenterViewController alloc] init];
+    controller.title = @"ViewController";
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
+    [navController.navigationBar setTintColor:[UIColor orangeColor]];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
+    self.window.rootViewController = navController;
+    [self.window makeKeyAndVisible];
+    _viewController = controller;
+    
     BOOL login = NO;
     if(!login)
         [self loadLoginView];
-    else {
-        
-        CenterViewController *controller = [[CenterViewController alloc] init];
-        controller.title = @"ViewController";
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
-        [navController.navigationBar setTintColor:[UIColor orangeColor]];
-        
-        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
-        
-#if EXPERIEMENTAL_ORIENTATION_SUPPORT
-        UINavigationController *container = [[UINavigationController alloc] init];
-        [container setNavigationBarHidden:YES animated:NO];
-        [container setViewControllers:[NSArray arrayWithObject:navController] animated:NO];
-        self.window.rootViewController = container;
-#else
-        self.window.rootViewController = navController;
-#endif
-        
-        [self.window makeKeyAndVisible];
-        _viewController = controller;
-    }
+    
     return YES;
 }
 
