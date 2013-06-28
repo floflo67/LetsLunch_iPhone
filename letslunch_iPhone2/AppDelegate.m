@@ -15,6 +15,7 @@
 
 @synthesize window = _window;
 @synthesize viewController = _viewController;
+@synthesize navController = _navController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -29,19 +30,70 @@
     self.window.rootViewController = navController;
     [self.window makeKeyAndVisible];
     _viewController = controller;
+    _navController = navController;
     
-    BOOL login = YES;
-    if(!login)
-        [self loadLoginView];
+    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
+        [self openSession];
+    } else {
+        [self showLoginView];
+    }
     
     return YES;
 }
 
-- (void)loadLoginView
+- (void)showLoginView
 {
     LoginViewController *login = [[LoginViewController alloc] init];
     [login.view setFrame:[[UIScreen mainScreen] bounds]];
     [self.viewController.navigationController.view addSubview:login.view];
+}
+
+#pragma facebook events
+
+- (void)openSession
+{
+    [FBSession openActiveSessionWithReadPermissions:nil
+                                       allowLoginUI:YES
+                                  completionHandler:
+     ^(FBSession *session,
+       FBSessionState state, NSError *error) {
+         [self sessionStateChanged:session state:state error:error];
+     }];
+}
+
+- (void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error
+{
+    switch (state) {
+        case FBSessionStateOpen: {
+            UIViewController *topViewController = [self.navController topViewController];
+            if ([[topViewController modalViewController] isKindOfClass:[LoginViewController class]]) {
+                [topViewController dismissModalViewControllerAnimated:YES];
+            }
+        }
+            break;
+        case FBSessionStateClosed:
+        case FBSessionStateClosedLoginFailed:
+            // Once the user has logged in, we want them to
+            // be looking at the root view.
+            [self.navController popToRootViewControllerAnimated:NO];
+            
+            [FBSession.activeSession closeAndClearTokenInformation];
+            
+            [self showLoginView];
+            break;
+        default:
+            break;
+    }
+    
+    if (error) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+    }    
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    return [FBSession.activeSession handleOpenURL:url];
 }
 
 #pragma custom functions
@@ -140,6 +192,13 @@
     }
     return NULL;
     //return self.ownerActivity;
+}
+
+#pragma application life cycle
+
+-(void)applicationDidBecomeActive:(UIApplication *)application
+{
+    [FBSession.activeSession handleDidBecomeActive];
 }
 
 - (void)dealloc

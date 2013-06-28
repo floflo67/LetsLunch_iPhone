@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "AppDelegate.h"
 
 @interface LoginViewController ()
 
@@ -70,11 +71,14 @@
 
 #pragma button action
 
-- (BOOL)logInWithFacebook
+- (void)logInWithFacebook
 {
+    [((AppDelegate*)[UIApplication sharedApplication].delegate) openSession];
+    /*
     bool success = YES;
     NSLog(@"Facebook: %d", success);
     return success;
+    */
 }
 
 - (BOOL)logInWithTwitter

@@ -17,7 +17,7 @@
 @property (retain, nonatomic) IBOutlet UIButton *buttonFacebook;
 @property (retain, nonatomic) IBOutlet UIButton *buttonLinkedIn;
 
--(BOOL)logInWithFacebook;
+-(void)logInWithFacebook;
 -(BOOL)logInWithTwitter;
 -(BOOL)logInWithLinkedIn;
 -(BOOL)buttonLogInClick;
