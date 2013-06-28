@@ -30,7 +30,7 @@
     [self.window makeKeyAndVisible];
     _viewController = controller;
     
-    BOOL login = NO;
+    BOOL login = YES;
     if(!login)
         [self loadLoginView];
     

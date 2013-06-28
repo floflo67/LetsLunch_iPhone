@@ -121,6 +121,7 @@
 		544DBE611773DC5A00055C8A /* NearbyVenuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyVenuesViewController.h; sourceTree = "<group>"; };
 		544DBE621773DC5A00055C8A /* NearbyVenuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyVenuesViewController.m; sourceTree = "<group>"; };
 		544DBE631773DC5A00055C8A /* NearbyVenuesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearbyVenuesViewController.xib; sourceTree = "<group>"; };
+		5457138C177E39C1006A69CE /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
 		547D54CF1773B21F0069D837 /* Foursquare2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Foursquare2.h; sourceTree = "<group>"; };
 		547D54D01773B21F0069D837 /* Foursquare2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Foursquare2.m; sourceTree = "<group>"; };
 		547D54D11773B21F0069D837 /* FSRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRequester.h; sourceTree = "<group>"; };
@@ -395,6 +396,7 @@
 				548D36B7176B819300154C36 /* InfoPlist.strings */,
 				548D36BA176B819300154C36 /* main.m */,
 				548D36BC176B819300154C36 /* letslunch_iPhone2-Prefix.pch */,
+				5457138C177E39C1006A69CE /* constants.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
