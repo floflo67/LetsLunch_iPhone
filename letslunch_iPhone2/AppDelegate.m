@@ -9,21 +9,21 @@
 #import "AppDelegate.h"
 #import "CenterViewController.h"
 #import "GetStaticLists.h"
-#import "LoginViewController.h"
 
 @implementation AppDelegate
 
 @synthesize window = _window;
 @synthesize viewController = _viewController;
 @synthesize navController = _navController;
+@synthesize loginViewController = _loginViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     /*
      Suppress FB session
      */
-    [FBSession.activeSession closeAndClearTokenInformation];
-    
+    //[FBSession.activeSession closeAndClearTokenInformation];
+     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
@@ -49,10 +49,9 @@
 
 - (void)showLoginView
 {
-    LoginViewController *login = [[LoginViewController alloc] init];
-    [login.view setFrame:[[UIScreen mainScreen] bounds]];
-    [login presentedViewController];
-    //[self.viewController.navigationController.view addSubview:login.view];
+    _loginViewController = [[LoginViewController alloc] init];
+    [_loginViewController.view setFrame:[[UIScreen mainScreen] bounds]];
+    [self.viewController.navigationController.view addSubview:_loginViewController.view];
 }
 
 #pragma facebook events
@@ -66,14 +65,13 @@
      }];
 }
 
-- (void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error
+- (void)sessionStateChanged:(FBSession*)session state:(FBSessionState)state error:(NSError*)error
 {
     switch (state) {
         case FBSessionStateOpen: {
-            UIViewController *topViewController = [self.navController topViewController];
-            if ([[topViewController modalViewController] isKindOfClass:[LoginViewController class]]) {
-                [topViewController dismissViewControllerAnimated:YES completion:nil];
-            }
+            NSLog(@"open");
+            if(_loginViewController)
+                [_loginViewController.view removeFromSuperview];
         }
             break;
         case FBSessionStateClosed:
@@ -213,6 +211,8 @@
     self.listMessages = nil;
     _window = nil;
     _viewController = nil;
+    _navController = nil;
+    _loginViewController = nil;
     [super dealloc];
 }
 

@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "CenterViewController.h"
 #import <FacebookSDK/FacebookSDK.h>
+#import "LoginViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) CenterViewController *viewController;
 @property (strong, nonatomic) UINavigationController *navController;
+@property (strong, nonatomic) LoginViewController *loginViewController;
 
 @property (strong, nonatomic) NSMutableArray *listActivities;
 @property (strong, nonatomic) NSMutableArray *listFriendsSuggestion;
