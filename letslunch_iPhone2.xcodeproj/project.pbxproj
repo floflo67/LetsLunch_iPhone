@@ -70,6 +70,8 @@
 		54F971FA177CE12B006F6FE5 /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54F971F8177CE12B006F6FE5 /* ShareViewController.xib */; };
 		54F97202177CE711006F6FE5 /* ImageShare.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F97200177CE711006F6FE5 /* ImageShare.png */; };
 		54F97203177CE711006F6FE5 /* ImageShare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F97201177CE711006F6FE5 /* ImageShare@2x.png */; };
+		54F97207177CFFE8006F6FE5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F97205177CFFE7006F6FE5 /* LoginViewController.m */; };
+		54F97208177CFFE8006F6FE5 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54F97206177CFFE7006F6FE5 /* LoginViewController.xib */; };
 		54FE68FC17736B1000AD7987 /* ButtonMenuRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 54FE68FB17736B1000AD7987 /* ButtonMenuRight.png */; };
 /* End PBXBuildFile section */
 
@@ -188,6 +190,9 @@
 		54F971F8177CE12B006F6FE5 /* ShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareViewController.xib; sourceTree = "<group>"; };
 		54F97200177CE711006F6FE5 /* ImageShare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ImageShare.png; sourceTree = "<group>"; };
 		54F97201177CE711006F6FE5 /* ImageShare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ImageShare@2x.png"; sourceTree = "<group>"; };
+		54F97204177CFFE7006F6FE5 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		54F97205177CFFE7006F6FE5 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		54F97206177CFFE7006F6FE5 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		54FE68FB17736B1000AD7987 /* ButtonMenuRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonMenuRight.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -375,6 +380,9 @@
 				548D36BE176B819300154C36 /* AppDelegate.m */,
 				548D36DA176B823700154C36 /* CenterViewController.h */,
 				548D36DB176B823700154C36 /* CenterViewController.m */,
+				54F97204177CFFE7006F6FE5 /* LoginViewController.h */,
+				54F97205177CFFE7006F6FE5 /* LoginViewController.m */,
+				54F97206177CFFE7006F6FE5 /* LoginViewController.xib */,
 				548D36B5176B819300154C36 /* Supporting Files */,
 			);
 			path = letslunch_iPhone2;
@@ -593,6 +601,7 @@
 				54F971FA177CE12B006F6FE5 /* ShareViewController.xib in Resources */,
 				54F97202177CE711006F6FE5 /* ImageShare.png in Resources */,
 				54F97203177CE711006F6FE5 /* ImageShare@2x.png in Resources */,
+				54F97208177CFFE8006F6FE5 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,6 +636,7 @@
 				5400D000177A0C98002CC092 /* ContactViewController.m in Sources */,
 				5400D009177A59DB002CC092 /* ThreadCell.m in Sources */,
 				54F971F9177CE12B006F6FE5 /* ShareViewController.m in Sources */,
+				54F97207177CFFE8006F6FE5 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
