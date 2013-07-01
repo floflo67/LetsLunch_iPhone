@@ -132,7 +132,7 @@
     NSDictionary *profile = [responseBody objectFromJSONString];
     [responseBody release];
     
-    if (profile)
+    if(profile && [profile objectForKey:@"firstname"])
     {
         NSLog(@"%@", [[NSString alloc] initWithFormat:@"%@ %@",[profile objectForKey:@"firstName"], [profile objectForKey:@"lastName"]]);
         [_loginViewController.view removeFromSuperview];
