@@ -77,6 +77,14 @@
 		54E3331E1781EF3100BFF6A4 /* OAuthLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E333171781EF3100BFF6A4 /* OAuthLoginView.m */; };
 		54E3331F1781EF3100BFF6A4 /* linkedInBluebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 54E333191781EF3100BFF6A4 /* linkedInBluebutton.png */; };
 		54E333201781EF3100BFF6A4 /* linkedInBluebutton-highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 54E3331A1781EF3100BFF6A4 /* linkedInBluebutton-highlight.png */; };
+		54E4B57D17822C8E00BE5686 /* TwitterLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E4B57B17822C8E00BE5686 /* TwitterLoginViewController.m */; };
+		54E4B57E17822C8E00BE5686 /* TwitterLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E4B57C17822C8E00BE5686 /* TwitterLoginViewController.xib */; };
+		54E4B58517822CE800BE5686 /* TwitterAuthenticator.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E4B58017822CE700BE5686 /* TwitterAuthenticator.m */; };
+		54E4B58617822CE800BE5686 /* TwitterRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E4B58217822CE700BE5686 /* TwitterRequest.m */; };
+		54E4B58717822CE800BE5686 /* TwitterToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E4B58417822CE700BE5686 /* TwitterToken.m */; };
+		54E4B58A17822CFB00BE5686 /* TwitterConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E4B58917822CFB00BE5686 /* TwitterConsumer.m */; };
+		54E4B58D17822D1200BE5686 /* TwitterUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E4B58C17822D1200BE5686 /* TwitterUtils.m */; };
+		54E4B59117822D4D00BE5686 /* TwitterClouds.png in Resources */ = {isa = PBXBuildFile; fileRef = 54E4B59017822D4D00BE5686 /* TwitterClouds.png */; };
 		54E714CD176B95E200F39D73 /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E714CB176B95E200F39D73 /* ActivityViewController.m */; };
 		54E714CE176B95E200F39D73 /* ActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E714CC176B95E200F39D73 /* ActivityViewController.xib */; };
 		54E714D3176B9EDA00F39D73 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E714D1176B9EDA00F39D73 /* MessageViewController.m */; };
@@ -244,8 +252,22 @@
 		54E333161781EF3100BFF6A4 /* OAuthLoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OAuthLoginView.xib; sourceTree = "<group>"; };
 		54E333171781EF3100BFF6A4 /* OAuthLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthLoginView.m; sourceTree = "<group>"; };
 		54E333181781EF3100BFF6A4 /* OAuthLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthLoginView.h; sourceTree = "<group>"; };
-		54E333191781EF3100BFF6A4 /* linkedInBluebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = linkedInBluebutton.png; sourceTree = "<group>"; };
-		54E3331A1781EF3100BFF6A4 /* linkedInBluebutton-highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "linkedInBluebutton-highlight.png"; sourceTree = "<group>"; };
+		54E333191781EF3100BFF6A4 /* linkedInBluebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = linkedInBluebutton.png; path = letslunch_iPhone2/linkedInBluebutton.png; sourceTree = "<group>"; };
+		54E3331A1781EF3100BFF6A4 /* linkedInBluebutton-highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "linkedInBluebutton-highlight.png"; path = "letslunch_iPhone2/linkedInBluebutton-highlight.png"; sourceTree = "<group>"; };
+		54E4B57A17822C8E00BE5686 /* TwitterLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterLoginViewController.h; sourceTree = "<group>"; };
+		54E4B57B17822C8E00BE5686 /* TwitterLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterLoginViewController.m; sourceTree = "<group>"; };
+		54E4B57C17822C8E00BE5686 /* TwitterLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwitterLoginViewController.xib; sourceTree = "<group>"; };
+		54E4B57F17822CE700BE5686 /* TwitterAuthenticator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterAuthenticator.h; sourceTree = "<group>"; };
+		54E4B58017822CE700BE5686 /* TwitterAuthenticator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterAuthenticator.m; sourceTree = "<group>"; };
+		54E4B58117822CE700BE5686 /* TwitterRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterRequest.h; sourceTree = "<group>"; };
+		54E4B58217822CE700BE5686 /* TwitterRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterRequest.m; sourceTree = "<group>"; };
+		54E4B58317822CE700BE5686 /* TwitterToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterToken.h; sourceTree = "<group>"; };
+		54E4B58417822CE700BE5686 /* TwitterToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterToken.m; sourceTree = "<group>"; };
+		54E4B58817822CFB00BE5686 /* TwitterConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterConsumer.h; sourceTree = "<group>"; };
+		54E4B58917822CFB00BE5686 /* TwitterConsumer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterConsumer.m; sourceTree = "<group>"; };
+		54E4B58B17822D1200BE5686 /* TwitterUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterUtils.h; sourceTree = "<group>"; };
+		54E4B58C17822D1200BE5686 /* TwitterUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterUtils.m; sourceTree = "<group>"; };
+		54E4B59017822D4D00BE5686 /* TwitterClouds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TwitterClouds.png; sourceTree = "<group>"; };
 		54E714CA176B95E200F39D73 /* ActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewController.h; sourceTree = "<group>"; };
 		54E714CB176B95E200F39D73 /* ActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewController.m; sourceTree = "<group>"; };
 		54E714CC176B95E200F39D73 /* ActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityViewController.xib; sourceTree = "<group>"; };
@@ -470,6 +492,7 @@
 				5445A68F1779194B00F3EC97 /* Objects */,
 				547D54CC17739D060069D837 /* Foursquare */,
 				54E332D11781ED1E00BFF6A4 /* LinkedIn */,
+				54E4B57817822C7400BE5686 /* Twitter */,
 				54F5984E1770C9350074F43C /* BarsViewController */,
 				54E714C9176B95B500F39D73 /* ViewControllers */,
 				54403821176B8E4D00AA3588 /* API */,
@@ -513,6 +536,8 @@
 		548D36D5176B820700154C36 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				54E4B58F17822D2E00BE5686 /* Twitter */,
+				54E4B58E17822D2700BE5686 /* LinkedIn */,
 				5400D00C177A62A6002CC092 /* Other */,
 				5400D00B177A6288002CC092 /* CenterBar */,
 				5400D00A177A625F002CC092 /* Activity */,
@@ -543,8 +568,6 @@
 				54E333181781EF3100BFF6A4 /* OAuthLoginView.h */,
 				54E333171781EF3100BFF6A4 /* OAuthLoginView.m */,
 				54E333161781EF3100BFF6A4 /* OAuthLoginView.xib */,
-				54E333191781EF3100BFF6A4 /* linkedInBluebutton.png */,
-				54E3331A1781EF3100BFF6A4 /* linkedInBluebutton-highlight.png */,
 			);
 			name = LinkedIn;
 			sourceTree = "<group>";
@@ -616,6 +639,43 @@
 				54E3330F1781EF1300BFF6A4 /* NSURL+Base.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		54E4B57817822C7400BE5686 /* Twitter */ = {
+			isa = PBXGroup;
+			children = (
+				54E4B57A17822C8E00BE5686 /* TwitterLoginViewController.h */,
+				54E4B57B17822C8E00BE5686 /* TwitterLoginViewController.m */,
+				54E4B57C17822C8E00BE5686 /* TwitterLoginViewController.xib */,
+				54E4B57F17822CE700BE5686 /* TwitterAuthenticator.h */,
+				54E4B58017822CE700BE5686 /* TwitterAuthenticator.m */,
+				54E4B58117822CE700BE5686 /* TwitterRequest.h */,
+				54E4B58217822CE700BE5686 /* TwitterRequest.m */,
+				54E4B58317822CE700BE5686 /* TwitterToken.h */,
+				54E4B58417822CE700BE5686 /* TwitterToken.m */,
+				54E4B58817822CFB00BE5686 /* TwitterConsumer.h */,
+				54E4B58917822CFB00BE5686 /* TwitterConsumer.m */,
+				54E4B58B17822D1200BE5686 /* TwitterUtils.h */,
+				54E4B58C17822D1200BE5686 /* TwitterUtils.m */,
+			);
+			name = Twitter;
+			sourceTree = "<group>";
+		};
+		54E4B58E17822D2700BE5686 /* LinkedIn */ = {
+			isa = PBXGroup;
+			children = (
+				54E333191781EF3100BFF6A4 /* linkedInBluebutton.png */,
+				54E3331A1781EF3100BFF6A4 /* linkedInBluebutton-highlight.png */,
+			);
+			name = LinkedIn;
+			sourceTree = "<group>";
+		};
+		54E4B58F17822D2E00BE5686 /* Twitter */ = {
+			isa = PBXGroup;
+			children = (
+				54E4B59017822D4D00BE5686 /* TwitterClouds.png */,
+			);
+			name = Twitter;
 			sourceTree = "<group>";
 		};
 		54E714C9176B95B500F39D73 /* ViewControllers */ = {
@@ -790,6 +850,8 @@
 				54E3331D1781EF3100BFF6A4 /* OAuthLoginView.xib in Resources */,
 				54E3331F1781EF3100BFF6A4 /* linkedInBluebutton.png in Resources */,
 				54E333201781EF3100BFF6A4 /* linkedInBluebutton-highlight.png in Resources */,
+				54E4B57E17822C8E00BE5686 /* TwitterLoginViewController.xib in Resources */,
+				54E4B59117822D4D00BE5686 /* TwitterClouds.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -845,6 +907,12 @@
 				54E333111781EF1300BFF6A4 /* NSString+URLEncoding.m in Sources */,
 				54E333121781EF1300BFF6A4 /* NSURL+Base.m in Sources */,
 				54E3331E1781EF3100BFF6A4 /* OAuthLoginView.m in Sources */,
+				54E4B57D17822C8E00BE5686 /* TwitterLoginViewController.m in Sources */,
+				54E4B58517822CE800BE5686 /* TwitterAuthenticator.m in Sources */,
+				54E4B58617822CE800BE5686 /* TwitterRequest.m in Sources */,
+				54E4B58717822CE800BE5686 /* TwitterToken.m in Sources */,
+				54E4B58A17822CFB00BE5686 /* TwitterConsumer.m in Sources */,
+				54E4B58D17822D1200BE5686 /* TwitterUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
