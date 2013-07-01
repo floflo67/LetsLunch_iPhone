@@ -24,17 +24,28 @@
      Suppress FB session
      */
     [FBSession.activeSession closeAndClearTokenInformation];
-     
+    
+    /*
+     Sets window
+     */
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
+    
+    /*
+     Sets center controller
+     */
     CenterViewController *controller = [[CenterViewController alloc] init];
     controller.title = @"ViewController";
+    
+    /*
+     Sets navigation controller
+     */
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
     [navController.navigationBar setTintColor:[UIColor orangeColor]];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
     self.window.rootViewController = navController;
     [self.window makeKeyAndVisible];
+    
     _viewController = controller;
     _navController = navController;
     
@@ -108,23 +119,19 @@
 
 - (void)profileApiCall
 {
-    NSURL *url = [NSURL URLWithString:@"http://api.linkedin.com/v1/people/~"];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@people/~", LI_API_BaseUrl]];
     OAMutableURLRequest *request = [[OAMutableURLRequest alloc] initWithURL:url consumer:_oAuthLoginView.consumer token:_oAuthLoginView.accessToken callback:nil signatureProvider:nil];
     
     [request setValue:@"json" forHTTPHeaderField:@"x-li-format"];
     
     OADataFetcher *fetcher = [[OADataFetcher alloc] init];
-    [fetcher fetchDataWithRequest:request
-                         delegate:self
-                didFinishSelector:@selector(profileApiCallResult:didFinish:)
-                  didFailSelector:@selector(profileApiCallResult:didFail:)];
+    [fetcher fetchDataWithRequest:request delegate:self didFinishSelector:@selector(profileApiCallResult:didFinish:) didFailSelector:@selector(profileApiCallResult:didFail:)];
     [request release];
 }
 
 - (void)profileApiCallResult:(OAServiceTicket *)ticket didFinish:(NSData *)data
 {
-    NSString *responseBody = [[NSString alloc] initWithData:data
-                                                   encoding:NSUTF8StringEncoding];
+    NSString *responseBody = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
     NSDictionary *profile = [responseBody objectFromJSONString];
     [responseBody release];
@@ -132,7 +139,8 @@
     if (profile)
     {
         NSLog(@"%@", [[NSString alloc] initWithFormat:@"%@ %@",[profile objectForKey:@"firstName"], [profile objectForKey:@"lastName"]]);
-        [self.loginViewController.view removeFromSuperview];
+        [_loginViewController.view removeFromSuperview];
+        [_loginViewController release];
     }
     
     // The next thing we want to do is call the network updates
@@ -147,7 +155,7 @@
 
 - (void)networkApiCall
 {
-    NSURL *url = [NSURL URLWithString:@"http://api.linkedin.com/v1/people/~/network/updates?scope=self&count=1&type=STAT"];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@people/~/network/updates?scope=self&count=1&type=STAT", LI_API_BaseUrl]];
     OAMutableURLRequest *request =
     [[OAMutableURLRequest alloc] initWithURL:url
                                     consumer:_oAuthLoginView.consumer
