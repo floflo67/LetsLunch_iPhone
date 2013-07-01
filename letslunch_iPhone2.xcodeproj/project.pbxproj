@@ -73,8 +73,6 @@
 		54E333101781EF1300BFF6A4 /* NSMutableURLRequest+Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E3330B1781EF1300BFF6A4 /* NSMutableURLRequest+Parameters.m */; };
 		54E333111781EF1300BFF6A4 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E3330D1781EF1300BFF6A4 /* NSString+URLEncoding.m */; };
 		54E333121781EF1300BFF6A4 /* NSURL+Base.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E3330F1781EF1300BFF6A4 /* NSURL+Base.m */; };
-		54E3331B1781EF3100BFF6A4 /* ProfileTabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E333131781EF3100BFF6A4 /* ProfileTabView.xib */; };
-		54E3331C1781EF3100BFF6A4 /* ProfileTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E333141781EF3100BFF6A4 /* ProfileTabView.m */; };
 		54E3331D1781EF3100BFF6A4 /* OAuthLoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E333161781EF3100BFF6A4 /* OAuthLoginView.xib */; };
 		54E3331E1781EF3100BFF6A4 /* OAuthLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E333171781EF3100BFF6A4 /* OAuthLoginView.m */; };
 		54E3331F1781EF3100BFF6A4 /* linkedInBluebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 54E333191781EF3100BFF6A4 /* linkedInBluebutton.png */; };
@@ -243,9 +241,6 @@
 		54E3330D1781EF1300BFF6A4 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
 		54E3330E1781EF1300BFF6A4 /* NSURL+Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+Base.h"; sourceTree = "<group>"; };
 		54E3330F1781EF1300BFF6A4 /* NSURL+Base.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+Base.m"; sourceTree = "<group>"; };
-		54E333131781EF3100BFF6A4 /* ProfileTabView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTabView.xib; sourceTree = "<group>"; };
-		54E333141781EF3100BFF6A4 /* ProfileTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTabView.m; sourceTree = "<group>"; };
-		54E333151781EF3100BFF6A4 /* ProfileTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTabView.h; sourceTree = "<group>"; };
 		54E333161781EF3100BFF6A4 /* OAuthLoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OAuthLoginView.xib; sourceTree = "<group>"; };
 		54E333171781EF3100BFF6A4 /* OAuthLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthLoginView.m; sourceTree = "<group>"; };
 		54E333181781EF3100BFF6A4 /* OAuthLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthLoginView.h; sourceTree = "<group>"; };
@@ -545,12 +540,9 @@
 				54E332D61781EED200BFF6A4 /* Categories */,
 				54E332D41781EEBC00BFF6A4 /* Crypto */,
 				54E332D31781EEB600BFF6A4 /* JSON */,
-				54E333131781EF3100BFF6A4 /* ProfileTabView.xib */,
-				54E333141781EF3100BFF6A4 /* ProfileTabView.m */,
-				54E333151781EF3100BFF6A4 /* ProfileTabView.h */,
-				54E333161781EF3100BFF6A4 /* OAuthLoginView.xib */,
-				54E333171781EF3100BFF6A4 /* OAuthLoginView.m */,
 				54E333181781EF3100BFF6A4 /* OAuthLoginView.h */,
+				54E333171781EF3100BFF6A4 /* OAuthLoginView.m */,
+				54E333161781EF3100BFF6A4 /* OAuthLoginView.xib */,
 				54E333191781EF3100BFF6A4 /* linkedInBluebutton.png */,
 				54E3331A1781EF3100BFF6A4 /* linkedInBluebutton-highlight.png */,
 			);
@@ -795,7 +787,6 @@
 				54F97203177CE711006F6FE5 /* ImageShare@2x.png in Resources */,
 				54F97208177CFFE8006F6FE5 /* LoginViewController.xib in Resources */,
 				54571390177E48A5006A69CE /* FacebookSDKResources.bundle in Resources */,
-				54E3331B1781EF3100BFF6A4 /* ProfileTabView.xib in Resources */,
 				54E3331D1781EF3100BFF6A4 /* OAuthLoginView.xib in Resources */,
 				54E3331F1781EF3100BFF6A4 /* linkedInBluebutton.png in Resources */,
 				54E333201781EF3100BFF6A4 /* linkedInBluebutton-highlight.png in Resources */,
@@ -853,7 +844,6 @@
 				54E333101781EF1300BFF6A4 /* NSMutableURLRequest+Parameters.m in Sources */,
 				54E333111781EF1300BFF6A4 /* NSString+URLEncoding.m in Sources */,
 				54E333121781EF1300BFF6A4 /* NSURL+Base.m in Sources */,
-				54E3331C1781EF3100BFF6A4 /* ProfileTabView.m in Sources */,
 				54E3331E1781EF3100BFF6A4 /* OAuthLoginView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
