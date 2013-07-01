@@ -327,7 +327,7 @@
 			name = Objects;
 			sourceTree = "<group>";
 		};
-		547D54CC17739D060069D837 /* FourSquare */ = {
+		547D54CC17739D060069D837 /* Foursquare */ = {
 			isa = PBXGroup;
 			children = (
 				547D54D91773B2240069D837 /* Objects */,
@@ -341,7 +341,7 @@
 				547D54D31773B21F0069D837 /* FSTargetCallback.h */,
 				547D54D41773B21F0069D837 /* FSTargetCallback.m */,
 			);
-			name = FourSquare;
+			name = Foursquare;
 			sourceTree = "<group>";
 		};
 		547D54D91773B2240069D837 /* Objects */ = {
@@ -399,7 +399,8 @@
 			children = (
 				54F971FB177CE13E006F6FE5 /* Share */,
 				5445A68F1779194B00F3EC97 /* Objects */,
-				547D54CC17739D060069D837 /* FourSquare */,
+				547D54CC17739D060069D837 /* Foursquare */,
+				54E332D11781ED1E00BFF6A4 /* LinkedIn */,
 				54F5984E1770C9350074F43C /* BarsViewController */,
 				54E714C9176B95B500F39D73 /* ViewControllers */,
 				54403821176B8E4D00AA3588 /* API */,
@@ -461,6 +462,13 @@
 				549ADAB9176BE11D001F1D3F /* libQuickDialog.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		54E332D11781ED1E00BFF6A4 /* LinkedIn */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = LinkedIn;
 			sourceTree = "<group>";
 		};
 		54E714C9176B95B500F39D73 /* ViewControllers */ = {
