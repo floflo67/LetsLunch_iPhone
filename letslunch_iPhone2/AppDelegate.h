@@ -10,6 +10,8 @@
 #import "CenterViewController.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import "LoginViewController.h"
+#import "OAuthConsumer.h"
+#import "OAuthLoginView.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -17,6 +19,7 @@
 @property (strong, nonatomic) CenterViewController *viewController;
 @property (strong, nonatomic) UINavigationController *navController;
 @property (strong, nonatomic) LoginViewController *loginViewController;
+@property (nonatomic, retain) OAuthLoginView *oAuthLoginView;
 
 @property (strong, nonatomic) NSMutableArray *listActivities;
 @property (strong, nonatomic) NSMutableArray *listFriendsSuggestion;

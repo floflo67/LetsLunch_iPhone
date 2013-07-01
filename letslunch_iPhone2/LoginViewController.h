@@ -19,7 +19,7 @@
 
 -(void)logInWithFacebook;
 -(BOOL)logInWithTwitter;
--(BOOL)logInWithLinkedIn;
+-(void)logInWithLinkedIn;
 -(BOOL)buttonLogInClick;
 -(BOOL)logInWithUsername:(NSString*)username andPassword:(NSString*)password;
 

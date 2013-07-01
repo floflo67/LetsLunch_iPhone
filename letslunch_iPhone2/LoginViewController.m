@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "AppDelegate.h"
+#import "OAuthLoginView.h"
 
 @interface LoginViewController ()
 
@@ -50,7 +51,8 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
     [_textFieldUsername release];
     [_textFieldPassword release];
     [_buttonLogIn release];
@@ -74,11 +76,6 @@
 - (void)logInWithFacebook
 {
     [((AppDelegate*)[UIApplication sharedApplication].delegate) openSession];
-    /*
-    bool success = YES;
-    NSLog(@"Facebook: %d", success);
-    return success;
-    */
 }
 
 - (BOOL)logInWithTwitter
@@ -88,11 +85,18 @@
     return success;
 }
 
-- (BOOL)logInWithLinkedIn
+- (void)logInWithLinkedIn
 {
-    bool success = YES;
-    NSLog(@"LinkedIn: %d", success);
-    return success;
+    OAuthLoginView* oAuthLoginView = [[OAuthLoginView alloc] initWithNibName:nil bundle:nil];
+    AppDelegate *app = [UIApplication sharedApplication].delegate;
+    app.oAuthLoginView = oAuthLoginView;
+    
+    // register to be told when the login is finished
+    [[NSNotificationCenter defaultCenter] addObserver:app
+                                             selector:@selector(loginViewDidFinish:)
+                                                 name:@"loginViewDidFinish"
+                                               object:oAuthLoginView];
+    [self presentViewController:oAuthLoginView animated:YES completion:nil];
 }
 
 - (BOOL)buttonLogInClick
