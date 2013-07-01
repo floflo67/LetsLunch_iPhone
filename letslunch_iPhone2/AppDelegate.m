@@ -136,6 +136,7 @@
     {
         NSLog(@"%@", [[NSString alloc] initWithFormat:@"%@ %@",[profile objectForKey:@"firstName"], [profile objectForKey:@"lastName"]]);
         [_loginViewController.view removeFromSuperview];
+        [_loginViewController.view setHidden:YES];
         [_loginViewController release];
     }
     
