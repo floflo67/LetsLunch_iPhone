@@ -1,10 +1,9 @@
 //
-//  iPhone OAuth Starter Kit
+//  ProfileTabView.h
+//  letslunch_iPhone2
 //
-//  Supported providers: LinkedIn (OAuth 1.0a)
-//
-//  Lee Whitney
-//  http://whitneyland.com
+//  Created by Florian Reiss on 01/07/13.
+//  Copyright (c) 2013 Florian Reiss. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

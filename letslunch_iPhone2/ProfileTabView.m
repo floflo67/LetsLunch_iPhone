@@ -1,10 +1,9 @@
 //
-//  iPhone OAuth Starter Kit
+//  ProfileTabView.m
+//  letslunch_iPhone2
 //
-//  Supported providers: LinkedIn (OAuth 1.0a)
-//
-//  Lee Whitney
-//  http://whitneyland.com
+//  Created by Florian Reiss on 01/07/13.
+//  Copyright (c) 2013 Florian Reiss. All rights reserved.
 //
 
 #import <Foundation/NSNotificationQueue.h>
@@ -27,8 +26,8 @@
                                              selector:@selector(loginViewDidFinish:) 
                                                  name:@"loginViewDidFinish" 
                                                object:oAuthLoginView];
-    
-    [self presentModalViewController:oAuthLoginView animated:YES];
+    [self presentViewController:oAuthLoginView animated:YES completion:nil];
+//    [self presentModalViewController:oAuthLoginView animated:YES];
 }
 
 
@@ -142,7 +141,8 @@
         
     }
     
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)networkApiCallResult:(OAServiceTicket *)ticket didFail:(NSData *)error 

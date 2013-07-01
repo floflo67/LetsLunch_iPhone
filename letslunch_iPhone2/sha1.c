@@ -1,3 +1,11 @@
+//
+//  sha1.c
+//  letslunch_iPhone2
+//
+//  Created by Florian Reiss on 01/07/13.
+//  Copyright (c) 2013 Florian Reiss. All rights reserved.
+//
+
 /*
 SHA-1 in C
 By Steve Reid <steve@edmweb.com>

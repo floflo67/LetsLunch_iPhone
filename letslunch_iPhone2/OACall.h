@@ -1,10 +1,10 @@
 //
 //  OACall.h
-//  OAuthConsumer
+//  letslunch_iPhone2
 //
-//  Created by Alberto García Hierro on 04/09/08.
-//  Copyright 2008 Alberto García Hierro. All rights reserved.
-//	bynotes.com
+//  Created by Florian Reiss on 01/07/13.
+//  Copyright (c) 2013 Florian Reiss. All rights reserved.
+//
 
 #import <Foundation/Foundation.h>
 

@@ -1,11 +1,11 @@
 //
-//  iPhone OAuth Starter Kit
+//  OAuthLoginView.m
+//  letslunch_iPhone2
 //
-//  Supported providers: LinkedIn (OAuth 1.0a)
+//  Created by Florian Reiss on 01/07/13.
+//  Copyright (c) 2013 Florian Reiss. All rights reserved.
 //
-//  Lee Whitney
-//  http://whitneyland.com
-//
+
 #import <Foundation/NSNotificationQueue.h>
 #import "OAuthLoginView.h"
 
@@ -155,8 +155,8 @@
                     postNotificationName:@"loginViewDidFinish"        
                                   object:self 
                                 userInfo:nil];
-
-            [self dismissModalViewControllerAnimated:YES];
+            [self dismissViewControllerAnimated:YES completion:nil];
+//            [self dismissModalViewControllerAnimated:YES];
         }
     }
     else
@@ -211,7 +211,8 @@
      postNotificationName:@"loginViewDidFinish"        
      object:self];
     
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self dismissModalViewControllerAnimated:YES];
     [responseBody release];
 }
 
@@ -221,8 +222,8 @@
 //
 - (void)initLinkedInApi
 {
-    apikey = @"bu4scy6j1xfl";
-    secretkey = @"XxH5O6iZYY6vceQz";   
+    apikey = LI_OAUTH_KEY;
+    secretkey = LI_OAUTH_SECRET;
 
     self.consumer = [[OAConsumer alloc] initWithKey:apikey
                                         secret:secretkey
@@ -263,7 +264,8 @@
          postNotificationName:@"loginViewDidFinish"        
          object:self];
         
-        [self dismissModalViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
+//        [self dismissModalViewControllerAnimated:YES];
     }
 
     [self requestTokenFromProvider];

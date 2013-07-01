@@ -1,11 +1,11 @@
 //
-//  iPhone OAuth Starter Kit
+//  OAuthLoginView.h
+//  letslunch_iPhone2
 //
-//  Supported providers: LinkedIn (OAuth 1.0a)
+//  Created by Florian Reiss on 01/07/13.
+//  Copyright (c) 2013 Florian Reiss. All rights reserved.
 //
-//  Lee Whitney
-//  http://whitneyland.com
-//
+
 #import <UIKit/UIKit.h>
 #import "JSONKit.h"
 #import "OAConsumer.h"
