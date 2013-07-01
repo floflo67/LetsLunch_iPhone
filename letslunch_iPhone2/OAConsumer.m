@@ -16,9 +16,9 @@
 
 - (id)initWithKey:(const NSString *)aKey secret:(const NSString *)aSecret realm:(const NSString *)aRealm {
 	[super init];
-	self.key = [aKey retain];
-	self.secret = [aSecret retain];
-    self.realm = [aRealm retain];
+	self.key = (NSString*)[aKey retain];
+	self.secret = (NSString*)[aSecret retain];
+    self.realm = (NSString*)[aRealm retain];
 	return self;
 }
 
