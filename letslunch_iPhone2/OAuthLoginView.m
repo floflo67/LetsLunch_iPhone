@@ -244,7 +244,7 @@
     [super viewDidLoad];
     [self initLinkedInApi];
     [addressBar setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
-    }
+}
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -260,9 +260,7 @@
         [alert release];
         
         // Notify parent and close this view
-        [[NSNotificationCenter defaultCenter] 
-         postNotificationName:@"loginViewDidFinish"        
-         object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"loginViewDidFinish" object:self];
         
         [self dismissViewControllerAnimated:YES completion:nil];
 //        [self dismissModalViewControllerAnimated:YES];
@@ -300,12 +298,6 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 @end
