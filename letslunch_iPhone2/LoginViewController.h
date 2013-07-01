@@ -7,8 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TwitterLoginViewController.h"
 
-@interface LoginViewController : UIViewController <UITextFieldDelegate>
+@class TwitterConsumer;
+@class TwitterToken;
+
+@interface LoginViewController : UIViewController <UITextFieldDelegate, TwitterLoginViewControllerDelegate> {
+    @private
+        TwitterConsumer* _consumer;
+        TwitterToken* _token;
+        
+}
 
 @property (retain, nonatomic) IBOutlet UITextField *textFieldUsername;
 @property (retain, nonatomic) IBOutlet UITextField *textFieldPassword;
@@ -18,7 +27,7 @@
 @property (retain, nonatomic) IBOutlet UIButton *buttonLinkedIn;
 
 -(void)logInWithFacebook;
--(BOOL)logInWithTwitter;
+-(void)logInWithTwitter;
 -(void)logInWithLinkedIn;
 -(BOOL)buttonLogInClick;
 -(BOOL)logInWithUsername:(NSString*)username andPassword:(NSString*)password;
