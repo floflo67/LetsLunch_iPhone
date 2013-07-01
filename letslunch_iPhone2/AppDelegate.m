@@ -78,20 +78,16 @@
 - (void)sessionStateChanged:(FBSession*)session state:(FBSessionState)state error:(NSError*)error
 {
     switch (state) {
-        case FBSessionStateOpen: {
-            NSLog(@"open");
-            if(_loginViewController)
+        case FBSessionStateOpen:
+            if(_loginViewController) {
                 [_loginViewController.view removeFromSuperview];
-        }
+                [_loginViewController release];
+            }
             break;
         case FBSessionStateClosed:
         case FBSessionStateClosedLoginFailed:
-            // Once the user has logged in, we want them to
-            // be looking at the root view.
             [self.navController popToRootViewControllerAnimated:NO];
-            
-            [FBSession.activeSession closeAndClearTokenInformation];
-            
+            [FBSession.activeSession closeAndClearTokenInformation];            
             [self showLoginView];
             break;
         default:
