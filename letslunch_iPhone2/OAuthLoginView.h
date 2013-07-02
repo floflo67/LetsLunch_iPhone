@@ -38,5 +38,6 @@
 -(void)accessTokenFromProvider;
 
 -(id)initWithLinkedIn;
+-(id)initWithTwitter;
 
 @end

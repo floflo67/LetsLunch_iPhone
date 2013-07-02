@@ -41,6 +41,18 @@
     if(self) {
         provider = [[Provider alloc] initWithLinkedIn];
         self.consumer = [[OAConsumer alloc] initWithKey:provider.apikey secret:provider.secretkey realm:@"http://api.linkedin.com/"];
+        addressBar.text = @"www.linkedin.com/uas/oauth/authorize";
+    }
+    return self;
+}
+
+- (id)initWithTwitter
+{
+    self = [super init];
+    if(self) {
+        provider = [[Provider alloc] initWithTwitter];
+        self.consumer = [[OAConsumer alloc] initWithKey:provider.apikey secret:provider.secretkey realm:@"http://api.twitter.com/"];
+        addressBar.text = @"www.api.twitter.com/oauth/authenticate";
     }
     return self;
 }
@@ -53,16 +65,6 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    if ([provider.apikey length] < API_KEY_LENGTH || [provider.secretkey length] < SECRET_KEY_LENGTH) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"OAuth" message:@"Must add your apikey and secretkey." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        [alert release];
-        
-        // Notify parent and close this view
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"loginViewDidFinish" object:self];
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
-    
     [self requestTokenFromProvider];
 }
 
@@ -74,28 +76,18 @@
  */
 - (void)requestTokenFromProvider
 {
-    OAMutableURLRequest *request = 
-            [[[OAMutableURLRequest alloc] initWithURL:provider.requestTokenURL
-                                             consumer:self.consumer
-                                                token:nil   
-                                             callback:provider.callbackURL
-                                    signatureProvider:nil] autorelease];
+    OAMutableURLRequest *request = [[[OAMutableURLRequest alloc] initWithURL:provider.requestTokenURL consumer:self.consumer token:nil callback:provider.callbackURL signatureProvider:nil] autorelease];
     
     [request setHTTPMethod:@"POST"];   
     
-    OARequestParameter *nameParam = [[OARequestParameter alloc] initWithName:@"scope"
-                                                                       value:@"r_basicprofile+rw_nus"];
-    NSArray *params = [NSArray arrayWithObjects:nameParam, nil];
-    [request setParameters:params];
-    OARequestParameter * scopeParameter=[OARequestParameter requestParameter:@"scope" value:@"r_fullprofile rw_nus"];
+    OARequestParameter *nameParam = [[OARequestParameter alloc] initWithName:@"scope" value:@"r_basicprofile+rw_nus"];
+    [request setParameters:[NSArray arrayWithObjects:nameParam, nil]];
     
+    OARequestParameter *scopeParameter=[OARequestParameter requestParameter:@"scope" value:@"r_fullprofile rw_nus"];
     [request setParameters:[NSArray arrayWithObject:scopeParameter]];
     
     OADataFetcher *fetcher = [[[OADataFetcher alloc] init] autorelease];
-    [fetcher fetchDataWithRequest:request
-                         delegate:self
-                didFinishSelector:@selector(requestTokenResult:didFinish:)
-                  didFailSelector:@selector(requestTokenResult:didFail:)];    
+    [fetcher fetchDataWithRequest:request delegate:self didFinishSelector:@selector(requestTokenResult:didFinish:) didFailSelector:@selector(requestTokenResult:didFail:)];
 }
 
 /*
@@ -103,19 +95,20 @@
  Called only if successfully received a request token
  Shows webview with login page
  */
-- (void)requestTokenResult:(OAServiceTicket *)ticket didFinish:(NSData *)data 
+- (void)requestTokenResult:(OAServiceTicket*)ticket didFinish:(NSData*)data 
 {
-    if (ticket.didSucceed == NO) 
+    if (ticket.didSucceed == NO) {
+        NSLog(@"error");
         return;
-        
-    NSString *responseBody = [[NSString alloc] initWithData:data
-                                                   encoding:NSUTF8StringEncoding];
+    }
+    
+    NSString *responseBody = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     self.requestToken = [[OAToken alloc] initWithHTTPResponseBody:responseBody];
     [responseBody release];
     [self allowUserToLogin];
 }
 
-- (void)requestTokenResult:(OAServiceTicket *)ticket didFail:(NSData *)error 
+- (void)requestTokenResult:(OAServiceTicket*)ticket didFail:(NSData*)error 
 {
     NSLog(@"%@",[error description]);
 }
@@ -179,8 +172,7 @@
 //
 - (void)accessTokenFromProvider
 { 
-    OAMutableURLRequest *request = 
-            [[[OAMutableURLRequest alloc] initWithURL:provider.accessTokenURL consumer:self.consumer token:self.requestToken callback:nil signatureProvider:nil] autorelease];
+    OAMutableURLRequest *request = [[[OAMutableURLRequest alloc] initWithURL:provider.accessTokenURL consumer:self.consumer token:self.requestToken callback:nil signatureProvider:nil] autorelease];
     
     [request setHTTPMethod:@"POST"];
     OADataFetcher *fetcher = [[[OADataFetcher alloc] init] autorelease];
@@ -189,8 +181,7 @@
 
 - (void)accessTokenResult:(OAServiceTicket *)ticket didFinish:(NSData *)data 
 {
-    NSString *responseBody = [[NSString alloc] initWithData:data
-                                                   encoding:NSUTF8StringEncoding];
+    NSString *responseBody = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
     BOOL problem = ([responseBody rangeOfString:@"oauth_problem"].location != NSNotFound);
     if (problem) {
@@ -198,11 +189,11 @@
         NSLog(@"%@",responseBody);
     }
     else {
+        NSLog(@"%@",responseBody);
         self.accessToken = [[OAToken alloc] initWithHTTPResponseBody:responseBody];
     }
-    // Notify parent and close this view
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"loginViewDidFinish" object:self];
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"loginViewDidFinish" object:self];
     [self dismissViewControllerAnimated:YES completion:nil];
     [responseBody release];
 }
