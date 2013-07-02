@@ -47,8 +47,8 @@
         
         _requestTokenURLString = @"https://api.twitter.com/oauth/request_token";
         _accessTokenURLString = @"https://api.twitter.com/oauth/access_token";
-        _userLoginURLString = @"https://api.twitter.com/oauth/authenticate";
-        _callbackURL = @"hdlinked://linkedin/oauth";
+        _userLoginURLString = @"https://api.twitter.com/oauth/authorize";
+        _callbackURL = @"www.letslunch.com";
         
         _requestTokenURL = [[NSURL URLWithString:_requestTokenURLString] retain];
         _accessTokenURL = [[NSURL URLWithString:_accessTokenURLString] retain];
