@@ -65,6 +65,17 @@
     [self.viewController.navigationController.view addSubview:_loginViewController.view];
 }
 
+#pragma OAuthLoginView events
+
+-(void) loginViewDidFinish:(NSNotification*)notification
+{
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+    if(_loginViewController.isLinkedIn)
+        [self linkedInGetProfileInfo];
+    else
+        NSLog(@"twitter");
+}
+
 #pragma facebook events
 
 - (void)openSession
@@ -108,16 +119,7 @@
 
 #pragma LinkedIn events
 
--(void) loginViewDidFinish:(NSNotification*)notification
-{
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
-    if(_loginViewController.isLinkedIn)
-        [self profileApiCall];
-    else
-        NSLog(@"twitter");
-}
-
-- (void)profileApiCall
+- (void)linkedInGetProfileInfo
 {
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@people/~", LI_API_BaseUrl]];
     OAMutableURLRequest *request = [[OAMutableURLRequest alloc] initWithURL:url consumer:_oAuthLoginView.consumer token:_oAuthLoginView.accessToken callback:nil signatureProvider:nil];
@@ -125,11 +127,11 @@
     [request setValue:@"json" forHTTPHeaderField:@"x-li-format"];
     
     OADataFetcher *fetcher = [[OADataFetcher alloc] init];
-    [fetcher fetchDataWithRequest:request delegate:self didFinishSelector:@selector(profileApiCallResult:didFinish:) didFailSelector:@selector(profileApiCallResult:didFail:)];
+    [fetcher fetchDataWithRequest:request delegate:self didFinishSelector:@selector(linkedInGetProfilInfoResult:didFinish:) didFailSelector:@selector(linkedInGetProfilInfoResult:didFail:)];
     [request release];
 }
 
-- (void)profileApiCallResult:(OAServiceTicket *)ticket didFinish:(NSData *)data
+- (void)linkedInGetProfilInfoResult:(OAServiceTicket*)ticket didFinish:(NSData*)data
 {
     NSString *responseBody = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
@@ -149,7 +151,7 @@
     
 }
 
-- (void)profileApiCallResult:(OAServiceTicket *)ticket didFail:(NSData *)error
+- (void)linkedInGetProfilInfoResult:(OAServiceTicket*)ticket didFail:(NSData*)error
 {
     NSLog(@"%@",[error description]);
 }

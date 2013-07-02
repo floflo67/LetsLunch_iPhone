@@ -189,7 +189,6 @@
         NSLog(@"%@",responseBody);
     }
     else {
-        NSLog(@"%@",responseBody);
         self.accessToken = [[OAToken alloc] initWithHTTPResponseBody:responseBody];
     }
     
