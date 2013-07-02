@@ -22,15 +22,56 @@
 //  4  Request an "access token"
 //
 @implementation OAuthLoginView
-
 @synthesize requestToken, accessToken, profile, consumer, provider;
 
-//
-// OAuth step 1a:
-//
-// The first step in the the OAuth process to make a request for a "request token".
-// Yes it's confusing that the work request is mentioned twice like that, but it is whats happening.
-//
+#pragma view life cycle
+
+- (id)init
+{
+    self = [super init];
+    if(self) {
+        
+    }
+    return self;
+}
+
+- (id)initWithLinkedIn
+{
+    self = [super init];
+    if(self) {
+        provider = [[Provider alloc] initWithLinkedIn];
+        self.consumer = [[OAConsumer alloc] initWithKey:provider.apikey secret:provider.secretkey realm:@"http://api.linkedin.com/"];
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [addressBar setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    if ([provider.apikey length] < API_KEY_LENGTH || [provider.secretkey length] < SECRET_KEY_LENGTH) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"OAuth" message:@"Must add your apikey and secretkey." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+        
+        // Notify parent and close this view
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"loginViewDidFinish" object:self];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    
+    [self requestTokenFromProvider];
+}
+
+#pragma webview and API
+
+/*
+ OAuth step 1a:
+ Make a request for a "request token".
+ */
 - (void)requestTokenFromProvider
 {
     OAMutableURLRequest *request = 
@@ -57,14 +98,11 @@
                   didFailSelector:@selector(requestTokenResult:didFail:)];    
 }
 
-//
-// OAuth step 1b:
-//
-// When this method is called it means we have successfully received a request token.
-// We then show a webView that sends the user to the LinkedIn login page.
-// The request token is added as a parameter to the url of the login page.
-// LinkedIn reads the token on their end to know which app the user is granting access to.
-//
+/*
+ OAuth step 1b:
+ Called only if successfully received a request token
+ Shows webview with login page
+ */
 - (void)requestTokenResult:(OAServiceTicket *)ticket didFinish:(NSData *)data 
 {
     if (ticket.didSucceed == NO) 
@@ -82,17 +120,10 @@
     NSLog(@"%@",[error description]);
 }
 
-//
-// OAuth step 2:
-//
-// Show the user a browser displaying the LinkedIn login page.
-// They type username/password and this is how they permit us to access their data
-// We use a UIWebView for this.
-//
-// Sending the token information is required, but in this one case OAuth requires us
-// to send URL query parameters instead of putting the token in the HTTP Authorization
-// header as we do in all other cases.
-//
+/*
+ OAuth step 2:
+ Displays login page as browser
+ */
 - (void)allowUserToLogin
 {
     NSString *userLoginURLWithToken = [NSString stringWithFormat:@"%@?oauth_token=%@", provider.userLoginURLString, self.requestToken.key];
@@ -102,33 +133,16 @@
     [webView loadRequest:request];     
 }
 
+/*
+ OAuth step 3:
+ Method when loading, happens 3 times:
+    a) Our own [webView loadRequest] message sends the user to the login page.
+    b) The user types in their username/password and presses 'OK'
+    c) Response to the submit request by redirecting the browser to our callback URL
+        If the user approves they also add two parameters to the callback URL: oauth_token and oauth_verifier
+        If the user does not allow access the parameter user_refused is returned
 
-//
-// OAuth step 3:
-//
-// This method is called when our webView browser loads a URL, this happens 3 times:
-//
-//      a) Our own [webView loadRequest] message sends the user to the LinkedIn login page.
-//
-//      b) The user types in their username/password and presses 'OK', this will submit
-//         their credentials to LinkedIn
-//
-//      c) LinkedIn responds to the submit request by redirecting the browser to our callback URL
-//         If the user approves they also add two parameters to the callback URL: oauth_token and oauth_verifier.
-//         If the user does not allow access the parameter user_refused is returned.
-//
-//      Example URLs for these three load events:
-//          a) https://www.linkedin.com/uas/oauth/authorize?oauth_token=<token value>
-//
-//          b) https://www.linkedin.com/uas/oauth/authorize/submit   OR
-//             https://www.linkedin.com/uas/oauth/authenticate?oauth_token=<token value>&trk=uas-continue
-//
-//          c) hdlinked://linkedin/oauth?oauth_token=<token value>&oauth_verifier=63600     OR
-//             hdlinked://linkedin/oauth?user_refused
-//             
-//
-//  We only need to handle case (c) to extract the oauth_verifier value
-//
+ */
 - (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType 
 {
 	NSURL *url = request.URL;
@@ -138,28 +152,18 @@
     [activityIndicator startAnimating];
     
     BOOL requestForCallbackURL = ([urlString rangeOfString:provider.callbackURL].location != NSNotFound);
-    if (requestForCallbackURL)
-    {
+    if (requestForCallbackURL) {
         BOOL userAllowedAccess = ([urlString rangeOfString:@"user_refused"].location == NSNotFound);
-        if ( userAllowedAccess )
-        {            
+        if (userAllowedAccess) {            
             [self.requestToken setVerifierWithUrl:url];
             [self accessTokenFromProvider];
         }
-        else
-        {
-            // User refused to allow our app access
-            // Notify parent and close this view
-            [[NSNotificationCenter defaultCenter] 
-                    postNotificationName:@"loginViewDidFinish"        
-                                  object:self 
-                                userInfo:nil];
+        else {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"loginViewDidFinish" object:self userInfo:nil];
             [self dismissViewControllerAnimated:YES completion:nil];
-//            [self dismissModalViewControllerAnimated:YES];
         }
     }
-    else
-    {
+    else {
         // Case (a) or (b), so ignore it
     }
 	return YES;
@@ -176,18 +180,11 @@
 - (void)accessTokenFromProvider
 { 
     OAMutableURLRequest *request = 
-            [[[OAMutableURLRequest alloc] initWithURL:provider.accessTokenURL
-                                             consumer:self.consumer
-                                                token:self.requestToken   
-                                             callback:nil
-                                    signatureProvider:nil] autorelease];
+            [[[OAMutableURLRequest alloc] initWithURL:provider.accessTokenURL consumer:self.consumer token:self.requestToken callback:nil signatureProvider:nil] autorelease];
     
     [request setHTTPMethod:@"POST"];
     OADataFetcher *fetcher = [[[OADataFetcher alloc] init] autorelease];
-    [fetcher fetchDataWithRequest:request
-                         delegate:self
-                didFinishSelector:@selector(accessTokenResult:didFinish:)
-                  didFailSelector:@selector(accessTokenResult:didFail:)];    
+    [fetcher fetchDataWithRequest:request delegate:self didFinishSelector:@selector(accessTokenResult:didFinish:) didFailSelector:@selector(accessTokenResult:didFail:)];    
 }
 
 - (void)accessTokenResult:(OAServiceTicket *)ticket didFinish:(NSData *)data 
@@ -196,94 +193,18 @@
                                                    encoding:NSUTF8StringEncoding];
     
     BOOL problem = ([responseBody rangeOfString:@"oauth_problem"].location != NSNotFound);
-    if ( problem )
-    {
+    if (problem) {
         NSLog(@"Request access token failed.");
         NSLog(@"%@",responseBody);
     }
-    else
-    {
+    else {
         self.accessToken = [[OAToken alloc] initWithHTTPResponseBody:responseBody];
     }
     // Notify parent and close this view
-    [[NSNotificationCenter defaultCenter] 
-     postNotificationName:@"loginViewDidFinish"        
-     object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"loginViewDidFinish" object:self];
     
     [self dismissViewControllerAnimated:YES completion:nil];
-//    [self dismissModalViewControllerAnimated:YES];
     [responseBody release];
-}
-
-//
-//  This api consumer data could move to a provider object
-//  to allow easy switching between LinkedIn, Twitter, etc.
-//
-- (void)initLinkedInApi
-{
-    provider = [[Provider alloc] initWithLinkedIn];
-    self.consumer = [[OAConsumer alloc] initWithKey:provider.apikey secret:provider.secretkey realm:@"http://api.linkedin.com/"];
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    [self initLinkedInApi];
-    [addressBar setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    if ([provider.apikey length] < API_KEY_LENGTH || [provider.secretkey length] < SECRET_KEY_LENGTH)
-    {
-        UIAlertView *alert = [[UIAlertView alloc]
-                          initWithTitle: @"OAuth Starter Kit"
-                          message: @"You must add your apikey and secretkey.  See the project file readme.txt"
-                          delegate: nil
-                          cancelButtonTitle:@"OK"
-                          otherButtonTitles:nil];
-        [alert show];
-        [alert release];
-        
-        // Notify parent and close this view
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"loginViewDidFinish" object:self];
-        
-        [self dismissViewControllerAnimated:YES completion:nil];
-//        [self dismissModalViewControllerAnimated:YES];
-    }
-
-    [self requestTokenFromProvider];
-}
-    
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)dealloc
-{
-    [super dealloc];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
-#pragma mark - View lifecycle
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 @end

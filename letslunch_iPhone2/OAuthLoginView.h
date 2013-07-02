@@ -33,9 +33,10 @@
 @property(nonatomic, retain) OAConsumer *consumer;
 @property(nonatomic, retain) Provider *provider;
 
-- (void)initLinkedInApi;
-- (void)requestTokenFromProvider;
-- (void)allowUserToLogin;
-- (void)accessTokenFromProvider;
+-(void)requestTokenFromProvider;
+-(void)allowUserToLogin;
+-(void)accessTokenFromProvider;
+
+-(id)initWithLinkedIn;
 
 @end
