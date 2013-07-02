@@ -111,7 +111,10 @@
 -(void) loginViewDidFinish:(NSNotification*)notification
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-    [self profileApiCall];
+    if(_loginViewController.isLinkedIn)
+        [self profileApiCall];
+    else
+        NSLog(@"twitter");
 }
 
 - (void)profileApiCall
