@@ -17,6 +17,8 @@
 	NSNumber *duration;
 	NSMutableDictionary *attributes;
 	NSDate *created;
+    NSString *user_id;
+    NSString *screen_name;
 	BOOL renewable;
 	BOOL forRenewal;
 }
@@ -28,6 +30,9 @@
 @property(retain, readwrite) NSMutableDictionary *attributes;
 @property(readwrite, getter=isForRenewal) BOOL forRenewal;
 
+@property(retain, readwrite) NSString *user_id;
+@property(retain, readwrite) NSString *screen_name;
+
 - (id)initWithKey:(NSString *)aKey secret:(NSString *)aSecret;
 - (id)initWithKey:(NSString *)aKey 
            secret:(NSString *)aSecret 
@@ -36,6 +41,8 @@
 		 duration:(NSNumber *)aDuration 
        attributes:(NSMutableDictionary *)theAttributes 
           created:(NSDate *)creation
+          userId:aUserId
+      screenName:aScreenName
 		renewable:(BOOL)renew;
 
 - (id)initWithHTTPResponseBody:(NSString *)body;

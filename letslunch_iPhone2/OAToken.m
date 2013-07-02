@@ -21,7 +21,7 @@
 
 @implementation OAToken
 
-@synthesize key, secret, session, verifier, duration, attributes, forRenewal;
+@synthesize key, secret, session, verifier, duration, attributes, forRenewal, user_id, screen_name;
 
 #pragma mark init
 
@@ -31,7 +31,7 @@
 
 - (id)initWithKey:(NSString *)aKey secret:(NSString *)aSecret {
 	return [self initWithKey:aKey secret:aSecret session:nil verifier:nil duration:nil
-				  attributes:nil created:nil renewable:NO];
+				  attributes:nil created:nil userId:nil screenName:nil renewable:NO];
 }
 
 - (id)initWithKey:(NSString *)aKey 
@@ -41,6 +41,8 @@
 		 duration:(NSNumber *)aDuration 
        attributes:(NSMutableDictionary *)theAttributes 
           created:(NSDate *)creation
+           userId:(id)aUserId
+       screenName:(id)aScreenName
 		renewable:(BOOL)renew 
 {
 	[super init];
@@ -50,6 +52,8 @@
     self.verifier = aVerifier;
 	self.duration = aDuration;
 	self.attributes = theAttributes;
+    self.user_id = aUserId;
+    self.screen_name = aScreenName;
 	created = [creation retain];
 	renewable = renew;
 	forRenewal = NO;
@@ -72,7 +76,7 @@
     }
 }
 
-- (id)initWithHTTPResponseBody:(const NSString *)body 
+- (id)initWithHTTPResponseBody:(const NSString *)body
 {
     NSString *aKey = nil;
 	NSString *aSecret = nil;
@@ -81,6 +85,8 @@
 	NSNumber *aDuration = nil;
 	NSDate *creationDate = nil;
 	NSMutableDictionary *attrs = nil;
+    NSString *aUser_id = nil;
+    NSString *aScreen_name = nil;
 	BOOL renew = NO;
 	NSArray *pairs = [body componentsSeparatedByString:@"&"];
 
@@ -119,6 +125,14 @@
 				renew = YES;
 			}
 		}
+        else if ([[elements objectAtIndex:0] isEqualToString:@"user_id"])
+        {
+            aUser_id = [elements objectAtIndex:1];
+		}
+        else if ([[elements objectAtIndex:0] isEqualToString:@"screen_name"])
+        {
+            aScreen_name = [elements objectAtIndex:1];
+		}
     }
     
     return [self initWithKey:aKey 
@@ -127,7 +141,9 @@
                     verifier:aVerifier
                     duration:aDuration
 				  attributes:attrs 
-                     created:creationDate 
+                     created:creationDate
+                     userId:aUser_id
+                 screenName:aScreen_name
                    renewable:renew];
 }
 
