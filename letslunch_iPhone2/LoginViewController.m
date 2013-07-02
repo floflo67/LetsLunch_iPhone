@@ -104,6 +104,7 @@
 
 - (void)logInWithTwitter
 {
+    
     AppDelegate *app = [UIApplication sharedApplication].delegate;
     if (app.token == nil) {
 		TwitterLoginViewController* twitterLoginViewController = [[TwitterLoginViewController new] autorelease];
@@ -126,7 +127,7 @@
 
 - (void)logInWithLinkedIn
 {
-    OAuthLoginView* oAuthLoginView = [[OAuthLoginView alloc] initWithNibName:nil bundle:nil];
+    OAuthLoginView* oAuthLoginView = [[OAuthLoginView alloc] initWithLinkedIn];
     AppDelegate *app = [UIApplication sharedApplication].delegate;
     app.oAuthLoginView = oAuthLoginView;
     
