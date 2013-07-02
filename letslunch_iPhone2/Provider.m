@@ -38,4 +38,23 @@
     return self;
 }
 
+- (id)initWithTwitter
+{
+    self = [super init];
+    if (self) {
+        _apikey = TW_OAUTH_KEY;
+        _secretkey = TW_OAUTH_SECRET;
+        
+        _requestTokenURLString = @"https://api.twitter.com/oauth/request_token";
+        _accessTokenURLString = @"https://api.twitter.com/oauth/access_token";
+        _userLoginURLString = @"https://api.twitter.com/oauth/authenticate";
+        _callbackURL = @"hdlinked://linkedin/oauth";
+        
+        _requestTokenURL = [[NSURL URLWithString:_requestTokenURLString] retain];
+        _accessTokenURL = [[NSURL URLWithString:_accessTokenURLString] retain];
+        _userLoginURL = [[NSURL URLWithString:_userLoginURLString] retain];
+    }
+    return self;
+}
+
 @end
