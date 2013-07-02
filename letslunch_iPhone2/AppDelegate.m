@@ -72,8 +72,9 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
     if(_loginViewController.isLinkedIn)
         [self linkedInGetProfileInfo];
-    else
-        NSLog(@"twitter");
+    else {
+        [self twitterGetProfileInfo];
+    }
 }
 
 #pragma facebook events
@@ -156,23 +157,16 @@
     NSLog(@"%@",[error description]);
 }
 
+/*
 - (void)networkApiCall
 {
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@people/~/network/updates?scope=self&count=1&type=STAT", LI_API_BaseUrl]];
-    OAMutableURLRequest *request =
-    [[OAMutableURLRequest alloc] initWithURL:url
-                                    consumer:_oAuthLoginView.consumer
-                                       token:_oAuthLoginView.accessToken
-                                    callback:nil
-                           signatureProvider:nil];
+    OAMutableURLRequest *request = [[OAMutableURLRequest alloc] initWithURL:url consumer:_oAuthLoginView.consumer token:_oAuthLoginView.accessToken callback:nil signatureProvider:nil];
     
     [request setValue:@"json" forHTTPHeaderField:@"x-li-format"];
     
     OADataFetcher *fetcher = [[OADataFetcher alloc] init];
-    [fetcher fetchDataWithRequest:request
-                         delegate:self
-                didFinishSelector:@selector(networkApiCallResult:didFinish:)
-                  didFailSelector:@selector(networkApiCallResult:didFail:)];
+    [fetcher fetchDataWithRequest:request delegate:self didFinishSelector:@selector(networkApiCallResult:didFinish:) didFailSelector:@selector(networkApiCallResult:didFail:)];
     [request release];
     
 }
@@ -205,7 +199,7 @@
 - (void)networkApiCallResult:(OAServiceTicket *)ticket didFail:(NSData *)error
 {
     NSLog(@"%@",[error description]);
-}
+}*/
 
 /*
 - (IBAction)postButton_TouchUp:(UIButton *)sender
@@ -252,8 +246,20 @@
 }
  */
 
-
 #pragma twitter events
+
+- (void)twitterGetProfileInfo
+{
+    if(_oAuthLoginView.accessToken.user_id) {
+        [_loginViewController.view removeFromSuperview];
+        [_loginViewController.view setHidden:YES];
+        [_loginViewController release];
+        
+        [_oAuthLoginView.view removeFromSuperview];
+        [_oAuthLoginView.view setHidden:YES];
+        [_oAuthLoginView release];
+    }
+}
 
 
 #pragma custom functions
