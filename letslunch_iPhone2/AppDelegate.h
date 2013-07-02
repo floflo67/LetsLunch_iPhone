@@ -13,6 +13,9 @@
 #import "OAuthConsumer.h"
 #import "OAuthLoginView.h"
 
+@class TwitterConsumer;
+@class TwitterToken;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
@@ -26,6 +29,9 @@
 @property (strong, nonatomic) NSMutableArray *listMessages;
 @property (strong, nonatomic) NSMutableArray *listContacts;
 @property (strong, nonatomic) NSString *ownerActivity;
+
+@property (strong, nonatomic) TwitterConsumer* consumer;
+@property (strong, nonatomic) TwitterToken* token;
 
 -(NSMutableArray*)getListActivities;
 -(NSMutableArray*)getListFriendsSuggestion;
