@@ -23,7 +23,7 @@
 //
 @implementation OAuthLoginView
 
-@synthesize requestToken, accessToken, profile, consumer;
+@synthesize requestToken, accessToken, profile, consumer, provider;
 
 //
 // OAuth step 1a:
@@ -34,10 +34,10 @@
 - (void)requestTokenFromProvider
 {
     OAMutableURLRequest *request = 
-            [[[OAMutableURLRequest alloc] initWithURL:requestTokenURL
+            [[[OAMutableURLRequest alloc] initWithURL:provider.requestTokenURL
                                              consumer:self.consumer
                                                 token:nil   
-                                             callback:linkedInCallbackURL
+                                             callback:provider.callbackURL
                                     signatureProvider:nil] autorelease];
     
     [request setHTTPMethod:@"POST"];   
@@ -95,11 +95,10 @@
 //
 - (void)allowUserToLogin
 {
-    NSString *userLoginURLWithToken = [NSString stringWithFormat:@"%@?oauth_token=%@", 
-        userLoginURLString, self.requestToken.key];
+    NSString *userLoginURLWithToken = [NSString stringWithFormat:@"%@?oauth_token=%@", provider.userLoginURLString, self.requestToken.key];
     
-    userLoginURL = [NSURL URLWithString:userLoginURLWithToken];
-    NSURLRequest *request = [NSMutableURLRequest requestWithURL: userLoginURL];
+    provider.userLoginURL = [NSURL URLWithString:userLoginURLWithToken];
+    NSURLRequest *request = [NSMutableURLRequest requestWithURL:provider.userLoginURL];
     [webView loadRequest:request];     
 }
 
@@ -138,8 +137,8 @@
     addressBar.text = urlString;
     [activityIndicator startAnimating];
     
-    BOOL requestForCallbackURL = ([urlString rangeOfString:linkedInCallbackURL].location != NSNotFound);
-    if ( requestForCallbackURL )
+    BOOL requestForCallbackURL = ([urlString rangeOfString:provider.callbackURL].location != NSNotFound);
+    if (requestForCallbackURL)
     {
         BOOL userAllowedAccess = ([urlString rangeOfString:@"user_refused"].location == NSNotFound);
         if ( userAllowedAccess )
@@ -177,7 +176,7 @@
 - (void)accessTokenFromProvider
 { 
     OAMutableURLRequest *request = 
-            [[[OAMutableURLRequest alloc] initWithURL:accessTokenURL
+            [[[OAMutableURLRequest alloc] initWithURL:provider.accessTokenURL
                                              consumer:self.consumer
                                                 token:self.requestToken   
                                              callback:nil
@@ -222,21 +221,8 @@
 //
 - (void)initLinkedInApi
 {
-    apikey = LI_OAUTH_KEY;
-    secretkey = LI_OAUTH_SECRET;
-
-    self.consumer = [[OAConsumer alloc] initWithKey:apikey
-                                        secret:secretkey
-                                         realm:@"http://api.linkedin.com/"];
-
-    requestTokenURLString = @"https://api.linkedin.com/uas/oauth/requestToken";
-    accessTokenURLString = @"https://api.linkedin.com/uas/oauth/accessToken";
-    userLoginURLString = @"https://www.linkedin.com/uas/oauth/authorize";    
-    linkedInCallbackURL = @"hdlinked://linkedin/oauth";
-    
-    requestTokenURL = [[NSURL URLWithString:requestTokenURLString] retain];
-    accessTokenURL = [[NSURL URLWithString:accessTokenURLString] retain];
-    userLoginURL = [[NSURL URLWithString:userLoginURLString] retain];
+    provider = [[Provider alloc] initWithLinkedIn];
+    self.consumer = [[OAConsumer alloc] initWithKey:provider.apikey secret:provider.secretkey realm:@"http://api.linkedin.com/"];
 }
 
 - (void)viewDidLoad
@@ -248,7 +234,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    if ([apikey length] < API_KEY_LENGTH || [secretkey length] < SECRET_KEY_LENGTH)
+    if ([provider.apikey length] < API_KEY_LENGTH || [provider.secretkey length] < SECRET_KEY_LENGTH)
     {
         UIAlertView *alert = [[UIAlertView alloc]
                           initWithTitle: @"OAuth Starter Kit"

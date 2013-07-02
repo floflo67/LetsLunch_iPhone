@@ -13,6 +13,7 @@
 		5400D006177A598D002CC092 /* MessageToSelf.png in Resources */ = {isa = PBXBuildFile; fileRef = 5400D004177A598D002CC092 /* MessageToSelf.png */; };
 		5400D009177A59DB002CC092 /* ThreadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5400D008177A59DB002CC092 /* ThreadCell.m */; };
 		5409986C177239F2003DFD70 /* ShareButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5409986B177239F2003DFD70 /* ShareButton.png */; };
+		5437770617837171000CEBAF /* Provider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5437770517837171000CEBAF /* Provider.m */; };
 		54403824176B8E5D00AA3588 /* GetStaticLists.m in Sources */ = {isa = PBXBuildFile; fileRef = 54403823176B8E5D00AA3588 /* GetStaticLists.m */; };
 		5445A68D17790C0C00F3EC97 /* buttonBroadcastAvailability.png in Resources */ = {isa = PBXBuildFile; fileRef = 5445A68B17790C0C00F3EC97 /* buttonBroadcastAvailability.png */; };
 		5445A68E17790C0C00F3EC97 /* buttonBroadcastAvailability@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5445A68C17790C0C00F3EC97 /* buttonBroadcastAvailability@2x.png */; };
@@ -146,6 +147,8 @@
 		5400D007177A59DB002CC092 /* ThreadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreadCell.h; sourceTree = "<group>"; };
 		5400D008177A59DB002CC092 /* ThreadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreadCell.m; sourceTree = "<group>"; };
 		5409986B177239F2003DFD70 /* ShareButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShareButton.png; sourceTree = "<group>"; };
+		5437770417837171000CEBAF /* Provider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Provider.h; sourceTree = "<group>"; };
+		5437770517837171000CEBAF /* Provider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Provider.m; sourceTree = "<group>"; };
 		54403822176B8E5D00AA3588 /* GetStaticLists.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetStaticLists.h; sourceTree = "<group>"; };
 		54403823176B8E5D00AA3588 /* GetStaticLists.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetStaticLists.m; sourceTree = "<group>"; };
 		5445A68B17790C0C00F3EC97 /* buttonBroadcastAvailability.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonBroadcastAvailability.png; sourceTree = "<group>"; };
@@ -504,6 +507,11 @@
 				54F97204177CFFE7006F6FE5 /* LoginViewController.h */,
 				54F97205177CFFE7006F6FE5 /* LoginViewController.m */,
 				54F97206177CFFE7006F6FE5 /* LoginViewController.xib */,
+				54E333181781EF3100BFF6A4 /* OAuthLoginView.h */,
+				54E333171781EF3100BFF6A4 /* OAuthLoginView.m */,
+				54E333161781EF3100BFF6A4 /* OAuthLoginView.xib */,
+				5437770417837171000CEBAF /* Provider.h */,
+				5437770517837171000CEBAF /* Provider.m */,
 				548D36B5176B819300154C36 /* Supporting Files */,
 			);
 			path = letslunch_iPhone2;
@@ -565,9 +573,6 @@
 				54E332D61781EED200BFF6A4 /* Categories */,
 				54E332D41781EEBC00BFF6A4 /* Crypto */,
 				54E332D31781EEB600BFF6A4 /* JSON */,
-				54E333181781EF3100BFF6A4 /* OAuthLoginView.h */,
-				54E333171781EF3100BFF6A4 /* OAuthLoginView.m */,
-				54E333161781EF3100BFF6A4 /* OAuthLoginView.xib */,
 			);
 			name = LinkedIn;
 			sourceTree = "<group>";
@@ -913,6 +918,7 @@
 				54E4B58717822CE800BE5686 /* TwitterToken.m in Sources */,
 				54E4B58A17822CFB00BE5686 /* TwitterConsumer.m in Sources */,
 				54E4B58D17822D1200BE5686 /* TwitterUtils.m in Sources */,
+				5437770617837171000CEBAF /* Provider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
