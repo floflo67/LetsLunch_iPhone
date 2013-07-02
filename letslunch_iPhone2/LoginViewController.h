@@ -16,7 +16,6 @@
     @private
         TwitterConsumer* _consumer;
         TwitterToken* _token;
-        
 }
 
 @property (retain, nonatomic) IBOutlet UITextField *textFieldUsername;
@@ -25,6 +24,7 @@
 @property (retain, nonatomic) IBOutlet UIButton *buttonTwitter;
 @property (retain, nonatomic) IBOutlet UIButton *buttonFacebook;
 @property (retain, nonatomic) IBOutlet UIButton *buttonLinkedIn;
+@property (nonatomic) BOOL isLinkedIn;
 
 -(void)logInWithFacebook;
 -(void)logInWithTwitter;

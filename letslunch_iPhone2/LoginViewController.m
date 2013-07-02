@@ -19,15 +19,6 @@
 
 #pragma view life cycle
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -68,7 +59,6 @@
 - (void)twitterLoginViewControllerDidCancel:(TwitterLoginViewController*)twitterLoginViewController
 {
     [twitterLoginViewController dismissViewControllerAnimated:YES completion:nil];
-//	[twitterLoginViewController dismissModalViewControllerAnimated: YES];
 }
 
 - (void)twitterLoginViewController:(TwitterLoginViewController*)twitterLoginViewController didSucceedWithToken:(TwitterToken*)token
@@ -76,8 +66,7 @@
 	_token = [token retain];
     
 	// Save the token to the user defaults
-    
-	[[NSUserDefaults standardUserDefaults] setObject: [NSKeyedArchiver archivedDataWithRootObject: _token] forKey: @"Token"];
+	[[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject: _token] forKey:@"Token"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -90,7 +79,6 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    NSLog(@"%@", textField.text);
     [textField resignFirstResponder];
     return YES;
 }
@@ -104,7 +92,7 @@
 
 - (void)logInWithTwitter
 {
-    
+    /*
     AppDelegate *app = [UIApplication sharedApplication].delegate;
     if (app.token == nil) {
 		TwitterLoginViewController* twitterLoginViewController = [[TwitterLoginViewController new] autorelease];
@@ -122,11 +110,21 @@
 	}
     else {
         [self.view removeFromSuperview];
-    }
+    }*/
+    
+    self.isLinkedIn = NO;
+    OAuthLoginView* oAuthLoginView = [[OAuthLoginView alloc] initWithTwitter];
+    AppDelegate *app = [UIApplication sharedApplication].delegate;
+    app.oAuthLoginView = oAuthLoginView;
+    
+    // register to be told when the login is finished
+    [[NSNotificationCenter defaultCenter] addObserver:app selector:@selector(loginViewDidFinish:) name:@"loginViewDidFinish" object:oAuthLoginView];
+    [self presentViewController:oAuthLoginView animated:YES completion:nil];
 }
 
 - (void)logInWithLinkedIn
 {
+    self.isLinkedIn = YES;
     OAuthLoginView* oAuthLoginView = [[OAuthLoginView alloc] initWithLinkedIn];
     AppDelegate *app = [UIApplication sharedApplication].delegate;
     app.oAuthLoginView = oAuthLoginView;
