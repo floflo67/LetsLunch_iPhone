@@ -62,6 +62,32 @@ static CreateActivityViewController *sharedSingleton = nil;
     self.tableView.backgroundColor = [UIColor clearColor];
 }
 
+-(void)loadViewWithActivity:(Activity*)activity
+{
+    if(activity) {
+        self.activity = activity;
+        [self addMap:activity.venue];
+        self.textFieldDescription.text = activity.description;
+        if(activity.isCoffee)
+            self.segment.selectedSegmentIndex = 0;
+        else
+            self.segment.selectedSegmentIndex = 1;
+        
+        UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [clearButton addTarget:self action:@selector(clearBroadcast:) forControlEvents:UIControlEventTouchDown];
+        clearButton.frame = (CGRect){20, 5, 280, 40};
+        clearButton.titleLabel.text = @"Clear broadcast";
+        
+        [clearButton setBackgroundImage:[UIImage imageNamed:@"buttonBroadcastAvailability"] forState:UIControlStateNormal];
+        [self.view addSubview:clearButton];
+        self.viewSubview.frame = CGRectMake(0, self.viewSubview.frame.origin.y + 50, 320, self.viewSubview.frame.size.height);
+        [clearButton release];
+    }
+    else
+        return;
+    
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -74,6 +100,8 @@ static CreateActivityViewController *sharedSingleton = nil;
     _labelBroadcast = nil;
     _viewContent = nil;
     _tableView = nil;
+    _activity = nil;
+    [_viewSubview release];
     [super dealloc];
 }
 
@@ -212,19 +240,14 @@ static CreateActivityViewController *sharedSingleton = nil;
 
 - (void)saveActivity:(id)sender
 {
-    NSLog(@"Description: %@", self.textFieldDescription.text);
-    
-    NSString *time;
-    if(self.segment.selectedSegmentIndex == 0)
-        time = @" Now";
-    else if (self.segment.selectedSegmentIndex == 1)
-        time = @"Evening";
-    else
-        time = @"Now";
-    
-    NSLog(@"Type: %@", time);
-    NSLog(@"Place: %@", [self.venue name]);
+    Activity *activity = [[Activity alloc] init];
+    activity.description = self.textFieldDescription.text;
+    activity.isCoffee = self.segment.selectedSegmentIndex;
+    activity.venue = self.venue;
+    self.activity = activity;
+    [activity release];
     NSLog(@"Save");
+    
     [self.navigationController popToRootViewControllerAnimated:YES];
     [CreateActivityViewController suppressSingleton];
 }

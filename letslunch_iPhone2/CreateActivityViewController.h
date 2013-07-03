@@ -7,6 +7,7 @@
 //
 
 #import "FSVenue.h"
+#import "Activity.h"
 
 @interface CreateActivityViewController : UIViewController <UITextFieldDelegate>
 
@@ -17,12 +18,16 @@
 @property (retain, nonatomic) IBOutlet UILabel *labelBroadcast;
 @property (retain, nonatomic) IBOutlet UIView *viewContent;
 @property (retain, nonatomic) IBOutlet UITableView *tableView;
+@property (retain, nonatomic) IBOutlet UIView *viewSubview;
+@property (retain, nonatomic) Activity *activity;
 
 @property (retain, nonatomic) MKMapView *map;
 
 +(CreateActivityViewController*)getSingleton;
 -(IBAction)segmentValueChanged:(id)sender;
 -(IBAction)textFieldReturn:(id)sender;
+
+-(void)loadViewWithActivity:(Activity*)activity;
 
 -(void)addMap:(FSVenue*)venue;
 
