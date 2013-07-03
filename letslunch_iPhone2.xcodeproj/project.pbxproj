@@ -56,6 +56,8 @@
 		549ADABC176BE148001F1D3F /* libQuickDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 549ADAB9176BE11D001F1D3F /* libQuickDialog.a */; };
 		549ADABE176BE14F001F1D3F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549ADABD176BE14F001F1D3F /* MapKit.framework */; };
 		549ADAC0176BE15A001F1D3F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549ADABF176BE159001F1D3F /* CoreLocation.framework */; };
+		54D317321784970E00D058F4 /* DetailProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D317301784970E00D058F4 /* DetailProfileViewController.m */; };
+		54D317331784970E00D058F4 /* DetailProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54D317311784970E00D058F4 /* DetailProfileViewController.xib */; };
 		54E332D91781EEE400BFF6A4 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E332D71781EEE400BFF6A4 /* JSONKit.m */; };
 		54E332F51781EEF700BFF6A4 /* OATokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E332DB1781EEF700BFF6A4 /* OATokenManager.m */; };
 		54E332F61781EEF700BFF6A4 /* OAToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E332DD1781EEF700BFF6A4 /* OAToken.m */; };
@@ -213,6 +215,9 @@
 		549ADAB1176BE11D001F1D3F /* QuickDialog.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QuickDialog.xcodeproj; path = QuickDialog/QuickDialog.xcodeproj; sourceTree = "<group>"; };
 		549ADABD176BE14F001F1D3F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		549ADABF176BE159001F1D3F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		54D3172F1784970E00D058F4 /* DetailProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailProfileViewController.h; sourceTree = "<group>"; };
+		54D317301784970E00D058F4 /* DetailProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailProfileViewController.m; sourceTree = "<group>"; };
+		54D317311784970E00D058F4 /* DetailProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailProfileViewController.xib; sourceTree = "<group>"; };
 		54E332D71781EEE400BFF6A4 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		54E332D81781EEE400BFF6A4 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		54E332DA1781EEF700BFF6A4 /* OAuthConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthConsumer.h; sourceTree = "<group>"; };
@@ -402,6 +407,9 @@
 				549ADAAE176BCAF2001F1D3F /* CreateActivityViewController.h */,
 				549ADAAA176BCAD5001F1D3F /* CreateActivityViewController.m */,
 				549ADAAB176BCAD5001F1D3F /* CreateActivityViewController.xib */,
+				54D3172F1784970E00D058F4 /* DetailProfileViewController.h */,
+				54D317301784970E00D058F4 /* DetailProfileViewController.m */,
+				54D317311784970E00D058F4 /* DetailProfileViewController.xib */,
 				54E714D0176B9EDA00F39D73 /* MessageViewController.h */,
 				54E714D1176B9EDA00F39D73 /* MessageViewController.m */,
 				54E714D2176B9EDA00F39D73 /* MessageViewController.xib */,
@@ -861,6 +869,7 @@
 				54E333201781EF3100BFF6A4 /* linkedInBluebutton-highlight.png in Resources */,
 				54E4B57E17822C8E00BE5686 /* TwitterLoginViewController.xib in Resources */,
 				54E4B59117822D4D00BE5686 /* TwitterClouds.png in Resources */,
+				54D317331784970E00D058F4 /* DetailProfileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -923,6 +932,7 @@
 				54E4B58A17822CFB00BE5686 /* TwitterConsumer.m in Sources */,
 				54E4B58D17822D1200BE5686 /* TwitterUtils.m in Sources */,
 				5437770617837171000CEBAF /* Provider.m in Sources */,
+				54D317321784970E00D058F4 /* DetailProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
