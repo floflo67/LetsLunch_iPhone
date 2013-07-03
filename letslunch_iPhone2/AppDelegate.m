@@ -50,10 +50,10 @@
     _viewController = controller;
     _navController = navController;
     
-    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded)
+    /*if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded)
         [self openSession];
     else
-        [self showLoginView];
+        [self showLoginView];*/
     
     return YES;
 }
