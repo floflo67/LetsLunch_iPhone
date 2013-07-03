@@ -103,7 +103,6 @@ static ActivityViewController *sharedSingleton = nil;
         
         [pushButton setBackgroundImage:[UIImage imageNamed:@"buttonBroadcastAvailability"] forState:UIControlStateNormal];
         [cell addSubview:pushButton];
-        
     }
     else
         cell.textLabel.text = [_objects[indexPath.row] description];
@@ -114,7 +113,11 @@ static ActivityViewController *sharedSingleton = nil;
 - (void)pushViewController:(id)sender
 {
     CenterViewController* center = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController;
-    [center pushCreateActivityViewController:sender];
+    if([sender class] == [UIButton class])
+        [center pushCreateActivityViewController:nil];
+    else if([sender class] == [Activity class])
+        [center pushCreateActivityViewController:sender];
+    
 }
 
 #pragma mark - Table view delegate
@@ -127,7 +130,8 @@ static ActivityViewController *sharedSingleton = nil;
         detail = nil;
     }
     else if(![[_objects[indexPath.row] description] isEqualToString:@"NIL"]) {
-        
+        Activity* act = (Activity*)_objects[indexPath.row];
+        [self pushViewController:act];
     }
 }
 

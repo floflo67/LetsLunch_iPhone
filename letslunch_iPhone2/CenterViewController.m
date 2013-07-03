@@ -110,6 +110,8 @@
 - (void)pushCreateActivityViewController:(id)sender
 {
     [self.navigationController pushViewController:[CreateActivityViewController getSingleton] animated:YES];
+    if(sender)
+       [[CreateActivityViewController getSingleton] loadViewWithActivity:sender];
 }
 
 # pragma friends

@@ -379,8 +379,8 @@
     if(!self.ownerActivity) {
         self.ownerActivity = [GetStaticLists getOwnerActivity];
     }
-    return NULL;
-    //return self.ownerActivity;
+    //return NULL;
+    return self.ownerActivity;
 }
 
 #pragma application life cycle

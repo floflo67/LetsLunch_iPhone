@@ -66,6 +66,7 @@ static CreateActivityViewController *sharedSingleton = nil;
 {
     if(activity) {
         self.activity = activity;
+        self.venue = activity.venue;
         [self addMap:activity.venue];
         self.textFieldDescription.text = activity.description;
         if(activity.isCoffee)
@@ -73,15 +74,12 @@ static CreateActivityViewController *sharedSingleton = nil;
         else
             self.segment.selectedSegmentIndex = 1;
         
-        UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [clearButton addTarget:self action:@selector(clearBroadcast:) forControlEvents:UIControlEventTouchDown];
         clearButton.frame = (CGRect){20, 5, 280, 40};
-        clearButton.titleLabel.text = @"Clear broadcast";
-        
-        [clearButton setBackgroundImage:[UIImage imageNamed:@"buttonBroadcastAvailability"] forState:UIControlStateNormal];
+        [clearButton setTitle:@"Clear broadcast" forState:UIControlStateNormal];
+        self.viewSubview.frame = CGRectMake(0, self.viewSubview.frame.origin.y + 50, 320, self.viewSubview.frame.size.height - 50);
         [self.view addSubview:clearButton];
-        self.viewSubview.frame = CGRectMake(0, self.viewSubview.frame.origin.y + 50, 320, self.viewSubview.frame.size.height);
-        [clearButton release];
     }
     else
         return;
@@ -125,8 +123,8 @@ static CreateActivityViewController *sharedSingleton = nil;
      Moves view content
      */
     self.viewContent.frame = CGRectMake(0, self.viewContent.frame.origin.y + height - 25, 320, self.viewContent.frame.size.height);
-    [self.view addSubview:self.map];
-    [self.view sendSubviewToBack:self.map];
+    [self.viewSubview addSubview:self.map];
+    [self.viewSubview sendSubviewToBack:self.map];
     
     /*
      Adding comment in description if no text
