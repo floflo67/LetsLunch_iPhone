@@ -14,6 +14,7 @@
 		5400D009177A59DB002CC092 /* ThreadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5400D008177A59DB002CC092 /* ThreadCell.m */; };
 		5409986C177239F2003DFD70 /* ShareButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5409986B177239F2003DFD70 /* ShareButton.png */; };
 		5437770617837171000CEBAF /* Provider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5437770517837171000CEBAF /* Provider.m */; };
+		5437770A1783A1D3000CEBAF /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 543777091783A1D3000CEBAF /* Twitter.framework */; };
 		54403824176B8E5D00AA3588 /* GetStaticLists.m in Sources */ = {isa = PBXBuildFile; fileRef = 54403823176B8E5D00AA3588 /* GetStaticLists.m */; };
 		5445A68D17790C0C00F3EC97 /* buttonBroadcastAvailability.png in Resources */ = {isa = PBXBuildFile; fileRef = 5445A68B17790C0C00F3EC97 /* buttonBroadcastAvailability.png */; };
 		5445A68E17790C0C00F3EC97 /* buttonBroadcastAvailability@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5445A68C17790C0C00F3EC97 /* buttonBroadcastAvailability@2x.png */; };
@@ -149,6 +150,7 @@
 		5409986B177239F2003DFD70 /* ShareButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShareButton.png; sourceTree = "<group>"; };
 		5437770417837171000CEBAF /* Provider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Provider.h; sourceTree = "<group>"; };
 		5437770517837171000CEBAF /* Provider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Provider.m; sourceTree = "<group>"; };
+		543777091783A1D3000CEBAF /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		54403822176B8E5D00AA3588 /* GetStaticLists.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetStaticLists.h; sourceTree = "<group>"; };
 		54403823176B8E5D00AA3588 /* GetStaticLists.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetStaticLists.m; sourceTree = "<group>"; };
 		5445A68B17790C0C00F3EC97 /* buttonBroadcastAvailability.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonBroadcastAvailability.png; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5437770A1783A1D3000CEBAF /* Twitter.framework in Frameworks */,
 				5457139A177E48F4006A69CE /* Social.framework in Frameworks */,
 				54571398177E48EF006A69CE /* Security.framework in Frameworks */,
 				54571396177E48E8006A69CE /* libsqlite3.dylib in Frameworks */,
@@ -484,6 +487,7 @@
 				548D36AE176B819300154C36 /* UIKit.framework */,
 				548D36B0176B819300154C36 /* Foundation.framework */,
 				548D36B2176B819300154C36 /* CoreGraphics.framework */,
+				543777091783A1D3000CEBAF /* Twitter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
