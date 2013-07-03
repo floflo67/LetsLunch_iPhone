@@ -28,7 +28,8 @@
         self.pictureURL = [dict objectForKey:@"pictureURL"];
         self.lastMessage = [dict objectForKey:@"last"];
         
-        self.image = [UIImage imageWithContentsOfFile:[NSString stringWithContentsOfURL:[NSURL URLWithString:self.pictureURL] encoding:NSUTF8StringEncoding error:nil]];
+        if(self.pictureURL)
+            self.image = [UIImage imageWithContentsOfFile:[NSString stringWithContentsOfURL:[NSURL URLWithString:self.pictureURL] encoding:NSUTF8StringEncoding error:nil]];
     }
     return self;
 }
@@ -42,7 +43,8 @@
         self.pictureURL = url;
         self.lastMessage = mess.description;
         
-        self.image = [UIImage imageWithContentsOfFile:[NSString stringWithContentsOfURL:[NSURL URLWithString:self.pictureURL] encoding:NSUTF8StringEncoding error:nil]];
+        if(self.pictureURL)
+            self.image = [UIImage imageWithContentsOfFile:[NSString stringWithContentsOfURL:[NSURL URLWithString:self.pictureURL] encoding:NSUTF8StringEncoding error:nil]];
     }
     return self;
 }
