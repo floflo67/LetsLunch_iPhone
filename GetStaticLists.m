@@ -73,18 +73,18 @@
 
 + (NSMutableArray*)getListContacts
 {
-    NSMutableArray* lastContacts = [[[NSMutableArray alloc] init] autorelease];
+    NSMutableArray* listContacts = [[[NSMutableArray alloc] init] autorelease];
     
     Contacts *cont1 = [[Contacts alloc] initWithID:@"1" withName:@"name1" withPictureURL:nil andLastMessage:nil];
     Contacts *cont2 = [[Contacts alloc] initWithID:@"2" withName:@"name2" withPictureURL:nil andLastMessage:nil];
     Contacts *cont3 = [[Contacts alloc] initWithID:@"3" withName:@"name3" withPictureURL:nil andLastMessage:nil];
     
-    [lastContacts addObject:cont1];
-    [lastContacts addObject:cont2];
-    [lastContacts addObject:cont3];
+    [listContacts addObject:cont1];
+    [listContacts addObject:cont2];
+    [listContacts addObject:cont3];
     
     
-    return lastContacts;
+    return listContacts;
 }
 
 @end
