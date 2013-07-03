@@ -141,7 +141,7 @@
     
     if(profile && [profile objectForKey:@"firstName"])
     {
-        NSLog(@"%@", [[NSString alloc] initWithFormat:@"%@ %@",[profile objectForKey:@"firstName"], [profile objectForKey:@"lastName"]]);
+        NSLog(@"%@", [profile objectForKey:@"firstName"]);
         [_loginViewController.view removeFromSuperview];
         [_loginViewController.view setHidden:YES];
         [_loginViewController release];
@@ -250,15 +250,38 @@
 
 - (void)twitterGetProfileInfo
 {
-    if(_oAuthLoginView.accessToken.user_id) {
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@users/show.json?screen_name=%@", TW_API_BaseUrl, _oAuthLoginView.accessToken.screen_name]];
+    OAMutableURLRequest *request = [[OAMutableURLRequest alloc] initWithURL:url consumer:_oAuthLoginView.consumer token:_oAuthLoginView.accessToken callback:nil signatureProvider:nil];
+    
+    [request setValue:@"json" forHTTPHeaderField:@"x-li-format"];
+    
+    OADataFetcher *fetcher = [[OADataFetcher alloc] init];
+    [fetcher fetchDataWithRequest:request delegate:self didFinishSelector:@selector(twitterGetProfilInfoResult:didFinish:) didFailSelector:@selector(twitterGetProfilInfoResult:didFail:)];
+    [request release];
+}
+
+- (void)twitterGetProfilInfoResult:(OAServiceTicket*)ticket didFinish:(NSData*)data
+{
+    NSString *responseBody = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSDictionary *profile = [responseBody objectFromJSONString];
+    [responseBody release];
+    
+    if(profile && [profile objectForKey:@"name"])
+    {
+        NSLog(@"%@", [profile objectForKey:@"name"]);
         [_loginViewController.view removeFromSuperview];
         [_loginViewController.view setHidden:YES];
         [_loginViewController release];
-        
-        [_oAuthLoginView.view removeFromSuperview];
-        [_oAuthLoginView.view setHidden:YES];
-        [_oAuthLoginView release];
     }
+    
+    // The next thing we want to do is call the network updates
+    //[self networkApiCall];
+    
+}
+
+- (void)twitterGetProfilInfoResult:(OAServiceTicket*)ticket didFail:(NSData*)error
+{
+    NSLog(@"%@",[error description]);
 }
 
 
