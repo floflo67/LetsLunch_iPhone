@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Activity.h"
 
 @interface GetStaticLists : NSObject
 
 +(NSMutableArray*)getListActivities;
 +(NSMutableArray*)getListFriendsSuggestion;
 +(NSMutableArray*)getListMessagesForContactID:(NSString*)contactID;
-+(NSString*)getOwnerActivity;
++(Activity*)getOwnerActivity;
 +(NSMutableArray*)getListContacts;
 
 @end

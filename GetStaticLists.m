@@ -7,7 +7,6 @@
 //
 
 #import "GetStaticLists.h"
-#import "Activity.h"
 #import "Contacts.h"
 #import "FSVenue.h"
 #import "Messages.h"
@@ -39,9 +38,24 @@
     return listActivities;
 }
 
-+ (NSString*)getOwnerActivity
++ (Activity*)getOwnerActivity
 {
-    return @"ActivityOwner";
+    Messages *m = [[Messages alloc] initWithDescription:@"mess" From:@"1" To:@"2" date:[NSDate new]];
+    Contacts *c = [[Contacts alloc] initWithID:@"1" withName:@"name" withPictureURL:nil andLastMessage:m];
+    FSVenue *v = [[FSVenue alloc] init];
+    
+    v.name = @"The Grove";
+    v.venueId = @"4b7ef75cf964a520ee0c30e3";
+    v.location.address = @"690 Mission St";
+    NSNumber *num = [NSNumber numberWithInt:403];
+    v.location.distance = num;
+    v.distance = v.location.distance;
+    [v.location setCoordinate:CLLocationCoordinate2DMake([@"37.78653398485857" doubleValue], [@"-122.401921749115" doubleValue])];
+    
+    BOOL b = YES;
+    Activity *act1 = [[Activity alloc] initWithContact:c venue:v description:@"descOwner" andIsCoffee:b];
+    
+    return act1;
 }
 
 

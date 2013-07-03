@@ -12,6 +12,7 @@
 #import "LoginViewController.h"
 #import "OAuthConsumer.h"
 #import "OAuthLoginView.h"
+#import "Activity.h"
 
 @class TwitterConsumer;
 @class TwitterToken;
@@ -28,7 +29,7 @@
 @property (strong, nonatomic) NSMutableArray *listFriendsSuggestion;
 @property (strong, nonatomic) NSMutableArray *listMessages;
 @property (strong, nonatomic) NSMutableArray *listContacts;
-@property (strong, nonatomic) NSString *ownerActivity;
+@property (strong, nonatomic) Activity *ownerActivity;
 
 @property (strong, nonatomic) TwitterConsumer* consumer;
 @property (strong, nonatomic) TwitterToken* token;
@@ -37,7 +38,7 @@
 -(NSMutableArray*)getListFriendsSuggestion;
 -(NSMutableArray*)getListMessagesForContactID:(NSString*)contactID;
 -(NSMutableArray*)getListContacts;
--(NSString*)getOwnerActivity;
+-(Activity*)getOwnerActivity;
 -(void)openSession;
 -(void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error;
 
