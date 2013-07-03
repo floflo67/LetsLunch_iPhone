@@ -19,6 +19,7 @@
 @property (retain, nonatomic) IBOutlet UIView *viewContent;
 @property (retain, nonatomic) IBOutlet UITableView *tableView;
 @property (retain, nonatomic) IBOutlet UIView *viewSubview;
+@property (strong, nonatomic) UIButton *buttonClear;
 @property (retain, nonatomic) Activity *activity;
 
 @property (retain, nonatomic) MKMapView *map;

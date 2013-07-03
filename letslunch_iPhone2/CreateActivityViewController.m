@@ -74,12 +74,13 @@ static CreateActivityViewController *sharedSingleton = nil;
         else
             self.segment.selectedSegmentIndex = 1;
         
-        UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [clearButton addTarget:self action:@selector(clearBroadcast:) forControlEvents:UIControlEventTouchDown];
-        clearButton.frame = (CGRect){20, 5, 280, 40};
-        [clearButton setTitle:@"Clear broadcast" forState:UIControlStateNormal];
+        self.buttonClear = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [self.buttonClear addTarget:self action:@selector(clearBroadcast:) forControlEvents:UIControlEventTouchDown];
+        self.buttonClear.frame = (CGRect){20, 5, 280, 40};
+        [self.buttonClear setTitle:@"Clear broadcast" forState:UIControlStateNormal];
+        [self.view addSubview:self.buttonClear];
+        
         self.viewSubview.frame = CGRectMake(0, self.viewSubview.frame.origin.y + 50, 320, self.viewSubview.frame.size.height - 50);
-        [self.view addSubview:clearButton];
     }
     else
         return;
@@ -252,6 +253,11 @@ static CreateActivityViewController *sharedSingleton = nil;
 
 - (void)clearBroadcast:(id)sender
 {
+    self.buttonClear.hidden = YES;
+    self.buttonClear = nil;
+    self.activity = nil;
+    self.viewSubview.frame = CGRectMake(0, self.viewSubview.frame.origin.y - 50, 320, self.viewSubview.frame.size.height + 50);
+    [self resetView];
     NSLog(@"Clear");
 }
 
