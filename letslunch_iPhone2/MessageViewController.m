@@ -28,8 +28,7 @@
          Default that should be changed later
          */
         if(!_objects) {
-            _objects = [[NSMutableArray alloc] initWithArray:[(AppDelegate*)[[UIApplication sharedApplication] delegate]
-                                                              getListMessagesForContactID:@"1"]];
+            _objects = [[NSMutableArray alloc] initWithArray:[(AppDelegate*)[[UIApplication sharedApplication] delegate] getListMessagesForContactID:@"1" andForceReload:NO]];
         }
     }
     return self;
@@ -41,8 +40,7 @@
     if(self) {
         if(!_objects) {
             self.contactID = contactID;
-            _objects = [[NSMutableArray alloc] initWithArray:[(AppDelegate*)[[UIApplication sharedApplication] delegate]
-                                                              getListMessagesForContactID:contactID]];
+            _objects = [[NSMutableArray alloc] initWithArray:[(AppDelegate*)[[UIApplication sharedApplication] delegate] getListMessagesForContactID:contactID andForceReload:NO]];
         }
     }
     return self;

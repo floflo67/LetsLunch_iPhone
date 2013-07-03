@@ -35,10 +35,10 @@ static ActivityViewController *sharedSingleton = nil;
     self = [super init];
     if(!_objects) {
         AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        _objects = [[NSMutableArray alloc] initWithArray:[app getListActivities]];
+        _objects = [[NSMutableArray alloc] initWithArray:[app getListActivitiesAndForceReload:NO]];
         
-        if([app getOwnerActivity]) {
-            [_objects insertObject:[app getOwnerActivity] atIndex:0];
+        if([app getOwnerActivityAndForceReload:NO]) {
+            [_objects insertObject:[app getOwnerActivityAndForceReload:NO] atIndex:0];
             self.hasActivity = YES;
         }
         else {

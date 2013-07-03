@@ -34,11 +34,11 @@
 @property (strong, nonatomic) TwitterConsumer* consumer;
 @property (strong, nonatomic) TwitterToken* token;
 
--(NSMutableArray*)getListActivities;
--(NSMutableArray*)getListFriendsSuggestion;
--(NSMutableArray*)getListMessagesForContactID:(NSString*)contactID;
--(NSMutableArray*)getListContacts;
--(Activity*)getOwnerActivity;
+-(NSMutableArray*)getListActivitiesAndForceReload:(BOOL)shouldReload;
+-(NSMutableArray*)getListFriendsSuggestionAndForceReload:(BOOL)shouldReload;
+-(NSMutableArray*)getListMessagesForContactID:(NSString*)contactID andForceReload:(BOOL)shouldReload;
+-(NSMutableArray*)getListContactsAndForceReload:(BOOL)shouldReload;
+-(Activity*)getOwnerActivityAndForceReload:(BOOL)shouldReload;
 -(void)openSession;
 -(void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error;
 

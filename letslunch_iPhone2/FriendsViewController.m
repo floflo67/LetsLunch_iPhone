@@ -32,7 +32,7 @@ static FriendsViewController *sharedSingleton = nil;
 {
     self = [super init];
     if(!_objects) {
-        _objects = [[NSMutableArray alloc] initWithArray:[(AppDelegate*)[[UIApplication sharedApplication] delegate] getListFriendsSuggestion]];
+        _objects = [[NSMutableArray alloc] initWithArray:[(AppDelegate*)[[UIApplication sharedApplication] delegate] getListFriendsSuggestionAndForceReload:NO]];
     }
     return self;
 }

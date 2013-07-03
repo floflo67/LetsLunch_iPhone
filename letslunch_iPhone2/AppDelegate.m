@@ -335,50 +335,61 @@
 
 #pragma lists
 
-- (NSMutableArray*)getListActivities
+- (NSMutableArray*)getListActivitiesAndForceReload:(BOOL)shouldReload
 {
     if(!self.listActivities) {
         self.listActivities = [[[NSMutableArray alloc] init] autorelease];
         self.listActivities = [GetStaticLists getListActivities];
     }
+    else if(shouldReload)
+        self.listActivities = [GetStaticLists getListActivities];
     
     return self.listActivities;
 }
 
-- (NSMutableArray*) getListFriendsSuggestion
+- (NSMutableArray*)getListFriendsSuggestionAndForceReload:(BOOL)shouldReload
 {
     if(!self.listFriendsSuggestion) {
         self.listFriendsSuggestion = [[[NSMutableArray alloc] init] autorelease];
         self.listFriendsSuggestion = [GetStaticLists getListFriendsSuggestion];
     }
+    else if(shouldReload)
+        self.listFriendsSuggestion = [GetStaticLists getListFriendsSuggestion];
     
     return self.listFriendsSuggestion;
 }
 
-- (NSMutableArray*) getListMessagesForContactID:(NSString*)contactID
+- (NSMutableArray*)getListMessagesForContactID:(NSString*)contactID andForceReload:(BOOL)shouldReload
 {
     if(!self.listMessages) {
         self.listMessages = [[[NSMutableArray alloc] init] autorelease];
         self.listMessages = [GetStaticLists getListMessagesForContactID:contactID];
     }
+    else if(shouldReload)
+        self.listMessages = [GetStaticLists getListMessagesForContactID:contactID];
     
     return self.listMessages;
 }
 
-- (NSMutableArray*)getListContacts
+- (NSMutableArray*)getListContactsAndForceReload:(BOOL)shouldReload
 {
     if(!self.listContacts) {
         self.listContacts = [[[NSMutableArray alloc] init] autorelease];
         self.listContacts = [GetStaticLists getListContacts];
     }
+    else if(shouldReload)
+        self.listContacts = [GetStaticLists getListContacts];
+    
     return self.listContacts;
 }
 
-- (Activity*) getOwnerActivity
+- (Activity*)getOwnerActivityAndForceReload:(BOOL)shouldReload
 {
     if(!self.ownerActivity) {
         self.ownerActivity = [GetStaticLists getOwnerActivity];
     }
+    else if(shouldReload)
+        self.ownerActivity = [GetStaticLists getOwnerActivity];
     //return NULL;
     return self.ownerActivity;
 }
