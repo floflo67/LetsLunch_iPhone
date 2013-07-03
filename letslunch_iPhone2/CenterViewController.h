@@ -33,4 +33,6 @@
 -(void)inviteFriendsButtonClick:(id)sender;
 -(void)shareButtonClick:(id)sender;
 
+-(void)pushCreateActivityViewController:(id)sender;
+
 @end

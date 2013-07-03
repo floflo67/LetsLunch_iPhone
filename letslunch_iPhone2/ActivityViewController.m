@@ -96,8 +96,8 @@ static ActivityViewController *sharedSingleton = nil;
     if([[_objects[indexPath.row] description] isEqualToString:@"NIL"]) {
         
         UIButton *pushButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [pushButton addTarget:((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController
-                       action:@selector(pushCreateActivityViewController:)
+        [pushButton addTarget:self
+                       action:@selector(pushViewController:)
              forControlEvents:UIControlEventTouchDown];
         pushButton.frame = (CGRect){0, - 3, 320, 51};
         
@@ -111,6 +111,12 @@ static ActivityViewController *sharedSingleton = nil;
     return cell;
 }
 
+- (void)pushViewController:(id)sender
+{
+    CenterViewController* center = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController;
+    [center pushCreateActivityViewController:sender];
+}
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -119,6 +125,9 @@ static ActivityViewController *sharedSingleton = nil;
         DetailProfileViewController *detail = [[[DetailProfileViewController alloc] init] autorelease];
         [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController.navigationController pushViewController:detail animated:YES];
         detail = nil;
+    }
+    else if(![[_objects[indexPath.row] description] isEqualToString:@"NIL"]) {
+        
     }
 }
 
