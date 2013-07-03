@@ -69,7 +69,6 @@
 					<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
 				</object>
 				<int key="IBUISectionIndexMinimumDisplayRowCount">0</int>
-				<bool key="IBUIAllowsSelection">NO</bool>
 				<bool key="IBUIShowsSelectionImmediatelyOnTouchBegin">YES</bool>
 				<float key="IBUIRowHeight">44</float>
 				<float key="IBUISectionHeaderHeight">1</float>
