@@ -35,7 +35,7 @@ static ActivityViewController *sharedSingleton = nil;
     self = [super init];
     if(!_objects) {
         AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        _objects = [[NSMutableArray alloc] initWithArray:[app getListActivities] copyItems:YES];
+        _objects = [[NSMutableArray alloc] initWithArray:[app getListActivities]];
         
         if([app getOwnerActivity]) {
             [_objects insertObject:[app getOwnerActivity] atIndex:0];
