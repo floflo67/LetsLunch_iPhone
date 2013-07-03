@@ -62,11 +62,21 @@ static CreateActivityViewController *sharedSingleton = nil;
     self.tableView.backgroundColor = [UIColor clearColor];
 }
 
+/*
+ Loads the view with an activity if existing
+ */
 -(void)loadViewWithActivity:(Activity*)activity
 {
     if(activity) {
+        /*
+         Sets local variables
+         */
         self.activity = activity;
         self.venue = activity.venue;
+        
+        /*
+         Sets view
+         */
         [self addMap:activity.venue];
         self.textFieldDescription.text = activity.description;
         if(activity.isCoffee)
@@ -74,12 +84,18 @@ static CreateActivityViewController *sharedSingleton = nil;
         else
             self.segment.selectedSegmentIndex = 1;
         
+        /*
+         Adding clear button
+         */
         self.buttonClear = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [self.buttonClear addTarget:self action:@selector(clearBroadcast:) forControlEvents:UIControlEventTouchDown];
         self.buttonClear.frame = (CGRect){20, 5, 280, 40};
         [self.buttonClear setTitle:@"Clear broadcast" forState:UIControlStateNormal];
         [self.view addSubview:self.buttonClear];
         
+        /*
+         Changing frame of subview to leave place for clear button
+         */
         self.viewSubview.frame = CGRectMake(0, self.viewSubview.frame.origin.y + 50, 320, self.viewSubview.frame.size.height - 50);
     }
     else
@@ -100,6 +116,7 @@ static CreateActivityViewController *sharedSingleton = nil;
     _viewContent = nil;
     _tableView = nil;
     _activity = nil;
+    _buttonClear = nil;
     [_viewSubview release];
     [super dealloc];
 }
