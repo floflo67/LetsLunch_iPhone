@@ -103,6 +103,15 @@ static CreateActivityViewController *sharedSingleton = nil;
     
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    if(self.buttonClear)
+       [self clearBroadcast:nil];
+    else
+        [self resetView];
+    [super viewDidDisappear:animated];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
