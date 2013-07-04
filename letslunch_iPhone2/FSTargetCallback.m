@@ -33,4 +33,16 @@
 	return self;
 }
 
+- (void)dealloc
+{
+    [self.targetObject release];
+    self.targetCallback = nil;
+    self.resultCallback = nil;
+    [self.requestUrl release];
+    [self.request release];
+    self.callback = nil;
+    [self.receivedData release];
+    [super dealloc];
+}
+
 @end

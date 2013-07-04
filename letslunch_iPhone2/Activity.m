@@ -43,4 +43,12 @@
     return self;
 }
 
+- (void)dealloc
+{
+    [self.contact release];
+    [self.description release];
+    [self.venue release];
+    [super dealloc];
+}
+
 @end

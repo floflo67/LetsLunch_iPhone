@@ -27,7 +27,12 @@
     return self;
 }
 
-
+- (void)dealloc
+{
+    [self.requestHistory release];
+    [self.asyncConnDict release];
+    [super dealloc];
+}
 
 
 -(void)changeStateErrorAlert{

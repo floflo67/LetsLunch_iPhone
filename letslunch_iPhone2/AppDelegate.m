@@ -403,14 +403,18 @@
 
 - (void)dealloc
 {
-    self.listActivities = nil;
-    self.listFriendsSuggestion = nil;
-    self.listMessages = nil;
-    _window = nil;
-    _viewController = nil;
-    _navController = nil;
-    _loginViewController = nil;
-    _oAuthLoginView = nil;
+    self.consumer = nil;
+    self.token = nil;
+    [self.listActivities release];
+    [self.listContacts release];
+    [self.listFriendsSuggestion release];
+    [self.listMessages release];
+    [self.ownerActivity release];
+    [self.navController release];
+    [self.loginViewController release];
+    [self.oAuthLoginView release];
+    [self.viewController release];
+    [self.window release];
     [super dealloc];
 }
 

@@ -59,7 +59,7 @@ static ShareViewController *sharedSingleton = nil;
 
 - (void)dealloc
 {
-    _buttonClose = nil;
+    [self.buttonClose release];
     [super dealloc];
 }
 

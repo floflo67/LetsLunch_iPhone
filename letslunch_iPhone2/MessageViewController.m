@@ -76,10 +76,10 @@
 }
 
 - (void)dealloc {
-    _objects = nil;
-    _tableView = nil;
-    _contactID = nil;
-    _textFieldMessage = nil;
+    [self.objects release];
+    [self.contactID release];
+    [self.tableView release];
+    [self.textFieldMessage release];
     [super dealloc];
 }
 

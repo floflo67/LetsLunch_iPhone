@@ -12,6 +12,8 @@
 @interface CreateActivityViewController : UIViewController <UITextFieldDelegate>
 
 @property (retain, nonatomic) FSVenue *venue;
+@property (retain, nonatomic) Activity *activity;
+@property (retain, nonatomic) MKMapView *map;
 
 @property (retain, nonatomic) IBOutlet UITextField *textFieldDescription;
 @property (retain, nonatomic) IBOutlet UISegmentedControl *segment;
@@ -20,9 +22,6 @@
 @property (retain, nonatomic) IBOutlet UITableView *tableView;
 @property (retain, nonatomic) IBOutlet UIView *viewSubview;
 @property (strong, nonatomic) UIButton *buttonClear;
-@property (retain, nonatomic) Activity *activity;
-
-@property (retain, nonatomic) MKMapView *map;
 
 +(CreateActivityViewController*)getSingleton;
 -(IBAction)segmentValueChanged:(id)sender;

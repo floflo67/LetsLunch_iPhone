@@ -18,6 +18,8 @@
 
 @implementation NearbyVenuesViewController
 
+#pragma view life cycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -44,6 +46,35 @@
     self.navigationItem.rightBarButtonItem = search;
     search = nil;
 }
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+}
+
+- (void)dealloc {
+    [self.selected release];
+    [self.nearbyVenues release];
+    [self.section release];
+    [self.query release];
+    [self.radius release];
+    [self.textFieldSearch release];
+    [self.segment release];
+    [self.tableView release];
+    [super dealloc];
+}
+
+#pragma button event
 
 - (void)search:(id)sender
 {
@@ -77,71 +108,6 @@
 }
 
 /*
- When user presses return key (search)
- Updates view with search
- Calls search to remove textField and move segmentControl and TableView up
- Radius bigger to show more results (10km)
- */
--(BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    self.section = nil;
-    self.query = textField.text;
-    self.radius = @(10000);
-    [self search:nil];
-    [self getVenuesForLocation:_locationManager.location];
-    self.segment.selectedSegmentIndex = UISegmentedControlNoSegment;
-    
-    return YES;
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
--(void)getVenuesForLocation:(CLLocation*)location
-{
-    self.nearbyVenues = nil;
-    self.nearbyVenues = [[NSMutableArray alloc] init];
-    
-    [Foursquare2 searchVenuesNearByLatitude:@(location.coordinate.latitude)
-								  longitude:@(location.coordinate.longitude)
-                                    section:self.section
-									  query:self.query
-									 intent:intentBrowse
-                                     radius:self.radius
-								   callback:^(BOOL success, id result) {
-									   if (success) {
-										   NSDictionary *dic = result;
-                                           NSArray* venues;
-                                           if(self.section)
-                                               venues = [dic valueForKeyPath:@"response.groups.items.venue"];
-                                           else
-                                                venues = [dic valueForKeyPath:@"response.venues"];
-                                               
-                                           FSConverter *converter = [[FSConverter alloc] init];
-                                           self.nearbyVenues = [converter convertToObjects:venues];
-                                           /*
-                                            self.nearby count == 0 ==> no result
-                                            */
-                                           if([self.nearbyVenues count] > 0)
-                                               [self.tableView insertSections:[NSIndexSet indexSetWithIndex:0]
-                                                             withRowAnimation:UITableViewRowAnimationNone];
-                                           else {
-                                               UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                                                              message:@"No place found"
-                                                                                             delegate:nil
-                                                                                    cancelButtonTitle:@"OK"
-                                                                                    otherButtonTitles:nil];
-                                               [view show];
-                                               view = nil;
-                                           }
-									   }
-								   }];
-    [self.tableView reloadData];
-}
-
-/*
  Depending on segment
  Radius reset to 500m
  */
@@ -168,20 +134,27 @@
     [self getVenuesForLocation:_locationManager.location];
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
-{
-    [_locationManager stopUpdatingLocation];
-    [self getVenuesForLocation:newLocation];
-}
+#pragma text field delegates
 
-- (void)didReceiveMemoryWarning
+/*
+ When user presses return key (search)
+ Updates view with search
+ Calls search to remove textField and move segmentControl and TableView up
+ Radius bigger to show more results (10km)
+ */
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [super didReceiveMemoryWarning];
+    self.section = nil;
+    self.query = textField.text;
+    self.radius = @(10000);
+    [self search:nil];
+    [self getVenuesForLocation:_locationManager.location];
+    self.segment.selectedSegmentIndex = UISegmentedControlNoSegment;
+    
+    return YES;
 }
 
 #pragma mark - Table view data source
-
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -218,6 +191,54 @@
     return cell;
 }
 
+-(void)getVenuesForLocation:(CLLocation*)location
+{
+    self.nearbyVenues = nil;
+    self.nearbyVenues = [[NSMutableArray alloc] init];
+    
+    [Foursquare2 searchVenuesNearByLatitude:@(location.coordinate.latitude)
+								  longitude:@(location.coordinate.longitude)
+                                    section:self.section
+									  query:self.query
+									 intent:intentBrowse
+                                     radius:self.radius
+								   callback:^(BOOL success, id result) {
+									   if (success) {
+										   NSDictionary *dic = result;
+                                           NSArray* venues;
+                                           if(self.section)
+                                               venues = [dic valueForKeyPath:@"response.groups.items.venue"];
+                                           else
+                                               venues = [dic valueForKeyPath:@"response.venues"];
+                                           
+                                           FSConverter *converter = [[FSConverter alloc] init];
+                                           self.nearbyVenues = [converter convertToObjects:venues];
+                                           /*
+                                            self.nearby count == 0 ==> no result
+                                            */
+                                           if([self.nearbyVenues count] > 0)
+                                               [self.tableView insertSections:[NSIndexSet indexSetWithIndex:0]
+                                                             withRowAnimation:UITableViewRowAnimationNone];
+                                           else {
+                                               UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                                              message:@"No place found"
+                                                                                             delegate:nil
+                                                                                    cancelButtonTitle:@"OK"
+                                                                                    otherButtonTitles:nil];
+                                               [view show];
+                                               view = nil;
+                                           }
+									   }
+								   }];
+    [self.tableView reloadData];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    [_locationManager stopUpdatingLocation];
+    [self getVenuesForLocation:newLocation];
+}
+
 #pragma mark - Table view delegate
 
 /*
@@ -236,23 +257,6 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     self.selected = self.nearbyVenues[indexPath.row];
     [self userDidSelectVenue];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-}
-
-- (void)dealloc {
-    self.radius = nil;
-    self.tableView = nil;
-    self.textFieldSearch = nil;
-    self.nearbyVenues = nil;
-    self.selected = nil;
-    self.section = nil;
-    self.query = nil;
-    self.segment = nil;
-    [super dealloc];
 }
 
 @end

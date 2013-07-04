@@ -11,6 +11,12 @@
 
 @implementation FSLocation
 
+- (void)dealloc
+{
+    [self.distance release];
+    [self.address release];
+    [super dealloc];
+}
 
 @end
 
@@ -34,4 +40,15 @@
 {
     return self.name;
 }
+
+- (void)dealloc
+{
+    [self.name release];
+    [self.venueId release];
+    [self.location release];
+    [self.distance release];
+    [self.categoryName release];
+    [super dealloc];
+}
+
 @end

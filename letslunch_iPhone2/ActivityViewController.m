@@ -66,7 +66,12 @@ static ActivityViewController *sharedSingleton = nil;
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc
+{
+    [self.objects release];
+    [super dealloc];
 }
 
 #pragma mark - Table view data source

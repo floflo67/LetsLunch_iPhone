@@ -43,8 +43,8 @@
 }
 
 - (void)dealloc {
-    self.menuItem = nil;
-    self.sidebarDelegate = nil;
+    [self.menuItem release];
+    [self.sidebarDelegate release];
     [super dealloc];
 }
 

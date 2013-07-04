@@ -128,8 +128,9 @@
 
 - (void)dealloc
 {
-    msgText = nil;
-    imgName = nil;
+    [self.msgText release];
+    [self.imgName release];
+    [self.dateText release];
     [super dealloc];
 }
 

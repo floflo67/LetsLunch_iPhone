@@ -109,15 +109,16 @@ static CreateActivityViewController *sharedSingleton = nil;
 }
 
 - (void)dealloc {
-    _map = nil;
-    _textFieldDescription = nil;
-    _segment = nil;
-    _labelBroadcast = nil;
-    _viewContent = nil;
-    _tableView = nil;
-    _activity = nil;
-    _buttonClear = nil;
-    [_viewSubview release];
+    [self.venue release];
+    [self.textFieldDescription release];
+    [self.segment release];
+    [self.labelBroadcast release];
+    [self.viewContent release];
+    [self.tableView release];
+    [self.viewSubview release];
+    [self.buttonClear release];
+    [self.activity release];
+    [self.map release];
     [super dealloc];
 }
 
