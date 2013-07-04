@@ -378,6 +378,8 @@
 		54403821176B8E4D00AA3588 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				54D317341784F52200D058F4 /* Login */,
+				547D54CC17739D060069D837 /* Foursquare */,
 				54403822176B8E5D00AA3588 /* GetStaticLists.h */,
 				54403823176B8E5D00AA3588 /* GetStaticLists.m */,
 			);
@@ -404,6 +406,7 @@
 		5445A68A1778D6A500F3EC97 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				54F971FB177CE13E006F6FE5 /* Share */,
 				549ADAAE176BCAF2001F1D3F /* CreateActivityViewController.h */,
 				549ADAAA176BCAD5001F1D3F /* CreateActivityViewController.m */,
 				549ADAAB176BCAD5001F1D3F /* CreateActivityViewController.xib */,
@@ -419,7 +422,7 @@
 			name = Detail;
 			sourceTree = "<group>";
 		};
-		5445A68F1779194B00F3EC97 /* Objects */ = {
+		5445A68F1779194B00F3EC97 /* Class */ = {
 			isa = PBXGroup;
 			children = (
 				5445A6901779195B00F3EC97 /* Contacts.h */,
@@ -429,7 +432,7 @@
 				5445A6961779210600F3EC97 /* Activity.h */,
 				5445A6971779210600F3EC97 /* Activity.m */,
 			);
-			name = Objects;
+			name = Class;
 			sourceTree = "<group>";
 		};
 		547D54CC17739D060069D837 /* Foursquare */ = {
@@ -447,6 +450,7 @@
 				547D54D41773B21F0069D837 /* FSTargetCallback.m */,
 			);
 			name = Foursquare;
+			path = letslunch_iPhone2;
 			sourceTree = "<group>";
 		};
 		547D54D91773B2240069D837 /* Objects */ = {
@@ -481,20 +485,20 @@
 		548D36AD176B819300154C36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				54571399177E48F4006A69CE /* Social.framework */,
-				54571397177E48EF006A69CE /* Security.framework */,
+				549ADAB1176BE11D001F1D3F /* QuickDialog.xcodeproj */,
 				54571395177E48E8006A69CE /* libsqlite3.dylib */,
+				5457138F177E48A4006A69CE /* FacebookSDKResources.bundle */,
 				54571393177E48D7006A69CE /* Accounts.framework */,
 				54571391177E48CF006A69CE /* AdSupport.framework */,
-				5457138F177E48A4006A69CE /* FacebookSDKResources.bundle */,
-				549ADAB1176BE11D001F1D3F /* QuickDialog.xcodeproj */,
-				5457138D177E476C006A69CE /* FacebookSDK.framework */,
+				548D36B2176B819300154C36 /* CoreGraphics.framework */,
 				549ADABF176BE159001F1D3F /* CoreLocation.framework */,
+				5457138D177E476C006A69CE /* FacebookSDK.framework */,
+				548D36B0176B819300154C36 /* Foundation.framework */,
 				549ADABD176BE14F001F1D3F /* MapKit.framework */,
 				548D36D3176B81E900154C36 /* QuartzCore.framework */,
 				548D36AE176B819300154C36 /* UIKit.framework */,
-				548D36B0176B819300154C36 /* Foundation.framework */,
-				548D36B2176B819300154C36 /* CoreGraphics.framework */,
+				54571397177E48EF006A69CE /* Security.framework */,
+				54571399177E48F4006A69CE /* Social.framework */,
 				543777091783A1D3000CEBAF /* Twitter.framework */,
 			);
 			name = Frameworks;
@@ -503,28 +507,16 @@
 		548D36B4176B819300154C36 /* letslunch_iPhone2 */ = {
 			isa = PBXGroup;
 			children = (
-				54F971FB177CE13E006F6FE5 /* Share */,
-				5445A68F1779194B00F3EC97 /* Objects */,
-				547D54CC17739D060069D837 /* Foursquare */,
-				54E332D11781ED1E00BFF6A4 /* LinkedIn */,
-				54E4B57817822C7400BE5686 /* Twitter */,
+				5445A68F1779194B00F3EC97 /* Class */,
 				54F5984E1770C9350074F43C /* BarsViewController */,
 				54E714C9176B95B500F39D73 /* ViewControllers */,
 				54403821176B8E4D00AA3588 /* API */,
-				548D36D5176B820700154C36 /* Images */,
 				548D36BD176B819300154C36 /* AppDelegate.h */,
 				548D36BE176B819300154C36 /* AppDelegate.m */,
 				548D36DA176B823700154C36 /* CenterViewController.h */,
 				548D36DB176B823700154C36 /* CenterViewController.m */,
-				54F97204177CFFE7006F6FE5 /* LoginViewController.h */,
-				54F97205177CFFE7006F6FE5 /* LoginViewController.m */,
-				54F97206177CFFE7006F6FE5 /* LoginViewController.xib */,
-				54E333181781EF3100BFF6A4 /* OAuthLoginView.h */,
-				54E333171781EF3100BFF6A4 /* OAuthLoginView.m */,
-				54E333161781EF3100BFF6A4 /* OAuthLoginView.xib */,
-				5437770417837171000CEBAF /* Provider.h */,
-				5437770517837171000CEBAF /* Provider.m */,
 				548D36B5176B819300154C36 /* Supporting Files */,
+				548D36D5176B820700154C36 /* Images */,
 			);
 			path = letslunch_iPhone2;
 			sourceTree = "<group>";
@@ -576,6 +568,24 @@
 				549ADAB9176BE11D001F1D3F /* libQuickDialog.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		54D317341784F52200D058F4 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				54E332D11781ED1E00BFF6A4 /* LinkedIn */,
+				54E4B57817822C7400BE5686 /* Twitter */,
+				54F97204177CFFE7006F6FE5 /* LoginViewController.h */,
+				54F97205177CFFE7006F6FE5 /* LoginViewController.m */,
+				54F97206177CFFE7006F6FE5 /* LoginViewController.xib */,
+				54E333181781EF3100BFF6A4 /* OAuthLoginView.h */,
+				54E333171781EF3100BFF6A4 /* OAuthLoginView.m */,
+				54E333161781EF3100BFF6A4 /* OAuthLoginView.xib */,
+				5437770417837171000CEBAF /* Provider.h */,
+				5437770517837171000CEBAF /* Provider.m */,
+			);
+			name = Login;
+			path = letslunch_iPhone2;
 			sourceTree = "<group>";
 		};
 		54E332D11781ED1E00BFF6A4 /* LinkedIn */ = {
