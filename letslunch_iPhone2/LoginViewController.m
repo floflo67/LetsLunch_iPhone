@@ -10,6 +10,8 @@
 #import "AppDelegate.h"
 #import "OAuthLoginView.h"
 #import "TwitterLoginViewController.h"
+#import <Twitter/Twitter.h>
+#import <Accounts/Accounts.h>
 
 @interface LoginViewController ()
 
@@ -87,39 +89,53 @@
 
 - (void)logInWithFacebook
 {
-    [((AppDelegate*)[UIApplication sharedApplication].delegate) openSession];
+    ACAccountStore* store = [[ACAccountStore alloc] init];
+    ACAccountType* facebookAccountType = [store accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
+    
+    NSArray* objects = [NSArray arrayWithObjects:FB_OAUTH_KEY,@[@"publish_stream"],ACFacebookAudienceEveryone, nil];
+    NSArray* keys = [NSArray arrayWithObjects:ACFacebookAppIdKey,ACFacebookPermissionsKey,ACFacebookAudienceKey, nil];
+    NSDictionary* options = [[NSDictionary alloc] initWithObjects:objects forKeys:keys];
+    
+    
+    [store requestAccessToAccountsWithType:facebookAccountType options:options completion:^void(BOOL granted, NSError* error) {
+        NSArray* facebookAccounts = [store accountsWithAccountType:facebookAccountType];
+        if([facebookAccounts count] > 0)
+        {
+            ACAccount* account = [facebookAccounts objectAtIndex:0];
+            NSLog(@"%@", account.username);
+        }
+        else {
+            [((AppDelegate*)[UIApplication sharedApplication].delegate) openSession];
+        }
+    }];
 }
 
 - (void)logInWithTwitter
 {
-    /*
-    AppDelegate *app = [UIApplication sharedApplication].delegate;
-    if (app.token == nil) {
-		TwitterLoginViewController* twitterLoginViewController = [[TwitterLoginViewController new] autorelease];
-		if (twitterLoginViewController != nil)
-		{
-			twitterLoginViewController.consumer = app.consumer;
-			twitterLoginViewController.delegate = self;
+    ACAccountStore* store = [[ACAccountStore alloc] init];
+    ACAccountType* twitterAccountType = [store accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    
+    [store requestAccessToAccountsWithType:twitterAccountType options:nil completion:^void(BOOL granted, NSError* error) {
+        NSArray* twitterAccounts = [store accountsWithAccountType:twitterAccountType];
+        if(twitterAccounts && [twitterAccounts count] > 0)
+        {
+            ACAccount* account = [twitterAccounts objectAtIndex:0];
+            NSLog(@"%@", account.username);
+        }
+        else {
+            NSLog(@"No accounts");
+            /*
+            self.isLinkedIn = NO;
+            OAuthLoginView* oAuthLoginView = [[OAuthLoginView alloc] initWithTwitter];
+            AppDelegate *app = [UIApplication sharedApplication].delegate;
+            app.oAuthLoginView = oAuthLoginView;
             
-			UINavigationController* navigationController = [[[UINavigationController alloc] initWithRootViewController: twitterLoginViewController] autorelease];
-			if (navigationController != nil) {
-                [self presentViewController:navigationController animated:YES completion:nil];
-//				[self presentModalViewController: navigationController animated: YES];
-			}
-		}
-	}
-    else {
-        [self.view removeFromSuperview];
-    }*/
-    
-    self.isLinkedIn = NO;
-    OAuthLoginView* oAuthLoginView = [[OAuthLoginView alloc] initWithTwitter];
-    AppDelegate *app = [UIApplication sharedApplication].delegate;
-    app.oAuthLoginView = oAuthLoginView;
-    
-    // register to be told when the login is finished
-    [[NSNotificationCenter defaultCenter] addObserver:app selector:@selector(loginViewDidFinish:) name:@"loginViewDidFinish" object:oAuthLoginView];
-    [self presentViewController:oAuthLoginView animated:YES completion:nil];
+            // register to be told when the login is finished
+            [[NSNotificationCenter defaultCenter] addObserver:app selector:@selector(loginViewDidFinish:) name:@"loginViewDidFinish" object:oAuthLoginView];
+            [self presentViewController:oAuthLoginView animated:YES completion:nil];
+            */
+        }
+    }];
 }
 
 - (void)logInWithLinkedIn

@@ -10,6 +10,7 @@
 #import "CenterViewController.h"
 #import "GetStaticLists.h"
 #import "TwitterLoginViewController.h"
+#import <Accounts/Accounts.h>
 
 @implementation AppDelegate
 
@@ -21,6 +22,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    BOOL twitterAccessGranted = NO;
+    BOOL facebookAccessGranted = NO;
+    
+    ACAccountStore* store = [[ACAccountStore alloc] init];
+    ACAccountType* facebookAccountType = [store accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
+    ACAccountType* twitterAccountType = [store accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    
+    if(twitterAccountType.accessGranted)
+        twitterAccessGranted = YES;
+    if (facebookAccountType.accessGranted)
+        facebookAccessGranted = YES;
+    
     /*
      Suppress FB session
      */
@@ -50,10 +63,15 @@
     _viewController = controller;
     _navController = navController;
     
-    /*if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded)
+    if(facebookAccessGranted || twitterAccessGranted) {
+        NSLog(@"autologin");
+        return YES;        
+    }
+    
+    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded)
         [self openSession];
     else
-        [self showLoginView];*/
+        [self showLoginView];
     
     return YES;
 }
