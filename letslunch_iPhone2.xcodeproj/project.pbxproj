@@ -61,6 +61,7 @@
 		54D3521C178DC89D0068953A /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54D3521B178DC89D0068953A /* AddressBookUI.framework */; };
 		54D3521F178DC8C30068953A /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54D3521E178DC8C30068953A /* AddressBook.framework */; };
 		54D35222178DCB230068953A /* DBFriendInviter.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D35221178DCB230068953A /* DBFriendInviter.m */; };
+		54D35225178DDA510068953A /* LoginRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D35224178DDA510068953A /* LoginRequests.m */; };
 		54E332D91781EEE400BFF6A4 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E332D71781EEE400BFF6A4 /* JSONKit.m */; };
 		54E332F51781EEF700BFF6A4 /* OATokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E332DB1781EEF700BFF6A4 /* OATokenManager.m */; };
 		54E332F61781EEF700BFF6A4 /* OAToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E332DD1781EEF700BFF6A4 /* OAToken.m */; };
@@ -225,6 +226,8 @@
 		54D3521E178DC8C30068953A /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		54D35220178DCB230068953A /* DBFriendInviter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBFriendInviter.h; sourceTree = "<group>"; };
 		54D35221178DCB230068953A /* DBFriendInviter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBFriendInviter.m; sourceTree = "<group>"; };
+		54D35223178DDA510068953A /* LoginRequests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginRequests.h; sourceTree = "<group>"; };
+		54D35224178DDA510068953A /* LoginRequests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginRequests.m; sourceTree = "<group>"; };
 		54E332D71781EEE400BFF6A4 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		54E332D81781EEE400BFF6A4 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		54E332DA1781EEF700BFF6A4 /* OAuthConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthConsumer.h; sourceTree = "<group>"; };
@@ -594,6 +597,8 @@
 				54E333161781EF3100BFF6A4 /* OAuthLoginView.xib */,
 				5437770417837171000CEBAF /* Provider.h */,
 				5437770517837171000CEBAF /* Provider.m */,
+				54D35223178DDA510068953A /* LoginRequests.h */,
+				54D35224178DDA510068953A /* LoginRequests.m */,
 			);
 			name = Login;
 			path = letslunch_iPhone2;
@@ -957,6 +962,7 @@
 				5437770617837171000CEBAF /* Provider.m in Sources */,
 				54D317321784970E00D058F4 /* DetailProfileViewController.m in Sources */,
 				54D35222178DCB230068953A /* DBFriendInviter.m in Sources */,
+				54D35225178DDA510068953A /* LoginRequests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
