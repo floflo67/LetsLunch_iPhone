@@ -144,11 +144,18 @@
 	}
     else {
         NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:_data options:0 error:nil]];
-        NSDictionary *dictError = [NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"data"]];
-        NSString* errorMessage = [dictJson objectForKey:@"message"];
-        _statusCode = [[dictError objectForKey:@"errorCode"] integerValue];
-        if(_statusCode != 200)
+        NSDictionary *dictAuth = [NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"user"]];
+        NSLog(@"%@", dictJson);
+        if([dictAuth count] > 0) {
+            NSString* token = [[NSDictionary dictionaryWithDictionary:[dictAuth objectForKey:@"auth"]]objectForKey:@"token"];
+            NSLog(@"%@",token);
+        }
+        else {
+            NSDictionary *dictError = [NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"data"]];
+            NSString* errorMessage = [dictJson objectForKey:@"message"];
+            _statusCode = [[dictError objectForKey:@"errorCode"] integerValue];
             [self showErrorMessage:errorMessage];
+        }
 	}
 	
 	[_connection release];
