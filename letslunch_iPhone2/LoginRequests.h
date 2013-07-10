@@ -8,9 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LoginRequests : NSObject
+@protocol LoginRequestDelegate
+-(void)showErrorMessage:(NSString*)message withErrorStatus:(NSInteger)errorStatus;
+@end
 
-+(void)loginWithUserName:(NSString*)username andPassword:(NSString*)password;
-+(void)signUpWithUserName:(NSString*)username andPassword:(NSString*)password andMailAddress:(NSString*)email andCountry:(NSString*)country;
+@interface LoginRequests : NSObject {
+@private
+	id<LoginRequestDelegate> _delegate;
+    NSURLConnection* _connection;
+    NSMutableData* _data;
+    NSInteger _statusCode;
+}
+
+@property (nonatomic,assign) id<LoginRequestDelegate> delegate;
+    
+-(BOOL)loginWithUserName:(NSString*)username andPassword:(NSString*)password;
+-(BOOL)signUpWithUserName:(NSString*)username andPassword:(NSString*)password andMailAddress:(NSString*)email andCountry:(NSString*)country;
 
 @end
