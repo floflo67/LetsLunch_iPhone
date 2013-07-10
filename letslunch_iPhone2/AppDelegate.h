@@ -39,6 +39,9 @@
 -(NSMutableArray*)getListMessagesForContactID:(NSString*)contactID andForceReload:(BOOL)shouldReload;
 -(NSMutableArray*)getListContactsAndForceReload:(BOOL)shouldReload;
 -(Activity*)getOwnerActivityAndForceReload:(BOOL)shouldReload;
+
+-(void)hideLoginView;
+
 -(void)openSession;
 -(void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error;
 

@@ -83,6 +83,13 @@
     [self.viewController.navigationController.view addSubview:_loginViewController.view];
 }
 
+- (void)hideLoginView
+{
+    [_loginViewController.view removeFromSuperview];
+    [_loginViewController.view setHidden:YES];
+    [_loginViewController release];
+}
+
 #pragma OAuthLoginView events
 
 -(void) loginViewDidFinish:(NSNotification*)notification
@@ -159,10 +166,8 @@
     
     if(profile && [profile objectForKey:@"firstName"])
     {
+        [self hideLoginView];
         NSLog(@"%@", [profile objectForKey:@"firstName"]);
-        [_loginViewController.view removeFromSuperview];
-        [_loginViewController.view setHidden:YES];
-        [_loginViewController release];
     }
     
     // The next thing we want to do is call the network updates
@@ -287,9 +292,7 @@
     if(profile && [profile objectForKey:@"name"])
     {
         NSLog(@"%@", [profile objectForKey:@"name"]);
-        [_loginViewController.view removeFromSuperview];
-        [_loginViewController.view setHidden:YES];
-        [_loginViewController release];
+        [self hideLoginView];
     }
     
     // The next thing we want to do is call the network updates
