@@ -63,10 +63,10 @@
     _viewController = controller;
     _navController = navController;
     
-    if(facebookAccessGranted || twitterAccessGranted) {
+    /*if(facebookAccessGranted || twitterAccessGranted) {
         NSLog(@"autologin");
         return YES;        
-    }
+    }*/
     
     if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded)
         [self openSession];
