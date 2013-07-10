@@ -139,12 +139,16 @@
 - (void)connectionDidFinishLoading:(NSURLConnection*)connection
 {
 	if (_statusCode != 200) {
-		NSString* response = [[[NSString alloc] initWithData: _data encoding: NSUTF8StringEncoding] autorelease];
+		NSString* response = [[[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding] autorelease];
         [self showErrorMessage:response];
 	}
     else {
-        NSString* response = [[[NSString alloc] initWithData: _data encoding: NSUTF8StringEncoding] autorelease];
-        [self showErrorMessage:response];
+        NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:_data options:0 error:nil]];
+        NSDictionary *dictError = [NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"data"]];
+        NSString* errorMessage = [dictJson objectForKey:@"message"];
+        _statusCode = [[dictError objectForKey:@"errorCode"] integerValue];
+        if(_statusCode != 200)
+            [self showErrorMessage:errorMessage];
 	}
 	
 	[_connection release];
