@@ -182,4 +182,9 @@
     [alert release];
 }
 
+- (void)successfullConnection
+{
+    [((AppDelegate*)[UIApplication sharedApplication].delegate) hideLoginView];
+}
+
 @end
