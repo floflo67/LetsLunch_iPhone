@@ -164,7 +164,6 @@
     
     if (accessGranted) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
-            NSLog(@"Determining most important contacts...");
             NSArray *allPeople = [DBFriendInviter mostImportantContacts];
             
             for (NSObject *obj in allPeople) {
