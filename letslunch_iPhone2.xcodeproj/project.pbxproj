@@ -58,6 +58,9 @@
 		549ADAC0176BE15A001F1D3F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549ADABF176BE159001F1D3F /* CoreLocation.framework */; };
 		54D317321784970E00D058F4 /* DetailProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D317301784970E00D058F4 /* DetailProfileViewController.m */; };
 		54D317331784970E00D058F4 /* DetailProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54D317311784970E00D058F4 /* DetailProfileViewController.xib */; };
+		54D3521C178DC89D0068953A /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54D3521B178DC89D0068953A /* AddressBookUI.framework */; };
+		54D3521F178DC8C30068953A /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54D3521E178DC8C30068953A /* AddressBook.framework */; };
+		54D35222178DCB230068953A /* DBFriendInviter.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D35221178DCB230068953A /* DBFriendInviter.m */; };
 		54E332D91781EEE400BFF6A4 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E332D71781EEE400BFF6A4 /* JSONKit.m */; };
 		54E332F51781EEF700BFF6A4 /* OATokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E332DB1781EEF700BFF6A4 /* OATokenManager.m */; };
 		54E332F61781EEF700BFF6A4 /* OAToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E332DD1781EEF700BFF6A4 /* OAToken.m */; };
@@ -218,6 +221,10 @@
 		54D3172F1784970E00D058F4 /* DetailProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailProfileViewController.h; sourceTree = "<group>"; };
 		54D317301784970E00D058F4 /* DetailProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailProfileViewController.m; sourceTree = "<group>"; };
 		54D317311784970E00D058F4 /* DetailProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailProfileViewController.xib; sourceTree = "<group>"; };
+		54D3521B178DC89D0068953A /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		54D3521E178DC8C30068953A /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		54D35220178DCB230068953A /* DBFriendInviter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBFriendInviter.h; sourceTree = "<group>"; };
+		54D35221178DCB230068953A /* DBFriendInviter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBFriendInviter.m; sourceTree = "<group>"; };
 		54E332D71781EEE400BFF6A4 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		54E332D81781EEE400BFF6A4 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		54E332DA1781EEF700BFF6A4 /* OAuthConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthConsumer.h; sourceTree = "<group>"; };
@@ -317,6 +324,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54D3521F178DC8C30068953A /* AddressBook.framework in Frameworks */,
+				54D3521C178DC89D0068953A /* AddressBookUI.framework in Frameworks */,
 				5437770A1783A1D3000CEBAF /* Twitter.framework in Frameworks */,
 				5457139A177E48F4006A69CE /* Social.framework in Frameworks */,
 				54571398177E48EF006A69CE /* Security.framework in Frameworks */,
@@ -489,6 +498,8 @@
 				54571395177E48E8006A69CE /* libsqlite3.dylib */,
 				5457138F177E48A4006A69CE /* FacebookSDKResources.bundle */,
 				54571393177E48D7006A69CE /* Accounts.framework */,
+				54D3521E178DC8C30068953A /* AddressBook.framework */,
+				54D3521B178DC89D0068953A /* AddressBookUI.framework */,
 				54571391177E48CF006A69CE /* AdSupport.framework */,
 				548D36B2176B819300154C36 /* CoreGraphics.framework */,
 				549ADABF176BE159001F1D3F /* CoreLocation.framework */,
@@ -717,6 +728,8 @@
 		54F5984E1770C9350074F43C /* BarsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				54D35220178DCB230068953A /* DBFriendInviter.h */,
+				54D35221178DCB230068953A /* DBFriendInviter.m */,
 				548D36DC176B823700154C36 /* LeftSidebarViewController.h */,
 				548D36DD176B823700154C36 /* LeftSidebarViewController.m */,
 				54F5984F1770C96D0074F43C /* RightSidebarViewController.h */,
@@ -943,6 +956,7 @@
 				54E4B58D17822D1200BE5686 /* TwitterUtils.m in Sources */,
 				5437770617837171000CEBAF /* Provider.m in Sources */,
 				54D317321784970E00D058F4 /* DetailProfileViewController.m in Sources */,
+				54D35222178DCB230068953A /* DBFriendInviter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
