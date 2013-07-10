@@ -10,6 +10,7 @@
 
 @protocol LoginRequestDelegate
 -(void)showErrorMessage:(NSString*)message withErrorStatus:(NSInteger)errorStatus;
+-(void)successfullConnection;
 @end
 
 @interface LoginRequests : NSObject {

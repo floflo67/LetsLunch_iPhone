@@ -113,6 +113,11 @@
     [_delegate showErrorMessage:error withErrorStatus:_statusCode];
 }
 
+- (void)successfullLoginIn
+{
+    [_delegate successfullConnection];
+}
+
 #pragma connection delegate
 
 - (void)connection:(NSURLConnection*)connection didReceiveData:(NSData*)data
@@ -145,10 +150,10 @@
     else {
         NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:_data options:0 error:nil]];
         NSDictionary *dictAuth = [NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"user"]];
-        NSLog(@"%@", dictJson);
         if([dictAuth count] > 0) {
             NSString* token = [[NSDictionary dictionaryWithDictionary:[dictAuth objectForKey:@"auth"]]objectForKey:@"token"];
-            NSLog(@"%@",token);
+            NSLog(@"%@", token);
+            [self successfullLoginIn];
         }
         else {
             NSDictionary *dictError = [NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"data"]];
