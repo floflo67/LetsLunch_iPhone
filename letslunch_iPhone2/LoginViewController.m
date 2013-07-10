@@ -25,11 +25,15 @@
 {
     [super viewDidLoad];
     
+    if(!_loginRequest)
+        _loginRequest = [[LoginRequests alloc] init];
+    
     /*
      Sets delegate of UITextField
      */
     self.textFieldPassword.delegate = self;
     self.textFieldUsername.delegate = self;
+    _loginRequest.delegate = self;
     
     /*
      Sets action on button click
@@ -164,14 +168,18 @@
 
 - (BOOL)logInWithUsername:(NSString*)username andPassword:(NSString*)password
 {
-    bool success = NO;
-    
-    if([username isEqualToString:@"Florian"])
-        if([password isEqualToString:@"Password"])
-            success = YES;
-    
-    NSLog(@"%d", success);
-    return success;
+    return [_loginRequest loginWithUserName:username andPassword:password];
+}
+
+#pragma login request delegate
+
+- (void)showErrorMessage:(NSString*)message withErrorStatus:(NSInteger)errorStatus
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NULL message:NULL delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    alert.title = [NSString stringWithFormat:@"Error: %i", errorStatus];
+    alert.message = message;
+    [alert show];
+    [alert release];
 }
 
 @end
