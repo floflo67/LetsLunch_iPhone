@@ -12,6 +12,7 @@
 		5400D005177A598D002CC092 /* MessageFromSelf.png in Resources */ = {isa = PBXBuildFile; fileRef = 5400D003177A598D002CC092 /* MessageFromSelf.png */; };
 		5400D006177A598D002CC092 /* MessageToSelf.png in Resources */ = {isa = PBXBuildFile; fileRef = 5400D004177A598D002CC092 /* MessageToSelf.png */; };
 		5400D009177A59DB002CC092 /* ThreadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5400D008177A59DB002CC092 /* ThreadCell.m */; };
+		540560D1178F272E009679F4 /* MutableRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 540560D0178F272E009679F4 /* MutableRequest.m */; };
 		5409986C177239F2003DFD70 /* ShareButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5409986B177239F2003DFD70 /* ShareButton.png */; };
 		5437770617837171000CEBAF /* Provider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5437770517837171000CEBAF /* Provider.m */; };
 		5437770A1783A1D3000CEBAF /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 543777091783A1D3000CEBAF /* Twitter.framework */; };
@@ -154,6 +155,8 @@
 		5400D004177A598D002CC092 /* MessageToSelf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MessageToSelf.png; sourceTree = "<group>"; };
 		5400D007177A59DB002CC092 /* ThreadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreadCell.h; sourceTree = "<group>"; };
 		5400D008177A59DB002CC092 /* ThreadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreadCell.m; sourceTree = "<group>"; };
+		540560CF178F272E009679F4 /* MutableRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MutableRequest.h; sourceTree = "<group>"; };
+		540560D0178F272E009679F4 /* MutableRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MutableRequest.m; sourceTree = "<group>"; };
 		5409986B177239F2003DFD70 /* ShareButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShareButton.png; sourceTree = "<group>"; };
 		5437770417837171000CEBAF /* Provider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Provider.h; sourceTree = "<group>"; };
 		5437770517837171000CEBAF /* Provider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Provider.m; sourceTree = "<group>"; };
@@ -399,6 +402,8 @@
 				54403823176B8E5D00AA3588 /* GetStaticLists.m */,
 				54D35226178E1C200068953A /* KeychainWrapper.h */,
 				54D35227178E1C200068953A /* KeychainWrapper.m */,
+				540560CF178F272E009679F4 /* MutableRequest.h */,
+				540560D0178F272E009679F4 /* MutableRequest.m */,
 			);
 			name = API;
 			path = ..;
@@ -969,6 +974,7 @@
 				54D35222178DCB230068953A /* DBFriendInviter.m in Sources */,
 				54D35225178DDA510068953A /* LoginRequests.m in Sources */,
 				54D35228178E1C200068953A /* KeychainWrapper.m in Sources */,
+				540560D1178F272E009679F4 /* MutableRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
