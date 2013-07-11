@@ -29,7 +29,7 @@
     [super viewDidLoad];
     if(!self.menuItem) {
         self.index = 0;
-        self.menuItem = [[NSArray alloc] initWithObjects:@"Activity", @"Messages", @"Settings", @"Notifications", @"Profile", nil];
+        self.menuItem = [[NSArray alloc] initWithObjects:@"Profile", @"Activity", @"Messages", @"Settings", @"Notifications", nil];
     }
 }
 
