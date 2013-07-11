@@ -146,7 +146,12 @@ static const UInt8 kKeychainItemIdentifier[]    = "com.apple.dts.KeychainUI\0";
     }
     
     // Default generic data for Keychain Item:
-    [keychainData setObject:@"Account" forKey:(id)kSecAttrAccount];
+    /*[keychainData setObject:@"Item label" forKey:(id)kSecAttrLabel];  // Not used
+    [keychainData setObject:@"Item description" forKey:(id)kSecAttrDescription];  // Not used
+    [keychainData setObject:@"Service" forKey:(id)kSecAttrService];
+    [keychainData setObject:@"Your comment here." forKey:(id)kSecAttrComment]; // Not used
+    [keychainData setObject:@"password" forKey:(id)kSecValueData];*/
+    [keychainData setObject:@"token" forKey:(id)kSecAttrAccount];
 }
 
 - (NSMutableDictionary *)dictionaryToSecItemFormat:(NSDictionary *)dictionaryToConvert

@@ -27,47 +27,21 @@
 		_data = [NSMutableData new];
         
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@login",LL_API_BaseUrl]]];
-        NSDictionary *headers = [NSDictionary dictionaryWithObjectsAndKeys:@"admin", @"X_REST_USERNAME", @"admin", @"X_REST_PASSWORD", nil];
         
         /*
          Sets the body of the requests
          Countains username, password and device ID
          */
-        NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
-        
+        NSMutableDictionary* parameters = [NSMutableDictionary dictionary];        
         [parameters setValue:username forKey:@"username"];
         [parameters setValue:password forKey:@"password"];
         [parameters setValue:[[UIDevice currentDevice] identifierForVendor] forKey:@"deviceId"];
         [parameters setValue:@"0" forKey:@"rememberMe"];
         
-        /*
-         Normalize all parameters
-         */
-        NSMutableString* normalizedRequestParameters = [NSMutableString string];
-        for (NSString* key in [[parameters allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)])
-        {
-            if ([normalizedRequestParameters length] != 0) {
-                [normalizedRequestParameters appendString: @"&"];
-            }
-            
-            [normalizedRequestParameters appendString:key];
-            [normalizedRequestParameters appendString:@"="];
-            if(![key isEqualToString:@"deviceId"])
-                [normalizedRequestParameters appendString:[self _formEncodeString:[parameters objectForKey:key]]];
-            else {
-                NSMutableString *deviceID = [NSString stringWithFormat:@"%@",[parameters objectForKey:@"deviceId"]];
-                deviceID = (NSMutableString*)[deviceID substringFromIndex:29];
-                [normalizedRequestParameters appendString:deviceID];
-            }
-        }
-        
+        NSString* normalizedRequestParameters = [self normalizeParametersInDictionary:parameters];        
         NSData* requestData = [normalizedRequestParameters dataUsingEncoding:NSUTF8StringEncoding];
         
-        [request setHTTPMethod:@"POST"];
-        [request setHTTPBody:requestData];
-        [request setValue:[NSString stringWithFormat: @"%d", [requestData length]] forHTTPHeaderField: @"Content-Length"];
-        [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField: @"Content-Type"];
-        [request setAllHTTPHeaderFields:headers];
+        request = [self createPostRequestWithRequest:request andBody:requestData];
         
         _connection = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
     }
@@ -86,6 +60,51 @@
 - (BOOL)signUpWithUserName:(NSString*)username andPassword:(NSString*)password andMailAddress:(NSString*)email andCountry:(NSString*)country
 {
     return YES;
+}
+
+- (void)logout
+{
+    [((AppDelegate*)[UIApplication sharedApplication].delegate).tokenItem resetKeychainItem];
+}
+
+#pragma request
+
+- (NSMutableURLRequest*)createPostRequestWithRequest:(NSMutableURLRequest*)request andBody:(NSData*)body
+{
+    NSDictionary *headers = [NSDictionary dictionaryWithObjectsAndKeys:@"admin", @"X_REST_USERNAME", @"admin", @"X_REST_PASSWORD", nil];
+    [request setAllHTTPHeaderFields:headers];
+    
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:body];
+    [request setValue:[NSString stringWithFormat: @"%d", [body length]] forHTTPHeaderField: @"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField: @"Content-Type"];
+    return request;
+}
+
+/*
+ Normalize all parameters
+ */
+- (NSString*)normalizeParametersInDictionary:(NSDictionary*)dict
+{
+    NSMutableString* normalizedRequestParameters = [NSMutableString string];
+    for (NSString* key in [[dict allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)])
+    {
+        if ([normalizedRequestParameters length] != 0) {
+            [normalizedRequestParameters appendString: @"&"];
+        }
+        
+        [normalizedRequestParameters appendString:key];
+        [normalizedRequestParameters appendString:@"="];
+        if(![key isEqualToString:@"deviceId"])
+            [normalizedRequestParameters appendString:[self _formEncodeString:[dict objectForKey:key]]];
+        else {
+            NSMutableString *deviceID = [NSString stringWithFormat:@"%@",[dict objectForKey:@"deviceId"]];
+            deviceID = (NSMutableString*)[deviceID substringFromIndex:29];
+            [normalizedRequestParameters appendString:deviceID];
+        }
+    }
+    
+    return normalizedRequestParameters;
 }
 
 #pragma special functions
