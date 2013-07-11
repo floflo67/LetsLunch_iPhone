@@ -51,10 +51,12 @@
 
 -(void)writeObjectToKeychain:(id)object forKey:(id)key;
 -(id)getObjectFromKeychainForKey:(id)key;
+-(void)logout;
 
 +(UIColor*)colorWithHexString:(NSString*)hex;
 +(UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize;
 +(void)writeObjectToKeychain:(id)object forKey:(id)key;
 +(id)getObjectFromKeychainForKey:(id)key;
++(void)logout;
 
 @end

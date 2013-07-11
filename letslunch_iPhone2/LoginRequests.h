@@ -25,6 +25,5 @@
     
 -(BOOL)loginWithUserName:(NSString*)username andPassword:(NSString*)password;
 -(BOOL)signUpWithUserName:(NSString*)username andPassword:(NSString*)password andMailAddress:(NSString*)email andCountry:(NSString*)country;
--(void)logout;
 
 @end

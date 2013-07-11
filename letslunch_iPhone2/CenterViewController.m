@@ -118,6 +118,11 @@
     self.navigationItem.title = @"Profile";
 }
 
+- (void)logout
+{
+    [AppDelegate logout];
+}
+
 #pragma reveal side bars
 
 - (void)revealLeftSidebar:(id)sender
@@ -335,6 +340,8 @@
         [self FriendConfiguration];
     if([[object description] isEqualToString:@"Profile"])
         [self ProfileConfiguration];
+    if([[object description] isEqualToString:@"Logout"])
+        [self logout];
 }
 
 - (NSIndexPath *)lastSelectedIndexPathForSidebarViewController:(LeftSidebarViewController *)sidebarViewController {

@@ -385,6 +385,18 @@
     return [self.tokenItem myObjectForKey:key];
 }
 
++ (void)logout
+{
+    [(AppDelegate*)[UIApplication sharedApplication].delegate logout];
+}
+
+- (void)logout
+{
+    [self.tokenItem resetKeychainItem];
+    [self showLoginView];
+    NSLog(@"%@", [self getObjectFromKeychainForKey:kSecAttrAccount]);
+}
+
 #pragma lists
 
 - (NSMutableArray*)getListActivitiesAndForceReload:(BOOL)shouldReload

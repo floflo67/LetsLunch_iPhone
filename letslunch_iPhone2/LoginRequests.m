@@ -59,11 +59,6 @@
     return YES;
 }
 
-- (void)logout
-{
-    [((AppDelegate*)[UIApplication sharedApplication].delegate).tokenItem resetKeychainItem];
-}
-
 - (void)cancel
 {
 	if (_connection != nil) {
