@@ -15,6 +15,7 @@
 		540560D1178F272E009679F4 /* MutableRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 540560D0178F272E009679F4 /* MutableRequest.m */; };
 		540560E1178F2E6D009679F4 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540560DF178F2E6D009679F4 /* ProfileViewController.m */; };
 		540560E2178F2E6D009679F4 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 540560E0178F2E6D009679F4 /* ProfileViewController.xib */; };
+		540560E5178F2F73009679F4 /* ProfileRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 540560E4178F2F73009679F4 /* ProfileRequest.m */; };
 		5409986C177239F2003DFD70 /* ShareButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5409986B177239F2003DFD70 /* ShareButton.png */; };
 		5437770617837171000CEBAF /* Provider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5437770517837171000CEBAF /* Provider.m */; };
 		5437770A1783A1D3000CEBAF /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 543777091783A1D3000CEBAF /* Twitter.framework */; };
@@ -162,6 +163,8 @@
 		540560DE178F2E6D009679F4 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		540560DF178F2E6D009679F4 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		540560E0178F2E6D009679F4 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		540560E3178F2F73009679F4 /* ProfileRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileRequest.h; sourceTree = "<group>"; };
+		540560E4178F2F73009679F4 /* ProfileRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileRequest.m; sourceTree = "<group>"; };
 		5409986B177239F2003DFD70 /* ShareButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShareButton.png; sourceTree = "<group>"; };
 		5437770417837171000CEBAF /* Provider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Provider.h; sourceTree = "<group>"; };
 		5437770517837171000CEBAF /* Provider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Provider.m; sourceTree = "<group>"; };
@@ -401,6 +404,8 @@
 		540560DD178F2D71009679F4 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				540560E3178F2F73009679F4 /* ProfileRequest.h */,
+				540560E4178F2F73009679F4 /* ProfileRequest.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -993,6 +998,7 @@
 				54D35228178E1C200068953A /* KeychainWrapper.m in Sources */,
 				540560D1178F272E009679F4 /* MutableRequest.m in Sources */,
 				540560E1178F2E6D009679F4 /* ProfileViewController.m in Sources */,
+				540560E5178F2F73009679F4 /* ProfileRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
