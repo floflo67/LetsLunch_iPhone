@@ -107,7 +107,7 @@ static ProfileViewController *sharedSingleton = nil;
     return cell;
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     switch (section) {
         case 0:
@@ -123,6 +123,14 @@ static ProfileViewController *sharedSingleton = nil;
             return @"";
             break;
     }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    if(section == 2)
+        return 100;
+    else
+        return 10;
 }
 
 @end
