@@ -11,6 +11,7 @@
 #import "GetStaticLists.h"
 #import "TwitterLoginViewController.h"
 #import <Accounts/Accounts.h>
+#import "KeychainWrapper.h"
 
 @implementation AppDelegate
 
@@ -19,9 +20,14 @@
 @synthesize navController = _navController;
 @synthesize loginViewController = _loginViewController;
 @synthesize oAuthLoginView = _oAuthLoginView;
+@synthesize tokenItem;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+{    
+    self.tokenItem = [[KeychainWrapper alloc] initWithIdentifier:@"LetsLunchToken" accessGroup:nil];
+    
+    NSLog(@"%@", [self getObjectFromKeychainForKey:kSecAttrAccount]);
+    
     BOOL twitterAccessGranted = NO;
     BOOL facebookAccessGranted = NO;
     
@@ -354,6 +360,28 @@
     return newImage;
 }
 
+#pragma keychain
+
++ (void)writeObjectToKeychain:(id)object forKey:(id)key
+{
+    [(AppDelegate*)[UIApplication sharedApplication].delegate writeObjectToKeychain:object forKey:key];
+}
+
+- (void)writeObjectToKeychain:(id)object forKey:(id)key
+{
+    [self.tokenItem mySetObject:object forKey:key];
+}
+
++ (id)getObjectFromKeychainForKey:(id)key
+{
+    return [(AppDelegate*)[UIApplication sharedApplication].delegate getObjectFromKeychainForKey:key];
+}
+
+- (id)getObjectFromKeychainForKey:(id)key
+{
+    return [self.tokenItem myObjectForKey:key];
+}
+
 #pragma lists
 
 - (NSMutableArray*)getListActivitiesAndForceReload:(BOOL)shouldReload
@@ -436,6 +464,7 @@
     [self.oAuthLoginView release];
     [self.viewController release];
     [self.window release];
+    [self.tokenItem release];
     [super dealloc];
 }
 
