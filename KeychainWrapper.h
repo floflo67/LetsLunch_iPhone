@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSMutableDictionary *keychainData;
 @property (nonatomic, strong) NSMutableDictionary *genericPasswordQuery;
 
+-(id)initWithIdentifier:(NSString*)identifier accessGroup:(NSString*)accessGroup;
 -(void)mySetObject:(id)inObject forKey:(id)key;
 -(id)myObjectForKey:(id)key;
 -(void)resetKeychainItem;
