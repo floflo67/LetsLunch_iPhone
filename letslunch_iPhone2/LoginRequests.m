@@ -7,6 +7,7 @@
 //
 
 #import "LoginRequests.h"
+#import "AppDelegate.h"
 
 @implementation LoginRequests
 
@@ -152,7 +153,7 @@
         NSDictionary *dictAuth = [NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"user"]];
         if([dictAuth count] > 0) {
             NSString* token = [[NSDictionary dictionaryWithDictionary:[dictAuth objectForKey:@"auth"]]objectForKey:@"token"];
-            NSLog(@"%@", token);
+            [AppDelegate writeObjectToKeychain:token forKey:kSecAttrAccount];
             [self successfullLoginIn];
         }
         else {
