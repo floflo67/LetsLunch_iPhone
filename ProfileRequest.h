@@ -10,8 +10,6 @@
 
 @interface ProfileRequest : NSObject {
     @private
-        NSURLConnection* _connection;
-        NSMutableData* _data;
         NSInteger _statusCode;
         NSMutableDictionary *_jsonDict;
 }
