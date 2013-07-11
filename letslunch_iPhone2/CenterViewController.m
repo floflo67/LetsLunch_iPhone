@@ -21,6 +21,7 @@
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
 #import "DBFriendInviter.h"
+#import "ProfileViewController.h"
 
 @interface CenterViewController (Private) <UITableViewDataSource, UITableViewDelegate, LeftSidebarViewControllerDelegate>
 @end
@@ -108,6 +109,13 @@
     self.centerView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
     [self.centerView addSubview:[FriendsViewController getSingleton].view];
     self.navigationItem.title = @"Friend";
+}
+
+- (void)ProfileConfiguration
+{
+    self.centerView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
+    [self.centerView addSubview:[ProfileViewController getSingleton].view];
+    self.navigationItem.title = @"Profile";
 }
 
 #pragma reveal side bars
@@ -325,6 +333,8 @@
         [self MessageConfiguration];
     if([[object description] isEqualToString:@"Friends"])
         [self FriendConfiguration];
+    if([[object description] isEqualToString:@"Profile"])
+        [self ProfileConfiguration];
 }
 
 - (NSIndexPath *)lastSelectedIndexPathForSidebarViewController:(LeftSidebarViewController *)sidebarViewController {
