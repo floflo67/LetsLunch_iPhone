@@ -7,12 +7,14 @@
 //
 
 #import "ProfileViewController.h"
+#import "AppDelegate.h"
 
 @interface ProfileViewController ()
 
 @end
 
 @implementation ProfileViewController
+@synthesize profileRequest = _profileRequest;
 
 static ProfileViewController *sharedSingleton = nil;
 + (ProfileViewController*)getSingleton
@@ -30,10 +32,30 @@ static ProfileViewController *sharedSingleton = nil;
 - (id)init
 {
     self = [super init];
-    if (self) {
-        if(!_objects)
-            _objects = [[NSMutableArray alloc] init];
+    NSString *token = [AppDelegate getObjectFromKeychainForKey:kSecAttrAccount];
+    if (self) {        
+        if(!_profileRequest)
+            _profileRequest = [[ProfileRequest alloc] init];
+        
+        NSDictionary *dict = [_profileRequest getProfileWithToken:token];
+        
+        NSArray *profileValues = [[[NSArray alloc] initWithObjects:[dict objectForKey:@"firstname"], [dict objectForKey:@"lastname"],[dict objectForKey:@"publicname"],[dict objectForKey:@"cell"],[dict objectForKey:@"email"], nil] autorelease];
+        NSArray *profileKeys = [[[NSArray alloc] initWithObjects:@"firstname", @"lastname", @"publicname", @"cell", @"email", nil] autorelease];
+        NSDictionary *profile = [[[NSDictionary alloc] initWithObjects:profileValues forKeys:profileKeys] autorelease];
+        
+        
+        NSArray *locationValues = [[[NSArray alloc] initWithObjects:[dict objectForKey:@"city"], [dict objectForKey:@"country"], [dict objectForKey:@"state"], nil] autorelease];
+        NSArray *locationKeys = [[[NSArray alloc] initWithObjects:@"city", @"country", @"state", nil] autorelease];
+        NSDictionary *location = [[[NSDictionary alloc] initWithObjects:locationValues forKeys:locationKeys] autorelease];
+        
+        // [dict objectForKey:@"uid"]
+        NSArray *otherValues = [[[NSArray alloc] initWithObjects:[dict objectForKey:@"headline"], [dict objectForKey:@"summary"], nil] autorelease];
+        NSArray *otherKeys = [[[NSArray alloc] initWithObjects:@"headline", @"summary", nil] autorelease];
+        NSDictionary *other = [[[NSDictionary alloc] initWithObjects:otherValues forKeys:otherKeys] autorelease];
+        
+        _objects = [[NSMutableArray alloc] initWithObjects:profile, location, other, nil];
     }
+    
     return self;
 }
 
@@ -57,12 +79,14 @@ static ProfileViewController *sharedSingleton = nil;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [_objects count];
+    NSInteger number = [_objects count];
+    return number;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_objects[section] count];
+    NSInteger number = [(NSArray*)_objects[section] count];
+    return number;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -70,10 +94,35 @@ static ProfileViewController *sharedSingleton = nil;
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
     }
+    NSDictionary *dict = (NSDictionary*)_objects[indexPath.section];
+    
+    NSArray *allKeys = [dict allKeys];
+    NSArray *allValues = [dict allValues];
+    
+    cell.textLabel.text = allKeys[indexPath.row];
+    cell.detailTextLabel.text = allValues[indexPath.row];
     
     return cell;
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    switch (section) {
+        case 0:
+            return @"Profile";
+            break;
+        case 1:
+            return @"Address";
+            break;
+        case 2:
+            return @"Other";
+            break;
+        default:
+            return @"";
+            break;
+    }
 }
 
 @end

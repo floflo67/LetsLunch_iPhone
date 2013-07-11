@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProfileRequest.h"
 
-@interface ProfileViewController : UITableViewController
+@interface ProfileViewController : UITableViewController {
+    ProfileRequest *_profileRequest;
+}
 
 @property (nonatomic, strong) NSMutableArray* objects;
+@property (nonatomic, strong) ProfileRequest *profileRequest;
 
 +(ProfileViewController*)getSingleton;
 
