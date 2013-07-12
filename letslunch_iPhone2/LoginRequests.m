@@ -7,7 +7,6 @@
 //
 
 #import "LoginRequests.h"
-#import "AppDelegate.h"
 #import "MutableRequest.h"
 
 @implementation LoginRequests

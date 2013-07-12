@@ -7,7 +7,6 @@
 //
 
 #import "ContactViewController.h"
-#import "AppDelegate.h"
 #import "Contacts.h"
 #import "MessageViewController.h"
 #import "CreateActivityViewController.h"

@@ -7,7 +7,6 @@
 //
 
 #import "MessageViewController.h"
-#import "AppDelegate.h"
 #import "Messages.h"
 #import "ThreadCell.h"
 

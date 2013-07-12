@@ -7,9 +7,7 @@
 //
 
 #import "ActivityViewController.h"
-#import "AppDelegate.h"
 #import "DetailProfileViewController.h"
-#import "AppDelegate.h"
 
 @interface ActivityViewController ()
 

@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Florian Reiss. All rights reserved.
 //
 
-#import "AppDelegate.h"
 #import "CenterViewController.h"
 #import "GetStaticLists.h"
 #import "TwitterLoginViewController.h"

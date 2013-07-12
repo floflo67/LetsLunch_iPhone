@@ -7,7 +7,6 @@
 //
 
 #import "FriendsViewController.h"
-#import "AppDelegate.h"
 
 @interface FriendsViewController ()
 

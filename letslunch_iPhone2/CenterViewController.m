@@ -15,7 +15,6 @@
 #import "MessageViewController.h"
 #import "FriendsViewController.h"
 #import "CreateActivityViewController.h"
-#import "AppDelegate.h"
 #import "ContactViewController.h"
 #import "ShareViewController.h"
 #import <AddressBook/AddressBook.h>

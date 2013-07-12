@@ -7,7 +7,6 @@
 //
 
 #import "ProfileViewController.h"
-#import "AppDelegate.h"
 
 @interface ProfileViewController ()
 

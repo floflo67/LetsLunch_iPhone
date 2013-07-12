@@ -7,7 +7,6 @@
 //
 
 #import "LeftSidebarViewController.h"
-#import "AppDelegate.h"
 
 @implementation LeftSidebarViewController
 @synthesize sidebarDelegate;

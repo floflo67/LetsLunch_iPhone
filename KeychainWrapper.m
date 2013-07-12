@@ -11,7 +11,6 @@ static const UInt8 kKeychainItemIdentifier[]    = "com.apple.dts.KeychainUI\0";
 
 #import "KeychainWrapper.h"
 #import <Security/Security.h>
-#import "AppDelegate.h"
 
 @interface KeychainWrapper (PrivateMethods)
 

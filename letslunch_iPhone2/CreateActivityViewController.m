@@ -7,7 +7,6 @@
 //
 
 #import "CreateActivityViewController.h"
-#import "AppDelegate.h"
 #import "NearbyVenuesViewController.h"
 
 @interface CreateActivityViewController ()

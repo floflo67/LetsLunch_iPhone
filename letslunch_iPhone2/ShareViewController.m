@@ -7,7 +7,6 @@
 //
 
 #import "ShareViewController.h"
-#import "AppDelegate.h"
 
 @interface ShareViewController ()
 

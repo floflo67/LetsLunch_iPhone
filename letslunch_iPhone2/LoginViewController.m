@@ -7,7 +7,6 @@
 //
 
 #import "LoginViewController.h"
-#import "AppDelegate.h"
 #import "OAuthLoginView.h"
 #import "TwitterLoginViewController.h"
 #import <Twitter/Twitter.h>
