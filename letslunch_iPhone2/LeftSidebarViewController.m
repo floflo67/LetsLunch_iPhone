@@ -7,6 +7,7 @@
 //
 
 #import "LeftSidebarViewController.h"
+#import "AppDelegate.h"
 
 @implementation LeftSidebarViewController
 @synthesize sidebarDelegate;
@@ -88,9 +89,19 @@
     /*
      Load image dynamically depending on name of item
      */
-    NSString *imageName = [NSString stringWithFormat:@"%@MenuItem.png",[self.menuItem[indexPath.row] description]];
-    UIImageView *icon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
-    [icon setFrame:CGRectMake(10, 7, 30, 30)];
+    NSString *imageName;
+    UIImageView *icon;
+    if([[self.menuItem[indexPath.row] description] isEqualToString:@"Profile"]) {
+        imageName = [AppDelegate getObjectFromKeychainForKey:kSecAttrDescription];
+        UIImage *img = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageName]]];        
+        icon = [[UIImageView alloc] initWithImage:img];
+        [img release];
+    }
+    else {
+        imageName = [NSString stringWithFormat:@"%@MenuItem.png",[self.menuItem[indexPath.row] description]];
+        icon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
+    }
+    [icon setFrame:CGRectMake(10, 10, 30, 30)];
     [cell addSubview:icon];
     
     /*
