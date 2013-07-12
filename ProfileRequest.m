@@ -13,20 +13,20 @@
 
 - (NSDictionary*)getProfileWithToken:(NSString*)token
 {
-        /*
-         Sets the body of the requests
-         Countains username, password and device ID
-         */
-        NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
-        [parameters setValue:token forKey:@"authToken"];        
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@me",LL_API_BaseUrl]];
-        MutableRequest *request = [[MutableRequest alloc] initWithURL:url andParameters:parameters andType:@"POST"];
-        //_connection = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
-        
-        NSURLResponse *response;        
-        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
-        
-        [self settingUpData:data andResponse:response];
+    /*
+     Sets the body of the requests
+     Countains username, password and device ID
+     */
+    NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
+    [parameters setValue:token forKey:@"authToken"];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@me",LL_API_BaseUrl]];
+    MutableRequest *request = [[MutableRequest alloc] initWithURL:url andParameters:parameters andType:@"POST"];
+    //_connection = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
+    
+    NSURLResponse *response;
+    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
+    
+    [self settingUpData:data andResponse:response];
     
     return _jsonDict;
 }
@@ -43,8 +43,8 @@
     }
     else {
         NSString* response = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-        NSLog(@"%@", response);        
-    }    
+        NSLog(@"%@", response);
+    }
 }
 
 #pragma lifecycle
