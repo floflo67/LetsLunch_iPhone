@@ -13,14 +13,13 @@
 
 - (NSDictionary*)getProfileWithToken:(NSString*)token
 {
-        
         /*
          Sets the body of the requests
          Countains username, password and device ID
          */
         NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
         [parameters setValue:token forKey:@"authToken"];        
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@profile",LL_API_BaseUrl]];
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@me",LL_API_BaseUrl]];
         MutableRequest *request = [[MutableRequest alloc] initWithURL:url andParameters:parameters andType:@"POST"];
         //_connection = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
         
@@ -41,7 +40,6 @@
             _jsonDict = [[NSMutableDictionary alloc] init];
         _jsonDict = [NSMutableDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
         _jsonDict = [_jsonDict objectForKey:@"user"];
-        _jsonDict = [_jsonDict objectForKey:@"info"];        
     }
     else {
         NSString* response = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];

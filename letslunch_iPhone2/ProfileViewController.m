@@ -39,19 +39,9 @@ static ProfileViewController *sharedSingleton = nil;
         
         NSDictionary *dict = [_profileRequest getProfileWithToken:token];
         
-        NSArray *profileValues = [[[NSArray alloc] initWithObjects:[dict objectForKey:@"firstname"], [dict objectForKey:@"lastname"],[dict objectForKey:@"publicname"],[dict objectForKey:@"cell"],[dict objectForKey:@"email"], nil] autorelease];
-        NSArray *profileKeys = [[[NSArray alloc] initWithObjects:@"firstname", @"lastname", @"publicname", @"cell", @"email", nil] autorelease];
-        NSDictionary *profile = [[[NSDictionary alloc] initWithObjects:profileValues forKeys:profileKeys] autorelease];
-        
-        
-        NSArray *locationValues = [[[NSArray alloc] initWithObjects:[dict objectForKey:@"city"], [dict objectForKey:@"country"], [dict objectForKey:@"state"], nil] autorelease];
-        NSArray *locationKeys = [[[NSArray alloc] initWithObjects:@"city", @"country", @"state", nil] autorelease];
-        NSDictionary *location = [[[NSDictionary alloc] initWithObjects:locationValues forKeys:locationKeys] autorelease];
-        
-        // [dict objectForKey:@"uid"]
-        NSArray *otherValues = [[[NSArray alloc] initWithObjects:[dict objectForKey:@"headline"], [dict objectForKey:@"summary"], nil] autorelease];
-        NSArray *otherKeys = [[[NSArray alloc] initWithObjects:@"headline", @"summary", nil] autorelease];
-        NSDictionary *other = [[[NSDictionary alloc] initWithObjects:otherValues forKeys:otherKeys] autorelease];
+        NSDictionary *profile = [NSDictionary dictionaryWithDictionary:[dict objectForKey:@"profile"]];
+        NSDictionary *location = [NSDictionary dictionaryWithDictionary:[dict objectForKey:@"location"]];
+        NSDictionary *other = [NSDictionary dictionaryWithDictionary:[dict objectForKey:@"other"]];
         
         _objects = [[NSMutableArray alloc] initWithObjects:profile, location, other, nil];
     }
