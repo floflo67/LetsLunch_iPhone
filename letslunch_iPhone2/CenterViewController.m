@@ -7,20 +7,7 @@
 //
 
 #import "CenterViewController.h"
-#import "UIViewController+JTRevealSidebarV2.h"
-#import "UINavigationItem+JTRevealSidebarV2.h"
-#import "LeftSidebarViewController.h"
-#import "JTRevealSidebarV2Delegate.h"
-#import "ActivityViewController.h"
-#import "MessageViewController.h"
-#import "FriendsViewController.h"
-#import "CreateActivityViewController.h"
-#import "ContactViewController.h"
-#import "ShareViewController.h"
-#import <AddressBook/AddressBook.h>
-#import <AddressBookUI/AddressBookUI.h>
-#import "DBFriendInviter.h"
-#import "ProfileViewController.h"
+#import "CenterViewControllerImportFile.h"
 
 @interface CenterViewController (Private) <UITableViewDataSource, UITableViewDelegate, LeftSidebarViewControllerDelegate>
 @end

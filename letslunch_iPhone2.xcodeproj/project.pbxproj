@@ -333,6 +333,7 @@
 		54F97204177CFFE7006F6FE5 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		54F97205177CFFE7006F6FE5 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		54F97206177CFFE7006F6FE5 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		54FD4A881790AD470045B2DE /* CenterViewControllerImportFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CenterViewControllerImportFile.h; sourceTree = "<group>"; };
 		54FE68FB17736B1000AD7987 /* ButtonMenuRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonMenuRight.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -560,6 +561,7 @@
 				548D36BE176B819300154C36 /* AppDelegate.m */,
 				548D36DA176B823700154C36 /* CenterViewController.h */,
 				548D36DB176B823700154C36 /* CenterViewController.m */,
+				54FD4A881790AD470045B2DE /* CenterViewControllerImportFile.h */,
 				548D36B5176B819300154C36 /* Supporting Files */,
 				548D36D5176B820700154C36 /* Images */,
 			);
