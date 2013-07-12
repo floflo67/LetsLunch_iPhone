@@ -102,20 +102,20 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection*)connection
-{
-    NSString* res = [[[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding] autorelease];
-    NSLog(@"err: %i, %@",_statusCode, res);
-    
+{    
 	if (_statusCode != 200) {
 		NSString* response = [[[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding] autorelease];
         [self showErrorMessage:response];
 	}
     else {
         NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:_data options:0 error:nil]];
-        NSDictionary *dictAuth = [NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"user"]];
+        NSDictionary *dictAuth = [NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"user"]]];
         if([dictAuth count] > 0) {
-            NSString* token = [[NSDictionary dictionaryWithDictionary:[dictAuth objectForKey:@"auth"]]objectForKey:@"token"];
+            NSString* token = [dictAuth objectForKey:@"token"];
+            NSString *pictureURLString = [dictAuth objectForKey:@"picture_url"];
             [AppDelegate writeObjectToKeychain:token forKey:kSecAttrAccount];
+            if(pictureURLString && ![pictureURLString isEqualToString:@""])
+                [AppDelegate writeObjectToKeychain:pictureURLString forKey:kSecAttrDescription];
             [self successfullLoginIn];
         }
         else {
