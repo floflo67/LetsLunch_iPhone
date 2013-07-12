@@ -39,7 +39,9 @@ static ProfileViewController *sharedSingleton = nil;
         
         NSDictionary *dict = [_profileRequest getProfileWithToken:token];
         
-        NSDictionary *profile = [NSDictionary dictionaryWithDictionary:[dict objectForKey:@"profile"]];
+        NSMutableDictionary *profile = [NSMutableDictionary dictionaryWithDictionary:[dict objectForKey:@"profile"]];
+        [profile removeObjectForKey:@"uid"];
+        
         NSDictionary *location = [NSDictionary dictionaryWithDictionary:[dict objectForKey:@"location"]];
         NSDictionary *other = [NSDictionary dictionaryWithDictionary:[dict objectForKey:@"other"]];
         
