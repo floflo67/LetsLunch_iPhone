@@ -87,7 +87,9 @@
         self.isSearching = NO;
         self.segment.frame = CGRectMake(0, self.segment.frame.origin.y - y, self.segment.frame.size.width, self.segment.frame.size.height);
         self.tableView.frame = CGRectMake(0, self.tableView.frame.origin.y - y, self.tableView.frame.size.width, self.tableView.frame.size.height);
+        self.textFieldSearch.hidden = YES;
         [self.textFieldSearch removeFromSuperview];
+        [self.textFieldSearch release];
     }
     /*
      Adds textField
@@ -103,7 +105,6 @@
         [self.textFieldSearch setBorderStyle:UITextBorderStyleRoundedRect];
         self.textFieldSearch.returnKeyType = UIReturnKeySearch;
         [self.view addSubview:self.textFieldSearch];
-        self.textFieldSearch = nil;
     }
 }
 

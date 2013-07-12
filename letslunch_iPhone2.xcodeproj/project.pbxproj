@@ -416,7 +416,6 @@
 			children = (
 				540560DD178F2D71009679F4 /* Profile */,
 				54D317341784F52200D058F4 /* Login */,
-				547D54CC17739D060069D837 /* Foursquare */,
 				54403822176B8E5D00AA3588 /* GetStaticLists.h */,
 				54403823176B8E5D00AA3588 /* GetStaticLists.m */,
 				54D35226178E1C200068953A /* KeychainWrapper.h */,
@@ -450,6 +449,7 @@
 		5445A68A1778D6A500F3EC97 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				547D54CC17739D060069D837 /* Foursquare */,
 				54F971FB177CE13E006F6FE5 /* Share */,
 				549ADAAE176BCAF2001F1D3F /* CreateActivityViewController.h */,
 				549ADAAA176BCAD5001F1D3F /* CreateActivityViewController.m */,
@@ -494,7 +494,6 @@
 				547D54D41773B21F0069D837 /* FSTargetCallback.m */,
 			);
 			name = Foursquare;
-			path = letslunch_iPhone2;
 			sourceTree = "<group>";
 		};
 		547D54D91773B2240069D837 /* Objects */ = {
