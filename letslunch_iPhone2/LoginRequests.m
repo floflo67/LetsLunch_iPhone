@@ -103,6 +103,9 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection*)connection
 {
+    NSString* res = [[[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding] autorelease];
+    NSLog(@"err: %i, %@",_statusCode, res);
+    
 	if (_statusCode != 200) {
 		NSString* response = [[[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding] autorelease];
         [self showErrorMessage:response];
@@ -116,9 +119,9 @@
             [self successfullLoginIn];
         }
         else {
-            NSDictionary *dictError = [NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"data"]];
-            NSString* errorMessage = [dictJson objectForKey:@"message"];
-            _statusCode = [[dictError objectForKey:@"errorCode"] integerValue];
+            NSDictionary *dictError = [NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"error"]];
+            NSString* errorMessage = [dictError objectForKey:@"message"];
+            _statusCode = [[dictError objectForKey:@"error_status"] integerValue];
             [self showErrorMessage:errorMessage];
         }
 	}
