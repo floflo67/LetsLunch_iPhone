@@ -7,21 +7,22 @@
 \f0\fs24 \cf0 #LOGIN\
 \ul login error:\
 \ulnone 	## Missing argument\
+		response status: 500\
 		\{"error":\
 			\{"message":"Missing Argument - username",\
-			"error_status":500\
+			"header":"Missing username"\
 			\}\
 		\}\
 	## Wrong information\
+		response status: 500\
 		\{"error":\
-			\{"message":\
-				\{"email":["Email: is not a valid email address."]\
-				\},\
-			"error_status":500\
+			\{"message":["Email: is not a valid email address."],\
+			"header":"Error email"\
 			\}\
 		\}\
 \
-\ul login success:\
+\ul login success:\ulnone \
+	response status: 200\ul \
 	\ulnone \CocoaLigature0 \{"user":\
 		\{"token":"eeeae83508d5e7536b9c06a68972c94a",\
 		"picture_url":""\
@@ -30,14 +31,15 @@
 \
 #PROFILE\
 \ul profile error:\
-\ulnone 	## Missing argument\
+\ulnone 	## Missing argument\CocoaLigature1 \
+		response status: 500\CocoaLigature0 \
 		\{"error":\
-			\{"message":"Missing Argument - authToken",\
-			"error_status":500\
+			\{"message":"Missing Argument - authToken"\
 			\}\
 		\}\
 \
-\ul profile success:\
+\ul profile success:\ulnone \CocoaLigature1 \
+	response status: 200\ul \CocoaLigature0 \
 	\ulnone \{"user":\
 		\{"skills":[],\
 		"lunch_zone":[\
@@ -72,4 +74,19 @@
 			"headline":""\
 			\}\
 		\}\
-	\}}
+	\}\
+\
+#AVAILABILITY\
+\ul availability error:\ulc0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ulnone 	## Missing argument\CocoaLigature1 \
+		response status: 500\CocoaLigature0 \
+		\{"error":\
+			\{"message":"Missing Argument - authToken"\
+			\}\
+		\}\
+\
+\ul availability success:\
+	\ulnone ## No availability\
+		\ul \ulc0 \
+}
