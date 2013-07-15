@@ -7,6 +7,7 @@
 //
 
 #import "InviteViewController.h"
+#import "InviteContactsViewController.h"
 
 @interface InviteViewController ()
 
@@ -61,6 +62,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     cell.textLabel.text = [objects[indexPath.row] description];
     
@@ -71,7 +73,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    InviteContactsViewController *vc = [[InviteContactsViewController alloc] init];
+    switch (indexPath.row) {
+        case 0: // contacts
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+        case 1: // facebook
+            break;
+        case 2: // twitter
+            break;
+        default:
+            break;
+    }
 }
 
 @end
