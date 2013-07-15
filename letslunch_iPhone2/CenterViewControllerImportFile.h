@@ -20,9 +20,6 @@
     #import "CreateActivityViewController.h"
     #import "ContactViewController.h"
     #import "ShareViewController.h"
-    #import <AddressBook/AddressBook.h>
-    #import <AddressBookUI/AddressBookUI.h>
-    #import "DBFriendInviter.h"
     #import "ProfileViewController.h"
     #import "InviteViewController.h"
 #endif

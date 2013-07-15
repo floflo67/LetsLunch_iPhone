@@ -12,9 +12,7 @@
 @interface CenterViewController (Private) <UITableViewDataSource, UITableViewDelegate, LeftSidebarViewControllerDelegate>
 @end
 
-@implementation CenterViewController {
-    ABAddressBookRef _addressBook;
-}
+@implementation CenterViewController
 
 @synthesize leftSidebarViewController;
 @synthesize rightSidebarViewController;
@@ -61,12 +59,7 @@
 }
 
 - (void)dealloc
-{
-    if (_addressBook) {
-        CFRelease(_addressBook);
-        _addressBook = NULL;
-    }
-    
+{    
     [self.leftSelectedIndexPath release];
     [self.leftSidebarViewController release];
     [self.rightSidebarViewController release];
@@ -144,41 +137,6 @@
     [self.navigationController toggleRevealState:JTRevealedStateNo];
     InviteViewController *invite = [[InviteViewController alloc] init];
     [self.navigationController pushViewController:invite animated:YES];
-    /*
-    CFErrorRef error = NULL;
-    if(!_addressBook)
-        _addressBook = ABAddressBookCreateWithOptions(NULL, &error);
-    
-    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, &error);
-    if (!addressBook) {
-        NSLog(@"Failed to access the address book: %@", error);
-        return;
-    }
-    
-    __block BOOL accessGranted = NO;
-    if (ABAddressBookRequestAccessWithCompletion != NULL) {
-        dispatch_semaphore_t sema = dispatch_semaphore_create(0);
-        ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
-            accessGranted = granted;
-            dispatch_semaphore_signal(sema);
-        });
-        dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
-    }
-    
-    if (accessGranted) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
-            NSArray *allPeople = [DBFriendInviter mostImportantContacts];
-            
-            for (NSObject *obj in allPeople) {
-                ABRecordID contact = [obj intValue];
-                ABRecordRef record = ABAddressBookGetPersonWithRecordID(_addressBook, contact);
-                NSString *compositeName = (NSString*) ABRecordCopyCompositeName(record);                
-                NSLog(@"%@", [NSString stringWithFormat:@"%@", compositeName]);
-            }
-        });
-    }
-    
-    NSLog(@"Invite");*/
 }
 
 - (void)shareButtonClick:(id)sender
