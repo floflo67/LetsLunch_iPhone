@@ -131,7 +131,7 @@
 }
 
 + (NSArray*) mostImportantContacts {
-    return [self mostImportantContactsWithIgnoredRecordIDs:nil maxResults:10];
+    return [self mostImportantContactsWithIgnoredRecordIDs:nil maxResults:50];
 }
 
 @end
