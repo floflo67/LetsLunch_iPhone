@@ -106,6 +106,8 @@
 		54E714D9176BA18800F39D73 /* FriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E714D7176BA18800F39D73 /* FriendsViewController.xib */; };
 		54E9EAFB1794634500F937CA /* InviteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E9EAF91794634500F937CA /* InviteViewController.m */; };
 		54E9EAFC1794634500F937CA /* InviteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E9EAFA1794634500F937CA /* InviteViewController.xib */; };
+		54E9EB00179465DB00F937CA /* InviteContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E9EAFE179465DB00F937CA /* InviteContactsViewController.m */; };
+		54E9EB01179465DB00F937CA /* InviteContactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E9EAFF179465DB00F937CA /* InviteContactsViewController.xib */; };
 		54F598511770C96D0074F43C /* RightSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F598501770C96D0074F43C /* RightSidebarViewController.m */; };
 		54F598561770EB360074F43C /* MessagesMenuItem.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F598541770EB360074F43C /* MessagesMenuItem.png */; };
 		54F598571770EB360074F43C /* MessagesMenuItem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F598551770EB360074F43C /* MessagesMenuItem@2x.png */; };
@@ -316,6 +318,9 @@
 		54E9EAF81794634500F937CA /* InviteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteViewController.h; sourceTree = "<group>"; };
 		54E9EAF91794634500F937CA /* InviteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteViewController.m; sourceTree = "<group>"; };
 		54E9EAFA1794634500F937CA /* InviteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteViewController.xib; sourceTree = "<group>"; };
+		54E9EAFD179465DB00F937CA /* InviteContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteContactsViewController.h; sourceTree = "<group>"; };
+		54E9EAFE179465DB00F937CA /* InviteContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteContactsViewController.m; sourceTree = "<group>"; };
+		54E9EAFF179465DB00F937CA /* InviteContactsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteContactsViewController.xib; sourceTree = "<group>"; };
 		54F5984F1770C96D0074F43C /* RightSidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightSidebarViewController.h; sourceTree = "<group>"; };
 		54F598501770C96D0074F43C /* RightSidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightSidebarViewController.m; sourceTree = "<group>"; };
 		54F598541770EB360074F43C /* MessagesMenuItem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MessagesMenuItem.png; sourceTree = "<group>"; };
@@ -459,9 +464,6 @@
 			isa = PBXGroup;
 			children = (
 				547D54D91773B2240069D837 /* Objects */,
-				544DBE611773DC5A00055C8A /* NearbyVenuesViewController.h */,
-				544DBE621773DC5A00055C8A /* NearbyVenuesViewController.m */,
-				544DBE631773DC5A00055C8A /* NearbyVenuesViewController.xib */,
 				54F971FB177CE13E006F6FE5 /* Share */,
 				549ADAAE176BCAF2001F1D3F /* CreateActivityViewController.h */,
 				549ADAAA176BCAD5001F1D3F /* CreateActivityViewController.m */,
@@ -469,9 +471,15 @@
 				54D3172F1784970E00D058F4 /* DetailProfileViewController.h */,
 				54D317301784970E00D058F4 /* DetailProfileViewController.m */,
 				54D317311784970E00D058F4 /* DetailProfileViewController.xib */,
+				54E9EAFD179465DB00F937CA /* InviteContactsViewController.h */,
+				54E9EAFE179465DB00F937CA /* InviteContactsViewController.m */,
+				54E9EAFF179465DB00F937CA /* InviteContactsViewController.xib */,
 				54E714D0176B9EDA00F39D73 /* MessageViewController.h */,
 				54E714D1176B9EDA00F39D73 /* MessageViewController.m */,
 				54E714D2176B9EDA00F39D73 /* MessageViewController.xib */,
+				544DBE611773DC5A00055C8A /* NearbyVenuesViewController.h */,
+				544DBE621773DC5A00055C8A /* NearbyVenuesViewController.m */,
+				544DBE631773DC5A00055C8A /* NearbyVenuesViewController.xib */,
 				5400D007177A59DB002CC092 /* ThreadCell.h */,
 				5400D008177A59DB002CC092 /* ThreadCell.m */,
 			);
@@ -940,6 +948,7 @@
 				54D317331784970E00D058F4 /* DetailProfileViewController.xib in Resources */,
 				540560E2178F2E6D009679F4 /* ProfileViewController.xib in Resources */,
 				54E9EAFC1794634500F937CA /* InviteViewController.xib in Resources */,
+				54E9EB01179465DB00F937CA /* InviteContactsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1010,6 +1019,7 @@
 				540560E1178F2E6D009679F4 /* ProfileViewController.m in Sources */,
 				540560E5178F2F73009679F4 /* ProfileRequest.m in Sources */,
 				54E9EAFB1794634500F937CA /* InviteViewController.m in Sources */,
+				54E9EB00179465DB00F937CA /* InviteContactsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
