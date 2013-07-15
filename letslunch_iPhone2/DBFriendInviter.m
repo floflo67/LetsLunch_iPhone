@@ -19,7 +19,8 @@
 
 @implementation __DBContactScorePair
 
-- (instancetype) initWithContact:(ABRecordID)contact {
+- (instancetype) initWithContact:(ABRecordID)contact
+{
     self = [super init];
     if (!self) {
         return nil;
@@ -29,7 +30,8 @@
     return self;
 }
 
-+ (instancetype) pairWithContact:(ABRecordID)contact {
++ (instancetype) pairWithContact:(ABRecordID)contact
+{
     return [[__DBContactScorePair alloc] initWithContact:contact];
 }
 
@@ -50,12 +52,20 @@
     return compositeName;
 }
 
-- (NSString*) description {
+- (NSString*) description
+{
     return [NSString stringWithFormat:@"%@(%@, recordID=%i)",
                 NSStringFromClass(self.class),
                 self.contactName,
                 self.contact];
 }
+
+// Sort by descending score, i.e. higher scores first.
+- (NSComparisonResult) compare:(__DBContactScorePair*)other
+{
+    return [[self contactName] compare:[other contactName]];
+}
+
 @end
 
 /**
@@ -74,7 +84,8 @@
 
 @implementation __DBPropertyScorePair
 
-- (instancetype) initWithProperty:(ABPropertyID)property {
+- (instancetype) initWithProperty:(ABPropertyID)property
+{
     self = [super init];
     if (!self) {
         return nil;
@@ -85,7 +96,8 @@
     return self;
 }
 
-+ (instancetype) pairWithProperty:(ABPropertyID)property {
++ (instancetype) pairWithProperty:(ABPropertyID)property
+{
     return [[__DBPropertyScorePair alloc] initWithProperty:property];
 }
 
@@ -119,6 +131,8 @@
         CFRelease(addressBook);
     }
     
+    [mostImportantContacts sortUsingSelector:@selector(compare:)];
+    
     // Convert the results into a list of ABRecordIDs wrapped in NSNumbers.
     // Also limit the number of results to `maxResults`.
     NSMutableArray *results = [NSMutableArray arrayWithCapacity:maxResults];
@@ -130,7 +144,8 @@
     return results;
 }
 
-+ (NSArray*) mostImportantContacts {
++ (NSArray*) mostImportantContacts
+{
     return [self mostImportantContactsWithIgnoredRecordIDs:nil maxResults:50];
 }
 
