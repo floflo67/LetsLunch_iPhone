@@ -16,7 +16,6 @@
     #import "JTRevealSidebarV2Delegate.h"
     #import "ActivityViewController.h"
     #import "MessageViewController.h"
-    #import "FriendsViewController.h"
     #import "CreateActivityViewController.h"
     #import "ContactViewController.h"
     #import "ShareViewController.h"

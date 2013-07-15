@@ -83,13 +83,6 @@
     self.navigationItem.title = @"Contact";
 }
 
-- (void)FriendConfiguration
-{
-    self.centerView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
-    [self.centerView addSubview:[FriendsViewController getSingleton].view];
-    self.navigationItem.title = @"Friend";
-}
-
 - (void)ProfileConfiguration
 {
     self.centerView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
@@ -283,8 +276,6 @@
         [self ActivityConfiguration];
     if([[object description] isEqualToString:@"Messages"])
         [self MessageConfiguration];
-    if([[object description] isEqualToString:@"Friends"])
-        [self FriendConfiguration];
     if([[object description] isEqualToString:@"Profile"])
         [self ProfileConfiguration];
     if([[object description] isEqualToString:@"Logout"])
