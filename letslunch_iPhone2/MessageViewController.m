@@ -55,7 +55,7 @@
      */
     self.tableView.backgroundView = nil;
     self.tableView.backgroundColor = [UIColor clearColor];
-    self.tableView.frame = CGRectMake(0, 0, 320, 385);
+    self.tableView.frame = CGRectMake(0, 0, 320, 500);
     
     /*
      Changes frame of textField
@@ -67,6 +67,12 @@
     frame.origin.y = 385;
     self.textFieldMessage.frame = frame;
     self.textFieldMessage.delegate = self;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSIndexPath *index = [NSIndexPath indexPathForRow:0 inSection:[_objects count] - 1];
+    [self.tableView scrollToRowAtIndexPath:index atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

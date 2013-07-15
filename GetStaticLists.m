@@ -81,6 +81,12 @@
     Messages *mess4 = [[Messages alloc] initWithDescription:@"content4" From:@"1" To:contactID date:[NSDate new]];
     Messages *mess5 = [[Messages alloc] initWithDescription:@"content5" From:@"1" To:contactID date:[NSDate new]];
     Messages *mess6 = [[Messages alloc] initWithDescription:@"content6" From:contactID To:@"1" date:[NSDate new]];
+    Messages *mess7 = [[Messages alloc] initWithDescription:@"content7" From:contactID To:@"1" date:[NSDate new]];
+    Messages *mess8 = [[Messages alloc] initWithDescription:@"content8" From:contactID To:@"1" date:[NSDate new]];
+    Messages *mess9 = [[Messages alloc] initWithDescription:@"content9" From:contactID To:@"1" date:[NSDate new]];
+    Messages *mess10 = [[Messages alloc] initWithDescription:@"content10" From:contactID To:@"1" date:[NSDate new]];
+    Messages *mess11 = [[Messages alloc] initWithDescription:@"content11" From:contactID To:@"1" date:[NSDate new]];
+    Messages *mess12 = [[Messages alloc] initWithDescription:@"content12" From:contactID To:@"1" date:[NSDate new]];
     
     [listMessages addObject:mess1];
     [listMessages addObject:mess2];
@@ -88,6 +94,12 @@
     [listMessages addObject:mess4];
     [listMessages addObject:mess5];
     [listMessages addObject:mess6];
+    [listMessages addObject:mess7];
+    [listMessages addObject:mess8];
+    [listMessages addObject:mess9];
+    [listMessages addObject:mess10];
+    [listMessages addObject:mess11];
+    [listMessages addObject:mess12];
     
     
     return listMessages;    
