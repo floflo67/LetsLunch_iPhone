@@ -4,56 +4,63 @@
 \paperw11900\paperh16840\margl1440\margr1440\vieww14740\viewh13020\viewkind0
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\f0\fs24 \cf0 #LOGIN\
-\ul login error:\
-\ulnone 	## Missing argument\
-		response status: 500\
+\f0\fs36 \cf0 #LOGIN\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf0 \ul \ulc0 login error:\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b\fs24 \cf0 \ulnone 	## Missing argument\
+
+\b0 		response status: 500\
 		\{"error":\
 			\{"message":"Missing Argument - username",\
 			"header":"Missing username"\
 			\}\
 		\}\
-	## Wrong information\
-		response status: 500\
+
+\b 	## Wrong information\
+
+\b0 		response status: 500\
 		\{"error":\
-			\{"message":["Email: is not a valid email address."],\
+			\{"message":"Email: is not a valid email address.",\
 			"header":"Error email"\
 			\}\
 		\}\
 \
-\ul login success:\ulnone \
-	response status: 200\ul \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf0 \ul \ulc0 login success:\ulnone \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs24 \cf0 	response status: 200\ul \
 	\ulnone \CocoaLigature0 \{"user":\
 		\{"token":"eeeae83508d5e7536b9c06a68972c94a",\
 		"picture_url":""\
 		\}\
 	\}\
 \
-#PROFILE\
-\ul profile error:\
-\ulnone 	## Missing argument\CocoaLigature1 \
-		response status: 500\CocoaLigature0 \
+\
+
+\fs36 #ME / PROFILE\
+
+\fs28 \ul profile error:\
+
+\b\fs24 \ulnone 	## Missing argument\CocoaLigature1 \
+
+\b0 		response status: 500\CocoaLigature0 \
 		\{"error":\
-			\{"message":"Missing Argument - authToken"\
+			\{"message":"Missing Argument - authToken",\CocoaLigature1 \
+			"header":"Missing token"\CocoaLigature0 \
 			\}\
 		\}\
 \
-\ul profile success:\ulnone \CocoaLigature1 \
-	response status: 200\ul \CocoaLigature0 \
+
+\fs28 \ul profile success:\ulnone \CocoaLigature1 \
+
+\fs24 	response status: 200\ul \CocoaLigature0 \
 	\ulnone \{"user":\
 		\{"skills":[],\
-		"lunch_zone":[\
-			\{"id":"15385",\
-			"name":"Default",\
-			"zipcode":null,\
-			"latMin":null,\
-			"lngMin":null,\
-			"latMax":null,\
-			"lngMax":null,\
-			"latCenter":null,\
-			"lngCenter":null,\
-			"zoomLevel":null\
-			\}],\
 		"needs":[],\
 		"profile":\
 			\{"uid":"10688",\
@@ -76,17 +83,147 @@
 		\}\
 	\}\
 \
-#AVAILABILITY\
-\ul availability error:\ulc0 \
+\
+
+\fs36 #ME / AVAILABILITY\
+
+\fs28 \ul availability error:\ulc0 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
-\cf0 \ulnone 	## Missing argument\CocoaLigature1 \
-		response status: 500\CocoaLigature0 \
+
+\b\fs24 \cf0 \ulnone 	## Missing argument\CocoaLigature1 \
+
+\b0 		response status: 500\CocoaLigature0 \
 		\{"error":\
-			\{"message":"Missing Argument - authToken"\
+			\{"message":"Missing Argument - authToken",\CocoaLigature1 \
+			"header":"Missing token"\CocoaLigature0 \
 			\}\
 		\}\
 \
-\ul availability success:\
-	\ulnone ## No availability\
-		\ul \ulc0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf0 \ul availability success:\
+
+\b\fs24 	\ulnone ## No availability\CocoaLigature1 \
+
+\b0 		response status: 201\CocoaLigature0 \
+		\{"availability":\
+			\{"empty":"No availability has been found"\
+			\}\
+		\}\
+\
+
+\b 	## One availability\CocoaLigature1 \
+
+\b0 		response status: 200\CocoaLigature0 \
+		\CocoaLigature1 \{"availability":\
+			\{"venue":\
+				\{"name":["The Grove"],\
+				 "id":"4b7ef75cf964a520ee0c30e3",\
+				 "degreesLatitude":"37.78653398485857",\
+ 				"degreesLongitude":"-122.401921749115",\
+ 				\'a0"address":"690 Mission St"\
+				\},\
+			"lunchType":"lunch",\
+			"lunchDate":"2013-07-20",\
+			"postingTime":"10:25",\
+			"authToken":"17df6a48e58bf653858ccb7b2c4d2415",\
+			"description":"Let's meet at The Grove!"\
+			\}\
+		\}\
+\
+\
+
+\fs36 #ME / CONTACT\CocoaLigature0 \
+
+\fs28 \ul contact error:\ulc0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b\fs24 \cf0 \ulnone 	## Missing argument\CocoaLigature1 \
+
+\b0 		response status: 500\CocoaLigature0 \
+		\{"error":\
+			\{"message":"Missing Argument - authToken",\CocoaLigature1 \
+			"header":"Missing token"\CocoaLigature0 \
+			\}\
+		\}\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs36 \cf0 \
+
+\fs28 \ul contact success:\ulc0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b\fs24 \cf0 \ulnone 	## No contact\CocoaLigature1 \
+
+\b0 		response status: 201\CocoaLigature0 \
+		\{"contact":\
+			\{"empty":"No contact has been found"\
+			\}\
+		\}\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf0 \ul \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b\fs24 \cf0 \ulnone 	## Multiple contacts\CocoaLigature1 \
+
+\b0 		response status: 200\CocoaLigature0 \
+		\{"contact":\
+			\{"contact1":\
+				\{"name":"Syed Shuttari",\
+				"id":"20138475294"\
+				\},\
+			\}\
+			\{"contact2":\
+				\{"name":"John Doe",\
+				"id":"23924734937"\
+				\},\
+			\}\
+		\}\
+\
+\
+
+\fs36 #ME / MESSAGE\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf0 \ul \ulc0 message error:\ulc0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b\fs24 \cf0 \ulnone 	## Missing argument\CocoaLigature1 \
+
+\b0 		response status: 500\CocoaLigature0 \
+		\{"error":\
+			\{"message":"Missing Argument - authToken",\CocoaLigature1 \
+			"header":"Missing token"\CocoaLigature0 \
+			\}\
+		\}\ul \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs36 \cf0 \ulnone \
+
+\fs28 \ul message success:
+\b\fs24 \ulnone \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 		response status: 200\CocoaLigature0 \
+		\{"message":\
+			\{"message1":\
+				\{"FromUID":"20138475294",\
+				"ToUID":"23924734937",\
+				"date":"2013_20_07",\
+				"time":"18:35",\
+				"content":"content 1"\
+				\},\
+			\}\
+			\{"message2":\
+				\{"FromUID":"23924734937",\
+				"ToUID":"20138475294",\
+				"date":"2013_20_07",\
+				"time":"18:37",\
+				"content":"response content 1"\
+				\},\
+			\}\
+		\}\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ul \
 }
