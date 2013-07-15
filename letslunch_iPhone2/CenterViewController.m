@@ -141,6 +141,10 @@
 
 - (void)inviteFriendsButtonClick:(id)sender
 {
+    [self.navigationController toggleRevealState:JTRevealedStateNo];
+    InviteViewController *invite = [[InviteViewController alloc] init];
+    [self.navigationController pushViewController:invite animated:YES];
+    /*
     CFErrorRef error = NULL;
     if(!_addressBook)
         _addressBook = ABAddressBookCreateWithOptions(NULL, &error);
@@ -174,8 +178,7 @@
         });
     }
     
-    NSLog(@"Invite");
-    [self.navigationController toggleRevealState:JTRevealedStateNo];
+    NSLog(@"Invite");*/
 }
 
 - (void)shareButtonClick:(id)sender

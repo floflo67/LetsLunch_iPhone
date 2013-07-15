@@ -24,6 +24,7 @@
     #import <AddressBookUI/AddressBookUI.h>
     #import "DBFriendInviter.h"
     #import "ProfileViewController.h"
+    #import "InviteViewController.h"
 #endif
 
 #endif
