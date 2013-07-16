@@ -5,9 +5,16 @@
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
 \f0\fs36 \cf0 #LOGIN\
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\fs28 \cf0 \ul \ulc0 login error:\
+\fs28 \ul POST:\ulnone \
+	
+\fs24 username\
+	password\
+	deviceID\
+	
+\fs28 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ul \ulc0 login error:\
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
 \b\fs24 \cf0 \ulnone 	## Missing argument\
@@ -30,7 +37,7 @@
 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\fs28 \cf0 \ul \ulc0 login success:\ulnone \
+\fs28 \cf0 \ul login success:\ulnone \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
 \fs24 \cf0 	response status: 200\ul \
@@ -41,24 +48,36 @@
 	\}\
 \
 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\fs36 #ME / PROFILE\
+\fs36 \cf0 #ME / PROFILE\CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf0 \ul \ulc0 POST:\ulnone \
+	
+\fs24 authToken\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs36 \cf0 \CocoaLigature0 \
 
 \fs28 \ul profile error:\
 
 \b\fs24 \ulnone 	## Missing argument\CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\b0 		response status: 500\CocoaLigature0 \
+\b0 \cf0 		response status: 500\CocoaLigature0 \
 		\{"error":\
 			\{"message":"Missing Argument - authToken",\CocoaLigature1 \
 			"header":"Missing token"\CocoaLigature0 \
 			\}\
 		\}\
 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\fs28 \ul profile success:\ulnone \CocoaLigature1 \
+\fs28 \cf0 \ul profile success:\ulnone \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\fs24 	response status: 200\ul \CocoaLigature0 \
+\fs24 \cf0 	response status: 200\ul \CocoaLigature0 \
 	\ulnone \{"user":\
 		\{"skills":[],\
 		"needs":[],\
@@ -84,15 +103,24 @@
 	\}\
 \
 \
-
-\fs36 #ME / AVAILABILITY\
-
-\fs28 \ul availability error:\ulc0 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\b\fs24 \cf0 \ulnone 	## Missing argument\CocoaLigature1 \
+\fs36 \cf0 #ME / AVAILABILITY\CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\b0 		response status: 500\CocoaLigature0 \
+\fs28 \cf0 \ul \ulc0 POST:\ulnone \
+	
+\fs24 authToken\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs36 \cf0 \CocoaLigature0 \
+
+\fs28 \ul availability error:\
+
+\b\fs24 \ulnone 	## Missing argument\CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 		response status: 500\CocoaLigature0 \
 		\{"error":\
 			\{"message":"Missing Argument - authToken",\CocoaLigature1 \
 			"header":"Missing token"\CocoaLigature0 \
@@ -102,19 +130,23 @@
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
 \fs28 \cf0 \ul availability success:\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\b\fs24 	\ulnone ## No availability\CocoaLigature1 \
+\b\fs24 \cf0 	\ulnone ## No availability\CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\b0 		response status: 201\CocoaLigature0 \
+\b0 \cf0 		response status: 201\CocoaLigature0 \
 		\{"availability":\
 			\{"empty":"No availability has been found"\
 			\}\
 		\}\
 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\b 	## One availability\CocoaLigature1 \
+\b \cf0 	## One availability\CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\b0 		response status: 200\CocoaLigature0 \
+\b0 \cf0 		response status: 200\CocoaLigature0 \
 		\CocoaLigature1 \{"availability":\
 			\{"venue":\
 				\{"name":["The Grove"],\
@@ -132,15 +164,24 @@
 		\}\
 \
 \
-
-\fs36 #ME / CONTACT\CocoaLigature0 \
-
-\fs28 \ul contact error:\ulc0 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\b\fs24 \cf0 \ulnone 	## Missing argument\CocoaLigature1 \
+\fs36 \cf0 #ME / CONTACT\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\b0 		response status: 500\CocoaLigature0 \
+\fs28 \cf0 \ul \ulc0 POST:\ulnone \
+	
+\fs24 authToken\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs36 \cf0 \CocoaLigature0 \
+
+\fs28 \ul contact error:\
+
+\b\fs24 \ulnone 	## Missing argument\CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 		response status: 500\CocoaLigature0 \
 		\{"error":\
 			\{"message":"Missing Argument - authToken",\CocoaLigature1 \
 			"header":"Missing token"\CocoaLigature0 \
@@ -150,12 +191,12 @@
 
 \fs36 \cf0 \
 
-\fs28 \ul contact success:\ulc0 \
+\fs28 \ul contact success:\
+
+\b\fs24 \ulnone 	## No contact\CocoaLigature1 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\b\fs24 \cf0 \ulnone 	## No contact\CocoaLigature1 \
-
-\b0 		response status: 201\CocoaLigature0 \
+\b0 \cf0 		response status: 201\CocoaLigature0 \
 		\{"contact":\
 			\{"empty":"No contact has been found"\
 			\}\
@@ -163,11 +204,11 @@
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
 \fs28 \cf0 \ul \
+
+\b\fs24 \ulnone 	## Multiple contacts\CocoaLigature1 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\b\fs24 \cf0 \ulnone 	## Multiple contacts\CocoaLigature1 \
-
-\b0 		response status: 200\CocoaLigature0 \
+\b0 \cf0 		response status: 200\CocoaLigature0 \
 		\{"contact":\
 			\{"contact1":\
 				\{"name":"Syed Shuttari",\
@@ -182,16 +223,25 @@
 		\}\
 \
 \
-
-\fs36 #ME / MESSAGE\
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\fs28 \cf0 \ul \ulc0 message error:\ulc0 \
+\fs36 \cf0 #ME / MESSAGE\CocoaLigature1 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\b\fs24 \cf0 \ulnone 	## Missing argument\CocoaLigature1 \
+\fs28 \cf0 \ul \ulc0 POST:\ulnone \
+	
+\fs24 authToken\
+	contactID\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\b0 		response status: 500\CocoaLigature0 \
+\fs36 \cf0 \CocoaLigature0 \
+
+\fs28 \ul message error:\
+
+\b\fs24 \ulnone 	## Missing argument\CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 		response status: 500\CocoaLigature0 \
 		\{"error":\
 			\{"message":"Missing Argument - authToken",\CocoaLigature1 \
 			"header":"Missing token"\CocoaLigature0 \
