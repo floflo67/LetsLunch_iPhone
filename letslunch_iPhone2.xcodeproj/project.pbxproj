@@ -102,6 +102,7 @@
 		54E714CE176B95E200F39D73 /* ActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E714CC176B95E200F39D73 /* ActivityViewController.xib */; };
 		54E714D3176B9EDA00F39D73 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E714D1176B9EDA00F39D73 /* MessageViewController.m */; };
 		54E714D4176B9EDA00F39D73 /* MessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E714D2176B9EDA00F39D73 /* MessageViewController.xib */; };
+		54E9D6DE17974A6200E84EFB /* LunchesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E9D6DD17974A6200E84EFB /* LunchesRequest.m */; };
 		54E9EAFB1794634500F937CA /* InviteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E9EAF91794634500F937CA /* InviteViewController.m */; };
 		54E9EAFC1794634500F937CA /* InviteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E9EAFA1794634500F937CA /* InviteViewController.xib */; };
 		54E9EB00179465DB00F937CA /* InviteContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E9EAFE179465DB00F937CA /* InviteContactsViewController.m */; };
@@ -310,6 +311,8 @@
 		54E714D0176B9EDA00F39D73 /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
 		54E714D1176B9EDA00F39D73 /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		54E714D2176B9EDA00F39D73 /* MessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageViewController.xib; sourceTree = "<group>"; };
+		54E9D6DC17974A6200E84EFB /* LunchesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LunchesRequest.h; sourceTree = "<group>"; };
+		54E9D6DD17974A6200E84EFB /* LunchesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LunchesRequest.m; sourceTree = "<group>"; };
 		54E9EAF81794634500F937CA /* InviteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteViewController.h; sourceTree = "<group>"; };
 		54E9EAF91794634500F937CA /* InviteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteViewController.m; sourceTree = "<group>"; };
 		54E9EAFA1794634500F937CA /* InviteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteViewController.xib; sourceTree = "<group>"; };
@@ -419,6 +422,7 @@
 		54403821176B8E4D00AA3588 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				54E9D6DA17974A0F00E84EFB /* Lunches */,
 				54FD4A8A1790B6010045B2DE /* Foursquare */,
 				540560DD178F2D71009679F4 /* Profile */,
 				54D317341784F52200D058F4 /* Login */,
@@ -747,6 +751,15 @@
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
+		54E9D6DA17974A0F00E84EFB /* Lunches */ = {
+			isa = PBXGroup;
+			children = (
+				54E9D6DC17974A6200E84EFB /* LunchesRequest.h */,
+				54E9D6DD17974A6200E84EFB /* LunchesRequest.m */,
+			);
+			name = Lunches;
+			sourceTree = "<group>";
+		};
 		54E9EB0317948BE400F937CA /* Friends */ = {
 			isa = PBXGroup;
 			children = (
@@ -1026,6 +1039,7 @@
 				540560E5178F2F73009679F4 /* ProfileRequest.m in Sources */,
 				54E9EAFB1794634500F937CA /* InviteViewController.m in Sources */,
 				54E9EB00179465DB00F937CA /* InviteContactsViewController.m in Sources */,
+				54E9D6DE17974A6200E84EFB /* LunchesRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
