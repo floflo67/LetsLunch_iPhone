@@ -21,7 +21,6 @@
     [parameters setValue:token forKey:@"authToken"];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@me",LL_API_BaseUrl]];
     MutableRequest *request = [[MutableRequest alloc] initWithURL:url andParameters:parameters andType:@"POST"];
-    //_connection = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
     
     NSURLResponse *response;
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
