@@ -44,6 +44,7 @@
 -(NSMutableArray*)getListContactsAndForceReload:(BOOL)shouldReload;
 -(Activity*)getOwnerActivityAndForceReload:(BOOL)shouldReload;
 
+-(void)loginSuccessfull;
 -(void)hideLoginView;
 
 -(void)openSession;

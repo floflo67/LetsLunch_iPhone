@@ -27,20 +27,6 @@
     if(![[self getObjectFromKeychainForKey:kSecAttrAccount] isEqualToString:@"token"])
         [self.tokenItem resetKeychainItem];
     
-    NSLog(@"%@", [self getObjectFromKeychainForKey:kSecAttrAccount]);
-    
-    BOOL twitterAccessGranted = NO;
-    BOOL facebookAccessGranted = NO;
-    
-    ACAccountStore* store = [[ACAccountStore alloc] init];
-    ACAccountType* facebookAccountType = [store accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
-    ACAccountType* twitterAccountType = [store accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-    
-    if(twitterAccountType.accessGranted)
-        twitterAccessGranted = YES;
-    if (facebookAccountType.accessGranted)
-        facebookAccessGranted = YES;
-    
     /*
      Suppress FB session
      */
@@ -81,6 +67,12 @@
         [self showLoginView];
     
     return YES;
+}
+
+- (void)loginSuccessfull
+{
+    [self hideLoginView];
+    [self.viewController ActivityConfiguration];
 }
 
 - (void)showLoginView
@@ -449,10 +441,10 @@
 - (Activity*)getOwnerActivityAndForceReload:(BOOL)shouldReload
 {
     if(!self.ownerActivity) {
-        self.ownerActivity = [GetStaticLists getOwnerActivity];
+        self.ownerActivity = [GetStaticLists getOwnerActivityWithToken:[self getObjectFromKeychainForKey:kSecAttrAccount]];
     }
     else if(shouldReload)
-        self.ownerActivity = [GetStaticLists getOwnerActivity];
+        self.ownerActivity = [GetStaticLists getOwnerActivityWithToken:[self getObjectFromKeychainForKey:kSecAttrAccount]];
     //return NULL;
     return self.ownerActivity;
 }

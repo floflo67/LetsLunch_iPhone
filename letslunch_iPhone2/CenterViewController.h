@@ -35,4 +35,8 @@
 
 -(void)pushCreateActivityViewController:(id)sender;
 
+-(void)ActivityConfiguration;
+-(void)MessageConfiguration;
+-(void)ProfileConfiguration;
+
 @end

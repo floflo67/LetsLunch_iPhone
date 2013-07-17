@@ -30,7 +30,6 @@
     return self;
 }
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -38,7 +37,6 @@
     self.view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
     self.centerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:self.centerView];
-    [self ActivityConfiguration];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ButtonMenuLeft.png"]
                                                                              style:UIBarButtonItemStyleBordered
@@ -157,7 +155,8 @@
     //[locationManager startUpdatingLocation];
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
     CLLocation *location = [locations lastObject];
     NSLog(@"lat%f - lon%f", location.coordinate.latitude, location.coordinate.longitude);
 }
@@ -165,7 +164,8 @@
 #pragma mark JTRevealSidebarDelegate
 
 // This is an examle to configure your sidebar view through a custom UITableViewController
-- (UIView *)viewForLeftSidebar {
+- (UIView *)viewForLeftSidebar
+{
     CGRect viewFrame = self.navigationController.applicationViewFrame;
     UITableViewController *controller = self.leftSidebarViewController;
     if (!controller) {
@@ -187,7 +187,8 @@
 }
 
 // This is an examle to configure your sidebar view without a UIViewController
-- (UIView *)viewForRightSidebar {
+- (UIView *)viewForRightSidebar
+{
     CGRect viewFrame = self.navigationController.applicationViewFrame;
     UITableViewController *controller = self.rightSidebarViewController;
     if (!controller) {
@@ -210,7 +211,8 @@
 }
 
 // Optional delegate methods for additional configuration after reveal state changed
-- (void)didChangeRevealedStateForViewController:(UIViewController *)viewController {
+- (void)didChangeRevealedStateForViewController:(UIViewController *)viewController
+{
     if (viewController.revealedState == JTRevealedStateNo) {
         self.view.userInteractionEnabled = YES;
     } else {
@@ -225,15 +227,18 @@
 
 #pragma mark UITableViewDatasource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return 20;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     static NSString *cellIdentifier = @"CellIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if ( ! cell) {
@@ -243,7 +248,8 @@
     return cell;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
     if (tableView == self.rightSidebarViewController.view) {
         return @"RightSidebar";
     }
@@ -252,7 +258,8 @@
 
 #pragma mark UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     [self.navigationController setRevealedState:JTRevealedStateNo];
     if (tableView == self.rightSidebarViewController.view) {
         //NSLog([NSString stringWithFormat:@"Selected %d at RightSidebarView", indexPath.row]);
@@ -282,7 +289,8 @@
         [self logout];
 }
 
-- (NSIndexPath *)lastSelectedIndexPathForSidebarViewController:(LeftSidebarViewController *)sidebarViewController {
+- (NSIndexPath *)lastSelectedIndexPathForSidebarViewController:(LeftSidebarViewController *)sidebarViewController
+{
     return self.leftSelectedIndexPath;
 }
 

@@ -183,7 +183,7 @@
 
 - (void)successfullConnection
 {
-    [((AppDelegate*)[UIApplication sharedApplication].delegate) hideLoginView];
+    [((AppDelegate*)[UIApplication sharedApplication].delegate) loginSuccessfull];
 }
 
 @end

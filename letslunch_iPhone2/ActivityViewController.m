@@ -28,9 +28,10 @@ static ActivityViewController *sharedSingleton = nil;
     return sharedSingleton;
 }
 
--(id)init
+- (void)viewDidLoad
 {
-    self = [super init];
+    [super viewDidLoad];
+    
     if(!_objects) {
         AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
         _objects = [[NSMutableArray alloc] initWithArray:[app getListActivitiesAndForceReload:NO]];
@@ -42,23 +43,10 @@ static ActivityViewController *sharedSingleton = nil;
         else {
             [_objects insertObject:@"NIL" atIndex:0];
             self.hasActivity = NO;
-         }
-    }    
-    return self;
-}
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
+        }
     }
-    return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+    
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
