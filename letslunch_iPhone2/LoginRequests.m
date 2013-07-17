@@ -101,28 +101,22 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection*)connection
-{    
+{
 	if (_statusCode != 200) {
-		NSString* response = [[[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding] autorelease];
+        NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:_data options:0 error:nil]];
+        NSDictionary *dictError = [NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"error"]]];
+		NSString* response = [dictError objectForKey:@"message"];
         [self showErrorMessage:response];
 	}
     else {
         NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:_data options:0 error:nil]];
         NSDictionary *dictAuth = [NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"user"]]];
-        if([dictAuth count] > 0) {
-            NSString* token = [dictAuth objectForKey:@"token"];
-            NSString *pictureURLString = [dictAuth objectForKey:@"picture_url"];
-            [AppDelegate writeObjectToKeychain:token forKey:kSecAttrAccount];
-            if(pictureURLString && ![pictureURLString isEqualToString:@""])
-                [AppDelegate writeObjectToKeychain:pictureURLString forKey:kSecAttrDescription];
-            [self successfullLoginIn];
-        }
-        else {
-            NSDictionary *dictError = [NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"error"]];
-            NSString* errorMessage = [dictError objectForKey:@"message"];
-            _statusCode = [[dictError objectForKey:@"error_status"] integerValue];
-            [self showErrorMessage:errorMessage];
-        }
+        NSString* token = [dictAuth objectForKey:@"token"];
+        NSString *pictureURLString = [dictAuth objectForKey:@"picture_url"];
+        [AppDelegate writeObjectToKeychain:token forKey:kSecAttrAccount];
+        if(pictureURLString && ![pictureURLString isEqualToString:@""])
+            [AppDelegate writeObjectToKeychain:pictureURLString forKey:kSecAttrDescription];
+        [self successfullLoginIn];
 	}
 	
 	[_connection release];
