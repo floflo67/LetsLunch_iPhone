@@ -8,12 +8,18 @@
 
 #import "FSVenue.h"
 #import "Activity.h"
+#import "LunchesRequest.h"
 
-@interface CreateActivityViewController : UIViewController <UITextFieldDelegate>
+@class LunchesRequest;
+
+@interface CreateActivityViewController : UIViewController <UITextFieldDelegate, LunchRequestDelegate> {
+    LunchesRequest *_lunchRequest;
+}
 
 @property (retain, nonatomic) FSVenue *venue;
 @property (retain, nonatomic) Activity *activity;
 @property (retain, nonatomic) MKMapView *map;
+@property (retain, nonatomic) LunchesRequest *lunchRequest;
 
 @property (retain, nonatomic) IBOutlet UITextField *textFieldDescription;
 @property (retain, nonatomic) IBOutlet UISegmentedControl *segment;

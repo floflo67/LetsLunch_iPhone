@@ -42,6 +42,8 @@ static CreateActivityViewController *sharedSingleton = nil;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _lunchRequest = [[LunchesRequest alloc] init];
+    _lunchRequest.delegate = self;
     self.navigationItem.title = @"Create";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
                                               initWithBarButtonSystemItem:UIBarButtonSystemItemSave
@@ -129,6 +131,17 @@ static CreateActivityViewController *sharedSingleton = nil;
     [self.activity release];
     [self.map release];
     [super dealloc];
+}
+
+#pragma mark - Lunch request delegate
+
+-(void)showErrorMessage:(NSString*)message withErrorStatus:(NSInteger)errorStatus
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NULL message:NULL delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    alert.title = [NSString stringWithFormat:@"Error: %i", errorStatus];
+    alert.message = message;
+    [alert show];
+    [alert release];
 }
 
 #pragma mapView
@@ -270,6 +283,7 @@ static CreateActivityViewController *sharedSingleton = nil;
     NSString *description = self.textFieldDescription.text;
     if(self.activity && [description isEqualToString:@""]) {
         //delete
+        [_lunchRequest suppressLunchWithToken:[AppDelegate getObjectFromKeychainForKey:kSecAttrAccount] andActivityID:self.activity.activityID];
         app.ownerActivity = nil;
     }
     else if(!self.activity && [description isEqualToString:@""]) {
@@ -284,6 +298,9 @@ static CreateActivityViewController *sharedSingleton = nil;
         if(app.ownerActivity) {
             app.ownerActivity = nil;
             [[ActivityViewController getSingleton] loadOwnerActivity];
+        }
+        else {
+            [_lunchRequest addLunchWithToken:[AppDelegate getObjectFromKeychainForKey:kSecAttrAccount] andActivity:activity];
         }
         app.ownerActivity = activity;
     }
