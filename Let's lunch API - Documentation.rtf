@@ -1,7 +1,7 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;}
 {\colortbl;\red255\green255\blue255;\red0\green61\blue204;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww33100\viewh17800\viewkind0
+\paperw11900\paperh16840\margl1440\margr1440\vieww19420\viewh17800\viewkind0
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
 \f0\fs48 \cf0 #LOGIN\CocoaLigature0 \
@@ -48,7 +48,10 @@
 \fs24 	response status: 200\ul \
 	\ulnone \CocoaLigature0 \{"user":\
 		\{"token":"eeeae83508d5e7536b9c06a68972c94a",\
-		"picture_url":""\
+		"picture_url":"",\
+		"firstname":"Florian",\
+		"lastname":"Reiss",\
+		"job title":"iOS developer"\
 		\}\
 	\}\
 \
@@ -84,7 +87,10 @@
 \fs24 	response status: 200\ul \
 	\ulnone \CocoaLigature0 \{"user":\
 		\{"token":"eeeae83508d5e7536b9c06a68972c94a",\
-		"picture_url":""\
+		"picture_url":"",\
+		"firstname":"Florian",\
+		"lastname":"Reiss",\
+		"job title":"iOS developer"\
 		\}\
 	\}\
 \
@@ -120,7 +126,10 @@
 \fs24 	response status: 200\ul \
 	\ulnone \CocoaLigature0 \{"user":\
 		\{"token":"eeeae83508d5e7536b9c06a68972c94a",\
-		"picture_url":""\
+		"picture_url":"",\
+		"firstname":"Florian",\
+		"lastname":"Reiss",\
+		"job title":"iOS developer"\
 		\}\
 	\}\
 \
@@ -156,7 +165,10 @@
 \fs24 	response status: 200\ul \
 	\ulnone \CocoaLigature0 \{"user":\
 		\{"token":"eeeae83508d5e7536b9c06a68972c94a",\
-		"picture_url":""\
+		"picture_url":"",\
+		"firstname":"Florian",\
+		"lastname":"Reiss",\
+		"job title":"iOS developer"\
 		\}\
 	\}\
 \
@@ -196,13 +208,17 @@
 	\ulnone \{"user":\
 		\{"skills":[],\
 		"needs":[],\
+		"testimonials":[],\
+		"wishlist":[],\
+		"groups":[],\
 		"profile":\
 			\{"uid":"10688",\
 			"firstname":"Test",\
 			"lastname":"",\
 			"publicname":"Test ",\
 			"cell":"",\
-			"email":"florian@letslunch.com"\
+			"email":"florian@letslunch.com",\
+			"numberLunches":"123"\
 			\},\
 		"location":\
 			\{"city":"",\
@@ -216,6 +232,163 @@
 			\}\
 		\}\
 	\}\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs36 \cf0 #ME / LUNCHES
+\fs48 \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf2 \ul \ulc2 POST:\ulnone \
+	
+\fs24 \cf2 authToken\cf0 \
+	
+\fs28 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ul \ulc0 lunch error:\ulc0 \CocoaLigature0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b\fs24 \cf0 \ulnone 	## Missing argument\CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 		response status: 500\CocoaLigature0 \
+		\{"error":\
+			\{"message":"Missing Argument - authToken",\CocoaLigature1 \
+			"header":"Missing token"\CocoaLigature0 \
+			\}\
+		\}\CocoaLigature1 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf0 \ul \ulc0 lunch success:\ulnone \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs24 \cf0 	response status: 200\ul \
+	\ulnone \CocoaLigature0 \{"lunches":\
+		\{"lunch1":\
+			\{"uid":"127248924",\
+			"picture_url":"",\
+			"firstname":"Florian",\
+			"lastname":"Reiss",\
+			"job title":"iOS developer"\
+			\},\
+		"lunch2":\
+			\{"uid":"127248924",\
+			"picture_url":"",\
+			"firstname":"Florian",\
+			"lastname":"Reiss",\
+			"job title":"iOS developer"\
+			\},\
+		\}\
+	\}\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs36 \cf0 #ME / FRIENDS\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs32 \cf0 #ME / FRIENDS / FACEBOOK
+\fs48 \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf2 \ul \ulc2 POST:\ulnone \
+	
+\fs24 authToken\
+	facebookID[]\cf0  // array containing at least 1 ID\
+	
+\fs28 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ul \ulc0 friends error:\CocoaLigature0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b\fs24 \cf0 \ulnone 	## Missing argument\CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 		response status: 500\CocoaLigature0 \
+		\{"error":\
+			\{"message":"Missing Argument - authToken",\CocoaLigature1 \
+			"header":"Missing token"\CocoaLigature0 \
+			\}\
+		\}\CocoaLigature1 \
+\
+
+\fs28 \ul friends success:\ulnone \
+
+\fs24 	response status: 200\ul \
+		\ulnone \{"success":\
+			\{"message":"friends invited"\
+			\}\
+		\}\CocoaLigature0 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs32 \cf0 #ME / FRIENDS / TWITTER
+\fs48 \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf2 \ul \ulc2 POST:\ulnone \
+	
+\fs24 authToken\
+	twitterID[]\cf0  // array containing at least 1 ID\
+	
+\fs28 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ul \ulc0 friends error:\CocoaLigature0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b\fs24 \cf0 \ulnone 	## Missing argument\CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 		response status: 500\CocoaLigature0 \
+		\{"error":\
+			\{"message":"Missing Argument - authToken",\CocoaLigature1 \
+			"header":"Missing token"\CocoaLigature0 \
+			\}\
+		\}\CocoaLigature1 \
+\
+
+\fs28 \ul friends success:\ulnone \
+
+\fs24 	response status: 200\ul \
+		\ulnone \{"success":\
+			\{"message":"friends invited"\
+			\}\
+		\}\CocoaLigature0 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs32 \cf0 #ME / FRIENDS / LINKEDIN
+\fs48 \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf2 \ul \ulc2 POST:\ulnone \
+	
+\fs24 authToken\
+	linkedInID[]\cf0  // array containing at least 1 ID\
+	
+\fs28 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ul \ulc0 friends error:\CocoaLigature0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b\fs24 \cf0 \ulnone 	## Missing argument\CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 		response status: 500\CocoaLigature0 \
+		\{"error":\
+			\{"message":"Missing Argument - authToken",\CocoaLigature1 \
+			"header":"Missing token"\CocoaLigature0 \
+			\}\
+		\}\CocoaLigature1 \
+\
+
+\fs28 \ul friends success:\ulnone \
+
+\fs24 	response status: 200\ul \
+		\ulnone \{"success":\
+			\{"message":"friends invited"\
+			\}\
+		\}\CocoaLigature0 \
 \CocoaLigature1 \
 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
@@ -268,14 +441,13 @@
 			\{"venue":\
 				\{"name":["The Grove"],\
 				 "id":"4b7ef75cf964a520ee0c30e3",\
-				 "degreesLatitude":"37.78653398485857",\
- 				"degreesLongitude":"-122.401921749115",\
  				\'a0"address":"690 Mission St"\
 				\},\
-			"lunchType":"lunch",\
-			"lunchDate":"2013-07-20",\
-			"postingTime":"10:25",\
-			"description":"Let's meet at The Grove!"\
+			"availabilityID":"12846493",\
+			"lunchType":"0",\
+			"description":"Let's meet at The Grove!",\
+			"degreesLatitude":"37.78653398485857",\
+ 			"degreesLongitude":"-122.401921749115"\
 			\}\
 		\}\CocoaLigature0 \
 \
@@ -284,19 +456,65 @@
 \fs32 \cf0 #ME / AVAILABILITY / ADD\CocoaLigature1 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\fs28 \cf2 \ul POST:\ulnone \
+\fs28 \cf2 \ul \ulc2 POST:\ulnone \
 	
-\fs24 authToken\
-	venue\
-		name\
-		id\
-		degreesLatitude\
-		degreesLongitude\
-		address\
+\fs24 \cf2 authToken	\
 	lunchType\
 	lunchDate\
 	postingTime\
-	description\cf0 \
+	description\
+	degreesLatitude\
+	degreesLongitude\
+	name \cf0 // can be null - depend on venue\cf2 \
+	id \cf0 // can be null - depend on venue\cf2 \
+	address \cf0 // can be null - depend on venue\cf2 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf0 \ul \ulc0 \CocoaLigature0 availability error:\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b\fs24 \cf0 \ulnone 	## Missing argument\CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 		response status: 500\CocoaLigature0 \
+		\{"error":\
+			\{"message":"Missing Argument - authToken",\CocoaLigature1 \
+			"header":"Missing token"\CocoaLigature0 \
+			\}\
+		\}\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf0 \ul \ulc0 availability success:
+\b\fs24 \ulnone \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 		response status: 200\CocoaLigature0 \
+		\CocoaLigature1 \{"success":\
+			\{"message":"Availability added"\
+			\}\
+		\}\CocoaLigature0 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs32 \cf0 #ME / AVAILABILITY / UPDATE\CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf2 \ul POST:\cf2 \ulnone \
+	
+\fs24 \cf2 authToken	\
+	lunchType\
+	availabilityID \cf0 // to know which is selected\cf2 \
+	postingTime\
+	description\
+	degreesLatitude\
+	degreesLongitude\
+	name \cf0 // can be null - depend on venue\cf2 \
+	id \cf0 // can be null - depend on venue\cf2 \
+	address \cf0 // can be null - depend on venue\
 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
@@ -320,25 +538,30 @@
 
 \b0 \cf0 		response status: 200\CocoaLigature0 \
 		\CocoaLigature1 \{"success":\
-			\{"message":"Availability added"\
+			\{"message":"Availability updated"\
 			\}\
 		\}\CocoaLigature0 \
 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\fs32 \cf0 #ME / AVAILABILITY / DELETE\CocoaLigature1 \
+\fs32 \cf0 #ME / AVAILABILITY / PROMOTE\CocoaLigature1 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\fs28 \cf2 \ul POST:\ulnone \
+\fs28 \cf2 \ul \ulc2 POST:\ulnone \
 	
-\fs24 authToken\
-	lunchDate\cf0 \
+\fs24 \cf2 authToken\
+	availabilityID \cf0 // to know which is selected\cf2 \
+	facebookID\
+	twitterID\
+	linkedInID\cf0 \
+	\
 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\fs28 \cf0 \ul \CocoaLigature0 availability error:\
+\fs28 \cf0 \ul \ulc0 \CocoaLigature0 availability error:\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\b\fs24 \ulnone 	## Missing argument\CocoaLigature1 \
+\b\fs24 \cf0 \ulnone 	## Missing argument\CocoaLigature1 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
 \b0 \cf0 		response status: 500\CocoaLigature0 \
@@ -350,7 +573,44 @@
 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\fs28 \cf0 \ul availability success:
+\fs28 \cf0 \ul \ulc0 availability success:
+\b\fs24 \ulnone \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 		response status: 200\CocoaLigature0 \
+		\CocoaLigature1 \{"success":\
+			\{"message":"Availability promoted"\
+			\}\
+		\}\CocoaLigature0 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs32 \cf0 #ME / AVAILABILITY / DELETE\CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf2 \ul \ulc2 POST:\ulnone \
+	
+\fs24 \cf2 authToken\
+	availabilityID \cf0 // to know which is selected\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf0 \ul \ulc0 \CocoaLigature0 availability error:\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b\fs24 \cf0 \ulnone 	## Missing argument\CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 		response status: 500\CocoaLigature0 \
+		\{"error":\
+			\{"message":"Missing Argument - authToken",\CocoaLigature1 \
+			"header":"Missing token"\CocoaLigature0 \
+			\}\
+		\}\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf0 \ul \ulc0 availability success:
 \b\fs24 \ulnone \CocoaLigature1 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
@@ -405,14 +665,78 @@
 \b0 \cf0 		response status: 200\CocoaLigature0 \
 		\{"contact":\
 			\{"contact1":\
-				\{"name":"Syed Shuttari",\
+				\{"pictureURL","www.adoijadihad.jpg",\
+				"name":"Syed Shuttari",\
 				"id":"20138475294"\
 				\}\
 			\},\
 			\{"contact2":\
-				\{"name":"John Doe",\
+				\{"pictureURL","www.adoijadihad.jpg",\
+				"name":"John Doe",\
 				"id":"23924734937"\
 				\},\
+			\}\
+		\}\CocoaLigature1 \
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs36 \cf0 #ME / VISITORS\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf2 \ul \ulc2 POST:\ulnone \
+	
+\fs24 \cf2 authToken\cf0 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf0 \ul \ulc0 \CocoaLigature0 visitors error:\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b\fs24 \cf0 \ulnone 	## Missing argument\CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 		response status: 500\CocoaLigature0 \
+		\{"error":\
+			\{"message":"Missing Argument - authToken",\CocoaLigature1 \
+			"header":"Missing token"\CocoaLigature0 \
+			\}\
+		\}\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf0 \ul \ulc0 visitors\ulc0  success:\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b\fs24 \cf0 \ulnone 	## No contact\CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 		response status: 201\CocoaLigature0 \
+		\{"contact":\
+			\{"empty":"No contact has been found"\
+			\}\
+		\}\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b \cf0 	## Multiple contacts\CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 		response status: 200\CocoaLigature0 \
+		\{"visitors":\
+			\{"visitor1":\
+				\{"pictureURL","www.adoijadihad.jpg",\
+				"firstname":"Syed",\
+				"lastname":"Shuttari",\
+				"uid":"20138475294"\
+				\}\
+			\},\
+			\{"visitor2":\
+				\{"pictureURL","www.adoijadihad.jpg",\
+				"firstname":"Syed",\
+				"lastname":"Shuttari",\
+				"uid":"20138475294"\
+				\}\
 			\}\
 		\}\
 \
@@ -508,6 +832,166 @@
 			\{"message":"Message added"\
 			\}\
 		\}\CocoaLigature0 \
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs36 \cf0 #ME / WISHLIST\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs32 \cf0 #ME / WISHLIST / CHANGE\CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf2 \ul \ulc2 POST:\ulnone \
+	
+\fs24 \cf2 authToken\
+	uid\cf0 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf0 \ul \ulc0 \CocoaLigature0 wishlist error:\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b\fs24 \cf0 \ulnone 	## Missing argument\CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 		response status: 500\CocoaLigature0 \
+		\{"error":\
+			\{"message":"Missing Argument - authToken",\CocoaLigature1 \
+			"header":"Missing token"\CocoaLigature0 \
+			\}\
+		\}\ul \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf0 \ulc0 wishlist success:
+\b\fs24 \ulnone \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 		response status: 200\CocoaLigature0 \
+		\CocoaLigature1 \{"success":\
+			\{"message":"User added to wishlist"\
+			\}\
+		\}\CocoaLigature0 \
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs36 \cf0 #ME / GROUP\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs32 \cf0 #ME / GROUP / GET\CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf2 \ul \ulc2 POST:\ulnone \
+	
+\fs24 authToken\cf0 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf0 \ul \ulc0 \CocoaLigature0 group error:\
+
+\b\fs24 \ulnone 	## Missing argument\CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 		response status: 500\CocoaLigature0 \
+		\{"error":\
+			\{"message":"Missing Argument - authToken",\CocoaLigature1 \
+			"header":"Missing token"\CocoaLigature0 \
+			\}\
+		\}\ul \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf0 group success:
+\b\fs24 \ulnone \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 		response status: 200\CocoaLigature0 \
+		\{"groups":\
+			\{"group1":\
+				\{"pictureURL":"www.adhaidh\'e9id.jpg",\
+				"gid":"1290724974"\
+				\}\
+			\},\
+			\{"group2":\
+				\{"pictureURL":"www.adhaidh\'e9id.jpg",\
+				"gid":"1290724974"\
+				\},\
+			\}\
+		\}\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs32 \cf0 #ME / GROUP / JOIN\CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf2 \ul \ulc2 POST:\ulnone \
+	
+\fs24 authToken\
+	gid\cf0 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf0 \ul \ulc0 \CocoaLigature0 group error:\
+
+\b\fs24 \ulnone 	## Missing argument\CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 		response status: 500\CocoaLigature0 \
+		\{"error":\
+			\{"message":"Missing Argument - authToken",\CocoaLigature1 \
+			"header":"Missing token"\CocoaLigature0 \
+			\}\
+		\}\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf0 \ul group success:
+\b\fs24 \ulnone \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 		response status: 200\CocoaLigature0 \
+		\CocoaLigature1 \{"success":\
+			\{"message":"User joined group"\
+			\}\
+		\}\CocoaLigature0 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs32 \cf0 #ME / GROUP / LEAVE\CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf2 \ul \ulc2 POST:\ulnone \
+	
+\fs24 authToken\
+	gid\cf0 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf0 \ul \ulc0 \CocoaLigature0 group error:\
+
+\b\fs24 \ulnone 	## Missing argument\CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 		response status: 500\CocoaLigature0 \
+		\{"error":\
+			\{"message":"Missing Argument - authToken",\CocoaLigature1 \
+			"header":"Missing token"\CocoaLigature0 \
+			\}\
+		\}\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs28 \cf0 \ul group success:
+\b\fs24 \ulnone \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 		response status: 200\CocoaLigature0 \
+		\CocoaLigature1 \{"success":\
+			\{"message":"User left group"\
+			\}\
+		\}\CocoaLigature0 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 \cf0 \ul \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
@@ -532,7 +1016,7 @@
 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\fs28 \cf0 \ul \CocoaLigature0 message error:\
+\fs28 \cf0 \ul \CocoaLigature0 availability error:\
 
 \b\fs24 \ulnone 	## Missing argument\CocoaLigature1 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
@@ -546,7 +1030,7 @@
 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\fs28 \cf0 message success:
+\fs28 \cf0 availability success:
 \b\fs24 \ulnone \CocoaLigature1 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
@@ -554,28 +1038,36 @@
 		\{"availability":\
 			\{"availability1":\
 				\{"UID":"20138475294",\
-				"lunchDate":"2013_20_07",\
+				"firstname":"Florian",\
+				"lastname":"Reiss",\
+				"jobTitle":"iOS developer",\
+				"pictureURL":"www.adhaidh\'e9id.jpg",\CocoaLigature1 \
+				"lunchType":"0",\CocoaLigature0 \
 				"postingTime":"18:35",\
-				"\CocoaLigature1 description\CocoaLigature0 ":"\CocoaLigature1 Let's meet at The Grove!\CocoaLigature0 ",\
+				"\CocoaLigature1 description\CocoaLigature0 ":"\CocoaLigature1 Let's meet at The Grove!\CocoaLigature0 ",\CocoaLigature1 \
+				"degreesLatitude":"37.78653398485857",\
+ 				"degreesLongitude":"-122.401921749115",\CocoaLigature0 \
 				\CocoaLigature1 "venue":\
 					\{"name":"The Grove",\
 				 	"id":"4b7ef75cf964a520ee0c30e3",\
-					 "degreesLatitude":"37.78653398485857",\
- 					 "degreesLongitude":"-122.401921749115",\
  					 "address":"690 Mission St"\
 					\}\
 				\}\CocoaLigature0 \
 			\},\
 			\{"availability2":\
 				\{"UID":"20138475294",\
-				"lunchDate":"2013_20_07",\
+				"firstname":"Florian",\
+				"lastname":"Reiss",\
+				"jobTitle":"iOS developer",\
+				"pictureURL":"www.adhaidh\'e9id.jpg",\CocoaLigature1 \
+				"lunchType":"0",\CocoaLigature0 \
 				"postingTime":"18:35",\
-				"\CocoaLigature1 description\CocoaLigature0 ":"\CocoaLigature1 Let's meet at The Grove!\CocoaLigature0 ",\
+				"\CocoaLigature1 description\CocoaLigature0 ":"\CocoaLigature1 Let's meet at The Grove!\CocoaLigature0 ",\CocoaLigature1 \
+				"degreesLatitude":"37.78653398485857",\
+ 				"degreesLongitude":"-122.401921749115",\CocoaLigature0 \
 				\CocoaLigature1 "venue":\
 					\{"name":"The Grove",\
 				 	"id":"4b7ef75cf964a520ee0c30e3",\
-					 "degreesLatitude":"37.78653398485857",\
- 					 "degreesLongitude":"-122.401921749115",\
  					 "address":"690 Mission St"\
 					\}\
 				\}\CocoaLigature0 \
@@ -595,7 +1087,7 @@
 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\fs28 \cf0 \ul \CocoaLigature0 message error:\
+\fs28 \cf0 \ul \CocoaLigature0 detail error:\
 
 \b\fs24 \ulnone 	## Missing argument\CocoaLigature1 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
@@ -609,7 +1101,7 @@
 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\fs28 \cf0 message success:
+\fs28 \cf0 detail success:
 \b\fs24 \ulnone \CocoaLigature1 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
@@ -617,13 +1109,38 @@
 		\{"user":\
 			\{"skills":[],\
 			"needs":[],\
+			"interests":[],\
+			"testimonials":[],\
+			"groups":[],\
+			"pastLunches":\
+				\{"lunch1":\
+					\{"uid":"109292479",\
+					"pictureURL":"www.adhaidh\'e9id.jpg",\
+					"firstname":"Test",\
+					"lastname":"",\
+					"jobTitle":"Developer"\
+					\},\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 				"lunch2":\
+					\{"uid":"109292479",\
+					"pictureURL":"www.adhaidh\'e9id.jpg",\
+					"firstname":"Test",\
+					"lastname":"",\
+					"jobTitle":"Developer"\
+					\}\
+				\},\
 			"profile":\
 				\{"uid":"10688",\
 				"firstname":"Test",\
 				"lastname":"",\
 				"publicname":"Test ",\
+				"pictureURL":"www.adhaidh\'e9id.jpg",\
+				"jobTitle":"Developer",\
 				"cell":"",\
-				"email":"florian@letslunch.com"\
+				"email":"florian@letslunch.com",\
+				"twitterLink":"www.TW.com",\
+				"linkedInLink":"www.LI.com",\
+				"facebookLink":"www.FB.com"\
 				\},\
 			"location":\
 				\{"city":"",\
