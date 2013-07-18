@@ -14,7 +14,6 @@
 @end
 
 @implementation ActivityViewController
-@synthesize lunchRequest;
 
 static ActivityViewController *sharedSingleton = nil;
 + (ActivityViewController*)getSingleton
@@ -32,8 +31,6 @@ static ActivityViewController *sharedSingleton = nil;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.lunchRequest = [[LunchesRequest alloc] init];
-    self.lunchRequest.delegate = self;
     
     if(!_objects) {
         AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
@@ -80,17 +77,6 @@ static ActivityViewController *sharedSingleton = nil;
 {
     [self.objects release];
     [super dealloc];
-}
-
-#pragma mark - Lunch request delegate
-
--(void)showErrorMessage:(NSString*)message withErrorStatus:(NSInteger)errorStatus
-{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NULL message:NULL delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    alert.title = [NSString stringWithFormat:@"Error: %i", errorStatus];
-    alert.message = message;
-    [alert show];
-    [alert release];
 }
 
 #pragma mark - Table view data source

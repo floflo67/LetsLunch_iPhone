@@ -7,15 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LunchesRequest.h"
 
-@interface ActivityViewController : UITableViewController <LunchRequestDelegate> {
-    LunchesRequest *lunchRequest;
-}
+@interface ActivityViewController : UITableViewController
 
 @property (nonatomic, strong) NSMutableArray* objects;
 @property (nonatomic) BOOL hasActivity;
-@property (nonatomic, retain) LunchesRequest *lunchRequest;
 
 -(void)loadOwnerActivity;
 
