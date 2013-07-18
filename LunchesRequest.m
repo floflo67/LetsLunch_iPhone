@@ -20,6 +20,10 @@
     return [lunchRequest getLunchWithToken:token];
 }
 
+/*
+ POST:
+    authToken
+ */
 - (NSDictionary*)getLunchWithToken:(NSString*)token
 {
     /*
@@ -39,12 +43,6 @@
 }
 
 #pragma mark - ADD lunch
-
-+ (void)addLunchWithToken:(NSString*)token andActivity:(Activity*)activity
-{
-    LunchesRequest *lunchRequest = [[[LunchesRequest alloc] init] autorelease];
-    [lunchRequest addLunchWithToken:token andActivity:activity];
-}
 
 /*
  POST:
@@ -113,6 +111,11 @@
     return [lunchRequest suppressLunchWithToken:token andActivityID:activityID];
 }
 
+/*
+ POST:
+    authToken
+    availabilityID // to know which is selected
+ */
 - (NSDictionary *)suppressLunchWithToken:(NSString*)token andActivityID:(NSString*)activityID
 {
     /*
@@ -135,14 +138,59 @@
 
 #pragma mark - UPDATE lunch
 
-+ (void)updateLunchWithToken:(NSString *)token andID:(NSString *)activityID andActivity:(Activity *)activity
+/*
+ POST:
+    authToken
+    lunchType
+    availabilityID // to know which is selected
+    postingTime
+    description
+    degreesLatitude
+    degreesLongitude
+    name // can be null - depend on venue
+    id // can be null - depend on venue
+    address // can be null - depend on venue
+ */
+- (void)updateLunchWithToken:(NSString *)token andActivity:(Activity *)activity
 {
-    
-}
-
-- (void)updateLunchWithToken:(NSString *)token andID:(NSString *)activityID andActivity:(Activity *)activity
-{
-    
+    if (_connection == nil) {
+		_data = [NSMutableData new];
+        
+        /*
+         Sets the body of the requests
+         Countains username, password and device ID
+         */
+        NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
+        
+        NSString *lunchType;
+        if(activity.isCoffee)
+            lunchType = @"Coffee";
+        else
+            lunchType = @"Lunch";
+        
+        NSString *postingTime;
+        NSDate *date = [NSDate new];
+        NSDateFormatter *format = [[[NSDateFormatter alloc] init] autorelease];
+        
+        [format setDateFormat:@"HH:mm"];
+        postingTime = [format stringFromDate:date];
+        
+        [parameters setValue:token forKey:@"authToken"];
+        [parameters setValue:lunchType forKey:@"lunchType"];
+        [parameters setValue:postingTime forKey:@"postingTime"];
+        [parameters setValue:activity.description forKey:@"description"];
+        [parameters setValue:activity.venue.name forKey:@"name"];
+        [parameters setValue:activity.venue.venueId forKey:@"id"];
+        [parameters setValue:[NSString stringWithFormat:@"%f", activity.venue.location.coordinate.latitude] forKey:@"degreesLatitude"];
+        [parameters setValue:[NSString stringWithFormat:@"%f", activity.venue.location.coordinate.longitude] forKey:@"degreesLongitude"];
+        [parameters setValue:activity.venue.location.address forKey:@"address"];
+        [parameters setValue:activity.activityID forKey:@"availabilityID"];
+        
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@me/availability/add",LL_API_BaseUrl]];
+        MutableRequest *request = [[MutableRequest alloc] initWithURL:url andParameters:parameters andType:@"POST"];
+        
+        _connection = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
+    }
 }
 
 #pragma mark - custom function
@@ -150,8 +198,8 @@
 - (void)settingUpData:(NSData*)data andResponse:(NSURLResponse*)response
 {
     _statusCode = [(NSHTTPURLResponse*)response statusCode];
-    NSString* res = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-    NSLog(@"%@", res);
+    /*NSString* res = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+    NSLog(@"%@", res);*/
     
     if(_statusCode == 200) {
         if(!_jsonDict)
@@ -202,10 +250,6 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection*)connection
 {
-    
-    NSString* response = [[[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding] autorelease];
-    NSLog(@"%@", response);
-    
 	if (_statusCode != 200) {
         NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:_data options:0 error:nil]];
         NSDictionary *dictError = [NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"error"]]];

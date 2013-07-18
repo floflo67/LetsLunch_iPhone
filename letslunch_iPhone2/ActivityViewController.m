@@ -112,7 +112,6 @@ static ActivityViewController *sharedSingleton = nil;
     }
     else {
         if([[_objects[indexPath.section] description] isEqualToString:@"NIL"]) {
-            NSLog(@"nil");
             UIButton *pushButton = [UIButton buttonWithType:UIButtonTypeCustom];
             [pushButton addTarget:self
                            action:@selector(pushViewController:)
@@ -124,7 +123,6 @@ static ActivityViewController *sharedSingleton = nil;
             [cell addSubview:pushButton];
         }
         else {
-            NSLog(@"exists");
             cell.textLabel.text = [_objects[indexPath.row] description];
         }
     }

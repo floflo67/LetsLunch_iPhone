@@ -290,19 +290,23 @@ static CreateActivityViewController *sharedSingleton = nil;
         
     }
     else {
-        //add        
-        Activity *activity = [[Activity alloc] init];
-        activity.description = description;
-        activity.isCoffee = self.segment.selectedSegmentIndex;
-        activity.venue = self.venue;
+        //add
         if(app.ownerActivity) {
-            app.ownerActivity = nil;
+            app.ownerActivity.description = description;
+            app.ownerActivity.isCoffee = self.segment.selectedSegmentIndex;
+            app.ownerActivity.venue = self.venue;
+            [_lunchRequest updateLunchWithToken:[AppDelegate getObjectFromKeychainForKey:kSecAttrAccount] andActivity:app.ownerActivity];
+            //app.ownerActivity = nil;
             [[ActivityViewController getSingleton] loadOwnerActivity];
         }
         else {
+            Activity *activity = [[Activity alloc] init];
+            activity.description = description;
+            activity.isCoffee = self.segment.selectedSegmentIndex;
+            activity.venue = self.venue;
             [_lunchRequest addLunchWithToken:[AppDelegate getObjectFromKeychainForKey:kSecAttrAccount] andActivity:activity];
+            app.ownerActivity = activity;
         }
-        app.ownerActivity = activity;
     }
     if(self.activity)
         [self.activity release];

@@ -27,9 +27,7 @@
 -(NSDictionary*)getLunchWithToken:(NSString*)token;
 +(NSDictionary*)suppressLunchWithToken:(NSString*)token andActivityID:(NSString*)activityID;
 -(NSDictionary*)suppressLunchWithToken:(NSString*)token andActivityID:(NSString*)activityID;
-+(void)addLunchWithToken:(NSString*)token andActivity:(Activity*)activity;
 -(void)addLunchWithToken:(NSString*)token andActivity:(Activity*)activity;
-+(void)updateLunchWithToken:(NSString*)token andID:(NSString*)activityID andActivity:(Activity*)activity;
--(void)updateLunchWithToken:(NSString*)token andID:(NSString*)activityID andActivity:(Activity*)activity;
+-(void)updateLunchWithToken:(NSString*)token andActivity:(Activity*)activity;
 
 @end
