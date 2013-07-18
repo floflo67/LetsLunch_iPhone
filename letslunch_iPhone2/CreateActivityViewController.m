@@ -265,13 +265,20 @@ static CreateActivityViewController *sharedSingleton = nil;
 
 - (void)saveActivity:(id)sender
 {
-    Activity *activity = [[Activity alloc] init];
-    activity.description = self.textFieldDescription.text;
-    activity.isCoffee = self.segment.selectedSegmentIndex;
-    activity.venue = self.venue;
-    self.activity = activity;
-    [activity release];
-    NSLog(@"Save");
+    if(self.activity && [self.textFieldDescription.text isEqualToString:@""]) {
+        NSLog(@"Delete");
+        //delete
+    }
+    else {
+        //add
+        Activity *activity = [[Activity alloc] init];
+        activity.description = self.textFieldDescription.text;
+        activity.isCoffee = self.segment.selectedSegmentIndex;
+        activity.venue = self.venue;
+        self.activity = activity;
+        [activity release];
+        NSLog(@"Save");
+    }
     
     [self.navigationController popToRootViewControllerAnimated:YES];
     [CreateActivityViewController suppressSingleton];
@@ -281,7 +288,6 @@ static CreateActivityViewController *sharedSingleton = nil;
 {
     self.buttonClear.hidden = YES;
     self.buttonClear = nil;
-    self.activity = nil;
     self.viewSubview.frame = CGRectMake(0, self.viewSubview.frame.origin.y - 50, 320, self.viewSubview.frame.size.height + 50);
     [self resetView];
     NSLog(@"Clear");
