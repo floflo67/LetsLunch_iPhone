@@ -30,7 +30,7 @@
     [v.location setCoordinate:CLLocationCoordinate2DMake([@"37.78653398485857" doubleValue], [@"-122.401921749115" doubleValue])];
     
     BOOL b = YES;
-    Activity *act1 = [[Activity alloc] initWithContact:c venue:v description:@"desc1" andIsCoffee:b];
+    Activity *act1 = [[Activity alloc] initWithID:@"1234" contact:c venue:v description:@"desc1" andIsCoffee:b];
     
     [listActivities addObject:act1];
     [listActivities addObject:@"Activity2"];
@@ -58,10 +58,10 @@
         [v.location setCoordinate:CLLocationCoordinate2DMake([@"37.78653398485857" doubleValue], [@"-122.401921749115" doubleValue])];
         
         BOOL b = YES;
-        Activity *act1 = [[Activity alloc] initWithContact:c venue:v description:@"descOwner" andIsCoffee:b];
+        Activity *act1 = [[Activity alloc] initWithID:@"1234" contact:c venue:v description:@"descOwner" andIsCoffee:b];
         
         return act1;
-    }    
+    }
 }
 
 

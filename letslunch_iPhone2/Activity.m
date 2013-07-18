@@ -23,6 +23,7 @@
 {
     self = [self init];
     if(self) {
+        self.activityID = [dict objectForKey:@"id"];
         self.contact = [dict objectForKey:@"contact"];
         self.venue = [dict objectForKey:@"venue"];
         self.isCoffee = [[dict objectForKey:@"isCoffee"] boolValue];
@@ -31,10 +32,11 @@
     return self;
 }
 
-- (id)initWithContact:(Contacts*)contact venue:(FSVenue*)venue description:(NSString*)description andIsCoffee:(BOOL)isCoffee
+- (id)initWithID:(NSString *)activityID contact:(Contacts *)contact venue:(FSVenue *)venue description:(NSString *)description andIsCoffee:(BOOL)isCoffee
 {
     self = [self init];
     if(self) {
+        self.activityID = activityID;
         self.contact = contact;
         self.venue = venue;
         self.isCoffee = isCoffee;
@@ -45,6 +47,7 @@
 
 - (void)dealloc
 {
+    [self.activityID release];
     [self.contact release];
     [self.description release];
     [self.venue release];

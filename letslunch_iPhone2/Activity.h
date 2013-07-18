@@ -12,12 +12,13 @@
 
 @interface Activity : NSObject
 
+@property (nonatomic, strong) NSString *activityID;
 @property (nonatomic, strong) Contacts *contact;
 @property (nonatomic, strong) NSString *description;
 @property (nonatomic, strong) FSVenue *venue;
 @property (nonatomic) BOOL isCoffee;
 
 -(id)initWithDict:(NSDictionary*)dict;
--(id)initWithContact:(Contacts*)contact venue:(FSVenue*)venue description:(NSString*)description andIsCoffee:(BOOL)isCoffee;
+-(id)initWithID:(NSString*)activityID contact:(Contacts*)contact venue:(FSVenue*)venue description:(NSString*)description andIsCoffee:(BOOL)isCoffee;
 
 @end
