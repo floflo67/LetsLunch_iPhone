@@ -7,11 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LunchesRequest.h"
 
-@interface ActivityViewController : UITableViewController
+@interface ActivityViewController : UITableViewController <LunchRequestDelegate> {
+    LunchesRequest *lunchRequest;
+}
 
 @property (nonatomic, strong) NSMutableArray* objects;
 @property (nonatomic) BOOL hasActivity;
+@property (nonatomic, retain) LunchesRequest *lunchRequest;
+
+-(void)loadOwnerActivity;
 
 +(ActivityViewController*)getSingleton;
 

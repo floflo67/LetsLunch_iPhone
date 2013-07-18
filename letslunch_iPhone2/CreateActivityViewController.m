@@ -8,6 +8,7 @@
 
 #import "CreateActivityViewController.h"
 #import "NearbyVenuesViewController.h"
+#import "ActivityViewController.h"
 
 @interface CreateActivityViewController ()
 
@@ -265,21 +266,31 @@ static CreateActivityViewController *sharedSingleton = nil;
 
 - (void)saveActivity:(id)sender
 {
-    if(self.activity && [self.textFieldDescription.text isEqualToString:@""]) {
-        NSLog(@"Delete");
+    AppDelegate *app = [UIApplication sharedApplication].delegate;
+    NSString *description = self.textFieldDescription.text;
+    if(self.activity && [description isEqualToString:@""]) {
         //delete
+        app.ownerActivity = nil;
+    }
+    else if(!self.activity && [description isEqualToString:@""]) {
+        
     }
     else {
-        //add
+        //add        
         Activity *activity = [[Activity alloc] init];
-        activity.description = self.textFieldDescription.text;
+        activity.description = description;
         activity.isCoffee = self.segment.selectedSegmentIndex;
         activity.venue = self.venue;
-        self.activity = activity;
-        [activity release];
-        NSLog(@"Save");
+        if(app.ownerActivity) {
+            app.ownerActivity = nil;
+            [[ActivityViewController getSingleton] loadOwnerActivity];
+        }
+        app.ownerActivity = activity;
     }
+    if(self.activity)
+        [self.activity release];
     
+    [[ActivityViewController getSingleton] loadOwnerActivity];
     [self.navigationController popToRootViewControllerAnimated:YES];
     [CreateActivityViewController suppressSingleton];
 }
@@ -290,7 +301,6 @@ static CreateActivityViewController *sharedSingleton = nil;
     self.buttonClear = nil;
     self.viewSubview.frame = CGRectMake(0, self.viewSubview.frame.origin.y - 50, 320, self.viewSubview.frame.size.height + 50);
     [self resetView];
-    NSLog(@"Clear");
 }
 
 #pragma UITextFieldDelegate
