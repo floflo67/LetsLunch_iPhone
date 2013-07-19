@@ -17,8 +17,7 @@
 + (NSArray*)getListActivities
 {
     NSMutableArray* listActivities = [[[NSMutableArray alloc] init] autorelease];
-    Messages *m = [[Messages alloc] initWithDescription:@"mess" From:@"1" To:@"2" date:[NSDate new]];
-    Contacts *c = [[Contacts alloc] initWithID:@"1" withName:@"name" withPictureURL:nil andLastMessage:m];
+    Contacts *c = [[Contacts alloc] initWithID:@"1" firstname:@"first" lastname:@"last" publicname:@"public" summary:@"summary" headline:@"headline" andPictureURL:nil];
     FSVenue *v = [[FSVenue alloc] init];
     
     v.name = @"The Grove";
@@ -45,8 +44,7 @@
     if(!dict)
         return NULL;
     else {
-        Messages *m = [[Messages alloc] initWithDescription:@"mess" From:@"1" To:@"2" date:[NSDate new]];
-        Contacts *c = [[Contacts alloc] initWithID:@"1" withName:@"name" withPictureURL:nil andLastMessage:m];
+        Contacts *c = [[Contacts alloc] initWithID:@"1" firstname:@"first" lastname:@"last" publicname:@"public" summary:@"summary" headline:@"headline" andPictureURL:nil];
         FSVenue *v = [[FSVenue alloc] init];
         
         v.name = @"The Grove";
@@ -115,9 +113,9 @@
 {
     NSMutableArray* listContacts = [[[NSMutableArray alloc] init] autorelease];
     
-    Contacts *cont1 = [[Contacts alloc] initWithID:@"1" withName:@"name1" withPictureURL:nil andLastMessage:nil];
-    Contacts *cont2 = [[Contacts alloc] initWithID:@"2" withName:@"name2" withPictureURL:nil andLastMessage:nil];
-    Contacts *cont3 = [[Contacts alloc] initWithID:@"3" withName:@"name3" withPictureURL:nil andLastMessage:nil];
+    Contacts *cont1 = [[Contacts alloc] initWithID:@"1" firstname:@"first1" lastname:@"last1" publicname:@"public1" summary:@"summary" headline:@"headline" andPictureURL:nil];
+    Contacts *cont2 = [[Contacts alloc] initWithID:@"2" firstname:@"first2" lastname:@"last2" publicname:@"public2" summary:@"summary" headline:@"headline" andPictureURL:nil];
+    Contacts *cont3 = [[Contacts alloc] initWithID:@"3" firstname:@"first3" lastname:@"last3" publicname:@"public3" summary:@"summary" headline:@"headline" andPictureURL:nil];
     
     [listContacts addObject:cont1];
     [listContacts addObject:cont2];

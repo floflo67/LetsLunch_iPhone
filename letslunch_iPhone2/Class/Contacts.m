@@ -23,10 +23,13 @@
 {
     self = [self init];
     if(self) {
-        self.ID = [dict objectForKey:@"id"];
-        self.name = [dict objectForKey:@"name"];
+        self.ID = [dict objectForKey:@"uid"];
+        self.firstname = [dict objectForKey:@"firstname"];
+        self.lastname = [dict objectForKey:@"lastname"];
+        self.publicname = [dict objectForKey:@"publicname"];
+        self.summary = [dict objectForKey:@"headline"];
+        self.headline = [dict objectForKey:@"summary"];
         self.pictureURL = [dict objectForKey:@"pictureURL"];
-        self.lastMessage = [dict objectForKey:@"last"];
         
         if(self.pictureURL)
             self.image = [UIImage imageWithContentsOfFile:[NSString stringWithContentsOfURL:[NSURL URLWithString:self.pictureURL] encoding:NSUTF8StringEncoding error:nil]];
@@ -34,14 +37,17 @@
     return self;
 }
 
-- (id)initWithID:(NSString*)ID withName:(NSString*)name withPictureURL:(NSString*)url andLastMessage:(Messages*)mess
+- (id)initWithID:(NSString*)ID firstname:(NSString*)firstname lastname:(NSString*)lastname publicname:(NSString*)publicname summary:(NSString*)summary headline:(NSString*)headline andPictureURL:(NSString*)url
 {
     self = [self init];
     if(self) {
         self.ID = ID;
-        self.name = name;
+        self.firstname = firstname;
+        self.lastname = lastname;
+        self.publicname = publicname;
+        self.summary = summary;
+        self.headline = headline;
         self.pictureURL = url;
-        self.lastMessage = mess.description;
         
         if(self.pictureURL)
             self.image = [UIImage imageWithContentsOfFile:[NSString stringWithContentsOfURL:[NSURL URLWithString:self.pictureURL] encoding:NSUTF8StringEncoding error:nil]];
@@ -62,9 +68,12 @@
 - (void)dealloc
 {
     [self.ID release];
-    [self.name release];
+    [self.firstname release];
+    [self.lastname release];
+    [self.publicname release];
+    [self.summary release];
+    [self.headline release];
     [self.pictureURL release];
-    [self.lastMessage release];
     [self.listMessages release];
     [self.image release];
     [super dealloc];
