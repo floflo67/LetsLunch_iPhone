@@ -11,6 +11,7 @@
 #import "FSVenue.h"
 #import "Messages.h"
 #import "LunchesRequest.h"
+#import "VisitorsRequest.h"
 
 @implementation GetStaticLists
 
@@ -107,6 +108,13 @@
     
     
     return listMessages;    
+}
+
++ (NSMutableArray*)getListVisitors
+{
+    NSMutableArray* listVisitors = [[[NSMutableArray alloc] init] autorelease];
+    listVisitors = [VisitorsRequest getVisitorsWithToken:[AppDelegate getObjectFromKeychainForKey:kSecAttrAccount]];
+    return listVisitors;
 }
 
 + (NSMutableArray*)getListContacts
