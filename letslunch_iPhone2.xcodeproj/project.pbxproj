@@ -57,6 +57,9 @@
 		549ADAAD176BCAD5001F1D3F /* CreateActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 549ADAAB176BCAD5001F1D3F /* CreateActivityViewController.xib */; };
 		549ADABE176BE14F001F1D3F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549ADABD176BE14F001F1D3F /* MapKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		549ADAC0176BE15A001F1D3F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549ADABF176BE159001F1D3F /* CoreLocation.framework */; };
+		54CA0D3C1799D3FD0012A521 /* VisitorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CA0D3A1799D3FD0012A521 /* VisitorsViewController.m */; };
+		54CA0D3D1799D3FD0012A521 /* VisitorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54CA0D3B1799D3FD0012A521 /* VisitorsViewController.xib */; };
+		54CA0D401799D4B50012A521 /* VisitorsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CA0D3F1799D4B50012A521 /* VisitorsRequest.m */; };
 		54D317321784970E00D058F4 /* DetailProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D317301784970E00D058F4 /* DetailProfileViewController.m */; };
 		54D317331784970E00D058F4 /* DetailProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54D317311784970E00D058F4 /* DetailProfileViewController.xib */; };
 		54D3521C178DC89D0068953A /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54D3521B178DC89D0068953A /* AddressBookUI.framework */; };
@@ -205,6 +208,11 @@
 		549ADAAE176BCAF2001F1D3F /* CreateActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateActivityViewController.h; sourceTree = "<group>"; };
 		549ADABD176BE14F001F1D3F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		549ADABF176BE159001F1D3F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		54CA0D391799D3FD0012A521 /* VisitorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitorsViewController.h; sourceTree = "<group>"; };
+		54CA0D3A1799D3FD0012A521 /* VisitorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitorsViewController.m; sourceTree = "<group>"; };
+		54CA0D3B1799D3FD0012A521 /* VisitorsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VisitorsViewController.xib; sourceTree = "<group>"; };
+		54CA0D3E1799D4B50012A521 /* VisitorsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitorsRequest.h; sourceTree = "<group>"; };
+		54CA0D3F1799D4B50012A521 /* VisitorsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitorsRequest.m; sourceTree = "<group>"; };
 		54D3172F1784970E00D058F4 /* DetailProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailProfileViewController.h; sourceTree = "<group>"; };
 		54D317301784970E00D058F4 /* DetailProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailProfileViewController.m; sourceTree = "<group>"; };
 		54D317311784970E00D058F4 /* DetailProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailProfileViewController.xib; sourceTree = "<group>"; };
@@ -390,6 +398,8 @@
 			children = (
 				540560E3178F2F73009679F4 /* ProfileRequest.h */,
 				540560E4178F2F73009679F4 /* ProfileRequest.m */,
+				54CA0D3E1799D4B50012A521 /* VisitorsRequest.h */,
+				54CA0D3F1799D4B50012A521 /* VisitorsRequest.m */,
 			);
 			name = Profile;
 			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Profile;
@@ -425,6 +435,9 @@
 				540560DE178F2E6D009679F4 /* ProfileViewController.h */,
 				540560DF178F2E6D009679F4 /* ProfileViewController.m */,
 				540560E0178F2E6D009679F4 /* ProfileViewController.xib */,
+				54CA0D391799D3FD0012A521 /* VisitorsViewController.h */,
+				54CA0D3A1799D3FD0012A521 /* VisitorsViewController.m */,
+				54CA0D3B1799D3FD0012A521 /* VisitorsViewController.xib */,
 			);
 			name = Master;
 			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/ViewControllers/Master;
@@ -942,6 +955,7 @@
 				540560E2178F2E6D009679F4 /* ProfileViewController.xib in Resources */,
 				54E9EAFC1794634500F937CA /* InviteViewController.xib in Resources */,
 				54E9EB01179465DB00F937CA /* InviteContactsViewController.xib in Resources */,
+				54CA0D3D1799D3FD0012A521 /* VisitorsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1013,6 +1027,8 @@
 				54E9EAFB1794634500F937CA /* InviteViewController.m in Sources */,
 				54E9EB00179465DB00F937CA /* InviteContactsViewController.m in Sources */,
 				54E9D6DE17974A6200E84EFB /* LunchesRequest.m in Sources */,
+				54CA0D3C1799D3FD0012A521 /* VisitorsViewController.m in Sources */,
+				54CA0D401799D4B50012A521 /* VisitorsRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
