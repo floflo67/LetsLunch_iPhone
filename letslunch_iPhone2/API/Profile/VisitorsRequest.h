@@ -14,6 +14,7 @@
         NSMutableArray *_jsonArray;
 }
 
--(NSArray*)getVisitorsWithToken:(NSString*)token;
++(NSMutableArray*)getVisitorsWithToken:(NSString*)token;
+-(NSMutableArray*)getVisitorsWithToken:(NSString*)token;
 
 @end

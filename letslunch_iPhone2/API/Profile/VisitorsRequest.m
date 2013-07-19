@@ -11,21 +11,27 @@
 
 @implementation VisitorsRequest
 
++ (NSMutableArray *)getVisitorsWithToken:(NSString *)token
+{
+    VisitorsRequest *visitorRequest = [[[VisitorsRequest alloc] init] autorelease];
+    return [visitorRequest getVisitorsWithToken:token];
+}
+
 /*
- URL: http://letslunch.dev.knackforge.com/api/me
+ URL: http://letslunch.dev.knackforge.com/api/me/profileVisitors
  Request Type: POST
  Parameters:
- authToken (Email id)
+    authToken (Email id)
  */
-- (NSArray*)getVisitorsWithToken:(NSString*)token
+- (NSMutableArray*)getVisitorsWithToken:(NSString*)token
 {
     /*
      Sets the body of the requests
-     Countains username, password and device ID
+     token
      */
     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
     [parameters setValue:token forKey:@"authToken"];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@me",LL_API_BaseUrl]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@me/profileVisitors",LL_API_BaseUrl]];
     MutableRequest *request = [[MutableRequest alloc] initWithURL:url andParameters:parameters andType:@"POST"];
     
     NSURLResponse *response;
@@ -40,13 +46,16 @@
 {
     _statusCode = [(NSHTTPURLResponse*)response statusCode];
     
-    NSString* res = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-    NSLog(@"%@", res);
-    
     if(_statusCode == 200) {
         if(!_jsonArray)
             _jsonArray = [[NSMutableArray alloc] init];
-        _jsonArray = [NSMutableArray arrayWithArray:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
+        
+        NSMutableDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        dict = [dict objectForKey:@"profileVisitors"];
+        
+        data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
+        
+        _jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     }
     else {
         NSString* response = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
