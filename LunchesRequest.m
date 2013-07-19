@@ -21,7 +21,9 @@
 }
 
 /*
- POST:
+ URL: http://letslunch.dev.knackforge.com/api/me/availability
+ Request Type: POST
+ Parameters:
     authToken
  */
 - (NSDictionary*)getLunchWithToken:(NSString*)token
@@ -45,7 +47,9 @@
 #pragma mark - ADD lunch
 
 /*
- POST:
+ URL: http://letslunch.dev.knackforge.com/api/me/availability/add
+ Request Type: POST
+ Parameters:
     authToken
     lunchType
     lunchDate
@@ -112,7 +116,9 @@
 }
 
 /*
- POST:
+ URL: http://letslunch.dev.knackforge.com/api/me/availability/delete
+ Request Type: POST
+ Parameters:
     authToken
     availabilityID // to know which is selected
  */
@@ -124,7 +130,7 @@
      */
     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
     [parameters setValue:token forKey:@"authToken"];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@me",LL_API_BaseUrl]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@me/availability/delete",LL_API_BaseUrl]];
     MutableRequest *request = [[MutableRequest alloc] initWithURL:url andParameters:parameters andType:@"POST"];
     //_connection = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
     
@@ -139,7 +145,9 @@
 #pragma mark - UPDATE lunch
 
 /*
- POST:
+ URL: http://letslunch.dev.knackforge.com/api/me/availability/update
+ Request Type: POST
+ Parameters:
     authToken
     lunchType
     availabilityID // to know which is selected
@@ -186,7 +194,7 @@
         [parameters setValue:activity.venue.location.address forKey:@"address"];
         [parameters setValue:activity.activityID forKey:@"availabilityID"];
         
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@me/availability/add",LL_API_BaseUrl]];
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@me/availability/update",LL_API_BaseUrl]];
         MutableRequest *request = [[MutableRequest alloc] initWithURL:url andParameters:parameters andType:@"POST"];
         
         _connection = [[NSURLConnection connectionWithRequest:request delegate:self] retain];

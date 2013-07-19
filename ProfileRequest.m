@@ -11,6 +11,12 @@
 
 @implementation ProfileRequest
 
+/*
+ URL: http://letslunch.dev.knackforge.com/api/me
+ Request Type: POST
+ Parameters:
+    authToken (Email id)
+ */
 - (NSDictionary*)getProfileWithToken:(NSString*)token
 {
     /*
