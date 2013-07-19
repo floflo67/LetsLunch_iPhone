@@ -18,7 +18,6 @@
 {
     IBOutlet UIWebView *webView;
     IBOutlet UIActivityIndicatorView *activityIndicator;
-    IBOutlet UITextField *addressBar;
     
     OAToken *requestToken;
     OAToken *accessToken;
@@ -38,6 +37,5 @@
 -(void)accessTokenFromProvider;
 
 -(id)initWithLinkedIn;
--(id)initWithTwitter;
 
 @end

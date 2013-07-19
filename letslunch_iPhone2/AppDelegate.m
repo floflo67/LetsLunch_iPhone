@@ -109,16 +109,14 @@
     NSString *responseBody = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
     NSDictionary *profile = [responseBody objectFromJSONString];
+    NSLog(@"%@", profile);
     [responseBody release];
     
     if(profile && [profile objectForKey:@"firstName"])
     {
-        [self hideLoginView];
+        //[self loginSuccessfull];
         NSLog(@"%@", [profile objectForKey:@"firstName"]);
     }
-    
-    // The next thing we want to do is call the network updates
-    //[self networkApiCall];
     
 }
 

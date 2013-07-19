@@ -41,18 +41,6 @@
     if(self) {
         provider = [[Provider alloc] initWithLinkedIn];
         self.consumer = [[OAConsumer alloc] initWithKey:provider.apikey secret:provider.secretkey realm:@"http://api.linkedin.com/"];
-        addressBar.text = @"www.linkedin.com/uas/oauth/authorize";
-    }
-    return self;
-}
-
-- (id)initWithTwitter
-{
-    self = [super init];
-    if(self) {
-        provider = [[Provider alloc] initWithTwitter];
-        self.consumer = [[OAConsumer alloc] initWithKey:provider.apikey secret:provider.secretkey realm:@"http://api.twitter.com/"];
-        addressBar.text = @"www.api.twitter.com/oauth/authenticate";
     }
     return self;
 }
@@ -60,7 +48,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [addressBar setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -141,7 +128,6 @@
 	NSURL *url = request.URL;
 	NSString *urlString = url.absoluteString;
     
-    addressBar.text = urlString;
     [activityIndicator startAnimating];
     
     BOOL requestForCallbackURL = ([urlString rangeOfString:provider.callbackURL].location != NSNotFound);
