@@ -90,13 +90,6 @@
 		54E3331E1781EF3100BFF6A4 /* OAuthLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E333171781EF3100BFF6A4 /* OAuthLoginView.m */; };
 		54E3331F1781EF3100BFF6A4 /* linkedInBluebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 54E333191781EF3100BFF6A4 /* linkedInBluebutton.png */; };
 		54E333201781EF3100BFF6A4 /* linkedInBluebutton-highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 54E3331A1781EF3100BFF6A4 /* linkedInBluebutton-highlight.png */; };
-		54E4B57D17822C8E00BE5686 /* TwitterLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E4B57B17822C8E00BE5686 /* TwitterLoginViewController.m */; };
-		54E4B57E17822C8E00BE5686 /* TwitterLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E4B57C17822C8E00BE5686 /* TwitterLoginViewController.xib */; };
-		54E4B58517822CE800BE5686 /* TwitterAuthenticator.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E4B58017822CE700BE5686 /* TwitterAuthenticator.m */; };
-		54E4B58617822CE800BE5686 /* TwitterRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E4B58217822CE700BE5686 /* TwitterRequest.m */; };
-		54E4B58717822CE800BE5686 /* TwitterToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E4B58417822CE700BE5686 /* TwitterToken.m */; };
-		54E4B58A17822CFB00BE5686 /* TwitterConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E4B58917822CFB00BE5686 /* TwitterConsumer.m */; };
-		54E4B58D17822D1200BE5686 /* TwitterUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E4B58C17822D1200BE5686 /* TwitterUtils.m */; };
 		54E4B59117822D4D00BE5686 /* TwitterClouds.png in Resources */ = {isa = PBXBuildFile; fileRef = 54E4B59017822D4D00BE5686 /* TwitterClouds.png */; };
 		54E714CD176B95E200F39D73 /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E714CB176B95E200F39D73 /* ActivityViewController.m */; };
 		54E714CE176B95E200F39D73 /* ActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E714CC176B95E200F39D73 /* ActivityViewController.xib */; };
@@ -270,19 +263,6 @@
 		54E333181781EF3100BFF6A4 /* OAuthLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthLoginView.h; sourceTree = "<group>"; };
 		54E333191781EF3100BFF6A4 /* linkedInBluebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = linkedInBluebutton.png; sourceTree = "<group>"; };
 		54E3331A1781EF3100BFF6A4 /* linkedInBluebutton-highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "linkedInBluebutton-highlight.png"; sourceTree = "<group>"; };
-		54E4B57A17822C8E00BE5686 /* TwitterLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterLoginViewController.h; sourceTree = "<group>"; };
-		54E4B57B17822C8E00BE5686 /* TwitterLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterLoginViewController.m; sourceTree = "<group>"; };
-		54E4B57C17822C8E00BE5686 /* TwitterLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwitterLoginViewController.xib; sourceTree = "<group>"; };
-		54E4B57F17822CE700BE5686 /* TwitterAuthenticator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterAuthenticator.h; sourceTree = "<group>"; };
-		54E4B58017822CE700BE5686 /* TwitterAuthenticator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterAuthenticator.m; sourceTree = "<group>"; };
-		54E4B58117822CE700BE5686 /* TwitterRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterRequest.h; sourceTree = "<group>"; };
-		54E4B58217822CE700BE5686 /* TwitterRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterRequest.m; sourceTree = "<group>"; };
-		54E4B58317822CE700BE5686 /* TwitterToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterToken.h; sourceTree = "<group>"; };
-		54E4B58417822CE700BE5686 /* TwitterToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterToken.m; sourceTree = "<group>"; };
-		54E4B58817822CFB00BE5686 /* TwitterConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterConsumer.h; sourceTree = "<group>"; };
-		54E4B58917822CFB00BE5686 /* TwitterConsumer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterConsumer.m; sourceTree = "<group>"; };
-		54E4B58B17822D1200BE5686 /* TwitterUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterUtils.h; sourceTree = "<group>"; };
-		54E4B58C17822D1200BE5686 /* TwitterUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterUtils.m; sourceTree = "<group>"; };
 		54E4B59017822D4D00BE5686 /* TwitterClouds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TwitterClouds.png; sourceTree = "<group>"; };
 		54E714CA176B95E200F39D73 /* ActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewController.h; sourceTree = "<group>"; };
 		54E714CB176B95E200F39D73 /* ActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewController.m; sourceTree = "<group>"; };
@@ -591,7 +571,6 @@
 			isa = PBXGroup;
 			children = (
 				54E332D11781ED1E00BFF6A4 /* LinkedIn */,
-				54E4B57817822C7400BE5686 /* Twitter */,
 				54F97204177CFFE7006F6FE5 /* LoginViewController.h */,
 				54F97205177CFFE7006F6FE5 /* LoginViewController.m */,
 				54F97206177CFFE7006F6FE5 /* LoginViewController.xib */,
@@ -690,27 +669,6 @@
 			);
 			name = Categories;
 			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Login/Linkedin/Categories;
-			sourceTree = "<absolute>";
-		};
-		54E4B57817822C7400BE5686 /* Twitter */ = {
-			isa = PBXGroup;
-			children = (
-				54E4B57A17822C8E00BE5686 /* TwitterLoginViewController.h */,
-				54E4B57B17822C8E00BE5686 /* TwitterLoginViewController.m */,
-				54E4B57C17822C8E00BE5686 /* TwitterLoginViewController.xib */,
-				54E4B57F17822CE700BE5686 /* TwitterAuthenticator.h */,
-				54E4B58017822CE700BE5686 /* TwitterAuthenticator.m */,
-				54E4B58117822CE700BE5686 /* TwitterRequest.h */,
-				54E4B58217822CE700BE5686 /* TwitterRequest.m */,
-				54E4B58317822CE700BE5686 /* TwitterToken.h */,
-				54E4B58417822CE700BE5686 /* TwitterToken.m */,
-				54E4B58817822CFB00BE5686 /* TwitterConsumer.h */,
-				54E4B58917822CFB00BE5686 /* TwitterConsumer.m */,
-				54E4B58B17822D1200BE5686 /* TwitterUtils.h */,
-				54E4B58C17822D1200BE5686 /* TwitterUtils.m */,
-			);
-			name = Twitter;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Login/Twitter;
 			sourceTree = "<absolute>";
 		};
 		54E4B58E17822D2700BE5686 /* LinkedIn */ = {
@@ -949,7 +907,6 @@
 				54E3331D1781EF3100BFF6A4 /* OAuthLoginView.xib in Resources */,
 				54E3331F1781EF3100BFF6A4 /* linkedInBluebutton.png in Resources */,
 				54E333201781EF3100BFF6A4 /* linkedInBluebutton-highlight.png in Resources */,
-				54E4B57E17822C8E00BE5686 /* TwitterLoginViewController.xib in Resources */,
 				54E4B59117822D4D00BE5686 /* TwitterClouds.png in Resources */,
 				54D317331784970E00D058F4 /* DetailProfileViewController.xib in Resources */,
 				540560E2178F2E6D009679F4 /* ProfileViewController.xib in Resources */,
@@ -1010,12 +967,6 @@
 				54E333111781EF1300BFF6A4 /* NSString+URLEncoding.m in Sources */,
 				54E333121781EF1300BFF6A4 /* NSURL+Base.m in Sources */,
 				54E3331E1781EF3100BFF6A4 /* OAuthLoginView.m in Sources */,
-				54E4B57D17822C8E00BE5686 /* TwitterLoginViewController.m in Sources */,
-				54E4B58517822CE800BE5686 /* TwitterAuthenticator.m in Sources */,
-				54E4B58617822CE800BE5686 /* TwitterRequest.m in Sources */,
-				54E4B58717822CE800BE5686 /* TwitterToken.m in Sources */,
-				54E4B58A17822CFB00BE5686 /* TwitterConsumer.m in Sources */,
-				54E4B58D17822D1200BE5686 /* TwitterUtils.m in Sources */,
 				5437770617837171000CEBAF /* Provider.m in Sources */,
 				54D317321784970E00D058F4 /* DetailProfileViewController.m in Sources */,
 				54D35222178DCB230068953A /* DBFriendInviter.m in Sources */,

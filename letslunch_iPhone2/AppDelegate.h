@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "CenterViewController.h"
-#import <FacebookSDK/FacebookSDK.h>
 #import "LoginViewController.h"
 #import "OAuthConsumer.h"
 #import "OAuthLoginView.h"
@@ -48,9 +47,6 @@
 
 -(void)loginSuccessfull;
 -(void)hideLoginView;
-
--(void)openSession;
--(void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error;
 
 -(void)writeObjectToKeychain:(id)object forKey:(id)key;
 -(id)getObjectFromKeychainForKey:(id)key;

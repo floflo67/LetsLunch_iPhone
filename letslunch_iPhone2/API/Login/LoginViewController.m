@@ -8,7 +8,6 @@
 
 #import "LoginViewController.h"
 #import "OAuthLoginView.h"
-#import "TwitterLoginViewController.h"
 #import <Twitter/Twitter.h>
 #import <Accounts/Accounts.h>
 
@@ -59,27 +58,6 @@
     [super dealloc];
 }
 
-#pragma twitterLoginViewController delegate
-
-- (void)twitterLoginViewControllerDidCancel:(TwitterLoginViewController*)twitterLoginViewController
-{
-    [twitterLoginViewController dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)twitterLoginViewController:(TwitterLoginViewController*)twitterLoginViewController didSucceedWithToken:(TwitterToken*)token
-{
-	_token = [token retain];
-    
-	// Save the token to the user defaults
-	[[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject: _token] forKey:@"Token"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (void)twitterLoginViewController:(TwitterLoginViewController*)twitterLoginViewController didFailWithError:(NSError*)error
-{
-	NSLog(@"twitterLoginViewController: %@ didFailWithError: %@", self, error);
-}
-
 #pragma text field delegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -113,9 +91,6 @@
         {
             ACAccount* account = [facebookAccounts objectAtIndex:0];
             NSLog(@"%@", account.username);
-        }
-        else {
-            [((AppDelegate*)[UIApplication sharedApplication].delegate) openSession];
         }
     }];
 }

@@ -8,8 +8,6 @@
 
 #import "CenterViewController.h"
 #import "GetStaticLists.h"
-#import "TwitterLoginViewController.h"
-#import <Accounts/Accounts.h>
 #import "KeychainWrapper.h"
 
 @implementation AppDelegate
@@ -26,11 +24,6 @@
     self.tokenItem = [[KeychainWrapper alloc] initWithIdentifier:@"LetsLunchToken" accessGroup:nil];
     if(![[self getObjectFromKeychainForKey:kSecAttrAccount] isEqualToString:@"token"])
         [self.tokenItem resetKeychainItem];
-    
-    /*
-     Suppress FB session
-     */
-    [FBSession.activeSession closeAndClearTokenInformation];
     
     /*
      Sets window
@@ -56,15 +49,7 @@
     _viewController = controller;
     _navController = navController;
     
-    /*if(facebookAccessGranted || twitterAccessGranted) {
-        NSLog(@"autologin");
-        return YES;        
-    }*/
-    
-    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded)
-        [self openSession];
-    else
-        [self showLoginView];
+    [self showLoginView];
     
     return YES;
 }
@@ -99,47 +84,6 @@
     else {
         [self twitterGetProfileInfo];
     }
-}
-
-#pragma facebook events
-
-- (void)openSession
-{
-    [FBSession openActiveSessionWithReadPermissions:nil
-                                       allowLoginUI:YES
-                                  completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
-         [self sessionStateChanged:session state:state error:error];
-     }];
-}
-
-- (void)sessionStateChanged:(FBSession*)session state:(FBSessionState)state error:(NSError*)error
-{
-    switch (state) {
-        case FBSessionStateOpen:
-            if(_loginViewController) {
-                [_loginViewController.view removeFromSuperview];
-                [_loginViewController release];
-            }
-            break;
-        case FBSessionStateClosed:
-        case FBSessionStateClosedLoginFailed:
-            [self.navController popToRootViewControllerAnimated:NO];
-            [FBSession.activeSession closeAndClearTokenInformation];            
-            [self showLoginView];
-            break;
-        default:
-            break;
-    }
-    
-    if (error) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alertView show];
-    }    
-}
-
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-{
-    return [FBSession.activeSession handleOpenURL:url];
 }
 
 #pragma LinkedIn events
@@ -178,95 +122,6 @@
 {
     NSLog(@"%@",[error description]);
 }
-
-/*
-- (void)networkApiCall
-{
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@people/~/network/updates?scope=self&count=1&type=STAT", LI_API_BaseUrl]];
-    OAMutableURLRequest *request = [[OAMutableURLRequest alloc] initWithURL:url consumer:_oAuthLoginView.consumer token:_oAuthLoginView.accessToken callback:nil signatureProvider:nil];
-    
-    [request setValue:@"json" forHTTPHeaderField:@"x-li-format"];
-    
-    OADataFetcher *fetcher = [[OADataFetcher alloc] init];
-    [fetcher fetchDataWithRequest:request delegate:self didFinishSelector:@selector(networkApiCallResult:didFinish:) didFailSelector:@selector(networkApiCallResult:didFail:)];
-    [request release];
-    
-}
-
-- (void)networkApiCallResult:(OAServiceTicket *)ticket didFinish:(NSData *)data
-{
-    NSString *responseBody = [[NSString alloc] initWithData:data
-                                                   encoding:NSUTF8StringEncoding];
-    
-    NSDictionary *person = [[[[[responseBody objectFromJSONString]
-                               objectForKey:@"values"]
-                              objectAtIndex:0]
-                             objectForKey:@"updateContent"]
-                            objectForKey:@"person"];
-    
-    [responseBody release];
-    
-    if ( [person objectForKey:@"currentStatus"] )
-    {
-        
-    }
-    else {
-        
-    }
-    
-    [self.loginViewController dismissViewControllerAnimated:YES completion:nil];
-    //    [self dismissModalViewControllerAnimated:YES];
-}
-
-- (void)networkApiCallResult:(OAServiceTicket *)ticket didFail:(NSData *)error
-{
-    NSLog(@"%@",[error description]);
-}*/
-
-/*
-- (IBAction)postButton_TouchUp:(UIButton *)sender
-{
-    //[statusTextView resignFirstResponder];
-    NSURL *url = [NSURL URLWithString:@"http://api.linkedin.com/v1/people/~/shares"];
-    OAMutableURLRequest *request =
-    [[OAMutableURLRequest alloc] initWithURL:url
-                                    consumer:_oAuthLoginView.consumer
-                                       token:_oAuthLoginView.accessToken
-                                    callback:nil
-                           signatureProvider:nil];
-    
-    NSDictionary *update = [[NSDictionary alloc] initWithObjectsAndKeys:
-                            [[NSDictionary alloc]
-                             initWithObjectsAndKeys:
-                             @"anyone",@"code",nil], @"visibility",
-                            statusTextView.text, @"comment", nil];
-    
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    NSString *updateString = [update JSONString];
-    
-    [request setHTTPBodyWithString:updateString];
-	[request setHTTPMethod:@"POST"];
-    
-    OADataFetcher *fetcher = [[OADataFetcher alloc] init];
-    [fetcher fetchDataWithRequest:request
-                         delegate:self
-                didFinishSelector:@selector(postUpdateApiCallResult:didFinish:)
-                  didFailSelector:@selector(postUpdateApiCallResult:didFail:)];
-    [request release];
-}
-
-- (void)postUpdateApiCallResult:(OAServiceTicket *)ticket didFinish:(NSData *)data
-{
-    // The next thing we want to do is call the network updates
-    [self networkApiCall];
-    
-}
-
-- (void)postUpdateApiCallResult:(OAServiceTicket *)ticket didFail:(NSData *)error
-{
-    NSLog(@"%@",[error description]);
-}
- */
 
 #pragma twitter events
 
@@ -462,11 +317,6 @@
 }
 
 #pragma application life cycle
-
--(void)applicationDidBecomeActive:(UIApplication *)application
-{
-    [FBSession.activeSession handleDidBecomeActive];
-}
 
 - (void)dealloc
 {

@@ -7,17 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TwitterLoginViewController.h"
 #import "LoginRequests.h"
 
-@class TwitterConsumer;
-@class TwitterToken;
 @class LoginRequests;
 
-@interface LoginViewController : UIViewController <UITextFieldDelegate, TwitterLoginViewControllerDelegate, LoginRequestDelegate> {
+@interface LoginViewController : UIViewController <UITextFieldDelegate, LoginRequestDelegate> {
     @private
-        TwitterConsumer* _consumer;
-        TwitterToken* _token;
         LoginRequests *_loginRequest;
 }
 
