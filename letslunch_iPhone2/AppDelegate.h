@@ -32,6 +32,7 @@
 @property (strong, nonatomic) NSMutableArray *listFriendsSuggestion;
 @property (strong, nonatomic) NSMutableArray *listMessages;
 @property (strong, nonatomic) NSMutableArray *listContacts;
+@property (strong, nonatomic) NSMutableArray *listVisitors;
 @property (strong, nonatomic) Activity *ownerActivity;
 
 @property (strong, nonatomic) TwitterConsumer* consumer;
@@ -40,6 +41,7 @@
 
 -(NSMutableArray*)getListActivitiesAndForceReload:(BOOL)shouldReload;
 -(NSMutableArray*)getListFriendsSuggestionAndForceReload:(BOOL)shouldReload;
+-(NSMutableArray*)getListVisitorsAndForceReload:(BOOL)shouldReload;
 -(NSMutableArray*)getListMessagesForContactID:(NSString*)contactID andForceReload:(BOOL)shouldReload;
 -(NSMutableArray*)getListContactsAndForceReload:(BOOL)shouldReload;
 -(Activity*)getOwnerActivityAndForceReload:(BOOL)shouldReload;

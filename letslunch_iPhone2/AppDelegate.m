@@ -414,6 +414,18 @@
     return self.listFriendsSuggestion;
 }
 
+- (NSMutableArray*)getListVisitorsAndForceReload:(BOOL)shouldReload
+{
+    if(!self.listVisitors) {
+        self.listVisitors = [[[NSMutableArray alloc] init] autorelease];
+        self.listVisitors = [GetStaticLists getListVisitors];
+    }
+    else if(shouldReload)
+        self.listVisitors = [GetStaticLists getListVisitors];
+    
+    return self.listVisitors;
+}
+
 - (NSMutableArray*)getListMessagesForContactID:(NSString*)contactID andForceReload:(BOOL)shouldReload
 {
     if(!self.listMessages) {
