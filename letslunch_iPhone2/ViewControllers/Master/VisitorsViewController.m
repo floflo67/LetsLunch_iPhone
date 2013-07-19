@@ -7,6 +7,8 @@
 //
 
 #import "VisitorsViewController.h"
+#import "AppDelegate.h"
+#import "Contacts.h"
 
 @interface VisitorsViewController ()
 
@@ -27,6 +29,22 @@ static VisitorsViewController *sharedSingleton = nil;
     return sharedSingleton;
 }
 
+- (id)init
+{
+    self = [super init];
+    NSString *token = [AppDelegate getObjectFromKeychainForKey:kSecAttrAccount];
+    if (self) {
+        if(!_visitorRequest)
+            _visitorRequest = [[VisitorsRequest alloc] init];
+        
+        if(!_objects)
+            _objects = [[NSMutableArray alloc] init];
+        _objects = [[_visitorRequest getVisitorsWithToken:token] retain];
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -41,7 +59,7 @@ static VisitorsViewController *sharedSingleton = nil;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return [_objects count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -52,6 +70,13 @@ static VisitorsViewController *sharedSingleton = nil;
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
+    NSDictionary *profile = [NSDictionary dictionaryWithDictionary:_objects[indexPath.row]];
+    NSLog(@"%@", profile);
+    Contacts *contact = [[Contacts alloc] initWithDict:profile];
+    
+    cell.textLabel.text = contact.publicname;
+    
+    [contact release];
     return cell;
 }
 

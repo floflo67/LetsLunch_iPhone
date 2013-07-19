@@ -7,8 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VisitorsRequest.h"
 
-@interface VisitorsViewController : UITableViewController
+@interface VisitorsViewController : UITableViewController {
+    VisitorsRequest *_visitorRequest;
+}
+
+@property (nonatomic, strong) NSMutableArray* objects;
+@property (nonatomic, strong) VisitorsRequest *visitorRequest;
 
 +(VisitorsViewController*)getSingleton;
 
