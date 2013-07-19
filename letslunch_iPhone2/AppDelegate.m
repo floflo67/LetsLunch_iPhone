@@ -22,8 +22,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {    
     self.tokenItem = [[KeychainWrapper alloc] initWithIdentifier:@"LetsLunchToken" accessGroup:nil];
-    if(![[self getObjectFromKeychainForKey:kSecAttrAccount] isEqualToString:@"token"])
-        [self.tokenItem resetKeychainItem];
+    /*if(![[self getObjectFromKeychainForKey:kSecAttrAccount] isEqualToString:@"token"])
+        [self.tokenItem resetKeychainItem];*/
     
     /*
      Sets window
@@ -49,7 +49,11 @@
     _viewController = controller;
     _navController = navController;
     
-    [self showLoginView];
+    NSLog(@"%@", [self getObjectFromKeychainForKey:kSecAttrAccount]);
+    if([[self getObjectFromKeychainForKey:kSecAttrAccount] isEqualToString:@"token"])
+        [self showLoginView];
+    else
+        [self.viewController ActivityConfiguration];
     
     return YES;
 }
