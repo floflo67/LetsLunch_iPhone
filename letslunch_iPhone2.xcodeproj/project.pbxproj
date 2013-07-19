@@ -27,8 +27,6 @@
 		5445A6981779210600F3EC97 /* Activity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5445A6971779210600F3EC97 /* Activity.m */; };
 		544DBE641773DC5A00055C8A /* NearbyVenuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 544DBE621773DC5A00055C8A /* NearbyVenuesViewController.m */; };
 		544DBE651773DC5A00055C8A /* NearbyVenuesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 544DBE631773DC5A00055C8A /* NearbyVenuesViewController.xib */; };
-		5457138E177E476C006A69CE /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5457138D177E476C006A69CE /* FacebookSDK.framework */; };
-		54571390177E48A5006A69CE /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5457138F177E48A4006A69CE /* FacebookSDKResources.bundle */; };
 		54571392177E48CF006A69CE /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54571391177E48CF006A69CE /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		54571394177E48D7006A69CE /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54571393177E48D7006A69CE /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		54571396177E48E8006A69CE /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 54571395177E48E8006A69CE /* libsqlite3.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -57,8 +55,7 @@
 		548D36E1176B823700154C36 /* LeftSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36DD176B823700154C36 /* LeftSidebarViewController.m */; };
 		549ADAAC176BCAD5001F1D3F /* CreateActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 549ADAAA176BCAD5001F1D3F /* CreateActivityViewController.m */; };
 		549ADAAD176BCAD5001F1D3F /* CreateActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 549ADAAB176BCAD5001F1D3F /* CreateActivityViewController.xib */; };
-		549ADABC176BE148001F1D3F /* libQuickDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 549ADAB9176BE11D001F1D3F /* libQuickDialog.a */; };
-		549ADABE176BE14F001F1D3F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549ADABD176BE14F001F1D3F /* MapKit.framework */; };
+		549ADABE176BE14F001F1D3F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549ADABD176BE14F001F1D3F /* MapKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		549ADAC0176BE15A001F1D3F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549ADABF176BE159001F1D3F /* CoreLocation.framework */; };
 		54D317321784970E00D058F4 /* DetailProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D317301784970E00D058F4 /* DetailProfileViewController.m */; };
 		54D317331784970E00D058F4 /* DetailProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54D317311784970E00D058F4 /* DetailProfileViewController.xib */; };
@@ -126,32 +123,9 @@
 		54F97203177CE711006F6FE5 /* ImageShare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F97201177CE711006F6FE5 /* ImageShare@2x.png */; };
 		54F97207177CFFE8006F6FE5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F97205177CFFE7006F6FE5 /* LoginViewController.m */; };
 		54F97208177CFFE8006F6FE5 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54F97206177CFFE7006F6FE5 /* LoginViewController.xib */; };
+		54FC651A1798C28000269D3D /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54FC65191798C28000269D3D /* FacebookSDK.framework */; };
 		54FE68FC17736B1000AD7987 /* ButtonMenuRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 54FE68FB17736B1000AD7987 /* ButtonMenuRight.png */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		549ADAB6176BE11D001F1D3F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 549ADAB1176BE11D001F1D3F /* QuickDialog.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D80B0E3313E052DF00FA85CA;
-			remoteInfo = QuickDialogExample;
-		};
-		549ADAB8176BE11D001F1D3F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 549ADAB1176BE11D001F1D3F /* QuickDialog.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2C542393145ADEBD0026A152;
-			remoteInfo = QuickDialog;
-		};
-		549ADABA176BE137001F1D3F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 549ADAB1176BE11D001F1D3F /* QuickDialog.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 2C542392145ADEBD0026A152;
-			remoteInfo = QuickDialog;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		5400CFFD177A0C98002CC092 /* ContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactViewController.h; sourceTree = "<group>"; };
@@ -186,19 +160,17 @@
 		544DBE621773DC5A00055C8A /* NearbyVenuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyVenuesViewController.m; sourceTree = "<group>"; };
 		544DBE631773DC5A00055C8A /* NearbyVenuesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearbyVenuesViewController.xib; sourceTree = "<group>"; };
 		5457138C177E39C1006A69CE /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
-		5457138D177E476C006A69CE /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
-		5457138F177E48A4006A69CE /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKResources.bundle; path = ../../FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle; sourceTree = "<group>"; };
 		54571391177E48CF006A69CE /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		54571393177E48D7006A69CE /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		54571395177E48E8006A69CE /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		54571397177E48EF006A69CE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		54571399177E48F4006A69CE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		547D54CF1773B21F0069D837 /* Foursquare2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Foursquare2.h; path = letslunch_iPhone2/Foursquare2.h; sourceTree = "<group>"; };
-		547D54D01773B21F0069D837 /* Foursquare2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Foursquare2.m; path = letslunch_iPhone2/Foursquare2.m; sourceTree = "<group>"; };
-		547D54D11773B21F0069D837 /* FSRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSRequester.h; path = letslunch_iPhone2/FSRequester.h; sourceTree = "<group>"; };
-		547D54D21773B21F0069D837 /* FSRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSRequester.m; path = letslunch_iPhone2/FSRequester.m; sourceTree = "<group>"; };
-		547D54D31773B21F0069D837 /* FSTargetCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSTargetCallback.h; path = letslunch_iPhone2/FSTargetCallback.h; sourceTree = "<group>"; };
-		547D54D41773B21F0069D837 /* FSTargetCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSTargetCallback.m; path = letslunch_iPhone2/FSTargetCallback.m; sourceTree = "<group>"; };
+		547D54CF1773B21F0069D837 /* Foursquare2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Foursquare2.h; path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Foursquare/Foursquare2.h; sourceTree = "<absolute>"; };
+		547D54D01773B21F0069D837 /* Foursquare2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Foursquare2.m; path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Foursquare/Foursquare2.m; sourceTree = "<absolute>"; };
+		547D54D11773B21F0069D837 /* FSRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSRequester.h; path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Foursquare/FSRequester.h; sourceTree = "<absolute>"; };
+		547D54D21773B21F0069D837 /* FSRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSRequester.m; path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Foursquare/FSRequester.m; sourceTree = "<absolute>"; };
+		547D54D31773B21F0069D837 /* FSTargetCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSTargetCallback.h; path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Foursquare/FSTargetCallback.h; sourceTree = "<absolute>"; };
+		547D54D41773B21F0069D837 /* FSTargetCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSTargetCallback.m; path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Foursquare/FSTargetCallback.m; sourceTree = "<absolute>"; };
 		547D54DA1773B2300069D837 /* FSVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVenue.h; sourceTree = "<group>"; };
 		547D54DB1773B2300069D837 /* FSVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVenue.m; sourceTree = "<group>"; };
 		547D54DC1773B2300069D837 /* FSConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSConverter.h; sourceTree = "<group>"; };
@@ -213,9 +185,9 @@
 		548D36BC176B819300154C36 /* letslunch_iPhone2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "letslunch_iPhone2-Prefix.pch"; sourceTree = "<group>"; };
 		548D36BD176B819300154C36 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		548D36BE176B819300154C36 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		548D36C0176B819300154C36 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = letslunch_iPhone2/Default.png; sourceTree = "<group>"; };
-		548D36C2176B819300154C36 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "letslunch_iPhone2/Default@2x.png"; sourceTree = "<group>"; };
-		548D36C4176B819300154C36 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "letslunch_iPhone2/Default-568h@2x.png"; sourceTree = "<group>"; };
+		548D36C0176B819300154C36 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/Images/Other/Default.png; sourceTree = "<absolute>"; };
+		548D36C2176B819300154C36 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "/Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/Images/Other/Default@2x.png"; sourceTree = "<absolute>"; };
+		548D36C4176B819300154C36 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "/Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/Images/Other/Default-568h@2x.png"; sourceTree = "<absolute>"; };
 		548D36CB176B81B700154C36 /* JTRevealSidebarV2Delegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTRevealSidebarV2Delegate.h; sourceTree = "<group>"; };
 		548D36CC176B81B700154C36 /* UINavigationItem+JTRevealSidebarV2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+JTRevealSidebarV2.h"; sourceTree = "<group>"; };
 		548D36CD176B81B700154C36 /* UINavigationItem+JTRevealSidebarV2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+JTRevealSidebarV2.m"; sourceTree = "<group>"; };
@@ -231,7 +203,6 @@
 		549ADAAA176BCAD5001F1D3F /* CreateActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateActivityViewController.m; sourceTree = "<group>"; };
 		549ADAAB176BCAD5001F1D3F /* CreateActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateActivityViewController.xib; sourceTree = "<group>"; };
 		549ADAAE176BCAF2001F1D3F /* CreateActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateActivityViewController.h; sourceTree = "<group>"; };
-		549ADAB1176BE11D001F1D3F /* QuickDialog.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QuickDialog.xcodeproj; path = QuickDialog/QuickDialog.xcodeproj; sourceTree = "<group>"; };
 		549ADABD176BE14F001F1D3F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		549ADABF176BE159001F1D3F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		54D3172F1784970E00D058F4 /* DetailProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailProfileViewController.h; sourceTree = "<group>"; };
@@ -289,8 +260,8 @@
 		54E333161781EF3100BFF6A4 /* OAuthLoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OAuthLoginView.xib; sourceTree = "<group>"; };
 		54E333171781EF3100BFF6A4 /* OAuthLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthLoginView.m; sourceTree = "<group>"; };
 		54E333181781EF3100BFF6A4 /* OAuthLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthLoginView.h; sourceTree = "<group>"; };
-		54E333191781EF3100BFF6A4 /* linkedInBluebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = linkedInBluebutton.png; path = letslunch_iPhone2/linkedInBluebutton.png; sourceTree = "<group>"; };
-		54E3331A1781EF3100BFF6A4 /* linkedInBluebutton-highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "linkedInBluebutton-highlight.png"; path = "letslunch_iPhone2/linkedInBluebutton-highlight.png"; sourceTree = "<group>"; };
+		54E333191781EF3100BFF6A4 /* linkedInBluebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = linkedInBluebutton.png; sourceTree = "<group>"; };
+		54E3331A1781EF3100BFF6A4 /* linkedInBluebutton-highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "linkedInBluebutton-highlight.png"; sourceTree = "<group>"; };
 		54E4B57A17822C8E00BE5686 /* TwitterLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterLoginViewController.h; sourceTree = "<group>"; };
 		54E4B57B17822C8E00BE5686 /* TwitterLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterLoginViewController.m; sourceTree = "<group>"; };
 		54E4B57C17822C8E00BE5686 /* TwitterLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwitterLoginViewController.xib; sourceTree = "<group>"; };
@@ -341,6 +312,7 @@
 		54F97204177CFFE7006F6FE5 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		54F97205177CFFE7006F6FE5 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		54F97206177CFFE7006F6FE5 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		54FC65191798C28000269D3D /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		54FD4A881790AD470045B2DE /* CenterViewControllerImportFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CenterViewControllerImportFile.h; sourceTree = "<group>"; };
 		54FE68FB17736B1000AD7987 /* ButtonMenuRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonMenuRight.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -360,12 +332,11 @@
 				54571392177E48CF006A69CE /* AdSupport.framework in Frameworks */,
 				549ADAC0176BE15A001F1D3F /* CoreLocation.framework in Frameworks */,
 				549ADABE176BE14F001F1D3F /* MapKit.framework in Frameworks */,
-				549ADABC176BE148001F1D3F /* libQuickDialog.a in Frameworks */,
 				548D36D4176B81E900154C36 /* QuartzCore.framework in Frameworks */,
 				548D36AF176B819300154C36 /* UIKit.framework in Frameworks */,
 				548D36B1176B819300154C36 /* Foundation.framework in Frameworks */,
 				548D36B3176B819300154C36 /* CoreGraphics.framework in Frameworks */,
-				5457138E177E476C006A69CE /* FacebookSDK.framework in Frameworks */,
+				54FC651A1798C28000269D3D /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,7 +350,8 @@
 				5400D004177A598D002CC092 /* MessageToSelf.png */,
 			);
 			name = Message;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/Images/Message;
+			sourceTree = "<absolute>";
 		};
 		5400D00A177A625F002CC092 /* Activity */ = {
 			isa = PBXGroup;
@@ -388,7 +360,8 @@
 				5445A68C17790C0C00F3EC97 /* buttonBroadcastAvailability@2x.png */,
 			);
 			name = Activity;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/Images/Activity;
+			sourceTree = "<absolute>";
 		};
 		5400D00B177A6288002CC092 /* CenterBar */ = {
 			isa = PBXGroup;
@@ -398,7 +371,8 @@
 				548D36D7176B821B00154C36 /* ButtonMenuLeft@2x.png */,
 			);
 			name = CenterBar;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/Images/CenterBar;
+			sourceTree = "<absolute>";
 		};
 		5400D00C177A62A6002CC092 /* Other */ = {
 			isa = PBXGroup;
@@ -408,7 +382,8 @@
 				548D36C4176B819300154C36 /* Default-568h@2x.png */,
 			);
 			name = Other;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/Images/Other;
+			sourceTree = "<absolute>";
 		};
 		540560DD178F2D71009679F4 /* Profile */ = {
 			isa = PBXGroup;
@@ -417,7 +392,8 @@
 				540560E4178F2F73009679F4 /* ProfileRequest.m */,
 			);
 			name = Profile;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Profile;
+			sourceTree = "<absolute>";
 		};
 		54403821176B8E4D00AA3588 /* API */ = {
 			isa = PBXGroup;
@@ -434,8 +410,8 @@
 				540560D0178F272E009679F4 /* MutableRequest.m */,
 			);
 			name = API;
-			path = ..;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API;
+			sourceTree = "<absolute>";
 		};
 		5445A6891778D6A100F3EC97 /* Master */ = {
 			isa = PBXGroup;
@@ -451,7 +427,8 @@
 				540560E0178F2E6D009679F4 /* ProfileViewController.xib */,
 			);
 			name = Master;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/ViewControllers/Master;
+			sourceTree = "<absolute>";
 		};
 		5445A68A1778D6A500F3EC97 /* Detail */ = {
 			isa = PBXGroup;
@@ -467,7 +444,8 @@
 				54E714D2176B9EDA00F39D73 /* MessageViewController.xib */,
 			);
 			name = Detail;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/ViewControllers/Detail;
+			sourceTree = "<absolute>";
 		};
 		5445A68F1779194B00F3EC97 /* Class */ = {
 			isa = PBXGroup;
@@ -480,7 +458,8 @@
 				5445A6971779210600F3EC97 /* Activity.m */,
 			);
 			name = Class;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/Class;
+			sourceTree = "<absolute>";
 		};
 		547D54D91773B2240069D837 /* Objects */ = {
 			isa = PBXGroup;
@@ -491,7 +470,8 @@
 				547D54DD1773B2300069D837 /* FSConverter.m */,
 			);
 			name = Objects;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/ViewControllers/Foursquare/Objects;
+			sourceTree = "<absolute>";
 		};
 		548D36A2176B819300154C36 = {
 			isa = PBXGroup;
@@ -514,16 +494,14 @@
 		548D36AD176B819300154C36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				549ADAB1176BE11D001F1D3F /* QuickDialog.xcodeproj */,
+				54FC65191798C28000269D3D /* FacebookSDK.framework */,
 				54571395177E48E8006A69CE /* libsqlite3.dylib */,
-				5457138F177E48A4006A69CE /* FacebookSDKResources.bundle */,
 				54571393177E48D7006A69CE /* Accounts.framework */,
 				54D3521E178DC8C30068953A /* AddressBook.framework */,
 				54D3521B178DC89D0068953A /* AddressBookUI.framework */,
 				54571391177E48CF006A69CE /* AdSupport.framework */,
 				548D36B2176B819300154C36 /* CoreGraphics.framework */,
 				549ADABF176BE159001F1D3F /* CoreLocation.framework */,
-				5457138D177E476C006A69CE /* FacebookSDK.framework */,
 				548D36B0176B819300154C36 /* Foundation.framework */,
 				549ADABD176BE14F001F1D3F /* MapKit.framework */,
 				548D36D3176B81E900154C36 /* QuartzCore.framework */,
@@ -533,11 +511,14 @@
 				543777091783A1D3000CEBAF /* Twitter.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/Frameworks;
+			sourceTree = "<absolute>";
 		};
 		548D36B4176B819300154C36 /* letslunch_iPhone2 */ = {
 			isa = PBXGroup;
 			children = (
+				548D36BC176B819300154C36 /* letslunch_iPhone2-Prefix.pch */,
+				54FC65161798C0FC00269D3D /* en.lproj */,
 				5445A68F1779194B00F3EC97 /* Class */,
 				54F5984E1770C9350074F43C /* BarsViewController */,
 				54E714C9176B95B500F39D73 /* ViewControllers */,
@@ -557,13 +538,12 @@
 			isa = PBXGroup;
 			children = (
 				548D36B6176B819300154C36 /* letslunch_iPhone2-Info.plist */,
-				548D36B7176B819300154C36 /* InfoPlist.strings */,
 				548D36BA176B819300154C36 /* main.m */,
-				548D36BC176B819300154C36 /* letslunch_iPhone2-Prefix.pch */,
 				5457138C177E39C1006A69CE /* constants.h */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
+			path = "/Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/Supporting Files";
+			sourceTree = "<absolute>";
 		};
 		548D36D2176B81C600154C36 /* JTRevealSidebarV2 */ = {
 			isa = PBXGroup;
@@ -575,7 +555,8 @@
 				548D36CF176B81B700154C36 /* UIViewController+JTRevealSidebarV2.m */,
 			);
 			name = JTRevealSidebarV2;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/JTRevealSidebarV2;
+			sourceTree = "<absolute>";
 		};
 		548D36D5176B820700154C36 /* Images */ = {
 			isa = PBXGroup;
@@ -590,17 +571,8 @@
 				54F5985C1770ECEF0074F43C /* LeftBarMenu */,
 			);
 			name = Images;
-			path = ..;
-			sourceTree = "<group>";
-		};
-		549ADAB2176BE11D001F1D3F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				549ADAB7176BE11D001F1D3F /* QuickDialogExample.app */,
-				549ADAB9176BE11D001F1D3F /* libQuickDialog.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/Images;
+			sourceTree = "<absolute>";
 		};
 		54D317341784F52200D058F4 /* Login */ = {
 			isa = PBXGroup;
@@ -619,8 +591,8 @@
 				54D35224178DDA510068953A /* LoginRequests.m */,
 			);
 			name = Login;
-			path = letslunch_iPhone2;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Login;
+			sourceTree = "<absolute>";
 		};
 		54E332D11781ED1E00BFF6A4 /* LinkedIn */ = {
 			isa = PBXGroup;
@@ -631,7 +603,8 @@
 				54E332D31781EEB600BFF6A4 /* JSON */,
 			);
 			name = LinkedIn;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Login/Linkedin;
+			sourceTree = "<absolute>";
 		};
 		54E332D31781EEB600BFF6A4 /* JSON */ = {
 			isa = PBXGroup;
@@ -640,7 +613,8 @@
 				54E332D81781EEE400BFF6A4 /* JSONKit.h */,
 			);
 			name = JSON;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Login/Linkedin/JSON;
+			sourceTree = "<absolute>";
 		};
 		54E332D41781EEBC00BFF6A4 /* Crypto */ = {
 			isa = PBXGroup;
@@ -653,7 +627,8 @@
 				54E333061781EF0800BFF6A4 /* sha1.h */,
 			);
 			name = Crypto;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Login/Linkedin/Crypto;
+			sourceTree = "<absolute>";
 		};
 		54E332D51781EEC600BFF6A4 /* OAuth */ = {
 			isa = PBXGroup;
@@ -687,7 +662,8 @@
 				54E332F41781EEF700BFF6A4 /* OAAtachmentF.h */,
 			);
 			name = OAuth;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Login/Linkedin/OAuth;
+			sourceTree = "<absolute>";
 		};
 		54E332D61781EED200BFF6A4 /* Categories */ = {
 			isa = PBXGroup;
@@ -700,7 +676,8 @@
 				54E3330F1781EF1300BFF6A4 /* NSURL+Base.m */,
 			);
 			name = Categories;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Login/Linkedin/Categories;
+			sourceTree = "<absolute>";
 		};
 		54E4B57817822C7400BE5686 /* Twitter */ = {
 			isa = PBXGroup;
@@ -720,7 +697,8 @@
 				54E4B58C17822D1200BE5686 /* TwitterUtils.m */,
 			);
 			name = Twitter;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Login/Twitter;
+			sourceTree = "<absolute>";
 		};
 		54E4B58E17822D2700BE5686 /* LinkedIn */ = {
 			isa = PBXGroup;
@@ -729,7 +707,8 @@
 				54E3331A1781EF3100BFF6A4 /* linkedInBluebutton-highlight.png */,
 			);
 			name = LinkedIn;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/Images/LinkedIn;
+			sourceTree = "<absolute>";
 		};
 		54E4B58F17822D2E00BE5686 /* Twitter */ = {
 			isa = PBXGroup;
@@ -737,7 +716,8 @@
 				54E4B59017822D4D00BE5686 /* TwitterClouds.png */,
 			);
 			name = Twitter;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/Images/Twitter;
+			sourceTree = "<absolute>";
 		};
 		54E714C9176B95B500F39D73 /* ViewControllers */ = {
 			isa = PBXGroup;
@@ -749,7 +729,8 @@
 				54F971FB177CE13E006F6FE5 /* Share */,
 			);
 			name = ViewControllers;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/ViewControllers;
+			sourceTree = "<absolute>";
 		};
 		54E9D6DA17974A0F00E84EFB /* Lunches */ = {
 			isa = PBXGroup;
@@ -758,7 +739,8 @@
 				54E9D6DD17974A6200E84EFB /* LunchesRequest.m */,
 			);
 			name = Lunches;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Lunches;
+			sourceTree = "<absolute>";
 		};
 		54E9EB0317948BE400F937CA /* Friends */ = {
 			isa = PBXGroup;
@@ -771,7 +753,8 @@
 				54E9EAFA1794634500F937CA /* InviteViewController.xib */,
 			);
 			name = Friends;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/ViewControllers/Friends;
+			sourceTree = "<absolute>";
 		};
 		54E9EB0417948CC500F937CA /* Foursquare */ = {
 			isa = PBXGroup;
@@ -784,7 +767,8 @@
 				5400D008177A59DB002CC092 /* ThreadCell.m */,
 			);
 			name = Foursquare;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/ViewControllers/Foursquare;
+			sourceTree = "<absolute>";
 		};
 		54F5984E1770C9350074F43C /* BarsViewController */ = {
 			isa = PBXGroup;
@@ -797,7 +781,8 @@
 				54F598501770C96D0074F43C /* RightSidebarViewController.m */,
 			);
 			name = BarsViewController;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/BarsViewController;
+			sourceTree = "<absolute>";
 		};
 		54F5985C1770ECEF0074F43C /* LeftBarMenu */ = {
 			isa = PBXGroup;
@@ -813,7 +798,8 @@
 				54F598551770EB360074F43C /* MessagesMenuItem@2x.png */,
 			);
 			name = LeftBarMenu;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/Images/LeftBarMenu;
+			sourceTree = "<absolute>";
 		};
 		54F5986B17713A210074F43C /* Sharing */ = {
 			isa = PBXGroup;
@@ -826,7 +812,8 @@
 				5409986B177239F2003DFD70 /* ShareButton.png */,
 			);
 			name = Sharing;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/Images/Sharing;
+			sourceTree = "<absolute>";
 		};
 		54F971FB177CE13E006F6FE5 /* Share */ = {
 			isa = PBXGroup;
@@ -836,7 +823,17 @@
 				54F971F8177CE12B006F6FE5 /* ShareViewController.xib */,
 			);
 			name = Share;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/ViewControllers/Share;
+			sourceTree = "<absolute>";
+		};
+		54FC65161798C0FC00269D3D /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				548D36B7176B819300154C36 /* InfoPlist.strings */,
+			);
+			name = en.lproj;
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/en.lproj;
+			sourceTree = "<absolute>";
 		};
 		54FD4A8A1790B6010045B2DE /* Foursquare */ = {
 			isa = PBXGroup;
@@ -849,7 +846,8 @@
 				547D54D41773B21F0069D837 /* FSTargetCallback.m */,
 			);
 			name = Foursquare;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Foursquare;
+			sourceTree = "<absolute>";
 		};
 /* End PBXGroup section */
 
@@ -865,7 +863,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				549ADABB176BE137001F1D3F /* PBXTargetDependency */,
 			);
 			name = letslunch_iPhone2;
 			productName = letslunch_iPhone2;
@@ -891,35 +888,12 @@
 			mainGroup = 548D36A2176B819300154C36;
 			productRefGroup = 548D36AC176B819300154C36 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 549ADAB2176BE11D001F1D3F /* Products */;
-					ProjectRef = 549ADAB1176BE11D001F1D3F /* QuickDialog.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				548D36AA176B819300154C36 /* letslunch_iPhone2 */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		549ADAB7176BE11D001F1D3F /* QuickDialogExample.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = QuickDialogExample.app;
-			remoteRef = 549ADAB6176BE11D001F1D3F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		549ADAB9176BE11D001F1D3F /* libQuickDialog.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libQuickDialog.a;
-			remoteRef = 549ADAB8176BE11D001F1D3F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		548D36A9176B819300154C36 /* Resources */ = {
@@ -959,7 +933,6 @@
 				54F97202177CE711006F6FE5 /* ImageShare.png in Resources */,
 				54F97203177CE711006F6FE5 /* ImageShare@2x.png in Resources */,
 				54F97208177CFFE8006F6FE5 /* LoginViewController.xib in Resources */,
-				54571390177E48A5006A69CE /* FacebookSDKResources.bundle in Resources */,
 				54E3331D1781EF3100BFF6A4 /* OAuthLoginView.xib in Resources */,
 				54E3331F1781EF3100BFF6A4 /* linkedInBluebutton.png in Resources */,
 				54E333201781EF3100BFF6A4 /* linkedInBluebutton-highlight.png in Resources */,
@@ -1045,14 +1018,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		549ADABB176BE137001F1D3F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = QuickDialog;
-			targetProxy = 549ADABA176BE137001F1D3F /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
 		548D36B7176B819300154C36 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
@@ -1060,7 +1025,8 @@
 				548D36B8176B819300154C36 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2;
+			sourceTree = "<absolute>";
 		};
 /* End PBXVariantGroup section */
 
@@ -1126,10 +1092,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../FacebookSDK\"",
+					"\"$(SRCROOT)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "letslunch_iPhone2/letslunch_iPhone2-Prefix.pch";
-				INFOPLIST_FILE = "letslunch_iPhone2/letslunch_iPhone2-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/letslunch_iPhone2/Supporting Files/letslunch_iPhone2-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/QuickDialog\"";
@@ -1144,10 +1111,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../FacebookSDK\"",
+					"\"$(SRCROOT)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "letslunch_iPhone2/letslunch_iPhone2-Prefix.pch";
-				INFOPLIST_FILE = "letslunch_iPhone2/letslunch_iPhone2-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/letslunch_iPhone2/Supporting Files/letslunch_iPhone2-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/QuickDialog\"";
