@@ -88,6 +88,13 @@
     self.navigationItem.title = @"Profile";
 }
 
+- (void)VisitorsConfiguration
+{
+    self.centerView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
+    [self.centerView addSubview:[VisitorsViewController getSingleton].view];
+    self.navigationItem.title = @"Visitors";
+}
+
 - (void)logout
 {
     [AppDelegate logout];
@@ -285,6 +292,8 @@
         [self MessageConfiguration];
     if([[object description] isEqualToString:@"Profile"])
         [self ProfileConfiguration];
+    if([[object description] isEqualToString:@"Visitors"])
+       [self VisitorsConfiguration];
     if([[object description] isEqualToString:@"Logout"])
         [self logout];
 }

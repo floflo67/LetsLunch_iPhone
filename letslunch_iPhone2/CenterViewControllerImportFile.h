@@ -21,6 +21,7 @@
     #import "ShareViewController.h"
     #import "ProfileViewController.h"
     #import "InviteViewController.h"
+    #import "VisitorsViewController.h"
 #endif
 
 #endif

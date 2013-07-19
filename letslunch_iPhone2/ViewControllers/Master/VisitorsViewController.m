@@ -14,6 +14,19 @@
 
 @implementation VisitorsViewController
 
+static VisitorsViewController *sharedSingleton = nil;
++ (VisitorsViewController*)getSingleton
+{
+    if (sharedSingleton != nil)
+        return sharedSingleton;
+    @synchronized(self)
+    {
+        if (sharedSingleton == nil)
+            sharedSingleton = [[self alloc] init];
+    }
+    return sharedSingleton;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
