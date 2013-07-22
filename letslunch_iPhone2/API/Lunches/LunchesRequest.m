@@ -92,7 +92,7 @@
         [parameters setValue:token forKey:@"authToken"];
         [parameters setValue:lunchType forKey:@"lunchType"];
         [parameters setValue:lunchDate forKey:@"lunchDate"];
-        [parameters setValue:postingTime forKey:@"postingTime"];
+        [parameters setValue:postingTime forKey:@"startTime"];
         [parameters setValue:activity.description forKey:@"description"];
         [parameters setValue:activity.venue.name forKey:@"name"];
         [parameters setValue:activity.venue.venueId forKey:@"id"];
