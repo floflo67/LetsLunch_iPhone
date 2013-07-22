@@ -16,7 +16,6 @@
 @synthesize viewController = _viewController;
 @synthesize navController = _navController;
 @synthesize loginViewController = _loginViewController;
-@synthesize oAuthLoginView = _oAuthLoginView;
 @synthesize tokenItem;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -77,90 +76,6 @@
     [_loginViewController.view setHidden:YES];
     [_loginViewController release];
 }
-
-#pragma OAuthLoginView events
-
--(void) loginViewDidFinish:(NSNotification*)notification
-{
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
-    if(_loginViewController.isLinkedIn)
-        [self linkedInGetProfileInfo];
-    else {
-        [self twitterGetProfileInfo];
-    }
-}
-
-#pragma LinkedIn events
-
-- (void)linkedInGetProfileInfo
-{
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@people/~", LI_API_BaseUrl]];
-    OAMutableURLRequest *request = [[OAMutableURLRequest alloc] initWithURL:url consumer:_oAuthLoginView.consumer token:_oAuthLoginView.accessToken callback:nil signatureProvider:nil];
-    
-    [request setValue:@"json" forHTTPHeaderField:@"x-li-format"];
-    
-    OADataFetcher *fetcher = [[OADataFetcher alloc] init];
-    [fetcher fetchDataWithRequest:request delegate:self didFinishSelector:@selector(linkedInGetProfilInfoResult:didFinish:) didFailSelector:@selector(linkedInGetProfilInfoResult:didFail:)];
-    [request release];
-}
-
-- (void)linkedInGetProfilInfoResult:(OAServiceTicket*)ticket didFinish:(NSData*)data
-{
-    NSString *responseBody = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    
-    NSDictionary *profile = [responseBody objectFromJSONString];
-    NSLog(@"%@", profile);
-    [responseBody release];
-    
-    if(profile && [profile objectForKey:@"firstName"])
-    {
-        //[self loginSuccessfull];
-        NSLog(@"%@", [profile objectForKey:@"firstName"]);
-    }
-    
-}
-
-- (void)linkedInGetProfilInfoResult:(OAServiceTicket*)ticket didFail:(NSData*)error
-{
-    NSLog(@"%@",[error description]);
-}
-
-#pragma twitter events
-
-- (void)twitterGetProfileInfo
-{
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@users/show.json?screen_name=%@", TW_API_BaseUrl, _oAuthLoginView.accessToken.screen_name]];
-    OAMutableURLRequest *request = [[OAMutableURLRequest alloc] initWithURL:url consumer:_oAuthLoginView.consumer token:_oAuthLoginView.accessToken callback:nil signatureProvider:nil];
-    
-    [request setValue:@"json" forHTTPHeaderField:@"x-li-format"];
-    
-    OADataFetcher *fetcher = [[OADataFetcher alloc] init];
-    [fetcher fetchDataWithRequest:request delegate:self didFinishSelector:@selector(twitterGetProfilInfoResult:didFinish:) didFailSelector:@selector(twitterGetProfilInfoResult:didFail:)];
-    [request release];
-}
-
-- (void)twitterGetProfilInfoResult:(OAServiceTicket*)ticket didFinish:(NSData*)data
-{
-    NSString *responseBody = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSDictionary *profile = [responseBody objectFromJSONString];
-    [responseBody release];
-    
-    if(profile && [profile objectForKey:@"name"])
-    {
-        NSLog(@"%@", [profile objectForKey:@"name"]);
-        [self hideLoginView];
-    }
-    
-    // The next thing we want to do is call the network updates
-    //[self networkApiCall];
-    
-}
-
-- (void)twitterGetProfilInfoResult:(OAServiceTicket*)ticket didFail:(NSData*)error
-{
-    NSLog(@"%@",[error description]);
-}
-
 
 #pragma custom functions
 
@@ -331,7 +246,6 @@
     [self.ownerActivity release];
     [self.navController release];
     [self.loginViewController release];
-    [self.oAuthLoginView release];
     [self.viewController release];
     [self.window release];
     [self.tokenItem release];

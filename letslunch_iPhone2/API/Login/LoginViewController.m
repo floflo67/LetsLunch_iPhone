@@ -7,9 +7,9 @@
 //
 
 #import "LoginViewController.h"
-#import "OAuthLoginView.h"
 #import <Twitter/Twitter.h>
 #import <Accounts/Accounts.h>
+#import "LinkedInViewController.h"
 
 @interface LoginViewController ()
 
@@ -125,14 +125,8 @@
 
 - (void)logInWithLinkedIn
 {
-    self.isLinkedIn = YES;
-    OAuthLoginView* oAuthLoginView = [[OAuthLoginView alloc] initWithLinkedIn];
-    AppDelegate *app = [UIApplication sharedApplication].delegate;
-    app.oAuthLoginView = oAuthLoginView;
-    
-    // register to be told when the login is finished
-    [[NSNotificationCenter defaultCenter] addObserver:app selector:@selector(loginViewDidFinish:) name:@"loginViewDidFinish" object:oAuthLoginView];
-    [self presentViewController:oAuthLoginView animated:YES completion:nil];
+    LinkedInViewController *linkedinViewController = [[LinkedInViewController alloc] init];
+    [self.view addSubview:linkedinViewController.view];
 }
 
 - (BOOL)buttonLogInClick

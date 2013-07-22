@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "CenterViewController.h"
 #import "LoginViewController.h"
-#import "OAuthConsumer.h"
-#import "OAuthLoginView.h"
 #import "Activity.h"
 #import "KeychainWrapper.h"
 
@@ -25,7 +23,6 @@
 @property (strong, nonatomic) CenterViewController *viewController;
 @property (strong, nonatomic) UINavigationController *navController;
 @property (strong, nonatomic) LoginViewController *loginViewController;
-@property (nonatomic, retain) OAuthLoginView *oAuthLoginView;
 
 @property (strong, nonatomic) NSMutableArray *listActivities;
 @property (strong, nonatomic) NSMutableArray *listFriendsSuggestion;
