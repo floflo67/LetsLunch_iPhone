@@ -57,9 +57,9 @@
     description
     degreesLatitude
     degreesLongitude
-    name // can be null - depend on venue
-    id // can be null - depend on venue
-    address // can be null - depend on venue
+    venueName // can be null - depend on venue
+    venueId // can be null - depend on venue
+    venueAddress // can be null - depend on venue
  */
 - (void)addLunchWithToken:(NSString*)token andActivity:(Activity*)activity
 {
@@ -94,11 +94,11 @@
         [parameters setValue:lunchDate forKey:@"lunchDate"];
         [parameters setValue:postingTime forKey:@"startTime"];
         [parameters setValue:activity.description forKey:@"description"];
-        [parameters setValue:activity.venue.name forKey:@"name"];
-        [parameters setValue:activity.venue.venueId forKey:@"id"];
+        [parameters setValue:activity.venue.name forKey:@"venueName"];
+        [parameters setValue:activity.venue.venueId forKey:@"venueId"];
         [parameters setValue:[NSString stringWithFormat:@"%f", activity.venue.location.coordinate.latitude] forKey:@"degreesLatitude"];
         [parameters setValue:[NSString stringWithFormat:@"%f", activity.venue.location.coordinate.longitude] forKey:@"degreesLongitude"];
-        [parameters setValue:activity.venue.location.address forKey:@"address"];
+        [parameters setValue:activity.venue.location.address forKey:@"venueAddress"];
         
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@me/availability/add",LL_API_BaseUrl]];
         MutableRequest *request = [[MutableRequest alloc] initWithURL:url andParameters:parameters andType:@"POST"];
@@ -116,11 +116,11 @@
 }
 
 /*
- URL: http://letslunch.dev.knackforge.com/api/me/availability/delete
+ URL: http://letslunch.dev.knackforge.com/api/me/lunch/cancel
  Request Type: POST
  Parameters:
     authToken
-    availabilityID // to know which is selected
+    id // to know which is selected
  */
 - (NSDictionary *)suppressLunchWithToken:(NSString*)token andActivityID:(NSString*)activityID
 {
@@ -130,7 +130,8 @@
      */
     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
     [parameters setValue:token forKey:@"authToken"];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@me/availability/delete",LL_API_BaseUrl]];
+    [parameters setValue:activityID forKey:@"id"];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@me/lunch/cancel",LL_API_BaseUrl]];
     MutableRequest *request = [[MutableRequest alloc] initWithURL:url andParameters:parameters andType:@"POST"];
     //_connection = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
     
