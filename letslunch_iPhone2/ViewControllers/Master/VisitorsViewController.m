@@ -9,6 +9,7 @@
 #import "VisitorsViewController.h"
 #import "AppDelegate.h"
 #import "Contacts.h"
+#import "DetailProfileViewController.h"
 
 @interface VisitorsViewController ()
 
@@ -71,7 +72,6 @@ static VisitorsViewController *sharedSingleton = nil;
     }
     
     NSDictionary *profile = [NSDictionary dictionaryWithDictionary:_objects[indexPath.row]];
-    NSLog(@"%@", profile);
     Contacts *contact = [[Contacts alloc] initWithDict:profile];
     
     cell.textLabel.text = contact.publicname;
@@ -80,19 +80,15 @@ static VisitorsViewController *sharedSingleton = nil;
     return cell;
 }
 
-/*
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
+    NSDictionary *profile = [NSDictionary dictionaryWithDictionary:_objects[indexPath.row]];
+    Contacts *contact = [[Contacts alloc] initWithDict:profile];
     
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     
-}*/
+    DetailProfileViewController *detailViewController = [[[DetailProfileViewController alloc] initWithContactID:contact.ID] autorelease];
+    [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController.navigationController pushViewController:detailViewController animated:YES];
+}
 
 @end
