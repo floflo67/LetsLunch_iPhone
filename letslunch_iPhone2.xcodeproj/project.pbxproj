@@ -19,6 +19,9 @@
 		5409986C177239F2003DFD70 /* ShareButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5409986B177239F2003DFD70 /* ShareButton.png */; };
 		540E1F41179DA10A000D2E0C /* LinkedInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540E1F3F179DA10A000D2E0C /* LinkedInViewController.m */; };
 		540E1F42179DA10A000D2E0C /* LinkedInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 540E1F40179DA10A000D2E0C /* LinkedInViewController.xib */; };
+		540E1F4B179DB7FA000D2E0C /* DetailProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540E1F49179DB7FA000D2E0C /* DetailProfileViewController.m */; };
+		540E1F4C179DB7FA000D2E0C /* DetailProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 540E1F4A179DB7FA000D2E0C /* DetailProfileViewController.xib */; };
+		540E1F50179DC99C000D2E0C /* ProfileDetailsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 540E1F4F179DC99C000D2E0C /* ProfileDetailsRequest.m */; };
 		5437770A1783A1D3000CEBAF /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 543777091783A1D3000CEBAF /* Twitter.framework */; };
 		54403824176B8E5D00AA3588 /* GetStaticLists.m in Sources */ = {isa = PBXBuildFile; fileRef = 54403823176B8E5D00AA3588 /* GetStaticLists.m */; };
 		5445A68D17790C0C00F3EC97 /* buttonBroadcastAvailability.png in Resources */ = {isa = PBXBuildFile; fileRef = 5445A68B17790C0C00F3EC97 /* buttonBroadcastAvailability.png */; };
@@ -61,8 +64,6 @@
 		54CA0D3C1799D3FD0012A521 /* VisitorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CA0D3A1799D3FD0012A521 /* VisitorsViewController.m */; };
 		54CA0D3D1799D3FD0012A521 /* VisitorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54CA0D3B1799D3FD0012A521 /* VisitorsViewController.xib */; };
 		54CA0D401799D4B50012A521 /* VisitorsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CA0D3F1799D4B50012A521 /* VisitorsRequest.m */; };
-		54D317321784970E00D058F4 /* DetailProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D317301784970E00D058F4 /* DetailProfileViewController.m */; };
-		54D317331784970E00D058F4 /* DetailProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54D317311784970E00D058F4 /* DetailProfileViewController.xib */; };
 		54D3521C178DC89D0068953A /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54D3521B178DC89D0068953A /* AddressBookUI.framework */; };
 		54D3521F178DC8C30068953A /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54D3521E178DC8C30068953A /* AddressBook.framework */; };
 		54D35222178DCB230068953A /* DBFriendInviter.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D35221178DCB230068953A /* DBFriendInviter.m */; };
@@ -122,6 +123,11 @@
 		540E1F3E179DA10A000D2E0C /* LinkedInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedInViewController.h; sourceTree = "<group>"; };
 		540E1F3F179DA10A000D2E0C /* LinkedInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkedInViewController.m; sourceTree = "<group>"; };
 		540E1F40179DA10A000D2E0C /* LinkedInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LinkedInViewController.xib; sourceTree = "<group>"; };
+		540E1F48179DB7FA000D2E0C /* DetailProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailProfileViewController.h; sourceTree = "<group>"; };
+		540E1F49179DB7FA000D2E0C /* DetailProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailProfileViewController.m; sourceTree = "<group>"; };
+		540E1F4A179DB7FA000D2E0C /* DetailProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailProfileViewController.xib; sourceTree = "<group>"; };
+		540E1F4E179DC99C000D2E0C /* ProfileDetailsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileDetailsRequest.h; sourceTree = "<group>"; };
+		540E1F4F179DC99C000D2E0C /* ProfileDetailsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileDetailsRequest.m; sourceTree = "<group>"; };
 		543777091783A1D3000CEBAF /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		54403822176B8E5D00AA3588 /* GetStaticLists.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetStaticLists.h; sourceTree = "<group>"; };
 		54403823176B8E5D00AA3588 /* GetStaticLists.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetStaticLists.m; sourceTree = "<group>"; };
@@ -187,9 +193,6 @@
 		54CA0D3B1799D3FD0012A521 /* VisitorsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VisitorsViewController.xib; sourceTree = "<group>"; };
 		54CA0D3E1799D4B50012A521 /* VisitorsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitorsRequest.h; sourceTree = "<group>"; };
 		54CA0D3F1799D4B50012A521 /* VisitorsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitorsRequest.m; sourceTree = "<group>"; };
-		54D3172F1784970E00D058F4 /* DetailProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailProfileViewController.h; sourceTree = "<group>"; };
-		54D317301784970E00D058F4 /* DetailProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailProfileViewController.m; sourceTree = "<group>"; };
-		54D317311784970E00D058F4 /* DetailProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailProfileViewController.xib; sourceTree = "<group>"; };
 		54D3521B178DC89D0068953A /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		54D3521E178DC8C30068953A /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		54D35220178DCB230068953A /* DBFriendInviter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBFriendInviter.h; sourceTree = "<group>"; };
@@ -322,9 +325,20 @@
 			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Profile;
 			sourceTree = "<absolute>";
 		};
+		540E1F4D179DC96A000D2E0C /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				540E1F4E179DC99C000D2E0C /* ProfileDetailsRequest.h */,
+				540E1F4F179DC99C000D2E0C /* ProfileDetailsRequest.m */,
+			);
+			name = Details;
+			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Details;
+			sourceTree = "<absolute>";
+		};
 		54403821176B8E4D00AA3588 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				540E1F4D179DC96A000D2E0C /* Details */,
 				54E9D6DA17974A0F00E84EFB /* Lunches */,
 				54FD4A8A1790B6010045B2DE /* Foursquare */,
 				540560DD178F2D71009679F4 /* Profile */,
@@ -366,12 +380,12 @@
 				549ADAAE176BCAF2001F1D3F /* CreateActivityViewController.h */,
 				549ADAAA176BCAD5001F1D3F /* CreateActivityViewController.m */,
 				549ADAAB176BCAD5001F1D3F /* CreateActivityViewController.xib */,
-				54D3172F1784970E00D058F4 /* DetailProfileViewController.h */,
-				54D317301784970E00D058F4 /* DetailProfileViewController.m */,
-				54D317311784970E00D058F4 /* DetailProfileViewController.xib */,
 				54E714D0176B9EDA00F39D73 /* MessageViewController.h */,
 				54E714D1176B9EDA00F39D73 /* MessageViewController.m */,
 				54E714D2176B9EDA00F39D73 /* MessageViewController.xib */,
+				540E1F48179DB7FA000D2E0C /* DetailProfileViewController.h */,
+				540E1F49179DB7FA000D2E0C /* DetailProfileViewController.m */,
+				540E1F4A179DB7FA000D2E0C /* DetailProfileViewController.xib */,
 			);
 			name = Detail;
 			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/ViewControllers/Detail;
@@ -756,12 +770,12 @@
 				54E3331F1781EF3100BFF6A4 /* linkedInBluebutton.png in Resources */,
 				54E333201781EF3100BFF6A4 /* linkedInBluebutton-highlight.png in Resources */,
 				54E4B59117822D4D00BE5686 /* TwitterClouds.png in Resources */,
-				54D317331784970E00D058F4 /* DetailProfileViewController.xib in Resources */,
 				540560E2178F2E6D009679F4 /* ProfileViewController.xib in Resources */,
 				54E9EAFC1794634500F937CA /* InviteViewController.xib in Resources */,
 				54E9EB01179465DB00F937CA /* InviteContactsViewController.xib in Resources */,
 				54CA0D3D1799D3FD0012A521 /* VisitorsViewController.xib in Resources */,
 				540E1F42179DA10A000D2E0C /* LinkedInViewController.xib in Resources */,
+				540E1F4C179DB7FA000D2E0C /* DetailProfileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -796,7 +810,6 @@
 				5400D009177A59DB002CC092 /* ThreadCell.m in Sources */,
 				54F971F9177CE12B006F6FE5 /* ShareViewController.m in Sources */,
 				54F97207177CFFE8006F6FE5 /* LoginViewController.m in Sources */,
-				54D317321784970E00D058F4 /* DetailProfileViewController.m in Sources */,
 				54D35222178DCB230068953A /* DBFriendInviter.m in Sources */,
 				54D35225178DDA510068953A /* LoginRequests.m in Sources */,
 				54D35228178E1C200068953A /* KeychainWrapper.m in Sources */,
@@ -809,6 +822,8 @@
 				54CA0D3C1799D3FD0012A521 /* VisitorsViewController.m in Sources */,
 				54CA0D401799D4B50012A521 /* VisitorsRequest.m in Sources */,
 				540E1F41179DA10A000D2E0C /* LinkedInViewController.m in Sources */,
+				540E1F4B179DB7FA000D2E0C /* DetailProfileViewController.m in Sources */,
+				540E1F50179DC99C000D2E0C /* ProfileDetailsRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
