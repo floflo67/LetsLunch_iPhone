@@ -11,14 +11,6 @@
 
 @implementation ProfileDetailsRequest
 
-+ (NSDictionary*)getProfileWithToken:(NSString*)token andID:(NSString*)userID
-{
-    ProfileDetailsRequest *request = [[ProfileDetailsRequest alloc] init];
-    NSDictionary *dict = [request getProfileWithToken:token andID:userID];
-    [request release];
-    return dict;
-}
-
 - (NSDictionary*)getProfileWithToken:(NSString*)token andID:(NSString*)userID
 {
     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
@@ -44,6 +36,10 @@
             _jsonDict = [[NSMutableDictionary alloc] init];
         _jsonDict = [NSMutableDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
         _jsonDict = [_jsonDict objectForKey:@"user"];
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:_jsonDict copyItems:NO];
+        [dict removeObjectForKey:@"lunch_zone"];
+        _jsonDict = dict;
+        
     }
     else {
         NSString* response = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];

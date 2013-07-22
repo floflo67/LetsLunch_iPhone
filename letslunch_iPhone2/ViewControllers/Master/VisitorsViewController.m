@@ -70,6 +70,7 @@ static VisitorsViewController *sharedSingleton = nil;
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     NSDictionary *profile = [NSDictionary dictionaryWithDictionary:_objects[indexPath.row]];
     Contacts *contact = [[Contacts alloc] initWithDict:profile];
@@ -87,8 +88,10 @@ static VisitorsViewController *sharedSingleton = nil;
     NSDictionary *profile = [NSDictionary dictionaryWithDictionary:_objects[indexPath.row]];
     Contacts *contact = [[Contacts alloc] initWithDict:profile];
     
-    DetailProfileViewController *detailViewController = [[[DetailProfileViewController alloc] initWithContactID:contact.ID] autorelease];
+    DetailProfileViewController *detailViewController = [[DetailProfileViewController alloc] initWithContactID:contact.ID];
     [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController.navigationController pushViewController:detailViewController animated:YES];
+    [contact release];
+    [detailViewController release];
 }
 
 @end

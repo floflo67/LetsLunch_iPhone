@@ -14,7 +14,6 @@
     NSMutableDictionary *_jsonDict;
 }
 
-+(NSDictionary*)getProfileWithToken:(NSString*)token andID:(NSString*)userID;
 -(NSDictionary*)getProfileWithToken:(NSString*)token andID:(NSString*)userID;
 
 @end
