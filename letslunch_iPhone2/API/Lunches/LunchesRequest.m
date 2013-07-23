@@ -61,10 +61,10 @@
     venueId // can be null - depend on venue
     venueAddress // can be null - depend on venue
  */
-- (void)addLunchWithToken:(NSString*)token andActivity:(Activity*)activity
+- (BOOL)addLunchWithToken:(NSString*)token andActivity:(Activity*)activity
 {
-    if (_connection == nil) {
-		_data = [NSMutableData new];
+    //if (_connection == nil) {
+		//_data = [NSMutableData new];
         
         /*
          Sets the body of the requests
@@ -80,6 +80,7 @@
         
         NSString *lunchDate;
         NSString *postingTime;
+        NSString *endTime;
         NSDate *date = [NSDate new];
         NSDateFormatter *format = [[[NSDateFormatter alloc] init] autorelease];
         
@@ -89,10 +90,15 @@
         [format setDateFormat:@"HH:mm"];
         postingTime = [format stringFromDate:date];
         
+        NSTimeInterval secondsInThreeHours = 3 * 60 * 60;
+        date = [date dateByAddingTimeInterval:secondsInThreeHours];
+        endTime = [format stringFromDate:date];
+        
         [parameters setValue:token forKey:@"authToken"];
         [parameters setValue:lunchType forKey:@"lunchType"];
         [parameters setValue:lunchDate forKey:@"lunchDate"];
         [parameters setValue:postingTime forKey:@"startTime"];
+        [parameters setValue:endTime forKey:@"endTime"];
         [parameters setValue:activity.description forKey:@"description"];
         [parameters setValue:activity.venue.name forKey:@"venueName"];
         [parameters setValue:activity.venue.venueId forKey:@"venueId"];
@@ -103,7 +109,41 @@
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@me/availability/add",LL_API_BaseUrl]];
         MutableRequest *request = [[MutableRequest alloc] initWithURL:url andParameters:parameters andType:@"POST"];
         
-        _connection = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
+        NSURLResponse *response;
+        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
+        
+        return [self settingUpDataForAdd:data andResponse:response];
+        
+        //_connection = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
+    //}
+}
+
+- (bool)settingUpDataForAdd:(NSData*)data andResponse:(NSURLResponse*)response
+{
+    _statusCode = [(NSHTTPURLResponse*)response statusCode];
+    
+    if(_statusCode == 200) {
+        return YES;
+        /*if(!_jsonDict)
+            _jsonDict = [[NSMutableDictionary alloc] init];
+        
+        _jsonDict = [NSMutableDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
+        NSMutableArray *array = [_jsonDict objectForKey:@"lunchAvailabilty"];
+        
+        if(array.count > 0) {
+            
+        }
+        else
+            _jsonDict = nil;
+        
+        _jsonDict = [_jsonDict objectForKey:@"user"];*/
+    }
+    else {
+        NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
+        NSDictionary *dictError = [NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"error"]]];
+		NSString* response = [dictError objectForKey:@"message"];
+        [self showErrorMessage:response];
+        return NO;
     }
 }
 
