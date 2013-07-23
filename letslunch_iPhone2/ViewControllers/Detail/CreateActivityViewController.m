@@ -283,8 +283,10 @@ static CreateActivityViewController *sharedSingleton = nil;
     NSString *description = self.textFieldDescription.text;
     if(self.activity && [description isEqualToString:@""]) {
         //delete
-        [_lunchRequest suppressLunchWithToken:[AppDelegate getObjectFromKeychainForKey:kSecAttrAccount] andActivityID:self.activity.activityID];
-        app.ownerActivity = nil;
+        if(![_lunchRequest suppressLunchWithToken:[AppDelegate getObjectFromKeychainForKey:kSecAttrAccount] andActivityID:self.activity.activityID])
+            return;
+        else
+            app.ownerActivity = nil;
     }
     else if(!self.activity && [description isEqualToString:@""]) {
         
@@ -304,8 +306,13 @@ static CreateActivityViewController *sharedSingleton = nil;
             activity.description = description;
             activity.isCoffee = self.segment.selectedSegmentIndex;
             activity.venue = self.venue;
-            [_lunchRequest addLunchWithToken:[AppDelegate getObjectFromKeychainForKey:kSecAttrAccount] andActivity:activity];
-            app.ownerActivity = activity;
+            if(![_lunchRequest addLunchWithToken:[AppDelegate getObjectFromKeychainForKey:kSecAttrAccount] andActivity:activity]) {
+                [activity release];
+                return;
+            }
+            else {
+                app.ownerActivity = activity;                
+            }
         }
     }
     if(self.activity)

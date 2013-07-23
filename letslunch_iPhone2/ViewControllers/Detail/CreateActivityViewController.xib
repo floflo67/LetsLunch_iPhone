@@ -48,6 +48,7 @@
 								<string key="NSFrame">{{20, 20}, {280, 100}}</string>
 								<reference key="NSSuperview" ref="269889537"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="1036791308"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -85,7 +86,7 @@
 										<string key="NSFrame">{{20, 105}, {280, 21}}</string>
 										<reference key="NSSuperview" ref="1036791308"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="507313445"/>
+										<reference key="NSNextKeyView"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
@@ -188,7 +189,7 @@
 						<string key="NSFrameSize">{320, 568}</string>
 						<reference key="NSSuperview" ref="885162766"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="1036791308"/>
+						<reference key="NSNextKeyView" ref="507313445"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<reference key="IBUIBackgroundColor" ref="305481569"/>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -409,7 +410,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">121</int>
+			<int key="maxID">123</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -431,6 +432,7 @@
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="activityIndicator">UIActivityIndicatorView</string>
 						<string key="labelBroadcast">UILabel</string>
 						<string key="segment">UISegmentedControl</string>
 						<string key="tableView">UITableView</string>
@@ -439,6 +441,10 @@
 						<string key="viewSubview">UIView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="activityIndicator">
+							<string key="name">activityIndicator</string>
+							<string key="candidateClassName">UIActivityIndicatorView</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="labelBroadcast">
 							<string key="name">labelBroadcast</string>
 							<string key="candidateClassName">UILabel</string>
