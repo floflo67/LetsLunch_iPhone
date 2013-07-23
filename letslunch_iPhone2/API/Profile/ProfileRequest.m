@@ -36,6 +36,32 @@
     return _jsonDict;
 }
 
++ (void)logoutWithToken:(NSString*)token
+{
+    ProfileRequest *profileRequest = [[ProfileRequest alloc] init];
+    [profileRequest logoutWithToken:token];
+    [profileRequest release];
+}
+
+- (void)logoutWithToken:(NSString*)token
+{
+    if (_connection == nil) {
+		_data = [NSMutableData new];
+        
+        /*
+         Sets the body of the requests
+         Countains token
+         */
+        NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
+        [parameters setValue:token forKey:@"authToken"];
+        
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@logout",LL_API_BaseUrl]];
+        MutableRequest *request = [[MutableRequest alloc] initWithURL:url andParameters:parameters andType:@"POST"];
+        
+        _connection = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
+    }
+}
+
 - (void)settingUpData:(NSData*)data andResponse:(NSURLResponse*)response
 {
     _statusCode = [(NSHTTPURLResponse*)response statusCode];
@@ -50,6 +76,38 @@
         NSString* response = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
         NSLog(@"%@", response);
     }
+}
+
+#pragma connection delegate
+
+- (void)connection:(NSURLConnection*)connection didReceiveData:(NSData*)data
+{
+	[_data appendData:data];
+}
+
+- (void)connection:(NSURLConnection*)connection didReceiveResponse:(NSHTTPURLResponse*)response
+{
+	_statusCode = [response statusCode];
+}
+
+- (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
+{
+    NSLog(@"error");
+    
+	[_connection release];
+	_connection = nil;
+	
+	[_data release];
+	_data = nil;
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection*)connection
+{	
+	[_connection release];
+	_connection = nil;
+	
+	[_data release];
+	_data = nil;
 }
 
 #pragma lifecycle

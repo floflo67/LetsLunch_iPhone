@@ -12,8 +12,11 @@
     @private
         NSInteger _statusCode;
         NSMutableDictionary *_jsonDict;
+        NSURLConnection* _connection;
+        NSMutableData* _data;
 }
 
 -(NSDictionary*)getProfileWithToken:(NSString*)token;
++(void)logoutWithToken:(NSString*)token;
 
 @end

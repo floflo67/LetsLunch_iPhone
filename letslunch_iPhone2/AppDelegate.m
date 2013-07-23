@@ -158,6 +158,7 @@
 
 - (void)logout
 {
+    [ProfileRequest logoutWithToken:[AppDelegate getObjectFromKeychainForKey:kSecAttrAccount]];
     [self.tokenItem resetKeychainItem];
     [ActivityViewController suppressSingleton];
     [ContactViewController suppressSingleton];
