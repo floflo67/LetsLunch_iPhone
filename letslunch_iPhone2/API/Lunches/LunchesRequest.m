@@ -47,9 +47,7 @@
     _statusCode = [(NSHTTPURLResponse*)response statusCode];
     
     if(_statusCode == 200) {
-            
-        NSMutableDictionary *dict = [[[NSMutableDictionary alloc] init] autorelease];
-        dict = [NSMutableDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
+        NSMutableDictionary *dict = [[[NSMutableDictionary alloc] initWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]] autorelease];
         dict = [dict objectForKey:@"lunchAvailabilty"][0];
         return dict;
     }
@@ -128,8 +126,6 @@
 - (bool)settingUpDataForAdd:(NSData*)data andResponse:(NSURLResponse*)response
 {
     _statusCode = [(NSHTTPURLResponse*)response statusCode];
-    NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
-    NSLog(@"%@", dictJson);
     
     if(_statusCode == 200) {
         return YES;
@@ -152,7 +148,7 @@
 }
 
 /*
- URL: http://letslunch.dev.knackforge.com/api/me/lunch/cancel
+ URL: http://letslunch.dev.knackforge.com/api/me/availability/delete
  Request Type: POST
  Parameters:
     authToken
@@ -163,7 +159,7 @@
     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
     [parameters setValue:token forKey:@"authToken"];
     [parameters setValue:activityID forKey:@"id"];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@me/lunch/cancel",LL_API_BaseUrl]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@me/availability/delete",LL_API_BaseUrl]];
     MutableRequest *request = [[MutableRequest alloc] initWithURL:url andParameters:parameters andType:@"POST"];
     
     NSURLResponse *response;
