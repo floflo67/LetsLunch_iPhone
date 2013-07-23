@@ -124,19 +124,6 @@
     
     if(_statusCode == 200) {
         return YES;
-        /*if(!_jsonDict)
-            _jsonDict = [[NSMutableDictionary alloc] init];
-        
-        _jsonDict = [NSMutableDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
-        NSMutableArray *array = [_jsonDict objectForKey:@"lunchAvailabilty"];
-        
-        if(array.count > 0) {
-            
-        }
-        else
-            _jsonDict = nil;
-        
-        _jsonDict = [_jsonDict objectForKey:@"user"];*/
     }
     else {
         NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
@@ -149,7 +136,7 @@
 
 #pragma mark - DELETE lunch
 
-+ (NSDictionary *)suppressLunchWithToken:(NSString*)token andActivityID:(NSString*)activityID
++ (BOOL)suppressLunchWithToken:(NSString*)token andActivityID:(NSString*)activityID
 {
     LunchesRequest *lunchRequest = [[[LunchesRequest alloc] init] autorelease];
     return [lunchRequest suppressLunchWithToken:token andActivityID:activityID];
@@ -162,7 +149,7 @@
     authToken
     id // to know which is selected
  */
-- (NSDictionary *)suppressLunchWithToken:(NSString*)token andActivityID:(NSString*)activityID
+- (BOOL)suppressLunchWithToken:(NSString*)token andActivityID:(NSString*)activityID
 {
     /*
      Sets the body of the requests
@@ -178,9 +165,23 @@
     NSURLResponse *response;
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
     
-    [self settingUpData:data andResponse:response];
+    return [self settingUpDataForDelete:data andResponse:response];
+}
+
+- (BOOL)settingUpDataForDelete:(NSData*)data andResponse:(NSURLResponse*)response
+{
+    _statusCode = [(NSHTTPURLResponse*)response statusCode];
     
-    return _jsonDict;
+    if(_statusCode == 200) {
+        return YES;
+    }
+    else {
+        NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
+        NSDictionary *dictError = [NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"error"]]];
+		NSString* response = [dictError objectForKey:@"message"];
+        [self showErrorMessage:response];
+        return NO;
+    }
 }
 
 #pragma mark - UPDATE lunch
