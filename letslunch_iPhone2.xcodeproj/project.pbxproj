@@ -23,6 +23,43 @@
 		54571396177E48E8006A69CE /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 54571395177E48E8006A69CE /* libsqlite3.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		54571398177E48EF006A69CE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54571397177E48EF006A69CE /* Security.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5457139A177E48F4006A69CE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54571399177E48F4006A69CE /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		545905BD179EE9CB002A0620 /* UINavigationItem+JTRevealSidebarV2.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36CD176B81B700154C36 /* UINavigationItem+JTRevealSidebarV2.m */; };
+		545905BE179EE9CB002A0620 /* UIViewController+JTRevealSidebarV2.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36CF176B81B700154C36 /* UIViewController+JTRevealSidebarV2.m */; };
+		545905BF179EE9CB002A0620 /* Contacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 5445A6911779195B00F3EC97 /* Contacts.m */; };
+		545905C0179EE9CB002A0620 /* Messages.m in Sources */ = {isa = PBXBuildFile; fileRef = 5445A69417791AF900F3EC97 /* Messages.m */; };
+		545905C1179EE9CB002A0620 /* Activity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5445A6971779210600F3EC97 /* Activity.m */; };
+		545905C2179EE9CB002A0620 /* DBFriendInviter.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D35221178DCB230068953A /* DBFriendInviter.m */; };
+		545905C3179EE9CB002A0620 /* LeftSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36DD176B823700154C36 /* LeftSidebarViewController.m */; };
+		545905C4179EE9CB002A0620 /* RightSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F598501770C96D0074F43C /* RightSidebarViewController.m */; };
+		545905C5179EE9CB002A0620 /* CreateActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 549ADAAA176BCAD5001F1D3F /* CreateActivityViewController.m */; };
+		545905C6179EE9CB002A0620 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E714D1176B9EDA00F39D73 /* MessageViewController.m */; };
+		545905C7179EE9CB002A0620 /* DetailProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540E1F49179DB7FA000D2E0C /* DetailProfileViewController.m */; };
+		545905C8179EE9CB002A0620 /* FSVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 547D54DB1773B2300069D837 /* FSVenue.m */; };
+		545905C9179EE9CB002A0620 /* FSConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 547D54DD1773B2300069D837 /* FSConverter.m */; };
+		545905CA179EE9CC002A0620 /* NearbyVenuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 544DBE621773DC5A00055C8A /* NearbyVenuesViewController.m */; };
+		545905CB179EE9CC002A0620 /* ThreadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5400D008177A59DB002CC092 /* ThreadCell.m */; };
+		545905CC179EE9CC002A0620 /* InviteContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E9EAFE179465DB00F937CA /* InviteContactsViewController.m */; };
+		545905CD179EE9CC002A0620 /* InviteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E9EAF91794634500F937CA /* InviteViewController.m */; };
+		545905CE179EE9CC002A0620 /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E714CB176B95E200F39D73 /* ActivityViewController.m */; };
+		545905CF179EE9CC002A0620 /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5400CFFE177A0C98002CC092 /* ContactViewController.m */; };
+		545905D0179EE9CC002A0620 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540560DF178F2E6D009679F4 /* ProfileViewController.m */; };
+		545905D1179EE9CC002A0620 /* VisitorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CA0D3A1799D3FD0012A521 /* VisitorsViewController.m */; };
+		545905D2179EE9CC002A0620 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F971F7177CE12B006F6FE5 /* ShareViewController.m */; };
+		545905D3179EE9CC002A0620 /* ProfileDetailsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 540E1F4F179DC99C000D2E0C /* ProfileDetailsRequest.m */; };
+		545905D4179EE9CC002A0620 /* LunchesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E9D6DD17974A6200E84EFB /* LunchesRequest.m */; };
+		545905D5179EE9CC002A0620 /* Foursquare2.m in Sources */ = {isa = PBXBuildFile; fileRef = 547D54D01773B21F0069D837 /* Foursquare2.m */; };
+		545905D6179EE9CC002A0620 /* FSRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 547D54D21773B21F0069D837 /* FSRequester.m */; };
+		545905D7179EE9CC002A0620 /* FSTargetCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 547D54D41773B21F0069D837 /* FSTargetCallback.m */; };
+		545905D8179EE9CC002A0620 /* ProfileRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 540560E4178F2F73009679F4 /* ProfileRequest.m */; };
+		545905D9179EE9CC002A0620 /* VisitorsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CA0D3F1799D4B50012A521 /* VisitorsRequest.m */; };
+		545905DA179EE9CC002A0620 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F97205177CFFE7006F6FE5 /* LoginViewController.m */; };
+		545905DB179EE9CC002A0620 /* LoginRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D35224178DDA510068953A /* LoginRequests.m */; };
+		545905DC179EE9CC002A0620 /* LinkedInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540E1F3F179DA10A000D2E0C /* LinkedInViewController.m */; };
+		545905DD179EE9CC002A0620 /* GetStaticLists.m in Sources */ = {isa = PBXBuildFile; fileRef = 54403823176B8E5D00AA3588 /* GetStaticLists.m */; };
+		545905DE179EE9CC002A0620 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D35227178E1C200068953A /* KeychainWrapper.m */; };
+		545905DF179EE9CC002A0620 /* MutableRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 540560D0178F272E009679F4 /* MutableRequest.m */; };
+		545905E0179EE9CC002A0620 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36BE176B819300154C36 /* AppDelegate.m */; };
+		545905E1179EE9CC002A0620 /* CenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36DB176B823700154C36 /* CenterViewController.m */; };
 		548D36AF176B819300154C36 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36AE176B819300154C36 /* UIKit.framework */; };
 		548D36B1176B819300154C36 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36B0176B819300154C36 /* Foundation.framework */; };
 		548D36B3176B819300154C36 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36B2176B819300154C36 /* CoreGraphics.framework */; };
@@ -46,6 +83,7 @@
 		54E714D4176B9EDA00F39D73 /* MessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E714D2176B9EDA00F39D73 /* MessageViewController.xib */; };
 		54E9EAFC1794634500F937CA /* InviteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E9EAFA1794634500F937CA /* InviteViewController.xib */; };
 		54E9EB01179465DB00F937CA /* InviteContactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E9EAFF179465DB00F937CA /* InviteContactsViewController.xib */; };
+		54F2FF03179E0D0600C0BB85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36BA176B819300154C36 /* main.m */; };
 		54F598561770EB360074F43C /* MessagesMenuItem.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F598541770EB360074F43C /* MessagesMenuItem.png */; };
 		54F598571770EB360074F43C /* MessagesMenuItem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F598551770EB360074F43C /* MessagesMenuItem@2x.png */; };
 		54F5985F1770EDE00074F43C /* ActivityMenuItem.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5985D1770EDE00074F43C /* ActivityMenuItem.png */; };
@@ -721,6 +759,44 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				545905BD179EE9CB002A0620 /* UINavigationItem+JTRevealSidebarV2.m in Sources */,
+				545905BE179EE9CB002A0620 /* UIViewController+JTRevealSidebarV2.m in Sources */,
+				545905BF179EE9CB002A0620 /* Contacts.m in Sources */,
+				545905C0179EE9CB002A0620 /* Messages.m in Sources */,
+				545905C1179EE9CB002A0620 /* Activity.m in Sources */,
+				545905C2179EE9CB002A0620 /* DBFriendInviter.m in Sources */,
+				545905C3179EE9CB002A0620 /* LeftSidebarViewController.m in Sources */,
+				545905C4179EE9CB002A0620 /* RightSidebarViewController.m in Sources */,
+				545905C5179EE9CB002A0620 /* CreateActivityViewController.m in Sources */,
+				545905C6179EE9CB002A0620 /* MessageViewController.m in Sources */,
+				545905C7179EE9CB002A0620 /* DetailProfileViewController.m in Sources */,
+				545905C8179EE9CB002A0620 /* FSVenue.m in Sources */,
+				545905C9179EE9CB002A0620 /* FSConverter.m in Sources */,
+				545905CA179EE9CC002A0620 /* NearbyVenuesViewController.m in Sources */,
+				545905CB179EE9CC002A0620 /* ThreadCell.m in Sources */,
+				545905CC179EE9CC002A0620 /* InviteContactsViewController.m in Sources */,
+				545905CD179EE9CC002A0620 /* InviteViewController.m in Sources */,
+				545905CE179EE9CC002A0620 /* ActivityViewController.m in Sources */,
+				545905CF179EE9CC002A0620 /* ContactViewController.m in Sources */,
+				545905D0179EE9CC002A0620 /* ProfileViewController.m in Sources */,
+				545905D1179EE9CC002A0620 /* VisitorsViewController.m in Sources */,
+				545905D2179EE9CC002A0620 /* ShareViewController.m in Sources */,
+				545905D3179EE9CC002A0620 /* ProfileDetailsRequest.m in Sources */,
+				545905D4179EE9CC002A0620 /* LunchesRequest.m in Sources */,
+				545905D5179EE9CC002A0620 /* Foursquare2.m in Sources */,
+				545905D6179EE9CC002A0620 /* FSRequester.m in Sources */,
+				545905D7179EE9CC002A0620 /* FSTargetCallback.m in Sources */,
+				545905D8179EE9CC002A0620 /* ProfileRequest.m in Sources */,
+				545905D9179EE9CC002A0620 /* VisitorsRequest.m in Sources */,
+				545905DA179EE9CC002A0620 /* LoginViewController.m in Sources */,
+				545905DB179EE9CC002A0620 /* LoginRequests.m in Sources */,
+				545905DC179EE9CC002A0620 /* LinkedInViewController.m in Sources */,
+				545905DD179EE9CC002A0620 /* GetStaticLists.m in Sources */,
+				545905DE179EE9CC002A0620 /* KeychainWrapper.m in Sources */,
+				545905DF179EE9CC002A0620 /* MutableRequest.m in Sources */,
+				545905E0179EE9CC002A0620 /* AppDelegate.m in Sources */,
+				545905E1179EE9CC002A0620 /* CenterViewController.m in Sources */,
+				54F2FF03179E0D0600C0BB85 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -763,7 +839,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -786,7 +862,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
