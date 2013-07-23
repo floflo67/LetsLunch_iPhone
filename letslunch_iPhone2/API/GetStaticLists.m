@@ -57,7 +57,10 @@
         [v.location setCoordinate:CLLocationCoordinate2DMake([@"37.78653398485857" doubleValue], [@"-122.401921749115" doubleValue])];
         
         BOOL b = YES;
-        Activity *act1 = [[Activity alloc] initWithID:@"1234" contact:c venue:v description:@"descOwner" andIsCoffee:b];
+        if([[dict objectForKey:@"type"] isEqualToString:@"Lunch"])
+            b = NO;
+        
+        Activity *act1 = [[Activity alloc] initWithID:[dict objectForKey:@"id"] contact:c venue:v description:[dict objectForKey:@"starttime"] andIsCoffee:b];
         
         return act1;
     }

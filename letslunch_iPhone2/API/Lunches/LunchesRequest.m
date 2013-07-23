@@ -39,9 +39,25 @@
     NSURLResponse *response;
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
     
-    [self settingUpData:data andResponse:response];
+    return [self settingUpData:data andResponse:response];
+}
+
+- (NSDictionary*)settingUpData:(NSData*)data andResponse:(NSURLResponse*)response
+{
+    _statusCode = [(NSHTTPURLResponse*)response statusCode];
     
-    return _jsonDict;
+    if(_statusCode == 200) {
+            
+        NSMutableDictionary *dict = [[[NSMutableDictionary alloc] init] autorelease];
+        dict = [NSMutableDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
+        dict = [dict objectForKey:@"lunchAvailabilty"][0];
+        return dict;
+    }
+    else {
+        NSString* response = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+        NSLog(@"%@", response);
+        return nil;
+    }
 }
 
 #pragma mark - ADD lunch
@@ -63,64 +79,57 @@
  */
 - (BOOL)addLunchWithToken:(NSString*)token andActivity:(Activity*)activity
 {
-    //if (_connection == nil) {
-		//_data = [NSMutableData new];
-        
-        /*
-         Sets the body of the requests
-         Countains username, password and device ID
-         */
-        NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
-        
-        NSString *lunchType;
-        if(activity.isCoffee)
-            lunchType = @"Coffee";
-        else
-            lunchType = @"Lunch";
-        
-        NSString *lunchDate;
-        NSString *postingTime;
-        NSString *endTime;
-        NSDate *date = [NSDate new];
-        NSDateFormatter *format = [[[NSDateFormatter alloc] init] autorelease];
-        
-        [format setDateFormat:@"YY-MM-dd"];
-        lunchDate = [format stringFromDate:date];
-        
-        [format setDateFormat:@"HH:mm"];
-        postingTime = [format stringFromDate:date];
-        
-        NSTimeInterval secondsInThreeHours = 3 * 60 * 60;
-        date = [date dateByAddingTimeInterval:secondsInThreeHours];
-        endTime = [format stringFromDate:date];
-        
-        [parameters setValue:token forKey:@"authToken"];
-        [parameters setValue:lunchType forKey:@"lunchType"];
-        [parameters setValue:lunchDate forKey:@"lunchDate"];
-        [parameters setValue:postingTime forKey:@"startTime"];
-        [parameters setValue:endTime forKey:@"endTime"];
-        [parameters setValue:activity.description forKey:@"description"];
-        [parameters setValue:activity.venue.name forKey:@"venueName"];
-        [parameters setValue:activity.venue.venueId forKey:@"venueId"];
-        [parameters setValue:[NSString stringWithFormat:@"%f", activity.venue.location.coordinate.latitude] forKey:@"degreesLatitude"];
-        [parameters setValue:[NSString stringWithFormat:@"%f", activity.venue.location.coordinate.longitude] forKey:@"degreesLongitude"];
-        [parameters setValue:activity.venue.location.address forKey:@"venueAddress"];
-        
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@me/availability/add",LL_API_BaseUrl]];
-        MutableRequest *request = [[MutableRequest alloc] initWithURL:url andParameters:parameters andType:@"POST"];
-        
-        NSURLResponse *response;
-        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
-        
-        return [self settingUpDataForAdd:data andResponse:response];
-        
-        //_connection = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
-    //}
+    NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
+    
+    NSString *lunchType;
+    if(activity.isCoffee)
+        lunchType = @"Coffee";
+    else
+        lunchType = @"Lunch";
+    
+    NSString *lunchDate;
+    NSString *postingTime;
+    NSString *endTime;
+    NSDate *date = [NSDate new];
+    NSDateFormatter *format = [[[NSDateFormatter alloc] init] autorelease];
+    
+    [format setDateFormat:@"YY-MM-dd"];
+    lunchDate = [format stringFromDate:date];
+    
+    [format setDateFormat:@"HH:mm"];
+    postingTime = [format stringFromDate:date];
+    
+    NSTimeInterval secondsInThreeHours = 3 * 60 * 60;
+    date = [date dateByAddingTimeInterval:secondsInThreeHours];
+    endTime = [format stringFromDate:date];
+    
+    [parameters setValue:token forKey:@"authToken"];
+    [parameters setValue:lunchType forKey:@"lunchType"];
+    [parameters setValue:lunchDate forKey:@"lunchDate"];
+    [parameters setValue:postingTime forKey:@"startTime"];
+    [parameters setValue:endTime forKey:@"endTime"];
+    [parameters setValue:@"1" forKey:@"lunchZoneId"];
+    [parameters setValue:activity.description forKey:@"description"];
+    [parameters setValue:activity.venue.name forKey:@"venueName"];
+    [parameters setValue:activity.venue.venueId forKey:@"venueId"];
+    [parameters setValue:[NSString stringWithFormat:@"%f", activity.venue.location.coordinate.latitude] forKey:@"degreesLatitude"];
+    [parameters setValue:[NSString stringWithFormat:@"%f", activity.venue.location.coordinate.longitude] forKey:@"degreesLongitude"];
+    [parameters setValue:activity.venue.location.address forKey:@"venueAddress"];
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@me/availability/add",LL_API_BaseUrl]];
+    MutableRequest *request = [[MutableRequest alloc] initWithURL:url andParameters:parameters andType:@"POST"];
+    
+    NSURLResponse *response;
+    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
+    
+    return [self settingUpDataForAdd:data andResponse:response];
 }
 
 - (bool)settingUpDataForAdd:(NSData*)data andResponse:(NSURLResponse*)response
 {
     _statusCode = [(NSHTTPURLResponse*)response statusCode];
+    NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
+    NSLog(@"%@", dictJson);
     
     if(_statusCode == 200) {
         return YES;
@@ -151,16 +160,11 @@
  */
 - (BOOL)suppressLunchWithToken:(NSString*)token andActivityID:(NSString*)activityID
 {
-    /*
-     Sets the body of the requests
-     Countains username, password and device ID
-     */
     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
     [parameters setValue:token forKey:@"authToken"];
     [parameters setValue:activityID forKey:@"id"];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@me/lunch/cancel",LL_API_BaseUrl]];
     MutableRequest *request = [[MutableRequest alloc] initWithURL:url andParameters:parameters andType:@"POST"];
-    //_connection = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
     
     NSURLResponse *response;
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
@@ -205,11 +209,6 @@
 {
     if (_connection == nil) {
 		_data = [NSMutableData new];
-        
-        /*
-         Sets the body of the requests
-         Countains username, password and device ID
-         */
         NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
         
         NSString *lunchType;
@@ -244,33 +243,6 @@
 }
 
 #pragma mark - custom function
-
-- (void)settingUpData:(NSData*)data andResponse:(NSURLResponse*)response
-{
-    _statusCode = [(NSHTTPURLResponse*)response statusCode];
-    /*NSString* res = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-    NSLog(@"%@", res);*/
-    
-    if(_statusCode == 200) {
-        if(!_jsonDict)
-            _jsonDict = [[NSMutableDictionary alloc] init];
-        
-        _jsonDict = [NSMutableDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
-        NSMutableArray *array = [_jsonDict objectForKey:@"lunchAvailabilty"];
-        
-        if(array.count > 0) {
-            
-        }
-        else
-            _jsonDict = nil;
-        
-        _jsonDict = [_jsonDict objectForKey:@"user"];
-    }
-    else {
-        NSString* response = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-        NSLog(@"%@", response);
-    }
-}
 
 - (void)showErrorMessage:(NSString*)error
 {
