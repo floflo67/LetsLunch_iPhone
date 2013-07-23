@@ -30,6 +30,12 @@ static ContactViewController *sharedSingleton = nil;
     return sharedSingleton;
 }
 
++ (void)suppressSingleton
+{
+    if (sharedSingleton != nil)
+        sharedSingleton = nil;
+}
+
 -(id)init
 {
     self = [super init];

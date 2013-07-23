@@ -17,5 +17,6 @@
 @property (nonatomic, strong) VisitorsRequest *visitorRequest;
 
 +(VisitorsViewController*)getSingleton;
++(void)suppressSingleton;
 
 @end

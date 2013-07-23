@@ -9,6 +9,10 @@
 #import "CenterViewController.h"
 #import "GetStaticLists.h"
 #import "KeychainWrapper.h"
+#import "ActivityViewController.h"
+#import "ContactViewController.h"
+#import "ProfileViewController.h"
+#import "VisitorsViewController.h"
 
 @implementation AppDelegate
 
@@ -155,6 +159,10 @@
 - (void)logout
 {
     [self.tokenItem resetKeychainItem];
+    [ActivityViewController suppressSingleton];
+    [ContactViewController suppressSingleton];
+    [ProfileViewController suppressSingleton];
+    [VisitorsViewController suppressSingleton];
     [self showLoginView];
     NSLog(@"%@", [self getObjectFromKeychainForKey:kSecAttrAccount]);
 }

@@ -16,5 +16,6 @@
 -(void)loadOwnerActivity;
 
 +(ActivityViewController*)getSingleton;
++(void)suppressSingleton;
 
 @end

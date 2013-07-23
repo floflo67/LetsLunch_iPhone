@@ -17,5 +17,6 @@
 @property (nonatomic, strong) ProfileRequest *profileRequest;
 
 +(ProfileViewController*)getSingleton;
++(void)suppressSingleton;
 
 @end

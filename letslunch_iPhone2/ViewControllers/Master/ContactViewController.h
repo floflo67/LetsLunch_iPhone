@@ -13,5 +13,6 @@
 @property (nonatomic, strong) NSMutableArray* objects;
 
 +(ContactViewController*)getSingleton;
++(void)suppressSingleton;
 
 @end

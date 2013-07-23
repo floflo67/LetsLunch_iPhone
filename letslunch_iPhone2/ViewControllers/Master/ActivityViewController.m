@@ -28,6 +28,12 @@ static ActivityViewController *sharedSingleton = nil;
     return sharedSingleton;
 }
 
++ (void)suppressSingleton
+{
+    if (sharedSingleton != nil)
+        sharedSingleton = nil;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
