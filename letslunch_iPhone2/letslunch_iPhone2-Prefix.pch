@@ -13,7 +13,6 @@
     #import <Foundation/Foundation.h>
     #import <QuartzCore/QuartzCore.h>
     #import <QuickLook/QuickLook.h>
-    //#import <quickdialog/QuickDialog.h>
     #import "constants.h"
     #import "AppDelegate.h"
 #endif
