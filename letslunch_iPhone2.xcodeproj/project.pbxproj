@@ -7,81 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5400D000177A0C98002CC092 /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5400CFFE177A0C98002CC092 /* ContactViewController.m */; };
 		5400D001177A0C98002CC092 /* ContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5400CFFF177A0C98002CC092 /* ContactViewController.xib */; };
 		5400D005177A598D002CC092 /* MessageFromSelf.png in Resources */ = {isa = PBXBuildFile; fileRef = 5400D003177A598D002CC092 /* MessageFromSelf.png */; };
 		5400D006177A598D002CC092 /* MessageToSelf.png in Resources */ = {isa = PBXBuildFile; fileRef = 5400D004177A598D002CC092 /* MessageToSelf.png */; };
-		5400D009177A59DB002CC092 /* ThreadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5400D008177A59DB002CC092 /* ThreadCell.m */; };
-		540560D1178F272E009679F4 /* MutableRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 540560D0178F272E009679F4 /* MutableRequest.m */; };
-		540560E1178F2E6D009679F4 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540560DF178F2E6D009679F4 /* ProfileViewController.m */; };
 		540560E2178F2E6D009679F4 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 540560E0178F2E6D009679F4 /* ProfileViewController.xib */; };
-		540560E5178F2F73009679F4 /* ProfileRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 540560E4178F2F73009679F4 /* ProfileRequest.m */; };
 		5409986C177239F2003DFD70 /* ShareButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5409986B177239F2003DFD70 /* ShareButton.png */; };
-		540E1F41179DA10A000D2E0C /* LinkedInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540E1F3F179DA10A000D2E0C /* LinkedInViewController.m */; };
 		540E1F42179DA10A000D2E0C /* LinkedInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 540E1F40179DA10A000D2E0C /* LinkedInViewController.xib */; };
-		540E1F4B179DB7FA000D2E0C /* DetailProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540E1F49179DB7FA000D2E0C /* DetailProfileViewController.m */; };
 		540E1F4C179DB7FA000D2E0C /* DetailProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 540E1F4A179DB7FA000D2E0C /* DetailProfileViewController.xib */; };
-		540E1F50179DC99C000D2E0C /* ProfileDetailsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 540E1F4F179DC99C000D2E0C /* ProfileDetailsRequest.m */; };
 		5437770A1783A1D3000CEBAF /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 543777091783A1D3000CEBAF /* Twitter.framework */; };
-		54403824176B8E5D00AA3588 /* GetStaticLists.m in Sources */ = {isa = PBXBuildFile; fileRef = 54403823176B8E5D00AA3588 /* GetStaticLists.m */; };
 		5445A68D17790C0C00F3EC97 /* buttonBroadcastAvailability.png in Resources */ = {isa = PBXBuildFile; fileRef = 5445A68B17790C0C00F3EC97 /* buttonBroadcastAvailability.png */; };
 		5445A68E17790C0C00F3EC97 /* buttonBroadcastAvailability@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5445A68C17790C0C00F3EC97 /* buttonBroadcastAvailability@2x.png */; };
-		5445A6921779195B00F3EC97 /* Contacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 5445A6911779195B00F3EC97 /* Contacts.m */; };
-		5445A69517791AF900F3EC97 /* Messages.m in Sources */ = {isa = PBXBuildFile; fileRef = 5445A69417791AF900F3EC97 /* Messages.m */; };
-		5445A6981779210600F3EC97 /* Activity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5445A6971779210600F3EC97 /* Activity.m */; };
-		544DBE641773DC5A00055C8A /* NearbyVenuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 544DBE621773DC5A00055C8A /* NearbyVenuesViewController.m */; };
 		544DBE651773DC5A00055C8A /* NearbyVenuesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 544DBE631773DC5A00055C8A /* NearbyVenuesViewController.xib */; };
 		54571392177E48CF006A69CE /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54571391177E48CF006A69CE /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		54571394177E48D7006A69CE /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54571393177E48D7006A69CE /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		54571396177E48E8006A69CE /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 54571395177E48E8006A69CE /* libsqlite3.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		54571398177E48EF006A69CE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54571397177E48EF006A69CE /* Security.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5457139A177E48F4006A69CE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54571399177E48F4006A69CE /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		547D54D51773B21F0069D837 /* Foursquare2.m in Sources */ = {isa = PBXBuildFile; fileRef = 547D54D01773B21F0069D837 /* Foursquare2.m */; };
-		547D54D61773B21F0069D837 /* FSRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 547D54D21773B21F0069D837 /* FSRequester.m */; };
-		547D54D71773B21F0069D837 /* FSTargetCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 547D54D41773B21F0069D837 /* FSTargetCallback.m */; };
-		547D54DE1773B2300069D837 /* FSVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 547D54DB1773B2300069D837 /* FSVenue.m */; };
-		547D54DF1773B2300069D837 /* FSConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 547D54DD1773B2300069D837 /* FSConverter.m */; };
 		548D36AF176B819300154C36 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36AE176B819300154C36 /* UIKit.framework */; };
 		548D36B1176B819300154C36 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36B0176B819300154C36 /* Foundation.framework */; };
 		548D36B3176B819300154C36 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36B2176B819300154C36 /* CoreGraphics.framework */; };
 		548D36B9176B819300154C36 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 548D36B7176B819300154C36 /* InfoPlist.strings */; };
-		548D36BB176B819300154C36 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36BA176B819300154C36 /* main.m */; };
-		548D36BF176B819300154C36 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36BE176B819300154C36 /* AppDelegate.m */; };
 		548D36C1176B819300154C36 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 548D36C0176B819300154C36 /* Default.png */; };
 		548D36C3176B819300154C36 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 548D36C2176B819300154C36 /* Default@2x.png */; };
 		548D36C5176B819300154C36 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 548D36C4176B819300154C36 /* Default-568h@2x.png */; };
-		548D36D0176B81B700154C36 /* UINavigationItem+JTRevealSidebarV2.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36CD176B81B700154C36 /* UINavigationItem+JTRevealSidebarV2.m */; };
-		548D36D1176B81B700154C36 /* UIViewController+JTRevealSidebarV2.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36CF176B81B700154C36 /* UIViewController+JTRevealSidebarV2.m */; };
 		548D36D4176B81E900154C36 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36D3176B81E900154C36 /* QuartzCore.framework */; };
 		548D36D8176B821B00154C36 /* ButtonMenuLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 548D36D6176B821B00154C36 /* ButtonMenuLeft.png */; };
 		548D36D9176B821B00154C36 /* ButtonMenuLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 548D36D7176B821B00154C36 /* ButtonMenuLeft@2x.png */; };
-		548D36E0176B823700154C36 /* CenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36DB176B823700154C36 /* CenterViewController.m */; };
-		548D36E1176B823700154C36 /* LeftSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36DD176B823700154C36 /* LeftSidebarViewController.m */; };
-		549ADAAC176BCAD5001F1D3F /* CreateActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 549ADAAA176BCAD5001F1D3F /* CreateActivityViewController.m */; };
 		549ADAAD176BCAD5001F1D3F /* CreateActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 549ADAAB176BCAD5001F1D3F /* CreateActivityViewController.xib */; };
 		549ADABE176BE14F001F1D3F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549ADABD176BE14F001F1D3F /* MapKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		549ADAC0176BE15A001F1D3F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549ADABF176BE159001F1D3F /* CoreLocation.framework */; };
-		54CA0D3C1799D3FD0012A521 /* VisitorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CA0D3A1799D3FD0012A521 /* VisitorsViewController.m */; };
 		54CA0D3D1799D3FD0012A521 /* VisitorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54CA0D3B1799D3FD0012A521 /* VisitorsViewController.xib */; };
-		54CA0D401799D4B50012A521 /* VisitorsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CA0D3F1799D4B50012A521 /* VisitorsRequest.m */; };
 		54D3521C178DC89D0068953A /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54D3521B178DC89D0068953A /* AddressBookUI.framework */; };
 		54D3521F178DC8C30068953A /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54D3521E178DC8C30068953A /* AddressBook.framework */; };
-		54D35222178DCB230068953A /* DBFriendInviter.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D35221178DCB230068953A /* DBFriendInviter.m */; };
-		54D35225178DDA510068953A /* LoginRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D35224178DDA510068953A /* LoginRequests.m */; };
-		54D35228178E1C200068953A /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D35227178E1C200068953A /* KeychainWrapper.m */; };
 		54E3331F1781EF3100BFF6A4 /* linkedInBluebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 54E333191781EF3100BFF6A4 /* linkedInBluebutton.png */; };
 		54E333201781EF3100BFF6A4 /* linkedInBluebutton-highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 54E3331A1781EF3100BFF6A4 /* linkedInBluebutton-highlight.png */; };
 		54E4B59117822D4D00BE5686 /* TwitterClouds.png in Resources */ = {isa = PBXBuildFile; fileRef = 54E4B59017822D4D00BE5686 /* TwitterClouds.png */; };
-		54E714CD176B95E200F39D73 /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E714CB176B95E200F39D73 /* ActivityViewController.m */; };
 		54E714CE176B95E200F39D73 /* ActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E714CC176B95E200F39D73 /* ActivityViewController.xib */; };
-		54E714D3176B9EDA00F39D73 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E714D1176B9EDA00F39D73 /* MessageViewController.m */; };
 		54E714D4176B9EDA00F39D73 /* MessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E714D2176B9EDA00F39D73 /* MessageViewController.xib */; };
-		54E9D6DE17974A6200E84EFB /* LunchesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E9D6DD17974A6200E84EFB /* LunchesRequest.m */; };
-		54E9EAFB1794634500F937CA /* InviteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E9EAF91794634500F937CA /* InviteViewController.m */; };
 		54E9EAFC1794634500F937CA /* InviteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E9EAFA1794634500F937CA /* InviteViewController.xib */; };
-		54E9EB00179465DB00F937CA /* InviteContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E9EAFE179465DB00F937CA /* InviteContactsViewController.m */; };
 		54E9EB01179465DB00F937CA /* InviteContactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E9EAFF179465DB00F937CA /* InviteContactsViewController.xib */; };
-		54F598511770C96D0074F43C /* RightSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F598501770C96D0074F43C /* RightSidebarViewController.m */; };
 		54F598561770EB360074F43C /* MessagesMenuItem.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F598541770EB360074F43C /* MessagesMenuItem.png */; };
 		54F598571770EB360074F43C /* MessagesMenuItem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F598551770EB360074F43C /* MessagesMenuItem@2x.png */; };
 		54F5985F1770EDE00074F43C /* ActivityMenuItem.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5985D1770EDE00074F43C /* ActivityMenuItem.png */; };
@@ -94,11 +58,9 @@
 		54F5986F17713A4A0074F43C /* BackgroundSharing.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5986C17713A4A0074F43C /* BackgroundSharing.png */; };
 		54F5987017713A4A0074F43C /* FindFriendsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5986D17713A4A0074F43C /* FindFriendsButton.png */; };
 		54F5987117713A4A0074F43C /* InviteFriendsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5986E17713A4A0074F43C /* InviteFriendsButton.png */; };
-		54F971F9177CE12B006F6FE5 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F971F7177CE12B006F6FE5 /* ShareViewController.m */; };
 		54F971FA177CE12B006F6FE5 /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54F971F8177CE12B006F6FE5 /* ShareViewController.xib */; };
 		54F97202177CE711006F6FE5 /* ImageShare.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F97200177CE711006F6FE5 /* ImageShare.png */; };
 		54F97203177CE711006F6FE5 /* ImageShare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F97201177CE711006F6FE5 /* ImageShare@2x.png */; };
-		54F97207177CFFE8006F6FE5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F97205177CFFE7006F6FE5 /* LoginViewController.m */; };
 		54F97208177CFFE8006F6FE5 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54F97206177CFFE7006F6FE5 /* LoginViewController.xib */; };
 		54FC651A1798C28000269D3D /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54FC65191798C28000269D3D /* FacebookSDK.framework */; };
 		54FE68FC17736B1000AD7987 /* ButtonMenuRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 54FE68FB17736B1000AD7987 /* ButtonMenuRight.png */; };
@@ -148,12 +110,12 @@
 		54571395177E48E8006A69CE /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		54571397177E48EF006A69CE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		54571399177E48F4006A69CE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		547D54CF1773B21F0069D837 /* Foursquare2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Foursquare2.h; path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Foursquare/Foursquare2.h; sourceTree = "<absolute>"; };
-		547D54D01773B21F0069D837 /* Foursquare2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Foursquare2.m; path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Foursquare/Foursquare2.m; sourceTree = "<absolute>"; };
-		547D54D11773B21F0069D837 /* FSRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSRequester.h; path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Foursquare/FSRequester.h; sourceTree = "<absolute>"; };
-		547D54D21773B21F0069D837 /* FSRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSRequester.m; path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Foursquare/FSRequester.m; sourceTree = "<absolute>"; };
-		547D54D31773B21F0069D837 /* FSTargetCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSTargetCallback.h; path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Foursquare/FSTargetCallback.h; sourceTree = "<absolute>"; };
-		547D54D41773B21F0069D837 /* FSTargetCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSTargetCallback.m; path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Foursquare/FSTargetCallback.m; sourceTree = "<absolute>"; };
+		547D54CF1773B21F0069D837 /* Foursquare2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Foursquare2.h; sourceTree = "<group>"; };
+		547D54D01773B21F0069D837 /* Foursquare2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Foursquare2.m; sourceTree = "<group>"; };
+		547D54D11773B21F0069D837 /* FSRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRequester.h; sourceTree = "<group>"; };
+		547D54D21773B21F0069D837 /* FSRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRequester.m; sourceTree = "<group>"; };
+		547D54D31773B21F0069D837 /* FSTargetCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTargetCallback.h; sourceTree = "<group>"; };
+		547D54D41773B21F0069D837 /* FSTargetCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTargetCallback.m; sourceTree = "<group>"; };
 		547D54DA1773B2300069D837 /* FSVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVenue.h; sourceTree = "<group>"; };
 		547D54DB1773B2300069D837 /* FSVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVenue.m; sourceTree = "<group>"; };
 		547D54DC1773B2300069D837 /* FSConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSConverter.h; sourceTree = "<group>"; };
@@ -168,9 +130,9 @@
 		548D36BC176B819300154C36 /* letslunch_iPhone2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "letslunch_iPhone2-Prefix.pch"; sourceTree = "<group>"; };
 		548D36BD176B819300154C36 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		548D36BE176B819300154C36 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		548D36C0176B819300154C36 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/Images/Other/Default.png; sourceTree = "<absolute>"; };
-		548D36C2176B819300154C36 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "/Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/Images/Other/Default@2x.png"; sourceTree = "<absolute>"; };
-		548D36C4176B819300154C36 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "/Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/Images/Other/Default-568h@2x.png"; sourceTree = "<absolute>"; };
+		548D36C0176B819300154C36 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		548D36C2176B819300154C36 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		548D36C4176B819300154C36 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		548D36CB176B81B700154C36 /* JTRevealSidebarV2Delegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTRevealSidebarV2Delegate.h; sourceTree = "<group>"; };
 		548D36CC176B81B700154C36 /* UINavigationItem+JTRevealSidebarV2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+JTRevealSidebarV2.h"; sourceTree = "<group>"; };
 		548D36CD176B81B700154C36 /* UINavigationItem+JTRevealSidebarV2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+JTRevealSidebarV2.m"; sourceTree = "<group>"; };
@@ -277,9 +239,8 @@
 				5400D003177A598D002CC092 /* MessageFromSelf.png */,
 				5400D004177A598D002CC092 /* MessageToSelf.png */,
 			);
-			name = Message;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/Images/Message;
-			sourceTree = "<absolute>";
+			path = Message;
+			sourceTree = "<group>";
 		};
 		5400D00A177A625F002CC092 /* Activity */ = {
 			isa = PBXGroup;
@@ -287,9 +248,8 @@
 				5445A68B17790C0C00F3EC97 /* buttonBroadcastAvailability.png */,
 				5445A68C17790C0C00F3EC97 /* buttonBroadcastAvailability@2x.png */,
 			);
-			name = Activity;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/Images/Activity;
-			sourceTree = "<absolute>";
+			path = Activity;
+			sourceTree = "<group>";
 		};
 		5400D00B177A6288002CC092 /* CenterBar */ = {
 			isa = PBXGroup;
@@ -298,9 +258,8 @@
 				54FE68FB17736B1000AD7987 /* ButtonMenuRight.png */,
 				548D36D7176B821B00154C36 /* ButtonMenuLeft@2x.png */,
 			);
-			name = CenterBar;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/Images/CenterBar;
-			sourceTree = "<absolute>";
+			path = CenterBar;
+			sourceTree = "<group>";
 		};
 		5400D00C177A62A6002CC092 /* Other */ = {
 			isa = PBXGroup;
@@ -309,9 +268,8 @@
 				548D36C2176B819300154C36 /* Default@2x.png */,
 				548D36C4176B819300154C36 /* Default-568h@2x.png */,
 			);
-			name = Other;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/Images/Other;
-			sourceTree = "<absolute>";
+			path = Other;
+			sourceTree = "<group>";
 		};
 		540560DD178F2D71009679F4 /* Profile */ = {
 			isa = PBXGroup;
@@ -321,9 +279,8 @@
 				54CA0D3E1799D4B50012A521 /* VisitorsRequest.h */,
 				54CA0D3F1799D4B50012A521 /* VisitorsRequest.m */,
 			);
-			name = Profile;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Profile;
-			sourceTree = "<absolute>";
+			path = Profile;
+			sourceTree = "<group>";
 		};
 		540E1F4D179DC96A000D2E0C /* Details */ = {
 			isa = PBXGroup;
@@ -331,9 +288,8 @@
 				540E1F4E179DC99C000D2E0C /* ProfileDetailsRequest.h */,
 				540E1F4F179DC99C000D2E0C /* ProfileDetailsRequest.m */,
 			);
-			name = Details;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Details;
-			sourceTree = "<absolute>";
+			path = Details;
+			sourceTree = "<group>";
 		};
 		54403821176B8E4D00AA3588 /* API */ = {
 			isa = PBXGroup;
@@ -350,9 +306,8 @@
 				540560CF178F272E009679F4 /* MutableRequest.h */,
 				540560D0178F272E009679F4 /* MutableRequest.m */,
 			);
-			name = API;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API;
-			sourceTree = "<absolute>";
+			path = API;
+			sourceTree = "<group>";
 		};
 		5445A6891778D6A100F3EC97 /* Master */ = {
 			isa = PBXGroup;
@@ -370,9 +325,8 @@
 				54CA0D3A1799D3FD0012A521 /* VisitorsViewController.m */,
 				54CA0D3B1799D3FD0012A521 /* VisitorsViewController.xib */,
 			);
-			name = Master;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/ViewControllers/Master;
-			sourceTree = "<absolute>";
+			path = Master;
+			sourceTree = "<group>";
 		};
 		5445A68A1778D6A500F3EC97 /* Detail */ = {
 			isa = PBXGroup;
@@ -387,9 +341,8 @@
 				540E1F49179DB7FA000D2E0C /* DetailProfileViewController.m */,
 				540E1F4A179DB7FA000D2E0C /* DetailProfileViewController.xib */,
 			);
-			name = Detail;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/ViewControllers/Detail;
-			sourceTree = "<absolute>";
+			path = Detail;
+			sourceTree = "<group>";
 		};
 		5445A68F1779194B00F3EC97 /* Class */ = {
 			isa = PBXGroup;
@@ -401,9 +354,8 @@
 				5445A6961779210600F3EC97 /* Activity.h */,
 				5445A6971779210600F3EC97 /* Activity.m */,
 			);
-			name = Class;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/Class;
-			sourceTree = "<absolute>";
+			path = Class;
+			sourceTree = "<group>";
 		};
 		547D54D91773B2240069D837 /* Objects */ = {
 			isa = PBXGroup;
@@ -413,9 +365,8 @@
 				547D54DC1773B2300069D837 /* FSConverter.h */,
 				547D54DD1773B2300069D837 /* FSConverter.m */,
 			);
-			name = Objects;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/ViewControllers/Foursquare/Objects;
-			sourceTree = "<absolute>";
+			path = Objects;
+			sourceTree = "<group>";
 		};
 		548D36A2176B819300154C36 = {
 			isa = PBXGroup;
@@ -454,9 +405,8 @@
 				54571399177E48F4006A69CE /* Social.framework */,
 				543777091783A1D3000CEBAF /* Twitter.framework */,
 			);
-			name = Frameworks;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/Frameworks;
-			sourceTree = "<absolute>";
+			path = Frameworks;
+			sourceTree = "<group>";
 		};
 		548D36B4176B819300154C36 /* letslunch_iPhone2 */ = {
 			isa = PBXGroup;
@@ -485,9 +435,8 @@
 				548D36BA176B819300154C36 /* main.m */,
 				5457138C177E39C1006A69CE /* constants.h */,
 			);
-			name = "Supporting Files";
-			path = "/Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/Supporting Files";
-			sourceTree = "<absolute>";
+			path = "Supporting Files";
+			sourceTree = "<group>";
 		};
 		548D36D2176B81C600154C36 /* JTRevealSidebarV2 */ = {
 			isa = PBXGroup;
@@ -514,9 +463,8 @@
 				54F5986B17713A210074F43C /* Sharing */,
 				54F5985C1770ECEF0074F43C /* LeftBarMenu */,
 			);
-			name = Images;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/Images;
-			sourceTree = "<absolute>";
+			path = Images;
+			sourceTree = "<group>";
 		};
 		54D317341784F52200D058F4 /* Login */ = {
 			isa = PBXGroup;
@@ -530,9 +478,8 @@
 				540E1F3F179DA10A000D2E0C /* LinkedInViewController.m */,
 				540E1F40179DA10A000D2E0C /* LinkedInViewController.xib */,
 			);
-			name = Login;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Login;
-			sourceTree = "<absolute>";
+			path = Login;
+			sourceTree = "<group>";
 		};
 		54E4B58E17822D2700BE5686 /* LinkedIn */ = {
 			isa = PBXGroup;
@@ -540,18 +487,16 @@
 				54E333191781EF3100BFF6A4 /* linkedInBluebutton.png */,
 				54E3331A1781EF3100BFF6A4 /* linkedInBluebutton-highlight.png */,
 			);
-			name = LinkedIn;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/Images/LinkedIn;
-			sourceTree = "<absolute>";
+			path = LinkedIn;
+			sourceTree = "<group>";
 		};
 		54E4B58F17822D2E00BE5686 /* Twitter */ = {
 			isa = PBXGroup;
 			children = (
 				54E4B59017822D4D00BE5686 /* TwitterClouds.png */,
 			);
-			name = Twitter;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/Images/Twitter;
-			sourceTree = "<absolute>";
+			path = Twitter;
+			sourceTree = "<group>";
 		};
 		54E714C9176B95B500F39D73 /* ViewControllers */ = {
 			isa = PBXGroup;
@@ -562,9 +507,8 @@
 				5445A6891778D6A100F3EC97 /* Master */,
 				54F971FB177CE13E006F6FE5 /* Share */,
 			);
-			name = ViewControllers;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/ViewControllers;
-			sourceTree = "<absolute>";
+			path = ViewControllers;
+			sourceTree = "<group>";
 		};
 		54E9D6DA17974A0F00E84EFB /* Lunches */ = {
 			isa = PBXGroup;
@@ -572,9 +516,8 @@
 				54E9D6DC17974A6200E84EFB /* LunchesRequest.h */,
 				54E9D6DD17974A6200E84EFB /* LunchesRequest.m */,
 			);
-			name = Lunches;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Lunches;
-			sourceTree = "<absolute>";
+			path = Lunches;
+			sourceTree = "<group>";
 		};
 		54E9EB0317948BE400F937CA /* Friends */ = {
 			isa = PBXGroup;
@@ -586,9 +529,8 @@
 				54E9EAF91794634500F937CA /* InviteViewController.m */,
 				54E9EAFA1794634500F937CA /* InviteViewController.xib */,
 			);
-			name = Friends;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/ViewControllers/Friends;
-			sourceTree = "<absolute>";
+			path = Friends;
+			sourceTree = "<group>";
 		};
 		54E9EB0417948CC500F937CA /* Foursquare */ = {
 			isa = PBXGroup;
@@ -600,9 +542,8 @@
 				5400D007177A59DB002CC092 /* ThreadCell.h */,
 				5400D008177A59DB002CC092 /* ThreadCell.m */,
 			);
-			name = Foursquare;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/ViewControllers/Foursquare;
-			sourceTree = "<absolute>";
+			path = Foursquare;
+			sourceTree = "<group>";
 		};
 		54F5984E1770C9350074F43C /* BarsViewController */ = {
 			isa = PBXGroup;
@@ -614,9 +555,8 @@
 				54F5984F1770C96D0074F43C /* RightSidebarViewController.h */,
 				54F598501770C96D0074F43C /* RightSidebarViewController.m */,
 			);
-			name = BarsViewController;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/BarsViewController;
-			sourceTree = "<absolute>";
+			path = BarsViewController;
+			sourceTree = "<group>";
 		};
 		54F5985C1770ECEF0074F43C /* LeftBarMenu */ = {
 			isa = PBXGroup;
@@ -631,9 +571,8 @@
 				54F598541770EB360074F43C /* MessagesMenuItem.png */,
 				54F598551770EB360074F43C /* MessagesMenuItem@2x.png */,
 			);
-			name = LeftBarMenu;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/Images/LeftBarMenu;
-			sourceTree = "<absolute>";
+			path = LeftBarMenu;
+			sourceTree = "<group>";
 		};
 		54F5986B17713A210074F43C /* Sharing */ = {
 			isa = PBXGroup;
@@ -645,9 +584,8 @@
 				54F5986E17713A4A0074F43C /* InviteFriendsButton.png */,
 				5409986B177239F2003DFD70 /* ShareButton.png */,
 			);
-			name = Sharing;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/Images/Sharing;
-			sourceTree = "<absolute>";
+			path = Sharing;
+			sourceTree = "<group>";
 		};
 		54F971FB177CE13E006F6FE5 /* Share */ = {
 			isa = PBXGroup;
@@ -656,18 +594,16 @@
 				54F971F7177CE12B006F6FE5 /* ShareViewController.m */,
 				54F971F8177CE12B006F6FE5 /* ShareViewController.xib */,
 			);
-			name = Share;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/ViewControllers/Share;
-			sourceTree = "<absolute>";
+			path = Share;
+			sourceTree = "<group>";
 		};
 		54FC65161798C0FC00269D3D /* en.lproj */ = {
 			isa = PBXGroup;
 			children = (
 				548D36B7176B819300154C36 /* InfoPlist.strings */,
 			);
-			name = en.lproj;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/en.lproj;
-			sourceTree = "<absolute>";
+			path = en.lproj;
+			sourceTree = "<group>";
 		};
 		54FD4A8A1790B6010045B2DE /* Foursquare */ = {
 			isa = PBXGroup;
@@ -679,9 +615,8 @@
 				547D54D31773B21F0069D837 /* FSTargetCallback.h */,
 				547D54D41773B21F0069D837 /* FSTargetCallback.m */,
 			);
-			name = Foursquare;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2/API/Foursquare;
-			sourceTree = "<absolute>";
+			path = Foursquare;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -786,44 +721,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				548D36BB176B819300154C36 /* main.m in Sources */,
-				548D36BF176B819300154C36 /* AppDelegate.m in Sources */,
-				548D36D0176B81B700154C36 /* UINavigationItem+JTRevealSidebarV2.m in Sources */,
-				548D36D1176B81B700154C36 /* UIViewController+JTRevealSidebarV2.m in Sources */,
-				548D36E0176B823700154C36 /* CenterViewController.m in Sources */,
-				548D36E1176B823700154C36 /* LeftSidebarViewController.m in Sources */,
-				54403824176B8E5D00AA3588 /* GetStaticLists.m in Sources */,
-				54E714CD176B95E200F39D73 /* ActivityViewController.m in Sources */,
-				54E714D3176B9EDA00F39D73 /* MessageViewController.m in Sources */,
-				549ADAAC176BCAD5001F1D3F /* CreateActivityViewController.m in Sources */,
-				54F598511770C96D0074F43C /* RightSidebarViewController.m in Sources */,
-				547D54D51773B21F0069D837 /* Foursquare2.m in Sources */,
-				547D54D61773B21F0069D837 /* FSRequester.m in Sources */,
-				547D54D71773B21F0069D837 /* FSTargetCallback.m in Sources */,
-				547D54DE1773B2300069D837 /* FSVenue.m in Sources */,
-				547D54DF1773B2300069D837 /* FSConverter.m in Sources */,
-				544DBE641773DC5A00055C8A /* NearbyVenuesViewController.m in Sources */,
-				5445A6921779195B00F3EC97 /* Contacts.m in Sources */,
-				5445A69517791AF900F3EC97 /* Messages.m in Sources */,
-				5445A6981779210600F3EC97 /* Activity.m in Sources */,
-				5400D000177A0C98002CC092 /* ContactViewController.m in Sources */,
-				5400D009177A59DB002CC092 /* ThreadCell.m in Sources */,
-				54F971F9177CE12B006F6FE5 /* ShareViewController.m in Sources */,
-				54F97207177CFFE8006F6FE5 /* LoginViewController.m in Sources */,
-				54D35222178DCB230068953A /* DBFriendInviter.m in Sources */,
-				54D35225178DDA510068953A /* LoginRequests.m in Sources */,
-				54D35228178E1C200068953A /* KeychainWrapper.m in Sources */,
-				540560D1178F272E009679F4 /* MutableRequest.m in Sources */,
-				540560E1178F2E6D009679F4 /* ProfileViewController.m in Sources */,
-				540560E5178F2F73009679F4 /* ProfileRequest.m in Sources */,
-				54E9EAFB1794634500F937CA /* InviteViewController.m in Sources */,
-				54E9EB00179465DB00F937CA /* InviteContactsViewController.m in Sources */,
-				54E9D6DE17974A6200E84EFB /* LunchesRequest.m in Sources */,
-				54CA0D3C1799D3FD0012A521 /* VisitorsViewController.m in Sources */,
-				54CA0D401799D4B50012A521 /* VisitorsRequest.m in Sources */,
-				540E1F41179DA10A000D2E0C /* LinkedInViewController.m in Sources */,
-				540E1F4B179DB7FA000D2E0C /* DetailProfileViewController.m in Sources */,
-				540E1F50179DC99C000D2E0C /* ProfileDetailsRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -836,8 +733,8 @@
 				548D36B8176B819300154C36 /* en */,
 			);
 			name = InfoPlist.strings;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/letslunch_iPhone2;
-			sourceTree = "<absolute>";
+			path = ..;
+			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
@@ -866,7 +763,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -889,7 +786,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
