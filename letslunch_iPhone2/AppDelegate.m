@@ -19,10 +19,10 @@
 @synthesize tokenItem;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{    
+{
     self.tokenItem = [[KeychainWrapper alloc] initWithIdentifier:@"LetsLunchToken" accessGroup:nil];
     /*if(![[self getObjectFromKeychainForKey:kSecAttrAccount] isEqualToString:@"token"])
-        [self.tokenItem resetKeychainItem];*/
+     [self.tokenItem resetKeychainItem];*/
     
     /*
      Sets window
@@ -135,7 +135,6 @@
 - (void)writeObjectToKeychain:(id)object forKey:(id)key
 {
     [self.tokenItem mySetObject:object forKey:key];
-    NSLog(@"%@", [self getObjectFromKeychainForKey:kSecAttrAccount]);
 }
 
 + (id)getObjectFromKeychainForKey:(id)key
