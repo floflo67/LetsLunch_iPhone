@@ -11,6 +11,12 @@
 
 @implementation ProfileRequest
 
++ (NSDictionary*)getProfileWithToken:(NSString*)token
+{
+    ProfileRequest *profileRequest = [[[ProfileRequest alloc] init] autorelease];
+    return [profileRequest getProfileWithToken:token];
+}
+
 /*
  URL: http://letslunch.dev.knackforge.com/api/me
  Request Type: POST

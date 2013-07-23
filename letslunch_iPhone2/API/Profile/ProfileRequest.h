@@ -16,7 +16,9 @@
         NSMutableData* _data;
 }
 
++(NSDictionary*)getProfileWithToken:(NSString*)token;
 -(NSDictionary*)getProfileWithToken:(NSString*)token;
+
 +(void)logoutWithToken:(NSString*)token;
 
 @end
