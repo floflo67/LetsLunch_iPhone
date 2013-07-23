@@ -120,9 +120,9 @@
 		540560E3178F2F73009679F4 /* ProfileRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileRequest.h; sourceTree = "<group>"; };
 		540560E4178F2F73009679F4 /* ProfileRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileRequest.m; sourceTree = "<group>"; };
 		5409986B177239F2003DFD70 /* ShareButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShareButton.png; sourceTree = "<group>"; };
-		540E1F3E179DA10A000D2E0C /* LinkedInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LinkedInViewController.h; path = ../API/Login/LinkedInViewController.h; sourceTree = "<group>"; };
-		540E1F3F179DA10A000D2E0C /* LinkedInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LinkedInViewController.m; path = ../API/Login/LinkedInViewController.m; sourceTree = "<group>"; };
-		540E1F40179DA10A000D2E0C /* LinkedInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LinkedInViewController.xib; path = ../API/Login/LinkedInViewController.xib; sourceTree = "<group>"; };
+		540E1F3E179DA10A000D2E0C /* LinkedInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedInViewController.h; sourceTree = "<group>"; };
+		540E1F3F179DA10A000D2E0C /* LinkedInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkedInViewController.m; sourceTree = "<group>"; };
+		540E1F40179DA10A000D2E0C /* LinkedInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LinkedInViewController.xib; sourceTree = "<group>"; };
 		540E1F48179DB7FA000D2E0C /* DetailProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailProfileViewController.h; sourceTree = "<group>"; };
 		540E1F49179DB7FA000D2E0C /* DetailProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailProfileViewController.m; sourceTree = "<group>"; };
 		540E1F4A179DB7FA000D2E0C /* DetailProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailProfileViewController.xib; sourceTree = "<group>"; };
@@ -510,9 +510,6 @@
 				54F97204177CFFE7006F6FE5 /* LoginViewController.h */,
 				54F97205177CFFE7006F6FE5 /* LoginViewController.m */,
 				54F97206177CFFE7006F6FE5 /* LoginViewController.xib */,
-				540E1F3E179DA10A000D2E0C /* LinkedInViewController.h */,
-				540E1F3F179DA10A000D2E0C /* LinkedInViewController.m */,
-				540E1F40179DA10A000D2E0C /* LinkedInViewController.xib */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -522,6 +519,9 @@
 			children = (
 				54D35223178DDA510068953A /* LoginRequests.h */,
 				54D35224178DDA510068953A /* LoginRequests.m */,
+				540E1F3E179DA10A000D2E0C /* LinkedInViewController.h */,
+				540E1F3F179DA10A000D2E0C /* LinkedInViewController.m */,
+				540E1F40179DA10A000D2E0C /* LinkedInViewController.xib */,
 			);
 			path = Login;
 			sourceTree = "<group>";
