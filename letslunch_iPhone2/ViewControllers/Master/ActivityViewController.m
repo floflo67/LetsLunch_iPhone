@@ -8,6 +8,7 @@
 
 #import "ActivityViewController.h"
 #import "DetailProfileViewController.h"
+#import "ActivityCell.h"
 
 @interface ActivityViewController ()
 
@@ -100,24 +101,47 @@ static ActivityViewController *sharedSingleton = nil;
         return [_objects[section] count];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.section == 1)
+        return 120.0;
+    else {
+        if([[_objects[indexPath.section] description] isEqualToString:@"NIL"])
+            return 44;
+        else
+            return 120.0;
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"ActivityCell";
+    ActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"ActivityCell" owner:self options:nil];
+        cell = topLevelObjects[0];
     }
-    cell.backgroundColor = [UIColor clearColor];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    [cell.labelUserName setHidden:NO];
+    [cell.labelUserJobTitle setHidden:NO];
+    [cell.LabelTime setHidden:NO];
+    [cell.userPicture setHidden:NO];
+    [cell.labelVenueName setHidden:NO];
     
     if(indexPath.section == 1) {
+        cell.labelUserName.text = [NSString stringWithFormat:@"user: %i", indexPath.row];
+        cell.labelUserJobTitle.text = @"job title";
+        UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"FindFriendsButton.png"]];
+        cell.userPicture = image;
+        /*
         NSArray *object = _objects[indexPath.section];
         cell.textLabel.text = [object[indexPath.row] description];
+        */
     }
     else {
         if([[_objects[indexPath.section] description] isEqualToString:@"NIL"]) {
+            
             UIButton *pushButton = [UIButton buttonWithType:UIButtonTypeCustom];
             [pushButton addTarget:self
                            action:@selector(pushViewController:)
@@ -125,11 +149,23 @@ static ActivityViewController *sharedSingleton = nil;
             pushButton.frame = (CGRect){0, - 3, 320, 51};
             pushButton.tag = 50;
             
+            [cell.labelUserName setHidden:YES];
+            [cell.labelUserJobTitle setHidden:YES];
+            [cell.LabelTime setHidden:YES];
+            [cell.userPicture setHidden:YES];
+            [cell.labelVenueName setHidden:YES];
+            
             [pushButton setBackgroundImage:[UIImage imageNamed:@"buttonBroadcastAvailability"] forState:UIControlStateNormal];
             [cell addSubview:pushButton];
         }
         else {
+            cell.labelUserName.text = @"Florian Reiss";
+            cell.labelUserJobTitle.text = @"iOS developer";
+            cell.LabelTime.text = @"3:00 PM - 4:00 PM";
+            cell.labelVenueName.text = @"Sightglass Cafe";
+            /*
             cell.textLabel.text = [_objects[indexPath.row] description];
+             */
         }
     }
     
