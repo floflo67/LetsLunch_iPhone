@@ -7,21 +7,28 @@
 //
 
 #import "ActivityCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation ActivityCell
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        
-    }
-    return self;
-}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
+}
+
+- (void)setUserPicture:(UIImageView*)userPicture
+{
+    [self setRoundedView:userPicture toDiameter:self.frame.size.height];
+    _userPicture = userPicture;
+}
+
+-(void)setRoundedView:(UIImageView*)roundedView toDiameter:(float)newSize;
+{
+    CGPoint saveCenter = roundedView.center;
+    CGRect newFrame = CGRectMake(roundedView.frame.origin.x, roundedView.frame.origin.y, newSize, newSize);
+    roundedView.frame = newFrame;
+    roundedView.layer.cornerRadius = newSize / 2.0;
+    roundedView.center = saveCenter;
 }
 
 - (void)dealloc {
@@ -29,6 +36,7 @@
     [_labelUserJobTitle release];
     [_labelUserName release];
     [_labelVenueName release];
+    [_userPicture release];
     [super dealloc];
 }
 @end
