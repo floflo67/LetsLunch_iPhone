@@ -10,4 +10,10 @@
 
 @interface ActivityCell : UITableViewCell
 
+//@property (nonatomic, retain) IBOutlet UILabel *userPicture;
+@property (nonatomic, retain) IBOutlet UILabel *labelUserName;
+@property (nonatomic, retain) IBOutlet UILabel *labelUserJobTitle;
+@property (nonatomic, retain) IBOutlet UILabel *labelVenueName;
+@property (nonatomic, retain) IBOutlet UILabel *LabelTime;
+
 @end

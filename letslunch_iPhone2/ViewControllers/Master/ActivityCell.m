@@ -14,7 +14,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
+        
     }
     return self;
 }
@@ -22,8 +22,13 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
+- (void)dealloc {
+    [_LabelTime release];
+    [_labelUserJobTitle release];
+    [_labelUserName release];
+    [_labelVenueName release];
+    [super dealloc];
+}
 @end

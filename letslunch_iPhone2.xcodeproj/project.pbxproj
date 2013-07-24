@@ -61,6 +61,7 @@
 		545905E0179EE9CC002A0620 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36BE176B819300154C36 /* AppDelegate.m */; };
 		545905E1179EE9CC002A0620 /* CenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36DB176B823700154C36 /* CenterViewController.m */; };
 		5480D55C17A06FA30069ABAC /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5480D55B17A06FA30069ABAC /* ActivityCell.m */; };
+		5480D55E17A077930069ABAC /* ActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5480D55D17A077930069ABAC /* ActivityCell.xib */; };
 		548D36AF176B819300154C36 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36AE176B819300154C36 /* UIKit.framework */; };
 		548D36B1176B819300154C36 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36B0176B819300154C36 /* Foundation.framework */; };
 		548D36B3176B819300154C36 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36B2176B819300154C36 /* CoreGraphics.framework */; };
@@ -161,6 +162,7 @@
 		547D54DD1773B2300069D837 /* FSConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSConverter.m; sourceTree = "<group>"; };
 		5480D55A17A06FA30069ABAC /* ActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCell.h; sourceTree = "<group>"; };
 		5480D55B17A06FA30069ABAC /* ActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCell.m; sourceTree = "<group>"; };
+		5480D55D17A077930069ABAC /* ActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityCell.xib; sourceTree = "<group>"; };
 		548D36AB176B819300154C36 /* letslunch_iPhone2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = letslunch_iPhone2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		548D36AE176B819300154C36 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		548D36B0176B819300154C36 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -358,6 +360,7 @@
 				54E714CC176B95E200F39D73 /* ActivityViewController.xib */,
 				5480D55A17A06FA30069ABAC /* ActivityCell.h */,
 				5480D55B17A06FA30069ABAC /* ActivityCell.m */,
+				5480D55D17A077930069ABAC /* ActivityCell.xib */,
 				5400CFFD177A0C98002CC092 /* ContactViewController.h */,
 				5400CFFE177A0C98002CC092 /* ContactViewController.m */,
 				5400CFFF177A0C98002CC092 /* ContactViewController.xib */,
@@ -762,6 +765,7 @@
 				54CA0D3D1799D3FD0012A521 /* VisitorsViewController.xib in Resources */,
 				540E1F42179DA10A000D2E0C /* LinkedInViewController.xib in Resources */,
 				540E1F4C179DB7FA000D2E0C /* DetailProfileViewController.xib in Resources */,
+				5480D55E17A077930069ABAC /* ActivityCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
