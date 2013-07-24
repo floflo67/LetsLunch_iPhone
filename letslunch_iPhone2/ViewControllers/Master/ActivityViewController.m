@@ -132,8 +132,11 @@ static ActivityViewController *sharedSingleton = nil;
     if(indexPath.section == 1) {
         cell.labelUserName.text = [NSString stringWithFormat:@"user: %i", indexPath.row];
         cell.labelUserJobTitle.text = @"job title";
-        UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"FindFriendsButton.png"]];
-        cell.userPicture = image;
+        
+        NSString *imageName = [AppDelegate getObjectFromKeychainForKey:kSecAttrDescription];
+        UIImage *img = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageName]]];
+        cell.userPicture.image = img;
+        
         /*
         NSArray *object = _objects[indexPath.section];
         cell.textLabel.text = [object[indexPath.row] description];
