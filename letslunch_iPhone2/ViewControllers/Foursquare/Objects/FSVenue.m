@@ -10,6 +10,16 @@
 
 @implementation FSLocation
 
+- (id)initWithDictionary:(NSDictionary*)dict
+{
+    self = [super init];
+    if(self) {
+        [self setCoordinate:CLLocationCoordinate2DMake([[dict objectForKey:@"degreesLatitude"] doubleValue], [[dict objectForKey:@"degreesLongitude"] doubleValue])];
+        self.address = [dict objectForKey:@"venueAddress"];
+    }
+    return self;
+}
+
 @end
 
 @implementation FSVenue
@@ -19,6 +29,17 @@
     self = [super init];
     if (self) {
         self.location = [[FSLocation alloc] init];
+    }
+    return self;
+}
+
+- (id)initWithDictionary:(NSDictionary*)dict
+{
+    self = [super init];
+    if(self) {
+        self.location = [[FSLocation alloc] initWithDictionary:[dict objectForKey:@"location"]];
+        self.name = [dict objectForKey:@"venueName"];
+        self.venueId = [dict objectForKey:@"venueId"];
     }
     return self;
 }

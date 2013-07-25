@@ -19,6 +19,8 @@
 @property (nonatomic, strong) NSNumber *distance;
 @property (nonatomic, strong) NSString *address;
 
+-(id)initWithDictionary:(NSDictionary*)dict;
+
 @end
 
 @interface FSVenue : NSObject<MKAnnotation>
@@ -28,5 +30,7 @@
 @property (nonatomic, strong) FSLocation *location;
 @property (nonatomic, weak) NSNumber *distance;
 @property (nonatomic, strong) NSString *categoryName;
+
+-(id)initWithDictionary:(NSDictionary*)dict;
 
 @end
