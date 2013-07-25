@@ -11,6 +11,7 @@
 #import "LoginViewController.h"
 #import "Activity.h"
 #import "KeychainWrapper.h"
+#import "Contacts.h"
 
 @class TwitterConsumer;
 @class TwitterToken;
@@ -30,6 +31,7 @@
 @property (strong, nonatomic) NSMutableArray *listContacts;
 @property (strong, nonatomic) NSMutableArray *listVisitors;
 @property (strong, nonatomic) Activity *ownerActivity;
+@property (strong, nonatomic) Contacts *ownerContact;
 
 @property (strong, nonatomic) TwitterConsumer* consumer;
 @property (strong, nonatomic) TwitterToken* token;

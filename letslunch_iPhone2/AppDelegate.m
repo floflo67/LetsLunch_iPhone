@@ -52,11 +52,10 @@
     _viewController = controller;
     _navController = navController;
     
-    NSLog(@"%@", [self getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)]);
     if([[self getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)] isEqualToString:@"token"])
         [self showLoginView];
     else
-        [self.viewController ActivityConfiguration];
+        [self loginSuccessfull];
     
     return YES;
 }
@@ -64,6 +63,7 @@
 - (void)loginSuccessfull
 {
     [self hideLoginView];
+    [self setupOwnerContactInfo];
     [self.viewController ActivityConfiguration];
 }
 
@@ -79,6 +79,12 @@
     [_loginViewController.view removeFromSuperview];
     [_loginViewController.view setHidden:YES];
     _loginViewController = nil;
+}
+
+- (void)setupOwnerContactInfo
+{
+    NSDictionary *dictContact = [ProfileRequest getProfileWithToken:[self getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)] andLight:YES];
+    self.ownerContact = [[Contacts alloc] initWithDictionary:dictContact];
 }
 
 #pragma custom functions
