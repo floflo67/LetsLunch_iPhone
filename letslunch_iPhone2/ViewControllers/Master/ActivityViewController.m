@@ -129,10 +129,6 @@ static ActivityViewController *sharedSingleton = nil;
     cell.LabelTime.textColor = [AppDelegate colorWithHexString:@"5e5e5e"];
     cell.labelUserName.textColor = [AppDelegate colorWithHexString:@"6a6a6a"];
     cell.labelVenueName.textColor = [AppDelegate colorWithHexString:@"5e5e5e"];
-    if(self.pushButton) {
-        [self.pushButton removeFromSuperview];
-        self.pushButton = nil;
-    }
     
     [cell.labelUserName setHidden:NO];
     [cell.labelUserJobTitle setHidden:NO];
@@ -160,8 +156,7 @@ static ActivityViewController *sharedSingleton = nil;
         if([[_objects[indexPath.section] description] isEqualToString:@"NIL"]) {
             
             self.pushButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            [self.pushButton addTarget:self
-                           action:@selector(pushViewController:)
+            [self.pushButton addTarget:self action:@selector(pushViewController:)
                  forControlEvents:UIControlEventTouchDown];
             self.pushButton.frame = (CGRect){0, - 3, 320, 51};
             
@@ -173,6 +168,7 @@ static ActivityViewController *sharedSingleton = nil;
             
             [self.pushButton setBackgroundImage:[UIImage imageNamed:@"buttonBroadcastAvailability"] forState:UIControlStateNormal];
             [cell addSubview:self.pushButton];
+            self.pushButton = nil;
         }
         else {
             

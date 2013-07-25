@@ -278,26 +278,44 @@ static CreateActivityViewController *sharedSingleton = nil;
         
     }
     else {
-        //add
+        NSDate *current = [NSDate new];
+        NSDateFormatter *format = [[NSDateFormatter alloc] init];
+        [format setDateFormat:@"h:mm a"];
+        NSTimeInterval threeHours = 60 * 60 * 3;
+        
+        NSString *start = [format stringFromDate:current];
+        NSString *end = [format stringFromDate:[current dateByAddingTimeInterval:threeHours]];
+        NSString *activityTime = [NSString stringWithFormat:@"%@ - %@", start, end];
+        
+        // update
         if(app.ownerActivity) {
             app.ownerActivity.description = description;
             app.ownerActivity.isCoffee = self.segment.selectedSegmentIndex;
             app.ownerActivity.venue = self.venue;
+            app.ownerActivity.time = activityTime;
             [_lunchRequest updateLunchWithToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)] andActivity:app.ownerActivity];
             [[ActivityViewController getSingleton] loadOwnerActivity];
         }
+        // add
         else {
             Activity *activity = [[Activity alloc] init];
             activity.description = description;
             activity.isCoffee = self.segment.selectedSegmentIndex;
             activity.venue = self.venue;
-            if(![_lunchRequest addLunchWithToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)] andActivity:activity]) {
+            activity.time = activityTime;
+            NSDictionary *dict = [_lunchRequest addLunchWithToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)] andActivity:activity];
+            if(![dict objectForKey:@"success"]) {
                 return;
             }
             else {
-                app.ownerActivity = activity;                
+                activity.activityID = [dict objectForKey:@"lunchId"];
+                app.ownerActivity = activity;
             }
+            activity = nil;
+            format = nil;
         }
+        
+        app.ownerActivity.contact = app.ownerContact;
     }
     if(self.activity)
         self.activity = nil;
