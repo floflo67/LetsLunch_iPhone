@@ -164,10 +164,13 @@ static ActivityViewController *sharedSingleton = nil;
             [cell addSubview:pushButton];
         }
         else {
-            cell.labelUserName.text = @"Florian Reiss";
-            cell.labelUserJobTitle.text = @"iOS developer";
-            cell.LabelTime.text = @"3:00 PM - 4:00 PM";
-            cell.labelVenueName.text = @"Sightglass Cafe";
+            
+            Activity *activity = _objects[indexPath.section];
+            
+            cell.labelUserName.text = activity.contact.firstname;
+            cell.labelUserJobTitle.text = activity.contact.jobTitle;
+            cell.LabelTime.text = activity.time;
+            cell.labelVenueName.text = activity.venue.name;
             /*
             cell.textLabel.text = [_objects[indexPath.row] description];
              */
