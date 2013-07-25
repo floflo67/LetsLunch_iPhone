@@ -20,8 +20,7 @@
 
 @class LeftSidebarViewController;
 
-@interface CenterViewController : UIViewController <JTRevealSidebarV2Delegate, UITableViewDelegate, CLLocationManagerDelegate> {
-    CLLocationManager *locationManager;
+@interface CenterViewController : UIViewController <JTRevealSidebarV2Delegate, UITableViewDelegate> {
     CGPoint _containerOrigin;
 }
 

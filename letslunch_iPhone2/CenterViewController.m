@@ -22,14 +22,6 @@
 
 #pragma view lifecycle
 
-- (id)init {
-    self = [super init];
-    if(self) {
-        [self locationManagerInit];
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -117,7 +109,6 @@
 
 - (void)findFriendsButtonClick:(id)sender
 {
-    NSLog(@"Find");
     [self.navigationController toggleRevealState:JTRevealedStateNo];
 }
 
@@ -140,23 +131,6 @@
 {
     [[ShareViewController getSingleton].view removeFromSuperview];
     [ShareViewController suppressSingleton];
-}
-
-#pragma location
-
-- (void)locationManagerInit
-{
-    locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    locationManager.distanceFilter = kCLDistanceFilterNone;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    //[locationManager startUpdatingLocation];
-}
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-{
-    CLLocation *location = [locations lastObject];
-    NSLog(@"lat%f - lon%f", location.coordinate.latitude, location.coordinate.longitude);
 }
 
 #pragma mark JTRevealSidebarDelegate
