@@ -37,12 +37,11 @@
             self.jobTitle = @"";
         
         self.pictureURL = [dict objectForKey:@"pictureURL"];
-        if(!self.pictureURL)
-            self.pictureURL = nil;
-        
+        if(!self.pictureURL || [self.pictureURL.class isSubclassOfClass:[NSNull class]] || [self.pictureURL isEqualToString:@""])
+            self.pictureURL = LL_Default_Picture_Url;
         
         if(self.pictureURL)
-            self.image = [UIImage imageWithContentsOfFile:[NSString stringWithContentsOfURL:[NSURL URLWithString:self.pictureURL] encoding:NSUTF8StringEncoding error:nil]];
+            self.image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.pictureURL]]];
     }
     return self;
 }
