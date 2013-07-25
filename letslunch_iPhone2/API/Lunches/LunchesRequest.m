@@ -49,13 +49,39 @@
     if([arr count] == 0)
         _statusCode = 201;
     
-    arr = nil;
-    
     if(_statusCode == 200) {
-        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
-        NSLog(@"%@", dict);
-        dict = [dict objectForKey:@"lunchAvailabilty"][0];
-        return dict;
+        NSDictionary *dict = arr[0];
+        
+        NSMutableDictionary *activityDict = [[NSMutableDictionary alloc] init];
+        NSMutableDictionary *venueDict = [[NSMutableDictionary alloc] init];
+        NSMutableDictionary *locationDict = [[NSMutableDictionary alloc] init];
+        NSMutableDictionary *contactDict = [[NSMutableDictionary alloc] init];
+        NSDictionary *userDict = [dict objectForKey:@"users"][0];
+        
+        [locationDict setObject:[dict objectForKey:@"degreesLatitude"] forKey:@"degreesLatitude"];
+        [locationDict setObject:[dict objectForKey:@"degreesLongitude"] forKey:@"degreesLongitude"];
+        [locationDict setObject:[dict objectForKey:@"venueAddress"] forKey:@"venueAddress"];
+        
+        [venueDict setObject:[dict objectForKey:@"venueName"] forKey:@"venueName"];
+        [venueDict setObject:[dict objectForKey:@"venueId"] forKey:@"venueId"];
+        [venueDict setObject:locationDict forKey:@"location"];
+        
+        [contactDict setObject:[userDict objectForKey:@"uid"] forKey:@"uid"];
+        [contactDict setObject:[userDict objectForKey:@"firstname"] forKey:@"firstname"];
+        [contactDict setObject:[userDict objectForKey:@"lastname"] forKey:@"lastname"];
+        [contactDict setObject:[userDict objectForKey:@"headline"] forKey:@"headline"];
+        [contactDict setObject:[userDict objectForKey:@"pictureUrl"] forKey:@"pictureURL"];
+        
+        [activityDict setObject:[dict objectForKey:@"lunchId"] forKey:@"id"];
+        [activityDict setObject:@"0" forKey:@"isCoffee"];
+        [activityDict setObject:contactDict forKey:@"contact"];
+        [activityDict setObject:venueDict forKey:@"venue"];
+        [activityDict setObject:[dict objectForKey:@"lunchDate"] forKey:@"description"];
+        [activityDict setObject:[dict objectForKey:@"startTime"] forKey:@"startTime"];
+        [activityDict setObject:[dict objectForKey:@"endTime"] forKey:@"endTime"];
+        
+        NSLog(@"%@", activityDict);
+        return activityDict;
     }
     else if (_statusCode == 201)
         return nil;
