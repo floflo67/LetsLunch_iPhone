@@ -25,8 +25,13 @@
 
 +(NSDictionary*)getOwnerLunchWithToken:(NSString*)token;
 -(NSDictionary*)getOwnerLunchWithToken:(NSString*)token;
+
++(NSMutableArray*)getLunchesWithToken:(NSString*)token latitude:(double)latitude longitude:(double)longitude andDate:(NSString*)date;
+-(NSMutableArray*)getLunchesWithToken:(NSString*)token latitude:(double)latitude longitude:(double)longitude andDate:(NSString*)date;
+
 +(BOOL)suppressLunchWithToken:(NSString*)token andActivityID:(NSString*)activityID;
 -(BOOL)suppressLunchWithToken:(NSString*)token andActivityID:(NSString*)activityID;
+
 -(NSDictionary*)addLunchWithToken:(NSString*)token andActivity:(Activity*)activity;
 -(void)updateLunchWithToken:(NSString*)token andActivity:(Activity*)activity;
 

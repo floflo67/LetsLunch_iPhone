@@ -77,10 +77,123 @@
         [activityDict setObject:contactDict forKey:@"contact"];
         [activityDict setObject:venueDict forKey:@"venue"];
         [activityDict setObject:[dict objectForKey:@"lunchDate"] forKey:@"description"];
-        [activityDict setObject:[dict objectForKey:@"startTime"] forKey:@"startTime"];
-        [activityDict setObject:[dict objectForKey:@"endTime"] forKey:@"endTime"];
+        
+        NSDateFormatter *formatToDate = [[NSDateFormatter alloc] init];
+        NSDateFormatter *formatFromDate = [[NSDateFormatter alloc] init];
+        [formatToDate setDateStyle:NSDateFormatterMediumStyle];
+        [formatToDate setDateFormat:@"HH:mm:ss"];
+        [formatFromDate setDateFormat:@"h:mm a"];
+        
+        NSDate *date = [[NSDate alloc] init];
+        date = [formatToDate dateFromString:[dict objectForKey:@"startTime"]];
+        NSString *time = [formatFromDate stringFromDate:date];
+        [activityDict setObject:time forKey:@"startTime"];
+        
+        date = [formatToDate dateFromString:[dict objectForKey:@"endTime"]];
+        time = [formatFromDate stringFromDate:date];
+        [activityDict setObject:time forKey:@"endTime"];
         
         return activityDict;
+    }
+    else if (_statusCode == 201)
+        return nil;
+    else {
+        NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"%@", response);
+        return nil;
+    }
+}
+
+#pragma mark - Get people lunch
+
++ (NSMutableArray*)getLunchesWithToken:(NSString*)token latitude:(double)latitude longitude:(double)longitude andDate:(NSString*)date
+{
+    LunchesRequest *lunchRequest = [[LunchesRequest alloc] init];
+    return [lunchRequest getLunchesWithToken:token latitude:latitude longitude:longitude andDate:date];
+}
+
+/*
+ URL: http://letslunch.dev.knackforge.com/lunch/show
+ Request Type: POST
+ Parameters:
+     authToken
+     degreesLatitude
+     degreesLongitude
+     lunchDate
+ */
+- (NSMutableArray*)getLunchesWithToken:(NSString*)token latitude:(double)latitude longitude:(double)longitude andDate:(NSString*)date
+{
+    /*
+     Sets the body of the requests
+     */
+    NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
+    [parameters setValue:token forKey:@"authToken"];
+    [parameters setValue:[NSString stringWithFormat:@"%f", latitude] forKey:@"degreesLatitude"];
+    [parameters setValue:[NSString stringWithFormat:@"%f", longitude] forKey:@"degreesLongitude"];
+    [parameters setValue:date forKey:@"lunchDate"];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@lunch/people/nearby",LL_API_BaseUrl]];
+    MutableRequest *request = [[MutableRequest alloc] initWithURL:url andParameters:parameters andType:@"POST"];
+    
+    NSURLResponse *response;
+    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
+    
+    return [self settingUpLunchesData:data andResponse:response];
+}
+
+- (NSMutableArray*)settingUpLunchesData:(NSData*)data andResponse:(NSURLResponse*)response
+{
+    _statusCode = [(NSHTTPURLResponse*)response statusCode];
+    NSArray *arr = [[NSArray alloc] initWithArray:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
+    if([arr count] == 0)
+        _statusCode = 201;
+    
+    if(_statusCode == 200) {
+        NSMutableArray *listLunch = [[NSMutableArray alloc] init];
+        for (NSDictionary *dict in arr) {
+            NSMutableDictionary *activityDict = [[NSMutableDictionary alloc] init];
+            NSMutableDictionary *venueDict = [[NSMutableDictionary alloc] init];
+            NSMutableDictionary *locationDict = [[NSMutableDictionary alloc] init];
+            NSMutableDictionary *contactDict = [[NSMutableDictionary alloc] init];
+            NSDictionary *userDict = [dict objectForKey:@"users"][0];
+            
+            [locationDict setObject:[dict objectForKey:@"degreesLatitude"] forKey:@"degreesLatitude"];
+            [locationDict setObject:[dict objectForKey:@"degreesLongitude"] forKey:@"degreesLongitude"];
+            [locationDict setObject:[dict objectForKey:@"venueAddress"] forKey:@"venueAddress"];
+            
+            [venueDict setObject:[dict objectForKey:@"venueName"] forKey:@"venueName"];
+            [venueDict setObject:[dict objectForKey:@"venueId"] forKey:@"venueId"];
+            [venueDict setObject:locationDict forKey:@"location"];
+            
+            [contactDict setObject:[userDict objectForKey:@"uid"] forKey:@"uid"];
+            [contactDict setObject:[userDict objectForKey:@"firstname"] forKey:@"firstname"];
+            [contactDict setObject:[userDict objectForKey:@"lastname"] forKey:@"lastname"];
+            [contactDict setObject:[userDict objectForKey:@"headline"] forKey:@"headline"];
+            [contactDict setObject:[userDict objectForKey:@"pictureUrl"] forKey:@"pictureURL"];
+            
+            [activityDict setObject:[dict objectForKey:@"lunchId"] forKey:@"id"];
+            [activityDict setObject:@"0" forKey:@"isCoffee"];
+            [activityDict setObject:contactDict forKey:@"contact"];
+            [activityDict setObject:venueDict forKey:@"venue"];
+            [activityDict setObject:[dict objectForKey:@"lunchDate"] forKey:@"description"];
+            
+            NSDateFormatter *formatToDate = [[NSDateFormatter alloc] init];
+            NSDateFormatter *formatFromDate = [[NSDateFormatter alloc] init];
+            [formatToDate setDateStyle:NSDateFormatterMediumStyle];
+            [formatToDate setDateFormat:@"HH:mm:ss"];
+            [formatFromDate setDateFormat:@"h:mm a"];
+            
+            NSDate *date = [[NSDate alloc] init];
+            date = [formatToDate dateFromString:[dict objectForKey:@"startTime"]];
+            NSString *time = [formatFromDate stringFromDate:date];
+            [activityDict setObject:time forKey:@"startTime"];
+            
+            date = [formatToDate dateFromString:[dict objectForKey:@"endTime"]];
+            time = [formatFromDate stringFromDate:date];
+            [activityDict setObject:time forKey:@"endTime"];
+            
+            [listLunch addObject:[[Activity alloc] initWithDict:activityDict]];
+        }
+        return listLunch;
     }
     else if (_statusCode == 201)
         return nil;
