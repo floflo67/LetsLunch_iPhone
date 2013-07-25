@@ -19,17 +19,27 @@
     return self;
 }
 
-- (id)initWithDict:(NSDictionary*)dict
+- (id)initWithDictionary:(NSDictionary*)dict
 {
     self = [self init];
     if(self) {
         self.ID = [dict objectForKey:@"uid"];
         self.firstname = [dict objectForKey:@"firstname"];
+        if(!self.firstname)
+            self.firstname = @"";
+        
         self.lastname = [dict objectForKey:@"lastname"];
-        self.publicname = [dict objectForKey:@"publicname"];
-        self.summary = [dict objectForKey:@"headline"];
-        self.headline = [dict objectForKey:@"summary"];
+        if(!self.lastname || [self.lastname.class isSubclassOfClass:[NSNull class]])
+            self.lastname = @"";
+        
+        self.jobTitle = [dict objectForKey:@"headline"];
+        if(!self.jobTitle || [self.jobTitle.class isSubclassOfClass:[NSNull class]])
+            self.jobTitle = @"";
+        
         self.pictureURL = [dict objectForKey:@"pictureURL"];
+        if(!self.pictureURL)
+            self.pictureURL = nil;
+        
         
         if(self.pictureURL)
             self.image = [UIImage imageWithContentsOfFile:[NSString stringWithContentsOfURL:[NSURL URLWithString:self.pictureURL] encoding:NSUTF8StringEncoding error:nil]];
@@ -37,16 +47,14 @@
     return self;
 }
 
-- (id)initWithID:(NSString*)ID firstname:(NSString*)firstname lastname:(NSString*)lastname publicname:(NSString*)publicname summary:(NSString*)summary headline:(NSString*)headline andPictureURL:(NSString*)url
+- (id)initWithID:(NSString*)ID firstname:(NSString*)firstname lastname:(NSString*)lastname jobTitle:(NSString*)jobTitle andPictureURL:(NSString*)url
 {
     self = [self init];
     if(self) {
         self.ID = ID;
         self.firstname = firstname;
         self.lastname = lastname;
-        self.publicname = publicname;
-        self.summary = summary;
-        self.headline = headline;
+        self.jobTitle = jobTitle;
         self.pictureURL = url;
         
         if(self.pictureURL)
