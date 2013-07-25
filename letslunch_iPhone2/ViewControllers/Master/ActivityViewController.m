@@ -63,7 +63,6 @@ static ActivityViewController *sharedSingleton = nil;
 - (void)loadOwnerActivity
 {
     AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    _objects[0] = nil;
     if([app getOwnerActivityAndForceReload:NO]) {
         _objects[0] = [app getOwnerActivityAndForceReload:NO];
         self.hasActivity = YES;
@@ -130,6 +129,10 @@ static ActivityViewController *sharedSingleton = nil;
     cell.LabelTime.textColor = [AppDelegate colorWithHexString:@"5e5e5e"];
     cell.labelUserName.textColor = [AppDelegate colorWithHexString:@"6a6a6a"];
     cell.labelVenueName.textColor = [AppDelegate colorWithHexString:@"5e5e5e"];
+    if(self.pushButton) {
+        [self.pushButton removeFromSuperview];
+        self.pushButton = nil;
+    }
     
     [cell.labelUserName setHidden:NO];
     [cell.labelUserJobTitle setHidden:NO];
@@ -156,12 +159,11 @@ static ActivityViewController *sharedSingleton = nil;
     else {
         if([[_objects[indexPath.section] description] isEqualToString:@"NIL"]) {
             
-            UIButton *pushButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            [pushButton addTarget:self
+            self.pushButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            [self.pushButton addTarget:self
                            action:@selector(pushViewController:)
                  forControlEvents:UIControlEventTouchDown];
-            pushButton.frame = (CGRect){0, - 3, 320, 51};
-            pushButton.tag = 50;
+            self.pushButton.frame = (CGRect){0, - 3, 320, 51};
             
             [cell.labelUserName setHidden:YES];
             [cell.labelUserJobTitle setHidden:YES];
@@ -169,8 +171,8 @@ static ActivityViewController *sharedSingleton = nil;
             [cell.userPicture setHidden:YES];
             [cell.labelVenueName setHidden:YES];
             
-            [pushButton setBackgroundImage:[UIImage imageNamed:@"buttonBroadcastAvailability"] forState:UIControlStateNormal];
-            [cell addSubview:pushButton];
+            [self.pushButton setBackgroundImage:[UIImage imageNamed:@"buttonBroadcastAvailability"] forState:UIControlStateNormal];
+            [cell addSubview:self.pushButton];
         }
         else {
             
