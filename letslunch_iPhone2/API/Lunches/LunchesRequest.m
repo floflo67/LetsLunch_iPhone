@@ -80,7 +80,6 @@
         [activityDict setObject:[dict objectForKey:@"startTime"] forKey:@"startTime"];
         [activityDict setObject:[dict objectForKey:@"endTime"] forKey:@"endTime"];
         
-        NSLog(@"%@", activityDict);
         return activityDict;
     }
     else if (_statusCode == 201)

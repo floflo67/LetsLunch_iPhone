@@ -35,6 +35,9 @@
     [listActivities addObject:act1];
     [listActivities addObject:@"Activity2"];
     [listActivities addObject:@"Activity3"];
+    [listActivities addObject:@"Activity4"];
+    [listActivities addObject:@"Activity5"];
+    [listActivities addObject:@"Activity6"];
     
     return listActivities;
 }

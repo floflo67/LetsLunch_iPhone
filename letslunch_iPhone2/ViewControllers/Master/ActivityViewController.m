@@ -100,13 +100,21 @@ static ActivityViewController *sharedSingleton = nil;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section == 1)
-        return 120.0;
+        return 120.0f;
     else {
         if([[_objects[indexPath.section] description] isEqualToString:@"NIL"])
-            return 44;
+            return 44.0f;
         else
-            return 120.0;
+            return 120.0f;
     }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    if(section == 1)
+        return 80.0f;
+    else
+        return 0.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -135,9 +143,10 @@ static ActivityViewController *sharedSingleton = nil;
         cell.LabelTime.text = @"3:00 PM - 4:00 PM";
         cell.labelVenueName.text = @"Sightglass Cafe";
         
+        /*
         NSString *imageName = [AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrDescription)];
         UIImage *img = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageName]]];
-        cell.userPicture.image = img;
+        cell.userPicture.image = img;*/
         
         /*
         NSArray *object = _objects[indexPath.section];
@@ -167,7 +176,7 @@ static ActivityViewController *sharedSingleton = nil;
             
             Activity *activity = _objects[indexPath.section];
             
-            cell.labelUserName.text = activity.contact.firstname;
+            cell.labelUserName.text = [NSString stringWithFormat:@"%@ %@", activity.contact.firstname, activity.contact.lastname];
             cell.labelUserJobTitle.text = activity.contact.jobTitle;
             cell.LabelTime.text = activity.time;
             cell.labelVenueName.text = activity.venue.name;
