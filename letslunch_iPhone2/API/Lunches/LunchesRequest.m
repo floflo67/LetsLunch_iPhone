@@ -108,7 +108,7 @@
     venueId // can be null - depend on venue
     venueAddress // can be null - depend on venue
  */
-- (BOOL)addLunchWithToken:(NSString*)token andActivity:(Activity*)activity
+- (NSDictionary*)addLunchWithToken:(NSString*)token andActivity:(Activity*)activity
 {
     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
     
@@ -155,12 +155,13 @@
     return [self settingUpDataForAdd:data andResponse:response];
 }
 
-- (bool)settingUpDataForAdd:(NSData*)data andResponse:(NSURLResponse*)response
+- (NSDictionary*)settingUpDataForAdd:(NSData*)data andResponse:(NSURLResponse*)response
 {
     _statusCode = [(NSHTTPURLResponse*)response statusCode];
     
     if(_statusCode == 200) {
-        return YES;
+        NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
+        return dictJson;
     }
     else {
         NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
@@ -261,6 +262,7 @@
         date = [date dateByAddingTimeInterval:secondsInThreeHours];
         endTime = [format stringFromDate:date];
         
+        [parameters setValue:activity.activityID forKey:@"id"];
         [parameters setValue:token forKey:@"authToken"];
         [parameters setValue:lunchType forKey:@"lunchType"];
         [parameters setValue:postingTime forKey:@"startTime"];
