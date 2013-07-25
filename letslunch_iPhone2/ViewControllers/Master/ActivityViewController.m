@@ -39,6 +39,8 @@ static ActivityViewController *sharedSingleton = nil;
 {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [AppDelegate colorWithHexString:@"f0f0f0"];
+    
     if(!_objects) {
         AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
         _objects = [[NSMutableArray alloc] init];
@@ -116,6 +118,10 @@ static ActivityViewController *sharedSingleton = nil;
         NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"ActivityCell" owner:self options:nil];
         cell = topLevelObjects[0];
     }
+    cell.labelUserJobTitle.textColor = [AppDelegate colorWithHexString:@"f88836"];
+    cell.LabelTime.textColor = [AppDelegate colorWithHexString:@"5e5e5e"];
+    cell.labelUserName.textColor = [AppDelegate colorWithHexString:@"6a6a6a"];
+    cell.labelVenueName.textColor = [AppDelegate colorWithHexString:@"5e5e5e"];
     
     [cell.labelUserName setHidden:NO];
     [cell.labelUserJobTitle setHidden:NO];
@@ -124,8 +130,10 @@ static ActivityViewController *sharedSingleton = nil;
     [cell.labelVenueName setHidden:NO];
     
     if(indexPath.section == 1) {
-        cell.labelUserName.text = [NSString stringWithFormat:@"user: %i", indexPath.row];
-        cell.labelUserJobTitle.text = @"job title";
+        cell.labelUserName.text = @"Florian Reiss";
+        cell.labelUserJobTitle.text = @"Developer";
+        cell.LabelTime.text = @"3:00 PM - 4:00 PM";
+        cell.labelVenueName.text = @"Sightglass Cafe";
         
         NSString *imageName = [AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrDescription)];
         UIImage *img = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageName]]];

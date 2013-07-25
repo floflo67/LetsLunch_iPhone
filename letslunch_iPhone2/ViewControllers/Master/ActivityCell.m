@@ -11,11 +11,6 @@
 
 @implementation ActivityCell
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-}
-
 - (void)setUserPicture:(UIImageView*)userPicture
 {
     [self setRoundedView:userPicture toDiameter:self.frame.size.height];
