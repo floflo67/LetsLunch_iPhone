@@ -108,14 +108,6 @@ static ActivityViewController *sharedSingleton = nil;
     }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    if(section == 1)
-        return 80.0f;
-    else
-        return 0.0f;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"ActivityCell";
@@ -137,20 +129,12 @@ static ActivityViewController *sharedSingleton = nil;
     [cell.labelVenueName setHidden:NO];
     
     if(indexPath.section == 1) {
-        cell.labelUserName.text = @"Florian Reiss";
-        cell.labelUserJobTitle.text = @"Developer";
-        cell.LabelTime.text = @"3:00 PM - 4:00 PM";
-        cell.labelVenueName.text = @"Sightglass Cafe";
-        
-        /*
-        NSString *imageName = [AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrDescription)];
-        UIImage *img = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageName]]];
-        cell.userPicture.image = img;*/
-        
-        /*
-        NSArray *object = _objects[indexPath.section];
-        cell.textLabel.text = [object[indexPath.row] description];
-        */
+        Activity *activity = _objects[indexPath.section][indexPath.row];
+        cell.labelUserName.text = [NSString stringWithFormat:@"%@ %@", activity.contact.firstname, activity.contact.lastname];
+        cell.labelUserJobTitle.text = activity.contact.jobTitle;
+        cell.LabelTime.text = activity.time;
+        cell.labelVenueName.text = activity.venue.name;
+        cell.imageView.image = activity.contact.image;
     }
     else {
         if([[_objects[indexPath.section] description] isEqualToString:@"NIL"]) {
@@ -171,16 +155,13 @@ static ActivityViewController *sharedSingleton = nil;
             self.pushButton = nil;
         }
         else {
-            
             Activity *activity = _objects[indexPath.section];
             
             cell.labelUserName.text = [NSString stringWithFormat:@"%@ %@", activity.contact.firstname, activity.contact.lastname];
             cell.labelUserJobTitle.text = activity.contact.jobTitle;
             cell.LabelTime.text = activity.time;
             cell.labelVenueName.text = activity.venue.name;
-            /*
-            cell.textLabel.text = [_objects[indexPath.row] description];
-             */
+            cell.imageView.image = activity.contact.image;
         }
     }
     
