@@ -15,31 +15,32 @@
 
 @implementation GetStaticLists
 
-+ (NSArray*)getListActivities
++ (NSMutableArray*)getListActivitiesWithToken:(NSString*)token latitude:(double)latitude longitude:(double)longitude andDate:(NSString*)date
 {
-    NSMutableArray* listActivities = [[NSMutableArray alloc] init];
-    Contacts *c = [[Contacts alloc] initWithID:@"1" firstname:@"first" lastname:@"last" jobTitle:@"headline" andPictureURL:nil];
-    FSVenue *v = [[FSVenue alloc] init];
-    
-    v.name = @"The Grove";
-    v.venueId = @"4b7ef75cf964a520ee0c30e3";
-    v.location.address = @"690 Mission St";
-    NSNumber *num = [NSNumber numberWithInt:403];
-    v.location.distance = num;
-    v.distance = v.location.distance;
-    [v.location setCoordinate:CLLocationCoordinate2DMake([@"37.78653398485857" doubleValue], [@"-122.401921749115" doubleValue])];
-    
-    BOOL b = YES;
-    Activity *act1 = [[Activity alloc] initWithID:@"1234" contact:c venue:v description:@"desc1" startTime:@"2:00 PM" endTime:@"3:00 PM" andIsCoffee:b];
-    
-    [listActivities addObject:act1];
-    [listActivities addObject:@"Activity2"];
-    [listActivities addObject:@"Activity3"];
-    [listActivities addObject:@"Activity4"];
-    [listActivities addObject:@"Activity5"];
-    [listActivities addObject:@"Activity6"];
-    
+    NSMutableArray* listActivities = [LunchesRequest getLunchesWithToken:token latitude:latitude longitude:longitude andDate:date];
     return listActivities;
+    /*
+     Contacts *c = [[Contacts alloc] initWithID:@"1" firstname:@"first" lastname:@"last" jobTitle:@"headline" andPictureURL:nil];
+     FSVenue *v = [[FSVenue alloc] init];
+     
+     v.name = @"The Grove";
+     v.venueId = @"4b7ef75cf964a520ee0c30e3";
+     v.location.address = @"690 Mission St";
+     NSNumber *num = [NSNumber numberWithInt:403];
+     v.location.distance = num;
+     v.distance = v.location.distance;
+     [v.location setCoordinate:CLLocationCoordinate2DMake([@"37.78653398485857" doubleValue], [@"-122.401921749115" doubleValue])];
+     
+     BOOL b = YES;
+     Activity *act1 = [[Activity alloc] initWithID:@"1234" contact:c venue:v description:@"desc1" startTime:@"2:00 PM" endTime:@"3:00 PM" andIsCoffee:b];
+     
+     [listActivities addObject:act1];
+     [listActivities addObject:@"Activity2"];
+     [listActivities addObject:@"Activity3"];
+     [listActivities addObject:@"Activity4"];
+     [listActivities addObject:@"Activity5"];
+     [listActivities addObject:@"Activity6"];
+     */
 }
 
 + (Activity*)getOwnerActivityWithToken:(NSString*)token
@@ -47,29 +48,8 @@
     NSDictionary *dict = [LunchesRequest getOwnerLunchWithToken:token];
     if(!dict)
         return NULL;
-    else {
-        Activity *act = [[Activity alloc] initWithDict:dict];
-        return act;
-        /*
-        Contacts *c = [[Contacts alloc] initWithID:@"1" firstname:@"first" lastname:@"last" jobTitle:@"headline" andPictureURL:nil];
-        FSVenue *v = [[FSVenue alloc] init];
-        
-        v.name = @"The Grove";
-        v.venueId = @"4b7ef75cf964a520ee0c30e3";
-        v.location.address = @"690 Mission St";
-        NSNumber *num = [NSNumber numberWithInt:403];
-        v.location.distance = num;
-        v.distance = v.location.distance;
-        [v.location setCoordinate:CLLocationCoordinate2DMake([@"37.78653398485857" doubleValue], [@"-122.401921749115" doubleValue])];
-        
-        BOOL b = YES;
-        if([[dict objectForKey:@"type"] isEqualToString:@"Lunch"])
-            b = NO;
-        
-        Activity *act1 = [[Activity alloc] initWithID:[dict objectForKey:@"id"] contact:c venue:v description:[dict objectForKey:@"starttime"] andIsCoffee:b];
-        
-        return act1;*/
-    }
+    else
+        return [[Activity alloc] initWithDict:dict];
 }
 
 

@@ -11,7 +11,7 @@
 
 @interface GetStaticLists : NSObject
 
-+(NSMutableArray*)getListActivities;
++(NSMutableArray*)getListActivitiesWithToken:(NSString*)token latitude:(double)latitude longitude:(double)longitude andDate:(NSString*)date;
 +(NSMutableArray*)getListFriendsSuggestion;
 +(NSMutableArray*)getListVisitors;
 +(NSMutableArray*)getListMessagesForContactID:(NSString*)contactID;
