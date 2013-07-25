@@ -33,7 +33,7 @@
     /*
      To get current location
      */
-    _locationManager = [[CLLocationManager alloc]init];
+    _locationManager = ((AppDelegate*)[UIApplication sharedApplication].delegate).locationManager;
     _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
     _locationManager.delegate = self;
     [_locationManager startUpdatingLocation];
@@ -245,6 +245,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     self.selected = self.nearbyVenues[indexPath.row];
+    _locationManager = nil;
     [self userDidSelectVenue];
 }
 

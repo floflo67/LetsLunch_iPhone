@@ -11,7 +11,7 @@
 #import <MapKit/MapKit.h>
 
 @class FSVenue;
-@interface NearbyVenuesViewController :UIViewController<CLLocationManagerDelegate, UITextFieldDelegate>{
+@interface NearbyVenuesViewController :UIViewController<CLLocationManagerDelegate, UITextFieldDelegate> {
     CLLocationManager *_locationManager;
 }
 
