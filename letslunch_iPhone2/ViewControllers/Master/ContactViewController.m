@@ -84,7 +84,7 @@ static ContactViewController *sharedSingleton = nil;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.textLabel.text = [((Contacts*)_objects[indexPath.row]) publicname];
+    cell.textLabel.text = [((Contacts*)_objects[indexPath.row]) firstname];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     

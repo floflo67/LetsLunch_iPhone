@@ -79,9 +79,9 @@ static VisitorsViewController *sharedSingleton = nil;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     NSDictionary *profile = [NSDictionary dictionaryWithDictionary:_objects[indexPath.row]];
-    Contacts *contact = [[Contacts alloc] initWithDict:profile];
+    Contacts *contact = [[Contacts alloc] initWithDictionary:profile];
     
-    cell.textLabel.text = contact.publicname;
+    cell.textLabel.text = contact.firstname;
     contact = nil;
     return cell;
 }
@@ -91,7 +91,7 @@ static VisitorsViewController *sharedSingleton = nil;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *profile = [NSDictionary dictionaryWithDictionary:_objects[indexPath.row]];
-    Contacts *contact = [[Contacts alloc] initWithDict:profile];
+    Contacts *contact = [[Contacts alloc] initWithDictionary:profile];
     
     DetailProfileViewController *detailViewController = [[DetailProfileViewController alloc] initWithContactID:contact.ID];
     [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController.navigationController pushViewController:detailViewController animated:YES];

@@ -7,7 +7,6 @@
 //
 
 #import "ActivityCell.h"
-#import <QuartzCore/QuartzCore.h>
 
 @implementation ActivityCell
 

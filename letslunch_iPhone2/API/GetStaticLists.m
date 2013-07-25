@@ -18,7 +18,7 @@
 + (NSArray*)getListActivities
 {
     NSMutableArray* listActivities = [[NSMutableArray alloc] init];
-    Contacts *c = [[Contacts alloc] initWithID:@"1" firstname:@"first" lastname:@"last" publicname:@"public" summary:@"summary" headline:@"headline" andPictureURL:nil];
+    Contacts *c = [[Contacts alloc] initWithID:@"1" firstname:@"first" lastname:@"last" jobTitle:@"headline" andPictureURL:nil];
     FSVenue *v = [[FSVenue alloc] init];
     
     v.name = @"The Grove";
@@ -30,7 +30,7 @@
     [v.location setCoordinate:CLLocationCoordinate2DMake([@"37.78653398485857" doubleValue], [@"-122.401921749115" doubleValue])];
     
     BOOL b = YES;
-    Activity *act1 = [[Activity alloc] initWithID:@"1234" contact:c venue:v description:@"desc1" andIsCoffee:b];
+    Activity *act1 = [[Activity alloc] initWithID:@"1234" contact:c venue:v description:@"desc1" startTime:@"2:00 PM" endTime:@"3:00 PM" andIsCoffee:b];
     
     [listActivities addObject:act1];
     [listActivities addObject:@"Activity2"];
@@ -45,7 +45,10 @@
     if(!dict)
         return NULL;
     else {
-        Contacts *c = [[Contacts alloc] initWithID:@"1" firstname:@"first" lastname:@"last" publicname:@"public" summary:@"summary" headline:@"headline" andPictureURL:nil];
+        Activity *act = [[Activity alloc] initWithDict:dict];
+        return act;
+        /*
+        Contacts *c = [[Contacts alloc] initWithID:@"1" firstname:@"first" lastname:@"last" jobTitle:@"headline" andPictureURL:nil];
         FSVenue *v = [[FSVenue alloc] init];
         
         v.name = @"The Grove";
@@ -62,7 +65,7 @@
         
         Activity *act1 = [[Activity alloc] initWithID:[dict objectForKey:@"id"] contact:c venue:v description:[dict objectForKey:@"starttime"] andIsCoffee:b];
         
-        return act1;
+        return act1;*/
     }
 }
 
@@ -124,9 +127,9 @@
 {
     NSMutableArray* listContacts = [[NSMutableArray alloc] init];
     
-    Contacts *cont1 = [[Contacts alloc] initWithID:@"1" firstname:@"first1" lastname:@"last1" publicname:@"public1" summary:@"summary" headline:@"headline" andPictureURL:nil];
-    Contacts *cont2 = [[Contacts alloc] initWithID:@"2" firstname:@"first2" lastname:@"last2" publicname:@"public2" summary:@"summary" headline:@"headline" andPictureURL:nil];
-    Contacts *cont3 = [[Contacts alloc] initWithID:@"3" firstname:@"first3" lastname:@"last3" publicname:@"public3" summary:@"summary" headline:@"headline" andPictureURL:nil];
+    Contacts *cont1 = [[Contacts alloc] initWithID:@"1" firstname:@"first1" lastname:@"last1" jobTitle:@"headline" andPictureURL:nil];
+    Contacts *cont2 = [[Contacts alloc] initWithID:@"2" firstname:@"first2" lastname:@"last2" jobTitle:@"headline" andPictureURL:nil];
+    Contacts *cont3 = [[Contacts alloc] initWithID:@"3" firstname:@"first3" lastname:@"last3" jobTitle:@"headline" andPictureURL:nil];
     
     [listContacts addObject:cont1];
     [listContacts addObject:cont2];
