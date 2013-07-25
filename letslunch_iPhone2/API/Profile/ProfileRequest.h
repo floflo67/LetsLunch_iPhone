@@ -16,8 +16,8 @@
         NSMutableData* _data;
 }
 
-+(NSDictionary*)getProfileWithToken:(NSString*)token;
--(NSDictionary*)getProfileWithToken:(NSString*)token;
++(NSDictionary*)getProfileWithToken:(NSString*)token andLight:(BOOL)isLight;
+-(NSDictionary*)getProfileWithToken:(NSString*)token andLight:(BOOL)isLight;
 
 +(void)logoutWithToken:(NSString*)token;
 
