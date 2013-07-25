@@ -41,13 +41,6 @@
         [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     }
 }
-
-- (void)dealloc {
-    [self.menuItem release];
-    [self.sidebarDelegate release];
-    [super dealloc];
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -66,7 +59,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     cell.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -91,10 +84,10 @@
     NSString *imageName;
     UIImageView *icon;
     if([[self.menuItem[indexPath.row] description] isEqualToString:@"Profile"]) {
-        imageName = [AppDelegate getObjectFromKeychainForKey:kSecAttrDescription];
+        imageName = [AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrDescription)];
         UIImage *img = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageName]]];        
         icon = [[UIImageView alloc] initWithImage:img];
-        [img release];
+        img = nil;
     }
     else {
         imageName = [NSString stringWithFormat:@"%@MenuItem.png",[self.menuItem[indexPath.row] description]];
@@ -109,7 +102,7 @@
      */
     int x = 60;
     int y = 5;
-    UILabel *title = [[[UILabel alloc] initWithFrame:CGRectMake(x, y, cell.frame.size.width - x, cell.frame.size.height - y)] autorelease];
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(x, y, cell.frame.size.width - x, cell.frame.size.height - y)];
     title.text = [self.menuItem[indexPath.row] description];
     title.backgroundColor = [UIColor clearColor];
     title.textColor = [UIColor grayColor];

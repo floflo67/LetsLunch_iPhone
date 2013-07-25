@@ -119,20 +119,6 @@ static CreateActivityViewController *sharedSingleton = nil;
     [super didReceiveMemoryWarning];
 }
 
-- (void)dealloc {
-    [self.venue release];
-    [self.textFieldDescription release];
-    [self.segment release];
-    [self.labelBroadcast release];
-    [self.viewContent release];
-    [self.tableView release];
-    [self.viewSubview release];
-    [self.buttonClear release];
-    [self.activity release];
-    [self.map release];
-    [super dealloc];
-}
-
 #pragma mark - Lunch request delegate
 
 -(void)showErrorMessage:(NSString*)message withErrorStatus:(NSInteger)errorStatus
@@ -141,7 +127,7 @@ static CreateActivityViewController *sharedSingleton = nil;
     alert.title = [NSString stringWithFormat:@"Error: %i", errorStatus];
     alert.message = message;
     [alert show];
-    [alert release];
+    alert = nil;
 }
 
 #pragma mapView
@@ -235,7 +221,7 @@ static CreateActivityViewController *sharedSingleton = nil;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -283,7 +269,7 @@ static CreateActivityViewController *sharedSingleton = nil;
     NSString *description = self.textFieldDescription.text;
     if(self.activity && [description isEqualToString:@""]) {
         //delete
-        if(![_lunchRequest suppressLunchWithToken:[AppDelegate getObjectFromKeychainForKey:kSecAttrAccount] andActivityID:self.activity.activityID])
+        if(![_lunchRequest suppressLunchWithToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)] andActivityID:self.activity.activityID])
             return;
         else
             app.ownerActivity = nil;
@@ -297,8 +283,7 @@ static CreateActivityViewController *sharedSingleton = nil;
             app.ownerActivity.description = description;
             app.ownerActivity.isCoffee = self.segment.selectedSegmentIndex;
             app.ownerActivity.venue = self.venue;
-            [_lunchRequest updateLunchWithToken:[AppDelegate getObjectFromKeychainForKey:kSecAttrAccount] andActivity:app.ownerActivity];
-            //app.ownerActivity = nil;
+            [_lunchRequest updateLunchWithToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)] andActivity:app.ownerActivity];
             [[ActivityViewController getSingleton] loadOwnerActivity];
         }
         else {
@@ -306,8 +291,7 @@ static CreateActivityViewController *sharedSingleton = nil;
             activity.description = description;
             activity.isCoffee = self.segment.selectedSegmentIndex;
             activity.venue = self.venue;
-            if(![_lunchRequest addLunchWithToken:[AppDelegate getObjectFromKeychainForKey:kSecAttrAccount] andActivity:activity]) {
-                [activity release];
+            if(![_lunchRequest addLunchWithToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)] andActivity:activity]) {
                 return;
             }
             else {
@@ -316,7 +300,7 @@ static CreateActivityViewController *sharedSingleton = nil;
         }
     }
     if(self.activity)
-        [self.activity release];
+        self.activity = nil;
     
     [[ActivityViewController getSingleton] loadOwnerActivity];
     [self.navigationController popToRootViewControllerAnimated:YES];

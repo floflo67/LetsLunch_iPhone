@@ -62,18 +62,6 @@
     [super viewDidUnload];
 }
 
-- (void)dealloc {
-    [self.selected release];
-    [self.nearbyVenues release];
-    [self.section release];
-    [self.query release];
-    [self.radius release];
-    [self.textFieldSearch release];
-    [self.segment release];
-    [self.tableView release];
-    [super dealloc];
-}
-
 #pragma button event
 
 - (void)search:(id)sender
@@ -89,7 +77,7 @@
         self.tableView.frame = CGRectMake(0, self.tableView.frame.origin.y - y, self.tableView.frame.size.width, self.tableView.frame.size.height);
         self.textFieldSearch.hidden = YES;
         [self.textFieldSearch removeFromSuperview];
-        [self.textFieldSearch release];
+        self.textFieldSearch = nil;
     }
     /*
      Adds textField

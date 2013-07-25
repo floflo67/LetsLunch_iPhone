@@ -37,7 +37,7 @@ static ProfileViewController *sharedSingleton = nil;
 - (id)init
 {
     self = [super init];
-    NSString *token = [AppDelegate getObjectFromKeychainForKey:kSecAttrAccount];
+    NSString *token = [AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)];
     if (self) {        
         if(!_profileRequest)
             _profileRequest = [[ProfileRequest alloc] init];
@@ -66,12 +66,6 @@ static ProfileViewController *sharedSingleton = nil;
     [super didReceiveMemoryWarning];
 }
 
-- (void)dealloc
-{
-    [_objects release];
-    [super dealloc];
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -91,7 +85,7 @@ static ProfileViewController *sharedSingleton = nil;
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
     NSDictionary *dict = (NSDictionary*)_objects[indexPath.section];
     

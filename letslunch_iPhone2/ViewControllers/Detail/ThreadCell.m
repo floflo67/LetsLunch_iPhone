@@ -126,13 +126,4 @@
     return size;
 }
 
-- (void)dealloc
-{
-    [self.msgText release];
-    [self.imgName release];
-    [self.dateText release];
-    [super dealloc];
-}
-
-
 @end

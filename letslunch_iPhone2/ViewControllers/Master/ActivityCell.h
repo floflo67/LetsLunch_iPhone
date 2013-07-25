@@ -10,10 +10,10 @@
 
 @interface ActivityCell : UITableViewCell
 
-@property (retain, nonatomic) IBOutlet UIImageView *userPicture;
-@property (nonatomic, retain) IBOutlet UILabel *labelUserName;
-@property (nonatomic, retain) IBOutlet UILabel *labelUserJobTitle;
-@property (nonatomic, retain) IBOutlet UILabel *labelVenueName;
-@property (nonatomic, retain) IBOutlet UILabel *LabelTime;
+@property (nonatomic, strong) IBOutlet UIImageView *userPicture;
+@property (nonatomic, strong) IBOutlet UILabel *labelUserName;
+@property (nonatomic, strong) IBOutlet UILabel *labelUserJobTitle;
+@property (nonatomic, strong) IBOutlet UILabel *labelVenueName;
+@property (nonatomic, strong) IBOutlet UILabel *LabelTime;
 
 @end

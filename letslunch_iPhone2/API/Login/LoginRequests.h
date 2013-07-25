@@ -15,13 +15,13 @@
 
 @interface LoginRequests : NSObject {
 @private
-	id<LoginRequestDelegate> _delegate;
+	id<LoginRequestDelegate> __weak _delegate;
     NSURLConnection* _connection;
     NSMutableData* _data;
     NSInteger _statusCode;
 }
 
-@property (nonatomic,assign) id<LoginRequestDelegate> delegate;
+@property (nonatomic, weak) id<LoginRequestDelegate> delegate;
     
 -(BOOL)loginWithUserName:(NSString*)username andPassword:(NSString*)password;
 -(BOOL)signUpWithUserName:(NSString*)username andPassword:(NSString*)password andMailAddress:(NSString*)email andCountry:(NSString*)country;

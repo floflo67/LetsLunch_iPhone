@@ -117,7 +117,7 @@
     NSArray *allPeople = CFBridgingRelease(ABAddressBookCopyArrayOfAllPeople(addressBook));
     NSMutableArray *mostImportantContacts = [NSMutableArray arrayWithCapacity:[allPeople count]];
     for (NSInteger personIndex = 0; personIndex < allPeople.count; personIndex++) {
-        ABRecordRef person = (ABRecordRef) [allPeople objectAtIndex:personIndex];
+        ABRecordRef person = (__bridge ABRecordRef) [allPeople objectAtIndex:personIndex];
         ABRecordID personID = ABRecordGetRecordID(person);
         
         if ([ignoredRecordIDs containsObject:@(personID)]) {

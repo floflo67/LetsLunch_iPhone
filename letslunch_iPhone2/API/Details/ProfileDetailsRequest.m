@@ -42,17 +42,9 @@
         
     }
     else {
-        NSString* response = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+        NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"%@", response);
     }
-}
-
-#pragma lifecycle
-
-- (void)dealloc
-{
-    [_jsonDict release];
-    [super dealloc];
 }
 
 @end

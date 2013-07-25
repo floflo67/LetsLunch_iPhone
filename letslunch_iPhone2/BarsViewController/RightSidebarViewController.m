@@ -38,12 +38,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)dealloc {
-    [self.menuItem release];
-    [self.sidebarDelegate release];
-    [super dealloc];
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -142,7 +136,7 @@
          */
         int x = 60;
         int y = 5;
-        UILabel *title = [[[UILabel alloc] initWithFrame:CGRectMake(x, y, cell.frame.size.width - x, cell.frame.size.height - y)] autorelease];
+        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(x, y, cell.frame.size.width - x, cell.frame.size.height - y)];
         title.text = [self.menuItem[indexPath.row] description];
         title.backgroundColor = [UIColor clearColor];
         title.textColor = [UIColor grayColor];

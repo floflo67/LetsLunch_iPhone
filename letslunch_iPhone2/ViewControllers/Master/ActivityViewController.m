@@ -61,7 +61,7 @@ static ActivityViewController *sharedSingleton = nil;
 - (void)loadOwnerActivity
 {
     AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    [_objects[0] release];
+    _objects[0] = nil;
     if([app getOwnerActivityAndForceReload:NO]) {
         _objects[0] = [app getOwnerActivityAndForceReload:NO];
         self.hasActivity = YES;
@@ -78,12 +78,6 @@ static ActivityViewController *sharedSingleton = nil;
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-}
-
-- (void)dealloc
-{
-    [self.objects release];
-    [super dealloc];
 }
 
 #pragma mark - Table view data source
@@ -133,7 +127,7 @@ static ActivityViewController *sharedSingleton = nil;
         cell.labelUserName.text = [NSString stringWithFormat:@"user: %i", indexPath.row];
         cell.labelUserJobTitle.text = @"job title";
         
-        NSString *imageName = [AppDelegate getObjectFromKeychainForKey:kSecAttrDescription];
+        NSString *imageName = [AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrDescription)];
         UIImage *img = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageName]]];
         cell.userPicture.image = img;
         
@@ -190,7 +184,7 @@ static ActivityViewController *sharedSingleton = nil;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section == 1) {
-        DetailProfileViewController *detail = [[[DetailProfileViewController alloc] init] autorelease];
+        DetailProfileViewController *detail = [[DetailProfileViewController alloc] init];
         [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController.navigationController pushViewController:detail animated:YES];
         detail = nil;
     }

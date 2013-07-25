@@ -43,13 +43,4 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [self.description release];
-    [self.contactIDFrom release];
-    [self.contactIDTo release];
-    [self.date release];
-    [super dealloc];
-}
-
 @end

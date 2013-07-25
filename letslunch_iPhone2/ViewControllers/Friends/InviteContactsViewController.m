@@ -69,16 +69,6 @@
     }
 }
 
-- (void)dealloc
-{
-    [_objects release];
-    if (_addressBook) {
-        CFRelease(_addressBook);
-        _addressBook = NULL;
-    }
-    [super dealloc];
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -96,12 +86,12 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     ABRecordID contact = [[self.objects objectAtIndex:indexPath.row] intValue];
     ABRecordRef record = ABAddressBookGetPersonWithRecordID(_addressBook, contact);
-    NSString *compositeName = (NSString*)ABRecordCopyCompositeName(record);
+    NSString *compositeName = (NSString*)CFBridgingRelease(ABRecordCopyCompositeName(record));
     
     cell.textLabel.text = [NSString stringWithFormat:@"%@", compositeName];
     

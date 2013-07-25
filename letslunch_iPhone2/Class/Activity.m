@@ -45,13 +45,4 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [self.activityID release];
-    [self.contact release];
-    [self.description release];
-    [self.venue release];
-    [super dealloc];
-}
-
 @end

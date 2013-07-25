@@ -8,15 +8,7 @@
 
 #import "FSVenue.h"
 
-
 @implementation FSLocation
-
-- (void)dealloc
-{
-    [self.distance release];
-    [self.address release];
-    [super dealloc];
-}
 
 @end
 
@@ -26,7 +18,7 @@
 {
     self = [super init];
     if (self) {
-        self.location = [[FSLocation alloc]init];
+        self.location = [[FSLocation alloc] init];
     }
     return self;
 }
@@ -39,16 +31,6 @@
 - (NSString*)title
 {
     return self.name;
-}
-
-- (void)dealloc
-{
-    [self.name release];
-    [self.venueId release];
-    [self.location release];
-    [self.distance release];
-    [self.categoryName release];
-    [super dealloc];
 }
 
 @end

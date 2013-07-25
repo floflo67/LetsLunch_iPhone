@@ -255,6 +255,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				549ADAC0176BE15A001F1D3F /* CoreLocation.framework in Frameworks */,
 				54D3521F178DC8C30068953A /* AddressBook.framework in Frameworks */,
 				54D3521C178DC89D0068953A /* AddressBookUI.framework in Frameworks */,
 				5437770A1783A1D3000CEBAF /* Twitter.framework in Frameworks */,
@@ -263,7 +264,6 @@
 				54571396177E48E8006A69CE /* libsqlite3.dylib in Frameworks */,
 				54571394177E48D7006A69CE /* Accounts.framework in Frameworks */,
 				54571392177E48CF006A69CE /* AdSupport.framework in Frameworks */,
-				549ADAC0176BE15A001F1D3F /* CoreLocation.framework in Frameworks */,
 				549ADABE176BE14F001F1D3F /* MapKit.framework in Frameworks */,
 				548D36D4176B81E900154C36 /* QuartzCore.framework in Frameworks */,
 				548D36AF176B819300154C36 /* UIKit.framework in Frameworks */,
@@ -891,6 +891,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../FacebookSDK\"",
@@ -910,6 +911,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../FacebookSDK\"",

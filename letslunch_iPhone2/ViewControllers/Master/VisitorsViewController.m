@@ -39,14 +39,14 @@ static VisitorsViewController *sharedSingleton = nil;
 - (id)init
 {
     self = [super init];
-    NSString *token = [AppDelegate getObjectFromKeychainForKey:kSecAttrAccount];
+    NSString *token = [AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)];
     if (self) {
         if(!_visitorRequest)
             _visitorRequest = [[VisitorsRequest alloc] init];
         
         if(!_objects)
             _objects = [[NSMutableArray alloc] init];
-        _objects = [[_visitorRequest getVisitorsWithToken:token] retain];
+        _objects = [_visitorRequest getVisitorsWithToken:token];
     }
     
     return self;
@@ -74,7 +74,7 @@ static VisitorsViewController *sharedSingleton = nil;
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
@@ -82,8 +82,7 @@ static VisitorsViewController *sharedSingleton = nil;
     Contacts *contact = [[Contacts alloc] initWithDict:profile];
     
     cell.textLabel.text = contact.publicname;
-    
-    [contact release];
+    contact = nil;
     return cell;
 }
 
@@ -96,8 +95,8 @@ static VisitorsViewController *sharedSingleton = nil;
     
     DetailProfileViewController *detailViewController = [[DetailProfileViewController alloc] initWithContactID:contact.ID];
     [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController.navigationController pushViewController:detailViewController animated:YES];
-    [contact release];
-    [detailViewController release];
+    contact = nil;
+    detailViewController = nil;
 }
 
 @end

@@ -31,12 +31,4 @@
     roundedView.center = saveCenter;
 }
 
-- (void)dealloc {
-    [_LabelTime release];
-    [_labelUserJobTitle release];
-    [_labelUserName release];
-    [_labelVenueName release];
-    [_userPicture release];
-    [super dealloc];
-}
 @end

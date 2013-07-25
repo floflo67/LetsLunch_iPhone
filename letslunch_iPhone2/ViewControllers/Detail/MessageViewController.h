@@ -14,7 +14,7 @@
 @property (nonatomic, strong) NSString *contactID;
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
-@property (retain, nonatomic) IBOutlet UITextField *textFieldMessage;
+@property (strong, nonatomic) IBOutlet UITextField *textFieldMessage;
 
 -(id)initWithContactID:(NSString*)contactID;
 -(BOOL)textFieldShouldReturn:(UITextField *)textField;

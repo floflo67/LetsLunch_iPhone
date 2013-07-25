@@ -17,7 +17,7 @@
 
 + (NSArray*)getListActivities
 {
-    NSMutableArray* listActivities = [[[NSMutableArray alloc] init] autorelease];
+    NSMutableArray* listActivities = [[NSMutableArray alloc] init];
     Contacts *c = [[Contacts alloc] initWithID:@"1" firstname:@"first" lastname:@"last" publicname:@"public" summary:@"summary" headline:@"headline" andPictureURL:nil];
     FSVenue *v = [[FSVenue alloc] init];
     
@@ -69,7 +69,7 @@
 
 + (NSMutableArray*)getListFriendsSuggestion
 {
-    NSMutableArray* listFriendsSuggestion = [[[NSMutableArray alloc] init] autorelease];
+    NSMutableArray* listFriendsSuggestion = [[NSMutableArray alloc] init];
     
     [listFriendsSuggestion addObject:@"Suggestion1"];
     [listFriendsSuggestion addObject:@"Suggestion2"];
@@ -81,7 +81,7 @@
 
 + (NSMutableArray*)getListMessagesForContactID:(NSString*)contactID
 {
-    NSMutableArray* listMessages = [[[NSMutableArray alloc] init] autorelease];
+    NSMutableArray* listMessages = [[NSMutableArray alloc] init];
     
     Messages *mess1 = [[Messages alloc] initWithDescription:@"content1" From:contactID To:@"1" date:[NSDate new]];
     Messages *mess2 = [[Messages alloc] initWithDescription:@"content2" From:contactID To:@"1" date:[NSDate new]];
@@ -115,14 +115,14 @@
 
 + (NSMutableArray*)getListVisitors
 {
-    NSMutableArray* listVisitors = [[[NSMutableArray alloc] init] autorelease];
-    listVisitors = [VisitorsRequest getVisitorsWithToken:[AppDelegate getObjectFromKeychainForKey:kSecAttrAccount]];
+    NSMutableArray* listVisitors = [[NSMutableArray alloc] init];
+    listVisitors = [VisitorsRequest getVisitorsWithToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)]];
     return listVisitors;
 }
 
 + (NSMutableArray*)getListContacts
 {
-    NSMutableArray* listContacts = [[[NSMutableArray alloc] init] autorelease];
+    NSMutableArray* listContacts = [[NSMutableArray alloc] init];
     
     Contacts *cont1 = [[Contacts alloc] initWithID:@"1" firstname:@"first1" lastname:@"last1" publicname:@"public1" summary:@"summary" headline:@"headline" andPictureURL:nil];
     Contacts *cont2 = [[Contacts alloc] initWithID:@"2" firstname:@"first2" lastname:@"last2" publicname:@"public2" summary:@"summary" headline:@"headline" andPictureURL:nil];

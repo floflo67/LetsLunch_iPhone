@@ -47,16 +47,6 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)dealloc
-{
-    [_textFieldUsername release];
-    [_textFieldPassword release];
-    [_buttonLogIn release];
-    [_buttonTwitter release];
-    [_buttonFacebook release];
-    [_buttonLinkedIn release];
-    [super dealloc];
-}
 
 #pragma text field delegate
 
@@ -149,7 +139,6 @@
     alert.title = [NSString stringWithFormat:@"Error: %i", errorStatus];
     alert.message = message;
     [alert show];
-    [alert release];
 }
 
 - (void)successfullConnection

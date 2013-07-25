@@ -33,7 +33,7 @@
 
 @property (strong, nonatomic) TwitterConsumer* consumer;
 @property (strong, nonatomic) TwitterToken* token;
-@property (nonatomic, retain) KeychainWrapper *tokenItem;
+@property (nonatomic, strong) KeychainWrapper *tokenItem;
 
 -(NSMutableArray*)getListActivitiesAndForceReload:(BOOL)shouldReload;
 -(NSMutableArray*)getListFriendsSuggestionAndForceReload:(BOOL)shouldReload;

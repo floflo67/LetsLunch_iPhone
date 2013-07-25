@@ -16,12 +16,12 @@
 
 + (NSDictionary*)getLunchWithToken:(NSString*)token
 {
-    LunchesRequest *lunchRequest = [[[LunchesRequest alloc] init] autorelease];
+    LunchesRequest *lunchRequest = [[LunchesRequest alloc] init];
     return [lunchRequest getLunchWithToken:token];
 }
 
 /*
- URL: http://letslunch.dev.knackforge.com/api/me/availability
+ URL: http://letslunch.dev.knackforge.com/lunch/show
  Request Type: POST
  Parameters:
     authToken
@@ -33,7 +33,7 @@
      */
     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
     [parameters setValue:token forKey:@"authToken"];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@me/availability",LL_API_BaseUrl]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@lunch/show",LL_API_BaseUrl]];
     MutableRequest *request = [[MutableRequest alloc] initWithURL:url andParameters:parameters andType:@"POST"];
     
     NSURLResponse *response;
@@ -45,14 +45,22 @@
 - (NSDictionary*)settingUpData:(NSData*)data andResponse:(NSURLResponse*)response
 {
     _statusCode = [(NSHTTPURLResponse*)response statusCode];
+    NSArray *arr = [[NSArray alloc] initWithArray:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
+    if([arr count] == 0)
+        _statusCode = 201;
+    
+    arr = nil;
     
     if(_statusCode == 200) {
-        NSMutableDictionary *dict = [[[NSMutableDictionary alloc] initWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]] autorelease];
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
+        NSLog(@"%@", dict);
         dict = [dict objectForKey:@"lunchAvailabilty"][0];
         return dict;
     }
+    else if (_statusCode == 201)
+        return nil;
     else {
-        NSString* response = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+        NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"%@", response);
         return nil;
     }
@@ -61,7 +69,7 @@
 #pragma mark - ADD lunch
 
 /*
- URL: http://letslunch.dev.knackforge.com/api/me/availability/add
+ URL: http://letslunch.dev.knackforge.com/api/lunch/create
  Request Type: POST
  Parameters:
     authToken
@@ -81,20 +89,20 @@
     
     NSString *lunchType;
     if(activity.isCoffee)
-        lunchType = @"Coffee";
+        lunchType = @"coffee";
     else
-        lunchType = @"Lunch";
+        lunchType = @"lunch";
     
     NSString *lunchDate;
     NSString *postingTime;
     NSString *endTime;
     NSDate *date = [NSDate new];
-    NSDateFormatter *format = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
     
-    [format setDateFormat:@"YY-MM-dd"];
+    [format setDateFormat:@"YYYY-MM-dd"];
     lunchDate = [format stringFromDate:date];
     
-    [format setDateFormat:@"HH:mm"];
+    [format setDateFormat:@"HH:mm:ss"];
     postingTime = [format stringFromDate:date];
     
     NSTimeInterval secondsInThreeHours = 3 * 60 * 60;
@@ -106,7 +114,6 @@
     [parameters setValue:lunchDate forKey:@"lunchDate"];
     [parameters setValue:postingTime forKey:@"startTime"];
     [parameters setValue:endTime forKey:@"endTime"];
-    [parameters setValue:@"1" forKey:@"lunchZoneId"];
     [parameters setValue:activity.description forKey:@"description"];
     [parameters setValue:activity.venue.name forKey:@"venueName"];
     [parameters setValue:activity.venue.venueId forKey:@"venueId"];
@@ -114,7 +121,7 @@
     [parameters setValue:[NSString stringWithFormat:@"%f", activity.venue.location.coordinate.longitude] forKey:@"degreesLongitude"];
     [parameters setValue:activity.venue.location.address forKey:@"venueAddress"];
     
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@me/availability/add",LL_API_BaseUrl]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@lunch/create",LL_API_BaseUrl]];
     MutableRequest *request = [[MutableRequest alloc] initWithURL:url andParameters:parameters andType:@"POST"];
     
     NSURLResponse *response;
@@ -143,12 +150,12 @@
 
 + (BOOL)suppressLunchWithToken:(NSString*)token andActivityID:(NSString*)activityID
 {
-    LunchesRequest *lunchRequest = [[[LunchesRequest alloc] init] autorelease];
+    LunchesRequest *lunchRequest = [[LunchesRequest alloc] init];
     return [lunchRequest suppressLunchWithToken:token andActivityID:activityID];
 }
 
 /*
- URL: http://letslunch.dev.knackforge.com/api/me/availability/delete
+ URL: http://letslunch.dev.knackforge.com/api/me/lunch/cancel
  Request Type: POST
  Parameters:
     authToken
@@ -159,7 +166,7 @@
     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
     [parameters setValue:token forKey:@"authToken"];
     [parameters setValue:activityID forKey:@"id"];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@me/availability/delete",LL_API_BaseUrl]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@me/lunch/cancel",LL_API_BaseUrl]];
     MutableRequest *request = [[MutableRequest alloc] initWithURL:url andParameters:parameters andType:@"POST"];
     
     NSURLResponse *response;
@@ -187,7 +194,7 @@
 #pragma mark - UPDATE lunch
 
 /*
- URL: http://letslunch.dev.knackforge.com/api/me/availability/update
+ URL: http://letslunch.dev.knackforge.com/api/lunch/edit
  Request Type: POST
  Parameters:
     authToken
@@ -209,32 +216,43 @@
         
         NSString *lunchType;
         if(activity.isCoffee)
-            lunchType = @"Coffee";
+            lunchType = @"coffee";
         else
-            lunchType = @"Lunch";
+            lunchType = @"lunch";
         
         NSString *postingTime;
+        NSString *endTime;
+        NSString *lunchDate;
         NSDate *date = [NSDate new];
-        NSDateFormatter *format = [[[NSDateFormatter alloc] init] autorelease];
+        NSDateFormatter *format = [[NSDateFormatter alloc] init];
         
-        [format setDateFormat:@"HH:mm"];
+        [format setDateFormat:@"YYYY-MM-dd"];
+        lunchDate = [format stringFromDate:date];
+        
+        [format setDateFormat:@"HH:mm:ss"];
         postingTime = [format stringFromDate:date];
+        
+        NSTimeInterval secondsInThreeHours = 3 * 60 * 60;
+        date = [date dateByAddingTimeInterval:secondsInThreeHours];
+        endTime = [format stringFromDate:date];
         
         [parameters setValue:token forKey:@"authToken"];
         [parameters setValue:lunchType forKey:@"lunchType"];
-        [parameters setValue:postingTime forKey:@"postingTime"];
+        [parameters setValue:postingTime forKey:@"startTime"];
+        [parameters setValue:endTime forKey:@"endTime"];
+        [parameters setValue:lunchDate forKey:@"lunchDate"];
         [parameters setValue:activity.description forKey:@"description"];
-        [parameters setValue:activity.venue.name forKey:@"name"];
-        [parameters setValue:activity.venue.venueId forKey:@"id"];
+        [parameters setValue:activity.venue.name forKey:@"venueName"];
+        [parameters setValue:activity.venue.venueId forKey:@"venueId"];
         [parameters setValue:[NSString stringWithFormat:@"%f", activity.venue.location.coordinate.latitude] forKey:@"degreesLatitude"];
         [parameters setValue:[NSString stringWithFormat:@"%f", activity.venue.location.coordinate.longitude] forKey:@"degreesLongitude"];
-        [parameters setValue:activity.venue.location.address forKey:@"address"];
+        [parameters setValue:activity.venue.location.address forKey:@"venueAddress"];
         [parameters setValue:activity.activityID forKey:@"availabilityID"];
         
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@me/availability/update",LL_API_BaseUrl]];
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@lunch/edit",LL_API_BaseUrl]];
         MutableRequest *request = [[MutableRequest alloc] initWithURL:url andParameters:parameters andType:@"POST"];
         
-        _connection = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
+        _connection = [NSURLConnection connectionWithRequest:request delegate:self];
     }
 }
 
@@ -259,10 +277,7 @@
 
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
 {
-	[_connection release];
 	_connection = nil;
-	
-	[_data release];
 	_data = nil;
 }
 
@@ -275,19 +290,11 @@
         [self showErrorMessage:response];
 	}
 	
-	[_connection release];
 	_connection = nil;
-	
-	[_data release];
 	_data = nil;
 }
 
 #pragma lifecycle
 
-- (void)dealloc
-{
-    [_jsonDict release];
-    [super dealloc];
-}
 
 @end

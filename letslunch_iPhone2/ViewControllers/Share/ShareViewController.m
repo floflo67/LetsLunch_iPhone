@@ -56,10 +56,4 @@ static ShareViewController *sharedSingleton = nil;
     [super didReceiveMemoryWarning];
 }
 
-- (void)dealloc
-{
-    [self.buttonClose release];
-    [super dealloc];
-}
-
 @end

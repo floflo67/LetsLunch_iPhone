@@ -21,7 +21,7 @@
         NSMutableDictionary *_jsonDict;
 }
 
-@property (nonatomic,assign) id<LunchRequestDelegate> delegate;
+@property (nonatomic, strong) id<LunchRequestDelegate> delegate;
 
 +(NSDictionary*)getLunchWithToken:(NSString*)token;
 -(NSDictionary*)getLunchWithToken:(NSString*)token;

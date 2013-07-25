@@ -16,17 +16,17 @@
     LunchesRequest *_lunchRequest;
 }
 
-@property (retain, nonatomic) FSVenue *venue;
-@property (retain, nonatomic) Activity *activity;
-@property (retain, nonatomic) MKMapView *map;
-@property (retain, nonatomic) LunchesRequest *lunchRequest;
+@property (strong, nonatomic) FSVenue *venue;
+@property (strong, nonatomic) Activity *activity;
+@property (strong, nonatomic) MKMapView *map;
+@property (strong, nonatomic) LunchesRequest *lunchRequest;
 
-@property (retain, nonatomic) IBOutlet UITextField *textFieldDescription;
-@property (retain, nonatomic) IBOutlet UISegmentedControl *segment;
-@property (retain, nonatomic) IBOutlet UILabel *labelBroadcast;
-@property (retain, nonatomic) IBOutlet UIView *viewContent;
-@property (retain, nonatomic) IBOutlet UITableView *tableView;
-@property (retain, nonatomic) IBOutlet UIView *viewSubview;
+@property (strong, nonatomic) IBOutlet UITextField *textFieldDescription;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *segment;
+@property (strong, nonatomic) IBOutlet UILabel *labelBroadcast;
+@property (strong, nonatomic) IBOutlet UIView *viewContent;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UIView *viewSubview;
 @property (strong, nonatomic) UIButton *buttonClear;
 
 +(CreateActivityViewController*)getSingleton;

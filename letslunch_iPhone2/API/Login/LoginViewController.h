@@ -16,12 +16,12 @@
         LoginRequests *_loginRequest;
 }
 
-@property (retain, nonatomic) IBOutlet UITextField *textFieldUsername;
-@property (retain, nonatomic) IBOutlet UITextField *textFieldPassword;
-@property (retain, nonatomic) IBOutlet UIButton *buttonLogIn;
-@property (retain, nonatomic) IBOutlet UIButton *buttonTwitter;
-@property (retain, nonatomic) IBOutlet UIButton *buttonFacebook;
-@property (retain, nonatomic) IBOutlet UIButton *buttonLinkedIn;
+@property (strong, nonatomic) IBOutlet UITextField *textFieldUsername;
+@property (strong, nonatomic) IBOutlet UITextField *textFieldPassword;
+@property (strong, nonatomic) IBOutlet UIButton *buttonLogIn;
+@property (strong, nonatomic) IBOutlet UIButton *buttonTwitter;
+@property (strong, nonatomic) IBOutlet UIButton *buttonFacebook;
+@property (strong, nonatomic) IBOutlet UIButton *buttonLinkedIn;
 @property (nonatomic) BOOL isLinkedIn;
 
 

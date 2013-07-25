@@ -12,7 +12,7 @@
 
 @interface LeftSidebarViewController : UITableViewController
 
-@property (nonatomic, assign) id <LeftSidebarViewControllerDelegate> sidebarDelegate;
+@property (nonatomic, weak) id <LeftSidebarViewControllerDelegate> sidebarDelegate;
 @property (nonatomic, strong) NSArray* menuItem;
 @property (nonatomic) NSInteger index;
 

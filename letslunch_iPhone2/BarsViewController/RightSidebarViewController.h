@@ -12,7 +12,7 @@
 
 @interface RightSidebarViewController : UITableViewController
 
-@property (nonatomic, assign) id <RightSidebarViewControllerDelegate> sidebarDelegate;
+@property (nonatomic, weak) id <RightSidebarViewControllerDelegate> sidebarDelegate;
 @property (nonatomic, strong) NSArray* menuItem;
 
 @end

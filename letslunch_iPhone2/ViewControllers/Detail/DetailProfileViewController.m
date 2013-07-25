@@ -24,7 +24,7 @@
             if(!profileDetailRequest)
                 profileDetailRequest = [[ProfileDetailsRequest alloc] init];
 
-            _objects = [[[NSMutableDictionary alloc] initWithDictionary:[profileDetailRequest getProfileWithToken:[AppDelegate getObjectFromKeychainForKey:kSecAttrAccount] andID:contactID]] retain];
+            _objects = [[NSMutableDictionary alloc] initWithDictionary:[profileDetailRequest getProfileWithToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)] andID:contactID]];
             
             profileDetailRequest = nil;
         }
@@ -37,12 +37,6 @@
     [super viewDidLoad];
 }
 
-- (void)dealloc
-{
-    [_objects release];
-    [_tableView release];
-    [super dealloc];
-}
 
 #pragma mark - Table view data source
 
@@ -72,7 +66,7 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     

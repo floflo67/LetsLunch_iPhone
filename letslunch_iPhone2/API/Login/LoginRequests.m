@@ -39,7 +39,7 @@
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@login",LL_API_BaseUrl]];
         MutableRequest *request = [[MutableRequest alloc] initWithURL:url andParameters:parameters andType:@"POST"];
         
-        _connection = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
+        _connection = [NSURLConnection connectionWithRequest:request delegate:self];
     }
     return YES;
 }
@@ -62,7 +62,6 @@
 {
 	if (_connection != nil) {
 		[_connection cancel];
-		[_connection release];
 		_connection = nil;
 	}
 }
@@ -92,11 +91,7 @@
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
 {
     NSLog(@"error");
-    
-	[_connection release];
 	_connection = nil;
-	
-	[_data release];
 	_data = nil;
 }
 
@@ -113,26 +108,16 @@
         NSDictionary *dictAuth = [NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"user"]]];
         NSString* token = [dictAuth objectForKey:@"token"];
         NSString *pictureURLString = [dictAuth objectForKey:@"picture_url"];
-        [AppDelegate writeObjectToKeychain:token forKey:kSecAttrAccount];
+        [AppDelegate writeObjectToKeychain:token forKey:(__bridge id)(kSecAttrAccount)];
         if(pictureURLString && ![pictureURLString isEqualToString:@""])
-            [AppDelegate writeObjectToKeychain:pictureURLString forKey:kSecAttrDescription];
+            [AppDelegate writeObjectToKeychain:pictureURLString forKey:(__bridge id)(kSecAttrDescription)];
         [self successfullLoginIn];
 	}
-	
-	[_connection release];
 	_connection = nil;
-	
-	[_data release];
 	_data = nil;
 }
 
 #pragma lifecycle
 
-- (void)dealloc
-{
-    [_connection release];
-    [_data release];
-    [super dealloc];
-}
 
 @end

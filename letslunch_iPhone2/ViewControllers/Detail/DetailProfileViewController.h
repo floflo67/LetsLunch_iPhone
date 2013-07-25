@@ -14,7 +14,7 @@
 }
 
 @property (nonatomic, strong) NSMutableDictionary* objects;
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) ProfileDetailsRequest *profileDetailRequest;
 
 -(id)initWithContactID:(NSString*)contactID;

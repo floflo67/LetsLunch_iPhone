@@ -13,7 +13,7 @@
 
 + (NSMutableArray *)getVisitorsWithToken:(NSString *)token
 {
-    VisitorsRequest *visitorRequest = [[[VisitorsRequest alloc] init] autorelease];
+    VisitorsRequest *visitorRequest = [[VisitorsRequest alloc] init];
     return [visitorRequest getVisitorsWithToken:token];
 }
 
@@ -58,17 +58,9 @@
         _jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     }
     else {
-        NSString* response = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+        NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"%@", response);
     }
-}
-
-#pragma lifecycle
-
-- (void)dealloc
-{
-    [_jsonArray release];
-    [super dealloc];
 }
 
 @end

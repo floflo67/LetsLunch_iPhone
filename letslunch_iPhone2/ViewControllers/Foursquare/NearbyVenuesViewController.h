@@ -26,7 +26,7 @@
 @property (nonatomic) BOOL isSearching;
 
 @property (strong, nonatomic) UITextField *textFieldSearch;
-@property (retain, nonatomic) IBOutlet UISegmentedControl *segment;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *segment;
 
 -(IBAction)valueChanged:(id)sender;
 -(void)search:(id)sender;

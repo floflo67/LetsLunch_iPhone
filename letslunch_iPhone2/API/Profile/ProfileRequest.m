@@ -13,7 +13,7 @@
 
 + (NSDictionary*)getProfileWithToken:(NSString*)token
 {
-    ProfileRequest *profileRequest = [[[ProfileRequest alloc] init] autorelease];
+    ProfileRequest *profileRequest = [[ProfileRequest alloc] init];
     return [profileRequest getProfileWithToken:token];
 }
 
@@ -46,7 +46,7 @@
 {
     ProfileRequest *profileRequest = [[ProfileRequest alloc] init];
     [profileRequest logoutWithToken:token];
-    [profileRequest release];
+    profileRequest = nil;
 }
 
 - (void)logoutWithToken:(NSString*)token
@@ -64,7 +64,7 @@
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@logout",LL_API_BaseUrl]];
         MutableRequest *request = [[MutableRequest alloc] initWithURL:url andParameters:parameters andType:@"POST"];
         
-        _connection = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
+        _connection = [NSURLConnection connectionWithRequest:request delegate:self];
     }
 }
 
@@ -79,7 +79,7 @@
         _jsonDict = [_jsonDict objectForKey:@"user"];
     }
     else {
-        NSString* response = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+        NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"%@", response);
     }
 }
@@ -100,28 +100,15 @@
 {
     NSLog(@"error");
     
-	[_connection release];
 	_connection = nil;
-	
-	[_data release];
 	_data = nil;
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection*)connection
 {	
-	[_connection release];
 	_connection = nil;
-	
-	[_data release];
 	_data = nil;
 }
 
-#pragma lifecycle
-
-- (void)dealloc
-{
-    [_jsonDict release];
-    [super dealloc];
-}
 
 @end

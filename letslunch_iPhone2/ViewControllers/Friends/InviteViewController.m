@@ -36,11 +36,6 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)dealloc {
-    [objects release];
-    [_tableView release];
-    [super dealloc];
-}
 
 #pragma mark - Table view data source
 

@@ -56,15 +56,6 @@
     [super viewDidUnload];
 }
 
-- (void)dealloc
-{    
-    [self.leftSelectedIndexPath release];
-    [self.leftSidebarViewController release];
-    [self.rightSidebarViewController release];
-    [self.centerView release];
-    [super dealloc];
-}
-
 #pragma configuration
 
 - (void)ActivityConfiguration

@@ -64,12 +64,6 @@ static ContactViewController *sharedSingleton = nil;
     [super didReceiveMemoryWarning];
 }
 
-- (void)dealloc
-{
-    [self.objects release];
-    [super dealloc];
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -87,7 +81,7 @@ static ContactViewController *sharedSingleton = nil;
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.textLabel.text = [((Contacts*)_objects[indexPath.row]) publicname];

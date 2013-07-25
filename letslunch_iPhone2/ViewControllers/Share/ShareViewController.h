@@ -10,7 +10,7 @@
 
 @interface ShareViewController : UIViewController
 
-@property (retain, nonatomic) IBOutlet UIButton *buttonClose;
+@property (strong, nonatomic) IBOutlet UIButton *buttonClose;
 
 +(ShareViewController*)getSingleton;
 +(void)suppressSingleton;

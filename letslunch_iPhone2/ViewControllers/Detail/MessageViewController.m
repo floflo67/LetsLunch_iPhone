@@ -80,14 +80,6 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)dealloc {
-    [self.objects release];
-    [self.contactID release];
-    [self.tableView release];
-    [self.textFieldMessage release];
-    [super dealloc];
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -105,7 +97,7 @@
     static NSString *CellIdentifier = @"Cell";
     ThreadCell *cell = (ThreadCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[ThreadCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[ThreadCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
@@ -131,7 +123,7 @@
     /*
      Changes format of date to hour:minute for message
      */
-    NSDateFormatter *format = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
     [format setDateFormat:@"hh:mm"];
     cell.dateText = [format stringFromDate:mess.date];
     mess = nil;

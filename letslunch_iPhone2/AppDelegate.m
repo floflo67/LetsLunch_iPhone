@@ -52,8 +52,8 @@
     _viewController = controller;
     _navController = navController;
     
-    NSLog(@"%@", [self getObjectFromKeychainForKey:kSecAttrAccount]);
-    if([[self getObjectFromKeychainForKey:kSecAttrAccount] isEqualToString:@"token"])
+    NSLog(@"%@", [self getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)]);
+    if([[self getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)] isEqualToString:@"token"])
         [self showLoginView];
     else
         [self.viewController ActivityConfiguration];
@@ -78,7 +78,7 @@
 {
     [_loginViewController.view removeFromSuperview];
     [_loginViewController.view setHidden:YES];
-    [_loginViewController release];
+    _loginViewController = nil;
 }
 
 #pragma custom functions
@@ -158,14 +158,14 @@
 
 - (void)logout
 {
-    [ProfileRequest logoutWithToken:[AppDelegate getObjectFromKeychainForKey:kSecAttrAccount]];
+    [ProfileRequest logoutWithToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)]];
     [self.tokenItem resetKeychainItem];
     [ActivityViewController suppressSingleton];
     [ContactViewController suppressSingleton];
     [ProfileViewController suppressSingleton];
     [VisitorsViewController suppressSingleton];
     [self showLoginView];
-    NSLog(@"%@", [self getObjectFromKeychainForKey:kSecAttrAccount]);
+    NSLog(@"%@", [self getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)]);
 }
 
 #pragma lists
@@ -173,7 +173,7 @@
 - (NSMutableArray*)getListActivitiesAndForceReload:(BOOL)shouldReload
 {
     if(!self.listActivities) {
-        self.listActivities = [[[NSMutableArray alloc] init] autorelease];
+        self.listActivities = [[NSMutableArray alloc] init];
         self.listActivities = [GetStaticLists getListActivities];
     }
     else if(shouldReload)
@@ -185,7 +185,7 @@
 - (NSMutableArray*)getListFriendsSuggestionAndForceReload:(BOOL)shouldReload
 {
     if(!self.listFriendsSuggestion) {
-        self.listFriendsSuggestion = [[[NSMutableArray alloc] init] autorelease];
+        self.listFriendsSuggestion = [[NSMutableArray alloc] init];
         self.listFriendsSuggestion = [GetStaticLists getListFriendsSuggestion];
     }
     else if(shouldReload)
@@ -197,7 +197,7 @@
 - (NSMutableArray*)getListVisitorsAndForceReload:(BOOL)shouldReload
 {
     if(!self.listVisitors) {
-        self.listVisitors = [[[NSMutableArray alloc] init] autorelease];
+        self.listVisitors = [[NSMutableArray alloc] init];
         self.listVisitors = [GetStaticLists getListVisitors];
     }
     else if(shouldReload)
@@ -209,7 +209,7 @@
 - (NSMutableArray*)getListMessagesForContactID:(NSString*)contactID andForceReload:(BOOL)shouldReload
 {
     if(!self.listMessages) {
-        self.listMessages = [[[NSMutableArray alloc] init] autorelease];
+        self.listMessages = [[NSMutableArray alloc] init];
         self.listMessages = [GetStaticLists getListMessagesForContactID:contactID];
     }
     else if(shouldReload)
@@ -221,7 +221,7 @@
 - (NSMutableArray*)getListContactsAndForceReload:(BOOL)shouldReload
 {
     if(!self.listContacts) {
-        self.listContacts = [[[NSMutableArray alloc] init] autorelease];
+        self.listContacts = [[NSMutableArray alloc] init];
         self.listContacts = [GetStaticLists getListContacts];
     }
     else if(shouldReload)
@@ -233,31 +233,12 @@
 - (Activity*)getOwnerActivityAndForceReload:(BOOL)shouldReload
 {
     if(!self.ownerActivity) {
-        self.ownerActivity = [GetStaticLists getOwnerActivityWithToken:[self getObjectFromKeychainForKey:kSecAttrAccount]];
+        self.ownerActivity = [GetStaticLists getOwnerActivityWithToken:[self getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)]];
     }
     else if(shouldReload)
-        self.ownerActivity = [GetStaticLists getOwnerActivityWithToken:[self getObjectFromKeychainForKey:kSecAttrAccount]];
+        self.ownerActivity = [GetStaticLists getOwnerActivityWithToken:[self getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)]];
     //return NULL;
     return self.ownerActivity;
-}
-
-#pragma application life cycle
-
-- (void)dealloc
-{
-    self.consumer = nil;
-    self.token = nil;
-    [self.listActivities release];
-    [self.listContacts release];
-    [self.listFriendsSuggestion release];
-    [self.listMessages release];
-    [self.ownerActivity release];
-    [self.navController release];
-    [self.loginViewController release];
-    [self.viewController release];
-    [self.window release];
-    [self.tokenItem release];
-    [super dealloc];
 }
 
 @end

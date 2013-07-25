@@ -21,13 +21,12 @@
 
 @end
 
-
 @interface FSVenue : NSObject<MKAnnotation>
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *venueId;
 @property (nonatomic, strong) FSLocation *location;
-@property (nonatomic, assign) NSNumber *distance;
+@property (nonatomic, weak) NSNumber *distance;
 @property (nonatomic, strong) NSString *categoryName;
 
 @end

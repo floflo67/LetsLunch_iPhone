@@ -65,18 +65,4 @@
     self.listMessages = (NSMutableArray*)sortedArray;
 }
 
-- (void)dealloc
-{
-    [self.ID release];
-    [self.firstname release];
-    [self.lastname release];
-    [self.publicname release];
-    [self.summary release];
-    [self.headline release];
-    [self.pictureURL release];
-    [self.listMessages release];
-    [self.image release];
-    [super dealloc];
-}
-
 @end

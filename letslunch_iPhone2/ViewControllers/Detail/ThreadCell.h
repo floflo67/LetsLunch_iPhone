@@ -14,9 +14,9 @@
     NSString *dateText;
 }
 
-@property (nonatomic, retain) NSString *msgText;
-@property (nonatomic, retain) NSString *imgName;
-@property (nonatomic, retain) NSString *dateText;
+@property (nonatomic, strong) NSString *msgText;
+@property (nonatomic, strong) NSString *imgName;
+@property (nonatomic, strong) NSString *dateText;
 
 @property (nonatomic, assign) BOOL tipRightward;
 

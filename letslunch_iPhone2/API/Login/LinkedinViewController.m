@@ -34,11 +34,6 @@
     [self.webView loadRequest:request];
 }
 
-- (void)dealloc {
-    [_webView release];
-    [_activityIndicator release];
-    [super dealloc];
-}
 
 #pragma mark - WebView delegate
 
@@ -56,9 +51,9 @@
             NSString *authorizationCode = [self getAuthorizationCodeWithRequestString:urlString];
             if(authorizationCode && ![authorizationCode isEqualToString:@""]) {
                 if([self requestAccesWithCode:authorizationCode]) {
-                    [AppDelegate writeObjectToKeychain:access_token forKey:kSecAttrAccount];
+                    [AppDelegate writeObjectToKeychain:access_token forKey:(__bridge id)(kSecAttrAccount)];
                     [self.webView stopLoading];
-                    [self.webView release];
+                    self.webView = nil;
                     [self.view removeFromSuperview];
                     [((AppDelegate*)[UIApplication sharedApplication].delegate) loginSuccessfull];
                 }
