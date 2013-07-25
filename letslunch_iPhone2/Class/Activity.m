@@ -19,9 +19,19 @@
         self.contact = [[Contacts alloc] initWithDictionary:[dict objectForKey:@"contact"]];
         self.venue = [[FSVenue alloc] initWithDictionary:[dict objectForKey:@"venue"]];
         
-        self.time = [NSString stringWithFormat:@"%@ - %@", [dict objectForKey:@"startTime"], [dict objectForKey:@"endTime"]];
-        if(!self.time)
-            self.time = @"3:00 PM - 4:00 PM";
+        NSString *startTime;
+        NSString *endTime;
+        
+        if(![dict objectForKey:@"startTime"])
+            startTime = @"3:00 PM";
+        else
+            startTime = [dict objectForKey:@"startTime"];
+        if(![dict objectForKey:@"endTime"])
+            endTime = @"4:00 PM";
+        else
+            endTime = [dict objectForKey:@"endTime"];
+        
+        self.time = [NSString stringWithFormat:@"%@ - %@", startTime, endTime];
         
         self.isCoffee = [[dict objectForKey:@"isCoffee"] boolValue];
         
@@ -33,7 +43,7 @@
     return self;
 }
 
-- (id)initWithID:(NSString *)activityID contact:(Contacts *)contact venue:(FSVenue *)venue description:(NSString *)description startTime:(NSString*)startTime endTime:(NSString*)endTime andIsCoffee:(BOOL)isCoffee
+- (id)initWithID:(NSString*)activityID contact:(Contacts*)contact venue:(FSVenue*)venue description:(NSString*)description startTime:(NSString*)startTime endTime:(NSString*)endTime andIsCoffee:(BOOL)isCoffee
 {
     self = [self init];
     if(self) {
