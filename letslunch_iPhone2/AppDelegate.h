@@ -16,7 +16,7 @@
 @class TwitterConsumer;
 @class TwitterToken;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate> {
+@interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate> {
     KeychainWrapper *tokenItem;
 }
 
@@ -32,6 +32,7 @@
 @property (strong, nonatomic) NSMutableArray *listVisitors;
 @property (strong, nonatomic) Activity *ownerActivity;
 @property (strong, nonatomic) Contacts *ownerContact;
+@property (strong, nonatomic) CLLocationManager *locationManager;
 
 @property (strong, nonatomic) TwitterConsumer* consumer;
 @property (strong, nonatomic) TwitterToken* token;

@@ -62,6 +62,14 @@
 
 - (void)loginSuccessfull
 {
+    /*
+     To get current location
+     */
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    self.locationManager.delegate = self;
+    [self.locationManager startUpdatingLocation];
+    
     [self hideLoginView];
     [self setupOwnerContactInfo];
     [self.viewController ActivityConfiguration];
@@ -171,19 +179,22 @@
     [ProfileViewController suppressSingleton];
     [VisitorsViewController suppressSingleton];
     [self showLoginView];
-    NSLog(@"%@", [self getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)]);
 }
 
 #pragma lists
 
 - (NSMutableArray*)getListActivitiesAndForceReload:(BOOL)shouldReload
 {
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"yyyy-MM-dd"];
+    NSString *date = [format stringFromDate:[NSDate new]];
+    
     if(!self.listActivities) {
         self.listActivities = [[NSMutableArray alloc] init];
-        self.listActivities = [GetStaticLists getListActivities];
+        self.listActivities = [GetStaticLists getListActivitiesWithToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)] latitude:self.locationManager.location.coordinate.latitude longitude:self.locationManager.location.coordinate.longitude andDate:date];
     }
     else if(shouldReload)
-        self.listActivities = [GetStaticLists getListActivities];
+        self.listActivities = [GetStaticLists getListActivitiesWithToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)] latitude:self.locationManager.location.coordinate.latitude longitude:self.locationManager.location.coordinate.longitude andDate:date];
     
     return self.listActivities;
 }
