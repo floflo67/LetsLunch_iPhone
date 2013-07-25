@@ -23,8 +23,8 @@
 
 @property (nonatomic, strong) id<LunchRequestDelegate> delegate;
 
-+(NSDictionary*)getLunchWithToken:(NSString*)token;
--(NSDictionary*)getLunchWithToken:(NSString*)token;
++(NSDictionary*)getOwnerLunchWithToken:(NSString*)token;
+-(NSDictionary*)getOwnerLunchWithToken:(NSString*)token;
 +(BOOL)suppressLunchWithToken:(NSString*)token andActivityID:(NSString*)activityID;
 -(BOOL)suppressLunchWithToken:(NSString*)token andActivityID:(NSString*)activityID;
 -(NSDictionary*)addLunchWithToken:(NSString*)token andActivity:(Activity*)activity;

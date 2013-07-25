@@ -44,7 +44,7 @@
 
 + (Activity*)getOwnerActivityWithToken:(NSString*)token
 {
-    NSDictionary *dict = [LunchesRequest getLunchWithToken:token];
+    NSDictionary *dict = [LunchesRequest getOwnerLunchWithToken:token];
     if(!dict)
         return NULL;
     else {

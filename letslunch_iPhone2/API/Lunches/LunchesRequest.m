@@ -12,12 +12,12 @@
 
 @implementation LunchesRequest
 
-#pragma mark - GET lunch
+#pragma mark - GET owner lunch
 
-+ (NSDictionary*)getLunchWithToken:(NSString*)token
++ (NSDictionary*)getOwnerLunchWithToken:(NSString*)token
 {
     LunchesRequest *lunchRequest = [[LunchesRequest alloc] init];
-    return [lunchRequest getLunchWithToken:token];
+    return [lunchRequest getOwnerLunchWithToken:token];
 }
 
 /*
@@ -26,7 +26,7 @@
  Parameters:
     authToken
  */
-- (NSDictionary*)getLunchWithToken:(NSString*)token
+- (NSDictionary*)getOwnerLunchWithToken:(NSString*)token
 {
     /*
      Sets the body of the requests
