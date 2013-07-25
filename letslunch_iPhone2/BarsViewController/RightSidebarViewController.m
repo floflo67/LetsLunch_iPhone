@@ -155,7 +155,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.sidebarDelegate) {
-        NSLog(@"%d", indexPath.row);
         //NSObject *object = [NSString stringWithFormat:@"ViewController%d", indexPath.row];
         //[self.sidebarDelegate sidebarViewController:self didSelectObject:(float)indexPath.row atIndexPath:indexPath];
     }

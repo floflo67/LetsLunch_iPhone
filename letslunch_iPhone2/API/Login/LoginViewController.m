@@ -80,7 +80,6 @@
         if([facebookAccounts count] > 0)
         {
             ACAccount* account = [facebookAccounts objectAtIndex:0];
-            NSLog(@"%@", account.username);
         }
     }];
 }
@@ -95,7 +94,6 @@
         if(twitterAccounts && [twitterAccounts count] > 0)
         {
             ACAccount* account = [twitterAccounts objectAtIndex:0];
-            NSLog(@"%@", account.username);
         }
         else {
             NSLog(@"No accounts");

@@ -265,7 +265,7 @@ static CreateActivityViewController *sharedSingleton = nil;
 
 - (void)saveActivity:(id)sender
 {
-    AppDelegate *app = [UIApplication sharedApplication].delegate;
+    AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
     NSString *description = self.textFieldDescription.text;
     if(self.activity && [description isEqualToString:@""]) {
         //delete
