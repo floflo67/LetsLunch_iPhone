@@ -15,10 +15,11 @@
 @property (nonatomic, strong) NSString *activityID;
 @property (nonatomic, strong) Contacts *contact;
 @property (nonatomic, strong) NSString *description;
+@property (nonatomic, strong) NSString *time;
 @property (nonatomic, strong) FSVenue *venue;
 @property (nonatomic) BOOL isCoffee;
 
 -(id)initWithDict:(NSDictionary*)dict;
--(id)initWithID:(NSString*)activityID contact:(Contacts*)contact venue:(FSVenue*)venue description:(NSString*)description andIsCoffee:(BOOL)isCoffee;
+-(id)initWithID:(NSString*)activityID contact:(Contacts*)contact venue:(FSVenue*)venue description:(NSString*)description startTime:(NSString*)startTime endTime:(NSString*)endTime andIsCoffee:(BOOL)isCoffee;
 
 @end
