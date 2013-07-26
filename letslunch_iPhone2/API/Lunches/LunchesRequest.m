@@ -52,48 +52,7 @@
     if(_statusCode == 200) {
         NSDictionary *dict = arr[0];
         
-        NSMutableDictionary *activityDict = [[NSMutableDictionary alloc] init];
-        NSMutableDictionary *venueDict = [[NSMutableDictionary alloc] init];
-        NSMutableDictionary *locationDict = [[NSMutableDictionary alloc] init];
-        NSMutableDictionary *contactDict = [[NSMutableDictionary alloc] init];
-        NSDictionary *userDict = [dict objectForKey:@"users"][0];
-        
-        [locationDict setObject:[dict objectForKey:@"degreesLatitude"] forKey:@"degreesLatitude"];
-        [locationDict setObject:[dict objectForKey:@"degreesLongitude"] forKey:@"degreesLongitude"];
-        [locationDict setObject:[dict objectForKey:@"venueAddress"] forKey:@"venueAddress"];
-        
-        [venueDict setObject:[dict objectForKey:@"venueName"] forKey:@"venueName"];
-        [venueDict setObject:[dict objectForKey:@"venueId"] forKey:@"venueId"];
-        [venueDict setObject:locationDict forKey:@"location"];
-        
-        [contactDict setObject:[userDict objectForKey:@"uid"] forKey:@"uid"];
-        [contactDict setObject:[userDict objectForKey:@"firstname"] forKey:@"firstname"];
-        [contactDict setObject:[userDict objectForKey:@"lastname"] forKey:@"lastname"];
-        [contactDict setObject:[userDict objectForKey:@"headline"] forKey:@"headline"];
-        [contactDict setObject:[userDict objectForKey:@"pictureUrl"] forKey:@"pictureURL"];
-        
-        [activityDict setObject:[dict objectForKey:@"lunchId"] forKey:@"id"];
-        [activityDict setObject:@"0" forKey:@"isCoffee"];
-        [activityDict setObject:contactDict forKey:@"contact"];
-        [activityDict setObject:venueDict forKey:@"venue"];
-        [activityDict setObject:[dict objectForKey:@"lunchDate"] forKey:@"description"];
-        
-        NSDateFormatter *formatToDate = [[NSDateFormatter alloc] init];
-        NSDateFormatter *formatFromDate = [[NSDateFormatter alloc] init];
-        [formatToDate setDateStyle:NSDateFormatterMediumStyle];
-        [formatToDate setDateFormat:@"HH:mm:ss"];
-        [formatFromDate setDateFormat:@"h:mm a"];
-        
-        NSDate *date = [[NSDate alloc] init];
-        date = [formatToDate dateFromString:[dict objectForKey:@"startTime"]];
-        NSString *time = [formatFromDate stringFromDate:date];
-        [activityDict setObject:time forKey:@"startTime"];
-        
-        date = [formatToDate dateFromString:[dict objectForKey:@"endTime"]];
-        time = [formatFromDate stringFromDate:date];
-        [activityDict setObject:time forKey:@"endTime"];
-        
-        return activityDict;
+        return [self createActivityDictionnaryWithDictionnary:dict];
     }
     else if (_statusCode == 201)
         return nil;
@@ -150,48 +109,7 @@
     if(_statusCode == 200) {
         NSMutableArray *listLunch = [[NSMutableArray alloc] init];
         for (NSDictionary *dict in arr) {
-            NSMutableDictionary *activityDict = [[NSMutableDictionary alloc] init];
-            NSMutableDictionary *venueDict = [[NSMutableDictionary alloc] init];
-            NSMutableDictionary *locationDict = [[NSMutableDictionary alloc] init];
-            NSMutableDictionary *contactDict = [[NSMutableDictionary alloc] init];
-            NSDictionary *userDict = [dict objectForKey:@"users"][0];
-            
-            [locationDict setObject:[dict objectForKey:@"degreesLatitude"] forKey:@"degreesLatitude"];
-            [locationDict setObject:[dict objectForKey:@"degreesLongitude"] forKey:@"degreesLongitude"];
-            [locationDict setObject:[dict objectForKey:@"venueAddress"] forKey:@"venueAddress"];
-            
-            [venueDict setObject:[dict objectForKey:@"venueName"] forKey:@"venueName"];
-            [venueDict setObject:[dict objectForKey:@"venueId"] forKey:@"venueId"];
-            [venueDict setObject:locationDict forKey:@"location"];
-            
-            [contactDict setObject:[userDict objectForKey:@"uid"] forKey:@"uid"];
-            [contactDict setObject:[userDict objectForKey:@"firstname"] forKey:@"firstname"];
-            [contactDict setObject:[userDict objectForKey:@"lastname"] forKey:@"lastname"];
-            [contactDict setObject:[userDict objectForKey:@"headline"] forKey:@"headline"];
-            [contactDict setObject:[userDict objectForKey:@"pictureUrl"] forKey:@"pictureURL"];
-            
-            [activityDict setObject:[dict objectForKey:@"lunchId"] forKey:@"id"];
-            [activityDict setObject:@"0" forKey:@"isCoffee"];
-            [activityDict setObject:contactDict forKey:@"contact"];
-            [activityDict setObject:venueDict forKey:@"venue"];
-            [activityDict setObject:[dict objectForKey:@"lunchDate"] forKey:@"description"];
-            
-            NSDateFormatter *formatToDate = [[NSDateFormatter alloc] init];
-            NSDateFormatter *formatFromDate = [[NSDateFormatter alloc] init];
-            [formatToDate setDateStyle:NSDateFormatterMediumStyle];
-            [formatToDate setDateFormat:@"HH:mm:ss"];
-            [formatFromDate setDateFormat:@"h:mm a"];
-            
-            NSDate *date = [[NSDate alloc] init];
-            date = [formatToDate dateFromString:[dict objectForKey:@"startTime"]];
-            NSString *time = [formatFromDate stringFromDate:date];
-            [activityDict setObject:time forKey:@"startTime"];
-            
-            date = [formatToDate dateFromString:[dict objectForKey:@"endTime"]];
-            time = [formatFromDate stringFromDate:date];
-            [activityDict setObject:time forKey:@"endTime"];
-            
-            [listLunch addObject:[[Activity alloc] initWithDict:activityDict]];
+            [listLunch addObject:[[Activity alloc] initWithDict:[self createActivityDictionnaryWithDictionnary:dict]]];
         }
         return listLunch;
     }
@@ -202,6 +120,54 @@
         NSLog(@"%@", response);
         return nil;
     }
+}
+
+#pragma mark - custom function
+
+- (NSDictionary*)createActivityDictionnaryWithDictionnary:(NSDictionary*)dict
+{
+    NSMutableDictionary *activityDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *venueDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *locationDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *contactDict = [[NSMutableDictionary alloc] init];
+    NSDictionary *userDict = [dict objectForKey:@"users"][0];
+    
+    [locationDict setObject:[dict objectForKey:@"degreesLatitude"] forKey:@"degreesLatitude"];
+    [locationDict setObject:[dict objectForKey:@"degreesLongitude"] forKey:@"degreesLongitude"];
+    [locationDict setObject:[dict objectForKey:@"venueAddress"] forKey:@"venueAddress"];
+    
+    [venueDict setObject:[dict objectForKey:@"venueName"] forKey:@"venueName"];
+    [venueDict setObject:[dict objectForKey:@"venueId"] forKey:@"venueId"];
+    [venueDict setObject:locationDict forKey:@"location"];
+    
+    [contactDict setObject:[userDict objectForKey:@"uid"] forKey:@"uid"];
+    [contactDict setObject:[userDict objectForKey:@"firstname"] forKey:@"firstname"];
+    [contactDict setObject:[userDict objectForKey:@"lastname"] forKey:@"lastname"];
+    [contactDict setObject:[userDict objectForKey:@"headline"] forKey:@"headline"];
+    [contactDict setObject:[userDict objectForKey:@"pictureUrl"] forKey:@"pictureURL"];
+    
+    [activityDict setObject:[dict objectForKey:@"lunchId"] forKey:@"id"];
+    [activityDict setObject:@"0" forKey:@"isCoffee"];
+    [activityDict setObject:contactDict forKey:@"contact"];
+    [activityDict setObject:venueDict forKey:@"venue"];
+    [activityDict setObject:[dict objectForKey:@"description"] forKey:@"description"];
+    
+    NSDateFormatter *formatToDate = [[NSDateFormatter alloc] init];
+    NSDateFormatter *formatFromDate = [[NSDateFormatter alloc] init];
+    [formatToDate setDateStyle:NSDateFormatterMediumStyle];
+    [formatToDate setDateFormat:@"HH:mm:ss"];
+    [formatFromDate setDateFormat:@"h:mm a"];
+    
+    NSDate *date = [[NSDate alloc] init];
+    date = [formatToDate dateFromString:[dict objectForKey:@"startTime"]];
+    NSString *time = [formatFromDate stringFromDate:date];
+    [activityDict setObject:time forKey:@"startTime"];
+    
+    date = [formatToDate dateFromString:[dict objectForKey:@"endTime"]];
+    time = [formatFromDate stringFromDate:date];
+    [activityDict setObject:time forKey:@"endTime"];
+    
+    return activityDict;
 }
 
 #pragma mark - ADD lunch
