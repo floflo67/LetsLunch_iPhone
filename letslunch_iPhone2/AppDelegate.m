@@ -174,11 +174,26 @@
 {
     [ProfileRequest logoutWithToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)]];
     [self.tokenItem resetKeychainItem];
+    [self suppressDataOnLogout];
     [ActivityViewController suppressSingleton];
     [ContactViewController suppressSingleton];
     [ProfileViewController suppressSingleton];
     [VisitorsViewController suppressSingleton];
     [self showLoginView];
+}
+
+- (void)suppressDataOnLogout
+{
+    self.ownerActivity = nil;
+    self.ownerContact = nil;
+    self.listActivities = nil;
+    self.listContacts = nil;
+    self.listFriendsSuggestion = nil;
+    self.listMessages = nil;
+    self.listVisitors = nil;
+    self.locationManager = nil;
+    self.consumer = nil;
+    self.token = nil;
 }
 
 #pragma lists
