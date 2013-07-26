@@ -95,7 +95,7 @@ static ActivityViewController *sharedSingleton = nil;
     if(section == 0)
         return 1;
     else if([[_objects[section] description] isEqualToString:@"NIL"]) {
-        return 0;
+        return 1;
     }
     return [_objects[section] count];
 }
@@ -192,7 +192,9 @@ static ActivityViewController *sharedSingleton = nil;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section == 1) {
-        DetailProfileViewController *detail = [[DetailProfileViewController alloc] init];
+        //Activity *activity = _objects[indexPath.section][indexPath.row];
+        NSString *contactID = @"16";
+        DetailProfileViewController *detail = [[DetailProfileViewController alloc] initWithContactID:contactID];
         [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController.navigationController pushViewController:detail animated:YES];
         detail = nil;
     }

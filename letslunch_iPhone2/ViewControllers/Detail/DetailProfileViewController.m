@@ -65,14 +65,15 @@
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     NSArray *object = [_objects allValues];
     
     if([[object[indexPath.section] class] isSubclassOfClass:[NSDictionary class]]) {
+        
         NSArray *keys = [object[indexPath.section] allKeys];
         NSArray *value = [object[indexPath.section] allValues];
         cell.textLabel.text = [keys[indexPath.row] description];
@@ -80,15 +81,17 @@
     }
     else if ([[object[indexPath.section] class] isSubclassOfClass:[NSArray class]]) {
         if([object[indexPath.section] count] > 0) {
-            cell.textLabel.text = [object[indexPath.section][indexPath.row] description];            
+            cell.textLabel.text = [object[indexPath.section][indexPath.row] objectForKey:@"name"];
+            cell.detailTextLabel.text = @"";
+            
         }
-        else {
+        else {        
             cell.textLabel.text = @"None listed";
             cell.detailTextLabel.text = @"";
         }
     }
     
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
