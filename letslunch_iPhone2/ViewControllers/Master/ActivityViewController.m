@@ -53,8 +53,10 @@ static ActivityViewController *sharedSingleton = nil;
             _objects[0] = @"NIL";
             self.hasActivity = NO;
         }
-        
-        _objects[1] = [app getListActivitiesAndForceReload:NO];
+        if([app getListActivitiesAndForceReload:NO])
+            _objects[1] = [app getListActivitiesAndForceReload:NO];
+        else
+            _objects[1] = @"NIL";
     }
     
     [self.tableView reloadData];
@@ -92,8 +94,10 @@ static ActivityViewController *sharedSingleton = nil;
 {
     if(section == 0)
         return 1;
-    else
-        return [_objects[section] count];
+    else if([[_objects[section] description] isEqualToString:@"NIL"]) {
+        return 0;
+    }
+    return [_objects[section] count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -129,12 +133,17 @@ static ActivityViewController *sharedSingleton = nil;
     [cell.labelVenueName setHidden:NO];
     
     if(indexPath.section == 1) {
-        Activity *activity = _objects[indexPath.section][indexPath.row];
-        cell.labelUserName.text = [NSString stringWithFormat:@"%@ %@", activity.contact.firstname, activity.contact.lastname];
-        cell.labelUserJobTitle.text = activity.contact.jobTitle;
-        cell.LabelTime.text = activity.time;
-        cell.labelVenueName.text = activity.venue.name;
-        cell.imageView.image = activity.contact.image;
+        if([[_objects[indexPath.section] description] isEqualToString:@"NIL"]) {            
+            NSLog(@"empty");
+        }
+        else {
+            Activity *activity = _objects[indexPath.section][indexPath.row];
+            cell.labelUserName.text = [NSString stringWithFormat:@"%@ %@", activity.contact.firstname, activity.contact.lastname];
+            cell.labelUserJobTitle.text = activity.contact.jobTitle;
+            cell.LabelTime.text = activity.time;
+            cell.labelVenueName.text = activity.venue.name;
+            cell.imageView.image = activity.contact.image;
+        }
     }
     else {
         if([[_objects[indexPath.section] description] isEqualToString:@"NIL"]) {
