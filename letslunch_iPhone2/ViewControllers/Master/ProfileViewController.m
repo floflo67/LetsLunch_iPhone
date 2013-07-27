@@ -92,7 +92,10 @@ static ProfileViewController *sharedSingleton = nil;
     NSArray *allKeys = [dict allKeys];
     NSArray *allValues = [dict allValues];
     
-    cell.textLabel.text = allKeys[indexPath.row];
+    NSString *key = allKeys[indexPath.row];
+    NSString *keyCapitalized = [key stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[key substringToIndex:1] capitalizedString]];
+    
+    cell.textLabel.text = keyCapitalized;
     cell.detailTextLabel.text = allValues[indexPath.row];
     
     return cell;
