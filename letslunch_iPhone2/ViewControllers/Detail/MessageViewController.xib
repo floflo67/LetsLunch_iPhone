@@ -87,6 +87,7 @@
 						<string key="NSFrame">{{0, 474}, {320, 30}}</string>
 						<reference key="NSSuperview" ref="213365220"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<reference key="IBUIBackgroundColor" ref="1002838885"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -261,30 +262,6 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">MessageViewController</string>
 					<string key="superclassName">UIViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="textFieldBeginEdit:">id</string>
-						<string key="textFieldReturn:">id</string>
-						<string key="textFieldShouldBeginEditing:">UITextField</string>
-						<string key="textFieldShouldReturn:">UITextField</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="textFieldBeginEdit:">
-							<string key="name">textFieldBeginEdit:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="textFieldReturn:">
-							<string key="name">textFieldReturn:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="textFieldShouldBeginEditing:">
-							<string key="name">textFieldShouldBeginEditing:</string>
-							<string key="candidateClassName">UITextField</string>
-						</object>
-						<object class="IBActionInfo" key="textFieldShouldReturn:">
-							<string key="name">textFieldShouldReturn:</string>
-							<string key="candidateClassName">UITextField</string>
-						</object>
-					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="tableView">UITableView</string>
 						<string key="textFieldMessage">UITextField</string>

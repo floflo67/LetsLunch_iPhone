@@ -9,6 +9,7 @@
 #import "MessageViewController.h"
 #import "Messages.h"
 #import "ThreadCell.h"
+#import "MessageRequest.h"
 
 @interface MessageViewController ()
 
@@ -187,8 +188,13 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [self changeTextFieldFrame:NO];
-    NSLog(@"%@", self.textFieldMessage.text); // will push to API once exists
+    self.contactID = @"16";
+    NSString *message = self.textFieldMessage.text;
     self.textFieldMessage.text = @""; // clears message
+    
+    if(message && ![message isEqualToString:@""])
+        [MessageRequest sendMessage:message withToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)kSecAttrAccount] toUser:self.contactID];
+    
     return YES;
 }
 
