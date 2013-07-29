@@ -104,6 +104,7 @@
 		54F97208177CFFE8006F6FE5 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54F97206177CFFE7006F6FE5 /* LoginViewController.xib */; };
 		54FC651A1798C28000269D3D /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54FC65191798C28000269D3D /* FacebookSDK.framework */; };
 		54FE68FC17736B1000AD7987 /* ButtonMenuRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 54FE68FB17736B1000AD7987 /* ButtonMenuRight.png */; };
+		54FE7E1617A6EBFE006255D4 /* MessageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FE7E1517A6EBFE006255D4 /* MessageRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -248,6 +249,8 @@
 		54FC65191798C28000269D3D /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		54FD4A881790AD470045B2DE /* CenterViewControllerImportFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CenterViewControllerImportFile.h; sourceTree = "<group>"; };
 		54FE68FB17736B1000AD7987 /* ButtonMenuRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonMenuRight.png; sourceTree = "<group>"; };
+		54FE7E1417A6EBFE006255D4 /* MessageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageRequest.h; sourceTree = "<group>"; };
+		54FE7E1517A6EBFE006255D4 /* MessageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,6 +340,7 @@
 		54403821176B8E4D00AA3588 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				54FE7E1317A6EBDE006255D4 /* Contacts */,
 				540E1F4D179DC96A000D2E0C /* Details */,
 				54E9D6DA17974A0F00E84EFB /* Lunches */,
 				54FD4A8A1790B6010045B2DE /* Foursquare */,
@@ -672,6 +676,15 @@
 			path = Foursquare;
 			sourceTree = "<group>";
 		};
+		54FE7E1317A6EBDE006255D4 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				54FE7E1417A6EBFE006255D4 /* MessageRequest.h */,
+				54FE7E1517A6EBFE006255D4 /* MessageRequest.m */,
+			);
+			path = Contacts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -815,6 +828,7 @@
 				545905E1179EE9CC002A0620 /* CenterViewController.m in Sources */,
 				54F2FF03179E0D0600C0BB85 /* main.m in Sources */,
 				5480D55C17A06FA30069ABAC /* ActivityCell.m in Sources */,
+				54FE7E1617A6EBFE006255D4 /* MessageRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
