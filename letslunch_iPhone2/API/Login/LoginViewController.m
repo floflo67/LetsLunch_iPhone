@@ -57,7 +57,7 @@
 
 #pragma text field delegate
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
+- (BOOL)textFieldShouldReturn:(UITextField*)textField
 {
     if(textField == self.textFieldUsername) {
         [textField resignFirstResponder];
@@ -151,7 +151,7 @@
     [((AppDelegate*)[UIApplication sharedApplication].delegate) loginSuccessfull];
 }
 
-- (LoginRequests *)loginRequest
+- (LoginRequests*)loginRequest
 {
     if(!_loginRequest)
         _loginRequest = [[LoginRequests alloc] init];

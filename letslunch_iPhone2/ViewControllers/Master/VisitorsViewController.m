@@ -54,17 +54,17 @@ static VisitorsViewController *sharedSingleton = nil;
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
 {
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.objects count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -83,7 +83,7 @@ static VisitorsViewController *sharedSingleton = nil;
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     NSDictionary *profile = [NSDictionary dictionaryWithDictionary:self.objects[indexPath.row]];
     Contacts *contact = [[Contacts alloc] initWithDictionary:profile];
@@ -96,7 +96,7 @@ static VisitorsViewController *sharedSingleton = nil;
 
 #pragma mark - getter and setter
 
--(NSMutableArray *)objects
+- (NSMutableArray*)objects
 {
     if(!_objects)
         _objects = [[NSMutableArray alloc] init];

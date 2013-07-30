@@ -317,7 +317,7 @@
     id // can be null - depend on venue
     address // can be null - depend on venue
  */
-- (void)updateLunchWithToken:(NSString *)token andActivity:(Activity *)activity
+- (void)updateLunchWithToken:(NSString*)token andActivity:(Activity*)activity
 {
     if (self.connection == nil) {
         NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
@@ -405,14 +405,14 @@
 
 #pragma mark - getter and setter
 
--(NSMutableData *)data
+- (NSMutableData*)data
 {
     if(!_data)
         _data = [NSMutableData new];
     return _data;
 }
 
--(NSMutableDictionary *)jsonDict
+- (NSMutableDictionary*)jsonDict
 {
     if(!_jsonDict)
         _jsonDict = [[NSMutableDictionary alloc] init];

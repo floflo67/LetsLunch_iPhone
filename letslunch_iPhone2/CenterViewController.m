@@ -136,7 +136,7 @@
 #pragma mark JTRevealSidebarDelegate
 
 // This is an examle to configure your sidebar view through a custom UITableViewController
-- (UIView *)viewForLeftSidebar
+- (UIView*)viewForLeftSidebar
 {
     CGRect viewFrame = self.navigationController.applicationViewFrame;
     UITableViewController *controller = self.leftSidebarViewController;
@@ -159,7 +159,7 @@
 }
 
 // This is an examle to configure your sidebar view without a UIViewController
-- (UIView *)viewForRightSidebar
+- (UIView*)viewForRightSidebar
 {
     CGRect viewFrame = self.navigationController.applicationViewFrame;
     UITableViewController *controller = self.rightSidebarViewController;
@@ -183,7 +183,7 @@
 }
 
 // Optional delegate methods for additional configuration after reveal state changed
-- (void)didChangeRevealedStateForViewController:(UIViewController *)viewController
+- (void)didChangeRevealedStateForViewController:(UIViewController*)viewController
 {
     if (viewController.revealedState == JTRevealedStateNo) {
         self.view.userInteractionEnabled = YES;
@@ -199,17 +199,17 @@
 
 #pragma mark UITableViewDatasource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 20;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
 {
     return 1;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     static NSString *cellIdentifier = @"CellIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -220,7 +220,7 @@
     return cell;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+- (NSString*)tableView:(UITableView*)tableView titleForHeaderInSection:(NSInteger)section
 {
     if (tableView == self.rightSidebarViewController.view) {
         return @"RightSidebar";
@@ -230,7 +230,7 @@
 
 #pragma mark UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     [self.navigationController setRevealedState:JTRevealedStateNo];
     if (tableView == self.rightSidebarViewController.view) {
@@ -240,7 +240,7 @@
 
 #pragma mark SidebarViewControllerDelegate
 
-- (void)sidebarViewController:(LeftSidebarViewController *)sidebarViewController didSelectObject:(NSObject*)object atIndexPath:(NSIndexPath *)indexPath
+- (void)sidebarViewController:(LeftSidebarViewController*)sidebarViewController didSelectObject:(NSObject*)object atIndexPath:(NSIndexPath*)indexPath
 {
     
     [self.navigationController setRevealedState:JTRevealedStateNo];
@@ -263,7 +263,7 @@
         [self logout];
 }
 
-- (NSIndexPath *)lastSelectedIndexPathForSidebarViewController:(LeftSidebarViewController *)sidebarViewController
+- (NSIndexPath*)lastSelectedIndexPathForSidebarViewController:(LeftSidebarViewController*)sidebarViewController
 {
     return self.leftSelectedIndexPath;
 }

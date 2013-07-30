@@ -72,17 +72,17 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
 {
     return [_objects count];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 1;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     ThreadCell *cell = (ThreadCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -121,7 +121,7 @@
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
 {
 	NSString *aMsg = [[_objects objectAtIndex:indexPath.section] description];
     CGFloat widthForText = 260.f;    
@@ -129,7 +129,7 @@
 	return size.height - 5;
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+- (NSString*)tableView:(UITableView*)tableView titleForHeaderInSection:(NSInteger)section
 {
     /*
      Header appears only if change of date between two messages
@@ -174,7 +174,7 @@
 
 #pragma mark - Text field delegate
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
+- (BOOL)textFieldShouldReturn:(UITextField*)textField
 {
     if(textField.isFirstResponder) {
         [textField resignFirstResponder];
@@ -190,7 +190,7 @@
     return YES;
 }
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+- (BOOL)textFieldShouldBeginEditing:(UITextField*)textField
 {
     if(!textField.isFirstResponder) {
         [textField isFirstResponder];
@@ -216,14 +216,14 @@
 
 #pragma mark - getter and setter
 
--(NSMutableArray *)objects
+- (NSMutableArray*)objects
 {
     if(!_objects)
         _objects = [[NSMutableArray alloc] init];
     return _objects;
 }
 
--(NSString *)contactID
+- (NSString*)contactID
 {
     if(!_contactID)
         _contactID = @"1";

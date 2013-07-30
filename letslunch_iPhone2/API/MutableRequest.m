@@ -10,7 +10,7 @@
 
 @implementation MutableRequest
 
-- (id)initWithURL:(NSURL *)URL andParameters:(NSDictionary*)parameters andType:(NSString*)type
+- (id)initWithURL:(NSURL*)URL andParameters:(NSDictionary*)parameters andType:(NSString*)type
 {
     self = [super initWithURL:URL];
     if(self) {

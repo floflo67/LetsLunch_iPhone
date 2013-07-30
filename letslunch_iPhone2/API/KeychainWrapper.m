@@ -15,10 +15,10 @@ static const UInt8 kKeychainItemIdentifier[]    = "com.apple.dts.KeychainUI\0";
 @interface KeychainWrapper (PrivateMethods)
 
 /* The following two methods translate dictionaries between the format used by
- the view controller (NSString *) and the Keychain Services API:
+ the view controller (NSString*) and the Keychain Services API:
  */
-- (NSMutableDictionary *)secItemFormatToDictionary:(NSDictionary *)dictionaryToConvert;
-- (NSMutableDictionary *)dictionaryToSecItemFormat:(NSDictionary *)dictionaryToConvert;
+- (NSMutableDictionary*)secItemFormatToDictionary:(NSDictionary*)dictionaryToConvert;
+- (NSMutableDictionary*)dictionaryToSecItemFormat:(NSDictionary*)dictionaryToConvert;
 
 // Method used to write data to the keychain:
 - (void)writeToKeychain;
@@ -74,7 +74,7 @@ static const UInt8 kKeychainItemIdentifier[]    = "com.apple.dts.KeychainUI\0";
         
         NSMutableDictionary *outDictionary = nil;
         
-        if (! SecItemCopyMatching((__bridge CFDictionaryRef)tempQuery, (void *)&outDictionary) == noErr)
+        if (! SecItemCopyMatching((__bridge CFDictionaryRef)tempQuery, (void*)&outDictionary) == noErr)
         {
             // Stick these default values into keychain item if nothing found.
             [self resetKeychainItem];
@@ -155,7 +155,7 @@ static const UInt8 kKeychainItemIdentifier[]    = "com.apple.dts.KeychainUI\0";
     [keychainData setObject:LL_Default_Picture_Url forKey:(__bridge id)kSecAttrDescription];
 }
 
-- (NSMutableDictionary *)dictionaryToSecItemFormat:(NSDictionary *)dictionaryToConvert
+- (NSMutableDictionary*)dictionaryToSecItemFormat:(NSDictionary*)dictionaryToConvert
 {
     // The assumption is that this method will be called with a properly populated dictionary
     // containing all the right key/value pairs for a SecItem.
@@ -174,7 +174,7 @@ static const UInt8 kKeychainItemIdentifier[]    = "com.apple.dts.KeychainUI\0";
     return returnDictionary;
 }
 
-- (NSMutableDictionary *)secItemFormatToDictionary:(NSDictionary *)dictionaryToConvert
+- (NSMutableDictionary*)secItemFormatToDictionary:(NSDictionary*)dictionaryToConvert
 {
     // The assumption is that this method will be called with a properly populated dictionary
     // containing all the right key/value pairs for the UI element.
@@ -188,7 +188,7 @@ static const UInt8 kKeychainItemIdentifier[]    = "com.apple.dts.KeychainUI\0";
     
     // Acquire the password data from the attributes.
     NSData *passwordData = NULL;
-    if (SecItemCopyMatching((__bridge CFDictionaryRef)returnDictionary, (void *)&passwordData) == noErr)
+    if (SecItemCopyMatching((__bridge CFDictionaryRef)returnDictionary, (void*)&passwordData) == noErr)
     {
         // Remove the search, class, and identifier key/value, we don't need them anymore.
         [returnDictionary removeObjectForKey:(__bridge id)kSecReturnData];
@@ -220,7 +220,7 @@ static const UInt8 kKeychainItemIdentifier[]    = "com.apple.dts.KeychainUI\0";
     NSMutableDictionary *updateItem = NULL;
 	OSStatus result;
     
-    if (SecItemCopyMatching((__bridge CFDictionaryRef)genericPasswordQuery, (void *)&attributes) == noErr)
+    if (SecItemCopyMatching((__bridge CFDictionaryRef)genericPasswordQuery, (void*)&attributes) == noErr)
     {
         // First we need the attributes from the Keychain.
         updateItem = [NSMutableDictionary dictionaryWithDictionary:attributes];

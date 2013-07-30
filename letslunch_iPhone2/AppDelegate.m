@@ -23,7 +23,7 @@
 @synthesize loginViewController = _loginViewController;
 @synthesize tokenItem;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+- (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
     self.tokenItem = [[KeychainWrapper alloc] initWithIdentifier:@"LetsLunchToken" accessGroup:nil];
     /*if(![[self getObjectFromKeychainForKey:kSecAttrAccount] isEqualToString:@"token"])

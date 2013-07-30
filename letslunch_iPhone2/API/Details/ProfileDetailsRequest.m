@@ -52,7 +52,7 @@
 
 #pragma mark - getter and setter
 
--(NSMutableDictionary *)jsonDict
+- (NSMutableDictionary*)jsonDict
 {
     if(!_jsonDict)
         _jsonDict = [[NSMutableDictionary alloc] init];

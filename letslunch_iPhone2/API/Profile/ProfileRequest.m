@@ -143,14 +143,14 @@
 
 #pragma mark - getter and setter
 
--(NSMutableData *)data
+- (NSMutableData*)data
 {
     if(!_data)
         _data = [NSMutableData new];
     return _data;
 }
 
--(NSMutableDictionary *)jsonDict
+- (NSMutableDictionary*)jsonDict
 {
     if(!_jsonDict)
         _jsonDict = [[NSMutableDictionary alloc] init];

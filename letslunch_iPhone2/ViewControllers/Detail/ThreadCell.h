@@ -20,7 +20,7 @@
 
 @property (nonatomic, assign) BOOL tipRightward;
 
-+(CGSize)calcTextHeight:(NSString *)str;
-+(CGSize)calcTextHeight:(NSString *)str withinWidth:(CGFloat)width;
++(CGSize)calcTextHeight:(NSString*)str;
++(CGSize)calcTextHeight:(NSString*)str withinWidth:(CGFloat)width;
 
 @end

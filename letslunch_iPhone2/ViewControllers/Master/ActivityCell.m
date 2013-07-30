@@ -16,7 +16,7 @@
     _userPicture = userPicture;
 }
 
--(void)setRoundedView:(UIImageView*)roundedView toDiameter:(float)newSize;
+- (void)setRoundedView:(UIImageView*)roundedView toDiameter:(float)newSize;
 {
     CGPoint saveCenter = roundedView.center;
     CGRect newFrame = CGRectMake(roundedView.frame.origin.x, roundedView.frame.origin.y, newSize, newSize);

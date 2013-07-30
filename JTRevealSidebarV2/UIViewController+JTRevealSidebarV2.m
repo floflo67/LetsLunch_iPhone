@@ -13,7 +13,7 @@
 
 @interface UIViewController (JTRevealSidebarV2Private)
 
-- (UIViewController *)selectedViewController;
+- (UIViewController*)selectedViewController;
 - (void)revealLeftSidebar:(BOOL)showLeftSidebar;
 - (void)revealRightSidebar:(BOOL)showRightSidebar;
 
@@ -118,14 +118,14 @@ static char *revealedStateKey;
 
 @implementation UIViewController (JTRevealSidebarV2Private)
 
-- (UIViewController *)selectedViewController {
+- (UIViewController*)selectedViewController {
     return self;
 }
 
 // Looks like we collasped with the official animationDidStop:finished:context: 
 // implementation in the default UITabBarController here, that makes us never
 // getting the callback we wanted. So we renamed the callback method here.
-- (void)animationDidStop2:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+- (void)animationDidStop2:(NSString*)animationID finished:(NSNumber*)finished context:(void*)context {
     if ([animationID isEqualToString:@"hideSidebarView"]) {
         // Remove the sidebar view after the sidebar closes.
         UIView *view = [self.view.superview viewWithTag:(int)context];
@@ -161,7 +161,7 @@ static char *revealedStateKey;
         self.view.frame = CGRectOffset(self.view.frame, width, 0);
 
     } else {
-        [UIView beginAnimations:@"hideSidebarView" context:(void *)SIDEBAR_VIEW_TAG];
+        [UIView beginAnimations:@"hideSidebarView" context:(void*)SIDEBAR_VIEW_TAG];
 //        self.view.transform = CGAffineTransformTranslate([self baseTransform], -width, 0);
         
         self.view.frame = CGRectOffset(self.view.frame, -width, 0);
@@ -195,7 +195,7 @@ static char *revealedStateKey;
         
         self.view.frame = CGRectOffset(self.view.frame, -width, 0);
     } else {
-        [UIView beginAnimations:@"hideSidebarView" context:(void *)SIDEBAR_VIEW_TAG];
+        [UIView beginAnimations:@"hideSidebarView" context:(void*)SIDEBAR_VIEW_TAG];
 //        self.view.transform = CGAffineTransformTranslate([self baseTransform], width, 0);
         self.view.frame = CGRectOffset(self.view.frame, width, 0);
     }
@@ -211,7 +211,7 @@ static char *revealedStateKey;
 
 @implementation UINavigationController (JTRevealSidebarV2)
 
-- (UIViewController *)selectedViewController {
+- (UIViewController*)selectedViewController {
     return self.topViewController;
 }
 

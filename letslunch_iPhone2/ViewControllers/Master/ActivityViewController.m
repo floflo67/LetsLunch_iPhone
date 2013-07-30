@@ -84,12 +84,12 @@ static ActivityViewController *sharedSingleton = nil;
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
 {
     return 2;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
     if(section == 0)
         return 1;
@@ -99,7 +99,7 @@ static ActivityViewController *sharedSingleton = nil;
     return [self.objects[section] count];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     if(indexPath.section == 1)
         return 120.0f;
@@ -111,7 +111,7 @@ static ActivityViewController *sharedSingleton = nil;
     }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     static NSString *CellIdentifier = @"ActivityCell";
     ActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -188,7 +188,7 @@ static ActivityViewController *sharedSingleton = nil;
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     if(indexPath.section == 1) {
         //Activity *activity = _objects[indexPath.section][indexPath.row];
@@ -205,7 +205,7 @@ static ActivityViewController *sharedSingleton = nil;
 
 #pragma mark - getter and setter
 
--(NSMutableArray *)objects
+- (NSMutableArray*)objects
 {
     if(!_objects)
         _objects = [[NSMutableArray alloc] init];

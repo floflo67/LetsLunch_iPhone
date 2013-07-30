@@ -47,7 +47,7 @@
     search = nil;
 }
 
--(void)viewWillAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
 }
@@ -131,7 +131,7 @@
  Calls search to remove textField and move segmentControl and TableView up
  Radius bigger to show more results (10km)
  */
--(BOOL)textFieldShouldReturn:(UITextField *)textField
+- (BOOL)textFieldShouldReturn:(UITextField*)textField
 {
     self.section = nil;
     self.query = textField.text;
@@ -145,12 +145,12 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.nearbyVenues.count;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
 {
     if (self.nearbyVenues.count) {
         return 1;
@@ -158,7 +158,7 @@
     return 0;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {    
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -180,7 +180,7 @@
     return cell;
 }
 
--(void)getVenuesForLocation:(CLLocation*)location
+- (void)getVenuesForLocation:(CLLocation*)location
 {
     self.nearbyVenues = nil;
     self.nearbyVenues = [[NSMutableArray alloc] init];
@@ -222,7 +222,7 @@
     [self.tableView reloadData];
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+- (void)locationManager:(CLLocationManager*)manager didUpdateToLocation:(CLLocation*)newLocation fromLocation:(CLLocation*)oldLocation
 {
     [_locationManager stopUpdatingLocation];
     [self getVenuesForLocation:newLocation];
@@ -233,7 +233,7 @@
 /*
  Goes back to createActivity
  */
--(void)userDidSelectVenue
+- (void)userDidSelectVenue
 {
     [CreateActivityViewController getSingleton].venue = self.selected;
     [[CreateActivityViewController getSingleton] addMap:self.selected];
@@ -241,7 +241,7 @@
 }
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     self.selected = self.nearbyVenues[indexPath.row];

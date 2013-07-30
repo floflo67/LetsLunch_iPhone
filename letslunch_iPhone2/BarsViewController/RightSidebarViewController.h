@@ -19,9 +19,9 @@
 
 @protocol RightSidebarViewControllerDelegate <NSObject>
 
-- (void)sidebarViewController:(RightSidebarViewController *)sidebarViewController didSelectObject:(float)object atIndexPath:(NSIndexPath *)indexPath;
+-(void)sidebarViewController:(RightSidebarViewController*)sidebarViewController didSelectObject:(float)object atIndexPath:(NSIndexPath*)indexPath;
 
 @optional
-- (NSIndexPath *)lastSelectedIndexPathForSidebarViewController:(RightSidebarViewController *)sidebarViewController;
+-(NSIndexPath*)lastSelectedIndexPathForSidebarViewController:(RightSidebarViewController*)sidebarViewController;
 
 @end

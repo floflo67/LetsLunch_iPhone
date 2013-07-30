@@ -11,9 +11,9 @@
 @protocol JTRevealSidebarV2Delegate <NSObject>
 
 @optional
-- (UIView *)viewForLeftSidebar;
-- (UIView *)viewForRightSidebar;
-- (void)willChangeRevealedStateForViewController:(UIViewController *)viewController;
-- (void)didChangeRevealedStateForViewController:(UIViewController *)viewController;
+-(UIView*)viewForLeftSidebar;
+-(UIView*)viewForRightSidebar;
+-(void)willChangeRevealedStateForViewController:(UIViewController*)viewController;
+-(void)didChangeRevealedStateForViewController:(UIViewController*)viewController;
 
 @end

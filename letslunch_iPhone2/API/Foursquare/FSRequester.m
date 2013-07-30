@@ -27,11 +27,11 @@
     return self;
 }
 
--(void)changeStateErrorAlert{
+- (void)changeStateErrorAlert{
     needToShowErrorAlert = YES;
 }
 
-- (void)handleConnectionError:(NSError *)error{
+- (void)handleConnectionError:(NSError*)error{
 	if(!error) {
 		return;
 	}
@@ -39,7 +39,7 @@
 
 }
 
-- (void) makeAsyncRequest:(NSURL *)url target:(FSTargetCallback *)target {
+- (void) makeAsyncRequest:(NSURL*)url target:(FSTargetCallback*)target {
 
 	NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url
 												cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
@@ -63,20 +63,20 @@
 	
 }
 
--(void)connectTarget:(FSTargetCallback*)target andConnection:(NSURLConnection*)connection{
+- (void)connectTarget:(FSTargetCallback*)target andConnection:(NSURLConnection*)connection{
    [asyncConnDict setValue:target forKey:[NSString stringWithFormat: @"%d", [connection hash]]];
 }
 
--(void)disconnettargetWithConnection:(NSURLConnection*)connection{
+- (void)disconnettargetWithConnection:(NSURLConnection*)connection{
     [asyncConnDict removeObjectForKey: [NSString stringWithFormat: @"%d", [connection hash]]];
 }
 
--(FSTargetCallback*)targetForConnection:(NSURLConnection*)connection{
+- (FSTargetCallback*)targetForConnection:(NSURLConnection*)connection{
     return asyncConnDict[[NSString stringWithFormat: @"%d", [connection hash]]];
 }
 
 
-- (void) makeAsyncRequestWithRequest:(NSURLRequest *)urlRequest target:(FSTargetCallback *)target {
+- (void) makeAsyncRequestWithRequest:(NSURLRequest*)urlRequest target:(FSTargetCallback*)target {
 
 
 
@@ -104,18 +104,18 @@
 
 // fot untrusted stage
 //from http://stackoverflow.com/questions/933331/how-to-use-nsurlconnection-to-connect-with-ssl-for-an-untrusted-cert
-- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
+- (BOOL)connection:(NSURLConnection*)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace*)protectionSpace {
     return [protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+- (void)connection:(NSURLConnection*)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge*)challenge {
     if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust])
             [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
     
     [challenge.sender continueWithoutCredentialForAuthenticationChallenge:challenge];
 }
 
-- (void)connection:(NSURLConnection *)aConnection didReceiveResponse:(NSURLResponse *)response
+- (void)connection:(NSURLConnection*)aConnection didReceiveResponse:(NSURLResponse*)response
 {
 
 	FSTargetCallback *target = [self targetForConnection:aConnection];
@@ -125,7 +125,7 @@
 
 
 
-- (void)connection:(NSURLConnection *)aConnection didReceiveData:(NSData *)data
+- (void)connection:(NSURLConnection*)aConnection didReceiveData:(NSData*)data
 {
 
 	FSTargetCallback *target = [self targetForConnection:aConnection];
@@ -135,7 +135,7 @@
 	
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)aConnection
+- (void)connectionDidFinishLoading:(NSURLConnection*)aConnection
 {
 	FSTargetCallback *target = [self targetForConnection:aConnection];
 	NSMutableData *receivedData = [target receivedData];
@@ -158,7 +158,7 @@
     [self disconnettargetWithConnection:aConnection];
 }
 
-- (void)connection:(NSURLConnection *)aConnection didFailWithError:(NSError *)error {
+- (void)connection:(NSURLConnection*)aConnection didFailWithError:(NSError*)error {
 
 	
 	FSTargetCallback *target = [self targetForConnection:aConnection];
@@ -170,7 +170,7 @@
 	[self disconnettargetWithConnection:aConnection];
 }
 
-- (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse {
+- (NSCachedURLResponse*)connection:(NSURLConnection*)connection willCacheResponse:(NSCachedURLResponse*)cachedResponse {
 	return nil;
 }
 

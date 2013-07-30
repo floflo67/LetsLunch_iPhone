@@ -79,7 +79,7 @@ static CreateActivityViewController *sharedSingleton = nil;
 /*
  Loads the view with an activity if existing
  */
--(void)loadViewWithActivity:(Activity*)activity
+- (void)loadViewWithActivity:(Activity*)activity
 {
     if(activity) {
         /*
@@ -133,7 +133,7 @@ static CreateActivityViewController *sharedSingleton = nil;
 
 #pragma mark - Lunch request delegate
 
--(void)showErrorMessage:(NSString*)message withErrorStatus:(NSInteger)errorStatus
+- (void)showErrorMessage:(NSString*)message withErrorStatus:(NSInteger)errorStatus
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NULL message:NULL delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     alert.title = [NSString stringWithFormat:@"Error: %i", errorStatus];
@@ -217,17 +217,17 @@ static CreateActivityViewController *sharedSingleton = nil;
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
 {
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 1;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -253,7 +253,7 @@ static CreateActivityViewController *sharedSingleton = nil;
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     NearbyVenuesViewController *detailViewController = [[NearbyVenuesViewController alloc] init];
     [self.navigationController pushViewController:detailViewController animated:YES];
@@ -347,7 +347,7 @@ static CreateActivityViewController *sharedSingleton = nil;
 
 #pragma UITextFieldDelegate
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField
+- (BOOL)textFieldShouldReturn:(UITextField*)textField
 {
     if(textField.isFirstResponder)
        [textField resignFirstResponder];

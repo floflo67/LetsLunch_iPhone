@@ -15,7 +15,7 @@
 @synthesize dateText;
 @synthesize tipRightward = _tipRightward;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString*)reuseIdentifier
 {
     self = self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
@@ -110,7 +110,7 @@
     newView = nil;
 }
 
-+ (CGSize)calcTextHeight:(NSString *)str
++ (CGSize)calcTextHeight:(NSString*)str
 {
     return [self calcTextHeight:str withinWidth:300.0];
 }
@@ -118,7 +118,7 @@
 /*
  Returns size needed to contain a certain string
  */
-+ (CGSize)calcTextHeight:(NSString *)str withinWidth:(CGFloat)width
++ (CGSize)calcTextHeight:(NSString*)str withinWidth:(CGFloat)width
 {
     CGSize textSize = {width - 30, 20000.0};
     CGSize size = [str sizeWithFont:[UIFont systemFontOfSize:16.0] constrainedToSize:textSize];

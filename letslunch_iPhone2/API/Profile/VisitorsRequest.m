@@ -15,7 +15,7 @@
 
 @implementation VisitorsRequest
 
-+ (NSMutableArray *)getVisitorsWithToken:(NSString *)token
++ (NSMutableArray*)getVisitorsWithToken:(NSString*)token
 {
     return [[[VisitorsRequest alloc] init] getVisitorsWithToken:token];
 }
@@ -64,7 +64,7 @@
 
 #pragma mark - getter and setter
 
--(NSMutableArray *)jsonArray
+- (NSMutableArray*)jsonArray
 {
     if(!_jsonArray)
         _jsonArray = [[NSMutableArray alloc] init];

@@ -10,6 +10,6 @@
 
 @interface MutableRequest : NSMutableURLRequest
 
--(id)initWithURL:(NSURL *)URL andParameters:(NSDictionary*)parameters andType:(NSString*)type;
+-(id)initWithURL:(NSURL*)URL andParameters:(NSDictionary*)parameters andType:(NSString*)type;
 
 @end

@@ -122,7 +122,7 @@
 
 #pragma getter and setter
 
-- (NSMutableData *)data
+- (NSMutableData*)data
 {
     if(!_data)
         _data = [NSMutableData new];

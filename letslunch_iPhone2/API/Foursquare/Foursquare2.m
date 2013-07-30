@@ -12,10 +12,10 @@
 
 
 @interface Foursquare2 (PrivateAPI)
-+(void)get:(NSString *)methodName withParams:(NSDictionary *)params callback:(Foursquare2Callback)callback;
-+(void)request:(NSString *)methodName withParams:(NSDictionary *)params httpMethod:(NSString *)httpMethod callback:(Foursquare2Callback)callback;
++(void)get:(NSString*)methodName withParams:(NSDictionary*)params callback:(Foursquare2Callback)callback;
++(void)request:(NSString*)methodName withParams:(NSDictionary*)params httpMethod:(NSString*)httpMethod callback:(Foursquare2Callback)callback;
 
-+ (NSMutableDictionary *)classAttributes;
++ (NSMutableDictionary*)classAttributes;
 @end
 
 @implementation Foursquare2
@@ -31,17 +31,17 @@ static NSMutableDictionary *attributes;
 	}
 }
 
-+ (void)setBaseURL:(NSString *)uri
++ (void)setBaseURL:(NSString*)uri
 {
     [self setAttributeValue:uri forKey:@"FS2_API_BaseUrl"];
 }
 
-+ (void)setAttributeValue:(id)attr forKey:(NSString *)key
++ (void)setAttributeValue:(id)attr forKey:(NSString*)key
 {
     [self classAttributes][key] = attr;
 }
 
-+ (NSMutableDictionary *)classAttributes
++ (NSMutableDictionary*)classAttributes
 {
     if(attributes) {
         return attributes;
@@ -157,12 +157,12 @@ static NSMutableDictionary *attributes;
 	}
 }
 
-+ (void) get:(NSString *)methodName withParams:(NSDictionary *)params callback:(Foursquare2Callback)callback
++ (void) get:(NSString*)methodName withParams:(NSDictionary*)params callback:(Foursquare2Callback)callback
 {
 	[self request:methodName withParams:params httpMethod:@"GET" callback:callback];
 }
 
-+ (NSString *)constructRequestUrlForMethod:(NSString *)methodName params:(NSDictionary *)paramMap
++ (NSString*)constructRequestUrlForMethod:(NSString*)methodName params:(NSDictionary*)paramMap
 {
     NSMutableString *paramStr = [NSMutableString stringWithString: [self classAttributes][@"FS2_API_BaseUrl"]];
     
@@ -182,8 +182,8 @@ static NSMutableDictionary *attributes;
 		NSEnumerator *enumerator = [paramMap keyEnumerator];
 		NSString *key, *value;
 		
-		while ((key = (NSString *)[enumerator nextObject])) {
-			value = (NSString *)paramMap[key];
+		while ((key = (NSString*)[enumerator nextObject])) {
+			value = (NSString*)paramMap[key];
 			//DLog(@"value: " @"%@", value);
 			
 			NSString *urlEncodedValue = [value stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];//NSASCIIStringEncoding];
@@ -207,12 +207,12 @@ static Foursquare2 *instance;
     
 }
 
-+ (void) request:(NSString *)methodName withParams:(NSDictionary *)params httpMethod:(NSString *)httpMethod callback:(Foursquare2Callback)callback
++ (void) request:(NSString*)methodName withParams:(NSDictionary*)params httpMethod:(NSString*)httpMethod callback:(Foursquare2Callback)callback
 {
     [[Foursquare2 sharedInstance] request:methodName withParams:params httpMethod:httpMethod callback:callback];   
 }
 
-- (void) callback: (NSDictionary *)d target:(FSTargetCallback *)target
+- (void) callback: (NSDictionary*)d target:(FSTargetCallback*)target
 {
     if (d[@"access_token"]) {
         target.callback(YES,d);
@@ -226,7 +226,7 @@ static Foursquare2 *instance;
     }
 }
 
--(void) request:(NSString *)methodName withParams:(NSDictionary *)params httpMethod:(NSString *)httpMethod callback:(Foursquare2Callback)callback
+- (void) request:(NSString*)methodName withParams:(NSDictionary*)params httpMethod:(NSString*)httpMethod callback:(Foursquare2Callback)callback
 {
     //	callback = [callback copy];
     NSString *path = [Foursquare2 constructRequestUrlForMethod:methodName
