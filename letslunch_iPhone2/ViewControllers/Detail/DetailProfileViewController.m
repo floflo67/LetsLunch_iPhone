@@ -8,10 +8,12 @@
 
 #import "DetailProfileViewController.h"
 #import "ProfileDetailsRequest.h"
+#import "MessageViewController.h"
 
 @interface DetailProfileViewController ()
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableDictionary* objects;
+@property (nonatomic, strong) NSString *contactID;
 @end
 
 @implementation DetailProfileViewController
@@ -21,7 +23,7 @@
     self = [super init];
     if(self) {
         self.objects = (NSMutableDictionary*)[[[ProfileDetailsRequest alloc] init] getProfileWithToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)] andID:contactID];
-        
+        self.contactID = contactID;
     }
     return self;
 }
@@ -36,12 +38,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
 {
-    return [_objects count];
+    return [self.objects count];
 }
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSArray *keys = [_objects allValues];
+    NSArray *keys = [self.objects allValues];
     NSArray *subsec = keys[section];
     if([subsec count] > 0)
         return [subsec count];
@@ -51,7 +53,7 @@
 
 - (NSString*)tableView:(UITableView*)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSArray *keys = [_objects allKeys];
+    NSArray *keys = [self.objects allKeys];
     return keys[section];
 }
 
@@ -64,7 +66,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
     
-    NSArray *object = [_objects allValues];
+    NSArray *object = [self.objects allValues];
     
     if([[object[indexPath.section] class] isSubclassOfClass:[NSDictionary class]]) {
         
@@ -87,6 +89,11 @@
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+- (IBAction)sendMessageButton:(UIButton *)sender
+{
+    [self.navigationController pushViewController:[[MessageViewController alloc] initWithContactID:self.contactID] animated:YES];
 }
 
 #pragma mark - getter and setter
