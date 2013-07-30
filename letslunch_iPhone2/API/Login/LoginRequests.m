@@ -9,9 +9,13 @@
 #import "LoginRequests.h"
 #import "MutableRequest.h"
 
-@implementation LoginRequests
+@interface LoginRequests()
+@property (nonatomic, strong) NSURLConnection* connection;
+@property (nonatomic, strong) NSMutableData* data;
+@property (nonatomic) NSInteger statusCode;
+@end
 
-@synthesize delegate = _delegate;
+@implementation LoginRequests
 
 /*
  URL: http://letslunch.dev.knackforge.com/api/login
@@ -23,8 +27,7 @@
  */
 - (BOOL)loginWithUserName:(NSString*)username andPassword:(NSString*)password
 {
-    if (_connection == nil) {
-		_data = [NSMutableData new];
+    if (self.connection == nil) {
         
         /*
          Sets the body of the requests
@@ -39,7 +42,7 @@
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@login",LL_API_BaseUrl]];
         MutableRequest *request = [[MutableRequest alloc] initWithURL:url andParameters:parameters andType:@"POST"];
         
-        _connection = [NSURLConnection connectionWithRequest:request delegate:self];
+        self.connection = [NSURLConnection connectionWithRequest:request delegate:self];
     }
     return YES;
 }
@@ -60,51 +63,51 @@
 
 - (void)cancel
 {
-	if (_connection != nil) {
-		[_connection cancel];
-		_connection = nil;
+	if (self.connection != nil) {
+		[self.connection cancel];
+		self.connection = nil;
 	}
 }
 
 - (void)showErrorMessage:(NSString*)error
 {
-    [_delegate showErrorMessage:error withErrorStatus:_statusCode];
+    [self.delegate showErrorMessage:error withErrorStatus:self.statusCode];
 }
 
 - (void)successfullLoginIn
 {
-    [_delegate successfullConnection];
+    [self.delegate successfullConnection];
 }
 
 #pragma connection delegate
 
 - (void)connection:(NSURLConnection*)connection didReceiveData:(NSData*)data
 {
-	[_data appendData:data];
+	[self.data appendData:data];
 }
 
 - (void)connection:(NSURLConnection*)connection didReceiveResponse:(NSHTTPURLResponse*)response
 {
-	_statusCode = [response statusCode];
+	self.statusCode = [response statusCode];
 }
 
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
 {
     NSLog(@"error");
-	_connection = nil;
-	_data = nil;
+	self.connection = nil;
+	self.data = nil;
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection*)connection
 {
-	if (_statusCode != 200) {
-        NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:_data options:0 error:nil]];
+	if (self.statusCode != 200) {
+        NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:self.data options:0 error:nil]];
         NSDictionary *dictError = [NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"error"]]];
 		NSString* response = [dictError objectForKey:@"message"];
         [self showErrorMessage:response];
 	}
     else {
-        NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:_data options:0 error:nil]];
+        NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:self.data options:0 error:nil]];
         NSDictionary *dictAuth = [NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"user"]]];
         NSString* token = [dictAuth objectForKey:@"token"];
         NSString *pictureURLString = [dictAuth objectForKey:@"picture_url"];
@@ -113,11 +116,18 @@
             [AppDelegate writeObjectToKeychain:pictureURLString forKey:(__bridge id)(kSecAttrDescription)];
         [self successfullLoginIn];
 	}
-	_connection = nil;
-	_data = nil;
+	self.connection = nil;
+	self.data = nil;
 }
 
-#pragma lifecycle
+#pragma getter and setter
+
+- (NSMutableData *)data
+{
+    if(!_data)
+        _data = [NSMutableData new];
+    return _data;
+}
 
 
 @end

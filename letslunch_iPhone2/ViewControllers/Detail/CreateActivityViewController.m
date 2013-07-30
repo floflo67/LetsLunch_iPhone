@@ -12,6 +12,18 @@
 
 @interface CreateActivityViewController ()
 
+@property (strong, nonatomic) Activity *activity;
+@property (strong, nonatomic) MKMapView *map;
+@property (strong, nonatomic) LunchesRequest *lunchRequest;
+
+@property (weak, nonatomic) IBOutlet UITextField *textFieldDescription;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
+@property (weak, nonatomic) IBOutlet UILabel *labelBroadcast;
+@property (weak, nonatomic) IBOutlet UIView *viewContent;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *viewSubview;
+@property (strong, nonatomic) UIButton *buttonClear;
+
 @end
 
 @implementation CreateActivityViewController
@@ -335,13 +347,10 @@ static CreateActivityViewController *sharedSingleton = nil;
 
 #pragma UITextFieldDelegate
 
-- (IBAction)textFieldReturn:(id)sender
-{
-    [self textFieldShouldReturn:sender];
-}
-
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    if(textField.isFirstResponder)
+       [textField resignFirstResponder];
     return YES;
 }
 

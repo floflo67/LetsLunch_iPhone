@@ -12,16 +12,9 @@
 -(void)showErrorMessage:(NSString*)message withErrorStatus:(NSInteger)errorStatus;
 @end
 
-@interface LunchesRequest : NSObject {
-    @private
-        id<LunchRequestDelegate> _delegate;
-        NSURLConnection* _connection;
-        NSMutableData* _data;
-        NSInteger _statusCode;
-        NSMutableDictionary *_jsonDict;
-}
+@interface LunchesRequest : NSObject
 
-@property (nonatomic, strong) id<LunchRequestDelegate> delegate;
+@property (nonatomic, weak) id<LunchRequestDelegate> delegate;
 
 +(NSDictionary*)getOwnerLunchWithToken:(NSString*)token;
 -(NSDictionary*)getOwnerLunchWithToken:(NSString*)token;

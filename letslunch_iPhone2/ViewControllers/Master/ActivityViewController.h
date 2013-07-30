@@ -10,10 +10,6 @@
 
 @interface ActivityViewController : UITableViewController
 
-@property (nonatomic, strong) NSMutableArray* objects;
-@property (nonatomic, strong) UIButton *pushButton;
-@property (nonatomic) BOOL hasActivity;
-
 -(void)loadOwnerActivity;
 
 +(ActivityViewController*)getSingleton;

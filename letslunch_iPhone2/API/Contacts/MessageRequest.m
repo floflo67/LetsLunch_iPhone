@@ -9,13 +9,17 @@
 #import "MessageRequest.h"
 #import "MutableRequest.h"
 
+@interface MessageRequest()
+@property (nonatomic, strong) NSURLConnection* connection;
+@property (nonatomic, strong) NSMutableData* data;
+@property (nonatomic) NSInteger statusCode;
+@end
+
 @implementation MessageRequest
 
 + (void)sendMessage:(NSString*)message withToken:(NSString*)token toUser:(NSString*)userID
 {
-    MessageRequest *messageRequest = [[MessageRequest alloc] init];
-    [messageRequest sendMessage:message withToken:token toUser:userID];
-    messageRequest = nil;
+    [[[MessageRequest alloc] init] sendMessage:message withToken:token toUser:userID];
 }
 
 /*
@@ -27,8 +31,7 @@
  */
 - (void)sendMessage:(NSString*)message withToken:(NSString*)token toUser:(NSString*)userID
 {
-    if (_connection == nil) {
-		_data = [NSMutableData new];
+    if (self.connection == nil) {
         NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
         [parameters setValue:token forKey:@"authToken"];
         [parameters setValue:message forKey:@"message"];
@@ -37,7 +40,7 @@
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@me/message/new",LL_API_BaseUrl]];
         MutableRequest *request = [[MutableRequest alloc] initWithURL:url andParameters:parameters andType:@"POST"];
         
-        _connection = [NSURLConnection connectionWithRequest:request delegate:self];
+        self.connection = [NSURLConnection connectionWithRequest:request delegate:self];
     }
 }
 
@@ -45,34 +48,43 @@
 
 - (void)connection:(NSURLConnection*)connection didReceiveData:(NSData*)data
 {
-	[_data appendData:data];
+	[self.data appendData:data];
 }
 
 - (void)connection:(NSURLConnection*)connection didReceiveResponse:(NSHTTPURLResponse*)response
 {
-	_statusCode = [response statusCode];
+	self.statusCode = [response statusCode];
 }
 
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
 {
-	_connection = nil;
-	_data = nil;
+	self.connection = nil;
+	self.data = nil;
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection*)connection
 {
-    NSString* response = [[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
+    NSString* response = [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding];
     NSLog(@"%@", response);
     
-	if (_statusCode != 200) {
-        NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:_data options:0 error:nil]];
+	if (self.statusCode != 200) {
+        NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:self.data options:0 error:nil]];
         NSDictionary *dictError = [NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"error"]]];
 		NSString* response = [dictError objectForKey:@"message"];
         NSLog(@"%@", response);
 	}
 	
-	_connection = nil;
-	_data = nil;
+	self.connection = nil;
+	self.data = nil;
+}
+
+#pragma mark - getter and setter
+
+- (NSMutableData*)data
+{
+    if(!_data)
+        _data = [NSMutableData new];
+    return _data;
 }
 
 @end

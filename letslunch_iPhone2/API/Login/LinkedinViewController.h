@@ -8,11 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LinkedInViewController : UIViewController <UIWebViewDelegate> {
-    NSString *access_token;
-}
-
-@property (strong, nonatomic) IBOutlet UIWebView *webView;
-@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@interface LinkedInViewController : UIViewController <UIWebViewDelegate> 
 
 @end

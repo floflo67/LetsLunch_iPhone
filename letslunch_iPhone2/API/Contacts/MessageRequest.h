@@ -8,11 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MessageRequest : NSObject {
-    NSURLConnection* _connection;
-    NSMutableData* _data;
-    NSInteger _statusCode;
-}
+@interface MessageRequest : NSObject
 
 +(void)sendMessage:(NSString*)message withToken:(NSString*)token toUser:(NSString*)userID;
 -(void)sendMessage:(NSString*)message withToken:(NSString*)token toUser:(NSString*)userID;

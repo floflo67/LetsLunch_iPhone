@@ -10,24 +10,18 @@
 #import "ProfileDetailsRequest.h"
 
 @interface DetailProfileViewController ()
-
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSMutableDictionary* objects;
 @end
 
 @implementation DetailProfileViewController
-@synthesize profileDetailRequest;
 
 - (id)initWithContactID:(NSString*)contactID
 {
     self = [super init];
     if(self) {
-        if(!_objects) {
-            if(!profileDetailRequest)
-                profileDetailRequest = [[ProfileDetailsRequest alloc] init];
-
-            _objects = [[NSMutableDictionary alloc] initWithDictionary:[profileDetailRequest getProfileWithToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)] andID:contactID]];
-            
-            profileDetailRequest = nil;
-        }
+        self.objects = (NSMutableDictionary*)[[[ProfileDetailsRequest alloc] init] getProfileWithToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)] andID:contactID];
+        
     }
     return self;
 }
@@ -93,6 +87,15 @@
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+#pragma mark - getter and setter
+
+- (NSMutableDictionary *)objects
+{
+    if(!_objects)
+        _objects = [[NSMutableDictionary alloc] init];
+    return _objects;
 }
 
 @end

@@ -10,6 +10,4 @@
 
 @interface InviteContactsViewController : UITableViewController
 
-@property (nonatomic, strong) NSArray *objects;
-
 @end

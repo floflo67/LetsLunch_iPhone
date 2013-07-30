@@ -11,7 +11,9 @@
 #import "ActivityCell.h"
 
 @interface ActivityViewController ()
-
+@property (nonatomic, strong) NSMutableArray* objects;
+@property (nonatomic, strong) UIButton *pushButton;
+@property (nonatomic) BOOL hasActivity;
 @end
 
 @implementation ActivityViewController
@@ -41,23 +43,20 @@ static ActivityViewController *sharedSingleton = nil;
     
     self.view.backgroundColor = [AppDelegate colorWithHexString:@"f0f0f0"];
     
-    if(!_objects) {
         AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        _objects = [[NSMutableArray alloc] init];
         
         if([app getOwnerActivityAndForceReload:NO]) {
-            _objects[0] = [app getOwnerActivityAndForceReload:NO];
+            self.objects[0] = [app getOwnerActivityAndForceReload:NO];
             self.hasActivity = YES;
         }
         else {
-            _objects[0] = @"NIL";
+            self.objects[0] = @"NIL";
             self.hasActivity = NO;
         }
         if([app getListActivitiesAndForceReload:NO])
-            _objects[1] = [app getListActivitiesAndForceReload:NO];
+            self.objects[1] = [app getListActivitiesAndForceReload:NO];
         else
-            _objects[1] = @"NIL";
-    }
+            self.objects[1] = @"NIL";
     
     [self.tableView reloadData];
 }
@@ -66,11 +65,11 @@ static ActivityViewController *sharedSingleton = nil;
 {
     AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     if([app getOwnerActivityAndForceReload:NO]) {
-        _objects[0] = [app getOwnerActivityAndForceReload:NO];
+        self.objects[0] = [app getOwnerActivityAndForceReload:NO];
         self.hasActivity = YES;
     }
     else {
-        _objects[0] = @"NIL";
+        self.objects[0] = @"NIL";
         self.hasActivity = NO;
     }
     
@@ -94,10 +93,10 @@ static ActivityViewController *sharedSingleton = nil;
 {
     if(section == 0)
         return 1;
-    else if([[_objects[section] description] isEqualToString:@"NIL"]) {
+    else if([[self.objects[section] description] isEqualToString:@"NIL"]) {
         return 1;
     }
-    return [_objects[section] count];
+    return [self.objects[section] count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -105,7 +104,7 @@ static ActivityViewController *sharedSingleton = nil;
     if(indexPath.section == 1)
         return 120.0f;
     else {
-        if([[_objects[indexPath.section] description] isEqualToString:@"NIL"])
+        if([[self.objects[indexPath.section] description] isEqualToString:@"NIL"])
             return 44.0f;
         else
             return 120.0f;
@@ -133,11 +132,11 @@ static ActivityViewController *sharedSingleton = nil;
     [cell.labelVenueName setHidden:NO];
     
     if(indexPath.section == 1) {
-        if([[_objects[indexPath.section] description] isEqualToString:@"NIL"]) {            
+        if([[self.objects[indexPath.section] description] isEqualToString:@"NIL"]) {            
             NSLog(@"empty");
         }
         else {
-            Activity *activity = _objects[indexPath.section][indexPath.row];
+            Activity *activity = self.objects[indexPath.section][indexPath.row];
             cell.labelUserName.text = [NSString stringWithFormat:@"%@ %@", activity.contact.firstname, activity.contact.lastname];
             cell.labelUserJobTitle.text = activity.contact.jobTitle;
             cell.LabelTime.text = activity.time;
@@ -146,7 +145,7 @@ static ActivityViewController *sharedSingleton = nil;
         }
     }
     else {
-        if([[_objects[indexPath.section] description] isEqualToString:@"NIL"]) {
+        if([[self.objects[indexPath.section] description] isEqualToString:@"NIL"]) {
             
             self.pushButton = [UIButton buttonWithType:UIButtonTypeCustom];
             [self.pushButton addTarget:self action:@selector(pushViewController:)
@@ -164,7 +163,7 @@ static ActivityViewController *sharedSingleton = nil;
             self.pushButton = nil;
         }
         else {
-            Activity *activity = _objects[indexPath.section];
+            Activity *activity = self.objects[indexPath.section];
             
             cell.labelUserName.text = [NSString stringWithFormat:@"%@ %@", activity.contact.firstname, activity.contact.lastname];
             cell.labelUserJobTitle.text = activity.contact.jobTitle;
@@ -198,10 +197,19 @@ static ActivityViewController *sharedSingleton = nil;
         [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController.navigationController pushViewController:detail animated:YES];
         detail = nil;
     }
-    else if(![[_objects[indexPath.section] description] isEqualToString:@"NIL"]) {
-        Activity* act = (Activity*)_objects[indexPath.row];
+    else if(![[self.objects[indexPath.section] description] isEqualToString:@"NIL"]) {
+        Activity* act = (Activity*)self.objects[indexPath.row];
         [self pushViewController:act];
     }
+}
+
+#pragma mark - getter and setter
+
+-(NSMutableArray *)objects
+{
+    if(!_objects)
+        _objects = [[NSMutableArray alloc] init];
+    return _objects;
 }
 
 @end

@@ -13,6 +13,7 @@
 #import "ContactViewController.h"
 #import "ProfileViewController.h"
 #import "VisitorsViewController.h"
+#import "ProfileRequest.h"
 
 @implementation AppDelegate
 

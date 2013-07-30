@@ -10,8 +10,6 @@
 
 @interface ContactViewController : UITableViewController
 
-@property (nonatomic, strong) NSMutableArray* objects;
-
 +(ContactViewController*)getSingleton;
 +(void)suppressSingleton;
 

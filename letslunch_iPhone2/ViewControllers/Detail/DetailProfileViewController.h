@@ -9,13 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ProfileDetailsRequest.h"
 
-@interface DetailProfileViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
-    ProfileDetailsRequest *profileDetailRequest;
-}
+@interface DetailProfileViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) NSMutableDictionary* objects;
-@property (nonatomic, strong) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) ProfileDetailsRequest *profileDetailRequest;
 
 -(id)initWithContactID:(NSString*)contactID;
 

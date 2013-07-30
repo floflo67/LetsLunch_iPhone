@@ -87,7 +87,6 @@
 						<string key="NSFrame">{{0, 474}, {320, 30}}</string>
 						<reference key="NSSuperview" ref="213365220"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<reference key="IBUIBackgroundColor" ref="1002838885"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -180,24 +179,6 @@
 						<reference key="destination" ref="372490531"/>
 					</object>
 					<int key="connectionID">46</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">textFieldShouldReturn:</string>
-						<reference key="source" ref="307861855"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">20</int>
-					</object>
-					<int key="connectionID">53</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">textFieldShouldBeginEditing:</string>
-						<reference key="source" ref="307861855"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">17</int>
-					</object>
-					<int key="connectionID">54</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">

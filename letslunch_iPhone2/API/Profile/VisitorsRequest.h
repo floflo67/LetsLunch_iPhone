@@ -8,11 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface VisitorsRequest : NSObject {
-    @private
-        NSInteger _statusCode;
-        NSMutableArray *_jsonArray;
-}
+@interface VisitorsRequest : NSObject
 
 +(NSMutableArray*)getVisitorsWithToken:(NSString*)token;
 -(NSMutableArray*)getVisitorsWithToken:(NSString*)token;

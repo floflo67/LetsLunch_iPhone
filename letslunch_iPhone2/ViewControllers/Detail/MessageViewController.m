@@ -13,35 +13,24 @@
 
 @interface MessageViewController ()
 
+@property (nonatomic, strong) NSMutableArray* objects;
+@property (nonatomic, strong) NSString *contactID;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITextField *textFieldMessage;
+
 @end
 
 @implementation MessageViewController
 
 #pragma view lifecycle
 
--(id)init
-{
-    self = [super init];
-    if(self) {
-        
-        /*
-         Default that should be changed later
-         */
-        if(!_objects) {
-            _objects = [[NSMutableArray alloc] initWithArray:[(AppDelegate*)[[UIApplication sharedApplication] delegate] getListMessagesForContactID:@"1" andForceReload:NO]];
-        }
-    }
-    return self;
-}
-
 - (id)initWithContactID:(NSString*)contactID
 {
     self = [super init];
     if(self) {
-        if(!_objects) {
-            self.contactID = contactID;
-            _objects = [[NSMutableArray alloc] initWithArray:[(AppDelegate*)[[UIApplication sharedApplication] delegate] getListMessagesForContactID:contactID andForceReload:NO]];
-        }
+        self.contactID = contactID;
+        self.objects = [(AppDelegate*)[[UIApplication sharedApplication] delegate] getListMessagesForContactID:self.contactID andForceReload:NO];
     }
     return self;
 }
@@ -187,20 +176,26 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [self changeTextFieldFrame:NO];
-    self.contactID = @"16";
-    NSString *message = self.textFieldMessage.text;
-    self.textFieldMessage.text = @""; // clears message
-    
-    if(message && ![message isEqualToString:@""])
-        [MessageRequest sendMessage:message withToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)kSecAttrAccount] toUser:self.contactID];
-    
+    if(textField.isFirstResponder) {
+        [textField resignFirstResponder];
+        [self changeTextFieldFrame:NO];
+        self.contactID = @"16";
+        NSString *message = self.textFieldMessage.text;
+        self.textFieldMessage.text = @""; // clears message
+        
+        if(message && ![message isEqualToString:@""])
+            [MessageRequest sendMessage:message withToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)kSecAttrAccount] toUser:self.contactID];
+        
+    }
     return YES;
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    [self changeTextFieldFrame:YES];
+    if(!textField.isFirstResponder) {
+        [textField isFirstResponder];
+        [self changeTextFieldFrame:YES];
+    }
     return YES;
 }
 
@@ -210,13 +205,29 @@
  */
 - (void)changeTextFieldFrame:(bool)isBeginning
 {
-    int y = 105;
+    int y = 215;
     CGRect frame = self.textFieldMessage.frame;
     if(isBeginning)
         frame.origin.y -= y;
     else
         frame.origin.y += y;
     self.textFieldMessage.frame = frame;
+}
+
+#pragma mark - getter and setter
+
+-(NSMutableArray *)objects
+{
+    if(!_objects)
+        _objects = [[NSMutableArray alloc] init];
+    return _objects;
+}
+
+-(NSString *)contactID
+{
+    if(!_contactID)
+        _contactID = @"1";
+    return _contactID;
 }
 
 @end

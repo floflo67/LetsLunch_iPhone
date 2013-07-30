@@ -9,6 +9,11 @@
 #import "ProfileDetailsRequest.h"
 #import "MutableRequest.h"
 
+
+@interface ProfileDetailsRequest()
+@property (nonatomic, strong) NSMutableDictionary *jsonDict;
+@end
+
 @implementation ProfileDetailsRequest
 
 - (NSDictionary*)getProfileWithToken:(NSString*)token andID:(NSString*)userID
@@ -24,27 +29,34 @@
     
     [self settingUpData:data andResponse:response];
     
-    return _jsonDict;
+    return self.jsonDict;
 }
 
 - (void)settingUpData:(NSData*)data andResponse:(NSURLResponse*)response
 {
-    _statusCode = [(NSHTTPURLResponse*)response statusCode];
+    NSInteger statusCode = [(NSHTTPURLResponse*)response statusCode];
     
-    if(_statusCode == 200) {
-        if(!_jsonDict)
-            _jsonDict = [[NSMutableDictionary alloc] init];
-        _jsonDict = [NSMutableDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
-        _jsonDict = [_jsonDict objectForKey:@"user"];
-        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:_jsonDict copyItems:NO];
+    if(statusCode == 200) {
+        self.jsonDict = [NSMutableDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
+        self.jsonDict = [self.jsonDict objectForKey:@"user"];
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:self.jsonDict copyItems:NO];
         [dict removeObjectForKey:@"lunch_zone"];
-        _jsonDict = dict;
+        self.jsonDict = dict;
         
     }
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"%@", response);
     }
+}
+
+#pragma mark - getter and setter
+
+-(NSMutableDictionary *)jsonDict
+{
+    if(!_jsonDict)
+        _jsonDict = [[NSMutableDictionary alloc] init];
+    return _jsonDict;
 }
 
 @end

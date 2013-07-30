@@ -9,7 +9,7 @@
 #import "ShareViewController.h"
 
 @interface ShareViewController ()
-
+@property (weak, nonatomic) IBOutlet UIButton *buttonClose;
 @end
 
 @implementation ShareViewController
@@ -34,26 +34,12 @@ static ShareViewController *sharedSingleton = nil;
         sharedSingleton = nil;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self.buttonClose addTarget:((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController
                          action:@selector(closeView:)
                forControlEvents:UIControlEventTouchDown];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
 }
 
 @end

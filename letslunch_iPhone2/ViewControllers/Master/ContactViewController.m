@@ -12,7 +12,7 @@
 #import "CreateActivityViewController.h"
 
 @interface ContactViewController ()
-
+@property (nonatomic, strong) NSMutableArray* objects;
 @end
 
 @implementation ContactViewController
@@ -39,29 +39,8 @@ static ContactViewController *sharedSingleton = nil;
 -(id)init
 {
     self = [super init];
-    if(!_objects) {
-        _objects = [[NSMutableArray alloc] initWithArray:[(AppDelegate*)[[UIApplication sharedApplication] delegate] getListContactsAndForceReload:NO]];
-    }
+    self.objects = [(AppDelegate*)[[UIApplication sharedApplication] delegate] getListContactsAndForceReload:NO];
     return self;
-}
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
 }
 
 #pragma mark - Table view data source
@@ -73,7 +52,7 @@ static ContactViewController *sharedSingleton = nil;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_objects count];
+    return [self.objects count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -84,7 +63,7 @@ static ContactViewController *sharedSingleton = nil;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.textLabel.text = [((Contacts*)_objects[indexPath.row]) firstname];
+    cell.textLabel.text = [((Contacts*)self.objects[indexPath.row]) firstname];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
@@ -98,6 +77,15 @@ static ContactViewController *sharedSingleton = nil;
     MessageViewController *cont = [[MessageViewController alloc] initWithContactID:[NSString stringWithFormat:@"%d", indexPath.row]];
     [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController.navigationController pushViewController:cont animated:YES];
     cont = nil;
+}
+
+#pragma mark - getter and setter
+
+-(NSMutableArray*)objects
+{
+    if(!_objects)
+        _objects = [[NSMutableArray alloc] init];
+    return _objects;
 }
 
 @end

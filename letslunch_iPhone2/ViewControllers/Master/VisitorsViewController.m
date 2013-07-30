@@ -10,9 +10,10 @@
 #import "AppDelegate.h"
 #import "Contacts.h"
 #import "DetailProfileViewController.h"
+#import "VisitorsRequest.h"
 
 @interface VisitorsViewController ()
-
+@property (nonatomic, strong) NSMutableArray* objects;
 @end
 
 @implementation VisitorsViewController
@@ -39,14 +40,8 @@ static VisitorsViewController *sharedSingleton = nil;
 - (id)init
 {
     self = [super init];
-    NSString *token = [AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)];
     if (self) {
-        if(!_visitorRequest)
-            _visitorRequest = [[VisitorsRequest alloc] init];
-        
-        if(!_objects)
-            _objects = [[NSMutableArray alloc] init];
-        _objects = [_visitorRequest getVisitorsWithToken:token];
+        self.objects = [[[VisitorsRequest alloc] init] getVisitorsWithToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)]];
     }
     
     return self;
@@ -66,7 +61,7 @@ static VisitorsViewController *sharedSingleton = nil;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_objects count];
+    return [self.objects count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -78,7 +73,7 @@ static VisitorsViewController *sharedSingleton = nil;
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    NSDictionary *profile = [NSDictionary dictionaryWithDictionary:_objects[indexPath.row]];
+    NSDictionary *profile = [NSDictionary dictionaryWithDictionary:self.objects[indexPath.row]];
     Contacts *contact = [[Contacts alloc] initWithDictionary:profile];
     
     cell.textLabel.text = contact.firstname;
@@ -90,13 +85,22 @@ static VisitorsViewController *sharedSingleton = nil;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *profile = [NSDictionary dictionaryWithDictionary:_objects[indexPath.row]];
+    NSDictionary *profile = [NSDictionary dictionaryWithDictionary:self.objects[indexPath.row]];
     Contacts *contact = [[Contacts alloc] initWithDictionary:profile];
     
     DetailProfileViewController *detailViewController = [[DetailProfileViewController alloc] initWithContactID:contact.ID];
     [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController.navigationController pushViewController:detailViewController animated:YES];
     contact = nil;
     detailViewController = nil;
+}
+
+#pragma mark - getter and setter
+
+-(NSMutableArray *)objects
+{
+    if(!_objects)
+        _objects = [[NSMutableArray alloc] init];
+    return _objects;
 }
 
 @end

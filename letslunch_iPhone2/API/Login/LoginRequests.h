@@ -13,13 +13,7 @@
 -(void)successfullConnection;
 @end
 
-@interface LoginRequests : NSObject {
-@private
-	id<LoginRequestDelegate> __weak _delegate;
-    NSURLConnection* _connection;
-    NSMutableData* _data;
-    NSInteger _statusCode;
-}
+@interface LoginRequests : NSObject
 
 @property (nonatomic, weak) id<LoginRequestDelegate> delegate;
     

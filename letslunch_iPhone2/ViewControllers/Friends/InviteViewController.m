@@ -10,25 +10,17 @@
 #import "InviteContactsViewController.h"
 
 @interface InviteViewController ()
+@property (strong, nonatomic) NSArray *objects;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
 @implementation InviteViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if(!objects)
-        objects = [[NSArray alloc] initWithObjects:@"Contacts", @"Facebook", @"Twitter", nil];
+        self.objects = @[@"Contacts", @"Facebook", @"Twitter"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,7 +38,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [objects count];
+    return [self.objects count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -59,7 +51,7 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    cell.textLabel.text = [objects[indexPath.row] description];
+    cell.textLabel.text = [self.objects[indexPath.row] description];
     
     return cell;
 }
@@ -80,6 +72,15 @@
         default:
             break;
     }
+}
+
+#pragma mark - getter and setter
+
+-(NSArray *)objects
+{
+    if(!_objects)
+        _objects = [[NSArray alloc] init];
+    return _objects;
 }
 
 @end

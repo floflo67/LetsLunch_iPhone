@@ -10,10 +10,10 @@
 
 @interface ActivityCell : UITableViewCell
 
-@property (nonatomic, strong) IBOutlet UIImageView *userPicture;
-@property (nonatomic, strong) IBOutlet UILabel *labelUserName;
-@property (nonatomic, strong) IBOutlet UILabel *labelUserJobTitle;
-@property (nonatomic, strong) IBOutlet UILabel *labelVenueName;
-@property (nonatomic, strong) IBOutlet UILabel *LabelTime;
+@property (nonatomic, weak) IBOutlet UIImageView *userPicture;
+@property (nonatomic, weak) IBOutlet UILabel *labelUserName;
+@property (nonatomic, weak) IBOutlet UILabel *labelUserJobTitle;
+@property (nonatomic, weak) IBOutlet UILabel *labelVenueName;
+@property (nonatomic, weak) IBOutlet UILabel *LabelTime;
 
 @end

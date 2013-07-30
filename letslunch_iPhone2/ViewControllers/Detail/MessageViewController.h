@@ -10,14 +10,6 @@
 
 @interface MessageViewController : UIViewController <UITextFieldDelegate>
 
-@property (nonatomic, strong) NSMutableArray* objects;
-@property (nonatomic, strong) NSString *contactID;
-
-@property (nonatomic, strong) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) IBOutlet UITextField *textFieldMessage;
-
 -(id)initWithContactID:(NSString*)contactID;
--(BOOL)textFieldShouldReturn:(UITextField *)textField;
--(BOOL)textFieldShouldBeginEditing:(UITextField *)textField;
 
 @end

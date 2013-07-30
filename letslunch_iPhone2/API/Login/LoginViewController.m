@@ -13,6 +13,16 @@
 
 @interface LoginViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextField *textFieldUsername;
+@property (weak, nonatomic) IBOutlet UITextField *textFieldPassword;
+@property (weak, nonatomic) IBOutlet UIButton *buttonLogIn;
+@property (weak, nonatomic) IBOutlet UIButton *buttonTwitter;
+@property (weak, nonatomic) IBOutlet UIButton *buttonFacebook;
+@property (weak, nonatomic) IBOutlet UIButton *buttonLinkedIn;
+@property (nonatomic) BOOL isLinkedIn;
+
+@property (nonatomic, strong) LoginRequests *loginRequest;
+
 @end
 
 @implementation LoginViewController
@@ -23,15 +33,12 @@
 {
     [super viewDidLoad];
     
-    if(!_loginRequest)
-        _loginRequest = [[LoginRequests alloc] init];
-    
     /*
      Sets delegate of UITextField
      */
     self.textFieldPassword.delegate = self;
     self.textFieldUsername.delegate = self;
-    _loginRequest.delegate = self;
+    self.loginRequest.delegate = self;
     
     /*
      Sets action on button click
@@ -126,7 +133,7 @@
 {
     username = @"florian@letslunch.com";
     password = @"developer";
-    return [_loginRequest loginWithUserName:username andPassword:password];
+    return [self.loginRequest loginWithUserName:username andPassword:password];
 }
 
 #pragma login request delegate
@@ -142,6 +149,13 @@
 - (void)successfullConnection
 {
     [((AppDelegate*)[UIApplication sharedApplication].delegate) loginSuccessfull];
+}
+
+- (LoginRequests *)loginRequest
+{
+    if(!_loginRequest)
+        _loginRequest = [[LoginRequests alloc] init];
+    return _loginRequest;
 }
 
 @end

@@ -10,7 +10,9 @@
 #import "AppDelegate.h"
 
 @interface LinkedInViewController ()
-
+@property (strong, nonatomic) NSString *access_token;
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @end
 
 @implementation LinkedInViewController
@@ -51,7 +53,7 @@
             NSString *authorizationCode = [self getAuthorizationCodeWithRequestString:urlString];
             if(authorizationCode && ![authorizationCode isEqualToString:@""]) {
                 if([self requestAccesWithCode:authorizationCode]) {
-                    [AppDelegate writeObjectToKeychain:access_token forKey:(__bridge id)(kSecAttrAccount)];
+                    [AppDelegate writeObjectToKeychain:self.access_token forKey:(__bridge id)(kSecAttrAccount)];
                     [self.webView stopLoading];
                     self.webView = nil;
                     [self.view removeFromSuperview];
@@ -132,7 +134,7 @@
     
     if(statusCode == 200) {
         NSMutableDictionary *jsonDict = [NSMutableDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
-        access_token = [jsonDict objectForKey:@"access_token"];
+        self.access_token = [jsonDict objectForKey:@"access_token"];
     }
     else {
         NSString* error = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];

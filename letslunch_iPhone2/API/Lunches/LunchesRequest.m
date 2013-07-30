@@ -10,14 +10,20 @@
 #import "MutableRequest.h"
 #import "Activity.h"
 
+@interface LunchesRequest()
+@property (nonatomic, strong) NSURLConnection* connection;
+@property (nonatomic, strong) NSMutableData* data;
+@property (nonatomic) NSInteger statusCode;
+@property (nonatomic, strong) NSMutableDictionary *jsonDict;
+@end
+
 @implementation LunchesRequest
 
 #pragma mark - GET owner lunch
 
 + (NSDictionary*)getOwnerLunchWithToken:(NSString*)token
 {
-    LunchesRequest *lunchRequest = [[LunchesRequest alloc] init];
-    return [lunchRequest getOwnerLunchWithToken:token];
+    return [[[LunchesRequest alloc] init] getOwnerLunchWithToken:token];
 }
 
 /*
@@ -44,17 +50,17 @@
 
 - (NSDictionary*)settingUpData:(NSData*)data andResponse:(NSURLResponse*)response
 {
-    _statusCode = [(NSHTTPURLResponse*)response statusCode];
+    NSInteger statusCode = [(NSHTTPURLResponse*)response statusCode];
     NSArray *arr = [[NSArray alloc] initWithArray:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
     if([arr count] == 0)
-        _statusCode = 201;
+        statusCode = 201;
     
-    if(_statusCode == 200) {
+    if(statusCode == 200) {
         NSDictionary *dict = arr[0];
         
         return [self createActivityDictionnaryWithDictionnary:dict];
     }
-    else if (_statusCode == 201)
+    else if (self.statusCode == 201)
         return nil;
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
@@ -67,8 +73,7 @@
 
 + (NSMutableArray*)getLunchesWithToken:(NSString*)token latitude:(double)latitude longitude:(double)longitude andDate:(NSString*)date
 {
-    LunchesRequest *lunchRequest = [[LunchesRequest alloc] init];
-    return [lunchRequest getLunchesWithToken:token latitude:latitude longitude:longitude andDate:date];
+    return [[[LunchesRequest alloc] init] getLunchesWithToken:token latitude:latitude longitude:longitude andDate:date];
 }
 
 /*
@@ -101,19 +106,19 @@
 
 - (NSMutableArray*)settingUpLunchesData:(NSData*)data andResponse:(NSURLResponse*)response
 {
-    _statusCode = [(NSHTTPURLResponse*)response statusCode];
+    NSInteger statusCode = [(NSHTTPURLResponse*)response statusCode];
     NSArray *arr = [[NSArray alloc] initWithArray:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
     if([arr count] == 0)
-        _statusCode = 201;
+        statusCode = 201;
     
-    if(_statusCode == 200) {
+    if(statusCode == 200) {
         NSMutableArray *listLunch = [[NSMutableArray alloc] init];
         for (NSDictionary *dict in arr) {
             [listLunch addObject:[[Activity alloc] initWithDict:[self createActivityDictionnaryWithDictionnary:dict]]];
         }
         return listLunch;
     }
-    else if (_statusCode == 201)
+    else if (statusCode == 201)
         return nil;
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
@@ -236,9 +241,9 @@
 
 - (NSDictionary*)settingUpDataForAdd:(NSData*)data andResponse:(NSURLResponse*)response
 {
-    _statusCode = [(NSHTTPURLResponse*)response statusCode];
+    NSInteger statusCode = [(NSHTTPURLResponse*)response statusCode];
     
-    if(_statusCode == 200) {
+    if(statusCode == 200) {
         NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
         return dictJson;
     }
@@ -255,8 +260,7 @@
 
 + (BOOL)suppressLunchWithToken:(NSString*)token andActivityID:(NSString*)activityID
 {
-    LunchesRequest *lunchRequest = [[LunchesRequest alloc] init];
-    return [lunchRequest suppressLunchWithToken:token andActivityID:activityID];
+    return [[[LunchesRequest alloc] init] suppressLunchWithToken:token andActivityID:activityID];
 }
 
 /*
@@ -282,9 +286,9 @@
 
 - (BOOL)settingUpDataForDelete:(NSData*)data andResponse:(NSURLResponse*)response
 {
-    _statusCode = [(NSHTTPURLResponse*)response statusCode];
+    NSInteger statusCode = [(NSHTTPURLResponse*)response statusCode];
     
-    if(_statusCode == 200) {
+    if(statusCode == 200) {
         return YES;
     }
     else {
@@ -315,8 +319,7 @@
  */
 - (void)updateLunchWithToken:(NSString *)token andActivity:(Activity *)activity
 {
-    if (_connection == nil) {
-		_data = [NSMutableData new];
+    if (self.connection == nil) {
         NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
         
         NSString *lunchType;
@@ -358,7 +361,7 @@
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@lunch/edit",LL_API_BaseUrl]];
         MutableRequest *request = [[MutableRequest alloc] initWithURL:url andParameters:parameters andType:@"POST"];
         
-        _connection = [NSURLConnection connectionWithRequest:request delegate:self];
+        self.connection = [NSURLConnection connectionWithRequest:request delegate:self];
     }
 }
 
@@ -366,41 +369,54 @@
 
 - (void)showErrorMessage:(NSString*)error
 {
-    [_delegate showErrorMessage:error withErrorStatus:_statusCode];
+    [self.delegate showErrorMessage:error withErrorStatus:self.statusCode];
 }
 
 #pragma connection delegate
 
 - (void)connection:(NSURLConnection*)connection didReceiveData:(NSData*)data
 {
-	[_data appendData:data];
+	[self.data appendData:data];
 }
 
 - (void)connection:(NSURLConnection*)connection didReceiveResponse:(NSHTTPURLResponse*)response
 {
-	_statusCode = [response statusCode];
+	self.statusCode = [response statusCode];
 }
 
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
 {
-	_connection = nil;
-	_data = nil;
+	self.connection = nil;
+	self.data = nil;
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection*)connection
 {
-	if (_statusCode != 200) {
-        NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:_data options:0 error:nil]];
+	if (self.statusCode != 200) {
+        NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:self.data options:0 error:nil]];
         NSDictionary *dictError = [NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"error"]]];
 		NSString* response = [dictError objectForKey:@"message"];
         [self showErrorMessage:response];
 	}
 	
-	_connection = nil;
-	_data = nil;
+	self.connection = nil;
+	self.data = nil;
 }
 
-#pragma lifecycle
+#pragma mark - getter and setter
 
+-(NSMutableData *)data
+{
+    if(!_data)
+        _data = [NSMutableData new];
+    return _data;
+}
+
+-(NSMutableDictionary *)jsonDict
+{
+    if(!_jsonDict)
+        _jsonDict = [[NSMutableDictionary alloc] init];
+    return _jsonDict;
+}
 
 @end

@@ -8,13 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ProfileRequest : NSObject {
-    @private
-        NSInteger _statusCode;
-        NSMutableDictionary *_jsonDict;
-        NSURLConnection* _connection;
-        NSMutableData* _data;
-}
+@interface ProfileRequest : NSObject
 
 +(NSDictionary*)getProfileWithToken:(NSString*)token andLight:(BOOL)isLight;
 -(NSDictionary*)getProfileWithToken:(NSString*)token andLight:(BOOL)isLight;

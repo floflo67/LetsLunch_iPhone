@@ -9,12 +9,15 @@
 #import "VisitorsRequest.h"
 #import "MutableRequest.h"
 
+@interface VisitorsRequest()
+@property (nonatomic, strong) NSMutableArray *jsonArray;
+@end
+
 @implementation VisitorsRequest
 
 + (NSMutableArray *)getVisitorsWithToken:(NSString *)token
 {
-    VisitorsRequest *visitorRequest = [[VisitorsRequest alloc] init];
-    return [visitorRequest getVisitorsWithToken:token];
+    return [[[VisitorsRequest alloc] init] getVisitorsWithToken:token];
 }
 
 /*
@@ -39,28 +42,33 @@
     
     [self settingUpData:data andResponse:response];
     
-    return _jsonArray;
+    return self.jsonArray;
 }
 
 - (void)settingUpData:(NSData*)data andResponse:(NSURLResponse*)response
 {
-    _statusCode = [(NSHTTPURLResponse*)response statusCode];
+    NSInteger statusCode = [(NSHTTPURLResponse*)response statusCode];
     
-    if(_statusCode == 200) {
-        if(!_jsonArray)
-            _jsonArray = [[NSMutableArray alloc] init];
+    if(statusCode == 200) {
         
         NSMutableDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         dict = [dict objectForKey:@"profileVisitors"];
-        
         data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
-        
-        _jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        self.jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     }
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"%@", response);
     }
+}
+
+#pragma mark - getter and setter
+
+-(NSMutableArray *)jsonArray
+{
+    if(!_jsonArray)
+        _jsonArray = [[NSMutableArray alloc] init];
+    return _jsonArray;
 }
 
 @end

@@ -86,7 +86,6 @@
 										<string key="NSFrame">{{20, 105}, {280, 21}}</string>
 										<reference key="NSSuperview" ref="1036791308"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
@@ -289,15 +288,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">textFieldReturn:</string>
-						<reference key="source" ref="507313445"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">20</int>
-					</object>
-					<int key="connectionID">50</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">segmentValueChanged:</string>
 						<reference key="source" ref="205241133"/>
 						<reference key="destination" ref="372490531"/>
@@ -432,7 +422,6 @@
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="activityIndicator">UIActivityIndicatorView</string>
 						<string key="labelBroadcast">UILabel</string>
 						<string key="segment">UISegmentedControl</string>
 						<string key="tableView">UITableView</string>
@@ -441,10 +430,6 @@
 						<string key="viewSubview">UIView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="activityIndicator">
-							<string key="name">activityIndicator</string>
-							<string key="candidateClassName">UIActivityIndicatorView</string>
-						</object>
 						<object class="IBToOneOutletInfo" key="labelBroadcast">
 							<string key="name">labelBroadcast</string>
 							<string key="candidateClassName">UILabel</string>

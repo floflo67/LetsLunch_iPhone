@@ -12,7 +12,7 @@
 #import "DBFriendInviter.h"
 
 @interface InviteContactsViewController ()
-
+@property (nonatomic, strong) NSArray *objects;
 @end
 
 @implementation InviteContactsViewController {
@@ -24,9 +24,6 @@
     if ([self.objects count]) {
         return;
     }
-    
-    if(!self.objects)
-        self.objects = [[NSArray alloc] init];
     
     CFErrorRef error = NULL;
     if(!_addressBook)
@@ -61,7 +58,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _objects = nil;
+    self.objects = nil;
     
     if (!_addressBook) {
         CFErrorRef error = NULL;
@@ -96,6 +93,15 @@
     cell.textLabel.text = [NSString stringWithFormat:@"%@", compositeName];
     
     return cell;
+}
+
+#pragma mark - getter and setter
+
+-(NSArray*)objects
+{
+    if(!_objects)
+        _objects = [[NSArray alloc] init];
+    return _objects;
 }
 
 @end

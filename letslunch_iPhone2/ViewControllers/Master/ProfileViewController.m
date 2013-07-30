@@ -7,13 +7,15 @@
 //
 
 #import "ProfileViewController.h"
+#import "ProfileRequest.h"
 
 @interface ProfileViewController ()
+@property (nonatomic, strong) ProfileRequest *profileRequest;
+@property (nonatomic, strong) NSMutableArray* objects;
 
 @end
 
 @implementation ProfileViewController
-@synthesize profileRequest = _profileRequest;
 
 static ProfileViewController *sharedSingleton = nil;
 + (ProfileViewController*)getSingleton
@@ -38,11 +40,8 @@ static ProfileViewController *sharedSingleton = nil;
 {
     self = [super init];
     NSString *token = [AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)];
-    if (self) {        
-        if(!_profileRequest)
-            _profileRequest = [[ProfileRequest alloc] init];
-        
-        NSDictionary *dict = [_profileRequest getProfileWithToken:token andLight:NO];
+    if (self) {
+        NSDictionary *dict = [[[ProfileRequest alloc] init] getProfileWithToken:token andLight:NO];
         
         NSMutableDictionary *profile = [NSMutableDictionary dictionaryWithDictionary:[dict objectForKey:@"profile"]];
         [profile removeObjectForKey:@"uid"];
@@ -50,33 +49,23 @@ static ProfileViewController *sharedSingleton = nil;
         NSDictionary *location = [NSDictionary dictionaryWithDictionary:[dict objectForKey:@"location"]];
         NSDictionary *other = [NSDictionary dictionaryWithDictionary:[dict objectForKey:@"other"]];
         
-        _objects = [[NSMutableArray alloc] initWithObjects:profile, location, other, nil];
+        self.objects = (NSMutableArray*)@[profile, location, other];
     }
     
     return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    NSInteger number = [_objects count];
+    NSInteger number = [self.objects count];
     return number;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger number = [(NSArray*)_objects[section] count];
+    NSInteger number = [(NSArray*)self.objects[section] count];
     return number;
 }
 
@@ -87,7 +76,7 @@ static ProfileViewController *sharedSingleton = nil;
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
-    NSDictionary *dict = (NSDictionary*)_objects[indexPath.section];
+    NSDictionary *dict = (NSDictionary*)self.objects[indexPath.section];
     
     NSArray *allKeys = [dict allKeys];
     NSArray *allValues = [dict allValues];
@@ -125,6 +114,15 @@ static ProfileViewController *sharedSingleton = nil;
         return 100;
     else
         return 10;
+}
+
+#pragma mark - getter and setter
+
+- (NSMutableArray*)objects
+{
+    if(!_objects)
+        _objects = [[NSMutableArray alloc] init];
+    return _objects;
 }
 
 @end

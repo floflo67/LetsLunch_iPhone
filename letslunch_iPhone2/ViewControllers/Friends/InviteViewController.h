@@ -8,11 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface InviteViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
-    @private
-        NSArray *objects;
-}
-
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@interface InviteViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @end
