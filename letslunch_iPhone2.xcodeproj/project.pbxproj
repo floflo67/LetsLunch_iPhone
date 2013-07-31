@@ -78,6 +78,8 @@
 		54CA0D3D1799D3FD0012A521 /* VisitorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54CA0D3B1799D3FD0012A521 /* VisitorsViewController.xib */; };
 		54D3521C178DC89D0068953A /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54D3521B178DC89D0068953A /* AddressBookUI.framework */; };
 		54D3521F178DC8C30068953A /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54D3521E178DC8C30068953A /* AddressBook.framework */; };
+		54DC58B717A9B9B300A2C4BD /* PullRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54DC58B617A9B9B200A2C4BD /* PullRefreshTableViewController.m */; };
+		54DC58B917A9B9C900A2C4BD /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 54DC58B817A9B9C900A2C4BD /* arrow.png */; };
 		54E3331F1781EF3100BFF6A4 /* linkedInBluebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 54E333191781EF3100BFF6A4 /* linkedInBluebutton.png */; };
 		54E333201781EF3100BFF6A4 /* linkedInBluebutton-highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 54E3331A1781EF3100BFF6A4 /* linkedInBluebutton-highlight.png */; };
 		54E4B59117822D4D00BE5686 /* TwitterClouds.png in Resources */ = {isa = PBXBuildFile; fileRef = 54E4B59017822D4D00BE5686 /* TwitterClouds.png */; };
@@ -207,6 +209,9 @@
 		54D35224178DDA510068953A /* LoginRequests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginRequests.m; sourceTree = "<group>"; };
 		54D35226178E1C200068953A /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
 		54D35227178E1C200068953A /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
+		54DC58B517A9B9B200A2C4BD /* PullRefreshTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullRefreshTableViewController.h; sourceTree = "<group>"; };
+		54DC58B617A9B9B200A2C4BD /* PullRefreshTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullRefreshTableViewController.m; sourceTree = "<group>"; };
+		54DC58B817A9B9C900A2C4BD /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		54E333191781EF3100BFF6A4 /* linkedInBluebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = linkedInBluebutton.png; sourceTree = "<group>"; };
 		54E3331A1781EF3100BFF6A4 /* linkedInBluebutton-highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "linkedInBluebutton-highlight.png"; sourceTree = "<group>"; };
 		54E4B59017822D4D00BE5686 /* TwitterClouds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TwitterClouds.png; sourceTree = "<group>"; };
@@ -310,6 +315,7 @@
 		5400D00C177A62A6002CC092 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				54DC58B817A9B9C900A2C4BD /* arrow.png */,
 				548D36C0176B819300154C36 /* Default.png */,
 				548D36C2176B819300154C36 /* Default@2x.png */,
 				548D36C4176B819300154C36 /* Default-568h@2x.png */,
@@ -560,6 +566,8 @@
 		54E714C9176B95B500F39D73 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				54DC58B517A9B9B200A2C4BD /* PullRefreshTableViewController.h */,
+				54DC58B617A9B9B200A2C4BD /* PullRefreshTableViewController.m */,
 				54C23F9F179F08D4009FA2A1 /* Login */,
 				5445A68A1778D6A500F3EC97 /* Detail */,
 				54E9EB0417948CC500F937CA /* Foursquare */,
@@ -779,6 +787,7 @@
 				540E1F42179DA10A000D2E0C /* LinkedInViewController.xib in Resources */,
 				540E1F4C179DB7FA000D2E0C /* DetailProfileViewController.xib in Resources */,
 				5480D55E17A077930069ABAC /* ActivityCell.xib in Resources */,
+				54DC58B917A9B9C900A2C4BD /* arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -829,6 +838,7 @@
 				54F2FF03179E0D0600C0BB85 /* main.m in Sources */,
 				5480D55C17A06FA30069ABAC /* ActivityCell.m in Sources */,
 				54FE7E1617A6EBFE006255D4 /* MessageRequest.m in Sources */,
+				54DC58B717A9B9B300A2C4BD /* PullRefreshTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
