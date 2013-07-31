@@ -127,7 +127,7 @@
     [self.navigationController toggleRevealState:JTRevealedStateNo];
 }
 
-- (void)closeView:(id)sender
+- (void)closeView
 {
     [[ShareViewController getSingleton].view removeFromSuperview];
     [ShareViewController suppressSingleton];

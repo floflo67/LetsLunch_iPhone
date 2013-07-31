@@ -32,6 +32,7 @@
 -(void)findFriendsButtonClick:(id)sender;
 -(void)inviteFriendsButtonClick:(id)sender;
 -(void)shareButtonClick:(id)sender;
+-(void)closeView;
 
 -(void)pushCreateActivityViewController:(id)sender;
 

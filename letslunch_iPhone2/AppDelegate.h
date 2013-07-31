@@ -38,7 +38,6 @@
 -(void)loginSuccessfull;
 -(void)hideLoginView;
 
-
 -(NSString*)getToken;
 -(void)writeObjectToKeychain:(id)object forKey:(id)key;
 -(id)getObjectFromKeychainForKey:(id)key;

@@ -447,7 +447,6 @@
 		548D36AD176B819300154C36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				54FC65191798C28000269D3D /* FacebookSDK.framework */,
 				54571395177E48E8006A69CE /* libsqlite3.dylib */,
 				54571393177E48D7006A69CE /* Accounts.framework */,
 				54D3521E178DC8C30068953A /* AddressBook.framework */,
@@ -455,6 +454,7 @@
 				54571391177E48CF006A69CE /* AdSupport.framework */,
 				548D36B2176B819300154C36 /* CoreGraphics.framework */,
 				549ADABF176BE159001F1D3F /* CoreLocation.framework */,
+				54FC65191798C28000269D3D /* FacebookSDK.framework */,
 				548D36B0176B819300154C36 /* Foundation.framework */,
 				549ADABD176BE14F001F1D3F /* MapKit.framework */,
 				548D36D3176B81E900154C36 /* QuartzCore.framework */,
@@ -728,6 +728,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				de,
 			);
 			mainGroup = 548D36A2176B819300154C36;
 			productRefGroup = 548D36AC176B819300154C36 /* Products */;
