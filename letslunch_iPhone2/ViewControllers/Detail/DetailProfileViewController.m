@@ -22,7 +22,7 @@
 {
     self = [super init];
     if(self) {
-        self.objects = (NSMutableDictionary*)[[[ProfileDetailsRequest alloc] init] getProfileWithToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)] andID:contactID];
+        self.objects = (NSMutableDictionary*)[[[ProfileDetailsRequest alloc] init] getProfileWithToken:[AppDelegate getToken] andID:contactID];
         self.contactID = contactID;
     }
     return self;

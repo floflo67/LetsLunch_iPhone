@@ -39,7 +39,7 @@ static ProfileViewController *sharedSingleton = nil;
 - (id)init
 {
     self = [super init];
-    NSString *token = [AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)];
+    NSString *token = [AppDelegate getToken];
     if (self) {
         NSDictionary *dict = [[[ProfileRequest alloc] init] getProfileWithToken:token andLight:NO];
         

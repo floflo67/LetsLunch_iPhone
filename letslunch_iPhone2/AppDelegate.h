@@ -16,27 +16,17 @@
 @class TwitterConsumer;
 @class TwitterToken;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate> {
-    KeychainWrapper *tokenItem;
-}
+@interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) CenterViewController *viewController;
 @property (strong, nonatomic) UINavigationController *navController;
-@property (strong, nonatomic) LoginViewController *loginViewController;
-
-@property (strong, nonatomic) NSMutableArray *listActivities;
-@property (strong, nonatomic) NSMutableArray *listFriendsSuggestion;
-@property (strong, nonatomic) NSMutableArray *listMessages;
-@property (strong, nonatomic) NSMutableArray *listContacts;
-@property (strong, nonatomic) NSMutableArray *listVisitors;
 @property (strong, nonatomic) Activity *ownerActivity;
 @property (strong, nonatomic) Contacts *ownerContact;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 
 @property (strong, nonatomic) TwitterConsumer* consumer;
 @property (strong, nonatomic) TwitterToken* token;
-@property (nonatomic, strong) KeychainWrapper *tokenItem;
 
 -(NSMutableArray*)getListActivitiesAndForceReload:(BOOL)shouldReload;
 -(NSMutableArray*)getListFriendsSuggestionAndForceReload:(BOOL)shouldReload;
@@ -48,10 +38,13 @@
 -(void)loginSuccessfull;
 -(void)hideLoginView;
 
+
+-(NSString*)getToken;
 -(void)writeObjectToKeychain:(id)object forKey:(id)key;
 -(id)getObjectFromKeychainForKey:(id)key;
 -(void)logout;
 
++(NSString*)getToken;
 +(UIColor*)colorWithHexString:(NSString*)hex;
 +(UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize;
 +(void)writeObjectToKeychain:(id)object forKey:(id)key;

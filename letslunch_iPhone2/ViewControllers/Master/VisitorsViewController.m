@@ -41,7 +41,7 @@ static VisitorsViewController *sharedSingleton = nil;
 {
     self = [super init];
     if (self) {
-        self.objects = [[[VisitorsRequest alloc] init] getVisitorsWithToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)]];
+        self.objects = [[[VisitorsRequest alloc] init] getVisitorsWithToken:[AppDelegate getToken]];
     }
     
     return self;

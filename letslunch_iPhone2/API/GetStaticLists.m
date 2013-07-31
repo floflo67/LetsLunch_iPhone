@@ -80,7 +80,7 @@
 + (NSMutableArray*)getListVisitors
 {
     NSMutableArray* listVisitors = [[NSMutableArray alloc] init];
-    listVisitors = [VisitorsRequest getVisitorsWithToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)]];
+    listVisitors = [VisitorsRequest getVisitorsWithToken:[AppDelegate getToken]];
     return listVisitors;
 }
 

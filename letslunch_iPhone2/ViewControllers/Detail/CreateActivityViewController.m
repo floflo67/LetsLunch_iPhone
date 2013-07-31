@@ -281,7 +281,7 @@ static CreateActivityViewController *sharedSingleton = nil;
     NSString *description = self.textFieldDescription.text;
     if(self.activity && [description isEqualToString:@""]) {
         //delete
-        if(![_lunchRequest suppressLunchWithToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)] andActivityID:self.activity.activityID])
+        if(![_lunchRequest suppressLunchWithToken:[AppDelegate getToken] andActivityID:self.activity.activityID])
             return;
         else
             app.ownerActivity = nil;
@@ -305,7 +305,7 @@ static CreateActivityViewController *sharedSingleton = nil;
             app.ownerActivity.isCoffee = self.segment.selectedSegmentIndex;
             app.ownerActivity.venue = self.venue;
             app.ownerActivity.time = activityTime;
-            [_lunchRequest updateLunchWithToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)] andActivity:app.ownerActivity];
+            [_lunchRequest updateLunchWithToken:[AppDelegate getToken] andActivity:app.ownerActivity];
             [[ActivityViewController getSingleton] loadOwnerActivity];
         }
         // add
@@ -315,7 +315,7 @@ static CreateActivityViewController *sharedSingleton = nil;
             activity.isCoffee = self.segment.selectedSegmentIndex;
             activity.venue = self.venue;
             activity.time = activityTime;
-            NSDictionary *dict = [_lunchRequest addLunchWithToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)] andActivity:activity];
+            NSDictionary *dict = [_lunchRequest addLunchWithToken:[AppDelegate getToken] andActivity:activity];
             if(![dict objectForKey:@"success"]) {
                 return;
             }

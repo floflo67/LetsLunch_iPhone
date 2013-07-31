@@ -184,7 +184,7 @@
         self.textFieldMessage.text = @""; // clears message
         
         if(message && ![message isEqualToString:@""])
-            [MessageRequest sendMessage:message withToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)kSecAttrAccount] toUser:self.contactID];
+            [MessageRequest sendMessage:message withToken:[AppDelegate getToken] toUser:self.contactID];
         
     }
     return YES;

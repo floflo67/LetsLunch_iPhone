@@ -15,13 +15,24 @@
 #import "VisitorsViewController.h"
 #import "ProfileRequest.h"
 
+@interface AppDelegate()
+@property (strong, nonatomic) NSMutableArray *listActivities;
+@property (strong, nonatomic) NSMutableArray *listFriendsSuggestion;
+@property (strong, nonatomic) NSMutableArray *listMessages;
+@property (strong, nonatomic) NSMutableArray *listContacts;
+@property (strong, nonatomic) NSMutableArray *listVisitors;
+
+@property (strong, nonatomic) LoginViewController *loginViewController;
+
+@property (nonatomic, strong) KeychainWrapper *tokenItem;
+@end
+
 @implementation AppDelegate
 
 @synthesize window = _window;
 @synthesize viewController = _viewController;
 @synthesize navController = _navController;
 @synthesize loginViewController = _loginViewController;
-@synthesize tokenItem;
 
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
@@ -53,7 +64,7 @@
     _viewController = controller;
     _navController = navController;
     
-    if([[self getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)] isEqualToString:@"token"])
+    if([[self getToken] isEqualToString:@"token"])
         [self showLoginView];
     else
         [self loginSuccessfull];
@@ -92,7 +103,7 @@
 
 - (void)setupOwnerContactInfo
 {
-    NSDictionary *dictContact = [ProfileRequest getProfileWithToken:[self getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)] andLight:YES];
+    NSDictionary *dictContact = [ProfileRequest getProfileWithToken:[self getToken] andLight:YES];
     self.ownerContact = [[Contacts alloc] initWithDictionary:dictContact];
 }
 
@@ -146,6 +157,16 @@
 
 #pragma keychain
 
++ (NSString*)getToken
+{
+    return [(AppDelegate*)[UIApplication sharedApplication].delegate getToken];
+}
+
+- (NSString*)getToken
+{
+    return [self getObjectFromKeychainForKey:(__bridge id)kSecAttrAccount];
+}
+
 + (void)writeObjectToKeychain:(id)object forKey:(id)key
 {
     [(AppDelegate*)[UIApplication sharedApplication].delegate writeObjectToKeychain:object forKey:key];
@@ -173,7 +194,7 @@
 
 - (void)logout
 {
-    [ProfileRequest logoutWithToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)]];
+    [ProfileRequest logoutWithToken:[AppDelegate getToken]];
     [self.tokenItem resetKeychainItem];
     [self suppressDataOnLogout];
     [ActivityViewController suppressSingleton];
@@ -207,10 +228,10 @@
     
     if(!self.listActivities) {
         self.listActivities = [[NSMutableArray alloc] init];
-        self.listActivities = [GetStaticLists getListActivitiesWithToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)] latitude:self.locationManager.location.coordinate.latitude longitude:self.locationManager.location.coordinate.longitude andDate:date];
+        self.listActivities = [GetStaticLists getListActivitiesWithToken:[AppDelegate getToken] latitude:self.locationManager.location.coordinate.latitude longitude:self.locationManager.location.coordinate.longitude andDate:date];
     }
     else if(shouldReload)
-        self.listActivities = [GetStaticLists getListActivitiesWithToken:[AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)] latitude:self.locationManager.location.coordinate.latitude longitude:self.locationManager.location.coordinate.longitude andDate:date];
+        self.listActivities = [GetStaticLists getListActivitiesWithToken:[AppDelegate getToken] latitude:self.locationManager.location.coordinate.latitude longitude:self.locationManager.location.coordinate.longitude andDate:date];
     
     return self.listActivities;
 }
@@ -266,12 +287,14 @@
 - (Activity*)getOwnerActivityAndForceReload:(BOOL)shouldReload
 {
     if(!self.ownerActivity) {
-        self.ownerActivity = [GetStaticLists getOwnerActivityWithToken:[self getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)]];
+        self.ownerActivity = [GetStaticLists getOwnerActivityWithToken:[self getToken]];
     }
     else if(shouldReload)
-        self.ownerActivity = [GetStaticLists getOwnerActivityWithToken:[self getObjectFromKeychainForKey:(__bridge id)(kSecAttrAccount)]];
+        self.ownerActivity = [GetStaticLists getOwnerActivityWithToken:[self getToken]];
     //return NULL;
     return self.ownerActivity;
 }
+
+#pragma mark - getter and setter
 
 @end
