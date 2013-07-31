@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PullRefreshTableViewController.h"
 
-@interface ActivityViewController : UITableViewController
+@interface ActivityViewController : PullRefreshTableViewController
 
 -(void)loadOwnerActivity;
 

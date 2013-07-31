@@ -40,23 +40,14 @@ static ActivityViewController *sharedSingleton = nil;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     self.view.backgroundColor = [AppDelegate colorWithHexString:@"f0f0f0"];
     
-        AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        
-        if([app getOwnerActivityAndForceReload:NO]) {
-            self.objects[0] = [app getOwnerActivityAndForceReload:NO];
-            self.hasActivity = YES;
-        }
-        else {
-            self.objects[0] = @"NIL";
-            self.hasActivity = NO;
-        }
-        if([app getListActivitiesAndForceReload:NO])
-            self.objects[1] = [app getListActivitiesAndForceReload:NO];
-        else
-            self.objects[1] = @"NIL";
+    [self loadOwnerActivity];
+    [self loadListActivites];
+    
+    self.textPull = @"Pull down to refresh...";
+    self.textRelease = @"Release to refresh...";
+    self.textLoading = @"Loading...";
     
     [self.tableView reloadData];
 }
@@ -75,6 +66,15 @@ static ActivityViewController *sharedSingleton = nil;
     
     NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:UITableViewRowAnimationNone];
+}
+
+- (void)loadListActivites
+{
+    AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    if([app getListActivitiesAndForceReload:YES])
+        self.objects[1] = [app getListActivitiesAndForceReload:NO];
+    else
+        self.objects[1] = @"NIL";
 }
 
 - (void)didReceiveMemoryWarning
@@ -184,6 +184,18 @@ static ActivityViewController *sharedSingleton = nil;
     else if([sender class] == [Activity class])
         [center pushCreateActivityViewController:sender];
     
+}
+
+#pragma mark - Table view reload
+
+- (void)refresh {
+    [self loadListActivites];
+    [self performSelector:@selector(reloadUI) withObject:nil afterDelay:2.0];
+}
+
+- (void)reloadUI {
+    [self.tableView reloadData];
+    [self stopLoading];
 }
 
 #pragma mark - Table view delegate
