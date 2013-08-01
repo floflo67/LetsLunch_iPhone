@@ -45,10 +45,45 @@ static ShareViewController *sharedSingleton = nil;
 
 - (void)shareOnFacebook
 {
+    __weak typeof(self) weakSelf = self;
+    
+    self.mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook]; //Tell him with what social plattform to use it, e.g. facebook or twitter
+    [self.mySLComposerSheet setInitialText:@"Test Facebook"/*[NSString stringWithFormat:@"Test", self.mySLComposerSheet.serviceType]*/]; //the message you want to post
+    //for more instance methodes, go here:https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Reference/SLComposeViewController_Class/Reference/Reference.html#//apple_ref/doc/uid/TP40012205
+    [self presentViewController:self.mySLComposerSheet animated:YES completion:nil];
+    
+    
+    [self.mySLComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
+        BOOL success = NO;
+        NSString *output;
+        switch (result) {
+            case SLComposeViewControllerResultCancelled:
+                output = @"Action Cancelled";
+                break;
+            case SLComposeViewControllerResultDone:
+                output = @"Post Successfull";
+                success = YES;
+                break;
+            default:
+                break;
+        }
+        
+        if(success) {
+            weakSelf.facebookButton.alpha = 0.4;
+            weakSelf.facebookButton.enabled = NO;
+        }
+        
+        if(weakSelf.mySLComposerSheet) {
+            [weakSelf.mySLComposerSheet dismissViewControllerAnimated:YES completion:nil];
+            weakSelf.mySLComposerSheet = nil;
+        }
+    }];
+    
+    /*
     FacebookShare *facebookShare = [[FacebookShare alloc] init];
     [facebookShare postToFacebook:@"Let's Lunch - iPhone" productLink:@"www.letslunch.com" productImageUrl:@"http://farm6.static.flickr.com/5065/5681696034_e9f67e2181.jpg"];
     self.facebookButton.enabled = NO;
-    self.facebookButton.alpha = 0.3;
+    self.facebookButton.alpha = 0.3;*/
 }
 
 - (void)shareOnTwitter
@@ -92,9 +127,11 @@ static ShareViewController *sharedSingleton = nil;
 #pragma mark - Button events
 
 - (IBAction)facebookButton:(UIButton*)sender
-{    
+{
+    if(!self.facebookButton.selected)
+        [self shareOnFacebook];
+    
     self.facebookButton.selected = !self.facebookButton.selected;
-    self.mustShareOnFacebook = self.facebookButton.selected;
 }
 
 - (IBAction)twitterButton:(UIButton*)sender
