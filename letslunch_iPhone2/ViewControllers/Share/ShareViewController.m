@@ -13,7 +13,7 @@
 @interface ShareViewController ()
 @property (nonatomic, strong) SLComposeViewController *mySLComposerSheet;
 @property (weak, nonatomic) IBOutlet UIButton *facebookButton;
-@property (nonatomic) BOOL shareFacebook;
+@property (weak, nonatomic) IBOutlet UIButton *twitterButton;
 @end
 
 @implementation ShareViewController
@@ -45,7 +45,7 @@ static ShareViewController *sharedSingleton = nil;
     __weak typeof(self) weakSelf = self;
     
     self.mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook]; //Tell him with what social plattform to use it, e.g. facebook or twitter
-    [self.mySLComposerSheet setInitialText:@"Test"/*[NSString stringWithFormat:@"Test", self.mySLComposerSheet.serviceType]*/]; //the message you want to post
+    [self.mySLComposerSheet setInitialText:@"Test Facebook"/*[NSString stringWithFormat:@"Test", self.mySLComposerSheet.serviceType]*/]; //the message you want to post
     //for more instance methodes, go here:https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Reference/SLComposeViewController_Class/Reference/Reference.html#//apple_ref/doc/uid/TP40012205
     [self presentViewController:self.mySLComposerSheet animated:YES completion:nil];
     
@@ -65,16 +65,55 @@ static ShareViewController *sharedSingleton = nil;
                 break;
         }
         
-        //check if everythink worked properly. Give out a message on the state.
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Facebook" message:output delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        [alert show];
-        
         if(success) {
             weakSelf.facebookButton.alpha = 0.4;
             weakSelf.facebookButton.enabled = NO;
         }
+        
+        if(weakSelf.mySLComposerSheet) {
+            [weakSelf.mySLComposerSheet dismissViewControllerAnimated:YES completion:nil];
+            weakSelf.mySLComposerSheet = nil;
+        }
     }];
 }
+
+- (void)shareOnTwitter
+{
+    __weak typeof(self) weakSelf = self;
+    
+    self.mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter]; //Tell him with what social plattform to use it, e.g. facebook or twitter
+    [self.mySLComposerSheet setInitialText:@"Test Twitter"/*[NSString stringWithFormat:@"Test", self.mySLComposerSheet.serviceType]*/]; //the message you want to post
+    //for more instance methodes, go here:https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Reference/SLComposeViewController_Class/Reference/Reference.html#//apple_ref/doc/uid/TP40012205
+    [self presentViewController:self.mySLComposerSheet animated:YES completion:nil];
+    
+    
+    [self.mySLComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
+        BOOL success = NO;
+        NSString *output;
+        switch (result) {
+            case SLComposeViewControllerResultCancelled:
+                output = @"Action Cancelled";
+                break;
+            case SLComposeViewControllerResultDone:
+                output = @"Post Successfull";
+                success = YES;
+                break;
+            default:
+                break;
+        }
+        
+        if(success) {
+            weakSelf.twitterButton.alpha = 0.4;
+            weakSelf.twitterButton.enabled = NO;
+        }
+        
+        if(weakSelf.mySLComposerSheet) {
+            [weakSelf.mySLComposerSheet dismissViewControllerAnimated:YES completion:nil];
+            weakSelf.mySLComposerSheet = nil;
+        }
+    }];
+}
+
 
 #pragma mark - Button events
 
@@ -86,11 +125,16 @@ static ShareViewController *sharedSingleton = nil;
     self.facebookButton.selected = !self.facebookButton.selected;
 }
 
-- (IBAction)closeButton:(id)sender
+- (IBAction)twitterButton:(UIButton*)sender
 {
-    if(self.shareFacebook)
-       [self shareOnFacebook];
+    if(!self.twitterButton.selected)
+        [self shareOnTwitter];
     
+    self.twitterButton.selected = !self.twitterButton.selected;
+}
+
+- (IBAction)closeButton:(id)sender
+{    
     [((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController closeView];
 }
 
