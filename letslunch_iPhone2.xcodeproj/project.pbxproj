@@ -76,6 +76,10 @@
 		549ADABE176BE14F001F1D3F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549ADABD176BE14F001F1D3F /* MapKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		549ADAC0176BE15A001F1D3F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549ADABF176BE159001F1D3F /* CoreLocation.framework */; };
 		54CA0D3D1799D3FD0012A521 /* VisitorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54CA0D3B1799D3FD0012A521 /* VisitorsViewController.xib */; };
+		54D1D0D917AB02C000CF0593 /* FbGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D1D0D417AB02C000CF0593 /* FbGraph.m */; };
+		54D1D0DA17AB02C000CF0593 /* FbGraphFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D1D0D617AB02C000CF0593 /* FbGraphFile.m */; };
+		54D1D0DE17AB02F700CF0593 /* FacebookShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D1D0DD17AB02F700CF0593 /* FacebookShare.m */; };
+		54D1D0E117AB092800CF0593 /* FbGraphResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D1D0E017AB092800CF0593 /* FbGraphResponse.m */; };
 		54D3521C178DC89D0068953A /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54D3521B178DC89D0068953A /* AddressBookUI.framework */; };
 		54D3521F178DC8C30068953A /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54D3521E178DC8C30068953A /* AddressBook.framework */; };
 		54DC58B717A9B9B300A2C4BD /* PullRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54DC58B617A9B9B200A2C4BD /* PullRefreshTableViewController.m */; };
@@ -201,6 +205,14 @@
 		54CA0D3B1799D3FD0012A521 /* VisitorsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VisitorsViewController.xib; sourceTree = "<group>"; };
 		54CA0D3E1799D4B50012A521 /* VisitorsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitorsRequest.h; sourceTree = "<group>"; };
 		54CA0D3F1799D4B50012A521 /* VisitorsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitorsRequest.m; sourceTree = "<group>"; };
+		54D1D0D317AB02C000CF0593 /* FbGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FbGraph.h; sourceTree = "<group>"; };
+		54D1D0D417AB02C000CF0593 /* FbGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FbGraph.m; sourceTree = "<group>"; };
+		54D1D0D517AB02C000CF0593 /* FbGraphFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FbGraphFile.h; sourceTree = "<group>"; };
+		54D1D0D617AB02C000CF0593 /* FbGraphFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FbGraphFile.m; sourceTree = "<group>"; };
+		54D1D0DC17AB02F700CF0593 /* FacebookShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookShare.h; sourceTree = "<group>"; };
+		54D1D0DD17AB02F700CF0593 /* FacebookShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookShare.m; sourceTree = "<group>"; };
+		54D1D0DF17AB092800CF0593 /* FbGraphResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FbGraphResponse.h; sourceTree = "<group>"; };
+		54D1D0E017AB092800CF0593 /* FbGraphResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FbGraphResponse.m; sourceTree = "<group>"; };
 		54D3521B178DC89D0068953A /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		54D3521E178DC8C30068953A /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		54D35220178DCB230068953A /* DBFriendInviter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBFriendInviter.h; sourceTree = "<group>"; };
@@ -534,6 +546,21 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		54D1D0D217AB02A300CF0593 /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				54D1D0DC17AB02F700CF0593 /* FacebookShare.h */,
+				54D1D0DD17AB02F700CF0593 /* FacebookShare.m */,
+				54D1D0D317AB02C000CF0593 /* FbGraph.h */,
+				54D1D0D417AB02C000CF0593 /* FbGraph.m */,
+				54D1D0D517AB02C000CF0593 /* FbGraphFile.h */,
+				54D1D0D617AB02C000CF0593 /* FbGraphFile.m */,
+				54D1D0DF17AB092800CF0593 /* FbGraphResponse.h */,
+				54D1D0E017AB092800CF0593 /* FbGraphResponse.m */,
+			);
+			path = Facebook;
+			sourceTree = "<group>";
+		};
 		54D317341784F52200D058F4 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -656,6 +683,7 @@
 		54F971FB177CE13E006F6FE5 /* Share */ = {
 			isa = PBXGroup;
 			children = (
+				54D1D0D217AB02A300CF0593 /* Facebook */,
 				54F971F6177CE12B006F6FE5 /* ShareViewController.h */,
 				54F971F7177CE12B006F6FE5 /* ShareViewController.m */,
 				54F971F8177CE12B006F6FE5 /* ShareViewController.xib */,
@@ -840,6 +868,10 @@
 				5480D55C17A06FA30069ABAC /* ActivityCell.m in Sources */,
 				54FE7E1617A6EBFE006255D4 /* MessageRequest.m in Sources */,
 				54DC58B717A9B9B300A2C4BD /* PullRefreshTableViewController.m in Sources */,
+				54D1D0D917AB02C000CF0593 /* FbGraph.m in Sources */,
+				54D1D0DA17AB02C000CF0593 /* FbGraphFile.m in Sources */,
+				54D1D0DE17AB02F700CF0593 /* FacebookShare.m in Sources */,
+				54D1D0E117AB092800CF0593 /* FbGraphResponse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
