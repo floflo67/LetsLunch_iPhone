@@ -14,6 +14,7 @@
 #import "ProfileViewController.h"
 #import "VisitorsViewController.h"
 #import "ProfileRequest.h"
+#import <FacebookSDK/FacebookSDK.h>
 
 @interface AppDelegate()
 @property (strong, nonatomic) NSMutableArray *listActivities;
@@ -70,6 +71,11 @@
         [self loginSuccessfull];
     
     return YES;
+}
+
+- (void)applicationDidBecomeActive:(UIApplication*)application
+{
+    [[FBSession activeSession] handleDidBecomeActive];
 }
 
 - (void)loginSuccessfull
