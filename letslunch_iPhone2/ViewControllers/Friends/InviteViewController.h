@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FacebookSDK/FacebookSDK.h>
+#import <Social/Social.h>
 
-@interface InviteViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface InviteViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, FBFriendPickerDelegate>
 
 @end

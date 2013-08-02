@@ -75,6 +75,7 @@
 		549ADAAD176BCAD5001F1D3F /* CreateActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 549ADAAB176BCAD5001F1D3F /* CreateActivityViewController.xib */; };
 		549ADABE176BE14F001F1D3F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549ADABD176BE14F001F1D3F /* MapKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		549ADAC0176BE15A001F1D3F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549ADABF176BE159001F1D3F /* CoreLocation.framework */; };
+		549C8D9417AC2F3B00B730C5 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549C8D9317AC2F3B00B730C5 /* FacebookSDK.framework */; };
 		54CA0D3D1799D3FD0012A521 /* VisitorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54CA0D3B1799D3FD0012A521 /* VisitorsViewController.xib */; };
 		54D1D0D917AB02C000CF0593 /* FbGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D1D0D417AB02C000CF0593 /* FbGraph.m */; };
 		54D1D0DA17AB02C000CF0593 /* FbGraphFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D1D0D617AB02C000CF0593 /* FbGraphFile.m */; };
@@ -108,7 +109,6 @@
 		54F97202177CE711006F6FE5 /* ImageShare.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F97200177CE711006F6FE5 /* ImageShare.png */; };
 		54F97203177CE711006F6FE5 /* ImageShare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F97201177CE711006F6FE5 /* ImageShare@2x.png */; };
 		54F97208177CFFE8006F6FE5 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54F97206177CFFE7006F6FE5 /* LoginViewController.xib */; };
-		54FC651A1798C28000269D3D /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54FC65191798C28000269D3D /* FacebookSDK.framework */; };
 		54FE68FC17736B1000AD7987 /* ButtonMenuRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 54FE68FB17736B1000AD7987 /* ButtonMenuRight.png */; };
 		54FE7E1617A6EBFE006255D4 /* MessageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FE7E1517A6EBFE006255D4 /* MessageRequest.m */; };
 /* End PBXBuildFile section */
@@ -200,6 +200,7 @@
 		549ADAAE176BCAF2001F1D3F /* CreateActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateActivityViewController.h; sourceTree = "<group>"; };
 		549ADABD176BE14F001F1D3F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		549ADABF176BE159001F1D3F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		549C8D9317AC2F3B00B730C5 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		54CA0D391799D3FD0012A521 /* VisitorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitorsViewController.h; sourceTree = "<group>"; };
 		54CA0D3A1799D3FD0012A521 /* VisitorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitorsViewController.m; sourceTree = "<group>"; };
 		54CA0D3B1799D3FD0012A521 /* VisitorsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VisitorsViewController.xib; sourceTree = "<group>"; };
@@ -263,7 +264,6 @@
 		54F97204177CFFE7006F6FE5 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../API/Login/LoginViewController.h; sourceTree = "<group>"; };
 		54F97205177CFFE7006F6FE5 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../API/Login/LoginViewController.m; sourceTree = "<group>"; };
 		54F97206177CFFE7006F6FE5 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = ../API/Login/LoginViewController.xib; sourceTree = "<group>"; };
-		54FC65191798C28000269D3D /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		54FD4A881790AD470045B2DE /* CenterViewControllerImportFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CenterViewControllerImportFile.h; sourceTree = "<group>"; };
 		54FE68FB17736B1000AD7987 /* ButtonMenuRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonMenuRight.png; sourceTree = "<group>"; };
 		54FE7E1417A6EBFE006255D4 /* MessageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageRequest.h; sourceTree = "<group>"; };
@@ -289,7 +289,7 @@
 				548D36AF176B819300154C36 /* UIKit.framework in Frameworks */,
 				548D36B1176B819300154C36 /* Foundation.framework in Frameworks */,
 				548D36B3176B819300154C36 /* CoreGraphics.framework in Frameworks */,
-				54FC651A1798C28000269D3D /* FacebookSDK.framework in Frameworks */,
+				549C8D9417AC2F3B00B730C5 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,7 +466,7 @@
 				54571391177E48CF006A69CE /* AdSupport.framework */,
 				548D36B2176B819300154C36 /* CoreGraphics.framework */,
 				549ADABF176BE159001F1D3F /* CoreLocation.framework */,
-				54FC65191798C28000269D3D /* FacebookSDK.framework */,
+				549C8D9317AC2F3B00B730C5 /* FacebookSDK.framework */,
 				548D36B0176B819300154C36 /* Foundation.framework */,
 				549ADABD176BE14F001F1D3F /* MapKit.framework */,
 				548D36D3176B81E900154C36 /* QuartzCore.framework */,
