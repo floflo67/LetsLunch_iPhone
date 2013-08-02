@@ -50,7 +50,8 @@
     }
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"%@", response);
+        if(response.length < 100)
+            NSLog(@"%@", response);
     }
 }
 

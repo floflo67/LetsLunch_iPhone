@@ -84,10 +84,7 @@
     NSString *imageName;
     UIImageView *icon;
     if([[self.menuItem[indexPath.row] description] isEqualToString:@"Profile"]) {
-        imageName = [AppDelegate getObjectFromKeychainForKey:(__bridge id)(kSecAttrDescription)];
-        UIImage *img = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageName]]];        
-        icon = [[UIImageView alloc] initWithImage:img];
-        img = nil;
+        icon = [[UIImageView alloc] initWithImage:((AppDelegate*)[UIApplication sharedApplication].delegate).ownerContact.image];
     }
     else {
         imageName = [NSString stringWithFormat:@"%@MenuItem.png",[self.menuItem[indexPath.row] description]];

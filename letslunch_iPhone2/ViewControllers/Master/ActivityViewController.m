@@ -133,7 +133,7 @@ static ActivityViewController *sharedSingleton = nil;
     
     if(indexPath.section == 1) {
         if([[self.objects[indexPath.section] description] isEqualToString:@"NIL"]) {            
-            NSLog(@"empty");
+            
         }
         else {
             Activity *activity = self.objects[indexPath.section][indexPath.row];

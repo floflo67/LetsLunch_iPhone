@@ -110,8 +110,7 @@
 
 - (void)setupOwnerContactInfo
 {
-    NSDictionary *dictContact = [ProfileRequest getProfileWithToken:[self getToken] andLight:YES];
-    self.ownerContact = [[Contacts alloc] initWithDictionary:dictContact];
+    self.ownerContact = [[Contacts alloc] initWithDictionary:[ProfileRequest getProfileWithToken:[self getToken] andLight:YES]];
 }
 
 #pragma custom functions

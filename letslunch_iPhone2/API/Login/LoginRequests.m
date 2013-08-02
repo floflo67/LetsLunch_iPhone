@@ -110,10 +110,7 @@
         NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:self.data options:0 error:nil]];
         NSDictionary *dictAuth = [NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"user"]]];
         NSString* token = [dictAuth objectForKey:@"token"];
-        NSString *pictureURLString = [dictAuth objectForKey:@"picture_url"];
         [AppDelegate writeObjectToKeychain:token forKey:(__bridge id)(kSecAttrAccount)];
-        if(pictureURLString && ![pictureURLString isEqualToString:@""])
-            [AppDelegate writeObjectToKeychain:pictureURLString forKey:(__bridge id)(kSecAttrDescription)];
         [self successfullLoginIn];
 	}
 	self.connection = nil;
