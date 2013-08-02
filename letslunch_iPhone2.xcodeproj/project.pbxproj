@@ -90,6 +90,8 @@
 		54E4B59117822D4D00BE5686 /* TwitterClouds.png in Resources */ = {isa = PBXBuildFile; fileRef = 54E4B59017822D4D00BE5686 /* TwitterClouds.png */; };
 		54E625C917AC4480009F6391 /* FacebookFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E625C817AC4480009F6391 /* FacebookFriend.m */; };
 		54E625CC17AC4E56009F6391 /* SocialConnectionRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E625CB17AC4E56009F6391 /* SocialConnectionRequest.m */; };
+		54E625CF17AC5739009F6391 /* ThreadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E625CE17AC5739009F6391 /* ThreadRequest.m */; };
+		54E625D217AC5B33009F6391 /* Thread.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E625D117AC5B32009F6391 /* Thread.m */; };
 		54E714CE176B95E200F39D73 /* ActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E714CC176B95E200F39D73 /* ActivityViewController.xib */; };
 		54E714D4176B9EDA00F39D73 /* MessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E714D2176B9EDA00F39D73 /* MessageViewController.xib */; };
 		54E9EAFC1794634500F937CA /* InviteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54E9EAFA1794634500F937CA /* InviteViewController.xib */; };
@@ -234,6 +236,10 @@
 		54E625C817AC4480009F6391 /* FacebookFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookFriend.m; sourceTree = "<group>"; };
 		54E625CA17AC4E56009F6391 /* SocialConnectionRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialConnectionRequest.h; sourceTree = "<group>"; };
 		54E625CB17AC4E56009F6391 /* SocialConnectionRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialConnectionRequest.m; sourceTree = "<group>"; };
+		54E625CD17AC5739009F6391 /* ThreadRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreadRequest.h; sourceTree = "<group>"; };
+		54E625CE17AC5739009F6391 /* ThreadRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreadRequest.m; sourceTree = "<group>"; };
+		54E625D017AC5B32009F6391 /* Thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Thread.h; sourceTree = "<group>"; };
+		54E625D117AC5B32009F6391 /* Thread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Thread.m; sourceTree = "<group>"; };
 		54E714CA176B95E200F39D73 /* ActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewController.h; sourceTree = "<group>"; };
 		54E714CB176B95E200F39D73 /* ActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewController.m; sourceTree = "<group>"; };
 		54E714CC176B95E200F39D73 /* ActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityViewController.xib; sourceTree = "<group>"; };
@@ -433,6 +439,8 @@
 				54E625C817AC4480009F6391 /* FacebookFriend.m */,
 				5445A69317791AF900F3EC97 /* Messages.h */,
 				5445A69417791AF900F3EC97 /* Messages.m */,
+				54E625D017AC5B32009F6391 /* Thread.h */,
+				54E625D117AC5B32009F6391 /* Thread.m */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -726,6 +734,8 @@
 			children = (
 				54FE7E1417A6EBFE006255D4 /* MessageRequest.h */,
 				54FE7E1517A6EBFE006255D4 /* MessageRequest.m */,
+				54E625CD17AC5739009F6391 /* ThreadRequest.h */,
+				54E625CE17AC5739009F6391 /* ThreadRequest.m */,
 			);
 			path = Contacts;
 			sourceTree = "<group>";
@@ -883,6 +893,8 @@
 				54D1D0E117AB092800CF0593 /* FbGraphResponse.m in Sources */,
 				54E625C917AC4480009F6391 /* FacebookFriend.m in Sources */,
 				54E625CC17AC4E56009F6391 /* SocialConnectionRequest.m in Sources */,
+				54E625CF17AC5739009F6391 /* ThreadRequest.m in Sources */,
+				54E625D217AC5B33009F6391 /* Thread.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
