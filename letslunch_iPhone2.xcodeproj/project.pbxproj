@@ -517,9 +517,8 @@
 				548D36CE176B81B700154C36 /* UIViewController+JTRevealSidebarV2.h */,
 				548D36CF176B81B700154C36 /* UIViewController+JTRevealSidebarV2.m */,
 			);
-			name = JTRevealSidebarV2;
-			path = /Users/floflo67/Documents/ProjectXCode/letslunch_iPhone2/JTRevealSidebarV2;
-			sourceTree = "<absolute>";
+			path = JTRevealSidebarV2;
+			sourceTree = "<group>";
 		};
 		548D36D5176B820700154C36 /* Images */ = {
 			isa = PBXGroup;
