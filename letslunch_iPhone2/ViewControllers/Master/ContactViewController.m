@@ -7,9 +7,9 @@
 //
 
 #import "ContactViewController.h"
-#import "Contacts.h"
 #import "MessageViewController.h"
 #import "CreateActivityViewController.h"
+#import "Thread.h"
 
 @interface ContactViewController ()
 @property (nonatomic, strong) NSMutableArray* objects;
@@ -63,7 +63,8 @@ static ContactViewController *sharedSingleton = nil;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.textLabel.text = [((Contacts*)self.objects[indexPath.row]) firstname];
+    Thread *thread = (Thread*)self.objects[indexPath.row];
+    cell.textLabel.text = thread.receiver.firstname;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
@@ -74,7 +75,8 @@ static ContactViewController *sharedSingleton = nil;
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    MessageViewController *cont = [[MessageViewController alloc] initWithContactID:[NSString stringWithFormat:@"%d", indexPath.row]];
+    Thread *thread = (Thread*)self.objects[indexPath.row];
+    MessageViewController *cont = [[MessageViewController alloc] initWithContactID:thread.ID];
     [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController.navigationController pushViewController:cont animated:YES];
     cont = nil;
 }

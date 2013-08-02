@@ -12,6 +12,7 @@
 #import "Messages.h"
 #import "LunchesRequest.h"
 #import "VisitorsRequest.h"
+#import "ThreadRequest.h"
 
 @implementation GetStaticLists
 
@@ -45,8 +46,12 @@
 
 + (NSMutableArray*)getListMessagesForContactID:(NSString*)contactID
 {
-    NSMutableArray* listMessages = [[NSMutableArray alloc] init];
-    
+    NSMutableArray* listMessages =  [[NSMutableArray alloc] initWithArray:[ThreadRequest getMessagesWithToken:[AppDelegate getToken] andThreadID:contactID]];
+    if(listMessages)
+        return listMessages;
+    else
+        return nil;
+    /*
     Messages *mess1 = [[Messages alloc] initWithDescription:@"content1" From:contactID To:@"1" date:[NSDate new]];
     Messages *mess2 = [[Messages alloc] initWithDescription:@"content2" From:contactID To:@"1" date:[NSDate new]];
     Messages *mess3 = [[Messages alloc] initWithDescription:@"content3" From:contactID To:@"1" date:[NSDate new]];
@@ -71,10 +76,9 @@
     [listMessages addObject:mess9];
     [listMessages addObject:mess10];
     [listMessages addObject:mess11];
-    [listMessages addObject:mess12];
+    [listMessages addObject:mess12];*/
     
-    
-    return listMessages;    
+    return listMessages;
 }
 
 + (NSMutableArray*)getListVisitors
@@ -86,8 +90,12 @@
 
 + (NSMutableArray*)getListContacts
 {
-    NSMutableArray* listContacts = [[NSMutableArray alloc] init];
-    
+    NSMutableArray* listContacts = [[NSMutableArray alloc] initWithArray:[ThreadRequest getListThreadsWithToken:[AppDelegate getToken]]];
+    if(listContacts)
+        return listContacts;
+    else
+        return nil;
+    /*
     Contacts *cont1 = [[Contacts alloc] initWithID:@"1" firstname:@"first1" lastname:@"last1" jobTitle:@"headline" onWishlist:NO andPictureURL:nil];
     Contacts *cont2 = [[Contacts alloc] initWithID:@"2" firstname:@"first2" lastname:@"last2" jobTitle:@"headline" onWishlist:YES andPictureURL:nil];
     Contacts *cont3 = [[Contacts alloc] initWithID:@"3" firstname:@"first3" lastname:@"last3" jobTitle:@"headline" onWishlist:NO andPictureURL:nil];
@@ -96,8 +104,7 @@
     [listContacts addObject:cont2];
     [listContacts addObject:cont3];
     
-    
-    return listContacts;
+    return listContacts;*/
 }
 
 @end

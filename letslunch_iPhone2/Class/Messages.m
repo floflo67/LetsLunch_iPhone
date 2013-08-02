@@ -10,15 +10,6 @@
 
 @implementation Messages
 
-- (id)init
-{
-    self = [super init];
-    if(self) {
-        
-    }
-    return self;
-}
-
 - (id)initWithDict:(NSDictionary*)dict
 {
     self = [self init];
