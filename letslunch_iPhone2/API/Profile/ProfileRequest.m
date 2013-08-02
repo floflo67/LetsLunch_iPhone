@@ -81,8 +81,8 @@
         [userContact setObject:[dictProfile objectForKey:@"firstname"] forKey:@"firstname"];
         [userContact setObject:[dictProfile objectForKey:@"lastname"] forKey:@"lastname"];
         [userContact setObject:[dictOther objectForKey:@"headline"] forKey:@"headline"];
-        if([dictProfile objectForKey:@"pictureURL"])
-            [userContact setObject:[dictProfile objectForKey:@"pictureURL"] forKey:@"pictureURL"];
+        if([dictProfile objectForKey:@"pictureUrl"])
+            [userContact setObject:[dictProfile objectForKey:@"pictureUrl"] forKey:@"pictureURL"];
         
         self.jsonDict = userContact;
     }
