@@ -88,9 +88,9 @@
 {
     NSMutableArray* listContacts = [[NSMutableArray alloc] init];
     
-    Contacts *cont1 = [[Contacts alloc] initWithID:@"1" firstname:@"first1" lastname:@"last1" jobTitle:@"headline" andPictureURL:nil];
-    Contacts *cont2 = [[Contacts alloc] initWithID:@"2" firstname:@"first2" lastname:@"last2" jobTitle:@"headline" andPictureURL:nil];
-    Contacts *cont3 = [[Contacts alloc] initWithID:@"3" firstname:@"first3" lastname:@"last3" jobTitle:@"headline" andPictureURL:nil];
+    Contacts *cont1 = [[Contacts alloc] initWithID:@"1" firstname:@"first1" lastname:@"last1" jobTitle:@"headline" onWishlist:NO andPictureURL:nil];
+    Contacts *cont2 = [[Contacts alloc] initWithID:@"2" firstname:@"first2" lastname:@"last2" jobTitle:@"headline" onWishlist:YES andPictureURL:nil];
+    Contacts *cont3 = [[Contacts alloc] initWithID:@"3" firstname:@"first3" lastname:@"last3" jobTitle:@"headline" onWishlist:NO andPictureURL:nil];
     
     [listContacts addObject:cont1];
     [listContacts addObject:cont2];

@@ -10,15 +10,6 @@
 
 @implementation Contacts
 
-- (id)init
-{
-    self = [super init];
-    if(self) {
-        
-    }
-    return self;
-}
-
 - (id)initWithDictionary:(NSDictionary*)dict
 {
     self = [self init];
@@ -31,6 +22,8 @@
         self.lastname = [dict objectForKey:@"lastname"];
         if(!self.lastname || [self.lastname.class isSubclassOfClass:[NSNull class]])
             self.lastname = @"";
+        
+        self.onWishlist = [[dict objectForKey:@"onWishList"] boolValue];
         
         self.jobTitle = [dict objectForKey:@"headline"];
         if(!self.jobTitle || [self.jobTitle.class isSubclassOfClass:[NSNull class]])
@@ -46,7 +39,7 @@
     return self;
 }
 
-- (id)initWithID:(NSString*)ID firstname:(NSString*)firstname lastname:(NSString*)lastname jobTitle:(NSString*)jobTitle andPictureURL:(NSString*)url
+- (id)initWithID:(NSString*)ID firstname:(NSString*)firstname lastname:(NSString*)lastname jobTitle:(NSString*)jobTitle onWishlist:(BOOL)onWishlist andPictureURL:(NSString *)url
 {
     self = [self init];
     if(self) {
@@ -55,6 +48,7 @@
         self.lastname = lastname;
         self.jobTitle = jobTitle;
         self.pictureURL = url;
+        self.onWishlist = onWishlist;
         
         if(self.pictureURL)
             self.image = [UIImage imageWithContentsOfFile:[NSString stringWithContentsOfURL:[NSURL URLWithString:self.pictureURL] encoding:NSUTF8StringEncoding error:nil]];
