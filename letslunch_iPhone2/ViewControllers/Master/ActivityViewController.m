@@ -203,9 +203,8 @@ static ActivityViewController *sharedSingleton = nil;
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     if(indexPath.section == 1) {
-        //Activity *activity = _objects[indexPath.section][indexPath.row];
-        NSString *contactID = @"16";
-        DetailProfileViewController *detail = [[DetailProfileViewController alloc] initWithContactID:contactID];
+        Activity *activity = _objects[indexPath.section][indexPath.row];
+        DetailProfileViewController *detail = [[DetailProfileViewController alloc] initWithContactID:activity.contact.ID];
         [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController.navigationController pushViewController:detail animated:YES];
         detail = nil;
     }
