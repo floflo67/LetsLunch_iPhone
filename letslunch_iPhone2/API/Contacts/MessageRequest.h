@@ -11,6 +11,6 @@
 @interface MessageRequest : NSObject
 
 +(void)sendMessage:(NSString*)message withToken:(NSString*)token toUser:(NSString*)userID;
--(void)sendMessage:(NSString*)message withToken:(NSString*)token toUser:(NSString*)userID;
++(void)sendMessage:(NSString*)message withToken:(NSString*)token toThread:(NSString*)threadID;
 
 @end

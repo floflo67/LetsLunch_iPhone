@@ -44,6 +44,33 @@
     }
 }
 
++ (void)sendMessage:(NSString*)message withToken:(NSString*)token toThread:(NSString*)threadID
+{
+    [[[MessageRequest alloc] init] sendMessage:message withToken:token toThread:threadID];
+}
+
+/*
+ Url: http://letslunch.dev.knackforge.com/api/me/message/reply
+ Parameters:
+    authToken
+    id
+    message
+ */
+- (void)sendMessage:(NSString*)message withToken:(NSString*)token toThread:(NSString*)threadID
+{
+    if (self.connection == nil) {
+        NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
+        [parameters setValue:token forKey:@"authToken"];
+        [parameters setValue:message forKey:@"message"];
+        [parameters setValue:threadID forKey:@"id"];
+        
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@me/message/reply",LL_API_BaseUrl]];
+        MutableRequest *request = [[MutableRequest alloc] initWithURL:url andParameters:parameters andType:@"POST"];
+        
+        self.connection = [NSURLConnection connectionWithRequest:request delegate:self];
+    }
+}
+
 #pragma connection delegate
 
 - (void)connection:(NSURLConnection*)connection didReceiveData:(NSData*)data
