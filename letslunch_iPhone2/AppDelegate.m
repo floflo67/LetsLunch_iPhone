@@ -267,14 +267,14 @@
     return self.listVisitors;
 }
 
-- (NSMutableArray*)getListMessagesForContactID:(NSString*)contactID andForceReload:(BOOL)shouldReload
+- (NSMutableArray*)getListMessagesForThreadID:(NSString*)threadID andForceReload:(BOOL)shouldReload
 {
     if(!self.listMessages) {
         self.listMessages = [[NSMutableArray alloc] init];
-        self.listMessages = [GetStaticLists getListMessagesForContactID:contactID];
+        self.listMessages = [GetStaticLists getListMessagesForContactID:threadID];
     }
     else if(shouldReload)
-        self.listMessages = [GetStaticLists getListMessagesForContactID:contactID];
+        self.listMessages = [GetStaticLists getListMessagesForContactID:threadID];
     
     return self.listMessages;
 }

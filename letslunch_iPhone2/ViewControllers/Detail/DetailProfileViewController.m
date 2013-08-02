@@ -93,7 +93,7 @@
 
 - (IBAction)sendMessageButton:(UIButton *)sender
 {
-    [self.navigationController pushViewController:[[MessageViewController alloc] initWithContactID:self.contactID] animated:YES];
+    //[self.navigationController pushViewController:[[MessageViewController alloc] initWithContactID:self.contactID] animated:YES];
 }
 
 #pragma mark - getter and setter

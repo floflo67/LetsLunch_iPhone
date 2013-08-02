@@ -31,7 +31,7 @@
 -(NSMutableArray*)getListActivitiesAndForceReload:(BOOL)shouldReload;
 -(NSMutableArray*)getListFriendsSuggestionAndForceReload:(BOOL)shouldReload;
 -(NSMutableArray*)getListVisitorsAndForceReload:(BOOL)shouldReload;
--(NSMutableArray*)getListMessagesForContactID:(NSString*)contactID andForceReload:(BOOL)shouldReload;
+-(NSMutableArray*)getListMessagesForThreadID:(NSString*)threadID andForceReload:(BOOL)shouldReload;
 -(NSMutableArray*)getListContactsAndForceReload:(BOOL)shouldReload;
 -(Activity*)getOwnerActivityAndForceReload:(BOOL)shouldReload;
 

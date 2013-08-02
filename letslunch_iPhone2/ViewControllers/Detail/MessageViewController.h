@@ -10,6 +10,6 @@
 
 @interface MessageViewController : UIViewController <UITextFieldDelegate>
 
--(id)initWithContactID:(NSString*)contactID;
+-(id)initWithThreadID:(NSString*)threadID;
 
 @end

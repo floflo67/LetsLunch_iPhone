@@ -14,7 +14,7 @@
 @interface MessageViewController ()
 
 @property (nonatomic, strong) NSMutableArray* objects;
-@property (nonatomic, strong) NSString *contactID;
+@property (nonatomic, strong) NSString *threadID;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldMessage;
@@ -25,12 +25,12 @@
 
 #pragma view lifecycle
 
-- (id)initWithContactID:(NSString*)contactID
+- (id)initWithThreadID:(NSString*)threadID
 {
     self = [super init];
     if(self) {
-        self.contactID = contactID;
-        self.objects = [(AppDelegate*)[[UIApplication sharedApplication] delegate] getListMessagesForContactID:self.contactID andForceReload:NO];
+        self.threadID = threadID;
+        self.objects = [(AppDelegate*)[[UIApplication sharedApplication] delegate] getListMessagesForThreadID:self.threadID andForceReload:NO];
     }
     return self;
 }
@@ -96,7 +96,7 @@
     /*
      Message sent by user
      */
-    if([mess.contactIDFrom isEqualToString:self.contactID]) {
+    if([mess.contactIDFrom isEqualToString:self.threadID]) {
         cell.imgName = @"MessageFromSelf.png";
         cell.tipRightward = NO;
     }
@@ -179,12 +179,11 @@
     if(textField.isFirstResponder) {
         [textField resignFirstResponder];
         [self changeTextFieldFrame:NO];
-        self.contactID = @"16";
         NSString *message = self.textFieldMessage.text;
         self.textFieldMessage.text = @""; // clears message
         
         if(message && ![message isEqualToString:@""])
-            [MessageRequest sendMessage:message withToken:[AppDelegate getToken] toUser:self.contactID];
+            [MessageRequest sendMessage:message withToken:[AppDelegate getToken] toThread:self.threadID];
         
     }
     return YES;
@@ -221,13 +220,6 @@
     if(!_objects)
         _objects = [[NSMutableArray alloc] init];
     return _objects;
-}
-
-- (NSString*)contactID
-{
-    if(!_contactID)
-        _contactID = @"1";
-    return _contactID;
 }
 
 @end
