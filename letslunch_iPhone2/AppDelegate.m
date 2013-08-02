@@ -15,6 +15,7 @@
 #import "VisitorsViewController.h"
 #import "ProfileRequest.h"
 #import <FacebookSDK/FacebookSDK.h>
+#import "SocialConnectionRequest.h"
 
 @interface AppDelegate()
 @property (strong, nonatomic) NSMutableArray *listActivities;
@@ -87,7 +88,7 @@
     self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
     self.locationManager.delegate = self;
     [self.locationManager startUpdatingLocation];
-    
+    [SocialConnectionRequest getSocialConnectionWithToken:[self getToken]];
     [self hideLoginView];
     [self setupOwnerContactInfo];
     [self.viewController ActivityConfiguration];
