@@ -19,12 +19,12 @@
 
 // API key
 #ifndef FS2_OAUTH_KEY
-#define FS2_OAUTH_KEY (@"2ZL4HYGZMGGZSDUKI55UXFFASPA4CB0TCS0Z21D0HNPGUPH2")
+#define FS2_OAUTH_KEY (@"")
 #endif
 
 // API password
 #ifndef FS2_OAUTH_SECRET
-#define FS2_OAUTH_SECRET (@"II3LCE1OM4VXJGZNQCBXVCH1FFJBLODZF0RHGU2KSAG1UFEN")
+#define FS2_OAUTH_SECRET (@"")
 #endif
 
 // Redirect API
@@ -43,7 +43,7 @@
  */
 // API key
 #ifndef FB_OAUTH_KEY
-#define FB_OAUTH_KEY (@"588630294501794")
+#define FB_OAUTH_KEY (@"")
 #endif
 
 
@@ -57,27 +57,27 @@
 
 // API key
 #ifndef LK_API_KEY
-#define LK_API_KEY (@"bu4scy6j1xfl")
+#define LK_API_KEY (@"")
 #endif
 
 // Secret key
 #ifndef LK_API_SECRET
-#define LK_API_SECRET (@"XxH5O6iZYY6vceQz")
+#define LK_API_SECRET (@"")
 #endif
 
 // User token
 #ifndef LK_API_USER_KEY
-#define LK_API_USER_KEY (@"06f88b3d-d77b-4a3f-bca0-dccd8e029a31")
+#define LK_API_USER_KEY (@"")
 #endif
 
 // User secret
 #ifndef LK_API_USER_SECRET
-#define LK_API_USER_SECRET (@"8150dfda-87b8-4e18-89ae-aa5a91c5fe9d")
+#define LK_API_USER_SECRET (@"")
 #endif
 
 // Random number
 #ifndef LK_API_STATE
-#define LK_API_STATE (@"OIJAD73Y47H2D2982U34982D3O23UE9823H923R8")
+#define LK_API_STATE (@"")
 #endif
 
 // Base URL for redirect
@@ -96,12 +96,12 @@
 
 // API key
 #ifndef TW_OAUTH_KEY
-#define TW_OAUTH_KEY (@"xH3RHvybSsqSQTEtvJ1g")
+#define TW_OAUTH_KEY (@"")
 #endif
 
 // API password
 #ifndef TW_OAUTH_SECRET
-#define TW_OAUTH_SECRET (@"FcSWBqwRiWGMTsHDZSCuxtWb6KjleujL9Bwja5SKyI")
+#define TW_OAUTH_SECRET (@"")
 #endif
 
 
