@@ -152,7 +152,6 @@ static const UInt8 kKeychainItemIdentifier[]    = "com.apple.dts.KeychainUI\0";
     [keychainData setObject:@"Your comment here." forKey:(id)kSecAttrComment]; // Not used
     [keychainData setObject:@"password" forKey:(id)kSecValueData];*/
     [keychainData setObject:@"token" forKey:(__bridge id)kSecAttrAccount];
-    [keychainData setObject:LL_Default_Picture_Url forKey:(__bridge id)kSecAttrDescription];
 }
 
 - (NSMutableDictionary*)dictionaryToSecItemFormat:(NSDictionary*)dictionaryToConvert
