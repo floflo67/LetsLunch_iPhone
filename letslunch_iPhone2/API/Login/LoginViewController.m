@@ -130,9 +130,9 @@
 }
 
 - (BOOL)logInWithUsername:(NSString*)username andPassword:(NSString*)password
-{/*
+{
     username = @"florian@letslunch.com";
-    password = @"developer";*/
+    password = @"developer";
     return [self.loginRequest loginWithUserName:username andPassword:password];
 }
 
