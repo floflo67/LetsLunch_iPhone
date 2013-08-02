@@ -18,15 +18,14 @@
 
 + (NSMutableArray*)getListActivitiesWithToken:(NSString*)token latitude:(double)latitude longitude:(double)longitude andDate:(NSString*)date
 {
-    NSMutableArray* listActivities = [LunchesRequest getLunchesWithToken:token latitude:latitude longitude:longitude andDate:date];
-    return listActivities;
+    return [LunchesRequest getLunchesWithToken:token latitude:latitude longitude:longitude andDate:date];
 }
 
 + (Activity*)getOwnerActivityWithToken:(NSString*)token
 {
     NSDictionary *dict = [LunchesRequest getOwnerLunchWithToken:token];
     if(!dict)
-        return NULL;
+        return nil;
     else
         return [[Activity alloc] initWithDict:dict];
 }
@@ -39,46 +38,12 @@
     [listFriendsSuggestion addObject:@"Suggestion1"];
     [listFriendsSuggestion addObject:@"Suggestion2"];
     [listFriendsSuggestion addObject:@"Suggestion3"];
-    
-    
     return listFriendsSuggestion;
 }
 
 + (NSMutableArray*)getListMessagesForContactID:(NSString*)contactID
 {
-    NSMutableArray* listMessages =  [[NSMutableArray alloc] initWithArray:[ThreadRequest getMessagesWithToken:[AppDelegate getToken] andThreadID:contactID]];
-    if(listMessages)
-        return listMessages;
-    else
-        return nil;
-    /*
-    Messages *mess1 = [[Messages alloc] initWithDescription:@"content1" From:contactID To:@"1" date:[NSDate new]];
-    Messages *mess2 = [[Messages alloc] initWithDescription:@"content2" From:contactID To:@"1" date:[NSDate new]];
-    Messages *mess3 = [[Messages alloc] initWithDescription:@"content3" From:contactID To:@"1" date:[NSDate new]];
-    Messages *mess4 = [[Messages alloc] initWithDescription:@"content4" From:@"1" To:contactID date:[NSDate new]];
-    Messages *mess5 = [[Messages alloc] initWithDescription:@"content5" From:@"1" To:contactID date:[NSDate new]];
-    Messages *mess6 = [[Messages alloc] initWithDescription:@"content6" From:contactID To:@"1" date:[NSDate new]];
-    Messages *mess7 = [[Messages alloc] initWithDescription:@"content7" From:contactID To:@"1" date:[NSDate new]];
-    Messages *mess8 = [[Messages alloc] initWithDescription:@"content8" From:contactID To:@"1" date:[NSDate new]];
-    Messages *mess9 = [[Messages alloc] initWithDescription:@"content9" From:contactID To:@"1" date:[NSDate new]];
-    Messages *mess10 = [[Messages alloc] initWithDescription:@"content10" From:contactID To:@"1" date:[NSDate new]];
-    Messages *mess11 = [[Messages alloc] initWithDescription:@"content11" From:contactID To:@"1" date:[NSDate new]];
-    Messages *mess12 = [[Messages alloc] initWithDescription:@"content12" From:contactID To:@"1" date:[NSDate new]];
-    
-    [listMessages addObject:mess1];
-    [listMessages addObject:mess2];
-    [listMessages addObject:mess3];
-    [listMessages addObject:mess4];
-    [listMessages addObject:mess5];
-    [listMessages addObject:mess6];
-    [listMessages addObject:mess7];
-    [listMessages addObject:mess8];
-    [listMessages addObject:mess9];
-    [listMessages addObject:mess10];
-    [listMessages addObject:mess11];
-    [listMessages addObject:mess12];*/
-    
-    return listMessages;
+    return [ThreadRequest getMessagesWithToken:[AppDelegate getToken] andThreadID:contactID];
 }
 
 + (NSMutableArray*)getListVisitors
@@ -95,16 +60,6 @@
         return listContacts;
     else
         return nil;
-    /*
-    Contacts *cont1 = [[Contacts alloc] initWithID:@"1" firstname:@"first1" lastname:@"last1" jobTitle:@"headline" onWishlist:NO andPictureURL:nil];
-    Contacts *cont2 = [[Contacts alloc] initWithID:@"2" firstname:@"first2" lastname:@"last2" jobTitle:@"headline" onWishlist:YES andPictureURL:nil];
-    Contacts *cont3 = [[Contacts alloc] initWithID:@"3" firstname:@"first3" lastname:@"last3" jobTitle:@"headline" onWishlist:NO andPictureURL:nil];
-    
-    [listContacts addObject:cont1];
-    [listContacts addObject:cont2];
-    [listContacts addObject:cont3];
-    
-    return listContacts;*/
 }
 
 @end
