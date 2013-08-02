@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProfileViewController : UITableViewController
+@interface ProfileViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 +(ProfileViewController*)getSingleton;
 +(void)suppressSingleton;

@@ -12,7 +12,7 @@
 @interface ProfileViewController ()
 @property (nonatomic, strong) ProfileRequest *profileRequest;
 @property (nonatomic, strong) NSMutableArray* objects;
-
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 @implementation ProfileViewController
@@ -106,14 +106,6 @@ static ProfileViewController *sharedSingleton = nil;
             return @"";
             break;
     }
-}
-
-- (CGFloat)tableView:(UITableView*)tableView heightForFooterInSection:(NSInteger)section
-{
-    if(section == 2)
-        return 100;
-    else
-        return 10;
 }
 
 #pragma mark - getter and setter
