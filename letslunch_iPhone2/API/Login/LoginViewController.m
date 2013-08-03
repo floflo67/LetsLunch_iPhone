@@ -87,6 +87,7 @@
         if([facebookAccounts count] > 0)
         {
             ACAccount* account = [facebookAccounts objectAtIndex:0];
+            NSLog(@"%@", account);
         }
     }];
 }
@@ -101,6 +102,7 @@
         if(twitterAccounts && [twitterAccounts count] > 0)
         {
             ACAccount* account = [twitterAccounts objectAtIndex:0];
+            NSLog(@"%@", account);
         }
         else {
             NSLog(@"No accounts");
@@ -130,9 +132,9 @@
 }
 
 - (BOOL)logInWithUsername:(NSString*)username andPassword:(NSString*)password
-{
+{/*
     username = @"florian@letslunch.com";
-    password = @"developer";
+    password = @"developer";*/
     return [self.loginRequest loginWithUserName:username andPassword:password];
 }
 
