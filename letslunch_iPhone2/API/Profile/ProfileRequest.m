@@ -61,7 +61,7 @@
     }
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"%@", response);
+        NSLog(@"profile err1 %@", response);
     }
 }
 
@@ -88,7 +88,7 @@
     }
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"%@", response);
+        NSLog(@"profile err2 %@", response);
     }
 }
 

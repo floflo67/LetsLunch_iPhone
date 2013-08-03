@@ -90,15 +90,12 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection*)connection
-{
-    NSString* response = [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding];
-    NSLog(@"%@", response);
-    
+{    
 	if (self.statusCode != 200) {
         NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:self.data options:0 error:nil]];
         NSDictionary *dictError = [NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"error"]]];
 		NSString* response = [dictError objectForKey:@"message"];
-        NSLog(@"%@", response);
+        NSLog(@"message %@", response);
 	}
 	
 	self.connection = nil;

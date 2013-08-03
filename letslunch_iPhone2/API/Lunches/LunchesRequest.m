@@ -57,14 +57,13 @@
     
     if(statusCode == 200) {
         NSDictionary *dict = arr[0];
-        
         return [self createActivityDictionnaryWithDictionnary:dict];
     }
     else if (self.statusCode == 201)
         return nil;
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"%@", response);
+        NSLog(@"lunchrequest err1 %@", response);
         return nil;
     }
 }
@@ -122,7 +121,7 @@
         return nil;
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"%@", response);
+        NSLog(@"lunchrequest err2 %@", response);
         return nil;
     }
 }

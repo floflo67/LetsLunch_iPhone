@@ -51,7 +51,7 @@
     }
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"%@", response);
+        NSLog(@"thread err1 %@", response);
     }
 }
 
@@ -106,7 +106,7 @@
     if(statusCode == 200) {
         
         NSArray *jsonDict = [NSArray arrayWithArray:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
-        NSLog(@"%@", jsonDict);
+        NSLog(@"thread %@", jsonDict);
         /*
         for (NSDictionary *dict in jsonDict) {
             [self.jsonArray addObject:[self creatingThreadWithDict:dict]];
@@ -114,7 +114,7 @@
     }
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"%@", response);
+        NSLog(@"thread err3 %@", response);
     }
 }
 

@@ -94,7 +94,7 @@ static ActivityViewController *sharedSingleton = nil;
     if(section == 0)
         return 1;
     else if([[self.objects[section] description] isEqualToString:@"NIL"]) {
-        return 1;
+        return 0;
     }
     return [self.objects[section] count];
 }
@@ -133,7 +133,7 @@ static ActivityViewController *sharedSingleton = nil;
     
     if(indexPath.section == 1) {
         if([[self.objects[indexPath.section] description] isEqualToString:@"NIL"]) {            
-            
+            NSLog(@"empty");
         }
         else {
             Activity *activity = self.objects[indexPath.section][indexPath.row];

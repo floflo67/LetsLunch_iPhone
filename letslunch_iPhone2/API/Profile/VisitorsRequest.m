@@ -58,7 +58,7 @@
     }
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"%@", response);
+        NSLog(@"visitor %@", response);
     }
 }
 
