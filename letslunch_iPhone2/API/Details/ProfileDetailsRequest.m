@@ -42,11 +42,10 @@
         NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:self.jsonDict copyItems:NO];
         [dict removeObjectForKey:@"lunch_zone"];
         self.jsonDict = dict;
-        
     }
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"%@", response);
+        NSLog(@"profiledetail %@", response);
     }
 }
 
