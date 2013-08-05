@@ -19,6 +19,25 @@
 
 @implementation InviteViewController
 
+static InviteViewController *sharedSingleton = nil;
++ (InviteViewController*)getSingleton
+{
+    if (sharedSingleton != nil)
+        return sharedSingleton;
+    @synchronized(self)
+    {
+        if (sharedSingleton == nil)
+            sharedSingleton = [[self alloc] init];
+    }
+    return sharedSingleton;
+}
+
++ (void)suppressSingleton
+{
+    if (sharedSingleton != nil)
+        sharedSingleton = nil;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -65,7 +84,7 @@
     InviteContactsViewController *vc = [[InviteContactsViewController alloc] init];
     switch (indexPath.row) {
         case 0: // contacts
-            [self.navigationController pushViewController:vc animated:YES];
+            [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController.navigationController pushViewController:vc animated:YES];
             break;
         case 1:
             [self getFacebookFriend];
@@ -107,7 +126,7 @@
     [self.friendPickerController loadData];
     [self.friendPickerController clearSelection];
     
-    [self presentViewController:self.friendPickerController animated:YES completion:nil];
+    [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController presentViewController:self.friendPickerController animated:YES completion:nil];
 }
 
 - (void)facebookViewControllerDoneWasPressed:(id)sender
@@ -116,7 +135,7 @@
         [self.facebookFriends addObject:[[FacebookFriend alloc] initWithID:user.id firstname:user.first_name andLastname:user.last_name]];
     }
     NSLog(@"%@", self.facebookFriends);
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)facebookViewControllerCancelWasPressed:(id)sender

@@ -12,4 +12,8 @@
 
 @interface InviteViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, FBFriendPickerDelegate>
 
+
++(InviteViewController*)getSingleton;
++(void)suppressSingleton;
+
 @end
