@@ -88,7 +88,7 @@
     self.locationManager.delegate = self;
     [self.locationManager startUpdatingLocation];
     
-    [SocialConnectionRequest getSocialConnectionWithToken:[self getToken]];
+    //[SocialConnectionRequest getSocialConnectionWithToken:[self getToken]];
     [self hideLoginView];
     [self.viewController ActivityConfiguration];
 }

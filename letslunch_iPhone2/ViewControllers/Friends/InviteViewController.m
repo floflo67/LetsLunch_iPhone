@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (retain, nonatomic) FBFriendPickerViewController *friendPickerController;
 @property (nonatomic, strong) NSMutableArray *facebookFriends;
+@property (nonatomic, strong) NSMutableArray *facebookFriendsID;
 @end
 
 @implementation InviteViewController
@@ -100,8 +101,11 @@ static InviteViewController *sharedSingleton = nil;
 
 - (void)getFacebookFriend
 {
+    [self showRequestForFacebook];
+    
     // FBSample logic
     // if the session is open, then load the data for our view controller
+    /*
     if (!FBSession.activeSession.isOpen) {
         // if the session is closed, then we open it here, and establish a handler for state changes
         [FBSession openActiveSessionWithReadPermissions:nil allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
@@ -129,6 +133,7 @@ static InviteViewController *sharedSingleton = nil;
     [self.friendPickerController clearSelection];
     
     [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController presentViewController:self.friendPickerController animated:YES completion:nil];
+     */
 }
 
 #pragma mark - FBFriendPickerViewController delegate
@@ -137,14 +142,35 @@ static InviteViewController *sharedSingleton = nil;
 {
     for (id<FBGraphUser> user in self.friendPickerController.selection) {
         [self.facebookFriends addObject:[[FacebookFriend alloc] initWithID:user.id firstname:user.first_name andLastname:user.last_name]];
+        [self.facebookFriendsID addObject:user.id];
     }
-    NSLog(@"%@", self.facebookFriends);
     [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)facebookViewControllerCancelWasPressed:(id)sender
 {
     [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - Custom function
+
+- (void)showRequestForFacebook
+{
+    //NSArray *suggestedFriends = [[NSArray alloc] initWithObjects:@"286400088", @"685145706", @"596824621", @"555279551", nil];
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"100006504845625", @"to", nil]; // John Smith
+    //NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:nil];
+    
+    [FBWebDialogs presentRequestsDialogModallyWithSession:[FBSession activeSession] message:[NSString stringWithFormat:@"Join me on Letslunch.com."] title:@"Invite" parameters:params handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
+        if (error)
+            NSLog(@"Error sending request.");
+        else {
+            if (result == FBWebDialogResultDialogNotCompleted)
+                NSLog(@"User canceled request.");
+            else if(result == FBWebDialogResultDialogCompleted)
+                NSLog(@"Request Sent. %@", resultURL);
+            else
+                NSLog(@"Error unknown.");
+        }}];
 }
 
 #pragma mark - getter and setter
@@ -161,6 +187,13 @@ static InviteViewController *sharedSingleton = nil;
     if(!_facebookFriends)
         _facebookFriends = [[NSMutableArray alloc] init];
     return _facebookFriends;
+}
+
+- (NSMutableArray*)facebookFriendsID
+{
+    if(!_facebookFriendsID)
+        _facebookFriendsID = [[NSMutableArray alloc] init];
+    return _facebookFriendsID;
 }
 
 @end
