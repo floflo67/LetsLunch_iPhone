@@ -30,7 +30,6 @@
 @property (nonatomic, strong) NSIndexPath *leftSelectedIndexPath;
 
 -(void)findFriendsButtonClick:(id)sender;
--(void)inviteFriendsButtonClick:(id)sender;
 -(void)shareButtonClick:(id)sender;
 -(void)closeView;
 

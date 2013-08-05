@@ -78,6 +78,13 @@
     self.navigationItem.title = @"Visitors";
 }
 
+- (void)AddLunchersConfiguration
+{
+    self.centerView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
+    [self.centerView addSubview:[InviteViewController getSingleton].view];
+    self.navigationItem.title = @"Invite";
+}
+
 - (void)logout
 {
     [AppDelegate logout];
@@ -110,13 +117,6 @@
 - (void)findFriendsButtonClick:(id)sender
 {
     [self.navigationController toggleRevealState:JTRevealedStateNo];
-}
-
-- (void)inviteFriendsButtonClick:(id)sender
-{
-    [self.navigationController toggleRevealState:JTRevealedStateNo];
-    InviteViewController *invite = [[InviteViewController alloc] init];
-    [self.navigationController pushViewController:invite animated:YES];
 }
 
 - (void)shareButtonClick:(id)sender
@@ -259,6 +259,8 @@
         [self ProfileConfiguration];
     if([[object description] isEqualToString:@"Visitors"])
        [self VisitorsConfiguration];
+    if([[object description] isEqualToString:@"Add lunchers"])
+       [self AddLunchersConfiguration];
     if([[object description] isEqualToString:@"Logout"])
         [self logout];
 }
