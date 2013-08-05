@@ -95,6 +95,16 @@
     return cell;
 }
 
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ABRecordID contact = [[self.objects objectAtIndex:indexPath.row] intValue];
+    ABRecordRef record = ABAddressBookGetPersonWithRecordID(_addressBook, contact);
+    NSString *compositeName = (NSString*)CFBridgingRelease(ABRecordCopyCompositeName(record));
+    NSLog(@"%@", compositeName);
+}
+
 #pragma mark - getter and setter
 
 - (NSArray*)objects
