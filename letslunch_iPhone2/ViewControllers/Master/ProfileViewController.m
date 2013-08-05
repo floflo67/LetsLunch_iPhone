@@ -48,8 +48,10 @@ static ProfileViewController *sharedSingleton = nil;
         
         NSDictionary *location = [NSDictionary dictionaryWithDictionary:[dict objectForKey:@"location"]];
         NSDictionary *other = [NSDictionary dictionaryWithDictionary:[dict objectForKey:@"other"]];
+        NSDictionary *skills = [NSArray arrayWithArray:[dict objectForKey:@"skills"]];
+        NSDictionary *needs = [NSArray arrayWithArray:[dict objectForKey:@"needs"]];
         
-        self.objects = (NSMutableArray*)@[profile, location, other];
+        self.objects = (NSMutableArray*)@[profile, location, other, skills, needs];
     }
     
     return self;
@@ -66,6 +68,8 @@ static ProfileViewController *sharedSingleton = nil;
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSInteger number = [(NSArray*)self.objects[section] count];
+    if(number == 0)
+        number++;
     return number;
 }
 
@@ -76,17 +80,30 @@ static ProfileViewController *sharedSingleton = nil;
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
-    NSDictionary *dict = (NSDictionary*)self.objects[indexPath.section];
-    
-    NSArray *allKeys = [dict allKeys];
-    NSArray *allValues = [dict allValues];
-    
-    NSString *key = allKeys[indexPath.row];
-    NSString *keyCapitalized = [key stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[key substringToIndex:1] capitalizedString]];
-    
-    cell.textLabel.text = keyCapitalized;
-    cell.detailTextLabel.text = allValues[indexPath.row];
-    
+
+    if(indexPath.section < 3) {
+        NSDictionary *dict = (NSDictionary*)self.objects[indexPath.section];
+        
+        NSArray *allKeys = [dict allKeys];
+        NSArray *allValues = [dict allValues];
+        
+        NSString *key = allKeys[indexPath.row];
+        NSString *keyCapitalized = [key stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[key substringToIndex:1] capitalizedString]];
+        
+        cell.textLabel.text = keyCapitalized;
+        cell.detailTextLabel.text = allValues[indexPath.row];
+    }
+    else {
+        NSArray *array = (NSArray*)self.objects[indexPath.section];
+        if([array count] == 0) {
+            cell.textLabel.text = @"None listed";
+            cell.detailTextLabel.text = @"";
+        }
+        else {
+            cell.textLabel.text = [array[indexPath.row] objectForKey:@"name"];
+            cell.detailTextLabel.text = @"";
+        }
+    }
     return cell;
 }
 
@@ -101,6 +118,12 @@ static ProfileViewController *sharedSingleton = nil;
             break;
         case 2:
             return @"Other";
+            break;
+        case 3:
+            return @"Skills";
+            break;
+        case 4:
+            return @"Needs";
             break;
         default:
             return @"";
