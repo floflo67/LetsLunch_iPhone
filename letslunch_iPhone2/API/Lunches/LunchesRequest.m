@@ -59,7 +59,7 @@
         NSDictionary *dict = arr[0];
         return [self createActivityDictionnaryWithDictionnary:dict];
     }
-    else if (self.statusCode == 201)
+    else if (statusCode == 201)
         return nil;
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];

@@ -52,6 +52,8 @@
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         if(response.length < 100)
             NSLog(@"social %@", response);
+        else
+            NSLog(@"socialconnection err");
     }
 }
 
