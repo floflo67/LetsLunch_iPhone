@@ -129,6 +129,8 @@ static InviteViewController *sharedSingleton = nil;
     [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController presentViewController:self.friendPickerController animated:YES completion:nil];
 }
 
+#pragma mark - FBFriendPickerViewController delegate
+
 - (void)facebookViewControllerDoneWasPressed:(id)sender
 {
     for (id<FBGraphUser> user in self.friendPickerController.selection) {
@@ -140,7 +142,7 @@ static InviteViewController *sharedSingleton = nil;
 
 - (void)facebookViewControllerCancelWasPressed:(id)sender
 {
-    //[self fillTextBoxAndDismiss:@"<Cancelled>"];
+    [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - getter and setter
