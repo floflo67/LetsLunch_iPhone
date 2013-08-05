@@ -121,6 +121,8 @@ static InviteViewController *sharedSingleton = nil;
         self.friendPickerController.title = @"Friends";
         self.friendPickerController.delegate = self;
         self.friendPickerController.SortOrdering = FBFriendSortByLastName;
+        self.friendPickerController.displayOrdering = FBFriendDisplayByLastName;
+        self.friendPickerController.itemPicturesEnabled = YES;
     }
     
     [self.friendPickerController loadData];
