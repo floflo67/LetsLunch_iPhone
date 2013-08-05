@@ -16,6 +16,7 @@
 #import "ProfileRequest.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import "SocialConnectionRequest.h"
+#import "InviteViewController.h"
 
 @interface AppDelegate()
 @property (strong, nonatomic) NSMutableArray *listActivities;
@@ -34,7 +35,6 @@
 @synthesize window = _window;
 @synthesize viewController = _viewController;
 @synthesize navController = _navController;
-@synthesize loginViewController = _loginViewController;
 
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
@@ -90,7 +90,6 @@
     
     [SocialConnectionRequest getSocialConnectionWithToken:[self getToken]];
     [self hideLoginView];
-    [self setupOwnerContactInfo];
     [self.viewController ActivityConfiguration];
 }
 
@@ -105,11 +104,6 @@
     [self.loginViewController.view removeFromSuperview];
     [self.loginViewController.view setHidden:YES];
     self.loginViewController = nil;
-}
-
-- (void)setupOwnerContactInfo
-{
-    self.ownerContact = [[Contacts alloc] initWithDictionary:[ProfileRequest getProfileWithToken:[self getToken] andLight:YES]];
 }
 
 #pragma custom functions
@@ -206,6 +200,7 @@
     [ContactViewController suppressSingleton];
     [ProfileViewController suppressSingleton];
     [VisitorsViewController suppressSingleton];
+    [InviteViewController suppressSingleton];
     [self showLoginView];
 }
 
@@ -331,6 +326,13 @@
     if(!_listVisitors)
         _listVisitors = [[NSMutableArray alloc] initWithArray:[GetStaticLists getListVisitors]];
     return _listVisitors;
+}
+
+- (Contacts*)ownerContact
+{
+    if(!_ownerContact)
+        _ownerContact = [[Contacts alloc] initWithDictionary:[ProfileRequest getProfileWithToken:[self getToken] andLight:YES]];
+    return _ownerContact;
 }
 
 @end
