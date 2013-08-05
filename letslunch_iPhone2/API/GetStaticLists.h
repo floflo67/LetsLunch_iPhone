@@ -14,7 +14,7 @@
 +(NSMutableArray*)getListActivitiesWithToken:(NSString*)token latitude:(double)latitude longitude:(double)longitude andDate:(NSString*)date;
 +(NSMutableArray*)getListFriendsSuggestion;
 +(NSMutableArray*)getListVisitors;
-+(NSMutableArray*)getListMessagesForContactID:(NSString*)contactID;
++(NSMutableArray*)getListMessagesForThreadID:(NSString*)threadID;
 +(Activity*)getOwnerActivityWithToken:(NSString*)token;
 +(NSMutableArray*)getListContacts;
 

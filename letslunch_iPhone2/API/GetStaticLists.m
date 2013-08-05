@@ -41,9 +41,9 @@
     return listFriendsSuggestion;
 }
 
-+ (NSMutableArray*)getListMessagesForContactID:(NSString*)contactID
++ (NSMutableArray*)getListMessagesForThreadID:(NSString*)threadID
 {
-    return [ThreadRequest getMessagesWithToken:[AppDelegate getToken] andThreadID:contactID];
+    return [ThreadRequest getMessagesWithToken:[AppDelegate getToken] andThreadID:threadID];
 }
 
 + (NSMutableArray*)getListVisitors
