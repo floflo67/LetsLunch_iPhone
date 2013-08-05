@@ -29,7 +29,7 @@
     [super viewDidLoad];
     if(!self.menuItem) {
         self.index = 0;
-        self.menuItem = [[NSArray alloc] initWithObjects:@"Profile", @"Activity", @"Messages", @"Visitors", @"Settings", @"Notifications", @"Logout", nil];
+        self.menuItem = [[NSArray alloc] initWithObjects:@"Profile", @"Activity", @"Messages", @"Visitors", @"Add lunchers", @"Settings", @"Notifications", @"Logout", nil];
     }
 }
 

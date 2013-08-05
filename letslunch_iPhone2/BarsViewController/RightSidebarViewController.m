@@ -119,7 +119,7 @@
          Uses image in Image folder
          Call inviteFriendsButtonClick function in CenterViewController
          */
-        UIButton *inviteFriendButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        /*UIButton *inviteFriendButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [inviteFriendButton setImage:[UIImage imageNamed:@"InviteFriendsButton.png"] forState:UIControlStateNormal];
         [inviteFriendButton sizeToFit];
         [inviteFriendButton addTarget:((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController
@@ -127,7 +127,7 @@
                    forControlEvents:UIControlEventTouchUpInside];
         
         inviteFriendButton.frame = (CGRect){x + 130, y, 120, 32};
-        [cell addSubview:inviteFriendButton];
+        [cell addSubview:inviteFriendButton];*/
     }
     else {
         /*
