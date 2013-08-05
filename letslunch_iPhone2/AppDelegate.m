@@ -84,10 +84,10 @@
     /*
      To get current location
      */
-    self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
     self.locationManager.delegate = self;
     [self.locationManager startUpdatingLocation];
+    
     [SocialConnectionRequest getSocialConnectionWithToken:[self getToken]];
     [self hideLoginView];
     [self setupOwnerContactInfo];
@@ -96,16 +96,15 @@
 
 - (void)showLoginView
 {
-    _loginViewController = [[LoginViewController alloc] init];
-    [_loginViewController.view setFrame:[[UIScreen mainScreen] bounds]];
-    [self.viewController.navigationController.view addSubview:_loginViewController.view];
+    [self.loginViewController.view setFrame:[[UIScreen mainScreen] bounds]];
+    [self.viewController.navigationController.view addSubview:self.loginViewController.view];
 }
 
 - (void)hideLoginView
 {
-    [_loginViewController.view removeFromSuperview];
-    [_loginViewController.view setHidden:YES];
-    _loginViewController = nil;
+    [self.loginViewController.view removeFromSuperview];
+    [self.loginViewController.view setHidden:YES];
+    self.loginViewController = nil;
 }
 
 - (void)setupOwnerContactInfo
@@ -232,11 +231,7 @@
     [format setDateFormat:@"yyyy-MM-dd"];
     NSString *date = [format stringFromDate:[NSDate new]];
     
-    if(!self.listActivities) {
-        self.listActivities = [[NSMutableArray alloc] init];
-        self.listActivities = [GetStaticLists getListActivitiesWithToken:[AppDelegate getToken] latitude:self.locationManager.location.coordinate.latitude longitude:self.locationManager.location.coordinate.longitude andDate:date];
-    }
-    else if(shouldReload)
+    if(shouldReload)
         self.listActivities = [GetStaticLists getListActivitiesWithToken:[AppDelegate getToken] latitude:self.locationManager.location.coordinate.latitude longitude:self.locationManager.location.coordinate.longitude andDate:date];
     
     return self.listActivities;
@@ -244,25 +239,15 @@
 
 - (NSMutableArray*)getListFriendsSuggestionAndForceReload:(BOOL)shouldReload
 {
-    if(!self.listFriendsSuggestion) {
-        self.listFriendsSuggestion = [[NSMutableArray alloc] init];
+    if(shouldReload)
         self.listFriendsSuggestion = [GetStaticLists getListFriendsSuggestion];
-    }
-    else if(shouldReload)
-        self.listFriendsSuggestion = [GetStaticLists getListFriendsSuggestion];
-    
     return self.listFriendsSuggestion;
 }
 
 - (NSMutableArray*)getListVisitorsAndForceReload:(BOOL)shouldReload
 {
-    if(!self.listVisitors) {
-        self.listVisitors = [[NSMutableArray alloc] init];
+    if(shouldReload)
         self.listVisitors = [GetStaticLists getListVisitors];
-    }
-    else if(shouldReload)
-        self.listVisitors = [GetStaticLists getListVisitors];
-    
     return self.listVisitors;
 }
 
@@ -270,37 +255,82 @@
 {
     if(!self.listMessages) {
         self.listMessages = [[NSMutableArray alloc] init];
-        self.listMessages = [GetStaticLists getListMessagesForContactID:threadID];
+        self.listMessages = [GetStaticLists getListMessagesForThreadID:threadID];
     }
     else if(shouldReload)
-        self.listMessages = [GetStaticLists getListMessagesForContactID:threadID];
+        self.listMessages = [GetStaticLists getListMessagesForThreadID:threadID];
     
     return self.listMessages;
 }
 
 - (NSMutableArray*)getListContactsAndForceReload:(BOOL)shouldReload
 {
-    if(!self.listContacts) {
-        self.listContacts = [[NSMutableArray alloc] init];
+    if(shouldReload)
         self.listContacts = [GetStaticLists getListContacts];
-    }
-    else if(shouldReload)
-        self.listContacts = [GetStaticLists getListContacts];
-    
     return self.listContacts;
 }
 
 - (Activity*)getOwnerActivityAndForceReload:(BOOL)shouldReload
 {
-    if(!self.ownerActivity) {
+    if(shouldReload)
         self.ownerActivity = [GetStaticLists getOwnerActivityWithToken:[self getToken]];
-    }
-    else if(shouldReload)
-        self.ownerActivity = [GetStaticLists getOwnerActivityWithToken:[self getToken]];
-    //return NULL;
     return self.ownerActivity;
 }
 
 #pragma mark - getter and setter
+
+- (CLLocationManager*)locationManager
+{
+    if(!_locationManager)
+        _locationManager = [[CLLocationManager alloc] init];
+    return _locationManager;
+}
+
+- (LoginViewController*)loginViewController
+{
+    if(!_loginViewController)
+        _loginViewController = [[LoginViewController alloc] init];
+    return _loginViewController;
+}
+
+- (Activity*)ownerActivity
+{
+    if(!_ownerActivity)
+        _ownerActivity = [GetStaticLists getOwnerActivityWithToken:[self getToken]];
+    return _ownerActivity;
+}
+
+- (NSMutableArray*)listActivities
+{
+    if(!_listActivities) {
+        NSDateFormatter *format = [[NSDateFormatter alloc] init];
+        [format setDateFormat:@"yyyy-MM-dd"];
+        NSString *date = [format stringFromDate:[NSDate new]];
+        
+        _listActivities = [[NSMutableArray alloc] initWithArray:[GetStaticLists getListActivitiesWithToken:[AppDelegate getToken] latitude:self.locationManager.location.coordinate.latitude longitude:self.locationManager.location.coordinate.longitude andDate:date]];
+    }
+    return _listActivities;
+}
+
+- (NSMutableArray*)listContacts
+{
+    if(!_listContacts)
+        _listContacts = [[NSMutableArray alloc] initWithArray:[GetStaticLists getListContacts]];
+    return _listContacts;    
+}
+
+- (NSMutableArray*)listFriendsSuggestion
+{
+    if(!_listFriendsSuggestion)
+        _listFriendsSuggestion = [[NSMutableArray alloc] initWithArray:[GetStaticLists getListFriendsSuggestion]];
+    return _listFriendsSuggestion;
+}
+
+- (NSMutableArray*)listVisitors
+{
+    if(!_listVisitors)
+        _listVisitors = [[NSMutableArray alloc] initWithArray:[GetStaticLists getListVisitors]];
+    return _listVisitors;
+}
 
 @end
