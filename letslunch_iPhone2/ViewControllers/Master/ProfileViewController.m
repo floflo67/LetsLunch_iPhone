@@ -68,8 +68,13 @@ static ProfileViewController *sharedSingleton = nil;
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSInteger number = [(NSArray*)self.objects[section] count];
-    if(number == 0)
+    if(number == 0 && section >= 3)
         number++;
+    else if (section == 2 && number == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"You don't seem to have an internet connection" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+        alert = nil;
+    }
     return number;
 }
 
@@ -86,12 +91,17 @@ static ProfileViewController *sharedSingleton = nil;
         
         NSArray *allKeys = [dict allKeys];
         NSArray *allValues = [dict allValues];
-        
+        if([allKeys count] >= indexPath.row && indexPath.row != 0) {
         NSString *key = allKeys[indexPath.row];
         NSString *keyCapitalized = [key stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[key substringToIndex:1] capitalizedString]];
         
         cell.textLabel.text = keyCapitalized;
         cell.detailTextLabel.text = allValues[indexPath.row];
+        }
+        else {
+            cell.textLabel.text = @"Error connection";
+            cell.detailTextLabel.text = @"";
+        }
     }
     else {
         NSArray *array = (NSArray*)self.objects[indexPath.section];
