@@ -157,8 +157,8 @@ static InviteViewController *sharedSingleton = nil;
 - (void)showRequestForFacebook
 {
     //NSArray *suggestedFriends = [[NSArray alloc] initWithObjects:@"286400088", @"685145706", @"596824621", @"555279551", nil];
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"100006504845625", @"to", nil]; // John Smith
-    //NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:nil];
+    //NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"100006504845625", @"to", nil]; // John Smith
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:nil];
     
     [FBWebDialogs presentRequestsDialogModallyWithSession:[FBSession activeSession] message:[NSString stringWithFormat:@"Join me on Letslunch.com."] title:@"Invite" parameters:params handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
         if (error)
@@ -166,11 +166,33 @@ static InviteViewController *sharedSingleton = nil;
         else {
             if (result == FBWebDialogResultDialogNotCompleted)
                 NSLog(@"User canceled request.");
-            else if(result == FBWebDialogResultDialogCompleted)
-                NSLog(@"Request Sent. %@", resultURL);
+            else if(result == FBWebDialogResultDialogCompleted) {
+                NSDictionary *urlParams = [self parseURLParams:[resultURL query]];
+                if (![urlParams valueForKey:@"request"])
+                    NSLog(@"User canceled request.");
+                else {
+                    NSString *requestID = [urlParams valueForKey:@"request"];
+                    NSLog(@"Request ID: %@", requestID);
+                }
+            }
             else
                 NSLog(@"Error unknown.");
-        }}];
+        }
+    }];
+}
+
+- (NSDictionary*)parseURLParams:(NSString *)query {
+    NSArray *pairs = [query componentsSeparatedByString:@"&"];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    for (NSString *pair in pairs) {
+        NSArray *kv = [pair componentsSeparatedByString:@"="];
+        NSString *val =
+        [[kv objectAtIndex:1]
+         stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        [params setObject:val forKey:[kv objectAtIndex:0]];
+    }
+    return params;
 }
 
 #pragma mark - getter and setter
