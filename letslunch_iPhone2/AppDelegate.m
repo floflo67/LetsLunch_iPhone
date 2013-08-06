@@ -19,13 +19,13 @@
 #import "InviteViewController.h"
 
 @interface AppDelegate()
-@property (strong, nonatomic) NSMutableArray *listActivities;
-@property (strong, nonatomic) NSMutableArray *listFriendsSuggestion;
-@property (strong, nonatomic) NSMutableArray *listMessages;
-@property (strong, nonatomic) NSMutableArray *listContacts;
-@property (strong, nonatomic) NSMutableArray *listVisitors;
+@property (nonatomic, strong) NSMutableArray *listActivities;
+@property (nonatomic, strong) NSMutableArray *listFriendsSuggestion;
+@property (nonatomic, strong) NSMutableArray *listMessages;
+@property (nonatomic, strong) NSMutableArray *listContacts;
+@property (nonatomic, strong) NSMutableArray *listVisitors;
 
-@property (strong, nonatomic) LoginViewController *loginViewController;
+@property (nonatomic, strong) LoginViewController *loginViewController;
 
 @property (nonatomic, strong) KeychainWrapper *tokenItem;
 @end

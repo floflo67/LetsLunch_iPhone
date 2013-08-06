@@ -14,7 +14,7 @@
 }
 
 @property (strong,nonatomic) NSMutableArray *requestHistory;
-@property (strong, nonatomic) NSMutableDictionary *asyncConnDict;
+@property (nonatomic, strong) NSMutableDictionary *asyncConnDict;
 
 -(void)handleConnectionError:(NSError*)error;
 -(void)makeAsyncRequest:(NSURL*)url target:(FSTargetCallback*)target;

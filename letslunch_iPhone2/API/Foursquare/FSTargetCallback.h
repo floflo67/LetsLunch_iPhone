@@ -20,14 +20,14 @@ typedef void(^callback_block)(BOOL success, id result);
 	int				numTries;
 }
 
-@property (strong, nonatomic)	id targetObject;
+@property (nonatomic, strong)	id targetObject;
 @property (assign, nonatomic) SEL targetCallback;
 @property (assign, nonatomic) SEL resultCallback;
 @property (copy, nonatomic)	NSString *requestUrl;
-@property (strong, nonatomic) NSURLRequest *request;
+@property (nonatomic, strong) NSURLRequest *request;
 @property (assign, nonatomic) int numTries;
 @property (copy, nonatomic) callback_block callback;
-@property (strong, nonatomic) NSMutableData	*receivedData;
+@property (nonatomic, strong) NSMutableData	*receivedData;
 
 -(id)initWithCallback:(callback_block)callback_ resultCallback:(SEL)aResultCallback requestUrl:(NSString*)aRequestUrl numTries:(int)numberTries;
 

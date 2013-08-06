@@ -14,8 +14,8 @@
 
 @interface ShareViewController ()
 @property (nonatomic, strong) SLComposeViewController *mySLComposerSheet;
-@property (weak, nonatomic) IBOutlet UIButton *facebookButton;
-@property (weak, nonatomic) IBOutlet UIButton *twitterButton;
+@property (nonatomic, weak) IBOutlet UIButton *facebookButton;
+@property (nonatomic, weak) IBOutlet UIButton *twitterButton;
 @property (nonatomic) BOOL mustShareOnFacebook;
 @end
 

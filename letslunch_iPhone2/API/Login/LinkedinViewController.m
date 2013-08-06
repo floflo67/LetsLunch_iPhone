@@ -10,9 +10,9 @@
 #import "AppDelegate.h"
 
 @interface LinkedInViewController ()
-@property (strong, nonatomic) NSString *access_token;
-@property (weak, nonatomic) IBOutlet UIWebView *webView;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, strong) NSString *access_token;
+@property (nonatomic, weak) IBOutlet UIWebView *webView;
+@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *activityIndicator;
 @end
 
 @implementation LinkedInViewController

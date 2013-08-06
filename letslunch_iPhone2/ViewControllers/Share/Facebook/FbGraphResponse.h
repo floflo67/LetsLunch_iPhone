@@ -11,8 +11,8 @@
 
 @interface FbGraphResponse : NSObject
 
-@property (nonatomic, retain) NSString *htmlResponse;
-@property (nonatomic, retain) UIImage *imageResponse;
-@property (nonatomic, retain) NSError *error;
+@property (nonatomic, strong) NSString *htmlResponse;
+@property (nonatomic, strong) UIImage *imageResponse;
+@property (nonatomic, strong) NSError *error;
 
 @end

@@ -13,12 +13,12 @@
 
 @interface LoginViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *textFieldUsername;
-@property (weak, nonatomic) IBOutlet UITextField *textFieldPassword;
-@property (weak, nonatomic) IBOutlet UIButton *buttonLogIn;
-@property (weak, nonatomic) IBOutlet UIButton *buttonTwitter;
-@property (weak, nonatomic) IBOutlet UIButton *buttonFacebook;
-@property (weak, nonatomic) IBOutlet UIButton *buttonLinkedIn;
+@property (nonatomic, weak) IBOutlet UITextField *textFieldUsername;
+@property (nonatomic, weak) IBOutlet UITextField *textFieldPassword;
+@property (nonatomic, weak) IBOutlet UIButton *buttonLogIn;
+@property (nonatomic, weak) IBOutlet UIButton *buttonTwitter;
+@property (nonatomic, weak) IBOutlet UIButton *buttonFacebook;
+@property (nonatomic, weak) IBOutlet UIButton *buttonLinkedIn;
 @property (nonatomic) BOOL isLinkedIn;
 
 @property (nonatomic, strong) LoginRequests *loginRequest;

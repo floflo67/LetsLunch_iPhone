@@ -16,7 +16,7 @@
     LunchesRequest *_lunchRequest;
 }
 
-@property (strong, nonatomic) FSVenue *venue;
+@property (nonatomic, strong) FSVenue *venue;
 
 +(CreateActivityViewController*)getSingleton;
 -(void)loadViewWithActivity:(Activity*)activity;

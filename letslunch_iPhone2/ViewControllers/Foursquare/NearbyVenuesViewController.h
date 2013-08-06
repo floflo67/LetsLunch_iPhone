@@ -15,18 +15,18 @@
     CLLocationManager *_locationManager;
 }
 
-@property (strong, nonatomic) IBOutlet UITableView* tableView;
+@property (nonatomic, strong) IBOutlet UITableView* tableView;
 
-@property (strong, nonatomic) FSVenue *selected;
-@property (strong, nonatomic) NSMutableArray *nearbyVenues;
+@property (nonatomic, strong) FSVenue *selected;
+@property (nonatomic, strong) NSMutableArray *nearbyVenues;
 
-@property (strong, nonatomic) NSString *section;
-@property (strong, nonatomic) NSString *query;
-@property (strong, nonatomic) NSNumber *radius;
+@property (nonatomic, strong) NSString *section;
+@property (nonatomic, strong) NSString *query;
+@property (nonatomic, strong) NSNumber *radius;
 @property (nonatomic) BOOL isSearching;
 
-@property (strong, nonatomic) UITextField *textFieldSearch;
-@property (strong, nonatomic) IBOutlet UISegmentedControl *segment;
+@property (nonatomic, strong) UITextField *textFieldSearch;
+@property (nonatomic, strong) IBOutlet UISegmentedControl *segment;
 
 -(IBAction)valueChanged:(id)sender;
 -(void)search:(id)sender;

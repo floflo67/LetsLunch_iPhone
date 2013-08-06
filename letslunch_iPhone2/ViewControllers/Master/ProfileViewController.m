@@ -12,7 +12,7 @@
 @interface ProfileViewController ()
 @property (nonatomic, strong) ProfileRequest *profileRequest;
 @property (nonatomic, strong) NSMutableArray* objects;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
 @end
 
 @implementation ProfileViewController

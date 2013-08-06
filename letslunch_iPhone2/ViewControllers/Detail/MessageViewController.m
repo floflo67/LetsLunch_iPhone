@@ -16,8 +16,8 @@
 @property (nonatomic, strong) NSMutableArray* objects;
 @property (nonatomic, strong) NSString *threadID;
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UITextField *textFieldMessage;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UITextField *textFieldMessage;
 
 @end
 

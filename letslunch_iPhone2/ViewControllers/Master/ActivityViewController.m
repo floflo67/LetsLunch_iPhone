@@ -45,10 +45,7 @@ static ActivityViewController *sharedSingleton = nil;
     [self loadOwnerActivity];
     [self loadListActivites];
     
-    self.textPull = @"Pull down to refresh...";
-    self.textRelease = @"Release to refresh...";
-    self.textLoading = @"Loading...";
-    
+    [self setTextLoading:@"Loading..." textRelease:@"Release to refresh..." andTextPull:@"Pull down to refresh..."];
     [self.tableView reloadData];
 }
 

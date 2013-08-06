@@ -18,15 +18,15 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) CenterViewController *viewController;
-@property (strong, nonatomic) UINavigationController *navController;
-@property (strong, nonatomic) Activity *ownerActivity;
-@property (strong, nonatomic) Contacts *ownerContact;
-@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (nonatomic, strong) UIWindow *window;
+@property (nonatomic, strong) CenterViewController *viewController;
+@property (nonatomic, strong) UINavigationController *navController;
+@property (nonatomic, strong) Activity *ownerActivity;
+@property (nonatomic, strong) Contacts *ownerContact;
+@property (nonatomic, strong) CLLocationManager *locationManager;
 
-@property (strong, nonatomic) TwitterConsumer* consumer;
-@property (strong, nonatomic) TwitterToken* token;
+@property (nonatomic, strong) TwitterConsumer* consumer;
+@property (nonatomic, strong) TwitterToken* token;
 
 -(NSMutableArray*)getListActivitiesAndForceReload:(BOOL)shouldReload;
 -(NSMutableArray*)getListFriendsSuggestionAndForceReload:(BOOL)shouldReload;

@@ -11,9 +11,9 @@
 #import "FacebookFriend.h"
 
 @interface InviteViewController ()
-@property (strong, nonatomic) NSArray *objects;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (retain, nonatomic) FBFriendPickerViewController *friendPickerController;
+@property (nonatomic, strong) NSArray *objects;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) FBFriendPickerViewController *friendPickerController;
 @property (nonatomic, strong) NSMutableArray *facebookFriends;
 @property (nonatomic, strong) NSMutableArray *facebookFriendsID;
 @end

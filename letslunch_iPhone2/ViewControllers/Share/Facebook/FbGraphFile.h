@@ -11,7 +11,7 @@
 
 @interface FbGraphFile : NSObject
 
-@property (nonatomic, retain) UIImage *uploadImage;
+@property (nonatomic, strong) UIImage *uploadImage;
 
 -(id)initWithImage:(UIImage*)upload_image;
 -(void)appendDataToBody:(NSMutableData*)body;

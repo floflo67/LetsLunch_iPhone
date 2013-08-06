@@ -12,17 +12,17 @@
 
 @interface CreateActivityViewController ()
 
-@property (strong, nonatomic) Activity *activity;
-@property (strong, nonatomic) MKMapView *map;
-@property (strong, nonatomic) LunchesRequest *lunchRequest;
+@property (nonatomic, strong) Activity *activity;
+@property (nonatomic, strong) MKMapView *map;
+@property (nonatomic, strong) LunchesRequest *lunchRequest;
 
-@property (weak, nonatomic) IBOutlet UITextField *textFieldDescription;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
-@property (weak, nonatomic) IBOutlet UILabel *labelBroadcast;
-@property (weak, nonatomic) IBOutlet UIView *viewContent;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIView *viewSubview;
-@property (strong, nonatomic) UIButton *buttonClear;
+@property (nonatomic, weak) IBOutlet UITextField *textFieldDescription;
+@property (nonatomic, weak) IBOutlet UISegmentedControl *segment;
+@property (nonatomic, weak) IBOutlet UILabel *labelBroadcast;
+@property (nonatomic, weak) IBOutlet UIView *viewContent;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UIView *viewSubview;
+@property (nonatomic, strong) UIButton *buttonClear;
 
 @end
 
