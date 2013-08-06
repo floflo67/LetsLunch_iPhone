@@ -9,10 +9,6 @@
 #import "VisitorsRequest.h"
 #import "MutableRequest.h"
 
-@interface VisitorsRequest()
-@property (nonatomic, strong) NSMutableArray *jsonArray;
-@end
-
 @implementation VisitorsRequest
 
 + (NSMutableArray*)getVisitorsWithToken:(NSString*)token
@@ -40,12 +36,14 @@
     NSURLResponse *response;
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
     
-    [self settingUpData:data andResponse:response];
-    
-    return self.jsonArray;
+    if(data) {
+        return [self settingUpData:data andResponse:response];
+    }
+    else
+        return nil;
 }
 
-- (void)settingUpData:(NSData*)data andResponse:(NSURLResponse*)response
+- (NSMutableArray*)settingUpData:(NSData*)data andResponse:(NSURLResponse*)response
 {
     NSInteger statusCode = [(NSHTTPURLResponse*)response statusCode];
     
@@ -54,21 +52,14 @@
         NSMutableDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         dict = [dict objectForKey:@"profileVisitors"];
         data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
-        self.jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        NSMutableArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        return jsonArray;
     }
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"visitor %@", response);
+        return nil;
     }
-}
-
-#pragma mark - getter and setter
-
-- (NSMutableArray*)jsonArray
-{
-    if(!_jsonArray)
-        _jsonArray = [[NSMutableArray alloc] init];
-    return _jsonArray;
 }
 
 @end

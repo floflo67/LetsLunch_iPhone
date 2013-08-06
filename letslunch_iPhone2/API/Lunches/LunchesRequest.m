@@ -44,8 +44,10 @@
     
     NSURLResponse *response;
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
-    
-    return [self settingUpData:data andResponse:response];
+    if(data)
+        return [self settingUpData:data andResponse:response];
+    else
+        return nil;
 }
 
 - (NSDictionary*)settingUpData:(NSData*)data andResponse:(NSURLResponse*)response
@@ -99,8 +101,10 @@
     
     NSURLResponse *response;
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
-    
-    return [self settingUpLunchesData:data andResponse:response];
+    if(data)
+        return [self settingUpLunchesData:data andResponse:response];
+    else
+        return nil;
 }
 
 - (NSMutableArray*)settingUpLunchesData:(NSData*)data andResponse:(NSURLResponse*)response

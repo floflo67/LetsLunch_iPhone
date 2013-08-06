@@ -11,7 +11,6 @@
 
 @interface ProfileRequest()
 @property (nonatomic) NSInteger statusCode;
-@property (nonatomic, strong) NSMutableDictionary *jsonDict;
 @property (nonatomic, strong) NSURLConnection* connection;
 @property (nonatomic, strong) NSMutableData* data;
 @end
@@ -43,39 +42,43 @@
     NSURLResponse *response;
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
     
-    if(!isLight)
-        [self settingUpData:data andResponse:response];
+    if(data) {
+        if(!isLight)
+            return [self settingUpData:data andResponse:response];
+        else
+            return [self settingUpLightData:data andResponse:response];
+    }
     else
-        [self settingUpLightData:data andResponse:response];
-    
-    return self.jsonDict;
+        return nil;
 }
 
-- (void)settingUpData:(NSData*)data andResponse:(NSURLResponse*)response
+- (NSMutableDictionary*)settingUpData:(NSData*)data andResponse:(NSURLResponse*)response
 {
-    self.statusCode = [(NSHTTPURLResponse*)response statusCode];
+    NSInteger statusCode = [(NSHTTPURLResponse*)response statusCode];
     
-    if(self.statusCode == 200) {
-        self.jsonDict = [NSMutableDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
-        self.jsonDict = [self.jsonDict objectForKey:@"user"];
+    if(statusCode == 200) {
+        NSMutableDictionary *jsonDict = [NSMutableDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
+        jsonDict = [jsonDict objectForKey:@"user"];
+        return jsonDict;
     }
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"profile err1 %@", response);
+        return nil;
     }
 }
 
-- (void)settingUpLightData:(NSData*)data andResponse:(NSURLResponse*)response
+- (NSMutableDictionary*)settingUpLightData:(NSData*)data andResponse:(NSURLResponse*)response
 {
-    self.statusCode = [(NSHTTPURLResponse*)response statusCode];
+    NSInteger statusCode = [(NSHTTPURLResponse*)response statusCode];
     
-    if(self.statusCode == 200) {
-        self.jsonDict = [NSMutableDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
-        self.jsonDict = [self.jsonDict objectForKey:@"user"];
+    if(statusCode == 200) {
+        NSMutableDictionary *jsonDict = [NSMutableDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
+        jsonDict = [jsonDict objectForKey:@"user"];
         
         NSMutableDictionary *userContact = [[NSMutableDictionary alloc] init];
-        NSDictionary *dictProfile = [self.jsonDict objectForKey:@"profile"];
-        NSDictionary *dictOther = [self.jsonDict objectForKey:@"other"];
+        NSDictionary *dictProfile = [jsonDict objectForKey:@"profile"];
+        NSDictionary *dictOther = [jsonDict objectForKey:@"other"];
         
         [userContact setObject:[dictProfile objectForKey:@"uid"] forKey:@"uid"];
         [userContact setObject:[dictProfile objectForKey:@"firstname"] forKey:@"firstname"];
@@ -84,11 +87,13 @@
         if([dictProfile objectForKey:@"pictureUrl"])
             [userContact setObject:[dictProfile objectForKey:@"pictureUrl"] forKey:@"pictureURL"];
         
-        self.jsonDict = userContact;
+        jsonDict = userContact;
+        return jsonDict;
     }
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"profile err2 %@", response);
+        return nil;
     }
 }
 
@@ -148,13 +153,6 @@
     if(!_data)
         _data = [NSMutableData new];
     return _data;
-}
-
-- (NSMutableDictionary*)jsonDict
-{
-    if(!_jsonDict)
-        _jsonDict = [[NSMutableDictionary alloc] init];
-    return _jsonDict;
 }
 
 @end
