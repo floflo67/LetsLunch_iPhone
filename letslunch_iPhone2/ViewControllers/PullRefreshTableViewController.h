@@ -9,29 +9,17 @@
 #import <UIKit/UIKit.h>
 
 
-@interface PullRefreshTableViewController : UITableViewController {
-    UIView *refreshHeaderView;
-    UILabel *refreshLabel;
-    UIImageView *refreshArrow;
-    UIActivityIndicatorView *refreshSpinner;
-    BOOL isDragging;
-    BOOL isLoading;
-    NSString *textPull;
-    NSString *textRelease;
-    NSString *textLoading;
-}
+@interface PullRefreshTableViewController : UITableViewController
 
-@property (nonatomic, retain) UIView *refreshHeaderView;
-@property (nonatomic, retain) UILabel *refreshLabel;
-@property (nonatomic, retain) UIImageView *refreshArrow;
-@property (nonatomic, retain) UIActivityIndicatorView *refreshSpinner;
-@property (nonatomic, copy) NSString *textPull;
-@property (nonatomic, copy) NSString *textRelease;
-@property (nonatomic, copy) NSString *textLoading;
+@property (nonatomic, strong, readonly) NSString *textPull;
+@property (nonatomic, strong, readonly) NSString *textRelease;
+@property (nonatomic, strong, readonly) NSString *textLoading;
 
-- (void)addPullToRefreshHeader;
-- (void)startLoading;
-- (void)stopLoading;
-- (void)refresh;
+-(void)addPullToRefreshHeader;
+-(void)startLoading;
+-(void)stopLoading;
+-(void)refresh;
+
+-(void)setTextLoading:(NSString *)textLoading textRelease:(NSString*)textRelease andTextPull:(NSString*)textPull;
 
 @end
