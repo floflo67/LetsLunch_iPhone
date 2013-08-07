@@ -58,6 +58,7 @@
     }
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        [AppDelegate showErrorMessage:response withErrorStatus:statusCode];
         NSLog(@"visitor %@", response);
         return nil;
     }

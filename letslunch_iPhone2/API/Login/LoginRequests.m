@@ -69,11 +69,6 @@
 	}
 }
 
-- (void)showErrorMessage:(NSString*)error
-{
-    [AppDelegate showErrorMessage:error withErrorStatus:self.statusCode];
-}
-
 - (void)successfullLoginIn
 {
     [((AppDelegate*)[UIApplication sharedApplication].delegate) loginSuccessfull];
@@ -93,7 +88,7 @@
 
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
 {
-    [AppDelegate showNoConnectionMessage];
+    [AppDelegate showErrorMessage:error.localizedDescription withErrorStatus:self.statusCode ? self.statusCode : 500];
     NSLog(@"error");
 	self.connection = nil;
 	self.data = nil;
@@ -105,7 +100,7 @@
         NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:self.data options:0 error:nil]];
         NSDictionary *dictError = [NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"error"]]];
 		NSString* response = [dictError objectForKey:@"message"];
-        [self showErrorMessage:response];
+        [AppDelegate showErrorMessage:response withErrorStatus:self.statusCode];
 	}
     else {
         NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:self.data options:0 error:nil]];

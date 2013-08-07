@@ -71,9 +71,7 @@ static ProfileViewController *sharedSingleton = nil;
     if(number == 0 && section >= 3)
         number++;
     else if (section == 2 && number == 0) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"You don't seem to have an internet connection" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [alert show];
-        alert = nil;
+        [AppDelegate showNoConnectionMessage];
     }
     return number;
 }

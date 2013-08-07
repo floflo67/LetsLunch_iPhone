@@ -44,7 +44,7 @@
     }
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        [AppDelegate showNoConnectionMessage];
+        [AppDelegate showErrorMessage:response withErrorStatus:statusCode];
         NSLog(@"profiledetail %@", response);
         return nil;
     }

@@ -67,7 +67,7 @@
         return nil;
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        [AppDelegate showNoConnectionMessage];
+        [AppDelegate showErrorMessage:response withErrorStatus:statusCode];
         NSLog(@"lunchrequest err1 %@", response);
         return nil;
     }
@@ -130,7 +130,7 @@
         return nil;
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        [AppDelegate showNoConnectionMessage];
+        [AppDelegate showErrorMessage:response withErrorStatus:statusCode];
         NSLog(@"lunchrequest err2 %@", response);
         return nil;
     }
@@ -264,7 +264,7 @@
         NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
         NSDictionary *dictError = [NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"error"]]];
 		NSString* response = [dictError objectForKey:@"message"];
-        [self showErrorMessage:response];
+        [AppDelegate showErrorMessage:response withErrorStatus:statusCode];
         return NO;
     }
 }
@@ -312,7 +312,7 @@
         NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
         NSDictionary *dictError = [NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"error"]]];
 		NSString* response = [dictError objectForKey:@"message"];
-        [self showErrorMessage:response];
+        [AppDelegate showErrorMessage:response withErrorStatus:statusCode];
         return NO;
     }
 }
@@ -382,13 +382,6 @@
     }
 }
 
-#pragma mark - custom function
-
-- (void)showErrorMessage:(NSString*)error
-{
-    [AppDelegate showErrorMessage:error withErrorStatus:self.statusCode];
-}
-
 #pragma connection delegate
 
 - (void)connection:(NSURLConnection*)connection didReceiveData:(NSData*)data
@@ -414,7 +407,7 @@
         NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:self.data options:0 error:nil]];
         NSDictionary *dictError = [NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"error"]]];
 		NSString* response = [dictError objectForKey:@"message"];
-        [self showErrorMessage:response];
+        [AppDelegate showErrorMessage:response withErrorStatus:self.statusCode ? self.statusCode : 500];
 	}
 	
 	self.connection = nil;

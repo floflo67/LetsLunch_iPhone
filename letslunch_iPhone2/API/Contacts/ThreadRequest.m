@@ -51,6 +51,7 @@
     }
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        [AppDelegate showErrorMessage:response withErrorStatus:statusCode];
         NSLog(@"thread err1 %@", response);
         return nil;
     }
@@ -119,6 +120,7 @@
     }
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        [AppDelegate showErrorMessage:response withErrorStatus:statusCode];
         NSLog(@"thread err3 %@", response);
         return nil;
     }

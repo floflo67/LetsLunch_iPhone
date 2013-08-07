@@ -48,8 +48,10 @@
         else
             return [self settingUpLightData:data andResponse:response];
     }
-    else
+    else {
+        [AppDelegate showNoConnectionMessage];
         return nil;
+    }
 }
 
 - (NSMutableDictionary*)settingUpData:(NSData*)data andResponse:(NSURLResponse*)response
@@ -63,7 +65,7 @@
     }
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        [AppDelegate showNoConnectionMessage];
+        [AppDelegate showErrorMessage:response withErrorStatus:statusCode];
         NSLog(@"profile err1 %@", response);
         return nil;
     }
@@ -93,7 +95,7 @@
     }
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        [AppDelegate showNoConnectionMessage];
+        [AppDelegate showErrorMessage:response withErrorStatus:statusCode];
         NSLog(@"profile err2 %@", response);
         return nil;
     }
@@ -136,7 +138,7 @@
 
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
 {
-    [AppDelegate showNoConnectionMessage];
+    [AppDelegate showErrorMessage:error.localizedDescription withErrorStatus:self.statusCode ? self.statusCode : 500];
     NSLog(@"error");
     
 	self.connection = nil;
