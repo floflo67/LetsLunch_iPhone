@@ -89,7 +89,8 @@ static ProfileViewController *sharedSingleton = nil;
         
         NSArray *allKeys = [dict allKeys];
         NSArray *allValues = [dict allValues];
-        if([allKeys count] >= indexPath.row && indexPath.row != 0) {
+        
+        if([allKeys count] > indexPath.row) {
         NSString *key = allKeys[indexPath.row];
         NSString *keyCapitalized = [key stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[key substringToIndex:1] capitalizedString]];
         
