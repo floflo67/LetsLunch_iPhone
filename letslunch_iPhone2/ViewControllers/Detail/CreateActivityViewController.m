@@ -12,7 +12,7 @@
 
 @interface CreateActivityViewController ()
 
-@property (nonatomic, strong) Activity *activity;
+@property (nonatomic, weak) Activity *activity;
 @property (nonatomic, strong) MKMapView *map;
 @property (nonatomic, strong) LunchesRequest *lunchRequest;
 
