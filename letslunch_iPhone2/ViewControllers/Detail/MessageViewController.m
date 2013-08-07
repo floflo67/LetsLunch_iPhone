@@ -31,6 +31,8 @@
     if(self) {
         self.threadID = threadID;
         self.objects = [(AppDelegate*)[[UIApplication sharedApplication] delegate] getListMessagesForThreadID:self.threadID andForceReload:NO];
+        if([self.objects count] == 0)
+            return nil;
     }
     return self;
 }

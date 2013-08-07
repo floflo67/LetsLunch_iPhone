@@ -76,9 +76,11 @@ static ContactViewController *sharedSingleton = nil;
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     Thread *thread = (Thread*)self.objects[indexPath.row];
-    MessageViewController *cont = [[MessageViewController alloc] initWithThreadID:thread.ID];
-    [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController.navigationController pushViewController:cont animated:YES];
-    cont = nil;
+    MessageViewController *messagesViewController = [[MessageViewController alloc] initWithThreadID:thread.ID];
+    if(messagesViewController) {
+        [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController.navigationController pushViewController:messagesViewController animated:YES];
+        messagesViewController = nil;
+    }
 }
 
 #pragma mark - getter and setter

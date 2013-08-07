@@ -119,9 +119,9 @@
         }*/
     }
     else {
-        NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        [AppDelegate showErrorMessage:response withErrorStatus:statusCode];
-        NSLog(@"thread err3 %@", response);
+        NSMutableDictionary *dictError = [NSMutableDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
+        dictError = [dictError objectForKey:@"error"];
+        [AppDelegate showErrorMessage:[dictError objectForKey:@"message"]  withErrorStatus:statusCode];
         return nil;
     }
 }
