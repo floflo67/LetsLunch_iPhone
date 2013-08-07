@@ -10,10 +10,6 @@
 #import "MutableRequest.h"
 #import "Thread.h"
 
-@interface ThreadRequest()
-@property (nonatomic, strong) NSMutableArray *jsonArray;
-@end
-
 @implementation ThreadRequest
 
 #pragma mark - list threads
@@ -33,25 +29,30 @@
     NSURLResponse *response;
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
     
-    [self settingUpForThreadsData:data andResponse:response];
-    
-    return self.jsonArray;
+    if(data)
+        return [self settingUpForThreadsData:data andResponse:response];
+    else {
+        [AppDelegate showNoConnectionMessage];
+        return nil;
+    }
 }
 
-- (void)settingUpForThreadsData:(NSData*)data andResponse:(NSURLResponse*)response
+- (NSMutableArray*)settingUpForThreadsData:(NSData*)data andResponse:(NSURLResponse*)response
 {
     NSInteger statusCode = [(NSHTTPURLResponse*)response statusCode];
     
     if(statusCode == 200) {
-        
+        NSMutableArray *jsonArray = [[NSMutableArray alloc] init];
         NSArray *jsonDict = [NSArray arrayWithArray:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
         for (NSDictionary *dict in jsonDict) {
-            [self.jsonArray addObject:[self creatingThreadWithDict:dict]];
+            [jsonArray addObject:[self creatingThreadWithDict:dict]];
         }
+        return jsonArray;
     }
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"thread err1 %@", response);
+        return nil;
     }
 }
 
@@ -94,12 +95,15 @@
     NSURLResponse *response;
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
     
-    [self settingUpForMessagesData:data andResponse:response];
-    
-    return self.jsonArray;
+    if(data)
+        return [self settingUpForMessagesData:data andResponse:response];
+    else {
+        [AppDelegate showNoConnectionMessage];
+        return nil;
+    }    
 }
 
-- (void)settingUpForMessagesData:(NSData*)data andResponse:(NSURLResponse*)response
+- (NSMutableArray*)settingUpForMessagesData:(NSData*)data andResponse:(NSURLResponse*)response
 {
     NSInteger statusCode = [(NSHTTPURLResponse*)response statusCode];
     
@@ -107,6 +111,7 @@
         
         NSArray *jsonDict = [NSArray arrayWithArray:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
         NSLog(@"thread %@", jsonDict);
+        return nil;
         /*
         for (NSDictionary *dict in jsonDict) {
             [self.jsonArray addObject:[self creatingThreadWithDict:dict]];
@@ -115,16 +120,8 @@
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"thread err3 %@", response);
+        return nil;
     }
-}
-
-#pragma mark - getter and setter
-
-- (NSMutableArray *)jsonArray
-{
-    if(!_jsonArray)
-        _jsonArray = [[NSMutableArray alloc] init];
-    return _jsonArray;
 }
 
 @end

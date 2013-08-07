@@ -10,6 +10,7 @@
 #import <Twitter/Twitter.h>
 #import <Accounts/Accounts.h>
 #import "LinkedInViewController.h"
+#import "LoginRequests.h"
 
 @interface LoginViewController ()
 
@@ -38,7 +39,6 @@
      */
     self.textFieldPassword.delegate = self;
     self.textFieldUsername.delegate = self;
-    self.loginRequest.delegate = self;
     
     /*
      Sets action on button click
@@ -138,20 +138,7 @@
     return [self.loginRequest loginWithUserName:username andPassword:password];
 }
 
-#pragma login request delegate
-
-- (void)showErrorMessage:(NSString*)message withErrorStatus:(NSInteger)errorStatus
-{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NULL message:NULL delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    alert.title = [NSString stringWithFormat:@"Error: %i", errorStatus];
-    alert.message = message;
-    [alert show];
-}
-
-- (void)successfullConnection
-{
-    [((AppDelegate*)[UIApplication sharedApplication].delegate) loginSuccessfull];
-}
+#pragma mark - getter and setter
 
 - (LoginRequests*)loginRequest
 {

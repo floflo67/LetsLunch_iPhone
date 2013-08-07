@@ -11,7 +11,6 @@
 
 @interface DetailProfileViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-
 -(id)initWithContactID:(NSString*)contactID;
 
 @end

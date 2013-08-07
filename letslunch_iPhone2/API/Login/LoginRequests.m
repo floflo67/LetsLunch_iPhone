@@ -71,12 +71,12 @@
 
 - (void)showErrorMessage:(NSString*)error
 {
-    [self.delegate showErrorMessage:error withErrorStatus:self.statusCode];
+    [AppDelegate showErrorMessage:error withErrorStatus:self.statusCode];
 }
 
 - (void)successfullLoginIn
 {
-    [self.delegate successfullConnection];
+    [((AppDelegate*)[UIApplication sharedApplication].delegate) loginSuccessfull];
 }
 
 #pragma connection delegate
@@ -93,6 +93,7 @@
 
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
 {
+    [AppDelegate showNoConnectionMessage];
     NSLog(@"error");
 	self.connection = nil;
 	self.data = nil;

@@ -46,8 +46,10 @@
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
     if(data)
         return [self settingUpData:data andResponse:response];
-    else
+    else {
+        [AppDelegate showNoConnectionMessage];
         return nil;
+    }
 }
 
 - (NSDictionary*)settingUpData:(NSData*)data andResponse:(NSURLResponse*)response
@@ -65,6 +67,7 @@
         return nil;
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        [AppDelegate showNoConnectionMessage];
         NSLog(@"lunchrequest err1 %@", response);
         return nil;
     }
@@ -103,8 +106,10 @@
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
     if(data)
         return [self settingUpLunchesData:data andResponse:response];
-    else
+    else {
+        [AppDelegate showNoConnectionMessage];
         return nil;
+    }
 }
 
 - (NSMutableArray*)settingUpLunchesData:(NSData*)data andResponse:(NSURLResponse*)response
@@ -125,6 +130,7 @@
         return nil;
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        [AppDelegate showNoConnectionMessage];
         NSLog(@"lunchrequest err2 %@", response);
         return nil;
     }
@@ -238,8 +244,12 @@
     
     NSURLResponse *response;
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
-    
-    return [self settingUpDataForAdd:data andResponse:response];
+    if(data)
+        return [self settingUpDataForAdd:data andResponse:response];
+    else {
+        [AppDelegate showNoConnectionMessage];
+        return nil;
+    }
 }
 
 - (NSDictionary*)settingUpDataForAdd:(NSData*)data andResponse:(NSURLResponse*)response
@@ -283,8 +293,12 @@
     
     NSURLResponse *response;
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
-    
-    return [self settingUpDataForDelete:data andResponse:response];
+    if(data)
+        return [self settingUpDataForDelete:data andResponse:response];
+    else {
+        [AppDelegate showNoConnectionMessage];
+        return NO;
+    }
 }
 
 - (BOOL)settingUpDataForDelete:(NSData*)data andResponse:(NSURLResponse*)response
@@ -372,7 +386,7 @@
 
 - (void)showErrorMessage:(NSString*)error
 {
-    [self.delegate showErrorMessage:error withErrorStatus:self.statusCode];
+    [AppDelegate showErrorMessage:error withErrorStatus:self.statusCode];
 }
 
 #pragma connection delegate
@@ -389,6 +403,7 @@
 
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
 {
+    [AppDelegate showNoConnectionMessage];
 	self.connection = nil;
 	self.data = nil;
 }

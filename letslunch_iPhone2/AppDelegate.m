@@ -24,10 +24,9 @@
 @property (nonatomic, strong) NSMutableArray *listMessages;
 @property (nonatomic, strong) NSMutableArray *listContacts;
 @property (nonatomic, strong) NSMutableArray *listVisitors;
-
 @property (nonatomic, strong) LoginViewController *loginViewController;
-
 @property (nonatomic, strong) KeychainWrapper *tokenItem;
+@property (nonatomic) BOOL alertIsShown;
 @end
 
 @implementation AppDelegate
@@ -270,6 +269,35 @@
     if(shouldReload)
         self.ownerActivity = [GetStaticLists getOwnerActivityWithToken:[self getToken]];
     return self.ownerActivity;
+}
+
+#pragma mark - Error message
+
++(void)showNoConnectionMessage
+{
+    [AppDelegate showErrorMessage:@"No connection." withErrorStatus:500];
+}
+
++ (void)showErrorMessage:(NSString*)message withErrorStatus:(NSInteger)errorStatus
+{
+    [((AppDelegate*)[UIApplication sharedApplication].delegate) showErrorMessage:message withErrorStatus:errorStatus];
+}
+
+- (void)showErrorMessage:(NSString*)message withErrorStatus:(NSInteger)errorStatus
+{
+    if(!self.alertIsShown) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NULL message:NULL delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        alert.title = [NSString stringWithFormat:@"App error: %i", errorStatus];
+        alert.message = message;
+        [alert show];
+        alert = nil;
+        self.alertIsShown = YES;
+    }
+}
+
+- (void)alertView:(UIAlertView*)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    self.alertIsShown = NO;
 }
 
 #pragma mark - getter and setter

@@ -63,6 +63,7 @@
     }
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        [AppDelegate showNoConnectionMessage];
         NSLog(@"profile err1 %@", response);
         return nil;
     }
@@ -92,6 +93,7 @@
     }
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        [AppDelegate showNoConnectionMessage];
         NSLog(@"profile err2 %@", response);
         return nil;
     }
@@ -134,6 +136,7 @@
 
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
 {
+    [AppDelegate showNoConnectionMessage];
     NSLog(@"error");
     
 	self.connection = nil;

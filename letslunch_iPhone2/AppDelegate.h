@@ -16,7 +16,7 @@
 @class TwitterConsumer;
 @class TwitterToken;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) UIWindow *window;
 @property (nonatomic, strong) CenterViewController *viewController;
@@ -34,6 +34,9 @@
 -(NSMutableArray*)getListMessagesForThreadID:(NSString*)threadID andForceReload:(BOOL)shouldReload;
 -(NSMutableArray*)getListContactsAndForceReload:(BOOL)shouldReload;
 -(Activity*)getOwnerActivityAndForceReload:(BOOL)shouldReload;
+
++(void)showErrorMessage:(NSString*)message withErrorStatus:(NSInteger)errorStatus;
++(void)showNoConnectionMessage;
 
 -(void)loginSuccessfull;
 -(void)hideLoginView;

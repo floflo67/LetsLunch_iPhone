@@ -9,11 +9,6 @@
 #import "ProfileDetailsRequest.h"
 #import "MutableRequest.h"
 
-
-@interface ProfileDetailsRequest()
-@property (nonatomic, strong) NSMutableDictionary *jsonDict;
-@end
-
 @implementation ProfileDetailsRequest
 
 - (NSDictionary*)getProfileWithToken:(NSString*)token andID:(NSString*)userID
@@ -27,35 +22,32 @@
     NSURLResponse *response;
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
     
-    [self settingUpData:data andResponse:response];
-    
-    return self.jsonDict;
+    if(data)
+        return [self settingUpData:data andResponse:response];
+    else {
+        [AppDelegate showNoConnectionMessage];
+        return nil;
+    }
 }
 
-- (void)settingUpData:(NSData*)data andResponse:(NSURLResponse*)response
+- (NSMutableDictionary*)settingUpData:(NSData*)data andResponse:(NSURLResponse*)response
 {
     NSInteger statusCode = [(NSHTTPURLResponse*)response statusCode];
     
     if(statusCode == 200) {
-        self.jsonDict = [NSMutableDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
-        self.jsonDict = [self.jsonDict objectForKey:@"user"];
-        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:self.jsonDict copyItems:NO];
+        NSMutableDictionary *jsonDict = [NSMutableDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
+        jsonDict = [jsonDict objectForKey:@"user"];
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:jsonDict copyItems:NO];
         [dict removeObjectForKey:@"lunch_zone"];
-        self.jsonDict = dict;
+        jsonDict = dict;
+        return jsonDict;
     }
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        [AppDelegate showNoConnectionMessage];
         NSLog(@"profiledetail %@", response);
+        return nil;
     }
-}
-
-#pragma mark - getter and setter
-
-- (NSMutableDictionary*)jsonDict
-{
-    if(!_jsonDict)
-        _jsonDict = [[NSMutableDictionary alloc] init];
-    return _jsonDict;
 }
 
 @end

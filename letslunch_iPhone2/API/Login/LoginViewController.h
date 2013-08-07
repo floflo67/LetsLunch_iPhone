@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LoginRequests.h"
 
-@interface LoginViewController : UIViewController <UITextFieldDelegate, LoginRequestDelegate>
+@interface LoginViewController : UIViewController <UITextFieldDelegate>
 
 
 -(void)logInWithFacebook;

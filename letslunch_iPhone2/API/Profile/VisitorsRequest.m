@@ -36,11 +36,12 @@
     NSURLResponse *response;
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
     
-    if(data) {
+    if(data)
         return [self settingUpData:data andResponse:response];
-    }
-    else
+    else {
+        [AppDelegate showNoConnectionMessage];
         return nil;
+    }
 }
 
 - (NSMutableArray*)settingUpData:(NSData*)data andResponse:(NSURLResponse*)response

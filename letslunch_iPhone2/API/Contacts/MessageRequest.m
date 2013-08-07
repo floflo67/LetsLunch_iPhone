@@ -85,7 +85,8 @@
 
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
 {
-	self.connection = nil;
+	[AppDelegate showNoConnectionMessage];
+    self.connection = nil;
 	self.data = nil;
 }
 

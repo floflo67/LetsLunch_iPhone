@@ -10,11 +10,7 @@
 #import "Activity.h"
 #import "LunchesRequest.h"
 
-@class LunchesRequest;
-
-@interface CreateActivityViewController : UIViewController <UITextFieldDelegate, LunchRequestDelegate> {
-    LunchesRequest *_lunchRequest;
-}
+@interface CreateActivityViewController : UIViewController <UITextFieldDelegate>
 
 @property (nonatomic, strong) FSVenue *venue;
 

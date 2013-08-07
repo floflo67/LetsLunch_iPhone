@@ -8,22 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol LunchRequestDelegate
--(void)showErrorMessage:(NSString*)message withErrorStatus:(NSInteger)errorStatus;
-@end
-
 @interface LunchesRequest : NSObject
 
-@property (nonatomic, weak) id<LunchRequestDelegate> delegate;
-
 +(NSDictionary*)getOwnerLunchWithToken:(NSString*)token;
--(NSDictionary*)getOwnerLunchWithToken:(NSString*)token;
-
 +(NSMutableArray*)getLunchesWithToken:(NSString*)token latitude:(double)latitude longitude:(double)longitude andDate:(NSString*)date;
--(NSMutableArray*)getLunchesWithToken:(NSString*)token latitude:(double)latitude longitude:(double)longitude andDate:(NSString*)date;
-
 +(BOOL)suppressLunchWithToken:(NSString*)token andActivityID:(NSString*)activityID;
--(BOOL)suppressLunchWithToken:(NSString*)token andActivityID:(NSString*)activityID;
 
 -(NSDictionary*)addLunchWithToken:(NSString*)token andActivity:(Activity*)activity;
 -(void)updateLunchWithToken:(NSString*)token andActivity:(Activity*)activity;
