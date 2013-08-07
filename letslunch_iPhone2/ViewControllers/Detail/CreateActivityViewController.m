@@ -55,10 +55,7 @@ static CreateActivityViewController *sharedSingleton = nil;
 {
     [super viewDidLoad];
     self.navigationItem.title = @"Create";
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
-                                              initWithBarButtonSystemItem:UIBarButtonSystemItemSave
-                                              target:self
-                                              action:@selector(saveActivity:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveActivity:)];
     
     /*
      Change font and size of segmentControl's titles
@@ -110,9 +107,6 @@ static CreateActivityViewController *sharedSingleton = nil;
          */
         self.viewSubview.frame = CGRectMake(0, self.viewSubview.frame.origin.y + 50, 320, self.viewSubview.frame.size.height - 50);
     }
-    else
-        return;
-    
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -242,10 +236,8 @@ static CreateActivityViewController *sharedSingleton = nil;
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    NearbyVenuesViewController *detailViewController = [[NearbyVenuesViewController alloc] init];
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    [self.navigationController pushViewController:[[NearbyVenuesViewController alloc] init] animated:YES];
     [self resetView];
-    detailViewController = nil;
 }
 
 #pragma segment action
