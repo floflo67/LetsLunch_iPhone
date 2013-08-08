@@ -63,6 +63,7 @@
 		5480D55C17A06FA30069ABAC /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5480D55B17A06FA30069ABAC /* ActivityCell.m */; };
 		5480D55E17A077930069ABAC /* ActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5480D55D17A077930069ABAC /* ActivityCell.xib */; };
 		5482213017B41A0D001F6812 /* Testimonials.m in Sources */ = {isa = PBXBuildFile; fileRef = 5482212F17B41A0D001F6812 /* Testimonials.m */; };
+		5482213317B43568001F6812 /* WishListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5482213217B43567001F6812 /* WishListRequest.m */; };
 		548D36AF176B819300154C36 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36AE176B819300154C36 /* UIKit.framework */; };
 		548D36B1176B819300154C36 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36B0176B819300154C36 /* Foundation.framework */; };
 		548D36B3176B819300154C36 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36B2176B819300154C36 /* CoreGraphics.framework */; };
@@ -177,6 +178,8 @@
 		5480D55D17A077930069ABAC /* ActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityCell.xib; sourceTree = "<group>"; };
 		5482212E17B41A0D001F6812 /* Testimonials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Testimonials.h; sourceTree = "<group>"; };
 		5482212F17B41A0D001F6812 /* Testimonials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Testimonials.m; sourceTree = "<group>"; };
+		5482213117B43567001F6812 /* WishListRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WishListRequest.h; sourceTree = "<group>"; };
+		5482213217B43567001F6812 /* WishListRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WishListRequest.m; sourceTree = "<group>"; };
 		548D36AB176B819300154C36 /* letslunch_iPhone2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = letslunch_iPhone2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		548D36AE176B819300154C36 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		548D36B0176B819300154C36 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -368,6 +371,8 @@
 			children = (
 				540E1F4E179DC99C000D2E0C /* ProfileDetailsRequest.h */,
 				540E1F4F179DC99C000D2E0C /* ProfileDetailsRequest.m */,
+				5482213117B43567001F6812 /* WishListRequest.h */,
+				5482213217B43567001F6812 /* WishListRequest.m */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -901,6 +906,7 @@
 				54E625CF17AC5739009F6391 /* ThreadRequest.m in Sources */,
 				54E625D217AC5B33009F6391 /* Thread.m in Sources */,
 				5482213017B41A0D001F6812 /* Testimonials.m in Sources */,
+				5482213317B43568001F6812 /* WishListRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
