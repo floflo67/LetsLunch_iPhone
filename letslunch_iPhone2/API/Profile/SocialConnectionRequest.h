@@ -10,7 +10,6 @@
 
 @interface SocialConnectionRequest : NSObject
 
-+(void)getSocialConnectionWithToken:(NSString*)token;
--(void)getSocialConnectionWithToken:(NSString*)token;
++(NSArray*)getSocialConnectionWithToken:(NSString*)token;
 
 @end

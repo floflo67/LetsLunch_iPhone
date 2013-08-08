@@ -10,12 +10,12 @@
 #import "MutableRequest.h"
 
 @interface SocialConnectionRequest()
-@property (nonatomic) NSInteger statusCode;
+
 @end
 
 @implementation SocialConnectionRequest
 
-+ (void)getSocialConnectionWithToken:(NSString *)token
++ (NSArray*)getSocialConnectionWithToken:(NSString *)token
 {
     return [[[SocialConnectionRequest alloc] init] getSocialConnectionWithToken:token];
 }
@@ -27,7 +27,7 @@
     authToken (token)
  */
 
-- (void)getSocialConnectionWithToken:(NSString *)token
+- (NSArray*)getSocialConnectionWithToken:(NSString *)token
 {
     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
     [parameters setValue:token forKey:@"authToken"];
@@ -36,24 +36,27 @@
     
     NSURLResponse *response;
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
-    [self settingUpData:data andResponse:response];
+    return [self settingUpData:data andResponse:response];
 }
 
-- (void)settingUpData:(NSData*)data andResponse:(NSURLResponse*)response
+- (NSArray*)settingUpData:(NSData*)data andResponse:(NSURLResponse*)response
 {
-    self.statusCode = [(NSHTTPURLResponse*)response statusCode];
+    NSInteger statusCode = [(NSHTTPURLResponse*)response statusCode];
+    NSArray *jsonArray = [NSArray arrayWithArray:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
+    if([jsonArray count] == 0)
+        statusCode = 201;
     
-    if(self.statusCode == 200) {
-        NSMutableDictionary *jsonDict = [NSMutableDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
-        NSLog(@"social: %@", jsonDict);
+    if(statusCode == 200) {
+        NSLog(@"social: %@", jsonArray);
+        return jsonArray;
         //self.jsonDict = [self.jsonDict objectForKey:@"user"];
     }
+    else if (statusCode == 201)
+        return nil;
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        if(response.length < 100)
-            NSLog(@"social %@", response);
-        else
-            NSLog(@"socialconnection err");
+        NSLog(@"socialconnection err: %@", response);
+        return nil;
     }
 }
 
