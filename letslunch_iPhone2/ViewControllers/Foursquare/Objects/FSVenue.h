@@ -11,13 +11,10 @@
 #import <MapKit/MapKit.h>
 
 @interface FSLocation : NSObject
-{
-    CLLocationCoordinate2D _coordinate;
-}
 
-@property (nonatomic, assign) CLLocationCoordinate2D coordinate;
-@property (nonatomic, strong) NSNumber *distance;
-@property (nonatomic, strong) NSString *address;
+@property (nonatomic, assign, readonly) CLLocationCoordinate2D coordinate;
+@property (nonatomic, strong, readonly) NSNumber *distance;
+@property (nonatomic, strong, readonly) NSString *address;
 
 -(id)initWithDictionary:(NSDictionary*)dict;
 
@@ -25,11 +22,10 @@
 
 @interface FSVenue : NSObject<MKAnnotation>
 
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *venueId;
-@property (nonatomic, strong) FSLocation *location;
-@property (nonatomic, weak) NSNumber *distance;
-@property (nonatomic, strong) NSString *categoryName;
+@property (nonatomic, strong, readonly) NSString *name;
+@property (nonatomic, strong, readonly) NSString *venueId;
+@property (nonatomic, strong, readonly) FSLocation *location;
+@property (nonatomic, weak, readonly) NSNumber *distance;
 
 -(id)initWithDictionary:(NSDictionary*)dict;
 

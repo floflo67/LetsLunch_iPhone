@@ -17,17 +17,19 @@
         venues = venues[0];
     
     for (NSDictionary *v  in venues) {
-        FSVenue *ann = [[FSVenue alloc]init];
+        NSMutableDictionary *location = [[NSMutableDictionary alloc] init];
+        [location setValue:v[@"location"][@"address"] forKey:@"venueAddress"];
+        [location setValue:v[@"location"][@"distance"] forKey:@"venueDistance"];
+        [location setValue:v[@"location"][@"lat"] forKey:@"degreesLatitude"];
+        [location setValue:v[@"location"][@"lng"] forKey:@"degreesLongitude"];
         
-        ann.name = v[@"name"];
-        ann.venueId = v[@"id"];
-        //ann.categoryName = str;
-        ann.location.address = v[@"location"][@"address"];
-        ann.location.distance = v[@"location"][@"distance"];
-        ann.distance = ann.location.distance;
+        NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+        [dictionary setValue:v[@"name"] forKey:@"venueName"];
+        [dictionary setValue:v[@"id"] forKey:@"venueId"];
+        [dictionary setValue:location forKey:@"location"];
         
-        [ann.location setCoordinate:CLLocationCoordinate2DMake([v[@"location"][@"lat"] doubleValue], [v[@"location"][@"lng"] doubleValue])];
-        [objects addObject:ann];
+        FSVenue *venue = [[FSVenue alloc] initWithDictionary:dictionary];
+        [objects addObject:venue];
     }
     
     NSArray *sorted = [objects sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
