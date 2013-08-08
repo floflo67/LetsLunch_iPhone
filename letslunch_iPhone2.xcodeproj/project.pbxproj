@@ -62,6 +62,7 @@
 		545905E1179EE9CC002A0620 /* CenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36DB176B823700154C36 /* CenterViewController.m */; };
 		5480D55C17A06FA30069ABAC /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5480D55B17A06FA30069ABAC /* ActivityCell.m */; };
 		5480D55E17A077930069ABAC /* ActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5480D55D17A077930069ABAC /* ActivityCell.xib */; };
+		5482213017B41A0D001F6812 /* Testimonials.m in Sources */ = {isa = PBXBuildFile; fileRef = 5482212F17B41A0D001F6812 /* Testimonials.m */; };
 		548D36AF176B819300154C36 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36AE176B819300154C36 /* UIKit.framework */; };
 		548D36B1176B819300154C36 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36B0176B819300154C36 /* Foundation.framework */; };
 		548D36B3176B819300154C36 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36B2176B819300154C36 /* CoreGraphics.framework */; };
@@ -174,6 +175,8 @@
 		5480D55A17A06FA30069ABAC /* ActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCell.h; sourceTree = "<group>"; };
 		5480D55B17A06FA30069ABAC /* ActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCell.m; sourceTree = "<group>"; };
 		5480D55D17A077930069ABAC /* ActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityCell.xib; sourceTree = "<group>"; };
+		5482212E17B41A0D001F6812 /* Testimonials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Testimonials.h; sourceTree = "<group>"; };
+		5482212F17B41A0D001F6812 /* Testimonials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Testimonials.m; sourceTree = "<group>"; };
 		548D36AB176B819300154C36 /* letslunch_iPhone2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = letslunch_iPhone2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		548D36AE176B819300154C36 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		548D36B0176B819300154C36 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -439,6 +442,8 @@
 				54E625C817AC4480009F6391 /* FacebookFriend.m */,
 				5445A69317791AF900F3EC97 /* Messages.h */,
 				5445A69417791AF900F3EC97 /* Messages.m */,
+				5482212E17B41A0D001F6812 /* Testimonials.h */,
+				5482212F17B41A0D001F6812 /* Testimonials.m */,
 				54E625D017AC5B32009F6391 /* Thread.h */,
 				54E625D117AC5B32009F6391 /* Thread.m */,
 			);
@@ -895,6 +900,7 @@
 				54E625CC17AC4E56009F6391 /* SocialConnectionRequest.m in Sources */,
 				54E625CF17AC5739009F6391 /* ThreadRequest.m in Sources */,
 				54E625D217AC5B33009F6391 /* Thread.m in Sources */,
+				5482213017B41A0D001F6812 /* Testimonials.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
