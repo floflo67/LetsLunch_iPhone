@@ -14,9 +14,10 @@
 
 @interface DetailProfileViewController ()
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UIButton *wishListButton;
 @property (nonatomic, strong) NSMutableArray* objects;
 @property (nonatomic, strong) NSString *contactID;
-@property (weak, nonatomic) IBOutlet UIButton *wishListButton;
+@property (nonatomic) BOOL isOnWishlist;
 @end
 
 @implementation DetailProfileViewController
@@ -35,9 +36,7 @@
         NSArray *skills = [NSArray arrayWithArray:[dict objectForKey:@"skills"]];
         NSArray *needs = [NSArray arrayWithArray:[dict objectForKey:@"needs"]];
         NSDictionary *mediaLinks = [NSDictionary dictionaryWithDictionary:[dict objectForKey:@"socialMediaLinks"]];
-        BOOL isOnWishlist = [[dict objectForKey:@"onWishList"] boolValue];
-        if(isOnWishlist)
-            self.wishListButton.selected = YES;
+        self.isOnWishlist = [[dict objectForKey:@"onWishList"] boolValue];
         
         NSArray *tempTestimonials = [NSArray arrayWithArray:[dict objectForKey:@"testimonials"]];
         NSMutableArray *testimonials = [[NSMutableArray alloc] initWithCapacity:[tempTestimonials count]];
@@ -55,6 +54,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if(self.isOnWishlist)
+        [self.wishListButton setSelected:YES];
 }
 
 
