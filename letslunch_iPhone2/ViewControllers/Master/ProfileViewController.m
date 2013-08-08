@@ -50,10 +50,17 @@ static ProfileViewController *sharedSingleton = nil;
         
         NSDictionary *location = [NSDictionary dictionaryWithDictionary:[dict objectForKey:@"location"]];
         NSDictionary *other = [NSDictionary dictionaryWithDictionary:[dict objectForKey:@"other"]];
-        NSDictionary *skills = [NSArray arrayWithArray:[dict objectForKey:@"skills"]];
-        NSDictionary *needs = [NSArray arrayWithArray:[dict objectForKey:@"needs"]];
+        NSArray *skills = [NSArray arrayWithArray:[dict objectForKey:@"skills"]];
+        NSArray *needs = [NSArray arrayWithArray:[dict objectForKey:@"needs"]];
+        id mediaLinks;
+        if([[dict objectForKey:@"socialMediaLinks"] count])
+            mediaLinks = [NSDictionary dictionaryWithDictionary:[dict objectForKey:@"socialMediaLinks"]];
+        else
+            mediaLinks = [NSArray arrayWithArray:[dict objectForKey:@"socialMediaLinks"]];
+            
+        NSArray *testimonials = [NSArray arrayWithArray:[dict objectForKey:@"testimonials"]];
         
-        self.objects = (NSMutableArray*)@[profile, location, other, skills, needs];
+        self.objects = (NSMutableArray*)@[profile, location, other, skills, needs, testimonials, mediaLinks];
     }
     
     return self;
@@ -93,18 +100,18 @@ static ProfileViewController *sharedSingleton = nil;
         NSArray *allValues = [dict allValues];
         
         if([allKeys count] > indexPath.row) {
-        NSString *key = allKeys[indexPath.row];
-        NSString *keyCapitalized = [key stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[key substringToIndex:1] capitalizedString]];
-        
-        cell.textLabel.text = keyCapitalized;
-        cell.detailTextLabel.text = allValues[indexPath.row];
+            NSString *key = allKeys[indexPath.row];
+            NSString *keyCapitalized = [key stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[key substringToIndex:1] capitalizedString]];
+            
+            cell.textLabel.text = keyCapitalized;
+            cell.detailTextLabel.text = allValues[indexPath.row];
         }
         else {
             cell.textLabel.text = @"Error connection";
             cell.detailTextLabel.text = @"";
         }
     }
-    else {
+    else if(indexPath.section < 5) {
         NSArray *array = (NSArray*)self.objects[indexPath.section];
         if([array count] == 0) {
             cell.textLabel.text = @"None listed";
@@ -115,6 +122,35 @@ static ProfileViewController *sharedSingleton = nil;
             cell.detailTextLabel.text = @"";
         }
     }
+    else if (indexPath.section == 6) {
+        NSDictionary *dict = (NSDictionary*)self.objects[indexPath.section];
+        if([dict count] > 0) {
+            NSArray *allKeys = [dict allKeys];
+            NSArray *allValues = [dict allValues];
+            
+            NSString *key = allKeys[indexPath.row];
+            NSString *keyCapitalized = [key stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[key substringToIndex:1] capitalizedString]];
+            
+            cell.textLabel.text = keyCapitalized;
+            cell.detailTextLabel.text = allValues[indexPath.row];
+        }
+        else {
+            cell.textLabel.text = @"None listed";
+            cell.detailTextLabel.text = @"";
+        }
+    }
+    else {
+        NSArray *array = (NSArray*)self.objects[indexPath.section];
+        if([array count] == 0) {
+            cell.textLabel.text = @"None listed";
+            cell.detailTextLabel.text = @"";
+        }
+        else {
+            cell.textLabel.text = [array[indexPath.row] objectForKey:@"message"];
+            cell.detailTextLabel.text = @"";
+        }
+    }
+    
     return cell;
 }
 
@@ -135,6 +171,12 @@ static ProfileViewController *sharedSingleton = nil;
             break;
         case 4:
             return @"Needs";
+            break;
+        case 5:
+            return @"Testimonials";
+            break;
+        case 6:
+            return @"Social";
             break;
         default:
             return @"";
