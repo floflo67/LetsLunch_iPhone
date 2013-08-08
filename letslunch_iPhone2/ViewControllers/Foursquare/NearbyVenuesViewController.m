@@ -13,6 +13,16 @@
 #import "CreateActivityViewController.h"
 
 @interface NearbyVenuesViewController ()
+@property (nonatomic, weak) IBOutlet UISegmentedControl *segment;
+@property (nonatomic, weak) IBOutlet UITableView* tableView;
+@property (nonatomic, strong) NSMutableArray *nearbyVenues;
+@property (nonatomic, strong) NSString *section;
+@property (nonatomic, strong) NSString *query;
+@property (nonatomic, strong) NSNumber *radius;
+@property (nonatomic) BOOL isSearching;
+@property (nonatomic, strong) FSVenue *selected;
+@property (nonatomic, strong) UITextField *textFieldSearch;
+@property (nonatomic, weak) CLLocationManager *locationManager;
 
 @end
 
@@ -33,10 +43,9 @@
     /*
      To get current location
      */
-    _locationManager = ((AppDelegate*)[UIApplication sharedApplication].delegate).locationManager;
-    _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
-    _locationManager.delegate = self;
-    [_locationManager startUpdatingLocation];
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    self.locationManager.delegate = self;
+    [self.locationManager startUpdatingLocation];
     
     /*
      Add rightButton on navigationBar to search
@@ -105,7 +114,7 @@
     }
     if(self.isSearching)
         [self search:nil];
-    [self getVenuesForLocation:_locationManager.location];
+    [self getVenuesForLocation:self.locationManager.location];
 }
 
 #pragma text field delegates
@@ -122,7 +131,7 @@
     self.query = textField.text;
     self.radius = @(10000);
     [self search:nil];
-    [self getVenuesForLocation:_locationManager.location];
+    [self getVenuesForLocation:self.locationManager.location];
     self.segment.selectedSegmentIndex = UISegmentedControlNoSegment;
     
     return YES;
@@ -168,7 +177,6 @@
 - (void)getVenuesForLocation:(CLLocation*)location
 {
     self.nearbyVenues = nil;
-    self.nearbyVenues = [[NSMutableArray alloc] init];
     
     [Foursquare2 searchVenuesNearByLatitude:@(location.coordinate.latitude)
 								  longitude:@(location.coordinate.longitude)
@@ -209,7 +217,7 @@
 
 - (void)locationManager:(CLLocationManager*)manager didUpdateToLocation:(CLLocation*)newLocation fromLocation:(CLLocation*)oldLocation
 {
-    [_locationManager stopUpdatingLocation];
+    [self.locationManager stopUpdatingLocation];
     [self getVenuesForLocation:newLocation];
 }
 
@@ -230,8 +238,24 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     self.selected = self.nearbyVenues[indexPath.row];
-    _locationManager = nil;
+    self.locationManager = nil;
     [self userDidSelectVenue];
+}
+
+#pragma mark - getter and setter
+
+- (NSMutableArray*)nearbyVenues
+{
+    if(!_nearbyVenues)
+        _nearbyVenues = [[NSMutableArray alloc] init];
+    return _nearbyVenues;
+}
+
+- (CLLocationManager*)locationManager
+{
+    if(!_locationManager)
+        _locationManager = ((AppDelegate*)[UIApplication sharedApplication].delegate).locationManager;
+    return _locationManager;
 }
 
 @end
