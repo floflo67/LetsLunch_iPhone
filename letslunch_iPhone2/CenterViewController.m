@@ -59,16 +59,22 @@
 
 - (void)MessageConfiguration
 {
-    self.centerView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
-    [self.centerView addSubview:[ContactViewController getSingleton].view];
-    self.navigationItem.title = @"Contact";
+    if([ContactViewController getSingleton]) {
+        [self removeSuperviews];
+        self.centerView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
+        [self.centerView addSubview:[ContactViewController getSingleton].view];
+        self.navigationItem.title = @"Contact";
+    }
 }
 
 - (void)ProfileConfiguration
 {
-    self.centerView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
-    [self.centerView addSubview:[ProfileViewController getSingleton].view];
-    self.navigationItem.title = @"Profile";
+    if([ProfileViewController getSingleton]) {
+        [self removeSuperviews];
+        self.centerView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
+        [self.centerView addSubview:[ProfileViewController getSingleton].view];
+        self.navigationItem.title = @"Profile";
+    }
 }
 
 - (void)VisitorsConfiguration
@@ -83,6 +89,15 @@
     self.centerView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
     [self.centerView addSubview:[InviteViewController getSingleton].view];
     self.navigationItem.title = @"Invite";
+}
+
+- (void)removeSuperviews
+{
+    if([self.centerView.subviews count] > 0) {
+        for (UIView* v in self.centerView.subviews) {
+            [v removeFromSuperview];
+        }
+    }
 }
 
 - (void)logout
@@ -242,14 +257,7 @@
 
 - (void)sidebarViewController:(LeftSidebarViewController*)sidebarViewController didSelectObject:(NSObject*)object atIndexPath:(NSIndexPath*)indexPath
 {
-    
     [self.navigationController setRevealedState:JTRevealedStateNo];
-    
-    if([self.centerView.subviews count] > 0) {
-        for (UIView* v in self.centerView.subviews) {
-            [v removeFromSuperview];
-        }
-    }
     
     if([[object description] isEqualToString:@"Activity"])
         [self ActivityConfiguration];

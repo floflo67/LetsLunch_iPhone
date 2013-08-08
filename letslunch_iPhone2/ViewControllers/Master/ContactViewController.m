@@ -39,7 +39,11 @@ static ContactViewController *sharedSingleton = nil;
 - (id)init
 {
     self = [super init];
-    self.objects = [(AppDelegate*)[[UIApplication sharedApplication] delegate] getListContactsAndForceReload:NO];
+    if(self) {
+        self.objects = [(AppDelegate*)[[UIApplication sharedApplication] delegate] getListContactsAndForceReload:NO];
+        if([self.objects count] == 0)
+            return nil;
+    }
     return self;
 }
 
