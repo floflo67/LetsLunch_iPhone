@@ -14,6 +14,6 @@
 @property (nonatomic, strong, readonly) NSString *firstName;
 @property (nonatomic, strong, readonly) NSString *lastName;
 
--(id)initWithID:(NSString*)userID firstname:(NSString *)firstname andLastname:(NSString *)lastname;
+-(id)initWithID:(NSString*)userID firstname:(NSString*)firstname andLastname:(NSString*)lastname;
 
 @end

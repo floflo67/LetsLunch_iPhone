@@ -16,7 +16,7 @@
 
 @implementation FacebookFriend
 
-- (id)initWithID:(NSString*)userID firstname:(NSString *)firstname andLastname:(NSString *)lastname
+- (id)initWithID:(NSString*)userID firstname:(NSString*)firstname andLastname:(NSString*)lastname
 {
     self = [super init];
     if(self) {

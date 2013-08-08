@@ -97,7 +97,7 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     ABRecordID contact = [[self.objects objectAtIndex:indexPath.row] intValue];
     ABRecordRef record = ABAddressBookGetPersonWithRecordID(_addressBook, contact);

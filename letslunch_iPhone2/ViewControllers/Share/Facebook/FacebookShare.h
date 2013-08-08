@@ -12,7 +12,7 @@
 @protocol facebookShareDelegate <NSObject>
 
 @optional
--(void)showALert:(NSString *)message;
+-(void)showALert:(NSString*)message;
 
 @end
 
@@ -24,7 +24,7 @@
 
 @property (nonatomic, assign) id <facebookShareDelegate> delegate;
 
--(void)postToFacebook:(NSString *)name productLink:(NSString *)productLink productImageUrl:(NSString *)imageUrl;
+-(void)postToFacebook:(NSString*)name productLink:(NSString*)productLink productImageUrl:(NSString*)imageUrl;
 -(void)shareOnFacebook;
 
 @end

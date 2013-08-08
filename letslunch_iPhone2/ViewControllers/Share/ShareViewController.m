@@ -147,7 +147,7 @@ static ShareViewController *sharedSingleton = nil;
     [((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController closeView];
 }
 
-- (IBAction)promoteButton:(UIButton *)sender
+- (IBAction)promoteButton:(UIButton*)sender
 {
     if(self.mustShareOnFacebook)
         [self shareOnFacebook];

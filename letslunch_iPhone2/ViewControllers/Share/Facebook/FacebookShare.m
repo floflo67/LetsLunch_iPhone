@@ -33,7 +33,7 @@
     return [super init];
 }
 
--(void)postToFacebook:(NSString *)name productLink:(NSString *)productLink productImageUrl:(NSString *)imageUrl
+-(void)postToFacebook:(NSString*)name productLink:(NSString*)productLink productImageUrl:(NSString*)imageUrl
 {
     self.modelName = name;
     self.modelLink = productLink;

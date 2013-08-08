@@ -19,9 +19,9 @@
 @property (nonatomic) SEL callbackSelector;
 
 -(id)initWithFbClientID:fbcid;
--(FbGraphResponse*)doGraphGet:(NSString*)action withGetVars:(NSDictionary *)get_vars;
+-(FbGraphResponse*)doGraphGet:(NSString*)action withGetVars:(NSDictionary*)get_vars;
 -(FbGraphResponse*)doGraphGetWithUrlString:(NSString*)url_string;
--(FbGraphResponse*)doGraphPost:(NSString*)action withPostVars:(NSDictionary *)post_vars;
+-(FbGraphResponse*)doGraphPost:(NSString*)action withPostVars:(NSDictionary*)post_vars;
 
 +(BOOL)StoreShareid:(id)ids;
 

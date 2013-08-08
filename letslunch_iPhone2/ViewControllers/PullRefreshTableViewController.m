@@ -31,7 +31,7 @@
   [self addPullToRefreshHeader];
 }
 
--(void)setTextLoading:(NSString *)textLoading textRelease:(NSString*)textRelease andTextPull:(NSString *)textPull
+-(void)setTextLoading:(NSString*)textLoading textRelease:(NSString*)textRelease andTextPull:(NSString*)textPull
 {
     self.textLoading = textLoading;
     self.textPull = textPull;
@@ -63,13 +63,13 @@
     [self.tableView addSubview:self.refreshHeaderView];
 }
 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+- (void)scrollViewWillBeginDragging:(UIScrollView*)scrollView
 {
     if (self.isLoading) return;
     self.isDragging = YES;
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+- (void)scrollViewDidScroll:(UIScrollView*)scrollView
 {
     if (self.isLoading) {
         // Update the content inset, good for section headers
@@ -93,7 +93,7 @@
     }
 }
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+- (void)scrollViewDidEndDragging:(UIScrollView*)scrollView willDecelerate:(BOOL)decelerate
 {
     if (self.isLoading) return;
     self.isDragging = NO;

@@ -67,7 +67,7 @@
 
 #pragma mark - getter and setter
 
-- (FSLocation *)location
+- (FSLocation*)location
 {
     if(!_location)
         _location = [[FSLocation alloc] init];

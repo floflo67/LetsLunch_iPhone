@@ -20,6 +20,6 @@
 -(void)stopLoading;
 -(void)refresh;
 
--(void)setTextLoading:(NSString *)textLoading textRelease:(NSString*)textRelease andTextPull:(NSString*)textPull;
+-(void)setTextLoading:(NSString*)textLoading textRelease:(NSString*)textRelease andTextPull:(NSString*)textPull;
 
 @end

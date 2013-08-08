@@ -11,7 +11,7 @@
 
 @implementation FbGraphFile
 
-- (id)initWithImage:(UIImage *)upload_image {
+- (id)initWithImage:(UIImage*)upload_image {
 	
 	if (self = [super init]) {
 		self.uploadImage = upload_image;
@@ -24,7 +24,7 @@
  * types as FB allows us to upload them into the graph...
  * with little if any modification to the code 
 **/
-- (void)appendDataToBody:(NSMutableData *)body {
+- (void)appendDataToBody:(NSMutableData*)body {
 	
 	/**
 	 * Facebook Graph API only support images at the moment, surely videos must occur soon.

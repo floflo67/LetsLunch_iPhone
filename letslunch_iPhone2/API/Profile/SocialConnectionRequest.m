@@ -15,7 +15,7 @@
 
 @implementation SocialConnectionRequest
 
-+ (NSArray*)getSocialConnectionWithToken:(NSString *)token
++ (NSArray*)getSocialConnectionWithToken:(NSString*)token
 {
     return [[[SocialConnectionRequest alloc] init] getSocialConnectionWithToken:token];
 }
@@ -27,7 +27,7 @@
     authToken (token)
  */
 
-- (NSArray*)getSocialConnectionWithToken:(NSString *)token
+- (NSArray*)getSocialConnectionWithToken:(NSString*)token
 {
     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
     [parameters setValue:token forKey:@"authToken"];

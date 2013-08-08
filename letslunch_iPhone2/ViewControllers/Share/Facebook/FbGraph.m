@@ -31,7 +31,7 @@ id shareid;
     return YES;
 }
 
-- (FbGraphResponse *)doGraphGet:(NSString *)action withGetVars:(NSDictionary *)get_vars {
+- (FbGraphResponse*)doGraphGet:(NSString*)action withGetVars:(NSDictionary*)get_vars {
 	
 	NSString *url_string = [NSString stringWithFormat:@"https://graph.facebook.com/%@?", action];
 	
@@ -41,9 +41,9 @@ id shareid;
 		NSEnumerator *enumerator = [get_vars keyEnumerator];
 		NSString *key;
 		NSString *value;
-		while ((key = (NSString *)[enumerator nextObject])) {
+		while ((key = (NSString*)[enumerator nextObject])) {
 			
-			value = (NSString *)[get_vars objectForKey:key];
+			value = (NSString*)[get_vars objectForKey:key];
 			url_string = [NSString stringWithFormat:@"%@%@=%@&", url_string, key, value];
 			
 		}//end while	
@@ -60,7 +60,7 @@ id shareid;
 	return [self doGraphGetWithUrlString:url_string];
 }
 
-- (FbGraphResponse *)doGraphGetWithUrlString:(NSString *)url_string {
+- (FbGraphResponse*)doGraphGetWithUrlString:(NSString*)url_string {
 	
 	FbGraphResponse *return_value = [[FbGraphResponse alloc] init];
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url_string]];
@@ -95,7 +95,7 @@ id shareid;
 	
 }
 
-- (FbGraphResponse *)doGraphPost:(NSString *)action withPostVars:(NSDictionary *)post_vars {
+- (FbGraphResponse*)doGraphPost:(NSString*)action withPostVars:(NSDictionary*)post_vars {
 	
 	FbGraphResponse *return_value = [[FbGraphResponse alloc] init];
 	
@@ -118,13 +118,13 @@ id shareid;
 	NSString *content_disposition;
 	
 	//loop through all our parameters 
-	while ((key = (NSString *)[enumerator nextObject])) {
+	while ((key = (NSString*)[enumerator nextObject])) {
 		if ([key isEqualToString:@"file"]) {
-			FbGraphFile *upload_file = (FbGraphFile *)[post_vars objectForKey:key];
+			FbGraphFile *upload_file = (FbGraphFile*)[post_vars objectForKey:key];
 			[upload_file appendDataToBody:body];
 		}
         else {
-			value = (NSString *)[post_vars objectForKey:key];
+			value = (NSString*)[post_vars objectForKey:key];
 			
 			content_disposition = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", key];
 			[body appendData:[content_disposition dataUsingEncoding:NSUTF8StringEncoding]];
