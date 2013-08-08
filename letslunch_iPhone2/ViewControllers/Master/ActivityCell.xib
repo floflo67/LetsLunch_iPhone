@@ -66,7 +66,7 @@
 							<object class="IBUILabel" id="174111365">
 								<reference key="NSNextResponder" ref="1013399345"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{139, 0}, {181, 26}}</string>
+								<string key="NSFrame">{{118, 0}, {202, 26}}</string>
 								<reference key="NSSuperview" ref="1013399345"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="1003980510"/>
@@ -76,7 +76,7 @@
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">Name</string>
+								<string key="IBUIText">Name + Job Title</string>
 								<object class="NSColor" key="IBUITextColor" id="836324354">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MCAwIDAAA</bytes>
@@ -103,7 +103,7 @@
 							<object class="IBUILabel" id="1003980510">
 								<reference key="NSNextResponder" ref="1013399345"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{139, 26}, {181, 21}}</string>
+								<string key="NSFrame">{{118, 26}, {181, 34}}</string>
 								<reference key="NSSuperview" ref="1013399345"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="296588849"/>
@@ -113,10 +113,11 @@
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">Job Title</string>
+								<string key="IBUIText">Description</string>
 								<reference key="IBUITextColor" ref="836324354"/>
 								<reference key="IBUIHighlightedColor" ref="27276155"/>
 								<int key="IBUIBaselineAdjustment">0</int>
+								<int key="IBUINumberOfLines">2</int>
 								<object class="IBUIFontDescription" key="IBUIFontDescription">
 									<string key="name">AvenirNext-Medium</string>
 									<string key="family">Avenir Next</string>
@@ -129,6 +130,7 @@
 									<int key="NSfFlags">16</int>
 								</object>
 								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
+								<double key="preferredMaxLayoutWidth">181</double>
 							</object>
 							<object class="IBUILabel" id="296588849">
 								<reference key="NSNextResponder" ref="1013399345"/>
@@ -276,10 +278,10 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="296588849"/>
 							<reference ref="271580107"/>
-							<reference ref="1003980510"/>
-							<reference ref="174111365"/>
 							<reference ref="244220412"/>
 							<reference ref="386856801"/>
+							<reference ref="174111365"/>
+							<reference ref="1003980510"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>

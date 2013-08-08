@@ -134,11 +134,11 @@ static ActivityViewController *sharedSingleton = nil;
         }
         else {
             Activity *activity = self.objects[indexPath.section][indexPath.row];
-            cell.labelUserName.text = [NSString stringWithFormat:@"%@ %@", activity.contact.firstname, activity.contact.lastname];
-            cell.labelUserJobTitle.text = activity.contact.jobTitle;
+            cell.labelUserName.text = [NSString stringWithFormat:@"%@ %@ - %@", activity.contact.firstname, activity.contact.lastname, activity.contact.jobTitle];
+            cell.labelUserJobTitle.text = activity.description;
             cell.LabelTime.text = activity.time;
             cell.labelVenueName.text = activity.venue.name;
-            cell.imageView.image = activity.contact.image;
+            cell.userPicture.image = activity.contact.image;
         }
     }
     else {
@@ -166,7 +166,7 @@ static ActivityViewController *sharedSingleton = nil;
             cell.labelUserJobTitle.text = activity.contact.jobTitle;
             cell.LabelTime.text = activity.time;
             cell.labelVenueName.text = activity.venue.name;
-            cell.imageView.image = activity.contact.image;
+            cell.userPicture.image = activity.contact.image;
         }
     }
     
