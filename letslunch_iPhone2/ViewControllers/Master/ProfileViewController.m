@@ -8,6 +8,7 @@
 
 #import "ProfileViewController.h"
 #import "ProfileRequest.h"
+#import "Testimonials.h"
 
 @interface ProfileViewController ()
 @property (nonatomic, strong) ProfileRequest *profileRequest;
@@ -58,7 +59,12 @@ static ProfileViewController *sharedSingleton = nil;
         else
             mediaLinks = [NSArray arrayWithArray:[dict objectForKey:@"socialMediaLinks"]];
             
-        NSArray *testimonials = [NSArray arrayWithArray:[dict objectForKey:@"testimonials"]];
+        NSArray *tempTestimonials = [NSArray arrayWithArray:[dict objectForKey:@"testimonials"]];
+        NSMutableArray *testimonials = [[NSMutableArray alloc] initWithCapacity:[tempTestimonials count]];
+        
+        for (NSDictionary *dict in tempTestimonials) {
+            [testimonials addObject:[[Testimonials alloc] initWithDictionary:dict]];
+        }
         
         self.objects = (NSMutableArray*)@[profile, location, other, skills, needs, testimonials, mediaLinks];
     }
@@ -122,6 +128,18 @@ static ProfileViewController *sharedSingleton = nil;
             cell.detailTextLabel.text = @"";
         }
     }
+    else if (indexPath.section == 5) {
+        NSArray *array = (NSArray*)self.objects[indexPath.section];
+        if([array count] == 0) {
+            cell.textLabel.text = @"None listed";
+            cell.detailTextLabel.text = @"";
+        }
+        else {
+            Testimonials *testimonial = array[indexPath.row];
+            cell.textLabel.text = testimonial.message;
+            cell.detailTextLabel.text = @"";
+        }
+    }
     else if (indexPath.section == 6) {
         NSDictionary *dict = (NSDictionary*)self.objects[indexPath.section];
         if([dict count] > 0) {
@@ -136,17 +154,6 @@ static ProfileViewController *sharedSingleton = nil;
         }
         else {
             cell.textLabel.text = @"None listed";
-            cell.detailTextLabel.text = @"";
-        }
-    }
-    else {
-        NSArray *array = (NSArray*)self.objects[indexPath.section];
-        if([array count] == 0) {
-            cell.textLabel.text = @"None listed";
-            cell.detailTextLabel.text = @"";
-        }
-        else {
-            cell.textLabel.text = [array[indexPath.row] objectForKey:@"message"];
             cell.detailTextLabel.text = @"";
         }
     }

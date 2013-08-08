@@ -9,6 +9,7 @@
 #import "DetailProfileViewController.h"
 #import "ProfileDetailsRequest.h"
 #import "MessageViewController.h"
+#import "Testimonials.h"
 
 @interface DetailProfileViewController ()
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -33,11 +34,16 @@
         NSArray *skills = [NSArray arrayWithArray:[dict objectForKey:@"skills"]];
         NSArray *needs = [NSArray arrayWithArray:[dict objectForKey:@"needs"]];
         NSDictionary *mediaLinks = [NSDictionary dictionaryWithDictionary:[dict objectForKey:@"socialMediaLinks"]];
-        NSArray *testimonials = [NSArray arrayWithArray:[dict objectForKey:@"testimonials"]];        
         BOOL isOnWishlist = [[dict objectForKey:@"onWishList"] boolValue];
         if(isOnWishlist)
             self.wishListButton.selected = YES;
-            
+        
+        NSArray *tempTestimonials = [NSArray arrayWithArray:[dict objectForKey:@"testimonials"]];
+        NSMutableArray *testimonials = [[NSMutableArray alloc] initWithCapacity:[tempTestimonials count]];
+        
+        for (NSDictionary *dict in tempTestimonials) {
+            [testimonials addObject:[[Testimonials alloc] initWithDictionary:dict]];
+        }
         
         self.objects = (NSMutableArray*)@[profile, location, other, skills, needs, testimonials, mediaLinks];
         self.contactID = contactID;
@@ -137,6 +143,18 @@
             cell.detailTextLabel.text = @"";
         }
     }
+    else if (indexPath.section == 5) {
+        NSArray *array = (NSArray*)self.objects[indexPath.section];
+        if([array count] == 0) {
+            cell.textLabel.text = @"None listed";
+            cell.detailTextLabel.text = @"";
+        }
+        else {
+            Testimonials *testimonial = array[indexPath.row];
+            cell.textLabel.text = testimonial.message;
+            cell.detailTextLabel.text = @"";
+        }
+    }
     else if (indexPath.section == 6) {
         NSDictionary *dict = (NSDictionary*)self.objects[indexPath.section];
         if([dict count] > 0) {
@@ -151,17 +169,6 @@
         }
         else {
             cell.textLabel.text = @"None listed";
-            cell.detailTextLabel.text = @"";
-        }
-    }
-    else {
-        NSArray *array = (NSArray*)self.objects[indexPath.section];
-        if([array count] == 0) {
-            cell.textLabel.text = @"None listed";
-            cell.detailTextLabel.text = @"";
-        }
-        else {
-            cell.textLabel.text = [array[indexPath.row] objectForKey:@"message"];
             cell.detailTextLabel.text = @"";
         }
     }
