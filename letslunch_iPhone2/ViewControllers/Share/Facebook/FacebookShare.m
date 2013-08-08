@@ -45,10 +45,14 @@
     
     [FBSession.activeSession closeAndClearTokenInformation];
     
-    [FBSession openActiveSessionWithPublishPermissions:@[@"publish_actions"] defaultAudience:FBSessionDefaultAudienceEveryone allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+    [FBSession openActiveSessionWithReadPermissions:@[@"email"] allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
         if(session.isOpen) {
-            fbGraph.accessToken = session.accessTokenData.accessToken;
-            [self shareOnFacebook];
+            [FBSession openActiveSessionWithPublishPermissions:@[@"publish_actions"] defaultAudience:FBSessionDefaultAudienceEveryone allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+                if(session.isOpen) {
+                    fbGraph.accessToken = session.accessTokenData.accessToken;
+                    [self shareOnFacebook];
+                }
+            }];
         }
     }];
     

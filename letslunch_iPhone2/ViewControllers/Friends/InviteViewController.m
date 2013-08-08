@@ -160,39 +160,31 @@ static InviteViewController *sharedSingleton = nil;
     //NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"100006504845625", @"to", nil]; // John Smith
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:nil];
     
-    [FBWebDialogs presentRequestsDialogModallyWithSession:[FBSession activeSession] message:[NSString stringWithFormat:@"Join me on Letslunch.com."] title:@"Invite" parameters:params handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
-        if (error)
-            NSLog(@"Error sending request.");
-        else {
-            if (result == FBWebDialogResultDialogNotCompleted)
-                NSLog(@"User canceled request.");
-            else if(result == FBWebDialogResultDialogCompleted) {
-                NSDictionary *urlParams = [self parseURLParams:[resultURL query]];
-                if (![urlParams valueForKey:@"request"])
+    if([FBSession activeSession].isOpen) {
+        [FBWebDialogs presentRequestsDialogModallyWithSession:[FBSession activeSession] message:@"Join me on Letslunch.com." title:@"Invite" parameters:params handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
+            if (error)
+                NSLog(@"Error sending request.");
+            else {
+                if (result == FBWebDialogResultDialogNotCompleted)
                     NSLog(@"User canceled request.");
-                else {
-                    NSString *requestID = [urlParams valueForKey:@"request"];
-                    NSLog(@"Request ID: %@", requestID);
-                }
+                else if(result == FBWebDialogResultDialogCompleted)
+                    NSLog(@"Request: %@", resultURL);
+                else
+                    NSLog(@"Error unknown.");
             }
-            else
-                NSLog(@"Error unknown.");
-        }
-    }];
-}
-
-- (NSDictionary*)parseURLParams:(NSString *)query {
-    NSArray *pairs = [query componentsSeparatedByString:@"&"];
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    for (NSString *pair in pairs) {
-        NSArray *kv = [pair componentsSeparatedByString:@"="];
-        NSString *val =
-        [[kv objectAtIndex:1]
-         stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        
-        [params setObject:val forKey:[kv objectAtIndex:0]];
+        }];        
     }
-    return params;
+    else {
+        [FBSession openActiveSessionWithReadPermissions:@[@"email"] allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+            if(session.isOpen) {
+                [FBSession openActiveSessionWithPublishPermissions:@[@"publish_actions"] defaultAudience:FBSessionDefaultAudienceEveryone allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+                    if(session.isOpen) {
+                        [self showRequestForFacebook];
+                    }
+                }];
+            }
+        }];
+    }
 }
 
 #pragma mark - getter and setter
