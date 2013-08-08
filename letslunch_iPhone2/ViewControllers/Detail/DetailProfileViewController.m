@@ -9,6 +9,7 @@
 #import "DetailProfileViewController.h"
 #import "ProfileDetailsRequest.h"
 #import "MessageViewController.h"
+#import "WishListRequest.h"
 #import "Testimonials.h"
 
 @interface DetailProfileViewController ()
@@ -186,6 +187,7 @@
 - (IBAction)wishListButton:(UIButton*)sender
 {
     self.wishListButton.selected = !self.wishListButton.selected;
+    [WishListRequest changeUserFromWishList:self.contactID withToken:[AppDelegate getToken]];
 }
 
 #pragma mark - getter and setter
