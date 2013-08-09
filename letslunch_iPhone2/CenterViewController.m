@@ -20,7 +20,7 @@
 @synthesize leftSelectedIndexPath;
 
 
-#pragma view lifecycle
+#pragma mark - view lifecycle
 
 - (void)viewDidLoad
 {
@@ -48,7 +48,7 @@
     [super viewDidUnload];
 }
 
-#pragma configuration
+#pragma mark - configuration
 
 - (void)ActivityConfiguration
 {
@@ -105,7 +105,7 @@
     [AppDelegate logout];
 }
 
-#pragma reveal side bars
+#pragma mark - reveal side bars
 
 - (void)revealLeftSidebar:(id)sender
 {
@@ -118,7 +118,7 @@
     [self.navigationController toggleRevealState:JTRevealedStateRight];
 }
 
-#pragma activity
+#pragma mark - activity
 
 - (void)pushCreateActivityViewController:(id)sender
 {
@@ -148,7 +148,7 @@
     [ShareViewController suppressSingleton];
 }
 
-#pragma mark JTRevealSidebarDelegate
+#pragma mark - JTRevealSidebarDelegate
 
 // This is an examle to configure your sidebar view through a custom UITableViewController
 - (UIView*)viewForLeftSidebar
@@ -212,7 +212,7 @@
 
 @implementation CenterViewController (Private)
 
-#pragma mark UITableViewDatasource
+#pragma mark - UITableViewDatasource
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -243,7 +243,7 @@
     return nil;
 }
 
-#pragma mark UITableViewDelegate
+#pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
@@ -253,7 +253,7 @@
     }
 }
 
-#pragma mark SidebarViewControllerDelegate
+#pragma mark - SidebarViewControllerDelegate
 
 - (void)sidebarViewController:(LeftSidebarViewController*)sidebarViewController didSelectObject:(NSObject*)object atIndexPath:(NSIndexPath*)indexPath
 {

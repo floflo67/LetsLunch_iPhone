@@ -42,14 +42,8 @@ static InviteViewController *sharedSingleton = nil;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-        self.objects = @[@"Contacts", @"Facebook", @"Twitter"];
+    self.objects = @[@"Contacts", @"Facebook", @"Twitter"];
 }
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
-
 
 #pragma mark - Table view data source
 
@@ -72,7 +66,6 @@ static InviteViewController *sharedSingleton = nil;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
     cell.textLabel.text = [self.objects[indexPath.row] description];
     
     return cell;
@@ -87,7 +80,7 @@ static InviteViewController *sharedSingleton = nil;
         case 0: // contacts
             [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController.navigationController pushViewController:vc animated:YES];
             break;
-        case 1:
+        case 1: // facebook
             [self getFacebookFriend];
             break;
         case 2: // twitter

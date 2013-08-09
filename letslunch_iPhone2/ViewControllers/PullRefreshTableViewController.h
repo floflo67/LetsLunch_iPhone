@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-
+/*
+ Class to manage the pull / refresh of a table view
+ */
 @interface PullRefreshTableViewController : UITableViewController
 
 @property (nonatomic, strong, readonly) NSString *textPull;

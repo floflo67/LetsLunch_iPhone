@@ -66,6 +66,7 @@ static ContactViewController *sharedSingleton = nil;
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     Thread *thread = (Thread*)self.objects[indexPath.row];
     cell.textLabel.text = thread.receiver.firstname;

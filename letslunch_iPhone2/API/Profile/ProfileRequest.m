@@ -124,7 +124,7 @@
     }
 }
 
-#pragma connection delegate
+#pragma mark - connection delegate
 
 - (void)connection:(NSURLConnection*)connection didReceiveData:(NSData*)data
 {

@@ -105,7 +105,7 @@
     self.loginViewController = nil;
 }
 
-#pragma custom functions
+#pragma mark - custom functions
 
 + (UIColor*)colorWithHexString:(NSString*)hex
 {
@@ -153,7 +153,7 @@
     return newImage;
 }
 
-#pragma keychain
+#pragma mark - keychain
 
 + (NSString*)getToken
 {
@@ -217,7 +217,7 @@
     self.token = nil;
 }
 
-#pragma lists
+#pragma mark - lists
 
 - (NSMutableArray*)getListActivitiesAndForceReload:(BOOL)shouldReload
 {

@@ -319,14 +319,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">buttonLogIn</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="135986521"/>
-					</object>
-					<int key="connectionID">24</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">buttonTwitter</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="778574790"/>
@@ -348,6 +340,15 @@
 						<reference key="destination" ref="222860085"/>
 					</object>
 					<int key="connectionID">28</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">loginButton:</string>
+						<reference key="source" ref="135986521"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">1</int>
+					</object>
+					<int key="connectionID">29</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -445,17 +446,27 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">28</int>
+			<int key="maxID">29</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">LoginViewController</string>
 					<string key="superclassName">UIViewController</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">loginButton:</string>
+						<string key="NS.object.0">UIButton</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">loginButton:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">loginButton:</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="buttonFacebook">UIButton</string>
 						<string key="buttonLinkedIn">UIButton</string>
-						<string key="buttonLogIn">UIButton</string>
 						<string key="buttonTwitter">UIButton</string>
 						<string key="textFieldPassword">UITextField</string>
 						<string key="textFieldUsername">UITextField</string>
@@ -467,10 +478,6 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="buttonLinkedIn">
 							<string key="name">buttonLinkedIn</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="buttonLogIn">
-							<string key="name">buttonLogIn</string>
 							<string key="candidateClassName">UIButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="buttonTwitter">

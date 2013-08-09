@@ -42,14 +42,10 @@ static VisitorsViewController *sharedSingleton = nil;
     self = [super init];
     if (self) {
         self.objects = [[[VisitorsRequest alloc] init] getVisitorsWithToken:[AppDelegate getToken]];
-    }
-    
+        if([self.objects count] == 0)
+            return nil;
+    }    
     return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
 }
 
 #pragma mark - Table view data source

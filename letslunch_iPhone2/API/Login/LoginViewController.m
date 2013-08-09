@@ -16,19 +16,15 @@
 
 @property (nonatomic, weak) IBOutlet UITextField *textFieldUsername;
 @property (nonatomic, weak) IBOutlet UITextField *textFieldPassword;
-@property (nonatomic, weak) IBOutlet UIButton *buttonLogIn;
 @property (nonatomic, weak) IBOutlet UIButton *buttonTwitter;
 @property (nonatomic, weak) IBOutlet UIButton *buttonFacebook;
 @property (nonatomic, weak) IBOutlet UIButton *buttonLinkedIn;
 @property (nonatomic) BOOL isLinkedIn;
-
-@property (nonatomic, strong) LoginRequests *loginRequest;
-
 @end
 
 @implementation LoginViewController
 
-#pragma view life cycle
+#pragma mark - view life cycle
 
 - (void)viewDidLoad
 {
@@ -46,7 +42,6 @@
     [self.buttonFacebook addTarget:self action:@selector(logInWithFacebook) forControlEvents:UIControlEventTouchDown];
     [self.buttonTwitter addTarget:self action:@selector(logInWithTwitter) forControlEvents:UIControlEventTouchDown];
     [self.buttonLinkedIn addTarget:self action:@selector(logInWithLinkedIn) forControlEvents:UIControlEventTouchDown];
-    [self.buttonLogIn addTarget:self action:@selector(buttonLogInClick) forControlEvents:UIControlEventTouchDown];
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,7 +50,7 @@
 }
 
 
-#pragma text field delegate
+#pragma mark - text field delegate
 
 - (BOOL)textFieldShouldReturn:(UITextField*)textField
 {
@@ -65,12 +60,12 @@
     }
     else if (textField == self.textFieldPassword) {
         [textField resignFirstResponder];
-        [self buttonLogInClick];
+        [self loginButton:nil];
     }
     return YES;
 }
 
-#pragma button action
+#pragma mark - button action
 
 - (void)logInWithFacebook
 {
@@ -126,25 +121,21 @@
     [self.view addSubview:linkedinViewController.view];
 }
 
-- (BOOL)buttonLogInClick
+#pragma mark - button events
+
+- (IBAction)loginButton:(UIButton *)sender
 {
-    return [self logInWithUsername:self.textFieldUsername.text andPassword:self.textFieldPassword.text];
+    [self logInWithUsername:self.textFieldUsername.text andPassword:self.textFieldPassword.text];
 }
+
+#pragma mark - API call
 
 - (BOOL)logInWithUsername:(NSString*)username andPassword:(NSString*)password
 {
+    /*
     username = @"florian@letslunch.com";
-    password = @"developer";
-    return [self.loginRequest loginWithUserName:username andPassword:password];
-}
-
-#pragma mark - getter and setter
-
-- (LoginRequests*)loginRequest
-{
-    if(!_loginRequest)
-        _loginRequest = [[LoginRequests alloc] init];
-    return _loginRequest;
+    password = @"developer";*/
+    return [[[LoginRequests alloc] init] loginWithUserName:username andPassword:password];
 }
 
 @end

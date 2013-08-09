@@ -61,7 +61,7 @@ static NSMutableDictionary *attributes;
 	
 }
 
-#pragma mark Venues
+#pragma mark - Venues
 
 +(void)getDetailForVenue:(NSString*)venueID callback:(Foursquare2Callback)callback
 {
@@ -134,7 +134,7 @@ static NSMutableDictionary *attributes;
         [self get:@"venues/search" withParams:dic callback:callback];
 }
 
-#pragma mark Private methods
+#pragma mark - Private methods
 
 +(NSString*)inentTypeToString:(FoursquareIntentType)broadcast
 {

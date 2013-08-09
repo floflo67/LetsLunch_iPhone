@@ -74,7 +74,7 @@
     [((AppDelegate*)[UIApplication sharedApplication].delegate) loginSuccessfull];
 }
 
-#pragma connection delegate
+#pragma mark - connection delegate
 
 - (void)connection:(NSURLConnection*)connection didReceiveData:(NSData*)data
 {
@@ -113,7 +113,7 @@
 	self.data = nil;
 }
 
-#pragma getter and setter
+#pragma mark - getter and setter
 
 - (NSMutableData*)data
 {

@@ -15,7 +15,6 @@
 
 @property (nonatomic, strong) NSMutableArray* objects;
 @property (nonatomic, strong) NSString *threadID;
-
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UITextField *textFieldMessage;
 
@@ -23,7 +22,7 @@
 
 @implementation MessageViewController
 
-#pragma view lifecycle
+#pragma mark - view lifecycle
 
 - (id)initWithThreadID:(NSString*)threadID
 {
@@ -31,8 +30,8 @@
     if(self) {
         self.threadID = threadID;
         self.objects = [(AppDelegate*)[[UIApplication sharedApplication] delegate] getListMessagesForThreadID:self.threadID andForceReload:NO];
-        if([self.objects count] == 0)
-            return nil;
+        if([self.objects count] == 0) // if no messages
+            return nil; // avoid push since nil
     }
     return self;
 }
@@ -63,20 +62,20 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    /*
+     Scrolls to last message -> bottom of page
+     */
     NSIndexPath *index = [NSIndexPath indexPathForRow:0 inSection:[_objects count] - 1];
     [self.tableView scrollToRowAtIndexPath:index atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
+    
+    [super viewDidAppear:YES];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
 {
-    return [_objects count];
+    return [_objects count]; // one section per message
 }
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
@@ -98,28 +97,25 @@
     /*
      Message sent by user
      */
-    if([mess.contactIDFrom isEqualToString:self.threadID]) {
-        cell.imgName = @"MessageFromSelf.png";
-        cell.tipRightward = NO;
-    }
+    if([mess.contactIDFrom isEqualToString:self.threadID])
+        [cell setImageName:@"MessageFromSelf.png" andTipRightward:NO];
     /*
      Message sent to user
      */
-    else {
-        cell.imgName = @"MessageToSelf.png";
-        cell.tipRightward = YES;
-    }
-    
-    cell.msgText = [mess description];
+    else
+        [cell setImageName:@"MessageToSelf.png" andTipRightward:YES];
     
     /*
      Changes format of date to hour:minute for message
      */
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     [format setDateFormat:@"hh:mm"];
-    cell.dateText = [format stringFromDate:mess.date];
+    
+    [cell setMessage:[mess description] andDate:[format stringFromDate:mess.date]];
+    
     mess = nil;
     format = nil;
+    
     return cell;
 }
 

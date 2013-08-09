@@ -8,12 +8,14 @@
 
 #import "ThreadCell.h"
 
+@interface ThreadCell()
+@property (nonatomic, strong) NSString *msgText;
+@property (nonatomic, strong) NSString *imgName;
+@property (nonatomic, strong) NSString *dateText;
+@property (nonatomic, assign) BOOL tipRightward;
+@end
 
 @implementation ThreadCell
-@synthesize msgText;
-@synthesize imgName;
-@synthesize dateText;
-@synthesize tipRightward = _tipRightward;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString*)reuseIdentifier
 {
@@ -25,6 +27,22 @@
     }
     return self;
 }
+
+#pragma mark - getter and setter
+
+-(void)setMessage:(NSString*)message andDate:(NSString*)date
+{
+    self.msgText = message;
+    self.dateText = date;
+}
+
+-(void)setImageName:(NSString*)imageName andTipRightward:(BOOL)tipRightward
+{
+    self.imgName = imageName;
+    self.tipRightward = tipRightward;
+}
+
+#pragma mark - Change view
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
@@ -68,7 +86,7 @@
     UILabel *txtLabel = [[UILabel alloc] initWithFrame:CGRectMake(x + 7, 2, size.width - 3, size.height - 2)];
     txtLabel.lineBreakMode = NSLineBreakByWordWrapping;
     txtLabel.numberOfLines = 0;
-    txtLabel.text = msgText;
+    txtLabel.text = self.msgText;
     txtLabel.backgroundColor = [UIColor clearColor];
     txtLabel.font = [UIFont systemFontOfSize:16.0];
     txtLabel.tag = 42;
@@ -83,7 +101,7 @@
     else
         dateLabel.frame = CGRectMake(x - 45, 5, 40, size.height);
     dateLabel.numberOfLines = 1;
-    dateLabel.text = dateText;
+    dateLabel.text = self.dateText;
     dateLabel.backgroundColor = [UIColor clearColor];
     dateLabel.textColor = [UIColor lightGrayColor];
     dateLabel.font = [UIFont systemFontOfSize:12.0];
@@ -109,6 +127,8 @@
     newImage = nil;
     newView = nil;
 }
+
+#pragma mark - custom function
 
 + (CGSize)calcTextHeight:(NSString*)str
 {

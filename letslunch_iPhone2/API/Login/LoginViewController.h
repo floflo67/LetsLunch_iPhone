@@ -10,11 +10,9 @@
 
 @interface LoginViewController : UIViewController <UITextFieldDelegate>
 
-
 -(void)logInWithFacebook;
 -(void)logInWithTwitter;
 -(void)logInWithLinkedIn;
--(BOOL)buttonLogInClick;
 -(BOOL)logInWithUsername:(NSString*)username andPassword:(NSString*)password;
 
 @end

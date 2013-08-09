@@ -49,8 +49,14 @@ static ActivityViewController *sharedSingleton = nil;
     [self.tableView reloadData];
 }
 
+#pragma mark - API call
+
 - (void)loadOwnerActivity
 {
+    /*
+     If activity exists -> populate with activity
+     If not -> populate with @"NIL"
+     */
     AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     if([app getOwnerActivityAndForceReload:NO]) {
         self.objects[0] = [app getOwnerActivityAndForceReload:NO];
@@ -67,16 +73,15 @@ static ActivityViewController *sharedSingleton = nil;
 
 - (void)loadListActivites
 {
+    /*
+     If activities exists -> populate with activities
+     If not -> populate with @"NIL"
+     */
     AppDelegate* app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     if([app getListActivitiesAndForceReload:YES])
         self.objects[1] = [app getListActivitiesAndForceReload:NO];
     else
         self.objects[1] = @"NIL";
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
 }
 
 #pragma mark - Table view data source
@@ -90,22 +95,22 @@ static ActivityViewController *sharedSingleton = nil;
 {
     if(section == 0)
         return 1;
-    else if([[self.objects[section] description] isEqualToString:@"NIL"]) {
+    else if([[self.objects[section] description] isEqualToString:@"NIL"])
         return 0;
-    }
-    return [self.objects[section] count];
+    else
+        return [self.objects[section] count];
 }
 
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    if(indexPath.section == 1)
+    /*
+     Height 44 if no activity
+     Height 120 if activity
+     */
+    if([[self.objects[indexPath.section] description] isEqualToString:@"NIL"])
+        return 44.0f;
+    else
         return 120.0f;
-    else {
-        if([[self.objects[indexPath.section] description] isEqualToString:@"NIL"])
-            return 44.0f;
-        else
-            return 120.0f;
-    }
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
@@ -115,58 +120,39 @@ static ActivityViewController *sharedSingleton = nil;
     
     if (cell == nil) {
         NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"ActivityCell" owner:self options:nil];
-        cell = topLevelObjects[0];
+        cell = topLevelObjects[0]; // Sets cell as ActivityCell
     }
-    cell.labelUserJobTitle.textColor = [AppDelegate colorWithHexString:@"f88836"];
-    cell.LabelTime.textColor = [AppDelegate colorWithHexString:@"5e5e5e"];
-    cell.labelUserName.textColor = [AppDelegate colorWithHexString:@"6a6a6a"];
-    cell.labelVenueName.textColor = [AppDelegate colorWithHexString:@"5e5e5e"];
     
-    [cell.labelUserName setHidden:NO];
-    [cell.labelUserJobTitle setHidden:NO];
-    [cell.LabelTime setHidden:NO];
-    [cell.userPicture setHidden:NO];
-    [cell.labelVenueName setHidden:NO];
     
-    if(indexPath.section == 1) {
-        if([[self.objects[indexPath.section] description] isEqualToString:@"NIL"]) {            
-            NSLog(@"empty");
-        }
-        else {
-            Activity *activity = self.objects[indexPath.section][indexPath.row];
-            cell.labelUserName.text = [NSString stringWithFormat:@"%@ %@ - %@", activity.contact.firstname, activity.contact.lastname, activity.contact.jobTitle];
-            cell.labelUserJobTitle.text = activity.description;
-            cell.LabelTime.text = activity.time;
-            cell.labelVenueName.text = activity.venue.name;
-            cell.userPicture.image = activity.contact.image;
-        }
+    if(indexPath.section == 1) { // Activities around
+        [cell showView];
+        [cell loadTextColor];
+        Activity *activity = self.objects[indexPath.section][indexPath.row];
+        
+        [cell setUserName:[NSString stringWithFormat:@"%@ %@ - %@", activity.contact.firstname, activity.contact.lastname, activity.contact.jobTitle] jobTitle:activity.description venueName:activity.venue.name time:activity.time andPicture:activity.contact.image];
     }
-    else {
-        if([[self.objects[indexPath.section] description] isEqualToString:@"NIL"]) {
+    else { // Owner
+        if([[self.objects[indexPath.section] description] isEqualToString:@"NIL"]) { // No activity
             
+            /*
+             Creates push button
+             */
             self.pushButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            [self.pushButton addTarget:self action:@selector(pushViewController:)
-                 forControlEvents:UIControlEventTouchDown];
-            self.pushButton.frame = (CGRect){0, - 3, 320, 51};
+            [self.pushButton addTarget:self action:@selector(pushViewController:) forControlEvents:UIControlEventTouchDown];
+            self.pushButton.frame = (CGRect){0, -3, 320, 51};
             
-            [cell.labelUserName setHidden:YES];
-            [cell.labelUserJobTitle setHidden:YES];
-            [cell.LabelTime setHidden:YES];
-            [cell.userPicture setHidden:YES];
-            [cell.labelVenueName setHidden:YES];
+            [cell hideView];
             
             [self.pushButton setBackgroundImage:[UIImage imageNamed:@"buttonBroadcastAvailability"] forState:UIControlStateNormal];
             [cell addSubview:self.pushButton];
             self.pushButton = nil;
         }
-        else {
+        else { // Activity
+            [cell showView];
+            [cell loadTextColor];
             Activity *activity = self.objects[indexPath.section];
             
-            cell.labelUserName.text = [NSString stringWithFormat:@"%@ %@", activity.contact.firstname, activity.contact.lastname];
-            cell.labelUserJobTitle.text = activity.contact.jobTitle;
-            cell.LabelTime.text = activity.time;
-            cell.labelVenueName.text = activity.venue.name;
-            cell.userPicture.image = activity.contact.image;
+            [cell setUserName:[NSString stringWithFormat:@"%@ %@ - %@", activity.contact.firstname, activity.contact.lastname, activity.contact.jobTitle] jobTitle:activity.description venueName:activity.venue.name time:activity.time andPicture:activity.contact.image];
         }
     }
     
@@ -185,6 +171,9 @@ static ActivityViewController *sharedSingleton = nil;
 
 #pragma mark - Table view reload
 
+/*
+ Functions from PullRefreshTableViewController
+ */
 - (void)refresh {
     [self loadListActivites];
     [self performSelector:@selector(reloadUI) withObject:nil afterDelay:2.0];

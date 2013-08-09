@@ -12,7 +12,7 @@
 @synthesize sidebarDelegate;
 @synthesize menuItem;
 
-#pragma view lifecycle
+#pragma mark - view lifecycle
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

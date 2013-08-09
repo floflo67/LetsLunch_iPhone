@@ -28,7 +28,7 @@
 
 @implementation NearbyVenuesViewController
 
-#pragma view life cycle
+#pragma mark - view life cycle
 
 - (void)viewDidLoad
 {
@@ -56,7 +56,7 @@
     search = nil;
 }
 
-#pragma button event
+#pragma mark - button event
 
 - (void)search:(id)sender
 {
@@ -117,7 +117,7 @@
     [self getVenuesForLocation:self.locationManager.location];
 }
 
-#pragma text field delegates
+#pragma mark - text field delegates
 
 /*
  When user presses return key (search)

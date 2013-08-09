@@ -22,7 +22,7 @@
     return self;
 }
 
-#pragma view lifecycle
+#pragma mark - view lifecycle
 
 - (void)viewDidLoad
 {

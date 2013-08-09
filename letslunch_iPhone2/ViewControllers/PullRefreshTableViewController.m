@@ -8,7 +8,7 @@
 
 #import "PullRefreshTableViewController.h"
 
-#define REFRESH_HEADER_HEIGHT 52.0f
+#define REFRESH_HEADER_HEIGHT 52.0f // define height for label
 
 @interface PullRefreshTableViewController()
 @property (nonatomic, strong) UIView *refreshHeaderView;

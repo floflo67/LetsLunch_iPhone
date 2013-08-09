@@ -29,8 +29,12 @@
         NSDictionary *dict = [[[ProfileDetailsRequest alloc] init] getProfileWithToken:[AppDelegate getToken] andID:contactID];
         
         NSMutableDictionary *profile = [NSMutableDictionary dictionaryWithDictionary:[dict objectForKey:@"profile"]];
-        [profile removeObjectForKey:@"uid"];
+        [profile removeObjectForKey:@"uid"]; // Don't show user ID
         
+        /*
+         Creates dictionaries and arrays for display
+         Add to Contacts class?
+         */
         NSDictionary *location = [NSDictionary dictionaryWithDictionary:[dict objectForKey:@"location"]];
         NSDictionary *other = [NSDictionary dictionaryWithDictionary:[dict objectForKey:@"other"]];
         NSArray *skills = [NSArray arrayWithArray:[dict objectForKey:@"skills"]];
@@ -38,9 +42,11 @@
         NSDictionary *mediaLinks = [NSDictionary dictionaryWithDictionary:[dict objectForKey:@"socialMediaLinks"]];
         self.isOnWishlist = [[dict objectForKey:@"onWishList"] boolValue];
         
+        /*
+         Use Testimonials class
+         */
         NSArray *tempTestimonials = [NSArray arrayWithArray:[dict objectForKey:@"testimonials"]];
         NSMutableArray *testimonials = [[NSMutableArray alloc] initWithCapacity:[tempTestimonials count]];
-        
         for (NSDictionary *dict in tempTestimonials) {
             [testimonials addObject:[[Testimonials alloc] initWithDictionary:dict]];
         }
@@ -54,6 +60,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    /*
+     If onWishList -> wishListButton selected
+     */
     if(self.isOnWishlist)
         [self.wishListButton setSelected:YES];
 }
@@ -116,7 +125,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
     
-    if(indexPath.section < 3) {
+    if(indexPath.section < 3) { // Profile, Address or Other
         NSDictionary *dict = (NSDictionary*)self.objects[indexPath.section];
         
         NSArray *allKeys = [dict allKeys];
@@ -133,7 +142,7 @@
             cell.textLabel.text = @"Error connection";
             cell.detailTextLabel.text = @"";
         }
-    }
+    } // Skills or Needs
     else if(indexPath.section < 5) {
         NSArray *array = (NSArray*)self.objects[indexPath.section];
         if([array count] == 0) {
@@ -144,7 +153,7 @@
             cell.textLabel.text = [array[indexPath.row] objectForKey:@"name"];
             cell.detailTextLabel.text = @"";
         }
-    }
+    } // Testimonials
     else if (indexPath.section == 5) {
         NSArray *array = (NSArray*)self.objects[indexPath.section];
         if([array count] == 0) {
@@ -156,7 +165,7 @@
             cell.textLabel.text = testimonial.message;
             cell.detailTextLabel.text = @"";
         }
-    }
+    } // Social media
     else if (indexPath.section == 6) {
         NSDictionary *dict = (NSDictionary*)self.objects[indexPath.section];
         if([dict count] > 0) {

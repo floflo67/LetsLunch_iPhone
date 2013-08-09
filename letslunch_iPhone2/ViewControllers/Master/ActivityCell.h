@@ -10,10 +10,9 @@
 
 @interface ActivityCell : UITableViewCell
 
-@property (nonatomic, weak) IBOutlet UIImageView *userPicture;
-@property (nonatomic, weak) IBOutlet UILabel *labelUserName;
-@property (nonatomic, weak) IBOutlet UILabel *labelUserJobTitle;
-@property (nonatomic, weak) IBOutlet UILabel *labelVenueName;
-@property (nonatomic, weak) IBOutlet UILabel *LabelTime;
+-(void)setUserName:(NSString*)userName jobTitle:(NSString*)jobTitle venueName:(NSString*)venueName time:(NSString*)time andPicture:(UIImage*)picture;
+-(void)loadTextColor;
+-(void)hideView;
+-(void)showView;
 
 @end

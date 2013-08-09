@@ -13,8 +13,8 @@
 @implementation FSRequester
 @synthesize asyncConnDict;
 @synthesize requestHistory;
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+#pragma mark - clang diagnostic push
+#pragma mark - clang diagnostic ignored "-Warc-performSelector-leaks"
     
 - (id)init
 {
@@ -99,7 +99,7 @@
 
 }
 
-#pragma mark NSURLConnection
+#pragma mark - NSURLConnection
 
 
 // fot untrusted stage
@@ -174,8 +174,8 @@
 	return nil;
 }
 
-#pragma mark -
+#pragma mark - -
 
-#pragma clang diagnostic pop
+#pragma mark - clang diagnostic pop
 
 @end

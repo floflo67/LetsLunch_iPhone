@@ -8,19 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ThreadCell : UITableViewCell {
-    NSString *msgText;
-    NSString *imgName;
-    NSString *dateText;
-}
-
-@property (nonatomic, strong) NSString *msgText;
-@property (nonatomic, strong) NSString *imgName;
-@property (nonatomic, strong) NSString *dateText;
-
-@property (nonatomic, assign) BOOL tipRightward;
+@interface ThreadCell : UITableViewCell
 
 +(CGSize)calcTextHeight:(NSString*)str;
 +(CGSize)calcTextHeight:(NSString*)str withinWidth:(CGFloat)width;
+
+-(void)setMessage:(NSString*)message andDate:(NSString*)date;
+-(void)setImageName:(NSString*)imageName andTipRightward:(BOOL)tipRightward;
 
 @end

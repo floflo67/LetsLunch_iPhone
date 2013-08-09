@@ -28,7 +28,7 @@
 
 @implementation CreateActivityViewController
 
-#pragma managing singleton
+#pragma mark - managing singleton
 
 static CreateActivityViewController *sharedSingleton = nil;
 + (CreateActivityViewController*)getSingleton
@@ -49,7 +49,7 @@ static CreateActivityViewController *sharedSingleton = nil;
         sharedSingleton = nil;
 }
 
-#pragma view lifecycle
+#pragma mark - view lifecycle
 
 - (void)viewDidLoad
 {
@@ -118,12 +118,7 @@ static CreateActivityViewController *sharedSingleton = nil;
     [super viewDidDisappear:animated];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
-
-#pragma mapView
+#pragma mark - mapView
 
 - (void)addMap:(FSVenue*)venue
 {
@@ -180,6 +175,10 @@ static CreateActivityViewController *sharedSingleton = nil;
     return region;
 }
 
+/*
+ Suppress map if existing
+ Return view to former position
+ */
 - (void)resetView
 {
     int height = 150;
@@ -240,7 +239,7 @@ static CreateActivityViewController *sharedSingleton = nil;
     [self resetView];
 }
 
-#pragma segment action
+#pragma mark - segment events
 
 - (IBAction)segmentValueChanged:(id)sender
 {
@@ -252,7 +251,7 @@ static CreateActivityViewController *sharedSingleton = nil;
         self.labelBroadcast.text = @"This broadcast will expire at 11:00 P.M.";
 }
 
-#pragma button click
+#pragma mark - button event
 
 - (void)saveActivity:(id)sender
 {
@@ -324,7 +323,7 @@ static CreateActivityViewController *sharedSingleton = nil;
     [self resetView];
 }
 
-#pragma UITextFieldDelegate
+#pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField*)textField
 {
@@ -335,9 +334,7 @@ static CreateActivityViewController *sharedSingleton = nil;
 
 @end
 
-
-
-#pragma custom TextField
+#pragma mark - custom TextField
 
 @interface MYTextField : UITextField
 
