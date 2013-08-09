@@ -20,7 +20,12 @@
     self = [super self];
     if(self) {
         self.message = [dict objectForKey:@"message"];
-        self.user = [[Contacts alloc] initWithDictionary:[dict objectForKey:@"user"]];
+        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjects:[[dict objectForKey:@"user"] allValues] forKeys:[[dict objectForKey:@"user"] allKeys]];
+        [dictionary setObject:[dictionary objectForKey:@"id"] forKey:@"uid"];
+        [dictionary setObject:[dictionary objectForKey:@"pictureUrl"] forKey:@"pictureURL"];
+        [dictionary removeObjectForKey:@"id"];
+        [dictionary removeObjectForKey:@"pictureUrl"];
+        self.user = [[Contacts alloc] initWithDictionary:dictionary];
     }
     return self;
 }
