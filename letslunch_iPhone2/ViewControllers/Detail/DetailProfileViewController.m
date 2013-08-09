@@ -187,6 +187,18 @@
     return cell;
 }
 
+#pragma mark - TableView delegate
+
+- (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
+{
+    if(indexPath.section == 5) {
+        Testimonials *testimonial = self.objects[indexPath.section][indexPath.row];
+        if(![testimonial.user.ID isEqualToString:self.contactID]) {
+            [self.navigationController pushViewController:[[DetailProfileViewController alloc] initWithContactID:testimonial.user.ID] animated:YES];
+        }
+    }
+}
+
 #pragma mark - button events
 
 - (IBAction)sendMessageButton:(UIButton*)sender
