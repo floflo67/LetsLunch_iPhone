@@ -17,28 +17,10 @@
 
 #pragma mark - view lifecycle
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    if(!self.menuItem) {
-        self.menuItem = @[@"NIL", @"Message", @"Friends"];
-    }
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    self.menuItem = @[@"NIL", @"Message", @"Friends"];
 }
 
 #pragma mark - Table view data source
@@ -116,21 +98,6 @@
         
         findFriendButton.frame = (CGRect){x, y, 120, 32};
         [cell addSubview:findFriendButton];
-        
-        /*
-         Add the button to invite friends
-         Uses image in Image folder
-         Call inviteFriendsButtonClick function in CenterViewController
-         */
-        /*UIButton *inviteFriendButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [inviteFriendButton setImage:[UIImage imageNamed:@"InviteFriendsButton.png"] forState:UIControlStateNormal];
-        [inviteFriendButton sizeToFit];
-        [inviteFriendButton addTarget:((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController
-                             action:@selector(inviteFriendsButtonClick:)
-                   forControlEvents:UIControlEventTouchUpInside];
-        
-        inviteFriendButton.frame = (CGRect){x + 130, y, 120, 32};
-        [cell addSubview:inviteFriendButton];*/
     }
     else {
         /*

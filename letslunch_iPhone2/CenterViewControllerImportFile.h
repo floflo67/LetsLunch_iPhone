@@ -13,7 +13,6 @@
     #import "UIViewController+JTRevealSidebarV2.h"
     #import "UINavigationItem+JTRevealSidebarV2.h"
     #import "LeftSidebarViewController.h"
-    #import "JTRevealSidebarV2Delegate.h"
     #import "ActivityViewController.h"
     #import "MessageViewController.h"
     #import "CreateActivityViewController.h"
