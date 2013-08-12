@@ -28,6 +28,8 @@
 @property (nonatomic, strong) TwitterConsumer* consumer;
 @property (nonatomic, strong) TwitterToken* token;
 
+@property (nonatomic, readonly) BOOL hasEnableGPS;
+
 -(NSMutableArray*)getListActivitiesAndForceReload:(BOOL)shouldReload;
 -(NSMutableArray*)getListFriendsSuggestionAndForceReload:(BOOL)shouldReload;
 -(NSMutableArray*)getListVisitorsAndForceReload:(BOOL)shouldReload;

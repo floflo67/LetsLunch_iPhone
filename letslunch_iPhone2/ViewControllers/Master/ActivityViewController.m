@@ -21,8 +21,10 @@
 static ActivityViewController *sharedSingleton = nil;
 + (ActivityViewController*)getSingleton
 {
-    if (sharedSingleton != nil)
+    if (sharedSingleton != nil) {
+        [sharedSingleton.tableView reloadData];
         return sharedSingleton;
+    }
     @synchronized(self)
     {
         if (sharedSingleton == nil)
@@ -137,15 +139,17 @@ static ActivityViewController *sharedSingleton = nil;
             /*
              Creates push button
              */
-            self.pushButton = [UIButton buttonWithType:UIButtonTypeCustom];
             [self.pushButton addTarget:self action:@selector(pushViewController:) forControlEvents:UIControlEventTouchDown];
-            self.pushButton.frame = (CGRect){0, -3, 320, 51};
             
-            [cell hideView];
-            
+            [cell hideView];            
             [self.pushButton setBackgroundImage:[UIImage imageNamed:@"buttonBroadcastAvailability"] forState:UIControlStateNormal];
+            self.pushButton.enabled = YES;
+            
+            if(!((AppDelegate*)[UIApplication sharedApplication].delegate).hasEnableGPS) {
+                [AppDelegate showErrorMessage:@"Please enable GPS in settings" withErrorStatus:500];
+                self.pushButton.enabled = NO;
+            }
             [cell addSubview:self.pushButton];
-            self.pushButton = nil;
         }
         else { // Activity
             [cell showView];
@@ -174,12 +178,14 @@ static ActivityViewController *sharedSingleton = nil;
 /*
  Functions from PullRefreshTableViewController
  */
-- (void)refresh {
+- (void)refresh
+{
     [self loadListActivites];
     [self performSelector:@selector(reloadUI) withObject:nil afterDelay:2.0];
 }
 
-- (void)reloadUI {
+- (void)reloadUI
+{
     [self.tableView reloadData];
     [self stopLoading];
 }
@@ -207,6 +213,15 @@ static ActivityViewController *sharedSingleton = nil;
     if(!_objects)
         _objects = [[NSMutableArray alloc] init];
     return _objects;
+}
+
+- (UIButton *)pushButton
+{
+    if(!_pushButton) {
+        _pushButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _pushButton.frame = (CGRect){0, -3, 320, 51};
+    }
+    return _pushButton;
 }
 
 @end

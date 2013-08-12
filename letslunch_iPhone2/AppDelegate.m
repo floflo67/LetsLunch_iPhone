@@ -27,6 +27,7 @@
 @property (nonatomic, strong) LoginViewController *loginViewController;
 @property (nonatomic, strong) KeychainWrapper *tokenItem;
 @property (nonatomic) BOOL alertIsShown;
+@property (nonatomic) BOOL hasEnableGPS;
 @end
 
 @implementation AppDelegate
@@ -37,7 +38,6 @@
 
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
-    self.tokenItem = [[KeychainWrapper alloc] initWithIdentifier:@"LetsLunchToken" accessGroup:nil];
     /*if(![[self getObjectFromKeychainForKey:kSecAttrAccount] isEqualToString:@"token"])
      [self.tokenItem resetKeychainItem];*/
     
@@ -77,6 +77,19 @@
 {
     [[FBSession activeSession] handleDidBecomeActive];
 }
+
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    [self suppressDataOnLogout];
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+    [self.navController popToRootViewControllerAnimated:YES];
+    [self loginSuccessfull];
+}
+
+#pragma mark - login
 
 - (void)loginSuccessfull
 {
@@ -302,6 +315,13 @@
 
 #pragma mark - getter and setter
 
+- (KeychainWrapper *)tokenItem
+{
+    if(!_tokenItem)
+        _tokenItem = [[KeychainWrapper alloc] initWithIdentifier:@"LetsLunchToken" accessGroup:nil];
+    return _tokenItem;
+}
+
 - (CLLocationManager*)locationManager
 {
     if(!_locationManager)
@@ -361,6 +381,15 @@
     if(!_ownerContact)
         _ownerContact = [[Contacts alloc] initWithDictionary:[ProfileRequest getProfileWithToken:[self getToken] andLight:YES]];
     return _ownerContact;
+}
+
+- (BOOL)hasEnableGPS
+{
+    if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized)
+        _hasEnableGPS = YES;
+    else
+        _hasEnableGPS = NO;
+    return _hasEnableGPS;
 }
 
 @end
