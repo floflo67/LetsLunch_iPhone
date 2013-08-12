@@ -81,12 +81,10 @@ static CreateActivityViewController *sharedSingleton = nil;
          Sets local variables
          */
         self.activity = activity;
-        self.venue = activity.venue;
-        
-        /*
-         Sets view
-         */
-        [self addMap:activity.venue];
+        if(activity.venue.location.coordinate.latitude != 0 && activity.venue.location.coordinate.longitude != 0) {
+            self.venue = activity.venue;
+            [self addMap:activity.venue];
+        }
         self.textFieldDescription.text = activity.description;
         if(activity.isCoffee)
             self.segment.selectedSegmentIndex = 0;
@@ -181,18 +179,17 @@ static CreateActivityViewController *sharedSingleton = nil;
  */
 - (void)resetView
 {
-    int height = 150;
-    
     if(self.map) {
+        int height = 150;
         [self.map removeAnnotations:[NSArray arrayWithObject:self.venue]];
         [self.map removeFromSuperview];
         self.map = nil;
-        
-        self.textFieldDescription.text = @"";
-        self.venue = nil;
         self.viewContent.frame = CGRectMake(0, self.viewContent.frame.origin.y - height + 25, 320, self.viewContent.frame.size.height);
-        [self.tableView reloadData];
     }
+    
+    self.textFieldDescription.text = @"";
+    self.venue = nil;
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
