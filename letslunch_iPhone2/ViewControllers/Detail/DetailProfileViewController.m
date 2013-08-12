@@ -48,6 +48,8 @@
         
         self.isOnWishlist = [[dict objectForKey:@"onWishList"] boolValue];
         
+        self.title = [NSString stringWithFormat:@"%@ %@", [profile objectForKey:@"firstname"], [profile objectForKey:@"lastname"]];
+        
         /*
          Use Testimonials class
          */
