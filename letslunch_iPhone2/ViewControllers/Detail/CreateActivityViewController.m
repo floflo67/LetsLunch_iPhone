@@ -331,6 +331,7 @@ static CreateActivityViewController *sharedSingleton = nil;
 
 @end
 
+
 #pragma mark - custom TextField
 
 @interface MYTextField : UITextField

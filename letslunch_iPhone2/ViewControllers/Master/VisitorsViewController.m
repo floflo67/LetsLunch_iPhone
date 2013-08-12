@@ -72,7 +72,7 @@ static VisitorsViewController *sharedSingleton = nil;
     NSDictionary *profile = [NSDictionary dictionaryWithDictionary:self.objects[indexPath.row]];
     Contacts *contact = [[Contacts alloc] initWithDictionary:profile];
     
-    cell.textLabel.text = contact.firstname;
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", contact.firstname, contact.lastname];
     contact = nil;
     return cell;
 }

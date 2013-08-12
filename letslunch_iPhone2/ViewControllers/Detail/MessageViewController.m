@@ -152,6 +152,8 @@
         title = [format stringFromDate:mess1.date];
     }
     
+    format = nil;
+    
     return title;
 }
 

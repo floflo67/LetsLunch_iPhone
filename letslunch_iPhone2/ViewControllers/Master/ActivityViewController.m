@@ -196,13 +196,10 @@ static ActivityViewController *sharedSingleton = nil;
 {
     if(indexPath.section == 1) {
         Activity *activity = _objects[indexPath.section][indexPath.row];
-        DetailProfileViewController *detail = [[DetailProfileViewController alloc] initWithContactID:activity.contact.ID];
-        [self.navigationController pushViewController:detail animated:YES];
-        detail = nil;
+        [self.navigationController pushViewController:[[DetailProfileViewController alloc] initWithContactID:activity.contact.ID] animated:YES];
     }
     else if(![[self.objects[indexPath.section] description] isEqualToString:@"NIL"]) {
-        Activity* act = (Activity*)self.objects[indexPath.row];
-        [self pushViewController:act];
+        [self pushViewController:(Activity*)self.objects[indexPath.row]];
     }
 }
 
