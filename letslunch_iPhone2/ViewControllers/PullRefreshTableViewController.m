@@ -29,8 +29,8 @@
 
 - (void)viewDidLoad
 {
-  [super viewDidLoad];
-  [self addPullToRefreshHeader];
+    [super viewDidLoad];
+    [self addPullToRefreshHeader];
 }
 
 -(void)setTextLoading:(NSString*)textLoading textRelease:(NSString*)textRelease andTextPull:(NSString*)textPull
@@ -62,19 +62,25 @@
 - (void)scrollViewDidScroll:(UIScrollView*)scrollView
 {
     if (self.isLoading) {
+        
         // Update the content inset, good for section headers
         if (scrollView.contentOffset.y > 0)
             self.tableView.contentInset = UIEdgeInsetsZero;
         else if (scrollView.contentOffset.y >= -REFRESH_HEADER_HEIGHT)
             self.tableView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
-    } else if (self.isDragging && scrollView.contentOffset.y < 0) {
+    }
+    else if (self.isDragging && scrollView.contentOffset.y < 0) {
+        
         // Update the arrow direction and label
         [UIView animateWithDuration:0.25 animations:^{
             if (scrollView.contentOffset.y < -REFRESH_HEADER_HEIGHT) {
+                
                 // User is scrolling above the header
                 self.refreshLabel.text = self.textRelease;
                 [self.refreshArrow layer].transform = CATransform3DMakeRotation(M_PI, 0, 0, 1);
-            } else { 
+            }
+            else {
+                
                 // User is scrolling somewhere within the header
                 self.refreshLabel.text = self.textPull;
                 [self.refreshArrow layer].transform = CATransform3DMakeRotation(M_PI * 2, 0, 0, 1);
@@ -89,6 +95,7 @@
         return;
     self.isDragging = NO;
     if (scrollView.contentOffset.y <= -REFRESH_HEADER_HEIGHT) {
+        
         // Released above the header
         [self startLoading];
     }
@@ -119,10 +126,9 @@
     [UIView animateWithDuration:0.3 animations:^{
         self.tableView.contentInset = UIEdgeInsetsZero;
         [self.refreshArrow layer].transform = CATransform3DMakeRotation(M_PI * 2, 0, 0, 1);
-    } 
-                     completion:^(BOOL finished) {
-                         [self performSelector:@selector(stopLoadingComplete)];
-                     }];
+    } completion:^(BOOL finished) {
+        [self performSelector:@selector(stopLoadingComplete)];
+    }];
 }
 
 - (void)stopLoadingComplete
@@ -140,7 +146,7 @@
 
 #pragma mark - getter and setter
 
-- (UIView *)refreshHeaderView
+- (UIView*)refreshHeaderView
 {
     if(!_refreshHeaderView) {
         _refreshHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0 - REFRESH_HEADER_HEIGHT, 320, REFRESH_HEADER_HEIGHT)];
@@ -149,7 +155,7 @@
     return _refreshHeaderView;
 }
 
-- (UILabel *)refreshLabel
+- (UILabel*)refreshLabel
 {
     if(!_refreshLabel) {
         _refreshLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, REFRESH_HEADER_HEIGHT)];
@@ -160,7 +166,7 @@
     return _refreshLabel;
 }
 
-- (UIImageView *)refreshArrow
+- (UIImageView*)refreshArrow
 {
     if(!_refreshArrow) {
         _refreshArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow.png"]];
@@ -169,7 +175,7 @@
     return _refreshArrow;
 }
 
-- (UIActivityIndicatorView *)refreshSpinner
+- (UIActivityIndicatorView*)refreshSpinner
 {
     if(!_refreshSpinner) {
         _refreshSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
