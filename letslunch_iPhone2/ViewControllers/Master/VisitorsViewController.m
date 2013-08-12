@@ -84,10 +84,8 @@ static VisitorsViewController *sharedSingleton = nil;
     NSDictionary *profile = [NSDictionary dictionaryWithDictionary:self.objects[indexPath.row]];
     Contacts *contact = [[Contacts alloc] initWithDictionary:profile];
     
-    DetailProfileViewController *detailViewController = [[DetailProfileViewController alloc] initWithContactID:contact.ID];
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    [self.navigationController pushViewController:[[DetailProfileViewController alloc] initWithContactID:contact.ID] animated:YES];
     contact = nil;
-    detailViewController = nil;
 }
 
 #pragma mark - getter and setter

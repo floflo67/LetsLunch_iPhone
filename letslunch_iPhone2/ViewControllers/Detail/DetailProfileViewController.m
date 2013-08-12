@@ -39,7 +39,13 @@
         NSDictionary *other = [NSDictionary dictionaryWithDictionary:[dict objectForKey:@"other"]];
         NSArray *skills = [NSArray arrayWithArray:[dict objectForKey:@"skills"]];
         NSArray *needs = [NSArray arrayWithArray:[dict objectForKey:@"needs"]];
-        NSDictionary *mediaLinks = [NSDictionary dictionaryWithDictionary:[dict objectForKey:@"socialMediaLinks"]];
+        
+        id mediaLinks;
+        if([[dict objectForKey:@"socialMediaLinks"] count])
+            mediaLinks = [NSDictionary dictionaryWithDictionary:[dict objectForKey:@"socialMediaLinks"]];
+        else
+            mediaLinks = [NSArray arrayWithArray:[dict objectForKey:@"socialMediaLinks"]];
+        
         self.isOnWishlist = [[dict objectForKey:@"onWishList"] boolValue];
         
         /*
