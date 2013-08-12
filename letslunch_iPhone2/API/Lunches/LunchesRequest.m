@@ -91,6 +91,11 @@
  */
 - (NSMutableArray*)getLunchesWithToken:(NSString*)token latitude:(double)latitude longitude:(double)longitude andDate:(NSString*)date
 {
+    if(!latitude && !longitude) {
+        latitude = 37.78;
+        longitude = - 122.41;
+    }
+    
     /*
      Sets the body of the requests
      */
