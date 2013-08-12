@@ -184,7 +184,7 @@ static ActivityViewController *sharedSingleton = nil;
 - (void)refresh
 {
     [self loadListActivites];
-    [self performSelector:@selector(reloadUI) withObject:nil afterDelay:2.0];
+    [self performSelector:@selector(reloadUI) withObject:nil afterDelay:1.0];
 }
 
 - (void)reloadUI
