@@ -26,7 +26,10 @@
     self.labelUserJobTitle.text = jobTitle;
     self.LabelTime.text = time;
     self.labelUserName.text = userName;
-    self.labelVenueName.text = venueName;
+    if(![venueName isEqualToString:@"Custom venue"])
+        self.labelVenueName.text = venueName;
+    else
+        self.labelVenueName.text = @"";
 }
 
 #pragma mark - Design color
