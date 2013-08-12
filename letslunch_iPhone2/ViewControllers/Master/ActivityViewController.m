@@ -125,7 +125,6 @@ static ActivityViewController *sharedSingleton = nil;
         cell = topLevelObjects[0]; // Sets cell as ActivityCell
     }
     
-    
     if(indexPath.section == 1) { // Activities around
         [cell showView];
         [cell loadTextColor];
@@ -140,10 +139,13 @@ static ActivityViewController *sharedSingleton = nil;
              Creates push button
              */
             [self.pushButton addTarget:self action:@selector(pushViewController:) forControlEvents:UIControlEventTouchDown];
-            
-            [cell hideView];            
+            self.pushButton.hidden = NO;
+
+            [cell hideView];
             [self.pushButton setBackgroundImage:[UIImage imageNamed:@"buttonBroadcastAvailability"] forState:UIControlStateNormal];
             self.pushButton.enabled = YES;
+            
+            self.pushButton.frame = (CGRect){0, -3, 320, 51};
             
             if(!((AppDelegate*)[UIApplication sharedApplication].delegate).hasEnableGPS) {
                 [AppDelegate showErrorMessage:@"Please enable GPS in settings" withErrorStatus:500];
@@ -152,6 +154,7 @@ static ActivityViewController *sharedSingleton = nil;
             [cell addSubview:self.pushButton];
         }
         else { // Activity
+            self.pushButton.hidden = YES;
             [cell showView];
             [cell loadTextColor];
             Activity *activity = self.objects[indexPath.section];
@@ -216,7 +219,6 @@ static ActivityViewController *sharedSingleton = nil;
 {
     if(!_pushButton) {
         _pushButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _pushButton.frame = (CGRect){0, -3, 320, 51};
     }
     return _pushButton;
 }
