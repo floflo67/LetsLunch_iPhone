@@ -83,7 +83,7 @@ static ContactViewController *sharedSingleton = nil;
     Thread *thread = (Thread*)self.objects[indexPath.row];
     MessageViewController *messagesViewController = [[MessageViewController alloc] initWithThreadID:thread.ID];
     if(messagesViewController) {
-        [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController.navigationController pushViewController:messagesViewController animated:YES];
+        [self.navigationController pushViewController:messagesViewController animated:YES];
         messagesViewController = nil;
     }
 }
@@ -95,6 +95,11 @@ static ContactViewController *sharedSingleton = nil;
     if(!_objects)
         _objects = [[NSMutableArray alloc] init];
     return _objects;
+}
+
+- (UINavigationController*)navigationController
+{
+    return ((AppDelegate*)[UIApplication sharedApplication].delegate).viewController.navigationController;
 }
 
 @end

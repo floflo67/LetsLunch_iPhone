@@ -78,7 +78,7 @@ static InviteViewController *sharedSingleton = nil;
     InviteContactsViewController *vc = [[InviteContactsViewController alloc] init];
     switch (indexPath.row) {
         case 0: // contacts
-            [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController.navigationController pushViewController:vc animated:YES];
+            [self.navigationController pushViewController:vc animated:YES];
             break;
         case 1: // facebook
             [self getFacebookFriend];
@@ -201,6 +201,11 @@ static InviteViewController *sharedSingleton = nil;
     if(!_facebookFriendsID)
         _facebookFriendsID = [[NSMutableArray alloc] init];
     return _facebookFriendsID;
+}
+
+- (UINavigationController*)navigationController
+{
+    return ((AppDelegate*)[UIApplication sharedApplication].delegate).viewController.navigationController;
 }
 
 @end

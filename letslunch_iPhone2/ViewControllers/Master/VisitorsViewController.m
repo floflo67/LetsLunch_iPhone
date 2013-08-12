@@ -85,7 +85,7 @@ static VisitorsViewController *sharedSingleton = nil;
     Contacts *contact = [[Contacts alloc] initWithDictionary:profile];
     
     DetailProfileViewController *detailViewController = [[DetailProfileViewController alloc] initWithContactID:contact.ID];
-    [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController.navigationController pushViewController:detailViewController animated:YES];
+    [self.navigationController pushViewController:detailViewController animated:YES];
     contact = nil;
     detailViewController = nil;
 }
@@ -97,6 +97,11 @@ static VisitorsViewController *sharedSingleton = nil;
     if(!_objects)
         _objects = [[NSMutableArray alloc] init];
     return _objects;
+}
+
+- (UINavigationController*)navigationController
+{
+    return ((AppDelegate*)[UIApplication sharedApplication].delegate).viewController.navigationController;
 }
 
 @end
