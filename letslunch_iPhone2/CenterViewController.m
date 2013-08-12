@@ -110,7 +110,6 @@
 - (void)revealLeftSidebar:(id)sender
 {
     [self.navigationController toggleRevealState:JTRevealedStateLeft];
-    
 }
 
 - (void)revealRightSidebar:(id)sender

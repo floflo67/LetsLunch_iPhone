@@ -8,7 +8,7 @@
 
 #import "PullRefreshTableViewController.h"
 
-#define REFRESH_HEADER_HEIGHT 52.0f // define height for label
+#define REFRESH_HEADER_HEIGHT 45.0f // define height for label
 
 @interface PullRefreshTableViewController()
 @property (nonatomic, strong) UIView *refreshHeaderView;
@@ -108,7 +108,7 @@
     self.isLoading = YES;
     
     // Show the header
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.1 animations:^{
         self.tableView.contentInset = UIEdgeInsetsMake(REFRESH_HEADER_HEIGHT, 0, 0, 0);
         self.refreshLabel.text = self.textLoading;
         self.refreshArrow.hidden = YES;
@@ -123,7 +123,7 @@
     self.isLoading = NO;
     
     // Hide the header
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.1 animations:^{
         self.tableView.contentInset = UIEdgeInsetsZero;
         [self.refreshArrow layer].transform = CATransform3DMakeRotation(M_PI * 2, 0, 0, 1);
     } completion:^(BOOL finished) {
