@@ -17,11 +17,7 @@
 @property (nonatomic, strong, readonly) NSString *textRelease;
 @property (nonatomic, strong, readonly) NSString *textLoading;
 
--(void)addPullToRefreshHeader;
--(void)startLoading;
 -(void)stopLoading;
--(void)refresh;
-
 -(void)setTextLoading:(NSString*)textLoading textRelease:(NSString*)textRelease andTextPull:(NSString*)textPull;
 
 @end
