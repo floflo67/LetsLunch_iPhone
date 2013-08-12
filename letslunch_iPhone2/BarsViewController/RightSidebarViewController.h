@@ -11,10 +11,7 @@
 @protocol RightSidebarViewControllerDelegate;
 
 @interface RightSidebarViewController : UITableViewController
-
 @property (nonatomic, weak) id <RightSidebarViewControllerDelegate> sidebarDelegate;
-@property (nonatomic, strong) NSArray* menuItem;
-
 @end
 
 @protocol RightSidebarViewControllerDelegate <NSObject>

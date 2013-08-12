@@ -8,9 +8,12 @@
 
 #import "RightSidebarViewController.h"
 
+@interface RightSidebarViewController()
+@property (nonatomic, strong) NSArray* menuItem;
+@end
+
 @implementation RightSidebarViewController
 @synthesize sidebarDelegate;
-@synthesize menuItem;
 
 #pragma mark - view lifecycle
 
@@ -28,7 +31,7 @@
     [super viewDidLoad];
 
     if(!self.menuItem) {
-        self.menuItem = [[NSArray alloc] initWithObjects:@"Activity", @"Message", @"Friends", nil];
+        self.menuItem = @[@"NIL", @"Message", @"Friends"];
     }
 }
 
@@ -47,7 +50,7 @@
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [menuItem count];
+    return [self.menuItem count];
 }
 
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
@@ -158,6 +161,15 @@
         //NSObject *object = [NSString stringWithFormat:@"ViewController%d", indexPath.row];
         //[self.sidebarDelegate sidebarViewController:self didSelectObject:(float)indexPath.row atIndexPath:indexPath];
     }
+}
+
+#pragma mark - getter and setter
+
+- (NSArray *)menuItem
+{
+    if(!_menuItem)
+        _menuItem = [[NSArray alloc] init];
+    return _menuItem;
 }
 
 @end
