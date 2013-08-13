@@ -78,12 +78,12 @@
     [[FBSession activeSession] handleDidBecomeActive];
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
+- (void)applicationDidEnterBackground:(UIApplication*)application
 {
     [self suppressDataOnLogout];
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application
+- (void)applicationWillEnterForeground:(UIApplication*)application
 {
     [self.navController popToRootViewControllerAnimated:YES];
     [self loginSuccessfull];
@@ -315,7 +315,7 @@
 
 #pragma mark - getter and setter
 
-- (KeychainWrapper *)tokenItem
+- (KeychainWrapper*)tokenItem
 {
     if(!_tokenItem)
         _tokenItem = [[KeychainWrapper alloc] initWithIdentifier:@"LetsLunchToken" accessGroup:nil];

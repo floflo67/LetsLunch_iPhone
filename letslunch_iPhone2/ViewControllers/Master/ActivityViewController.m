@@ -215,7 +215,7 @@ static ActivityViewController *sharedSingleton = nil;
     return _objects;
 }
 
-- (UIButton *)pushButton
+- (UIButton*)pushButton
 {
     if(!_pushButton) {
         _pushButton = [UIButton buttonWithType:UIButtonTypeCustom];

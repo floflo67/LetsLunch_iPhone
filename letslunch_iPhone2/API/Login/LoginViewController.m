@@ -123,7 +123,7 @@
 
 #pragma mark - button events
 
-- (IBAction)loginButton:(UIButton *)sender
+- (IBAction)loginButton:(UIButton*)sender
 {
     [self logInWithUsername:self.textFieldUsername.text andPassword:self.textFieldPassword.text];
 }

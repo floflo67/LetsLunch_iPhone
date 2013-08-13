@@ -132,7 +132,7 @@
 
 #pragma mark - getter and setter
 
-- (NSArray *)menuItem
+- (NSArray*)menuItem
 {
     if(!_menuItem)
         _menuItem = [[NSArray alloc] init];
