@@ -31,10 +31,6 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
-@synthesize viewController = _viewController;
-@synthesize navController = _navController;
-
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
     /*if(![[self getObjectFromKeychainForKey:kSecAttrAccount] isEqualToString:@"token"])
@@ -48,22 +44,11 @@
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
     
     /*
-     Sets center controller
-     */
-    CenterViewController *controller = [[CenterViewController alloc] init];
-    controller.title = @"ViewController";
-    
-    /*
      Sets navigation controller
      */
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
-    [navController.navigationBar setTintColor:[UIColor orangeColor]];
-    self.window.rootViewController = navController;
+    self.window.rootViewController = self.navController;
     [self.window makeKeyAndVisible];
-    
-    _viewController = controller;
-    _navController = navController;
-    
+        
     if([[self getToken] isEqualToString:@"token"])
         [self showLoginView];
     else
@@ -313,6 +298,22 @@
 }
 
 #pragma mark - getter and setter
+
+- (CenterViewController*)viewController
+{
+    if(!_viewController)
+        _viewController = [[CenterViewController alloc] init];
+    return _viewController;
+}
+
+- (UINavigationController*)navController
+{
+    if(!_navController) {
+        _navController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
+        [_navController.navigationBar setTintColor:[UIColor orangeColor]];
+    }
+    return _navController;
+}
 
 - (KeychainWrapper*)tokenItem
 {
