@@ -77,13 +77,19 @@
     }
     
     __DBContactScorePair *contact = [self.objects objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", contact.contactName, contact.phoneNumber];
+    cell.textLabel.text = [NSString stringWithFormat:@"%i: %@ - %@", contact.contactID, contact.contactName, contact.phoneNumber];
     return cell;
 }
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
+{
+    __DBContactScorePair *contact = [self.objects objectAtIndex:indexPath.row];
+    NSLog(@"%@", contact.contactName);
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     __DBContactScorePair *contact = [self.objects objectAtIndex:indexPath.row];
     NSLog(@"%@", contact.contactName);
