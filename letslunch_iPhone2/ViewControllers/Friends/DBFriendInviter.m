@@ -12,33 +12,32 @@
  * A simple value object that stores a reference to an address book contact (an ABRecordID)
  * and the contact's associated importance score.
  */
-@interface __DBContactScorePair : NSObject
-@property(readonly, nonatomic) ABRecordID contact;
-+ (__DBContactScorePair*) pairWithContact:(ABRecordID)contact;
+@interface __DBContactScorePair()
+@property (nonatomic, strong) NSString *contactName;
+@property (nonatomic, strong) NSString *phoneNumber;
 @end
 
 @implementation __DBContactScorePair
 
-- (instancetype) initWithContact:(ABRecordID)contact
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-    
-    _contact = contact;
-    return self;
-}
-
-+ (instancetype) pairWithContact:(ABRecordID)contact
++ (instancetype)pairWithContact:(ABRecordID)contact
 {
     return [[__DBContactScorePair alloc] initWithContact:contact];
+}
+
+- (instancetype)initWithContact:(ABRecordID)contact
+{
+    self = [super init];
+    if (self) {
+        _contact = contact;
+    }
+    return self;
 }
 
 // Return a human-readable name for the contact.
 // This is for debugging purposes only because it instantiates a new ABAddressBookRef
 // with every call. To improve performance you should reuse a single ABAddressBookRef.
-- (NSString*) contactName {
+- (NSString*)contactName
+{
     CFErrorRef error = nil;
     ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, &error);
     ABRecordRef record = ABAddressBookGetPersonWithRecordID(addressBook, self.contact);
@@ -52,12 +51,30 @@
     return compositeName;
 }
 
-- (NSString*) description
+- (NSString*)phoneNumber
 {
-    return [NSString stringWithFormat:@"%@(%@, recordID=%i)",
-                NSStringFromClass(self.class),
-                self.contactName,
-                self.contact];
+    CFErrorRef error = nil;
+    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, &error);
+    ABRecordRef record = ABAddressBookGetPersonWithRecordID(addressBook, self.contact);
+    
+    NSArray *phone = (__bridge NSArray *)ABMultiValueCopyArrayOfAllValues(ABRecordCopyValue(record, kABPersonPhoneProperty));
+    NSString *phoneNumber;
+    
+    if([phone count] >0)
+        phoneNumber = [phone objectAtIndex:0];
+    else
+        phoneNumber = nil;
+    
+    if (addressBook) {
+        CFRelease(addressBook);
+    }
+    
+    return phoneNumber;
+}
+
+- (NSString*)description
+{
+    return [NSString stringWithFormat:@"%@(%@, recordID=%i)", NSStringFromClass(self.class), self.contactName, self.contact];
 }
 
 // Sort by descending score, i.e. higher scores first.
@@ -78,34 +95,32 @@
  */
 @interface __DBPropertyScorePair : NSObject
 @property(readonly, nonatomic) ABPropertyID property;
-- (instancetype) initWithProperty:(ABPropertyID)property;
-+ (instancetype) pairWithProperty:(ABPropertyID)property;
++ (instancetype)pairWithProperty:(ABPropertyID)property;
+- (instancetype)initWithProperty:(ABPropertyID)property;
 @end
 
 @implementation __DBPropertyScorePair
-
-- (instancetype) initWithProperty:(ABPropertyID)property
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-    
-    _property = property;
-    
-    return self;
-}
 
 + (instancetype) pairWithProperty:(ABPropertyID)property
 {
     return [[__DBPropertyScorePair alloc] initWithProperty:property];
 }
 
+- (instancetype) initWithProperty:(ABPropertyID)property
+{
+    self = [super init];
+    if (self) {
+        _property = property;
+    }
+    return self;
+}
+
 @end
 
 @implementation DBFriendInviter
 
-+ (NSArray*) mostImportantContactsWithIgnoredRecordIDs:(NSSet*)ignoredRecordIDs maxResults:(NSUInteger)maxResults {
++ (NSArray*) mostImportantContactsWithIgnoredRecordIDs:(NSSet*)ignoredRecordIDs maxResults:(NSUInteger)maxResults
+{
     CFErrorRef error = NULL;
     ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, &error);
     if (!addressBook) {
@@ -123,8 +138,11 @@
         if ([ignoredRecordIDs containsObject:@(personID)]) {
             continue;
         }
+        __DBContactScorePair *record = [__DBContactScorePair pairWithContact:personID];
+        if(![record phoneNumber])
+            continue;
         
-        [mostImportantContacts addObject:[__DBContactScorePair pairWithContact:personID]];
+        [mostImportantContacts addObject:record];
     }
     
     if (addressBook) {
@@ -132,7 +150,7 @@
     }
     
     [mostImportantContacts sortUsingSelector:@selector(compare:)];
-    
+    /*
     // Convert the results into a list of ABRecordIDs wrapped in NSNumbers.
     // Also limit the number of results to `maxResults`.
     NSMutableArray *results = [NSMutableArray arrayWithCapacity:maxResults];
@@ -140,8 +158,8 @@
     for (__DBContactScorePair *pair in [mostImportantContacts subarrayWithRange:resultsRange]) {
         [results addObject:@(pair.contact)];
     }
-    
-    return results;
+    */
+    return mostImportantContacts;
 }
 
 + (NSArray*) mostImportantContacts

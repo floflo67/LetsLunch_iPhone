@@ -8,6 +8,17 @@
 
 #import <AddressBook/AddressBook.h>
 
+
+@interface __DBContactScorePair : NSObject
+
+@property (nonatomic, readonly) ABRecordID contact;
+@property (nonatomic, strong, readonly) NSString *contactName;
+@property (nonatomic, strong, readonly) NSString *phoneNumber;
+
++(__DBContactScorePair*) pairWithContact:(ABRecordID)contact;
+
+@end
+
 @interface DBFriendInviter : NSObject
 
 /** 
