@@ -8,10 +8,13 @@
 
 #import "InviteContactsViewController.h"
 #import "DBFriendInviter.h"
+#import "InviteViewController.h"
 #import <AddressBookUI/AddressBookUI.h>
 
 @interface InviteContactsViewController ()
 @property (nonatomic, strong) NSArray *objects;
+@property (nonatomic, strong) NSMutableArray *selectedContacts;
+@property (nonatomic, strong) NSMutableArray *phoneNumbers;
 @property (nonatomic) ABAddressBookRef addressBook;
 @end
 
@@ -53,7 +56,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"Contacts";
     self.objects = nil;
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(sendText)];
+}
+
+#pragma mark - Button events
+
+- (void)sendText
+{
+    if([self.selectedContacts count] > 0) {
+        for (__DBContactScorePair *record in self.selectedContacts) {
+            [self.phoneNumbers addObject:record.phoneNumber];
+        }
+        [[InviteViewController getSingleton] sendTextWithPhoneNumbers:self.phoneNumbers];
+    }
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 #pragma mark - Table view data source
@@ -86,13 +106,13 @@
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     __DBContactScorePair *contact = [self.objects objectAtIndex:indexPath.row];
-    NSLog(@"%@", contact.contactName);
+    [self.selectedContacts addObject:contact];
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     __DBContactScorePair *contact = [self.objects objectAtIndex:indexPath.row];
-    NSLog(@"%@", contact.contactName);
+    [self.selectedContacts removeObject:contact];
 }
 
 #pragma mark - getter and setter
@@ -112,6 +132,20 @@
     if(error)
         return nil;
     return _addressBook;
+}
+
+-(NSMutableArray *)selectedContacts
+{
+    if(!_selectedContacts)
+        _selectedContacts = [[NSMutableArray alloc] init];
+    return _selectedContacts;
+}
+
+-(NSMutableArray *)phoneNumbers
+{
+    if(!_phoneNumbers)
+        _phoneNumbers = [[NSMutableArray alloc] init];
+    return _phoneNumbers;
 }
 
 @end

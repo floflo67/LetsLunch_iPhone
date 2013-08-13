@@ -13,5 +13,6 @@
 
 +(InviteViewController*)getSingleton;
 +(void)suppressSingleton;
+-(void)sendTextWithPhoneNumbers:(NSArray*)selectedPhoneNumber;
 
 @end

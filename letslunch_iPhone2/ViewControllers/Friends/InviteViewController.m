@@ -94,12 +94,13 @@ static InviteViewController *sharedSingleton = nil;
 
 #pragma mark - invite Contacts
 
-- (void)sendText
-{
+-(void)sendTextWithPhoneNumbers:(NSArray*)selectedPhoneNumber;
+{    
     if ([MFMessageComposeViewController canSendText]) {
-        MFMessageComposeViewController *smsController = [[MFMessageComposeViewController alloc] initWithRootViewController:self];
+        MFMessageComposeViewController *smsController = [[MFMessageComposeViewController alloc] init];
         smsController.messageComposeDelegate = self;
         smsController.body = @"check out apps, link";
+        smsController.recipients = selectedPhoneNumber;
         [self presentViewController:smsController animated:YES completion:nil];
         smsController = nil;
     }
