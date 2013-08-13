@@ -12,11 +12,10 @@
 
 @interface InviteContactsViewController ()
 @property (nonatomic, strong) NSArray *objects;
+@property (nonatomic) ABAddressBookRef addressBook;
 @end
 
-@implementation InviteContactsViewController {
-    ABAddressBookRef _addressBook;
-}
+@implementation InviteContactsViewController
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -25,9 +24,6 @@
     }
     
     CFErrorRef error = NULL;
-    if(!_addressBook)
-        _addressBook = ABAddressBookCreateWithOptions(NULL, &error);
-    
     ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, &error);
     if (!addressBook) {
         NSLog(@"Failed to access the address book: %@", error);
@@ -58,11 +54,6 @@
 {
     [super viewDidLoad];
     self.objects = nil;
-    
-    if (!_addressBook) {
-        CFErrorRef error = NULL;
-        _addressBook = ABAddressBookCreateWithOptions(NULL, &error);
-    }
 }
 
 #pragma mark - Table view data source
@@ -105,6 +96,16 @@
     if(!_objects)
         _objects = [[NSArray alloc] init];
     return _objects;
+}
+
+- (ABAddressBookRef)addressBook
+{
+    CFErrorRef error = NULL;
+    if(!_addressBook)
+        _addressBook = ABAddressBookCreateWithOptions(NULL, &error);
+    if(error)
+        return nil;
+    return _addressBook;
 }
 
 @end
