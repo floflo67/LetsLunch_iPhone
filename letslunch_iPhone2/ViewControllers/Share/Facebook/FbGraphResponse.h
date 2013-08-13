@@ -6,9 +6,6 @@
 //  Copyright (c) 2013 Florian Reiss. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-
 @interface FbGraphResponse : NSObject
 
 @property (nonatomic, strong) NSString *htmlResponse;

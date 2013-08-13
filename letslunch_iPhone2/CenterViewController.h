@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Florian Reiss. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "JTRevealSidebarV2Delegate.h"
 #import "RightSidebarViewController.h"
 #import <CoreLocation/CoreLocation.h>

@@ -7,8 +7,6 @@
 //
 
 #import "VisitorsViewController.h"
-#import "AppDelegate.h"
-#import "Contacts.h"
 #import "DetailProfileViewController.h"
 #import "VisitorsRequest.h"
 
@@ -41,7 +39,7 @@ static VisitorsViewController *sharedSingleton = nil;
 {
     self = [super init];
     if (self) {
-        self.objects = [[[VisitorsRequest alloc] init] getVisitorsWithToken:[AppDelegate getToken]];
+        self.objects = [VisitorsRequest getVisitorsWithToken:[AppDelegate getToken]];
         if([self.objects count] == 0)
             return nil;
     }    

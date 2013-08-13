@@ -42,7 +42,7 @@ static ProfileViewController *sharedSingleton = nil;
     self = [super init];
     NSString *token = [AppDelegate getToken];
     if (self) {
-        NSDictionary *dict = [[[ProfileRequest alloc] init] getProfileWithToken:token andLight:NO];
+        NSDictionary *dict = [ProfileRequest getProfileWithToken:token andLight:NO];
         if(!dict)
             return nil;
         

@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Florian Reiss. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @interface FacebookFriend : NSObject
 
 @property (nonatomic, strong, readonly) NSString *userID;

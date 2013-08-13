@@ -6,10 +6,8 @@
 //  Copyright (c) 2013 Florian Reiss. All rights reserved.
 //
 
-
 #import "FbGraph.h"
 #import "FbGraphFile.h"
-#import "FacebookShare.h"
 
 #define FBGRAPH_REDIRECT_URL @"http://www.facebook.com/connect/login_success.html"
 

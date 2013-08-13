@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Florian Reiss. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @interface ActivityCell : UITableViewCell
 
 -(void)setUserName:(NSString*)userName jobTitle:(NSString*)jobTitle venueName:(NSString*)venueName time:(NSString*)time andPicture:(UIImage*)picture;

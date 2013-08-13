@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Florian Reiss. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "FSRequester.h"
 #ifndef __MAC_OS_X_VERSION_MAX_ALLOWED
 #endif

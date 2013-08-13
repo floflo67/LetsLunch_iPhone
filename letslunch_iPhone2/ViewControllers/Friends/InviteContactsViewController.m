@@ -7,9 +7,8 @@
 //
 
 #import "InviteContactsViewController.h"
-#import <AddressBook/AddressBook.h>
-#import <AddressBookUI/AddressBookUI.h>
 #import "DBFriendInviter.h"
+#import <AddressBookUI/AddressBookUI.h>
 
 @interface InviteContactsViewController ()
 @property (nonatomic, strong) NSArray *objects;

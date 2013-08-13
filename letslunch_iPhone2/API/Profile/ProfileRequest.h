@@ -6,13 +6,9 @@
 //  Copyright (c) 2013 Florian Reiss. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @interface ProfileRequest : NSObject
 
 +(NSDictionary*)getProfileWithToken:(NSString*)token andLight:(BOOL)isLight;
--(NSDictionary*)getProfileWithToken:(NSString*)token andLight:(BOOL)isLight;
-
 +(void)logoutWithToken:(NSString*)token;
 
 @end

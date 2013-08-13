@@ -6,8 +6,6 @@
  * file that was distributed with this source code.
  */
 
-#import <UIKit/UIKit.h>
-
 @protocol JTRevealSidebarV2Delegate;
 
 @interface UINavigationItem (JTRevealSidebarV2)

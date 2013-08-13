@@ -6,11 +6,8 @@
 //  Copyright (c) 2013 Florian Reiss. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @interface VisitorsRequest : NSObject
 
 +(NSMutableArray*)getVisitorsWithToken:(NSString*)token;
--(NSMutableArray*)getVisitorsWithToken:(NSString*)token;
 
 @end

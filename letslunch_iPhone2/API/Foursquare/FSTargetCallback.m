@@ -8,18 +8,9 @@
 
 #import "FSTargetCallback.h"
 
-
 @implementation FSTargetCallback
 
-@synthesize targetObject;
-@synthesize targetCallback;
-@synthesize resultCallback;
-@synthesize requestUrl;
-@synthesize request;
-@synthesize numTries;
-@synthesize callback;
-@synthesize receivedData;
-
+@synthesize targetObject, targetCallback, resultCallback, requestUrl, request, numTries, callback, receivedData;
 
 - (id)initWithCallback:(callback_block )callback_ resultCallback:(SEL)aResultCallback requestUrl:(NSString*)aRequestUrl numTries:(int)numberTries
 {

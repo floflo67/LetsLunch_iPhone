@@ -6,9 +6,7 @@
 //  Copyright (c) 2013 Florian Reiss. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "Contacts.h"
-#import "Messages.h"
 
 @interface Thread : NSObject
 

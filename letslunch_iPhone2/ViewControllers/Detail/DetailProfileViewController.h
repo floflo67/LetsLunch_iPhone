@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Florian Reiss. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "ProfileDetailsRequest.h"
 
 @interface DetailProfileViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>

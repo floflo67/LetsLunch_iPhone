@@ -8,7 +8,6 @@
 
 #import "FbGraphFile.h"
 
-
 @implementation FbGraphFile
 
 - (id)initWithImage:(UIImage*)upload_image {
@@ -33,7 +32,6 @@
 	NSData *picture_data = UIImagePNGRepresentation(self.uploadImage);
 	[body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"media\";\r\nfilename=\"media.png\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
 	[body appendData:picture_data];
-	
 }
 
 @end

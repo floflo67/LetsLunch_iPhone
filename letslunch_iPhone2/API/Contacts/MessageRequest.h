@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Florian Reiss. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @interface MessageRequest : NSObject
 
 +(void)sendMessage:(NSString*)message withToken:(NSString*)token toUser:(NSString*)userID;

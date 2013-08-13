@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Florian Reiss. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @interface MessageViewController : UIViewController <UITextFieldDelegate>
 
 -(id)initWithThreadID:(NSString*)threadID;

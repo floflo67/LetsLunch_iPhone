@@ -7,7 +7,6 @@
 //
 
 #import "DetailProfileViewController.h"
-#import "ProfileDetailsRequest.h"
 #import "MessageViewController.h"
 #import "WishListRequest.h"
 #import "Testimonials.h"

@@ -9,8 +9,6 @@
 #import "Foursquare2.h"
 #import "FSTargetCallback.h"
 
-
-
 @interface Foursquare2 (PrivateAPI)
 +(void)get:(NSString*)methodName withParams:(NSDictionary*)params callback:(Foursquare2Callback)callback;
 +(void)request:(NSString*)methodName withParams:(NSDictionary*)params httpMethod:(NSString*)httpMethod callback:(Foursquare2Callback)callback;

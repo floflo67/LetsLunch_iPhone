@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Florian Reiss. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @interface ThreadRequest : NSObject
 
 +(NSMutableArray*)getListThreadsWithToken:(NSString*)token;

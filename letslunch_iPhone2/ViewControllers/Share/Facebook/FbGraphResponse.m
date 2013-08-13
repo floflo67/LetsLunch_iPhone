@@ -8,7 +8,6 @@
 
 #import "FbGraphResponse.h"
 
-
 @implementation FbGraphResponse
 
 @end

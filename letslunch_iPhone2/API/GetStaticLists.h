@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Florian Reiss. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "Activity.h"
 
 @interface GetStaticLists : NSObject

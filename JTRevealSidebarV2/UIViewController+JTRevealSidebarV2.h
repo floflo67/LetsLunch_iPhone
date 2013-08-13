@@ -6,8 +6,6 @@
  * file that was distributed with this source code.
  */
 
-#import <UIKit/UIKit.h>
-
 typedef enum {
     JTRevealedStateNo,
     JTRevealedStateLeft,

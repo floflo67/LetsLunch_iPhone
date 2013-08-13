@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Florian Reiss. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "PullRefreshTableViewController.h"
 
 @interface ActivityViewController : PullRefreshTableViewController

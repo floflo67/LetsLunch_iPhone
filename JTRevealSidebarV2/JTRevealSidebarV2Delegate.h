@@ -6,8 +6,6 @@
  * file that was distributed with this source code.
  */
 
-#import <Foundation/Foundation.h>
-
 @protocol JTRevealSidebarV2Delegate <NSObject>
 
 @optional

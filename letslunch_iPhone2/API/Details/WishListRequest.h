@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Florian Reiss. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @interface WishListRequest : NSObject
 
 +(void)changeUserFromWishList:(NSString*)userID withToken:(NSString*)token;
