@@ -77,16 +77,17 @@
     [[FBSession activeSession] handleDidBecomeActive];
 }
 
+/*
 - (void)applicationDidEnterBackground:(UIApplication*)application
 {
+    [self.navController popToRootViewControllerAnimated:YES];
     [self suppressDataOnLogout];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication*)application
 {
-    [self.navController popToRootViewControllerAnimated:YES];
     [self loginSuccessfull];
-}
+}*/
 
 #pragma mark - login
 
@@ -207,16 +208,17 @@
     [ProfileRequest logoutWithToken:[AppDelegate getToken]];
     [self.tokenItem resetKeychainItem];
     [self suppressDataOnLogout];
-    [ActivityViewController suppressSingleton];
-    [ContactViewController suppressSingleton];
-    [ProfileViewController suppressSingleton];
-    [VisitorsViewController suppressSingleton];
-    [InviteViewController suppressSingleton];
     [self showLoginView];
 }
 
 - (void)suppressDataOnLogout
 {
+    [ActivityViewController suppressSingleton];
+    [ContactViewController suppressSingleton];
+    [ProfileViewController suppressSingleton];
+    [VisitorsViewController suppressSingleton];
+    [InviteViewController suppressSingleton];
+    
     self.ownerActivity = nil;
     self.ownerContact = nil;
     self.listActivities = nil;

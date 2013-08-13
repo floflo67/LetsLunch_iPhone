@@ -22,7 +22,6 @@ static ActivityViewController *sharedSingleton = nil;
 + (ActivityViewController*)getSingleton
 {
     if (sharedSingleton != nil) {
-        [sharedSingleton.tableView reloadData];
         return sharedSingleton;
     }
     @synchronized(self)
