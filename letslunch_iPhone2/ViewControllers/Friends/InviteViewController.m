@@ -9,8 +9,9 @@
 #import "InviteViewController.h"
 #import "InviteContactsViewController.h"
 #import "FacebookFriend.h"
+#import <MessageUI/MessageUI.h>
 
-@interface InviteViewController ()
+@interface InviteViewController () <MFMessageComposeViewControllerDelegate>
 @property (nonatomic, strong) NSArray *objects;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) FBFriendPickerViewController *friendPickerController;
@@ -79,6 +80,7 @@ static InviteViewController *sharedSingleton = nil;
     switch (indexPath.row) {
         case 0: // contacts
             [self.navigationController pushViewController:vc animated:YES];
+            //[self sendText];
             break;
         case 1: // facebook
             [self getFacebookFriend];
@@ -88,6 +90,28 @@ static InviteViewController *sharedSingleton = nil;
         default:
             break;
     }
+}
+
+#pragma mark - invite Contacts
+
+- (void)sendText
+{
+    if ([MFMessageComposeViewController canSendText]) {
+        MFMessageComposeViewController *smsController = [[MFMessageComposeViewController alloc] initWithRootViewController:self];
+        smsController.messageComposeDelegate = self;
+        smsController.body = @"check out apps, link";
+        [self presentViewController:smsController animated:YES completion:nil];
+        smsController = nil;
+    }
+    else
+        [AppDelegate showErrorMessage:@"Device cannot send texts!" withErrorStatus:500];
+}
+
+#pragma mark - MFMessageComposeViewController delegate
+
+- (void)messageComposeViewController:(MFMessageComposeViewController*)controller didFinishWithResult:(MessageComposeResult)result
+{
+    
 }
 
 #pragma mark - temp

@@ -85,12 +85,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    ABRecordID contact = [[self.objects objectAtIndex:indexPath.row] intValue];
-    ABRecordRef record = ABAddressBookGetPersonWithRecordID(_addressBook, contact);
-    NSString *compositeName = (NSString*)CFBridgingRelease(ABRecordCopyCompositeName(record));
-    
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", compositeName];
-    
+    __DBContactScorePair *contact = [self.objects objectAtIndex:indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", contact.contactName, contact.phoneNumber];
     return cell;
 }
 
@@ -98,10 +94,8 @@
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    ABRecordID contact = [[self.objects objectAtIndex:indexPath.row] intValue];
-    ABRecordRef record = ABAddressBookGetPersonWithRecordID(_addressBook, contact);
-    NSString *compositeName = (NSString*)CFBridgingRelease(ABRecordCopyCompositeName(record));
-    NSLog(@"%@", compositeName);
+    __DBContactScorePair *contact = [self.objects objectAtIndex:indexPath.row];
+    NSLog(@"%@", contact.contactName);
 }
 
 #pragma mark - getter and setter
