@@ -98,6 +98,11 @@
 {
     UISegmentedControl *seg = (UISegmentedControl*)sender;
     self.radius = @(500);
+    self.query = @"";
+    
+    if(self.isSearching)
+        [self search:nil];
+    
     switch (seg.selectedSegmentIndex) {
         case 0:
             self.section = @"food";
@@ -106,14 +111,14 @@
             self.section = @"coffee";
             break;
         case 2:
+            [self search:nil];
             self.section = @"specials";
             break;
         default:
             self.section = @"food";
             break;
     }
-    if(self.isSearching)
-        [self search:nil];
+    
     [self getVenuesForLocation:self.locationManager.location];
 }
 
@@ -202,11 +207,7 @@
                                                [self.tableView insertSections:[NSIndexSet indexSetWithIndex:0]
                                                              withRowAnimation:UITableViewRowAnimationNone];
                                            else {
-                                               UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                                                              message:@"No place found"
-                                                                                             delegate:nil
-                                                                                    cancelButtonTitle:@"OK"
-                                                                                    otherButtonTitles:nil];
+                                               UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No place found" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                                                [view show];
                                                view = nil;
                                            }
