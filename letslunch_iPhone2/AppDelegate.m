@@ -225,8 +225,6 @@
     self.listMessages = nil;
     self.listVisitors = nil;
     self.locationManager = nil;
-    self.consumer = nil;
-    self.token = nil;
 }
 
 #pragma mark - lists

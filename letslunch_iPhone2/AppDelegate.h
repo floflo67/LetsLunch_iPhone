@@ -12,9 +12,6 @@
 #import "KeychainWrapper.h"
 #import "Contacts.h"
 
-@class TwitterConsumer;
-@class TwitterToken;
-
 @interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) UIWindow *window;
@@ -23,10 +20,6 @@
 @property (nonatomic, strong) Activity *ownerActivity;
 @property (nonatomic, strong) Contacts *ownerContact;
 @property (nonatomic, strong) CLLocationManager *locationManager;
-
-@property (nonatomic, strong) TwitterConsumer* consumer;
-@property (nonatomic, strong) TwitterToken* token;
-
 @property (nonatomic, readonly) BOOL hasEnableGPS;
 
 -(NSMutableArray*)getListActivitiesAndForceReload:(BOOL)shouldReload;
