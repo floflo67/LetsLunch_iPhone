@@ -78,6 +78,7 @@
 		549ADABE176BE14F001F1D3F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549ADABD176BE14F001F1D3F /* MapKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		549ADAC0176BE15A001F1D3F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549ADABF176BE159001F1D3F /* CoreLocation.framework */; };
 		549C8D9417AC2F3B00B730C5 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549C8D9317AC2F3B00B730C5 /* FacebookSDK.framework */; };
+		54ACC15E17BAAEAD00E63A9C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54ACC15D17BAAEAD00E63A9C /* MessageUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		54CA0D3D1799D3FD0012A521 /* VisitorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54CA0D3B1799D3FD0012A521 /* VisitorsViewController.xib */; };
 		54D1D0D917AB02C000CF0593 /* FbGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D1D0D417AB02C000CF0593 /* FbGraph.m */; };
 		54D1D0DA17AB02C000CF0593 /* FbGraphFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D1D0D617AB02C000CF0593 /* FbGraphFile.m */; };
@@ -211,6 +212,7 @@
 		549ADABD176BE14F001F1D3F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		549ADABF176BE159001F1D3F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		549C8D9317AC2F3B00B730C5 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		54ACC15D17BAAEAD00E63A9C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		54CA0D391799D3FD0012A521 /* VisitorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitorsViewController.h; sourceTree = "<group>"; };
 		54CA0D3A1799D3FD0012A521 /* VisitorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitorsViewController.m; sourceTree = "<group>"; };
 		54CA0D3B1799D3FD0012A521 /* VisitorsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VisitorsViewController.xib; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54ACC15E17BAAEAD00E63A9C /* MessageUI.framework in Frameworks */,
 				549ADAC0176BE15A001F1D3F /* CoreLocation.framework in Frameworks */,
 				54D3521F178DC8C30068953A /* AddressBook.framework in Frameworks */,
 				54D3521C178DC89D0068953A /* AddressBookUI.framework in Frameworks */,
@@ -497,6 +500,7 @@
 				549C8D9317AC2F3B00B730C5 /* FacebookSDK.framework */,
 				548D36B0176B819300154C36 /* Foundation.framework */,
 				549ADABD176BE14F001F1D3F /* MapKit.framework */,
+				54ACC15D17BAAEAD00E63A9C /* MessageUI.framework */,
 				548D36D3176B81E900154C36 /* QuartzCore.framework */,
 				548D36AE176B819300154C36 /* UIKit.framework */,
 				54571397177E48EF006A69CE /* Security.framework */,
