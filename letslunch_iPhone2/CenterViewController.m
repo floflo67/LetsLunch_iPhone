@@ -9,15 +9,15 @@
 #import "CenterViewController.h"
 #import "CenterViewControllerImportFile.h"
 
-@interface CenterViewController (Private) <UITableViewDataSource, UITableViewDelegate, LeftSidebarViewControllerDelegate>
+@interface CenterViewController() <UITableViewDataSource, UITableViewDelegate, LeftSidebarViewControllerDelegate>
+
+@property (nonatomic, strong) LeftSidebarViewController *leftSidebarViewController;
+@property (nonatomic, strong) RightSidebarViewController *rightSidebarViewController;
+@property (nonatomic, strong) UIView *centerView;
+@property (nonatomic, strong) NSIndexPath *leftSelectedIndexPath;
 @end
 
 @implementation CenterViewController
-
-@synthesize leftSidebarViewController;
-@synthesize rightSidebarViewController;
-@synthesize centerView;
-@synthesize leftSelectedIndexPath;
 
 
 #pragma mark - view lifecycle
@@ -27,7 +27,6 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
-    self.centerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:self.centerView];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ButtonMenuLeft.png"]
@@ -153,22 +152,14 @@
 - (UIView*)viewForLeftSidebar
 {
     CGRect viewFrame = self.navigationController.applicationViewFrame;
+    
+    UIColor *color = [UIColor colorWithPatternImage:[AppDelegate imageWithImage:[UIImage imageNamed:@"BackgroundMenu.png"] scaledToSize:CGSizeMake(277, 900)]];
+    self.leftSidebarViewController.view.backgroundColor = color;
+    self.leftSidebarViewController.sidebarDelegate = self;
+        
     UITableViewController *controller = self.leftSidebarViewController;
-    if (!controller) {
-        self.leftSidebarViewController = [[LeftSidebarViewController alloc] initWithStyle:UITableViewStylePlain];
-        self.leftSidebarViewController.tableView.scrollEnabled = NO;
-        
-        UIColor *color = [UIColor colorWithPatternImage:[AppDelegate imageWithImage:[UIImage imageNamed:@"BackgroundMenu.png"]
-                                                                       scaledToSize:CGSizeMake(277, 900)]];
-        self.leftSidebarViewController.view.backgroundColor = color;
-        
-        
-        self.leftSidebarViewController.sidebarDelegate = self;
-        self.leftSidebarViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        controller = self.leftSidebarViewController;
-    }
     controller.view.frame = CGRectMake(0, viewFrame.origin.y - 5, 270, viewFrame.size.height + 5);
-    //controller.view.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
+    
     return controller.view;
 }
 
@@ -176,23 +167,15 @@
 - (UIView*)viewForRightSidebar
 {
     CGRect viewFrame = self.navigationController.applicationViewFrame;
-    UITableViewController *controller = self.rightSidebarViewController;
-    if (!controller) {
-        self.rightSidebarViewController = [[RightSidebarViewController alloc] initWithStyle:UITableViewStylePlain];
-        self.rightSidebarViewController.tableView.scrollEnabled = NO;
-        
-        /*
-         Used http://imagecolorpicker.com/ and https://kuler.adobe.com/create/color-wheel/ to get color for background
-         */
-        self.rightSidebarViewController.tableView.backgroundColor = [AppDelegate colorWithHexString:@"3C332A"];
-        
-        //self.rightSidebarViewController.sidebarDelegate = self;
-        self.rightSidebarViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        controller = self.rightSidebarViewController;
-    }
     
+    /*
+     Used http://imagecolorpicker.com/ and https://kuler.adobe.com/create/color-wheel/ to get color for background
+     */
+    self.rightSidebarViewController.tableView.backgroundColor = [AppDelegate colorWithHexString:@"3C332A"];
+    
+    UITableViewController *controller = self.rightSidebarViewController;
     controller.view.frame = CGRectMake(0, viewFrame.origin.y - 5, 270, viewFrame.size.height + 5);
-    //controller.view.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
+    
     return controller.view;
 }
 
@@ -205,11 +188,6 @@
         self.view.userInteractionEnabled = NO;
     }
 }
-
-@end
-
-
-@implementation CenterViewController (Private)
 
 #pragma mark - UITableViewDatasource
 
@@ -275,6 +253,35 @@
 - (NSIndexPath*)lastSelectedIndexPathForSidebarViewController:(LeftSidebarViewController*)sidebarViewController
 {
     return self.leftSelectedIndexPath;
+}
+
+#pragma mark - getter and setter
+
+- (LeftSidebarViewController*)leftSidebarViewController
+{
+    if(!_leftSidebarViewController) {
+        _leftSidebarViewController = [[LeftSidebarViewController alloc] initWithStyle: UITableViewStylePlain];
+        _leftSidebarViewController.tableView.scrollEnabled = NO;
+        _leftSidebarViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    }
+    return _leftSidebarViewController;
+}
+
+- (RightSidebarViewController *)rightSidebarViewController
+{
+    if(!_rightSidebarViewController) {
+        _rightSidebarViewController = [[RightSidebarViewController alloc] initWithStyle:UITableViewStylePlain];
+        _rightSidebarViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _rightSidebarViewController.tableView.scrollEnabled = NO;
+    }
+    return _rightSidebarViewController;
+}
+
+- (UIView *)centerView
+{
+    if(!_centerView)
+        _centerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    return _centerView;
 }
 
 @end

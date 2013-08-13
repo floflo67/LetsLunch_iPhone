@@ -33,12 +33,6 @@
 +(void)showNoConnectionMessage;
 
 -(void)loginSuccessfull;
--(void)hideLoginView;
-
--(NSString*)getToken;
--(void)writeObjectToKeychain:(id)object forKey:(id)key;
--(id)getObjectFromKeychainForKey:(id)key;
--(void)logout;
 
 +(NSString*)getToken;
 +(UIColor*)colorWithHexString:(NSString*)hex;
