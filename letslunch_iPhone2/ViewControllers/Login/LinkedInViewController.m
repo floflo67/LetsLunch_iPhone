@@ -7,7 +7,6 @@
 //
 
 #import "LinkedInViewController.h"
-#import "AppDelegate.h"
 
 @interface LinkedInViewController ()
 @property (nonatomic, strong) NSString *access_token;
