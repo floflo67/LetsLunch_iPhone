@@ -15,6 +15,7 @@
 @interface __DBContactScorePair()
 @property (nonatomic, strong) NSString *contactName;
 @property (nonatomic, strong) NSString *phoneNumber;
+@property (nonatomic) NSInteger contactID;
 @end
 
 @implementation __DBContactScorePair
@@ -28,7 +29,7 @@
 {
     self = [super init];
     if (self) {
-        _contact = contact;
+        self.contactID = contact;
     }
     return self;
 }
@@ -40,7 +41,7 @@
 {
     CFErrorRef error = nil;
     ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, &error);
-    ABRecordRef record = ABAddressBookGetPersonWithRecordID(addressBook, self.contact);
+    ABRecordRef record = ABAddressBookGetPersonWithRecordID(addressBook, self.contactID);
     
     NSString *compositeName = CFBridgingRelease(ABRecordCopyCompositeName(record));
     
@@ -55,7 +56,7 @@
 {
     CFErrorRef error = nil;
     ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, &error);
-    ABRecordRef record = ABAddressBookGetPersonWithRecordID(addressBook, self.contact);
+    ABRecordRef record = ABAddressBookGetPersonWithRecordID(addressBook, self.contactID);
     
     NSArray *phone = (__bridge NSArray *)ABMultiValueCopyArrayOfAllValues(ABRecordCopyValue(record, kABPersonPhoneProperty));
     NSString *phoneNumber;
@@ -74,7 +75,7 @@
 
 - (NSString*)description
 {
-    return [NSString stringWithFormat:@"%@(%@, recordID=%i)", NSStringFromClass(self.class), self.contactName, self.contact];
+    return [NSString stringWithFormat:@"%@(%@, recordID=%i)", NSStringFromClass(self.class), self.contactName, self.contactID];
 }
 
 // Sort by descending score, i.e. higher scores first.

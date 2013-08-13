@@ -11,7 +11,7 @@
 
 @interface __DBContactScorePair : NSObject
 
-@property (nonatomic, readonly) ABRecordID contact;
+@property (nonatomic, readonly) NSInteger contactID;
 @property (nonatomic, strong, readonly) NSString *contactName;
 @property (nonatomic, strong, readonly) NSString *phoneNumber;
 
