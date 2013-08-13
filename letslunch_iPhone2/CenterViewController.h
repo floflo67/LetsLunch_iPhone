@@ -28,14 +28,8 @@
 @property (nonatomic, strong) UIView *centerView;
 @property (nonatomic, strong) NSIndexPath *leftSelectedIndexPath;
 
--(void)findFriendsButtonClick:(id)sender;
--(void)shareButtonClick:(id)sender;
 -(void)closeView;
-
 -(void)pushCreateActivityViewController:(id)sender;
-
 -(void)ActivityConfiguration;
--(void)MessageConfiguration;
--(void)ProfileConfiguration;
 
 @end
