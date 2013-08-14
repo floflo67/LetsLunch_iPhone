@@ -12,7 +12,6 @@
 		5400D006177A598D002CC092 /* MessageToSelf.png in Resources */ = {isa = PBXBuildFile; fileRef = 5400D004177A598D002CC092 /* MessageToSelf.png */; };
 		540560E2178F2E6D009679F4 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 540560E0178F2E6D009679F4 /* ProfileViewController.xib */; };
 		5409986C177239F2003DFD70 /* ShareButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5409986B177239F2003DFD70 /* ShareButton.png */; };
-		540E1F42179DA10A000D2E0C /* LinkedinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 540E1F40179DA10A000D2E0C /* LinkedinViewController.xib */; };
 		540E1F4C179DB7FA000D2E0C /* DetailProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 540E1F4A179DB7FA000D2E0C /* DetailProfileViewController.xib */; };
 		5437770A1783A1D3000CEBAF /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 543777091783A1D3000CEBAF /* Twitter.framework */; };
 		5445A68D17790C0C00F3EC97 /* buttonBroadcastAvailability.png in Resources */ = {isa = PBXBuildFile; fileRef = 5445A68B17790C0C00F3EC97 /* buttonBroadcastAvailability.png */; };
@@ -54,7 +53,6 @@
 		545905D9179EE9CC002A0620 /* VisitorsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CA0D3F1799D4B50012A521 /* VisitorsRequest.m */; };
 		545905DA179EE9CC002A0620 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F97205177CFFE7006F6FE5 /* LoginViewController.m */; };
 		545905DB179EE9CC002A0620 /* LoginRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D35224178DDA510068953A /* LoginRequests.m */; };
-		545905DC179EE9CC002A0620 /* LinkedInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540E1F3F179DA10A000D2E0C /* LinkedInViewController.m */; };
 		545905DD179EE9CC002A0620 /* GetStaticLists.m in Sources */ = {isa = PBXBuildFile; fileRef = 54403823176B8E5D00AA3588 /* GetStaticLists.m */; };
 		545905DE179EE9CC002A0620 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D35227178E1C200068953A /* KeychainWrapper.m */; };
 		545905DF179EE9CC002A0620 /* MutableRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 540560D0178F272E009679F4 /* MutableRequest.m */; };
@@ -151,9 +149,6 @@
 		540560E3178F2F73009679F4 /* ProfileRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileRequest.h; sourceTree = "<group>"; };
 		540560E4178F2F73009679F4 /* ProfileRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileRequest.m; sourceTree = "<group>"; };
 		5409986B177239F2003DFD70 /* ShareButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShareButton.png; sourceTree = "<group>"; };
-		540E1F3E179DA10A000D2E0C /* LinkedInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedInViewController.h; sourceTree = "<group>"; };
-		540E1F3F179DA10A000D2E0C /* LinkedInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkedInViewController.m; sourceTree = "<group>"; };
-		540E1F40179DA10A000D2E0C /* LinkedinViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LinkedinViewController.xib; sourceTree = "<group>"; };
 		540E1F48179DB7FA000D2E0C /* DetailProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailProfileViewController.h; sourceTree = "<group>"; };
 		540E1F49179DB7FA000D2E0C /* DetailProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailProfileViewController.m; sourceTree = "<group>"; };
 		540E1F4A179DB7FA000D2E0C /* DetailProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailProfileViewController.xib; sourceTree = "<group>"; };
@@ -625,9 +620,6 @@
 		54C23F9F179F08D4009FA2A1 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				540E1F3E179DA10A000D2E0C /* LinkedInViewController.h */,
-				540E1F3F179DA10A000D2E0C /* LinkedInViewController.m */,
-				540E1F40179DA10A000D2E0C /* LinkedinViewController.xib */,
 				54F97204177CFFE7006F6FE5 /* LoginViewController.h */,
 				54F97205177CFFE7006F6FE5 /* LoginViewController.m */,
 				54F97206177CFFE7006F6FE5 /* LoginViewController.xib */,
@@ -921,7 +913,6 @@
 				54E9EAFC1794634500F937CA /* InviteViewController.xib in Resources */,
 				54E9EB01179465DB00F937CA /* InviteContactsViewController.xib in Resources */,
 				54CA0D3D1799D3FD0012A521 /* VisitorsViewController.xib in Resources */,
-				540E1F42179DA10A000D2E0C /* LinkedinViewController.xib in Resources */,
 				540E1F4C179DB7FA000D2E0C /* DetailProfileViewController.xib in Resources */,
 				5480D55E17A077930069ABAC /* ActivityCell.xib in Resources */,
 				54DC58B917A9B9C900A2C4BD /* arrow.png in Resources */,
@@ -990,7 +981,6 @@
 				545905D9179EE9CC002A0620 /* VisitorsRequest.m in Sources */,
 				545905DA179EE9CC002A0620 /* LoginViewController.m in Sources */,
 				545905DB179EE9CC002A0620 /* LoginRequests.m in Sources */,
-				545905DC179EE9CC002A0620 /* LinkedInViewController.m in Sources */,
 				545905DD179EE9CC002A0620 /* GetStaticLists.m in Sources */,
 				545905DE179EE9CC002A0620 /* KeychainWrapper.m in Sources */,
 				545905DF179EE9CC002A0620 /* MutableRequest.m in Sources */,
@@ -1212,6 +1202,7 @@
 				54ACC17517BB024E00E63A9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
