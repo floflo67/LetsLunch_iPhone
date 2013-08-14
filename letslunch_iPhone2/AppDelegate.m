@@ -272,19 +272,19 @@
 
 +(void)showNoConnectionMessage
 {
-    [AppDelegate showErrorMessage:@"No connection." withErrorStatus:500];
+    [AppDelegate showErrorMessage:@"No connection." withTitle:@"500"];
 }
 
-+ (void)showErrorMessage:(NSString*)message withErrorStatus:(NSInteger)errorStatus
++ (void)showErrorMessage:(NSString*)message withTitle:(NSString*)errorTitle;
 {
-    [((AppDelegate*)[UIApplication sharedApplication].delegate) showErrorMessage:message withErrorStatus:errorStatus];
+    [((AppDelegate*)[UIApplication sharedApplication].delegate) showErrorMessage:message withTitle:errorTitle];
 }
 
-- (void)showErrorMessage:(NSString*)message withErrorStatus:(NSInteger)errorStatus
+- (void)showErrorMessage:(NSString*)message withTitle:(NSString*)errorTitle;
 {
     if(!self.alertIsShown) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NULL message:NULL delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        alert.title = [NSString stringWithFormat:@"App error: %i", errorStatus];
+        alert.title = [NSString stringWithFormat:@"App error: %@", errorTitle];
         alert.message = message;
         [alert show];
         alert = nil;

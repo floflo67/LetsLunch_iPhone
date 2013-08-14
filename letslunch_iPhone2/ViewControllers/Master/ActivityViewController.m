@@ -147,7 +147,7 @@ static ActivityViewController *sharedSingleton = nil;
             self.pushButton.frame = (CGRect){0, -3, 320, 51};
             
             if(!((AppDelegate*)[UIApplication sharedApplication].delegate).hasEnableGPS) {
-                [AppDelegate showErrorMessage:@"Please enable GPS in settings" withErrorStatus:500];
+                [AppDelegate showErrorMessage:@"Please enable GPS in settings" withTitle:@"500"];
                 self.pushButton.enabled = NO;
             }
             [cell addSubview:self.pushButton];

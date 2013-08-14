@@ -56,7 +56,7 @@
 
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
 {
-	[AppDelegate showErrorMessage:error.localizedDescription withErrorStatus:500];
+	[AppDelegate showErrorMessage:error.localizedDescription withTitle:@"500"];
     self.connection = nil;
 	self.data = nil;
 }

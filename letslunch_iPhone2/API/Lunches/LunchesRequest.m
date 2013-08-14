@@ -67,7 +67,7 @@
         return nil;
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        [AppDelegate showErrorMessage:response withErrorStatus:statusCode];
+        [AppDelegate showErrorMessage:response withTitle:[NSString stringWithFormat:@"%d", statusCode]];
         NSLog(@"lunchrequest err1 %@", response);
         return nil;
     }
@@ -135,7 +135,7 @@
         return nil;
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        [AppDelegate showErrorMessage:response withErrorStatus:statusCode];
+        [AppDelegate showErrorMessage:response withTitle:[NSString stringWithFormat:@"%d", statusCode]];
         NSLog(@"lunchrequest err2 %@", response);
         return nil;
     }
@@ -269,7 +269,7 @@
         NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
         NSDictionary *dictError = [NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"error"]]];
 		NSString* response = [dictError objectForKey:@"message"];
-        [AppDelegate showErrorMessage:response withErrorStatus:statusCode];
+        [AppDelegate showErrorMessage:response withTitle:[NSString stringWithFormat:@"%d", statusCode]];
         return NO;
     }
 }
@@ -317,7 +317,7 @@
         NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
         NSDictionary *dictError = [NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"error"]]];
 		NSString* response = [dictError objectForKey:@"message"];
-        [AppDelegate showErrorMessage:response withErrorStatus:statusCode];
+        [AppDelegate showErrorMessage:response withTitle:[NSString stringWithFormat:@"%d", statusCode]];
         return NO;
     }
 }
@@ -412,7 +412,7 @@
         NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:self.data options:0 error:nil]];
         NSDictionary *dictError = [NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"error"]]];
 		NSString* response = [dictError objectForKey:@"message"];
-        [AppDelegate showErrorMessage:response withErrorStatus:self.statusCode ? self.statusCode : 500];
+        [AppDelegate showErrorMessage:response withTitle:[NSString stringWithFormat:@"%d", self.statusCode ? self.statusCode : 500]];
 	}
 	
 	self.connection = nil;

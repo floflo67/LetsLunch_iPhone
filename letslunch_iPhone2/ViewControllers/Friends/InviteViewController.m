@@ -105,7 +105,7 @@ static InviteViewController *sharedSingleton = nil;
         smsController = nil;
     }
     else
-        [AppDelegate showErrorMessage:@"Device cannot send texts!" withErrorStatus:500];
+        [AppDelegate showErrorMessage:@"Device cannot send texts!" withTitle:@"500"];
 }
 
 #pragma mark - MFMessageComposeViewController delegate

@@ -51,7 +51,7 @@
     }
     else {
         NSString* response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        [AppDelegate showErrorMessage:response withErrorStatus:statusCode];
+        [AppDelegate showErrorMessage:response withTitle:[NSString stringWithFormat:@"%d", statusCode]];
         NSLog(@"thread err1 %@", response);
         return nil;
     }
@@ -121,7 +121,7 @@
     else {
         NSMutableDictionary *dictError = [NSMutableDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
         dictError = [dictError objectForKey:@"error"];
-        [AppDelegate showErrorMessage:[dictError objectForKey:@"message"]  withErrorStatus:statusCode];
+        [AppDelegate showErrorMessage:[dictError objectForKey:@"message"]  withTitle:[NSString stringWithFormat:@"%d", statusCode]];
         return nil;
     }
 }

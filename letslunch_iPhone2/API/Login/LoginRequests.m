@@ -88,7 +88,7 @@
 
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
 {
-    [AppDelegate showErrorMessage:error.localizedDescription withErrorStatus:self.statusCode ? self.statusCode : 500];
+    [AppDelegate showErrorMessage:error.localizedDescription withTitle:[NSString stringWithFormat:@"%d", self.statusCode ? self.statusCode : 500]];
     NSLog(@"error");
 	self.connection = nil;
 	self.data = nil;
@@ -100,7 +100,7 @@
         NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:self.data options:0 error:nil]];
         NSDictionary *dictError = [NSDictionary dictionaryWithDictionary:[NSDictionary dictionaryWithDictionary:[dictJson objectForKey:@"error"]]];
 		NSString* response = [dictError objectForKey:@"message"];
-        [AppDelegate showErrorMessage:response withErrorStatus:self.statusCode];
+        [AppDelegate showErrorMessage:response withTitle:[NSString stringWithFormat:@"%d", self.statusCode]];
 	}
     else {
         NSDictionary *dictJson = [NSDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:self.data options:0 error:nil]];

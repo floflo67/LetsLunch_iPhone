@@ -29,7 +29,7 @@
 -(NSMutableArray*)getListContactsAndForceReload:(BOOL)shouldReload;
 -(Activity*)getOwnerActivityAndForceReload:(BOOL)shouldReload;
 
-+(void)showErrorMessage:(NSString*)message withErrorStatus:(NSInteger)errorStatus;
++(void)showErrorMessage:(NSString*)message withTitle:(NSString*)errorTitle;
 +(void)showNoConnectionMessage;
 
 -(void)loginSuccessfull;
