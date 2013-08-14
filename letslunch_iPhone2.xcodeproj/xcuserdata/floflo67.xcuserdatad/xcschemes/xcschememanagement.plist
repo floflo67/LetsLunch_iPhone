@@ -9,10 +9,20 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>letslunch_iPhone2_tests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>548D36AA176B819300154C36</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>54ACC16317BB024E00E63A9C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

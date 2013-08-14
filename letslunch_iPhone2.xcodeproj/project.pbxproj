@@ -79,6 +79,11 @@
 		549ADAC0176BE15A001F1D3F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549ADABF176BE159001F1D3F /* CoreLocation.framework */; };
 		549C8D9417AC2F3B00B730C5 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549C8D9317AC2F3B00B730C5 /* FacebookSDK.framework */; };
 		54ACC15E17BAAEAD00E63A9C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54ACC15D17BAAEAD00E63A9C /* MessageUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		54ACC16617BB024E00E63A9C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54ACC16517BB024E00E63A9C /* SenTestingKit.framework */; };
+		54ACC16717BB024E00E63A9C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36AE176B819300154C36 /* UIKit.framework */; };
+		54ACC16817BB024E00E63A9C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548D36B0176B819300154C36 /* Foundation.framework */; };
+		54ACC16E17BB024E00E63A9C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 54ACC16C17BB024E00E63A9C /* InfoPlist.strings */; };
+		54ACC17117BB024E00E63A9C /* letslunch_iPhone2_tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ACC17017BB024E00E63A9C /* letslunch_iPhone2_tests.m */; };
 		54CA0D3D1799D3FD0012A521 /* VisitorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54CA0D3B1799D3FD0012A521 /* VisitorsViewController.xib */; };
 		54D1D0D917AB02C000CF0593 /* FbGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D1D0D417AB02C000CF0593 /* FbGraph.m */; };
 		54D1D0DA17AB02C000CF0593 /* FbGraphFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D1D0D617AB02C000CF0593 /* FbGraphFile.m */; };
@@ -119,6 +124,16 @@
 		54FE68FC17736B1000AD7987 /* ButtonMenuRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 54FE68FB17736B1000AD7987 /* ButtonMenuRight.png */; };
 		54FE7E1617A6EBFE006255D4 /* MessageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FE7E1517A6EBFE006255D4 /* MessageRequest.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		54ACC17A17BB049100E63A9C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 548D36A3176B819300154C36 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 548D36AA176B819300154C36;
+			remoteInfo = letslunch_iPhone2;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		5400CFFD177A0C98002CC092 /* ContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactViewController.h; sourceTree = "<group>"; };
@@ -213,6 +228,13 @@
 		549ADABF176BE159001F1D3F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		549C8D9317AC2F3B00B730C5 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		54ACC15D17BAAEAD00E63A9C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		54ACC16417BB024E00E63A9C /* letslunch_iPhone2_tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = letslunch_iPhone2_tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		54ACC16517BB024E00E63A9C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		54ACC16B17BB024E00E63A9C /* letslunch_iPhone2_tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "letslunch_iPhone2_tests-Info.plist"; sourceTree = "<group>"; };
+		54ACC16D17BB024E00E63A9C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		54ACC16F17BB024E00E63A9C /* letslunch_iPhone2_tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = letslunch_iPhone2_tests.h; sourceTree = "<group>"; };
+		54ACC17017BB024E00E63A9C /* letslunch_iPhone2_tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = letslunch_iPhone2_tests.m; sourceTree = "<group>"; };
+		54ACC17217BB024E00E63A9C /* letslunch_iPhone2_tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "letslunch_iPhone2_tests-Prefix.pch"; sourceTree = "<group>"; };
 		54CA0D391799D3FD0012A521 /* VisitorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitorsViewController.h; sourceTree = "<group>"; };
 		54CA0D3A1799D3FD0012A521 /* VisitorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitorsViewController.m; sourceTree = "<group>"; };
 		54CA0D3B1799D3FD0012A521 /* VisitorsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VisitorsViewController.xib; sourceTree = "<group>"; };
@@ -311,6 +333,16 @@
 				548D36B1176B819300154C36 /* Foundation.framework in Frameworks */,
 				548D36B3176B819300154C36 /* CoreGraphics.framework in Frameworks */,
 				549C8D9417AC2F3B00B730C5 /* FacebookSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54ACC16017BB024E00E63A9C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54ACC16617BB024E00E63A9C /* SenTestingKit.framework in Frameworks */,
+				54ACC16717BB024E00E63A9C /* UIKit.framework in Frameworks */,
+				54ACC16817BB024E00E63A9C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +506,7 @@
 			children = (
 				548D36D2176B81C600154C36 /* JTRevealSidebarV2 */,
 				548D36B4176B819300154C36 /* letslunch_iPhone2 */,
+				54ACC16917BB024E00E63A9C /* letslunch_iPhone2_tests */,
 				548D36AD176B819300154C36 /* Frameworks */,
 				548D36AC176B819300154C36 /* Products */,
 			);
@@ -483,6 +516,7 @@
 			isa = PBXGroup;
 			children = (
 				548D36AB176B819300154C36 /* letslunch_iPhone2.app */,
+				54ACC16417BB024E00E63A9C /* letslunch_iPhone2_tests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -506,6 +540,7 @@
 				54571397177E48EF006A69CE /* Security.framework */,
 				54571399177E48F4006A69CE /* Social.framework */,
 				543777091783A1D3000CEBAF /* Twitter.framework */,
+				54ACC16517BB024E00E63A9C /* SenTestingKit.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -565,6 +600,26 @@
 				54F5985C1770ECEF0074F43C /* LeftBarMenu */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		54ACC16917BB024E00E63A9C /* letslunch_iPhone2_tests */ = {
+			isa = PBXGroup;
+			children = (
+				54ACC16F17BB024E00E63A9C /* letslunch_iPhone2_tests.h */,
+				54ACC17017BB024E00E63A9C /* letslunch_iPhone2_tests.m */,
+				54ACC16A17BB024E00E63A9C /* Supporting Files */,
+			);
+			path = letslunch_iPhone2_tests;
+			sourceTree = "<group>";
+		};
+		54ACC16A17BB024E00E63A9C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				54ACC16B17BB024E00E63A9C /* letslunch_iPhone2_tests-Info.plist */,
+				54ACC16C17BB024E00E63A9C /* InfoPlist.strings */,
+				54ACC17217BB024E00E63A9C /* letslunch_iPhone2_tests-Prefix.pch */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		54C23F9F179F08D4009FA2A1 /* Login */ = {
@@ -774,6 +829,25 @@
 			productReference = 548D36AB176B819300154C36 /* letslunch_iPhone2.app */;
 			productType = "com.apple.product-type.application";
 		};
+		54ACC16317BB024E00E63A9C /* letslunch_iPhone2_tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54ACC17317BB024E00E63A9C /* Build configuration list for PBXNativeTarget "letslunch_iPhone2_tests" */;
+			buildPhases = (
+				54ACC15F17BB024E00E63A9C /* Sources */,
+				54ACC16017BB024E00E63A9C /* Frameworks */,
+				54ACC16117BB024E00E63A9C /* Resources */,
+				54ACC16217BB024E00E63A9C /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				54ACC17B17BB049100E63A9C /* PBXTargetDependency */,
+			);
+			name = letslunch_iPhone2_tests;
+			productName = letslunch_iPhone2_tests;
+			productReference = 54ACC16417BB024E00E63A9C /* letslunch_iPhone2_tests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -797,6 +871,7 @@
 			projectRoot = "";
 			targets = (
 				548D36AA176B819300154C36 /* letslunch_iPhone2 */,
+				54ACC16317BB024E00E63A9C /* letslunch_iPhone2_tests */,
 			);
 		};
 /* End PBXProject section */
@@ -853,7 +928,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		54ACC16117BB024E00E63A9C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54ACC16E17BB024E00E63A9C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		54ACC16217BB024E00E63A9C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		548D36A7176B819300154C36 /* Sources */ = {
@@ -914,7 +1013,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		54ACC15F17BB024E00E63A9C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54ACC17117BB024E00E63A9C /* letslunch_iPhone2_tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		54ACC17B17BB049100E63A9C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 548D36AA176B819300154C36 /* letslunch_iPhone2 */;
+			targetProxy = 54ACC17A17BB049100E63A9C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		548D36B7176B819300154C36 /* InfoPlist.strings */ = {
@@ -924,6 +1039,14 @@
 			);
 			name = InfoPlist.strings;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		54ACC16C17BB024E00E63A9C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				54ACC16D17BB024E00E63A9C /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1023,6 +1146,44 @@
 			};
 			name = Release;
 		};
+		54ACC17417BB024E00E63A9C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/letslunch_iPhone2.app/letslunch_iPhone2";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "letslunch_iPhone2_tests/letslunch_iPhone2_tests-Prefix.pch";
+				INFOPLIST_FILE = "letslunch_iPhone2_tests/letslunch_iPhone2_tests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		54ACC17517BB024E00E63A9C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/letslunch_iPhone2.app/letslunch_iPhone2";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "letslunch_iPhone2_tests/letslunch_iPhone2_tests-Prefix.pch";
+				INFOPLIST_FILE = "letslunch_iPhone2_tests/letslunch_iPhone2_tests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1043,6 +1204,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		54ACC17317BB024E00E63A9C /* Build configuration list for PBXNativeTarget "letslunch_iPhone2_tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54ACC17417BB024E00E63A9C /* Debug */,
+				54ACC17517BB024E00E63A9C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
