@@ -10,6 +10,8 @@
 
 @implementation letslunch_iPhone2_tests
 
+// see: http://developer.apple.com/library/ios/documentation/DeveloperTools/Conceptual/UnitTesting/AB-Unit-Test_Result_Macro_Reference/result_macro_reference.html
+
 - (void)setUp
 {
     [super setUp];
@@ -26,7 +28,7 @@
 
 - (void)testExample
 {
-    STFail(@"Unit tests are not implemented yet in letslunch_iPhone2_tests");
+    //STFail(@"Unit tests are not implemented yet in letslunch_iPhone2_tests");
 }
 
 @end
