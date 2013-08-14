@@ -6,6 +6,6 @@
 //  Copyright (c) 2013 Florian Reiss. All rights reserved.
 //
 
-@interface LoginViewController : UIViewController <UITextFieldDelegate>
+@interface LoginViewController : UIViewController <UITextFieldDelegate, UIWebViewDelegate>
 
 @end
