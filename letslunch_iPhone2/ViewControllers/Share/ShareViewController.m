@@ -130,16 +130,12 @@ static ShareViewController *sharedSingleton = nil;
 {
     if(!self.facebookButton.selected)
         [self shareOnFacebook];
-    
-    self.facebookButton.selected = !self.facebookButton.selected;
 }
 
 - (IBAction)twitterButton:(UIButton*)sender
 {
     if(!self.twitterButton.selected)
         [self shareOnTwitter];
-    
-    self.twitterButton.selected = !self.twitterButton.selected;
 }
 
 - (IBAction)closeButton:(id)sender
