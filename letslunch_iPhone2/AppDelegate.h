@@ -21,6 +21,7 @@
 @property (nonatomic, strong) Contacts *ownerContact;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, readonly) BOOL hasEnableGPS;
+@property (nonatomic, strong) NSString *linkedinToken;
 
 -(NSMutableArray*)getListActivitiesAndForceReload:(BOOL)shouldReload;
 -(NSMutableArray*)getListFriendsSuggestionAndForceReload:(BOOL)shouldReload;

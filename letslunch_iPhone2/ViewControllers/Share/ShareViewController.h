@@ -6,9 +6,11 @@
 //  Copyright (c) 2013 Florian Reiss. All rights reserved.
 //
 
-@interface ShareViewController : UIViewController
+@interface ShareViewController : UIViewController <UIWebViewDelegate>
 
 +(ShareViewController*)getSingleton;
 +(void)suppressSingleton;
+
+-(void)shareOnLinkedIn;
 
 @end

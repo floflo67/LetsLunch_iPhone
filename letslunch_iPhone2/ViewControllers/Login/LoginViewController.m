@@ -19,7 +19,6 @@
 @property (nonatomic, weak) IBOutlet UIButton *buttonFacebook;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (nonatomic) BOOL isLinkedIn;
-@property (nonatomic, strong) NSString *access_token;
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *activityIndicator;
 @end
 
@@ -128,7 +127,16 @@
     
     //LinkedInViewController *linkedinViewController = [[LinkedInViewController alloc] init];
     //[self.view addSubview:linkedinViewController.view];
-    
+}
+
+#pragma mark - API call
+
+- (BOOL)logInWithUsername:(NSString*)username andPassword:(NSString*)password
+{
+    /*
+     username = @"florian@letslunch.com";
+     password = @"developer";*/
+    return [[[LoginRequests alloc] init] loginWithUserName:username andPassword:password];
 }
 
 #pragma mark - WebView delegate
@@ -147,7 +155,7 @@
             NSString *authorizationCode = [self getAuthorizationCodeWithRequestString:urlString];
             if(authorizationCode && ![authorizationCode isEqualToString:@""]) {
                 if([self requestAccesWithCode:authorizationCode]) {
-                    [AppDelegate writeObjectToKeychain:self.access_token forKey:(__bridge id)(kSecAttrAccount)];
+                    //[AppDelegate writeObjectToKeychain:self.access_token forKey:(__bridge id)(kSecAttrAccount)];
                     [self.webView stopLoading];
                     self.webView = nil;
                     [self.view removeFromSuperview];
@@ -228,22 +236,12 @@
     
     if(statusCode == 200) {
         NSMutableDictionary *jsonDict = [NSMutableDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
-        self.access_token = [jsonDict objectForKey:@"access_token"];
+        ((AppDelegate*)[UIApplication sharedApplication].delegate).linkedinToken = [jsonDict objectForKey:@"access_token"];
     }
     else {
         NSString* error = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"%i: %@", statusCode, error);
     }
-}
-
-#pragma mark - API call
-
-- (BOOL)logInWithUsername:(NSString*)username andPassword:(NSString*)password
-{
-    /*
-    username = @"florian@letslunch.com";
-    password = @"developer";*/
-    return [[[LoginRequests alloc] init] loginWithUserName:username andPassword:password];
 }
 
 @end
