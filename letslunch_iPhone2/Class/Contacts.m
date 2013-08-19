@@ -30,11 +30,10 @@
             self.jobTitle = @"";
         
         self.pictureURL = [dict objectForKey:@"pictureURL"];
-        if(!self.pictureURL || [self.pictureURL.class isSubclassOfClass:[NSNull class]] || [self.pictureURL isEqualToString:@""])
+        if(!self.pictureURL || [self.pictureURL.class isSubclassOfClass:[NSNull class]] || [self.pictureURL isEqualToString:@""]) {
             self.pictureURL = LL_Default_Picture_Url;
-        
-        if(self.pictureURL)
             self.image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.pictureURL]]];
+        }
     }
     return self;
 }
@@ -47,11 +46,12 @@
         self.firstname = firstname;
         self.lastname = lastname;
         self.jobTitle = jobTitle;
-        self.pictureURL = url;
         self.onWishlist = onWishlist;
-        
-        if(self.pictureURL)
-            self.image = [UIImage imageWithContentsOfFile:[NSString stringWithContentsOfURL:[NSURL URLWithString:self.pictureURL] encoding:NSUTF8StringEncoding error:nil]];
+        self.pictureURL = url;
+        if(!self.pictureURL || [self.pictureURL.class isSubclassOfClass:[NSNull class]] || [self.pictureURL isEqualToString:@""]) {
+            self.pictureURL = LL_Default_Picture_Url;
+            self.image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.pictureURL]]];
+        }
     }
     return self;
 }
