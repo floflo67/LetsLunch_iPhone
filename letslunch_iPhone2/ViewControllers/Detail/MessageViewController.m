@@ -109,7 +109,7 @@
      Changes format of date to hour:minute for message
      */
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"hh:mm"];
+    [format setDateFormat:@"hh:mm a"];
     
     [cell setMessage:[mess description] andDate:[format stringFromDate:mess.date]];
     

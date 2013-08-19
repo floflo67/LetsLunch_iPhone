@@ -32,7 +32,7 @@
 
 -(void)setMessage:(NSString*)message andDate:(NSString*)date
 {
-    self.msgText = message;
+    self.msgText = message;    
     self.dateText = date;
 }
 
@@ -55,7 +55,7 @@
      cell.tipRightWard = YES => message to user
      */
     [super layoutSubviews];
-    CGFloat widthForText = self.bounds.size.width - 50;
+    CGFloat widthForText = self.bounds.size.width - 70;
     CGSize size = [ThreadCell calcTextHeight:self.msgText withinWidth:widthForText];
     
     /*
@@ -97,9 +97,9 @@
     
     UILabel *dateLabel = [[UILabel alloc] init];
     if(self.tipRightward)
-        dateLabel.frame = CGRectMake(size.width + 30, 5, 40, size.height);
+        dateLabel.frame = CGRectMake(size.width + 30, 5, 60, size.height);
     else
-        dateLabel.frame = CGRectMake(x - 45, 5, 40, size.height);
+        dateLabel.frame = CGRectMake(x - 65, 5, 60, size.height);
     dateLabel.numberOfLines = 1;
     dateLabel.text = self.dateText;
     dateLabel.backgroundColor = [UIColor clearColor];
