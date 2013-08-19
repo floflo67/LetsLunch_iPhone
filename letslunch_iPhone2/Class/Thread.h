@@ -10,9 +10,11 @@
 
 @interface Thread : NSObject
 
-@property (nonatomic, strong) NSString *ID;
-@property (nonatomic, strong) Contacts *receiver;
-@property (nonatomic, strong) Messages *lastMessage;
-@property (nonatomic, strong) NSString *type;
+@property (nonatomic, strong, readonly) NSString *ID;
+@property (nonatomic, strong, readonly) Contacts *receiver;
+@property (nonatomic, strong, readonly) Messages *lastMessage;
+@property (nonatomic, strong, readonly) NSString *type;
+
+-(id)initWithID:(NSString*)ID receiver:(Contacts*)receiver lastMessage:(Messages*)lastMessage andType:(NSString*)type;
 
 @end

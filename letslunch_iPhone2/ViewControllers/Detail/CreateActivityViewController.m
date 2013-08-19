@@ -276,33 +276,27 @@ static CreateActivityViewController *sharedSingleton = nil;
         
         // update
         if(app.ownerActivity) {
-            app.ownerActivity.description = description;
-            app.ownerActivity.isCoffee = self.segment.selectedSegmentIndex;
-            app.ownerActivity.venue = self.venue;
-            app.ownerActivity.time = activityTime;
+            [app.ownerActivity setDescription:description isCoffee:self.segment.selectedSegmentIndex venue:self.venue andTime:activityTime];
             [[[LunchesRequest alloc] init] updateLunchWithToken:[AppDelegate getToken] andActivity:app.ownerActivity];
             [[ActivityViewController getSingleton] loadOwnerActivity];
         }
         // add
         else {
             Activity *activity = [[Activity alloc] init];
-            activity.description = description;
-            activity.isCoffee = self.segment.selectedSegmentIndex;
-            activity.venue = self.venue;
-            activity.time = activityTime;
+            [activity setDescription:description isCoffee:self.segment.selectedSegmentIndex venue:self.venue andTime:activityTime];
             NSDictionary *dict = [[[LunchesRequest alloc] init] addLunchWithToken:[AppDelegate getToken] andActivity:activity];
             if(![dict objectForKey:@"success"]) {
                 return;
             }
             else {
-                activity.activityID = [dict objectForKey:@"lunchId"];
+                [activity setActivityID:[dict objectForKey:@"lunchId"]];
                 app.ownerActivity = activity;
             }
             activity = nil;
             format = nil;
         }
         
-        app.ownerActivity.contact = app.ownerContact;
+        [app.ownerActivity setContact:app.ownerContact];
     }
     if(self.activity)
         self.activity = nil;

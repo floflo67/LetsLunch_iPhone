@@ -8,7 +8,20 @@
 
 #import "Activity.h"
 
+@interface Activity()
+
+@property (nonatomic, strong) NSString *activityID;
+@property (nonatomic, strong) Contacts *contact;
+@property (nonatomic, strong) NSString *description;
+@property (nonatomic, strong) NSString *time;
+@property (nonatomic, strong) FSVenue *venue;
+@property (nonatomic) BOOL isCoffee;
+
+@end
+
 @implementation Activity
+
+#pragma mark - initialization
 
 - (id)initWithDict:(NSDictionary*)dict
 {
@@ -55,6 +68,26 @@
         self.description = description;
     }
     return self;
+}
+
+#pragma mark - setter
+
+- (void)setActivityID:(NSString*)activityID
+{
+    _activityID = activityID;
+}
+
+- (void)setDescription:(NSString*)description isCoffee:(BOOL)isCoffee venue:(FSVenue*)venue andTime:(NSString*)time
+{
+    self.description = description;
+    self.isCoffee = isCoffee;
+    self.venue = venue;
+    self.time = time;
+}
+
+- (void)setContact:(Contacts*)contact
+{
+    _contact = contact;
 }
 
 @end

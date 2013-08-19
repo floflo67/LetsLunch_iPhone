@@ -59,14 +59,11 @@
 
 - (Thread*)creatingThreadWithDict:(NSDictionary*)dictionary
 {
-    Thread *thread = [[Thread alloc] init];
     NSDictionary *latest = [dictionary objectForKey:@"latest"];
     NSDictionary *receiver = [dictionary objectForKey:@"receivers"][0];
     
-    thread.lastMessage = [[Messages alloc] initWithDescription:[latest objectForKey:@"message"] userID:nil date:[dictionary objectForKey:@"timeStamp"]];
-    thread.receiver = [[Contacts alloc] initWithDictionary:receiver];
-    thread.type = [dictionary objectForKey:@"type"];
-    thread.ID = [dictionary objectForKey:@"id"];
+    Thread *thread = [[Thread alloc] initWithID:[dictionary objectForKey:@"id"] receiver:[[Contacts alloc] initWithDictionary:receiver] lastMessage:[[Messages alloc] initWithDescription:[latest objectForKey:@"message"] userID:nil date:[dictionary objectForKey:@"timeStamp"]] andType:[dictionary objectForKey:@"type"]];
+    
     return thread;
 }
 

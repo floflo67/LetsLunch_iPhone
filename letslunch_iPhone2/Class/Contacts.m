@@ -8,7 +8,20 @@
 
 #import "Contacts.h"
 
+@interface Contacts()
+@property (nonatomic, strong) NSString *ID;
+@property (nonatomic, strong) NSString *firstname;
+@property (nonatomic, strong) NSString *lastname;
+@property (nonatomic, strong) NSString *jobTitle;
+@property (nonatomic, strong) NSString *pictureURL;
+@property (nonatomic, strong) NSMutableArray *listMessages;
+@property (nonatomic, strong) UIImage *image;
+@property (nonatomic) BOOL onWishlist;
+@end
+
 @implementation Contacts
+
+#pragma mark - initialization
 
 - (id)initWithDictionary:(NSDictionary*)dict
 {
@@ -56,6 +69,8 @@
     return self;
 }
 
+#pragma mark - setter
+
 - (void)setMessages:(NSArray*)list
 {
     NSArray *sortedArray = [list sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
@@ -64,6 +79,11 @@
         return [first compare:second];
     }];
     self.listMessages = (NSMutableArray*)sortedArray;
+}
+
+-(void)setImage:(UIImage*)image
+{
+    _image = image;
 }
 
 @end
