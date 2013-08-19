@@ -8,20 +8,32 @@
 
 #import "FSTargetCallback.h"
 
+@interface FSTargetCallback()
+@property (nonatomic, strong) NSMutableData	*receivedData;
+@property (nonatomic, strong) id targetObject;
+@property (nonatomic, strong) callback_block callback;
+@property (nonatomic, assign) SEL resultCallback;
+@property (nonatomic) NSInteger numTries;
+@end
+
 @implementation FSTargetCallback
 
-@synthesize targetObject, targetCallback, resultCallback, requestUrl, request, numTries, callback, receivedData;
 
-- (id)initWithCallback:(callback_block )callback_ resultCallback:(SEL)aResultCallback requestUrl:(NSString*)aRequestUrl numTries:(int)numberTries
+- (id)initWithCallback:(callback_block)callback_ resultCallback:(SEL)aResultCallback numTries:(int)numberTries
 {
     self = [super init];
     if (self) {
         self.callback = callback_;
         self.resultCallback = aResultCallback;
-        self.requestUrl = aRequestUrl;
         self.numTries = numberTries;
     }
 	return self;
+}
+
+- (void)setData:(NSMutableData*)data
+{
+    if(self.receivedData != data)
+        self.receivedData = data;
 }
 
 @end

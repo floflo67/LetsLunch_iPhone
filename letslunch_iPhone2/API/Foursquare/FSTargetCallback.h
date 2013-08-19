@@ -8,24 +8,13 @@
 
 typedef void(^callback_block)(BOOL success, id result);
 
-@interface FSTargetCallback : NSObject {
-	SEL	targetCallback;
-	SEL	resultCallback;
-	NSMutableData *receivedData;
-	NSString *requestUrl;
-	NSURLRequest *request;
-	int	numTries;
-}
+@interface FSTargetCallback : NSObject
 
-@property (nonatomic, strong)	id targetObject;
-@property (nonatomic, assign) SEL targetCallback;
-@property (nonatomic, assign) SEL resultCallback;
-@property (nonatomic, copy)	NSString *requestUrl;
-@property (nonatomic, strong) NSURLRequest *request;
-@property (nonatomic, assign) int numTries;
-@property (nonatomic, copy) callback_block callback;
-@property (nonatomic, strong) NSMutableData	*receivedData;
+@property (nonatomic, strong, readonly) NSMutableData *receivedData;
+@property (nonatomic, strong, readonly) id targetObject;
+@property (nonatomic, assign, readonly) SEL resultCallback;
+@property (nonatomic, strong, readonly) callback_block callback;
 
--(id)initWithCallback:(callback_block)callback_ resultCallback:(SEL)aResultCallback requestUrl:(NSString*)aRequestUrl numTries:(int)numberTries;
-
+-(id)initWithCallback:(callback_block)callback_ resultCallback:(SEL)aResultCallback numTries:(int)numberTries;
+-(void)setData:(NSMutableData*)data;
 @end

@@ -226,17 +226,11 @@ static Foursquare2 *instance;
 
 - (void) request:(NSString*)methodName withParams:(NSDictionary*)params httpMethod:(NSString*)httpMethod callback:(Foursquare2Callback)callback
 {
-    //	callback = [callback copy];
-    NSString *path = [Foursquare2 constructRequestUrlForMethod:methodName
-                                                        params:params];
+    NSString *path = [Foursquare2 constructRequestUrlForMethod:methodName params:params];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:[NSURL URLWithString:path]];
     request.HTTPMethod = httpMethod;
-	
-    FSTargetCallback *target = [[FSTargetCallback alloc] initWithCallback:callback
-                                                       resultCallback:@selector(callback:target:)
-                                                           requestUrl: path
-                                                             numTries: 2];
-	
+	    
+    FSTargetCallback *target = [[FSTargetCallback alloc] initWithCallback:callback resultCallback:@selector(callback:target:) numTries:2];
 	[self makeAsyncRequestWithRequest:request target:target];
 }
 

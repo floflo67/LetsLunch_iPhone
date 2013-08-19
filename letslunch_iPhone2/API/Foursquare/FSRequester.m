@@ -21,7 +21,6 @@
     if (self) {
         needToShowErrorAlert = YES;
     }
-//    self.requestHistory = [NSMutableArray array];
     self.asyncConnDict = [NSMutableDictionary dictionaryWithCapacity:1];
     return self;
 }
@@ -42,7 +41,7 @@
 	NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:TIMEOUT_INTERVAL];
 	NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self] ;
 	if (connection) {
-		target.receivedData = [NSMutableData data];
+		[target setData:[NSMutableData data]];
         [self connectTarget:target andConnection:connection];
 	}
     else {
@@ -50,7 +49,6 @@
 		NSError *error = [NSError errorWithDomain:@"com.com" code:0 userInfo:dict];
 		
 		[self handleConnectionError: error];
-		[target.targetObject performSelector:target.targetCallback withObject:nil withObject:error];
 	}
 }
 
@@ -75,7 +73,7 @@
 	
 	if (connection) {
 		// Create the NSMutableData that will hold the received data
-		target.receivedData = [NSMutableData data];
+		[target setData:[NSMutableData data]];
         [self connectTarget:target andConnection:connection];
 	}
     else {
@@ -83,7 +81,6 @@
 		NSError *error = [NSError errorWithDomain:@"com.com" code:0 userInfo: dict];
 		
 		[self handleConnectionError: error];
-		[target.targetObject performSelector:target.targetCallback withObject:nil withObject:error];
 	}
 }
 
@@ -126,7 +123,7 @@
 	id result = nil;
     result = [NSJSONSerialization JSONObjectWithData:receivedData options:0 error:nil];
 	if (target.resultCallback) {
-        [self performSelector:target.resultCallback withObject:result withObject:target];
+        [self performSelector:@selector(callback:target:) withObject:result withObject:target];
     }
     
     // release the connection, and the data object
@@ -135,8 +132,6 @@
 
 - (void)connection:(NSURLConnection*)aConnection didFailWithError:(NSError*)error
 {
-	FSTargetCallback *target = [self targetForConnection:aConnection];
-	[target.targetObject performSelector:target.targetCallback withObject:nil withObject:error];
 	[self disconnettargetWithConnection:aConnection];
 }
 
