@@ -20,9 +20,8 @@
 
 #pragma mark - sets texts
 
--(void)setUserName:(NSString*)userName jobTitle:(NSString*)jobTitle venueName:(NSString*)venueName time:(NSString*)time andPicture:(UIImage*)picture
+-(void)setUserName:(NSString*)userName jobTitle:(NSString*)jobTitle venueName:(NSString*)venueName time:(NSString*)time
 {
-    self.userPicture.image = picture;
     self.labelUserJobTitle.text = jobTitle;
     self.LabelTime.text = time;
     self.labelUserName.text = userName;
@@ -30,6 +29,11 @@
         self.labelVenueName.text = venueName;
     else
         self.labelVenueName.text = @"";
+}
+
+- (void)setPicture:(UIImage*)image
+{
+    self.userPicture.image = image;
 }
 
 #pragma mark - Design color

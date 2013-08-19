@@ -129,7 +129,18 @@ static ActivityViewController *sharedSingleton = nil;
         [cell loadTextColor];
         Activity *activity = self.objects[indexPath.section][indexPath.row];
         
-        [cell setUserName:[NSString stringWithFormat:@"%@ %@ - %@", activity.contact.firstname, activity.contact.lastname, activity.contact.jobTitle] jobTitle:activity.description venueName:activity.venue.name time:activity.time andPicture:activity.contact.image];
+        [cell setUserName:[NSString stringWithFormat:@"%@ %@ - %@", activity.contact.firstname, activity.contact.lastname, activity.contact.jobTitle] jobTitle:activity.description venueName:activity.venue.name time:activity.time];
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
+            NSData *data0 = [NSData dataWithContentsOfURL:[NSURL URLWithString:activity.contact.pictureURL]];
+            UIImage *image = [UIImage imageWithData:data0];
+            [activity.contact setImage:image];
+            
+            dispatch_sync(dispatch_get_main_queue(), ^(void) {
+                [cell setPicture:image];
+            });
+        });
+        
     }
     else { // Owner
         if([[self.objects[indexPath.section] description] isEqualToString:@"NIL"]) { // No activity
@@ -158,7 +169,18 @@ static ActivityViewController *sharedSingleton = nil;
             [cell loadTextColor];
             Activity *activity = self.objects[indexPath.section];
             
-            [cell setUserName:[NSString stringWithFormat:@"%@ %@ - %@", activity.contact.firstname, activity.contact.lastname, activity.contact.jobTitle] jobTitle:activity.description venueName:activity.venue.name time:activity.time andPicture:activity.contact.image];
+            [cell setUserName:[NSString stringWithFormat:@"%@ %@ - %@", activity.contact.firstname, activity.contact.lastname, activity.contact.jobTitle] jobTitle:activity.description venueName:activity.venue.name time:activity.time];
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
+                NSData *data0 = [NSData dataWithContentsOfURL:[NSURL URLWithString:activity.contact.pictureURL]];
+                UIImage *image = [UIImage imageWithData:data0];
+                [activity.contact setImage:image];
+                
+                dispatch_sync(dispatch_get_main_queue(), ^(void) {
+                    [cell setPicture:image];
+                });
+            });
+            
         }
     }
     

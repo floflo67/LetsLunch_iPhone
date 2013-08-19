@@ -8,7 +8,8 @@
 
 @interface ActivityCell : UITableViewCell
 
--(void)setUserName:(NSString*)userName jobTitle:(NSString*)jobTitle venueName:(NSString*)venueName time:(NSString*)time andPicture:(UIImage*)picture;
+-(void)setUserName:(NSString*)userName jobTitle:(NSString*)jobTitle venueName:(NSString*)venueName time:(NSString*)time;
+-(void)setPicture:(UIImage*)image;
 -(void)loadTextColor;
 -(void)hideView;
 -(void)showView;
