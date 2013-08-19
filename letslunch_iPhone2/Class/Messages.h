@@ -8,12 +8,11 @@
 
 @interface Messages : NSObject
 
-@property (nonatomic, strong) NSString *description;
-@property (nonatomic, strong) NSString *contactIDFrom;
-@property (nonatomic, strong) NSString *contactIDTo;
-@property (nonatomic, strong) NSDate *date;
+@property (nonatomic, strong, readonly) NSString *description;
+@property (nonatomic, strong, readonly) NSString *contactID;
+@property (nonatomic, strong, readonly) NSDate *date;
 
--(id)initWithDict:(NSDictionary*)dict;
--(id)initWithDescription:(NSString*)description From:(NSString*)from To:(NSString*)to date:(NSDate*)date;
+-(id)initWithDictionary:(NSDictionary*)dict;
+-(id)initWithDescription:(NSString*)description userID:(NSString*)userID date:(NSString*)date;
 
 @end
