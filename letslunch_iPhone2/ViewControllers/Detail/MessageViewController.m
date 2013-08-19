@@ -29,7 +29,7 @@
     self = [super init];
     if(self) {
         self.threadID = threadID;
-        self.objects = [(AppDelegate*)[[UIApplication sharedApplication] delegate] getListMessagesForThreadID:self.threadID andForceReload:NO];
+        self.objects = [(AppDelegate*)[[UIApplication sharedApplication] delegate] getListMessagesForThreadID:self.threadID];
         if([self.objects count] == 0) // if no messages
             return nil; // avoid push since nil
     }
@@ -97,7 +97,7 @@
     /*
      Message sent by user
      */
-    if([mess.contactIDFrom isEqualToString:self.threadID])
+    if([mess.contactID isEqualToString:self.threadID])
         [cell setImageName:@"MessageFromSelf.png" andTipRightward:NO];
     /*
      Message sent to user
