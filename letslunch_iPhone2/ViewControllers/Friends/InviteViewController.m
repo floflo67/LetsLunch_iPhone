@@ -112,7 +112,16 @@ static InviteViewController *sharedSingleton = nil;
 
 - (void)messageComposeViewController:(MFMessageComposeViewController*)controller didFinishWithResult:(MessageComposeResult)result
 {
-    
+    if(result == MessageComposeResultSent) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success" message:@"The message was sent successfully" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        alert = nil;
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"The message was not sent" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        alert = nil;
+    }
 }
 
 #pragma mark - temp
