@@ -253,7 +253,7 @@
 - (CLLocationManager*)locationManager
 {
     if(!_locationManager)
-        _locationManager = ((AppDelegate*)[UIApplication sharedApplication].delegate).locationManager;
+        _locationManager = [AppDelegate getAppDelegate].locationManager;
     return _locationManager;
 }
 

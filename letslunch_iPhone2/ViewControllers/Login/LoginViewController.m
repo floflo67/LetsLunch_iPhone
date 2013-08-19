@@ -159,7 +159,7 @@
                     [self.webView stopLoading];
                     self.webView = nil;
                     [self.view removeFromSuperview];
-                    [((AppDelegate*)[UIApplication sharedApplication].delegate) loginSuccessfull];
+                    [[AppDelegate getAppDelegate] loginSuccessfull];
                 }
             }
         }
@@ -236,7 +236,7 @@
     
     if(statusCode == 200) {
         NSMutableDictionary *jsonDict = [NSMutableDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
-        ((AppDelegate*)[UIApplication sharedApplication].delegate).linkedinToken = [jsonDict objectForKey:@"access_token"];
+        [AppDelegate getAppDelegate].linkedinToken = [jsonDict objectForKey:@"access_token"];
     }
     else {
         NSString* error = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];

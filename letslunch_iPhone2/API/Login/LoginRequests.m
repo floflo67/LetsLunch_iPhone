@@ -71,7 +71,7 @@
 
 - (void)successfullLoginIn
 {
-    [((AppDelegate*)[UIApplication sharedApplication].delegate) loginSuccessfull];
+    [[AppDelegate getAppDelegate] loginSuccessfull];
 }
 
 #pragma mark - connection delegate

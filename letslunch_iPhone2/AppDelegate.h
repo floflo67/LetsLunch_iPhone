@@ -35,6 +35,8 @@
 
 -(void)loginSuccessfull;
 
++(AppDelegate*)getAppDelegate;
+
 +(NSString*)getToken;
 +(UIColor*)colorWithHexString:(NSString*)hex;
 +(UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize;

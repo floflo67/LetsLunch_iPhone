@@ -134,7 +134,7 @@ static ShareViewController *sharedSingleton = nil;
 
 - (void)shareOnLinkedIn
 {
-    NSString *access_token = ((AppDelegate*)[UIApplication sharedApplication].delegate).linkedinToken;
+    NSString *access_token = [AppDelegate getAppDelegate].linkedinToken;
     
     if(!access_token) {
         [self linkedinLogin];
@@ -324,7 +324,7 @@ static ShareViewController *sharedSingleton = nil;
     
     if(statusCode == 200) {
         NSMutableDictionary *jsonDict = [NSMutableDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
-        ((AppDelegate*)[UIApplication sharedApplication].delegate).linkedinToken = [jsonDict objectForKey:@"access_token"];
+        [AppDelegate getAppDelegate].linkedinToken = [jsonDict objectForKey:@"access_token"];
     }
     else {
         NSString* error = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];

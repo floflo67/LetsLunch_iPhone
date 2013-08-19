@@ -155,7 +155,7 @@
 
 + (NSString*)getToken
 {
-    return [(AppDelegate*)[UIApplication sharedApplication].delegate getToken];
+    return [[AppDelegate getAppDelegate] getToken];
 }
 
 - (NSString*)getToken
@@ -165,7 +165,7 @@
 
 + (void)writeObjectToKeychain:(id)object forKey:(id)key
 {
-    [(AppDelegate*)[UIApplication sharedApplication].delegate writeObjectToKeychain:object forKey:key];
+    [[AppDelegate getAppDelegate] writeObjectToKeychain:object forKey:key];
 }
 
 - (void)writeObjectToKeychain:(id)object forKey:(id)key
@@ -175,7 +175,7 @@
 
 + (id)getObjectFromKeychainForKey:(id)key
 {
-    return [(AppDelegate*)[UIApplication sharedApplication].delegate getObjectFromKeychainForKey:key];
+    return [[AppDelegate getAppDelegate] getObjectFromKeychainForKey:key];
 }
 
 - (id)getObjectFromKeychainForKey:(id)key
@@ -185,7 +185,7 @@
 
 + (void)logout
 {
-    [(AppDelegate*)[UIApplication sharedApplication].delegate logout];
+    [[AppDelegate getAppDelegate] logout];
 }
 
 - (void)logout
@@ -271,7 +271,7 @@
 
 + (void)showErrorMessage:(NSString*)message withTitle:(NSString*)errorTitle;
 {
-    [((AppDelegate*)[UIApplication sharedApplication].delegate) showErrorMessage:message withTitle:errorTitle];
+    [[AppDelegate getAppDelegate] showErrorMessage:message withTitle:errorTitle];
 }
 
 - (void)showErrorMessage:(NSString*)message withTitle:(NSString*)errorTitle;
@@ -292,6 +292,11 @@
 }
 
 #pragma mark - getter and setter
+
++ (AppDelegate*)getAppDelegate
+{
+    return (AppDelegate*)[UIApplication sharedApplication].delegate;
+}
 
 - (CenterViewController*)viewController
 {

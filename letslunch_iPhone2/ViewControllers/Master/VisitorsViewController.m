@@ -97,7 +97,7 @@ static VisitorsViewController *sharedSingleton = nil;
 
 - (UINavigationController*)navigationController
 {
-    return ((AppDelegate*)[UIApplication sharedApplication].delegate).viewController.navigationController;
+    return [AppDelegate getAppDelegate].viewController.navigationController;
 }
 
 @end

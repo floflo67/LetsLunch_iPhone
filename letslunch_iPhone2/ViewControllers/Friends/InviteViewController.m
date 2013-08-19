@@ -171,12 +171,12 @@ static InviteViewController *sharedSingleton = nil;
         [self.facebookFriends addObject:[[FacebookFriend alloc] initWithID:user.id firstname:user.first_name andLastname:user.last_name]];
         [self.facebookFriendsID addObject:user.id];
     }
-    [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController dismissViewControllerAnimated:YES completion:nil];
+    [[AppDelegate getAppDelegate].viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)facebookViewControllerCancelWasPressed:(id)sender
 {
-    [((AppDelegate*)[UIApplication sharedApplication].delegate).viewController dismissViewControllerAnimated:YES completion:nil];
+    [[AppDelegate getAppDelegate].viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Custom function
@@ -239,7 +239,7 @@ static InviteViewController *sharedSingleton = nil;
 
 - (UINavigationController*)navigationController
 {
-    return ((AppDelegate*)[UIApplication sharedApplication].delegate).viewController.navigationController;
+    return [AppDelegate getAppDelegate].viewController.navigationController;
 }
 
 @end

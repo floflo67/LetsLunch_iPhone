@@ -84,7 +84,7 @@
     NSString *imageName;
     UIImageView *icon;
     if([[self.menuItem[indexPath.row] description] isEqualToString:@"Profile"]) {
-        icon = [[UIImageView alloc] initWithImage:((AppDelegate*)[UIApplication sharedApplication].delegate).ownerContact.image];
+        icon = [[UIImageView alloc] initWithImage:[AppDelegate getAppDelegate].ownerContact.image];
     }
     else {
         imageName = [NSString stringWithFormat:@"%@MenuItem.png",[self.menuItem[indexPath.row] description]];

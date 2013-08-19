@@ -157,7 +157,7 @@ static ActivityViewController *sharedSingleton = nil;
             
             self.pushButton.frame = (CGRect){0, -3, 320, 51};
             
-            if(!((AppDelegate*)[UIApplication sharedApplication].delegate).hasEnableGPS) {
+            if(![AppDelegate getAppDelegate].hasEnableGPS) {
                 [AppDelegate showErrorMessage:@"Please enable GPS in settings" withTitle:@"500"];
                 self.pushButton.enabled = NO;
             }
@@ -246,7 +246,7 @@ static ActivityViewController *sharedSingleton = nil;
 
 - (UINavigationController*)navigationController
 {
-    return ((AppDelegate*)[UIApplication sharedApplication].delegate).viewController.navigationController;
+    return [AppDelegate getAppDelegate].viewController.navigationController;
 }
 
 @end
