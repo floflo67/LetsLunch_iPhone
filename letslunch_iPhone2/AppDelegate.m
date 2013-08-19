@@ -242,15 +242,9 @@
     return self.listVisitors;
 }
 
-- (NSMutableArray*)getListMessagesForThreadID:(NSString*)threadID andForceReload:(BOOL)shouldReload
+- (NSMutableArray*)getListMessagesForThreadID:(NSString*)threadID
 {
-    if(!self.listMessages) {
-        self.listMessages = [[NSMutableArray alloc] init];
-        self.listMessages = [GetStaticLists getListMessagesForThreadID:threadID];
-    }
-    else if(shouldReload)
-        self.listMessages = [GetStaticLists getListMessagesForThreadID:threadID];
-    
+    self.listMessages = [GetStaticLists getListMessagesForThreadID:threadID];
     return self.listMessages;
 }
 
@@ -374,6 +368,13 @@
     if(!_listVisitors)
         _listVisitors = [[NSMutableArray alloc] initWithArray:[GetStaticLists getListVisitors]];
     return _listVisitors;
+}
+
+- (NSMutableArray*)listMessages
+{
+    if(!_listMessages)
+        _listMessages = [[NSMutableArray alloc] init];
+    return _listMessages;
 }
 
 - (Contacts*)ownerContact
