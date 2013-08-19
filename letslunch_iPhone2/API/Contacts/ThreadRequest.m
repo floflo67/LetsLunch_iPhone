@@ -63,15 +63,7 @@
     NSDictionary *latest = [dictionary objectForKey:@"latest"];
     NSDictionary *receiver = [dictionary objectForKey:@"receivers"][0];
     
-    thread.lastMessage = [[Messages alloc] init];
-    thread.lastMessage.description = [latest objectForKey:@"message"];
-    
-    NSString *date = [dictionary objectForKey:@"timeStamp"];
-    NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSDate *dateDate = [format dateFromString:date];
-    thread.lastMessage.date = dateDate;
-    
+    thread.lastMessage = [[Messages alloc] initWithDescription:[latest objectForKey:@"message"] userID:nil date:[dictionary objectForKey:@"timeStamp"]];
     thread.receiver = [[Contacts alloc] initWithDictionary:receiver];
     thread.type = [dictionary objectForKey:@"type"];
     thread.ID = [dictionary objectForKey:@"id"];
@@ -110,13 +102,14 @@
     
     if(statusCode == 200) {
         
-        NSArray *jsonDict = [NSArray arrayWithArray:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
-        NSLog(@"thread %@", jsonDict);
-        return nil;
-        /*
-        for (NSDictionary *dict in jsonDict) {
-            [self.jsonArray addObject:[self creatingThreadWithDict:dict]];
-        }*/
+        NSMutableDictionary *dictMessages = [NSMutableDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
+        NSArray *array = [dictMessages objectForKey:@"messages"];
+        NSMutableArray *messages = [[NSMutableArray alloc] init];
+        
+        for (NSDictionary *dict in array) {            
+            [messages addObject:[[Messages alloc] initWithDictionary:dict]];
+        }
+        return messages;
     }
     else {
         NSMutableDictionary *dictError = [NSMutableDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
