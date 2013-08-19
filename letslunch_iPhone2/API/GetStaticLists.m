@@ -43,7 +43,16 @@
 
 + (NSMutableArray*)getListMessagesForThreadID:(NSString*)threadID
 {
-    return [ThreadRequest getMessagesWithToken:[AppDelegate getToken] andThreadID:threadID];
+    NSMutableArray* listMessages = [[NSMutableArray alloc] init];
+    listMessages = [ThreadRequest getMessagesWithToken:[AppDelegate getToken] andThreadID:threadID];
+    
+    NSArray *sortedArray = [listMessages sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+        NSDate *first = [(Messages*)a date];
+        NSDate *second = [(Messages*)b date];
+        return [first compare:second];
+    }];
+    return (NSMutableArray*)sortedArray;
+    
 }
 
 + (NSMutableArray*)getListVisitors
@@ -56,10 +65,7 @@
 + (NSMutableArray*)getListContacts
 {
     NSMutableArray* listContacts = [[NSMutableArray alloc] initWithArray:[ThreadRequest getListThreadsWithToken:[AppDelegate getToken]]];
-    if(listContacts)
-        return listContacts;
-    else
-        return nil;
+    return listContacts;
 }
 
 @end
