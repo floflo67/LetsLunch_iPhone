@@ -29,7 +29,7 @@
     self = [super init];
     if(self) {
         self.threadID = threadID;
-        self.objects = [(AppDelegate*)[[UIApplication sharedApplication] delegate] getListMessagesForThreadID:self.threadID];
+        self.objects = [[AppDelegate getAppDelegate] getListMessagesForThreadID:self.threadID];
         if([self.objects count] == 0) // if no messages
             return nil; // avoid push since nil
     }
@@ -179,11 +179,21 @@
     if(textField.isFirstResponder) {
         [textField resignFirstResponder];
         [self changeTextFieldFrame:NO];
-        NSString *message = self.textFieldMessage.text;
+        NSString *messageText = self.textFieldMessage.text;
         self.textFieldMessage.text = @""; // clears message
         
-        if(message && ![message isEqualToString:@""])
-            [MessageRequest sendMessage:message withToken:[AppDelegate getToken] toThread:self.threadID];
+        NSDate *date = [NSDate new];
+        NSDateFormatter *format = [[NSDateFormatter alloc] init];
+        [format setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+        NSString *dateString = [format stringFromDate:date];
+        NSLog(@"dateString: %@", dateString);
+        Messages *message = [[Messages alloc] initWithDescription:messageText userID:[AppDelegate getAppDelegate].ownerContact.ID date:dateString];
+        
+        if(message && ![message.description isEqualToString:@""]) {
+            [MessageRequest sendMessage:message.description withToken:[AppDelegate getToken] toThread:self.threadID];
+            [self.objects addObject:message];
+            [self.tableView reloadData];
+        }
         
     }
     return YES;
