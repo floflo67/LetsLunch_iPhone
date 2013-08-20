@@ -259,7 +259,7 @@ static CreateActivityViewController *sharedSingleton = nil;
         if(![LunchesRequest suppressLunchWithToken:[AppDelegate getToken] andActivityID:self.activity.activityID])
             return;
         else
-            app.ownerActivity = nil;
+            [app setOwnerActivity:nil];
     }
     else if(!self.activity && [description isEqualToString:@""]) {
         
@@ -290,7 +290,7 @@ static CreateActivityViewController *sharedSingleton = nil;
             }
             else {
                 [activity setActivityID:[dict objectForKey:@"lunchId"]];
-                app.ownerActivity = activity;
+                [app setOwnerActivity:activity];
             }
             activity = nil;
             format = nil;

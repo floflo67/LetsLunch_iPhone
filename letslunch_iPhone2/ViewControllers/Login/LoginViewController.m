@@ -236,7 +236,7 @@
     
     if(statusCode == 200) {
         NSMutableDictionary *jsonDict = [NSMutableDictionary dictionaryWithDictionary:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
-        [AppDelegate getAppDelegate].linkedinToken = [jsonDict objectForKey:@"access_token"];
+        [[AppDelegate getAppDelegate] setLinkedinToken:[jsonDict objectForKey:@"access_token"]];
     }
     else {
         NSString* error = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];

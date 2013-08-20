@@ -15,13 +15,16 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) UIWindow *window;
-@property (nonatomic, strong) CenterViewController *viewController;
-@property (nonatomic, strong) UINavigationController *navController;
-@property (nonatomic, strong) Activity *ownerActivity;
-@property (nonatomic, strong) Contacts *ownerContact;
-@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong, readonly) CenterViewController *viewController;
+@property (nonatomic, strong, readonly) UINavigationController *navController;
+
+@property (nonatomic, strong, readonly) Activity *ownerActivity;
+@property (nonatomic, strong, readonly) Contacts *ownerContact;
+
+@property (nonatomic, strong, readonly) CLLocationManager *locationManager;
 @property (nonatomic, readonly) BOOL hasEnableGPS;
-@property (nonatomic, strong) NSString *linkedinToken;
+
+@property (nonatomic, strong, readonly) NSString *linkedinToken;
 
 -(NSMutableArray*)getListActivitiesAndForceReload:(BOOL)shouldReload;
 -(NSMutableArray*)getListFriendsSuggestionAndForceReload:(BOOL)shouldReload;
@@ -43,5 +46,8 @@
 +(void)writeObjectToKeychain:(id)object forKey:(id)key;
 +(id)getObjectFromKeychainForKey:(id)key;
 +(void)logout;
+
+-(void)setOwnerActivity:(Activity *)ownerActivity;
+-(void)setLinkedinToken:(NSString*)linkedinToken;
 
 @end

@@ -18,18 +18,30 @@
 #import "InviteViewController.h"
 
 @interface AppDelegate()
+
+@property (nonatomic, strong) CenterViewController *viewController;
+@property (nonatomic, strong) UINavigationController *navController;
+@property (nonatomic, strong) LoginViewController *loginViewController;
+
+@property (nonatomic, strong) Activity *ownerActivity;
+@property (nonatomic, strong) Contacts *ownerContact;
+@property (nonatomic, strong) KeychainWrapper *tokenItem;
+
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) NSString *linkedinToken;
+
 @property (nonatomic, strong) NSMutableArray *listActivities;
 @property (nonatomic, strong) NSMutableArray *listFriendsSuggestion;
 @property (nonatomic, strong) NSMutableArray *listMessages;
 @property (nonatomic, strong) NSMutableArray *listContacts;
 @property (nonatomic, strong) NSMutableArray *listVisitors;
-@property (nonatomic, strong) LoginViewController *loginViewController;
-@property (nonatomic, strong) KeychainWrapper *tokenItem;
+
 @property (nonatomic) BOOL alertIsShown;
 @property (nonatomic) BOOL hasEnableGPS;
 @end
 
 @implementation AppDelegate
+@synthesize ownerActivity = _ownerActivity;
 
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
@@ -342,6 +354,11 @@
     return _ownerActivity;
 }
 
+- (void)setOwnerActivity:(Activity *)ownerActivity
+{
+    _ownerActivity = ownerActivity;
+}
+
 - (NSMutableArray*)listActivities
 {
     if(!_listActivities) {
@@ -396,6 +413,11 @@
     else
         _hasEnableGPS = NO;
     return _hasEnableGPS;
+}
+
+- (void)setLinkedinToken:(NSString*)linkedinToken
+{
+    _linkedinToken = linkedinToken;
 }
 
 @end
