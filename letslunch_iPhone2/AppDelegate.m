@@ -232,12 +232,12 @@
 
 - (NSMutableArray*)getListActivitiesAndForceReload:(BOOL)shouldReload
 {
-    NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"yyyy-MM-dd"];
-    NSString *date = [format stringFromDate:[NSDate new]];
-    
-    if(shouldReload)
+    if(shouldReload) {
+        NSDateFormatter *format = [[NSDateFormatter alloc] init];
+        [format setDateFormat:@"yyyy-MM-dd"];
+        NSString *date = [format stringFromDate:[NSDate new]];
         self.listActivities = [GetStaticLists getListActivitiesWithToken:[AppDelegate getToken] latitude:self.locationManager.location.coordinate.latitude longitude:self.locationManager.location.coordinate.longitude andDate:date];
+    }
     
     return self.listActivities;
 }

@@ -51,7 +51,7 @@
         NSDate *second = [(Messages*)b date];
         return [first compare:second];
     }];
-    return (NSMutableArray*)sortedArray;
+    return [NSMutableArray arrayWithArray:sortedArray];
     
 }
 
