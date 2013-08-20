@@ -10,6 +10,7 @@
 #define letslunch_iPhone2_CenterViewControllerImportFile_h
 
 #ifdef __OBJC__
+    #import "CenterViewController.h"
     #import "UIViewController+JTRevealSidebarV2.h"
     #import "UINavigationItem+JTRevealSidebarV2.h"
     #import "LeftSidebarViewController.h"
