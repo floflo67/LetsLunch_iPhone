@@ -16,6 +16,8 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "SocialConnectionRequest.h"
 #import "InviteViewController.h"
+#import "KeychainWrapper.h"
+#import "LoginViewController.h"
 
 @interface AppDelegate()
 

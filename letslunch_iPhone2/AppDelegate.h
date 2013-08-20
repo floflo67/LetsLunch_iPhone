@@ -7,9 +7,7 @@
 //
 
 #import "CenterViewController.h"
-#import "LoginViewController.h"
 #import "Activity.h"
-#import "KeychainWrapper.h"
 #import "Contacts.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate, UIAlertViewDelegate>

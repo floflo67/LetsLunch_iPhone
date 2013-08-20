@@ -7,6 +7,7 @@
 //
 
 #import "CenterViewControllerImportFile.h"
+#import "RightSidebarViewController.h"
 
 @interface CenterViewController() <UITableViewDataSource, UITableViewDelegate, LeftSidebarViewControllerDelegate>
 

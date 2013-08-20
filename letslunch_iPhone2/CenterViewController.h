@@ -7,8 +7,6 @@
 //
 
 #import "JTRevealSidebarV2Delegate.h"
-#import "RightSidebarViewController.h"
-#import <CoreLocation/CoreLocation.h>
 
 // Orientation changing is not an officially completed feature,
 // The main thing to fix is the rotation animation and the
