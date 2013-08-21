@@ -82,6 +82,10 @@
         
         share.frame = (CGRect){x, y, 252, 35};
         [cell addSubview:share];
+        if(![AppDelegate getAppDelegate].ownerActivity)
+            share.enabled = NO;
+        else
+            share.enabled = YES;
         
         y+= 40;
         /*
