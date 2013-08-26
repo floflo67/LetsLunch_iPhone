@@ -9,6 +9,7 @@
 #import "DetailProfileViewController.h"
 #import "MessageViewController.h"
 #import "WishListRequest.h"
+#import "MessageRequest.h"
 #import "Testimonials.h"
 
 @interface DetailProfileViewController ()
@@ -210,6 +211,7 @@
 
 - (IBAction)sendMessageButton:(UIButton*)sender
 {
+    [MessageRequest sendMessage:@"Test message" withToken:[AppDelegate getToken] toUser:self.contactID];
     //[self.navigationController pushViewController:[[MessageViewController alloc] initWithContactID:self.contactID] animated:YES];
 }
 
