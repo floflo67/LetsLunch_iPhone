@@ -172,6 +172,7 @@
      Used http://imagecolorpicker.com/ and https://kuler.adobe.com/create/color-wheel/ to get color for background
      */
     self.rightSidebarViewController.tableView.backgroundColor = [AppDelegate colorWithHexString:@"3C332A"];
+    [self.rightSidebarViewController changeShareButton];
     
     UITableViewController *controller = self.rightSidebarViewController;
     controller.view.frame = CGRectMake(0, viewFrame.origin.y - 5, 270, viewFrame.size.height + 5);
