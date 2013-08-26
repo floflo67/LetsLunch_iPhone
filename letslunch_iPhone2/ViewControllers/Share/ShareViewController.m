@@ -56,9 +56,10 @@ static ShareViewController *sharedSingleton = nil;
 {
     __weak typeof(self) weakSelf = self;
     
-    self.mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook]; //Tell him with what social plattform to use it, e.g. facebook or twitter
-    [self.mySLComposerSheet setInitialText:@"Test Facebook"/*[NSString stringWithFormat:@"Test", self.mySLComposerSheet.serviceType]*/]; //the message you want to post
-    //for more instance methodes, go here:https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Reference/SLComposeViewController_Class/Reference/Reference.html#//apple_ref/doc/uid/TP40012205
+    self.mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+    [self.mySLComposerSheet setInitialText:[NSString stringWithFormat:@"I'm available for lunch at %@!", [AppDelegate getAppDelegate].ownerActivity.venue.name]];
+    [self.mySLComposerSheet setTitle:@"Let's lunch"];
+    [self.mySLComposerSheet addImage:[UIImage imageNamed:@"Logo.png"]];
     [self presentViewController:self.mySLComposerSheet animated:YES completion:nil];
     
     
@@ -99,9 +100,10 @@ static ShareViewController *sharedSingleton = nil;
 {
     __weak typeof(self) weakSelf = self;
     
-    self.mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter]; //Tell him with what social plattform to use it, e.g. facebook or twitter
-    [self.mySLComposerSheet setInitialText:@"Test Twitter"/*[NSString stringWithFormat:@"Test", self.mySLComposerSheet.serviceType]*/]; //the message you want to post
-    //for more instance methodes, go here:https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Reference/SLComposeViewController_Class/Reference/Reference.html#//apple_ref/doc/uid/TP40012205
+    self.mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+    [self.mySLComposerSheet setInitialText:[NSString stringWithFormat:@"I'm available for lunch at %@!", [AppDelegate getAppDelegate].ownerActivity.venue.name]];
+    [self.mySLComposerSheet setTitle:@"Let's lunch"];
+    [self.mySLComposerSheet addImage:[UIImage imageNamed:@"Logo.png"]];
     [self presentViewController:self.mySLComposerSheet animated:YES completion:nil];
     
     
@@ -164,11 +166,11 @@ static ShareViewController *sharedSingleton = nil;
 {
     NSData *requestData;
     
-    NSString *postTitle = @"postTitle";
-    NSString *postDescription = @"postDescription";
-    NSString *postURL = @"www.google.com";
-    NSString *postImageURL = @"https:////www.google.com//images//srpr//logo4w.png";
-    NSString *postComment = @"postComment";
+    NSString *postTitle = @"Let's lunch";
+    NSString *postDescription = [NSString stringWithFormat:@"I'm available for lunch at %@!", [AppDelegate getAppDelegate].ownerActivity.venue.name];
+    NSString *postURL = @"www.letslunch.com";
+    NSString *postImageURL = @"http:////letslunch.com//images//logo.png";
+    NSString *postComment = [NSString stringWithFormat:@"I'm available for lunch at %@!", [AppDelegate getAppDelegate].ownerActivity.venue.name];
     
     NSMutableDictionary *visibility = [[NSMutableDictionary alloc] init];
     [visibility setValue:@"anyone" forKey:@"code"];
