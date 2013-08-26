@@ -58,6 +58,7 @@
 		545905DF179EE9CC002A0620 /* MutableRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 540560D0178F272E009679F4 /* MutableRequest.m */; };
 		545905E0179EE9CC002A0620 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36BE176B819300154C36 /* AppDelegate.m */; };
 		545905E1179EE9CC002A0620 /* CenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D36DB176B823700154C36 /* CenterViewController.m */; };
+		54712A1117CBD52C0044F793 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 54712A1017CBD52C0044F793 /* Logo.png */; };
 		5480D55C17A06FA30069ABAC /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5480D55B17A06FA30069ABAC /* ActivityCell.m */; };
 		5480D55E17A077930069ABAC /* ActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5480D55D17A077930069ABAC /* ActivityCell.xib */; };
 		5482213017B41A0D001F6812 /* Testimonials.m in Sources */ = {isa = PBXBuildFile; fileRef = 5482212F17B41A0D001F6812 /* Testimonials.m */; };
@@ -174,6 +175,7 @@
 		54571395177E48E8006A69CE /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		54571397177E48EF006A69CE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		54571399177E48F4006A69CE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		54712A1017CBD52C0044F793 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		547D54CF1773B21F0069D837 /* Foursquare2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Foursquare2.h; sourceTree = "<group>"; };
 		547D54D01773B21F0069D837 /* Foursquare2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Foursquare2.m; sourceTree = "<group>"; };
 		547D54D11773B21F0069D837 /* FSRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRequester.h; sourceTree = "<group>"; };
@@ -748,6 +750,7 @@
 		54F5986B17713A210074F43C /* Sharing */ = {
 			isa = PBXGroup;
 			children = (
+				54712A1017CBD52C0044F793 /* Logo.png */,
 				54F97200177CE711006F6FE5 /* ImageShare.png */,
 				54F97201177CE711006F6FE5 /* ImageShare@2x.png */,
 				54F5986C17713A4A0074F43C /* BackgroundSharing.png */,
@@ -916,6 +919,7 @@
 				540E1F4C179DB7FA000D2E0C /* DetailProfileViewController.xib in Resources */,
 				5480D55E17A077930069ABAC /* ActivityCell.xib in Resources */,
 				54DC58B917A9B9C900A2C4BD /* arrow.png in Resources */,
+				54712A1117CBD52C0044F793 /* Logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
