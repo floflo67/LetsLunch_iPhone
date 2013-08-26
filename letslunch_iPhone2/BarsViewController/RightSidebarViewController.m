@@ -10,6 +10,7 @@
 
 @interface RightSidebarViewController()
 @property (nonatomic, strong) NSArray* menuItem;
+@property (nonatomic, strong) UIButton *share;
 @end
 
 @implementation RightSidebarViewController
@@ -73,19 +74,10 @@
          Uses image in Image folder
          Call shareButtonClick function in CenterViewController
          */
-        UIButton *share = [UIButton buttonWithType:UIButtonTypeCustom];
-        [share setImage:[UIImage imageNamed:@"ShareButton.png"] forState:UIControlStateNormal];
-        [share sizeToFit];
-        [share addTarget:((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController
-                             action:@selector(shareButtonClick:)
-                   forControlEvents:UIControlEventTouchUpInside];
+        [self.share addTarget:((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController action:@selector(shareButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         
-        share.frame = (CGRect){x, y, 252, 35};
-        [cell addSubview:share];
-        if(![AppDelegate getAppDelegate].ownerActivity)
-            share.enabled = NO;
-        else
-            share.enabled = YES;
+        [cell addSubview:self.share];
+        [self changeShareButton];
         
         y+= 40;
         /*
@@ -125,6 +117,14 @@
     return cell;
 }
 
+- (void)changeShareButton
+{
+    if(![AppDelegate getAppDelegate].ownerActivity)
+        self.share.enabled = NO;
+    else
+        self.share.enabled = YES;
+}
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
@@ -141,6 +141,17 @@
     if(!_menuItem)
         _menuItem = [[NSArray alloc] init];
     return _menuItem;
+}
+
+- (UIButton *)share
+{
+    if(!_share) {
+        _share = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_share setImage:[UIImage imageNamed:@"ShareButton.png"] forState:UIControlStateNormal];
+        [_share sizeToFit];
+        _share.frame = (CGRect){10, 10, 252, 35};
+    }
+    return _share;
 }
 
 @end

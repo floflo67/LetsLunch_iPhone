@@ -10,6 +10,9 @@
 
 @interface RightSidebarViewController : UITableViewController
 @property (nonatomic, weak) id <RightSidebarViewControllerDelegate> sidebarDelegate;
+
+-(void)changeShareButton;
+
 @end
 
 @protocol RightSidebarViewControllerDelegate <NSObject>
